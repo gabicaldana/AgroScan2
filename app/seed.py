@@ -13,8 +13,9 @@ A carga e idempotente (`ON CONFLICT ... DO UPDATE`): rodar duas vezes deixa o
 banco no mesmo estado. Isso importa porque o seed roda no CI, em cada ambiente
 novo, e toda vez que a curadoria avanca.
 
-Rodar:
-    DATABASE_URL_DIRETA=postgresql://... python -m app.seed
+Rodar (com as variaveis no .env da raiz):
+    python -m app.seed --conferir           so testa a conexao, nao escreve
+    python -m app.seed                      migracoes + catalogo
     python -m app.seed --apenas-migracoes
     python -m app.seed --apenas-catalogo
 """
@@ -26,6 +27,7 @@ import re
 import sys
 from pathlib import Path
 
+from app import ambiente
 from app.catalogo import (
     CAMINHO_JSON,
     ORDEM_DO_TRATAMENTO,
@@ -57,6 +59,8 @@ TIPO_AGENTE_NO_BANCO = {
 
 def _conectar(url: str | None = None):
     import psycopg
+
+    ambiente.carregar()
 
     # Migracao e DDL: exige conexao DIRETA. O pooling em modo transacao da
     # Neon/Supabase nao sustenta `CREATE TYPE` nem transacao longa.
@@ -243,8 +247,63 @@ def carregar_catalogo(con, base: dict) -> dict[str, int]:
     }
 
 
+def conferir() -> None:
+    """Testa a conexao e relata o estado, sem escrever nada.
+
+    Existe para separar dois problemas que se parecem na tela: string de
+    conexao errada e migracao que falhou. Sem isto, os dois aparecem como um
+    traceback no meio da carga.
+    """
+    ambiente.carregar()
+
+    direta = os.environ.get("DATABASE_URL_DIRETA")
+    pooled = os.environ.get("DATABASE_URL")
+
+    print(f"DATABASE_URL_DIRETA .. {'definida' if direta else 'AUSENTE'}")
+    print(f"DATABASE_URL ......... {'definida' if pooled else 'AUSENTE'}")
+
+    if direta and pooled and "-pooler" in direta:
+        print("\n  ATENCAO: DATABASE_URL_DIRETA tem '-pooler' no host. Essa e a")
+        print("  string POOLED, e DDL nao sobrevive a transaction pooling.")
+        print("  Troque pela conexao direta no painel da Neon.")
+
+    if not direta:
+        raise SystemExit("\nDefina DATABASE_URL_DIRETA no .env para conferir.")
+
+    con = _conectar()
+    try:
+        versao = con.execute("SELECT version()").fetchone()[0]
+        print(f"\nconectou: {versao.split(',')[0]}")
+
+        tabelas = con.execute(
+            """SELECT count(*) FROM information_schema.tables
+                WHERE table_schema = 'public'"""
+        ).fetchone()[0]
+        print(f"tabelas no schema public: {tabelas}")
+
+        if tabelas:
+            try:
+                aplicadas = con.execute(
+                    "SELECT numero, nome FROM migracao_aplicada ORDER BY numero"
+                ).fetchall()
+                print(f"migracoes registradas: "
+                      f"{[f'{n:03d}_{nome}' for n, nome in aplicadas] or 'nenhuma'}")
+            except Exception:
+                con.rollback()
+                print("migracoes registradas: tabela de controle ainda nao existe")
+        else:
+            print("banco vazio - rode `python -m app.seed` para criar o esquema")
+    finally:
+        con.close()
+
+
 def main(argv: list[str] | None = None) -> None:
     argumentos = set(argv if argv is not None else sys.argv[1:])
+
+    if "--conferir" in argumentos:
+        conferir()
+        return
+
     so_migracoes = "--apenas-migracoes" in argumentos
     so_catalogo = "--apenas-catalogo" in argumentos
 

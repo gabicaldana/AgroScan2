@@ -126,12 +126,12 @@ python -m unittest discover -s tests -t .
 
 ```bash
 pip install -r requirements.txt
+cp .env.example .env          # preencha as strings de conexão
 
-# Sobe a API local em http://localhost:8000 (docs em /api/v1/docs)
-uvicorn app.api.principal:app --reload
+python -m app.seed --conferir  # testa a conexão, não escreve nada
+python -m app.seed             # aplica migrações e carrega o catálogo
 
-# Aplica as migrações e carrega o catálogo curado no PostgreSQL
-DATABASE_URL_DIRETA=postgresql://... python -m app.seed
+uvicorn app.api.principal:app --reload   # http://localhost:8000/api/v1/docs
 ```
 
 O catálogo é **carregado**, nunca escrito à mão — `app/seed.py` lê o JSON

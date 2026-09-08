@@ -8,6 +8,12 @@ deploy, e nao no primeiro usuario.
 
 import os
 
+from app import ambiente
+
+# Antes de qualquer leitura: em producao nao existe .env e nada acontece; em
+# desenvolvimento evita depender da sintaxe de variavel do shell de cada um.
+ambiente.carregar()
+
 AMBIENTE = os.environ.get("AMBIENTE", "local")
 E_PRODUCAO = AMBIENTE == "producao"
 
