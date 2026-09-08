@@ -1,6 +1,18 @@
 import type { NextConfig } from "next";
 
 const nextConfig: NextConfig = {
+  // O navegador fala com /api/v1 na PROPRIA ORIGEM e o Next encaminha. Assim
+  // o CORS deixa de existir, a regra do service worker que nunca cacheia
+  // /api/ continua valendo (ela olha o caminho, nao o host), e trocar o
+  // endereco da API vira variavel de ambiente em vez de novo deploy do app.
+  async rewrites() {
+    const api = process.env.API_URL;
+    if (!api) return [];
+    return [
+      { source: "/api/v1/:caminho*", destination: `${api}/api/v1/:caminho*` },
+    ];
+  },
+
   async headers() {
     return [
       {

@@ -2,6 +2,7 @@
 
 import Link from "next/link";
 import { useMemo, useState } from "react";
+import * as caderno from "@/lib/caderno.ts";
 import { BarraCompatibilidade } from "@/components/BarraCompatibilidade";
 import { BarraGravidade } from "@/components/BarraGravidade";
 import { SeletorCultura } from "@/components/SeletorCultura";
@@ -26,17 +27,37 @@ import {
  * seria teatro.
  */
 export function PainelSintomas() {
-  const [culturaId, setCulturaId] = useState("Tomato");
+  const [culturaId, setCulturaId] = useState("tomate");
   const [marcados, setMarcados] = useState<ReadonlySet<string>>(new Set());
 
-  const sintomas = useMemo(() => listarSintomasDaCultura(culturaId), [culturaId]);
+  const sintomas = useMemo(
+    () => listarSintomasDaCultura(culturaId),
+    [culturaId],
+  );
   const hipoteses = useMemo(
     () => diagnosticar(culturaId, marcados),
     [culturaId, marcados],
   );
   const pergunta = useMemo(() => melhorPergunta(hipoteses), [hipoteses]);
 
+  const [salvando, setSalvando] = useState(false);
+  const [salvo, setSalvo] = useState<null | { enviada: boolean }>(null);
+
+  async function salvarNoCaderno() {
+    setSalvando(true);
+    try {
+      // Grava no aparelho e SO ENTAO tenta enviar. A tela confirma na hora:
+      // esperar o servidor para dizer "salvo" faria o app parar de funcionar
+      // exatamente onde ele precisa funcionar.
+      const r = await caderno.salvar(culturaId, marcados, hipoteses);
+      setSalvo({ enviada: r.enviada });
+    } finally {
+      setSalvando(false);
+    }
+  }
+
   function alternar(sintomaId: string) {
+    setSalvo(null);
     setMarcados((atual) => {
       const proximo = new Set(atual);
       if (!proximo.delete(sintomaId)) proximo.add(sintomaId);
@@ -45,6 +66,7 @@ export function PainelSintomas() {
   }
 
   function trocarCultura(novaCultura: string) {
+    setSalvo(null);
     setCulturaId(novaCultura);
     // Os sintomas sao especificos da cultura: manter as marcacoes ao trocar
     // levaria marcas invisiveis (que nem aparecem na nova lista) para dentro
@@ -55,9 +77,15 @@ export function PainelSintomas() {
   // Agrupa preservando a ordem do motor: folha, caule, fruto, planta - a
   // ordem em que se olha a planta, nao a alfabetica.
   const grupos = useMemo(() => {
-    const porOrgao = new Map<string, { rotulo: string; itens: SintomaDoCatalogo[] }>();
+    const porOrgao = new Map<
+      string,
+      { rotulo: string; itens: SintomaDoCatalogo[] }
+    >();
     for (const s of sintomas) {
-      const grupo = porOrgao.get(s.orgao) ?? { rotulo: s.orgaoRotulo, itens: [] };
+      const grupo = porOrgao.get(s.orgao) ?? {
+        rotulo: s.orgaoRotulo,
+        itens: [],
+      };
       grupo.itens.push(s);
       porOrgao.set(s.orgao, grupo);
     }
@@ -140,11 +168,33 @@ export function PainelSintomas() {
                 </li>
               ))}
             </ul>
+            <div className="mt-4">
+              {salvo ? (
+                <p
+                  role="status"
+                  className="border-borda-forte rounded-lg border-2 p-3 text-base font-semibold"
+                >
+                  Salvo no caderno.{" "}
+                  {salvo.enviada
+                    ? "Já está na sua conta."
+                    : "Guardado neste aparelho - sobe quando houver rede."}
+                </p>
+              ) : (
+                <button
+                  type="button"
+                  onClick={salvarNoCaderno}
+                  disabled={salvando}
+                  className="border-borda-forte h-toque w-full rounded-lg border-2 text-base font-bold"
+                >
+                  {salvando ? "Salvando…" : "Salvar no caderno"}
+                </button>
+              )}
+            </div>
+
             <p className="text-texto-suave mt-4 text-sm">
               Compatibilidade não é probabilidade: é o quanto o quadro marcado
-              bate com o perfil típico de cada doença. Quando o modelo de
-              imagem entrar, a confiança dele aparecerá como um número
-              separado deste.
+              bate com o perfil típico de cada doença. Quando o modelo de imagem
+              entrar, a confiança dele aparecerá como um número separado deste.
             </p>
           </>
         )}
@@ -229,8 +279,8 @@ function SemHipotese() {
       <p className="mt-1 text-sm">
         Os sintomas marcados não formam um quadro compatível com as doenças
         cadastradas para esta cultura. Pode ser combinação de sintomas de
-        origens diferentes, deficiência nutricional, dano por defensivo, ou
-        uma doença que a base ainda não cobre. Revise as marcações ou leve uma
+        origens diferentes, deficiência nutricional, dano por defensivo, ou uma
+        doença que a base ainda não cobre. Revise as marcações ou leve uma
         amostra a um laboratório de fitopatologia.
       </p>
     </div>
@@ -258,7 +308,9 @@ function CartaoHipotese({
             <i>{hipotese.agente}</i> · {hipotese.tipoAgente}
           </p>
         </div>
-        <span className="text-texto-suave shrink-0 text-sm font-bold">Ver ›</span>
+        <span className="text-texto-suave shrink-0 text-sm font-bold">
+          Ver ›
+        </span>
       </div>
 
       <div className="mt-3">
@@ -275,7 +327,10 @@ function CartaoHipotese({
       {hipotese.sintomasNaoExplicados.length > 0 && (
         <p className="text-texto-suave mt-3 text-sm">
           Não explica:{" "}
-          {hipotese.sintomasNaoExplicados.map((s) => s.nome.toLowerCase()).join("; ")}.
+          {hipotese.sintomasNaoExplicados
+            .map((s) => s.nome.toLowerCase())
+            .join("; ")}
+          .
         </p>
       )}
     </Link>
