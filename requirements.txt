@@ -13,3 +13,8 @@
 
 fastapi>=0.118,<1.0
 psycopg[binary]>=3.2,<4.0
+PyJWT>=2.10,<3.0
+
+# Exigido pelo fluxo OAuth2 password do FastAPI (POST /autenticacao/token).
+# E o que faz o botao Authorize do /docs funcionar.
+python-multipart>=0.0.20,<0.1
