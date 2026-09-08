@@ -1,0 +1,15 @@
+# Dependencias do back-end.
+#
+# O motor de diagnostico e a validacao da base continuam sendo stdlib pura:
+# nada aqui e necessario para rodar `python -m app.validacao`,
+# `python -m app.fixtures` ou os testes do motor. Os testes da API se pulam
+# sozinhos quando o FastAPI nao esta instalado.
+#
+# Faixas em vez de pinos exatos: a Vercel roda Python 3.12 e o
+# desenvolvimento local pode estar a frente, e um pino exato de psycopg
+# deixa de ter wheel binario nas versoes mais novas do interpretador.
+# `psycopg[binary]` traz o driver compilado, que e o que funciona no runtime
+# da Vercel sem etapa de build.
+
+fastapi>=0.118,<1.0
+psycopg[binary]>=3.2,<4.0

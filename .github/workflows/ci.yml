@@ -3,7 +3,8 @@
 # de frescor, mas ate aqui esses testes so rodavam na maquina de quem lembrasse
 # de roda-los. Este workflow e o que torna a promessa real.
 #
-# A ordem importa: `app.fixtures` le o banco que `app.db` acabou de gerar.
+# A ordem importa: `app.fixtures` roda o motor sobre a base validada, e
+# `npm run base` gera os modulos TypeScript a partir dos mesmos JSON.
 #
 # A checagem final e a que vale: depois de regerar tudo, o diretorio de
 # trabalho tem que estar limpo. Se um arquivo gerado mudou, alguem editou uma
@@ -33,16 +34,23 @@ jobs:
           cache: npm
           cache-dependency-path: web/package-lock.json
 
-      # Sem `pip install`: o motor, a validacao da base e a geracao dos
-      # artefatos sao stdlib puro. Se um dia isto precisar de dependencia,
-      # e sinal de que algo entrou no lugar errado.
+      # O motor, a validacao da base e a geracao dos artefatos sao stdlib
+      # pura - rodam antes de qualquer instalacao, de proposito. Se um dia
+      # este passo precisar de dependencia, e sinal de que algo do back-end
+      # vazou para dentro do motor.
       - name: Validar a base e regerar os artefatos
         run: |
-          python -m app.db
+          python -m app.validacao
           python -m app.fixtures
           python -m app.preprocessamento
 
-      - name: Testes do motor de referencia
+      - name: Dependencias do back-end
+        run: pip install -r requirements.txt
+
+      # Depois do pip, para que os testes da API rodem em vez de se pularem.
+      # Entre eles esta a paridade HTTP: a resposta de POST /diagnosticos tem
+      # que reproduzir as fixtures caso a caso, campo a campo.
+      - name: Testes do motor e da API
         run: python -m unittest discover -s tests -t . -v
 
       - name: Instalar o app
@@ -70,7 +78,7 @@ jobs:
             git status --porcelain
             git diff
             echo
-            echo "Rode: python -m app.db && python -m app.fixtures && python -m app.preprocessamento"
+            echo "Rode: python -m app.validacao && python -m app.fixtures && python -m app.preprocessamento"
             echo "     cd web && npm run base"
             exit 1
           fi

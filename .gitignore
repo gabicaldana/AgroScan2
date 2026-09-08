@@ -38,3 +38,6 @@ runs/
 .idea/
 .DS_Store
 Thumbs.db
+
+# Back-end e deploy
+*.pyc

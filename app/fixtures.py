@@ -26,7 +26,7 @@ Rodar:  python -m app.fixtures
 import json
 from dataclasses import asdict
 
-from app.db import RAIZ, carregar_json
+from app.catalogo import RAIZ, carregar_json
 from app.diagnostico import (
     detalhar_doenca,
     diagnosticar,

@@ -26,7 +26,7 @@ opcional com as probabilidades vindas da CNN, e combina os dois sinais.
 import unicodedata
 from dataclasses import dataclass, field
 
-from app.db import conectar
+from app.catalogo import catalogo
 
 # Quanto penalizar um sintoma que o usuario marcou mas que a doenca nao explica.
 # 0 = ignora sintomas sobrando; 1 = pesa tanto quanto um sintoma faltando.
@@ -115,17 +115,10 @@ def listar_culturas(apenas_com_doencas: bool = False) -> list[dict]:
     `apenas_com_doencas` filtra as que ainda nao tem ficha curada:
     oferece-las no fluxo por sintomas seria um beco sem saida.
     """
-    con = conectar()
-    sql = """SELECT c.id, c.nome, c.nome_cientifico, c.grupo, c.familia,
-                    c.emoji, COUNT(d.id) AS n_doencas
-               FROM cultura c LEFT JOIN doenca d ON d.cultura_id = c.id
-              GROUP BY c.id"""
+    linhas = catalogo().resumo_das_culturas()
     if apenas_com_doencas:
-        sql += " HAVING n_doencas > 0"
-    linhas = con.execute(sql).fetchall()
-    con.close()
-    return sorted((dict(l) for l in linhas),
-                  key=lambda c: chave_alfabetica(c["nome"]))
+        linhas = [c for c in linhas if c["n_doencas"] > 0]
+    return sorted(linhas, key=lambda c: chave_alfabetica(c["nome"]))
 
 
 def listar_sintomas_da_cultura(cultura_id: str) -> list[dict]:
@@ -134,19 +127,8 @@ def listar_sintomas_da_cultura(cultura_id: str) -> list[dict]:
     Evita mostrar ao usuario sintomas irrelevantes para o que ele plantou -
     das 58 entradas do catalogo, cada cultura usa entre 4 e 26.
     """
-    con = conectar()
-    linhas = con.execute(
-        """SELECT DISTINCT s.id, s.nome, s.orgao,
-                  o.rotulo AS orgao_rotulo, o.ordem AS orgao_ordem
-             FROM sintoma s
-             JOIN orgao o ON o.id = s.orgao
-             JOIN doenca_sintoma ds ON ds.sintoma_id = s.id
-             JOIN doenca d ON d.id = ds.doenca_id
-            WHERE d.cultura_id = ?""",
-        (cultura_id,),
-    ).fetchall()
-    con.close()
-    return sorted((dict(l) for l in linhas),
+    linhas = catalogo().sintomas_da_cultura(cultura_id)
+    return sorted(linhas,
                   key=lambda s: (s["orgao_ordem"], chave_alfabetica(s["nome"])))
 
 
@@ -160,24 +142,9 @@ def diagnosticar(cultura_id: str, sintomas_marcados: set[str]) -> list[Hipotese]
     if not sintomas_marcados:
         return []
 
-    con = conectar()
-    doencas = con.execute(
-        "SELECT * FROM doenca WHERE cultura_id = ? ORDER BY id", (cultura_id,)
-    ).fetchall()
-
-    perfis = con.execute(
-        """SELECT ds.doenca_id, ds.sintoma_id, ds.peso
-             FROM doenca_sintoma ds
-             JOIN doenca d ON d.id = ds.doenca_id
-            WHERE d.cultura_id = ?""",
-        (cultura_id,),
-    ).fetchall()
-
-    nomes_sintomas = {
-        l["id"]: l["nome"]
-        for l in con.execute("SELECT id, nome FROM sintoma").fetchall()
-    }
-    con.close()
+    cat = catalogo()
+    doencas = cat.doencas_por_cultura.get(cultura_id, [])
+    nomes_sintomas = cat.nomes_de_sintomas
 
     # Um id que nao existe no catalogo e descartado, nao contado como ruido.
     # O caso real e o app servido de um cache antigo pelo service worker,
@@ -188,14 +155,9 @@ def diagnosticar(cultura_id: str, sintomas_marcados: set[str]) -> list[Hipotese]
     if not sintomas_marcados:
         return []
 
-    # doenca_id -> {sintoma_id: peso}
-    perfil_por_doenca: dict[str, dict[str, float]] = {}
-    for l in perfis:
-        perfil_por_doenca.setdefault(l["doenca_id"], {})[l["sintoma_id"]] = l["peso"]
-
     hipoteses = []
     for d in doencas:
-        perfil = perfil_por_doenca.get(d["id"], {})
+        perfil = cat.perfil_por_doenca.get(d["id"], {})
         if not perfil:
             continue
 
@@ -310,50 +272,4 @@ def melhor_pergunta(hipoteses: list[Hipotese]) -> Pergunta | None:
 
 def detalhar_doenca(doenca_id: str) -> dict:
     """Ficha completa: descricao, condicoes, tratamentos e ingredientes ativos."""
-    con = conectar()
-    d = con.execute(
-        """SELECT d.*, c.nome AS cultura_nome, c.emoji
-             FROM doenca d JOIN cultura c ON c.id = d.cultura_id
-            WHERE d.id = ?""",
-        (doenca_id,),
-    ).fetchone()
-
-    if d is None:
-        con.close()
-        raise KeyError(f"doenca desconhecida: {doenca_id}")
-
-    tratamentos = con.execute(
-        """SELECT tipo, descricao FROM tratamento
-            WHERE doenca_id = ?
-            ORDER BY CASE tipo
-                       WHEN 'cultural'  THEN 1
-                       WHEN 'biologico' THEN 2
-                       WHEN 'quimico'   THEN 3
-                       ELSE 4 END, id""",
-        (doenca_id,),
-    ).fetchall()
-
-    ingredientes = con.execute(
-        "SELECT nome, grupo, acao FROM ingrediente_ativo WHERE doenca_id = ?"
-        " ORDER BY id",
-        (doenca_id,),
-    ).fetchall()
-    con.close()
-
-    return {
-        "id": d["id"],
-        "nome": d["nome"],
-        "cultura": d["cultura_nome"],
-        "emoji": d["emoji"],
-        "agente": d["agente"],
-        "tipo_agente": d["tipo_agente"],
-        "gravidade": d["gravidade"],
-        "descricao": d["descricao"],
-        "condicoes_favoraveis": {
-            "temperatura": d["cond_temperatura"],
-            "umidade": d["cond_umidade"],
-            "observacao": d["cond_observacao"],
-        },
-        "tratamentos": [dict(t) for t in tratamentos],
-        "ingredientes_ativos": [dict(i) for i in ingredientes],
-    }
+    return catalogo().ficha(doenca_id)

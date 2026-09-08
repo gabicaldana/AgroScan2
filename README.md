@@ -80,7 +80,7 @@ verdade — e os dois sinais vão conviver rotulados de forma distinta.
 
 **A base valida antes de carregar.** O JSON é curado à mão, e um id de sintoma
 com erro de digitação sumiria do perfil da doença em silêncio: o diagnóstico
-ficaria errado sem ninguém notar. `python -m app.db` recusa a carga e lista
+ficaria errado sem ninguém notar. `python -m app.validacao` recusa a carga e lista
 todos os problemas de uma vez — referência quebrada, peso fora da faixa, doença
 sem sintoma clássico, sintoma órfão no catálogo. Cultura com menos de três
 doenças gera **aviso**, não erro: funciona, mas o motor não tem segunda hipótese
@@ -115,17 +115,37 @@ direto: nenhuma dependência de teste, nenhum passo de build.
 Sem dependências externas — só a biblioteca padrão.
 
 ```bash
-python -m app.db                # valida o JSON e gera data/agroscan.db
+python -m app.validacao         # valida a base curada e lista os avisos
 python -m app.cli               # diagnóstico interativo no terminal
 python -m app.fixtures          # regera as fixtures compartilhadas com o TS
 python -m app.preprocessamento  # regera as fixtures de pixel
 python -m unittest discover -s tests -t .
 ```
 
+### API e banco
+
+```bash
+pip install -r requirements.txt
+
+# Sobe a API local em http://localhost:8000 (docs em /api/v1/docs)
+uvicorn app.api.principal:app --reload
+
+# Aplica as migrações e carrega o catálogo curado no PostgreSQL
+DATABASE_URL_DIRETA=postgresql://... python -m app.seed
+```
+
+O catálogo é **carregado**, nunca escrito à mão — `app/seed.py` lê o JSON
+curado, valida e aplica em `UPSERT` idempotente. Rodar duas vezes deixa o banco
+no mesmo estado.
+
+Duas strings de conexão, e a diferença importa: `DATABASE_URL` é a **pooled**,
+usada em tempo de execução; `DATABASE_URL_DIRETA` é a **não-pooled**, usada
+para migração, porque DDL não sobrevive a *transaction pooling*.
+
 ### Depois de mexer na base ou no pré-processamento
 
 ```bash
-python -m app.db && python -m app.fixtures && python -m app.preprocessamento
+python -m app.validacao && python -m app.fixtures && python -m app.preprocessamento
 cd web && npm run base && npm test
 ```
 
@@ -424,9 +444,13 @@ data/base_conhecimento.json         fonte da verdade - conteúdo agronômico cur
 data/contrato_visao.json            contrato de pixel e de recusa, curado
 migracoes/                          DDL do PostgreSQL, numerado e reversível
 docs/                               documento de software e modelo de dados
-app/                                Python: motor de referência + tooling de dados
-  db.py                             schema, validação e carga no SQLite
-  diagnostico.py                    motor de referência
+api/index.py                        ponto de entrada da função Python da Vercel
+app/                                Python: motor, validação e back-end
+  catalogo.py                       a base curada em memória, sem banco
+  validacao.py                      recusa base incoerente antes de qualquer carga
+  diagnostico.py                    motor - regra pura, sem I/O
+  seed.py                           migrações + carga do catálogo no PostgreSQL
+  api/                              FastAPI: rotas, esquemas e conexão
   fixtures.py                       gera o contrato compartilhado com o TS
   preprocessamento.py               referência de pixel: resize, crop, normalize
   cli.py                            diagnóstico interativo no terminal

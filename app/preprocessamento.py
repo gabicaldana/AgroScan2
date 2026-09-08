@@ -39,7 +39,7 @@ import json
 import math
 import struct
 
-from app.db import RAIZ
+from app.catalogo import RAIZ
 
 CAMINHO_CONTRATO = RAIZ / "data" / "contrato_visao.json"
 CAMINHO_FIXTURES = RAIZ / "tests" / "fixtures" / "preprocessamento.json"

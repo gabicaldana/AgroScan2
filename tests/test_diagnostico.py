@@ -8,7 +8,8 @@ import json
 import unittest
 
 from app import fixtures
-from app.db import BaseInvalida, carregar_json, validar
+from app.catalogo import carregar_json
+from app.validacao import BaseInvalida, validar
 from app.diagnostico import (
     detalhar_doenca,
     diagnosticar,
