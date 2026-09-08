@@ -15,9 +15,9 @@ const plex = IBM_Plex_Sans({
 });
 
 export const metadata: Metadata = {
-  title: "AgroScan - diagnóstico de doenças em plantas",
+  title: "AgroScan - diagnóstico de doenças em hortaliças",
   description:
-    "Identifique doenças em culturas agrícolas pela câmera do celular, em campo e offline.",
+    "Identifique doenças em hortaliças pelos sintomas da planta, na horta e sem internet.",
   applicationName: "AgroScan",
   appleWebApp: {
     capable: true,

@@ -118,7 +118,7 @@ describe("modulos gerados", () => {
     );
   });
 
-  test("lib/contrato-modelo.ts esta atualizado com o contrato", () => {
+  test("lib/contrato-visao.ts esta atualizado com o contrato", () => {
     assert.equal(
       readFileSync(CAMINHO_SAIDA_CONTRATO, "utf8"),
       gerarFonteContrato(),
@@ -139,24 +139,24 @@ describe("comportamento proprio do porte", () => {
   });
 
   test("aceita qualquer iteravel de sintomas, nao so array", () => {
-    const comSet = diagnosticar("Tomato", new Set(["manchas_escuras_aneis"]));
-    const comArray = diagnosticar("Tomato", ["manchas_escuras_aneis"]);
+    const comSet = diagnosticar("tomate", new Set(["manchas_escuras_aneis"]));
+    const comArray = diagnosticar("tomate", ["manchas_escuras_aneis"]);
     assert.deepEqual(comSet, comArray);
   });
 
   test("sintoma repetido na entrada nao conta duas vezes", () => {
-    const repetido = diagnosticar("Tomato", [
+    const repetido = diagnosticar("tomate", [
       "manchas_escuras_aneis",
       "manchas_escuras_aneis",
     ]);
-    const unico = diagnosticar("Tomato", ["manchas_escuras_aneis"]);
+    const unico = diagnosticar("tomate", ["manchas_escuras_aneis"]);
     assert.deepEqual(repetido, unico);
   });
 
   test("acento nao joga o sintoma para o fim da lista", () => {
-    const nomes = listarSintomasDaCultura("Tomato").map((s) => s.nome);
+    const nomes = listarSintomasDaCultura("tomate").map((s) => s.nome);
     const comAcaros = nomes.indexOf("Ácaros minúsculos na face inferior (visíveis com lupa)");
     assert.equal(comAcaros, 0, "'Ácaros' deveria abrir a lista da folha");
-    assert.equal(chaveAlfabetica("Pêssego") < chaveAlfabetica("Pimentão"), true);
+    assert.equal(chaveAlfabetica("Rúcula") < chaveAlfabetica("Salsa"), true);
   });
 });

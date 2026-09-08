@@ -64,7 +64,6 @@ class Hipotese:
     tipo_agente: str
     gravidade: int
     compatibilidade: float
-    classe_modelo: str | None = None
     sintomas_compativeis: list[SintomaPontuado] = field(default_factory=list)
     sintomas_esperados_ausentes: list[SintomaPontuado] = field(default_factory=list)
     sintomas_nao_explicados: list[SintomaRef] = field(default_factory=list)
@@ -113,16 +112,12 @@ def chave_alfabetica(texto: str) -> str:
 def listar_culturas(apenas_com_doencas: bool = False) -> list[dict]:
     """As culturas da base.
 
-    `apenas_com_doencas` filtra as que o modelo conhece so como saudaveis
-    (mirtilo e framboesa no PlantVillage): oferece-las no fluxo por sintomas
-    seria um beco sem saida.
+    `apenas_com_doencas` filtra as que ainda nao tem ficha curada:
+    oferece-las no fluxo por sintomas seria um beco sem saida.
     """
     con = conectar()
-    # Colunas explicitas, e nao `c.*`: `prefixo_modelo` e contrato do modelo
-    # de imagem, nao dado do fluxo por sintomas, e nao tem por que atravessar
-    # ate o seletor de cultura.
-    sql = """SELECT c.id, c.nome, c.nome_cientifico, c.emoji,
-                    COUNT(d.id) AS n_doencas
+    sql = """SELECT c.id, c.nome, c.nome_cientifico, c.grupo, c.familia,
+                    c.emoji, COUNT(d.id) AS n_doencas
                FROM cultura c LEFT JOIN doenca d ON d.cultura_id = c.id
               GROUP BY c.id"""
     if apenas_com_doencas:
@@ -234,7 +229,6 @@ def diagnosticar(cultura_id: str, sintomas_marcados: set[str]) -> list[Hipotese]
             tipo_agente=d["tipo_agente"],
             gravidade=d["gravidade"],
             compatibilidade=score,
-            classe_modelo=d["classe_modelo"],
             sintomas_compativeis=compativeis,
             sintomas_esperados_ausentes=ausentes,
             sintomas_nao_explicados=nao_explicados,
@@ -351,7 +345,6 @@ def detalhar_doenca(doenca_id: str) -> dict:
         "nome": d["nome"],
         "cultura": d["cultura_nome"],
         "emoji": d["emoji"],
-        "classe_modelo": d["classe_modelo"],
         "agente": d["agente"],
         "tipo_agente": d["tipo_agente"],
         "gravidade": d["gravidade"],

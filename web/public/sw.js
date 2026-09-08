@@ -18,7 +18,7 @@
  * e uma resposta velha ali seria um diagnostico errado.
  */
 
-const VERSAO = "v3";
+const VERSAO = "v4";
 const CACHE_APP = `agroscan-app-${VERSAO}`;
 const CACHE_ESTATICO = `agroscan-estatico-${VERSAO}`;
 

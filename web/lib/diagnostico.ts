@@ -54,7 +54,6 @@ export type Hipotese = {
   tipoAgente: string;
   gravidade: Gravidade;
   compatibilidade: number;
-  classeModelo: string | null;
   /** Marcados que a doenca explica, do mais caracteristico ao menos. */
   sintomasCompativeis: SintomaPontuado[];
   /** Tipicos da doenca que nao foram marcados - as perguntas em aberto. */
@@ -77,6 +76,10 @@ export type CulturaResumida = {
   id: string;
   nome: string;
   nomeCientifico: string;
+  /** Grupo da classificacao da Embrapa - agrupa o seletor na tela. */
+  grupo: string;
+  /** Familia botanica. */
+  familia: string;
   emoji: string;
   nDoencas: number;
 };
@@ -94,7 +97,6 @@ export type Ficha = {
   nome: string;
   cultura: string;
   emoji: string;
-  classeModelo: string | null;
   agente: string;
   tipoAgente: string;
   gravidade: Gravidade;
@@ -196,7 +198,7 @@ function arredondarMeioParaPar(valor: number): number {
 /**
  * As culturas da base.
  *
- * `apenasComDoencas` filtra as que o PlantVillage so conhece como saudaveis
+ * `apenasComDoencas` filtra as que ainda nao tem ficha curada
  * (mirtilo e framboesa): oferece-las no fluxo por sintomas seria um beco sem
  * saida.
  */
@@ -206,6 +208,8 @@ export function listarCulturas(apenasComDoencas = false): CulturaResumida[] {
       id: c.id,
       nome: c.nome,
       nomeCientifico: c.nomeCientifico,
+      grupo: c.grupo,
+      familia: c.familia,
       emoji: c.emoji,
       nDoencas: c.doencas.length,
     }))
@@ -217,7 +221,7 @@ export function listarCulturas(apenasComDoencas = false): CulturaResumida[] {
 /**
  * So os sintomas que aparecem em alguma doenca daquela cultura.
  *
- * Das 58 entradas do catalogo, cada cultura usa entre 4 e 26. Mostrar as 58
+ * Cada cultura usa uma fracao do catalogo. Mostrar o catalogo inteiro
  * transformaria a tela num formulario impossivel de ler sob sol.
  */
 export function listarSintomasDaCultura(culturaId: string): SintomaDoCatalogo[] {
@@ -312,7 +316,6 @@ export function diagnosticar(
       tipoAgente: doenca.tipoAgente,
       gravidade: doenca.gravidade,
       compatibilidade,
-      classeModelo: doenca.classeModelo,
       sintomasCompativeis: compativeis,
       sintomasEsperadosAusentes: ausentes,
       sintomasNaoExplicados: naoExplicados,
@@ -413,7 +416,6 @@ export function detalharDoenca(doencaId: string): Ficha {
     nome: doenca.nome,
     cultura: cultura.nome,
     emoji: cultura.emoji,
-    classeModelo: doenca.classeModelo,
     agente: doenca.agente,
     tipoAgente: doenca.tipoAgente,
     gravidade: doenca.gravidade,

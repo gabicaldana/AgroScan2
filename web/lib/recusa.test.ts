@@ -7,14 +7,17 @@
 import { test, describe } from "node:test";
 import assert from "node:assert/strict";
 
-import { CLASSES, RECUSA, TOTAL_DE_CLASSES } from "./contrato-modelo.ts";
-import { mascararPorCultura } from "./modelo.ts";
+import { RECUSA } from "./contrato-visao.ts";
 import { avaliar, estaCalibrado, pontuar, softmax } from "./recusa.ts";
 
+/** Quantas saidas um modelo teria. O numero real sai do acervo escolhido; aqui
+ *  vale qualquer um, porque a recusa e agnostica ao tamanho da saida. */
+const N = 24;
+
 /** Logits com um pico numa classe: um modelo seguro do que viu. */
-function logitsCom(classe: string, altura = 12): Float32Array {
-  const v = new Float32Array(TOTAL_DE_CLASSES);
-  v[CLASSES.findIndex((c) => c.classe === classe)] = altura;
+function logitsCom(indice: number, altura = 12): Float32Array {
+  const v = new Float32Array(N);
+  v[indice] = altura;
   return v;
 }
 
@@ -26,20 +29,20 @@ const soma = (v: ArrayLike<number>) => {
 
 describe("softmax", () => {
   test("soma 1", () => {
-    assert.ok(Math.abs(soma(softmax(logitsCom("Tomato___Early_blight"))) - 1) < 1e-12);
+    assert.ok(Math.abs(soma(softmax(logitsCom(0))) - 1) < 1e-12);
   });
 
   test("nao estoura com logit gigante", () => {
     // Sem subtrair o maximo antes de exponenciar, Math.exp(800) e Infinity e
     // o softmax inteiro vira NaN - que compararia falso com qualquer limiar
     // e faria a recusa nunca disparar, em silencio.
-    const p = softmax(logitsCom("Tomato___Early_blight", 800));
+    const p = softmax(logitsCom(0, 800));
     assert.ok(![...p].some(Number.isNaN), "nao pode ter NaN");
     assert.ok(Math.abs(soma(p) - 1) < 1e-12);
   });
 
   test("temperatura maior achata a distribuicao", () => {
-    const logits = logitsCom("Tomato___Early_blight", 6);
+    const logits = logitsCom(0, 6);
     const quente = pontuarCom(logits, 4);
     const fria = pontuarCom(logits, 1);
     assert.ok(quente < fria, "temperatura alta tem que reduzir a confianca");
@@ -58,12 +61,12 @@ function pontuarCom(logits: ArrayLike<number>, temperatura: number): number {
 
 describe("pontuacoes sobre os logits crus", () => {
   test("modelo seguro pontua alto, modelo indeciso pontua baixo", () => {
-    const seguro = pontuar(logitsCom("Tomato___Early_blight", 12));
-    const indeciso = pontuar(new Float32Array(TOTAL_DE_CLASSES)); // tudo zero
+    const seguro = pontuar(logitsCom(0, 12));
+    const indeciso = pontuar(new Float32Array(N)); // tudo zero
 
     assert.ok(seguro.msp > 0.99, `msp seguro deu ${seguro.msp}`);
     assert.ok(
-      Math.abs(indeciso.msp - 1 / TOTAL_DE_CLASSES) < 1e-9,
+      Math.abs(indeciso.msp - 1 / N) < 1e-9,
       "uniforme tem que dar 1/38",
     );
     assert.ok(seguro.margem > indeciso.margem);
@@ -78,47 +81,44 @@ describe("pontuacoes sobre os logits crus", () => {
   });
 });
 
-describe("a mascara destroi a confianca como sinal de recusa", () => {
-  test("a confianca mascarada tem piso, e o piso nao depende da imagem", () => {
+describe("renormalizar num subconjunto destroi a confianca como sinal", () => {
+  test("a confianca renormalizada tem piso, e o piso nao depende da imagem", () => {
     // ESTE e o teste que justifica o desenho inteiro do modulo.
     //
-    // Uma mangueira fotografada com "tomate" selecionado produz logits quase
-    // uniformes: o modelo nao reconhece nada, e a MSP crua denuncia isso
-    // caindo para 1/38. Mas a mascara renormaliza sobre as dez classes de
-    // tomate, e a lider nao consegue ficar abaixo de 1/10 - por pior que seja
-    // a foto. O numero mascarado mede como o modelo divide a cultura, nao o
-    // quanto ele reconheceu a imagem, e por isso nao serve de sinal de recusa.
-    const logitsCrus = new Float32Array(TOTAL_DE_CLASSES); // tudo zero
+    // Uma planta de outra especie fotografada com uma cultura selecionada
+    // produz logits quase uniformes: o modelo nao reconhece nada, e a MSP crua
+    // denuncia isso caindo para 1/N. Mas restringir a saida as classes de uma
+    // cultura e renormalizar da a lider um piso de 1/k - por pior que seja a
+    // foto. O numero renormalizado mede como o modelo divide aquela cultura,
+    // nao o quanto ele reconheceu a imagem, e por isso nao serve de recusa.
+    const logitsCrus = new Float32Array(N); // tudo zero
     const cru = pontuar(logitsCrus);
 
-    const mascarado = mascararPorCultura(softmax(logitsCrus), "Tomato");
-    let maiorMascarado = 0;
-    for (const v of mascarado) if (v > maiorMascarado) maiorMascarado = v;
+    const k = 4; // uma cultura com quatro classes
+    const p = softmax(logitsCrus);
+    const subconjunto = [...p].slice(0, k);
+    const total = subconjunto.reduce((a, b) => a + b, 0);
+    const maiorRenormalizado = Math.max(...subconjunto.map((v) => v / total));
 
-    const classesDeTomate = [...mascarado].filter((v) => v > 0).length;
-    assert.equal(classesDeTomate, 10);
-
-    assert.ok(cru.msp < 0.03, `a MSP crua denuncia: ${cru.msp}`);
+    assert.ok(cru.msp < 1 / N + 1e-6, `a MSP crua denuncia: ${cru.msp}`);
     assert.ok(
-      maiorMascarado >= 1 / classesDeTomate - 1e-6,
-      `o piso da mascara e 1/${classesDeTomate}, deu ${maiorMascarado}`,
+      maiorRenormalizado >= 1 / k - 1e-6,
+      `o piso e 1/${k}, deu ${maiorRenormalizado}`,
     );
     assert.ok(
-      maiorMascarado / cru.msp > 3,
-      "a mascara infla a confianca de uma imagem irreconhecivel",
+      maiorRenormalizado / cru.msp > 3,
+      "renormalizar infla a confianca de uma imagem irreconhecivel",
     );
   });
 
-  test("para laranja a mascara leva a confianca a 1, sempre", () => {
-    // Caso extremo e real: laranja tem UMA classe. Qualquer imagem apontada
-    // como laranja sai com 100% de confianca depois da mascara, inclusive uma
-    // folha de cafe. So a pontuacao crua pode recusar.
-    const mascarado = mascararPorCultura(
-      softmax(new Float32Array(TOTAL_DE_CLASSES)),
-      "Orange",
-    );
-    assert.equal(Math.max(...mascarado), 1);
-    assert.ok(pontuar(new Float32Array(TOTAL_DE_CLASSES)).msp < 0.03);
+  test("com uma classe so, a confianca renormalizada e 1, sempre", () => {
+    // Caso extremo e real: uma cultura com uma unica classe. Qualquer imagem
+    // apontada como ela sai com 100% depois da renormalizacao, inclusive a
+    // folha de outra especie. So a pontuacao crua pode recusar.
+    const p = softmax(new Float32Array(N));
+    const unica = [p[0]];
+    assert.equal(unica[0] / unica[0], 1);
+    assert.ok(pontuar(new Float32Array(N)).msp < 1 / N + 1e-6);
   });
 });
 
@@ -131,7 +131,7 @@ describe("estado de calibracao", () => {
     assert.equal(RECUSA.limiarMsp, null);
     assert.equal(estaCalibrado(), false);
 
-    const veredito = avaliar(logitsCom("Tomato___Early_blight"));
+    const veredito = avaliar(logitsCom(0));
     assert.equal(veredito.decisao, "nao_calibrado");
     assert.ok(veredito.pontuacoes.msp > 0.99, "as pontuacoes existem mesmo assim");
   });
@@ -141,6 +141,6 @@ describe("estado de calibracao", () => {
     assert.equal(RECUSA.saboresDeForaDaDistribuicao.length, 3);
     // O ultimo e o mais perigoso: cultura que o modelo conhece, doenca que
     // ele nao conhece. E o unico que nenhuma checagem de cultura pega.
-    assert.match(RECUSA.saboresDeForaDaDistribuicao[2], /soja/);
+    assert.match(RECUSA.saboresDeForaDaDistribuicao[2], /doenca desconhecida/);
   });
 });

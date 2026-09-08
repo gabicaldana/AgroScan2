@@ -1,23 +1,24 @@
 /**
  * A costura do modelo de imagem.
  *
- * Hoje ela é um buraco declarado: `ARQUIVO.nome` é null no contrato porque o
- * treino da fase 4b ainda não rodou. Este módulo existe para que o buraco
- * tenha uma forma, um erro nomeado e um teste - em vez de o resto do app ser
- * escrito em volta de uma suposição.
+ * Hoje ela é um buraco declarado: `ARQUIVO.nome` é null no contrato porque não
+ * existe modelo publicado. Este módulo existe para que o buraco tenha uma
+ * forma, um erro nomeado e um teste - em vez de o resto do app ser escrito em
+ * volta de uma suposição.
  *
- * Quando o ONNX chegar, `carregarClassificador` passa a devolver um objeto que
+ * Quando houver um ONNX, `carregarClassificador` passa a devolver um objeto que
  * roda o grafo; nada mais no app muda, porque tudo depende desta interface e
  * não do runtime.
  *
- * A verificação da lista de classes não é zelo excessivo. O cenário provável
- * neste app é o service worker servir um modelo antigo em cache junto de um
- * bundle novo: os dois carregam, a inferência roda, e cada índice aponta para
- * a doença errada. Nenhuma tela quebra. Por isso o modelo carrega a lista de
- * classes no próprio arquivo e o carregador recusa rodar se ela não bater.
+ * O classificador é quem sabe traduzir a saída do modelo em uma ficha da base:
+ * é ele que carrega a lista de classes do acervo em que foi treinado. Essa
+ * tradução NÃO mora na base de conhecimento - a base é conteúdo agronômico e
+ * não carrega identidade de nenhum acervo de imagens. Um acervo aponta para a
+ * base; nunca o contrário.
  */
 
-import { ARQUIVO, CLASSES, TOTAL_DE_CLASSES } from "./contrato-modelo.ts";
+import { ARQUIVO } from "./contrato-visao.ts";
+import type { Previsao } from "./diagnostico-por-imagem.ts";
 
 /** Um classificador devolve os LOGITS CRUS, nunca probabilidades.
  *
@@ -26,6 +27,12 @@ import { ARQUIVO, CLASSES, TOTAL_DE_CLASSES } from "./contrato-modelo.ts";
 export type Classificador = {
   /** @param tensor NCHW float32, 1×3×224×224, vindo de `preprocessamento.ts` */
   classificar(tensor: Float32Array): Promise<Float32Array>;
+  /**
+   * Traduz as probabilidades na ficha da base, restrita à cultura que o
+   * usuário selecionou. Devolve `null` quando nenhuma classe daquela cultura
+   * recebeu massa.
+   */
+  resolver(probabilidades: Float64Array, culturaId: string): Previsao | null;
 };
 
 export class ModeloIndisponivel extends Error {
@@ -45,41 +52,23 @@ export function modeloDisponivel(): boolean {
 }
 
 /**
- * Confere que a lista de classes gravada no modelo é a do contrato.
- *
- * Exportada e testável separadamente porque é a única defesa contra o modelo
- * em cache divergir do bundle - e um teste que só rode quando existir um ONNX
- * de verdade seria um teste que nunca roda.
- */
-export function conferirClasses(classesDoModelo: readonly string[]): void {
-  if (classesDoModelo.length !== TOTAL_DE_CLASSES) {
-    throw new ModeloIndisponivel(
-      `o modelo declara ${classesDoModelo.length} classes, o app espera ` +
-        `${TOTAL_DE_CLASSES}`,
-    );
-  }
-  for (let i = 0; i < TOTAL_DE_CLASSES; i++) {
-    if (classesDoModelo[i] !== CLASSES[i].classe) {
-      throw new ModeloIndisponivel(
-        `classe ${i} diverge: o modelo diz "${classesDoModelo[i]}", o app ` +
-          `espera "${CLASSES[i].classe}"`,
-      );
-    }
-  }
-}
-
-/**
  * Carrega o classificador, ou explica por que não dá.
  *
  * Devolve `null` - e não lança - quando simplesmente ainda não existe modelo:
- * é um estado previsto do produto nesta fase, não uma falha. A interface
- * mostra o fluxo por sintomas nesse caso.
+ * é um estado previsto do produto, não uma falha. A interface mostra o fluxo
+ * por sintomas nesse caso.
  */
 export async function carregarClassificador(): Promise<Classificador | null> {
   if (!modeloDisponivel()) return null;
 
-  // Fase 4b entrega o ONNX; aqui entram o onnxruntime-web, a leitura de
-  // `metadata_props.classes` e a chamada a `conferirClasses`.
+  // Aqui entram o onnxruntime-web e a leitura de `metadata_props.classes`.
+  //
+  // A conferência da lista de classes contra o acervo declarado não é zelo
+  // excessivo: o cenário provável neste app é o service worker servir um
+  // modelo antigo em cache junto de um bundle novo. Os dois carregam, a
+  // inferência roda, cada índice aponta para a doença errada, e nenhuma tela
+  // quebra. Por isso o modelo carrega a lista no próprio arquivo e o
+  // carregador recusa rodar se ela não bater.
   throw new ModeloIndisponivel(
     `o contrato declara o modelo "${ARQUIVO.nome}", mas o runtime de ` +
       `inferencia ainda nao foi ligado`,

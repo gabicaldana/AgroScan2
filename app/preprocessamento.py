@@ -40,9 +40,12 @@ import math
 import struct
 
 from app.db import RAIZ
-from app.modelo import PREPROCESSAMENTO
 
+CAMINHO_CONTRATO = RAIZ / "data" / "contrato_visao.json"
 CAMINHO_FIXTURES = RAIZ / "tests" / "fixtures" / "preprocessamento.json"
+
+with open(CAMINHO_CONTRATO, encoding="utf-8") as _f:
+    PREPROCESSAMENTO = json.load(_f)["preprocessamento"]
 
 LADO_MENOR = PREPROCESSAMENTO["redimensionamento"]["lado_menor"]
 LADO_FINAL = PREPROCESSAMENTO["entrada"]["largura"]

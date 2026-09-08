@@ -20,7 +20,7 @@
  * escrito à mão.
  */
 
-import { PREPROCESSAMENTO } from "./contrato-modelo.ts";
+import { PREPROCESSAMENTO } from "./contrato-visao.ts";
 
 const LADO_MENOR = PREPROCESSAMENTO.redimensionamento.ladoMenor;
 const LADO_FINAL = PREPROCESSAMENTO.entrada.largura;

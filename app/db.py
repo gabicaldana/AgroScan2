@@ -2,12 +2,21 @@
 
 A base de conhecimento vive em data/base_conhecimento.json (editavel a mao,
 versionada no git). Este modulo transforma esse JSON em um banco relacional
-normalizado, que e o que a aplicacao consulta.
+normalizado, que e o que o motor de referencia consulta.
 
 A carga valida a base antes de gravar. Como o JSON e escrito a mao, um id de
 sintoma com erro de digitacao passaria despercebido e simplesmente sumiria do
 perfil da doenca - o diagnostico ficaria silenciosamente errado. Aqui isso
 vira erro na hora.
+
+A validacao distingue dois niveis:
+
+  ERRO   quebra a carga. E o que torna a base incoerente: referencia quebrada,
+         peso fora da faixa, doenca sem sintoma classico.
+  AVISO  nao quebra, mas aponta curadoria incompleta. Uma cultura com menos de
+         tres doencas funciona, mas o motor nunca tem segunda hipotese nela e a
+         pergunta de desempate deixa de existir. Sao avisos enquanto a curadoria
+         das 24 hortalicas esta em andamento; viram erro quando ela fechar.
 
 Rodar:  python -m app.db
 """
@@ -20,6 +29,14 @@ RAIZ = Path(__file__).resolve().parent.parent
 CAMINHO_JSON = RAIZ / "data" / "base_conhecimento.json"
 CAMINHO_DB = RAIZ / "data" / "agroscan.db"
 
+# Classificacao da Embrapa por parte comestivel. 'raiz' cobre raizes,
+# tuberculos, bulbos e rizomas.
+GRUPOS = {"fruto", "folha", "flor", "haste", "raiz"}
+
+# Quantas doencas uma cultura precisa para que o motor consiga oferecer
+# hipotese alternativa. Abaixo disso `melhor_pergunta` nao tem o que perguntar.
+MINIMO_DE_DOENCAS = 3
+
 SCHEMA = """
 DROP TABLE IF EXISTS doenca_sintoma;
 DROP TABLE IF EXISTS tratamento;
@@ -27,40 +44,27 @@ DROP TABLE IF EXISTS ingrediente_ativo;
 DROP TABLE IF EXISTS doenca;
 DROP TABLE IF EXISTS sintoma;
 DROP TABLE IF EXISTS orgao;
-DROP TABLE IF EXISTS classe_saudavel;
 DROP TABLE IF EXISTS cultura;
 
 CREATE TABLE cultura (
     id              TEXT PRIMARY KEY,
     nome            TEXT NOT NULL,
     nome_cientifico TEXT NOT NULL,
+    -- Grupo da classificacao da Embrapa: fruto, folha, flor, haste ou raiz.
+    -- Agrupa o seletor de cultura na tela - com 24 hortalicas, uma lista plana
+    -- seria ilegivel num celular sob sol.
+    grupo           TEXT NOT NULL,
+    -- Familia botanica. Nao e enfeite taxonomico: e ela que sustenta o alerta
+    -- de rotacao (solanacea depois de solanacea perpetua patogeno de solo) e
+    -- explica por que o catalogo de sintomas se reaproveita entre culturas.
+    familia         TEXT NOT NULL,
     emoji           TEXT NOT NULL,
-    -- Prefixo da cultura nas classes do PlantVillage. NAO e igual ao id em
-    -- tres casos: Cherry_(including_sour), Corn_(maize) e Pepper,_bell.
-    -- Derivar o prefixo do id por concatenacao funcionaria por acidente hoje
-    -- e quebraria a mascara por cultura nessas tres.
-    --
-    -- NULL quando a cultura nao existe no PlantVillage de forma alguma - cana,
-    -- cafe e algodao. O UNIQUE continua valendo para os prefixos reais: no
-    -- SQLite, uma coluna UNIQUE aceita varios NULL, que e exatamente o que
-    -- estas tres precisam. Quem declara essas culturas e `culturas_fora_do_-
-    -- modelo` na base, com motivo, e a validacao exige que as duas coisas
-    -- andem juntas.
-    prefixo_modelo  TEXT UNIQUE
-);
-
--- As 12 classes "healthy" do PlantVillage. Tabela separada de `doenca` porque
--- planta saudavel nao tem perfil de sintomas: se morasse la, apareceria como
--- hipotese no fluxo por sintomas.
-CREATE TABLE classe_saudavel (
-    cultura_id    TEXT PRIMARY KEY REFERENCES cultura(id),
-    classe_modelo TEXT NOT NULL UNIQUE,
-    observacao    TEXT
+    ciclo_dias      INTEGER
 );
 
 -- Parte da planta onde o sintoma e observado. A `ordem` existe porque a
 -- ordem alfabetica ("caule, folha, fruto, planta") nao e a ordem em que o
--- agronomo olha a planta - ele comeca pela folha.
+-- produtor olha a planta - ele comeca pela folha.
 CREATE TABLE orgao (
     id     TEXT PRIMARY KEY,
     rotulo TEXT NOT NULL,
@@ -76,10 +80,6 @@ CREATE TABLE sintoma (
 CREATE TABLE doenca (
     id                    TEXT PRIMARY KEY,
     cultura_id            TEXT NOT NULL REFERENCES cultura(id),
-    -- Classe correspondente no PlantVillage, ou NULL quando o modelo de
-    -- imagem nao sabe reconhecer esta doenca e so o fluxo por sintomas
-    -- chega ate ela.
-    classe_modelo         TEXT,
     nome                  TEXT NOT NULL,
     agente                TEXT NOT NULL,
     tipo_agente           TEXT NOT NULL,
@@ -137,13 +137,15 @@ def carregar_json() -> dict:
         return json.load(f)
 
 
-def validar(base: dict) -> None:
+def validar(base: dict) -> list[str]:
     """Checa a integridade da base antes de qualquer escrita.
 
-    Levanta BaseInvalida com todos os problemas de uma vez - corrigir um
-    por rodada seria insuportavel numa base curada a mao.
+    Levanta BaseInvalida com todos os erros de uma vez - corrigir um por rodada
+    seria insuportavel numa base curada a mao. Devolve a lista de avisos, que
+    apontam curadoria incompleta sem impedir a carga.
     """
     erros: list[str] = []
+    avisos: list[str] = []
 
     ids_orgaos = {o["id"] for o in base["orgaos"]}
     ids_sintomas: set[str] = set()
@@ -156,63 +158,32 @@ def validar(base: dict) -> None:
             erros.append(f"sintoma {s['id']}: orgao inexistente '{s['orgao']}'")
 
     ids_doencas: set[str] = set()
-    classes: set[str] = set()
     sintomas_usados: set[str] = set()
-    prefixos: dict[str, str] = {}
-
-    fora_do_modelo, erros_fora = _validar_fora_do_modelo(base)
-    erros += erros_fora
+    ids_culturas: set[str] = set()
 
     for cultura in base["culturas"]:
-        prefixo = cultura.get("prefixo_modelo")
-        esta_fora = cultura["id"] in fora_do_modelo
+        cid = cultura["id"]
+        if cid in ids_culturas:
+            erros.append(f"cultura duplicada: {cid}")
+        ids_culturas.add(cid)
 
-        if esta_fora:
-            # Sem prefixo E declarada: as duas metades tem que andar juntas.
-            # Um prefixo aqui seria a afirmacao de que existem classes desta
-            # cultura no dataset, que e o contrario do que a declaracao diz.
-            if prefixo is not None:
-                erros.append(
-                    f"cultura {cultura['id']}: esta em culturas_fora_do_modelo "
-                    f"mas declara prefixo_modelo '{prefixo}'")
-        elif not prefixo:
-            # Prefixo ausente sem declaracao pareceria esquecimento, e o app
-            # nao teria como distinguir 'cultura fora do dataset' de 'cultura
-            # cadastrada pela metade'.
+        if cultura.get("grupo") not in GRUPOS:
             erros.append(
-                f"cultura {cultura['id']}: sem prefixo_modelo e sem entrada em "
-                f"culturas_fora_do_modelo")
-        elif prefixo in prefixos:
-            erros.append(
-                f"cultura {cultura['id']}: prefixo_modelo '{prefixo}' ja usado "
-                f"por {prefixos[prefixo]}")
-        else:
-            prefixos[prefixo] = cultura["id"]
+                f"cultura {cid}: grupo '{cultura.get('grupo')}' invalido. "
+                f"Esperado um de {sorted(GRUPOS)}")
+        if not cultura.get("familia"):
+            erros.append(f"cultura {cid}: sem familia botanica")
+
+        if len(cultura["doencas"]) < MINIMO_DE_DOENCAS:
+            avisos.append(
+                f"cultura {cid}: {len(cultura['doencas'])} doenca(s). Abaixo de "
+                f"{MINIMO_DE_DOENCAS} o motor nunca tem segunda hipotese, e a "
+                f"pergunta de desempate nao funciona nesta cultura")
 
         for d in cultura["doencas"]:
             if d["id"] in ids_doencas:
                 erros.append(f"doenca duplicada: {d['id']}")
             ids_doencas.add(d["id"])
-
-            classe = d.get("classe_modelo")
-            if classe is not None:
-                if classe in classes:
-                    erros.append(f"classe_modelo duplicada: {classe}")
-                classes.add(classe)
-                if esta_fora:
-                    # O modelo nao tem nenhuma saida para esta cultura. Uma
-                    # classe aqui entraria na contagem das 38 e desalinharia
-                    # todo o mapeamento indice -> rotulo.
-                    erros.append(
-                        f"doenca {d['id']}: classe_modelo '{classe}' numa "
-                        f"cultura declarada fora do modelo")
-                # A classe tem que pertencer a cultura que a hospeda. Sem esta
-                # checagem, colar `Potato___Early_blight` numa doenca de tomate
-                # passaria batido e a mascara por cultura zeraria a saida certa.
-                elif prefixo and not classe.startswith(f"{prefixo}___"):
-                    erros.append(
-                        f"doenca {d['id']}: classe_modelo '{classe}' nao "
-                        f"comeca com o prefixo da cultura '{prefixo}___'")
 
             if not d["sintomas"]:
                 erros.append(f"doenca {d['id']}: nenhum sintoma no perfil")
@@ -237,147 +208,38 @@ def validar(base: dict) -> None:
                     f"doenca precisa de um sintoma classico, senao nunca "
                     f"alcanca compatibilidade alta")
 
+            # Manejo integrado comeca pela medida cultural, e a interface
+            # apresenta nessa ordem. Ficha que so oferece defensivo empurra
+            # para a pulverizacao como primeira resposta.
+            if not any(t["tipo"] == "cultural" for t in d["tratamentos"]):
+                avisos.append(
+                    f"doenca {d['id']}: sem tratamento do tipo cultural")
+
     orfaos = ids_sintomas - sintomas_usados
     if orfaos:
         erros.append(
             f"sintomas no catalogo que nenhuma doenca usa: {sorted(orfaos)}")
-
-    erros += _validar_saudaveis(base, prefixos, classes, fora_do_modelo)
 
     if erros:
         raise BaseInvalida(
             f"{len(erros)} problema(s) na base de conhecimento:\n  - "
             + "\n  - ".join(erros))
 
-
-def _validar_fora_do_modelo(base: dict) -> tuple[set[str], list[str]]:
-    """As culturas que o PlantVillage nao contem de forma alguma.
-
-    Cana, cafe e algodao entraram na base porque sao lavouras centrais no
-    Brasil, e o dataset e norte-americano e de clima temperado. A base nao
-    obedece ao dataset: ela declara o buraco.
-
-    Isto NAO e o mesmo que `culturas_sem_classe_saudavel`, onde a cultura
-    existe no dataset e so falta a classe 'healthy'. Aqui nao ha classe
-    nenhuma, e a consequencia para o app e diferente: para laranja o modelo
-    responde, mas nunca 'sem doenca'; para cana ele nao responde nada, e
-    nenhum treino do PlantVillage muda isso.
-    """
-    erros: list[str] = []
-    culturas = {c["id"] for c in base["culturas"]}
-    fora: set[str] = set()
-
-    for c in base["culturas_fora_do_modelo"]:
-        cid = c["cultura_id"]
-        if cid not in culturas:
-            erros.append(f"culturas_fora_do_modelo: cultura inexistente '{cid}'")
-            continue
-        if cid in fora:
-            erros.append(f"culturas_fora_do_modelo: cultura repetida '{cid}'")
-        if not c.get("motivo"):
-            erros.append(
-                f"culturas_fora_do_modelo {cid}: sem motivo. Uma cultura que o "
-                f"modelo nao cobre parece cadastro pela metade; o motivo e o "
-                f"que prova que foi decisao")
-        fora.add(cid)
-
-    return fora, erros
-
-
-def _validar_saudaveis(
-    base: dict,
-    prefixos: dict[str, str],
-    classes_doenca: set[str],
-    fora_do_modelo: set[str],
-) -> list[str]:
-    """Checa as 12 classes saudaveis contra as 26 de doenca.
-
-    As duas listas juntas sao as 38 saidas do modelo. Se elas nao fecharem
-    aqui, o contrato gerado por `app/modelo.py` sai com o numero errado de
-    classes e todo o mapeamento indice -> rotulo desanda.
-
-    As culturas fora do modelo nao entram nessa conta e nao precisam declarar
-    nada sobre classe saudavel: para elas o dataset nao tem classe alguma, e
-    lista-las em `culturas_sem_classe_saudavel` misturaria duas ausencias que
-    tem causas e consequencias diferentes.
-    """
-    erros: list[str] = []
-    culturas = {c["id"] for c in base["culturas"]}
-
-    com_saudavel: set[str] = set()
-    classes_saudaveis: set[str] = set()
-
-    for s in base["saudaveis"]:
-        cid = s["cultura_id"]
-        if cid not in culturas:
-            erros.append(f"saudavel: cultura inexistente '{cid}'")
-            continue
-        if cid in com_saudavel:
-            erros.append(f"saudavel: cultura repetida '{cid}'")
-        if cid in fora_do_modelo:
-            erros.append(
-                f"saudavel {cid}: a cultura esta declarada fora do modelo, "
-                f"entao nao pode ter classe saudavel no dataset")
-        com_saudavel.add(cid)
-
-        prefixo = next((p for p, c in prefixos.items() if c == cid), None)
-        esperada = f"{prefixo}___healthy"
-        if s["classe_modelo"] != esperada:
-            erros.append(
-                f"saudavel {cid}: classe_modelo e '{s['classe_modelo']}', "
-                f"deveria ser '{esperada}'")
-        classes_saudaveis.add(s["classe_modelo"])
-
-    sem_saudavel = set()
-    for c in base["culturas_sem_classe_saudavel"]:
-        cid = c["cultura_id"]
-        if cid not in culturas:
-            erros.append(f"culturas_sem_classe_saudavel: inexistente '{cid}'")
-        if cid in com_saudavel:
-            erros.append(
-                f"cultura {cid} esta em saudaveis E em "
-                f"culturas_sem_classe_saudavel")
-        if cid in fora_do_modelo:
-            # As duas listas dizem coisas diferentes. Confundi-las faria o app
-            # prometer um laudo 'sem doenca' impossivel para uma cultura que o
-            # modelo nem enxerga.
-            erros.append(
-                f"cultura {cid} esta em culturas_fora_do_modelo E em "
-                f"culturas_sem_classe_saudavel - a segunda e so para cultura "
-                f"que existe no dataset")
-        if not c.get("motivo"):
-            erros.append(
-                f"culturas_sem_classe_saudavel {cid}: sem motivo. Uma cultura "
-                f"sem classe saudavel parece esquecimento; o motivo e o que "
-                f"prova que foi decisao")
-        sem_saudavel.add(cid)
-
-    faltando = culturas - com_saudavel - sem_saudavel - fora_do_modelo
-    if faltando:
-        erros.append(
-            f"culturas que nao declaram ter nem nao ter classe saudavel: "
-            f"{sorted(faltando)}")
-
-    sobreposicao = classes_doenca & classes_saudaveis
-    if sobreposicao:
-        erros.append(f"classe usada como doenca e como saudavel: {sobreposicao}")
-
-    total = len(classes_doenca) + len(classes_saudaveis)
-    if total != 38:
-        erros.append(
-            f"o modelo tem 38 saidas, mas a base declara {total} classes "
-            f"({len(classes_doenca)} de doenca + {len(classes_saudaveis)} "
-            f"saudaveis)")
-
-    return erros
+    return avisos
 
 
 def semear() -> None:
     """Recria o banco do zero a partir do JSON."""
     base = carregar_json()
-    validar(base)
+    avisos = validar(base)
 
     CAMINHO_DB.parent.mkdir(exist_ok=True)
+    # Apaga o arquivo em vez de so derrubar as tabelas: um banco gerado por uma
+    # versao anterior do schema pode conter tabelas que este script nao conhece,
+    # e uma delas apontando para `cultura` faria o DROP falhar por chave
+    # estrangeira. O banco e artefato gerado - recriar do zero e o contrato.
+    CAMINHO_DB.unlink(missing_ok=True)
+
     con = conectar()
     con.executescript(SCHEMA)
 
@@ -393,22 +255,23 @@ def semear() -> None:
     total_doencas = 0
     for cultura in base["culturas"]:
         con.execute(
-            "INSERT INTO cultura (id, nome, nome_cientifico, emoji,"
-            " prefixo_modelo) VALUES (?, ?, ?, ?, ?)",
+            "INSERT INTO cultura (id, nome, nome_cientifico, grupo, familia,"
+            " emoji, ciclo_dias) VALUES (?, ?, ?, ?, ?, ?, ?)",
             (cultura["id"], cultura["nome"], cultura["nome_cientifico"],
-             cultura["emoji"], cultura["prefixo_modelo"]),
+             cultura["grupo"], cultura["familia"], cultura["emoji"],
+             cultura.get("ciclo_dias")),
         )
 
         for d in cultura["doencas"]:
             cond = d["condicoes_favoraveis"]
             con.execute(
                 """INSERT INTO doenca (
-                       id, cultura_id, classe_modelo, nome, agente,
-                       tipo_agente, gravidade, descricao,
-                       cond_temperatura, cond_umidade, cond_observacao
-                   ) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)""",
-                (d["id"], cultura["id"], d.get("classe_modelo"), d["nome"],
-                 d["agente"], d["tipo_agente"], d["gravidade"], d["descricao"],
+                       id, cultura_id, nome, agente, tipo_agente, gravidade,
+                       descricao, cond_temperatura, cond_umidade,
+                       cond_observacao
+                   ) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?)""",
+                (d["id"], cultura["id"], d["nome"], d["agente"],
+                 d["tipo_agente"], d["gravidade"], d["descricao"],
                  cond["temperatura"], cond["umidade"], cond["observacao"]),
             )
             total_doencas += 1
@@ -430,30 +293,26 @@ def semear() -> None:
                  for i in d["ingredientes_ativos"]],
             )
 
-    # Depois das culturas, por causa da chave estrangeira.
-    con.executemany(
-        "INSERT INTO classe_saudavel (cultura_id, classe_modelo, observacao)"
-        " VALUES (:cultura_id, :classe_modelo, :observacao)",
-        [{"observacao": None, **s} for s in base["saudaveis"]],
-    )
-
     con.commit()
     n_culturas = len(base["culturas"])
     n_sintomas = len(base["sintomas"])
-    n_com_classe = con.execute(
-        "SELECT COUNT(*) FROM doenca WHERE classe_modelo IS NOT NULL"
-    ).fetchone()[0]
     con.close()
 
-    fora = [c["cultura_id"] for c in base["culturas_fora_do_modelo"]]
+    grupos = {}
+    for c in base["culturas"]:
+        grupos.setdefault(c["grupo"], []).append(c["id"])
+
     print(f"Banco criado em {CAMINHO_DB}")
-    print(f"  {n_culturas} culturas, {total_doencas} doencas, "
+    print(f"  versao da base: {base['versao']}")
+    print(f"  {n_culturas} hortalicas, {total_doencas} doencas, "
           f"{n_sintomas} sintomas no catalogo")
-    print(f"  {n_com_classe} doencas com classe no PlantVillage, "
-          f"{total_doencas - n_com_classe} so por sintomas")
-    print(f"  {n_com_classe} + {len(base['saudaveis'])} saudaveis = "
-          f"{n_com_classe + len(base['saudaveis'])} saidas do modelo")
-    print(f"  culturas fora do modelo: {', '.join(sorted(fora))}")
+    for g in sorted(grupos):
+        print(f"    {g:6} {', '.join(sorted(grupos[g]))}")
+
+    if avisos:
+        print(f"\n  {len(avisos)} aviso(s) de curadoria incompleta:")
+        for a in avisos:
+            print(f"    - {a}")
 
 
 if __name__ == "__main__":

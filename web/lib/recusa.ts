@@ -24,7 +24,7 @@
  * calcula as pontuações e declara que o modelo não está calibrado.
  */
 
-import { RECUSA } from "./contrato-modelo.ts";
+import { RECUSA } from "./contrato-visao.ts";
 
 export type Pontuacoes = {
   /** Maior probabilidade do softmax sobre os logits crus. */

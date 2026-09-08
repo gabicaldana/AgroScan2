@@ -10,6 +10,7 @@
       "tipo": "float32"
     },
     "redimensionamento": {
+      "_comentario": "Redimensiona o lado menor para 256 mantendo proporcao, depois recorta 224 no centro. O algoritmo e filtro triangular com suporte escalado, definido em app/preprocessamento.py e portado em web/lib/preprocessamento.ts - os dois sao comparados por digest SHA-256 do tensor. O drawImage do navegador NAO serve: nao redimensiona igual entre navegadores.",
       "lado_menor": 256,
       "recorte": "central",
       "metodo": "bilinear",
@@ -29,8 +30,8 @@
       ]
     },
     "saida": {
-      "tipo": "logits",
-      "classes": 38
+      "_comentario": "Logits, nunca softmax. O softmax fica do lado do TypeScript porque a recusa precisa de temperatura e de energia, e as duas sao impossiveis de calcular depois que o grafo ja normalizou.",
+      "tipo": "logits"
     }
   },
   "casos": [

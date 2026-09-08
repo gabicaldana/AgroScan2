@@ -1,10 +1,9 @@
-# O repositorio tem cinco artefatos gerados e versionados: o banco SQLite, as
-# fixtures compartilhadas, o contrato do modelo e os dois modulos TypeScript.
-# Cada um tem teste de frescor, mas ate aqui esses testes so rodavam na maquina
-# de quem lembrasse de roda-los. Este workflow e o que torna a promessa real.
+# O repositorio tem quatro artefatos gerados e versionados: as fixtures do
+# motor, as fixtures de pixel e os dois modulos TypeScript. Cada um tem teste
+# de frescor, mas ate aqui esses testes so rodavam na maquina de quem lembrasse
+# de roda-los. Este workflow e o que torna a promessa real.
 #
-# A ordem importa: `app.fixtures` e `app.modelo` leem o banco que `app.db`
-# acabou de gerar, e `npm run base` le o contrato que `app.modelo` escreveu.
+# A ordem importa: `app.fixtures` le o banco que `app.db` acabou de gerar.
 #
 # A checagem final e a que vale: depois de regerar tudo, o diretorio de
 # trabalho tem que estar limpo. Se um arquivo gerado mudou, alguem editou uma
@@ -41,7 +40,6 @@ jobs:
         run: |
           python -m app.db
           python -m app.fixtures
-          python -m app.modelo
           python -m app.preprocessamento
 
       - name: Testes do motor de referencia
@@ -72,7 +70,7 @@ jobs:
             git status --porcelain
             git diff
             echo
-            echo "Rode: python -m app.db && python -m app.fixtures && python -m app.modelo && python -m app.preprocessamento"
+            echo "Rode: python -m app.db && python -m app.fixtures && python -m app.preprocessamento"
             echo "     cd web && npm run base"
             exit 1
           fi

@@ -26,7 +26,7 @@ class TestPontuacao(unittest.TestCase):
 
     def test_sintoma_classico_traz_doenca_certa_em_primeiro(self):
         """Aneis concentricos + desfolha de baixo = pinta-preta."""
-        hip = diagnosticar("Tomato", {"manchas_escuras_aneis",
+        hip = diagnosticar("tomate", {"manchas_escuras_aneis",
                                       "desfolha_baixo_para_cima"})
         self.assertTrue(hip)
         self.assertEqual(hip[0].doenca_id, "tomate_pinta_preta")
@@ -34,7 +34,7 @@ class TestPontuacao(unittest.TestCase):
 
     def test_separa_requeima_de_pinta_preta(self):
         """Mofo branco na face inferior e o sinal que distingue a requeima."""
-        hip = diagnosticar("Tomato", {"manchas_encharcadas",
+        hip = diagnosticar("tomate", {"manchas_encharcadas",
                                       "mofo_branco_face_inferior"})
         self.assertEqual(hip[0].doenca_id, "tomate_requeima")
 
@@ -44,16 +44,16 @@ class TestPontuacao(unittest.TestCase):
         O sistema tem que devolver multiplas hipoteses com pontuacao baixa,
         e nao fingir certeza.
         """
-        hip = diagnosticar("Tomato", {"manchas_amareladas"})
+        hip = diagnosticar("tomate", {"manchas_amareladas"})
         self.assertGreater(len(hip), 1)
         self.assertLess(hip[0].compatibilidade, 0.5)
 
     def test_sintomas_sobrando_derrubam_a_pontuacao(self):
         """Marcar sintomas que a doenca nao explica deve penalizar."""
-        so_o_classico = diagnosticar("Tomato", {"manchas_escuras_aneis"})[0]
+        so_o_classico = diagnosticar("tomate", {"manchas_escuras_aneis"})[0]
         com_ruido = next(
             h for h in diagnosticar(
-                "Tomato", {"manchas_escuras_aneis", "po_branco_superficie"})
+                "tomate", {"manchas_escuras_aneis", "po_branco_superficie"})
             if h.doenca_id == "tomate_pinta_preta"
         )
         self.assertLess(com_ruido.compatibilidade, so_o_classico.compatibilidade)
@@ -61,14 +61,16 @@ class TestPontuacao(unittest.TestCase):
 
     def test_perfil_inteiro_marcado_da_compatibilidade_total(self):
         """Sem faltantes e sem ruido, o indice tem que fechar em 1."""
-        hip = diagnosticar("Soybean", {"pustulas_ferruginosas",
-                                       "desfolha_baixo_para_cima",
-                                       "manchas_amareladas"})
-        self.assertEqual(hip[0].doenca_id, "soja_ferrugem_asiatica")
+        hip = diagnosticar("pimentao", {"manchas_angulares_halo_amarelo",
+                                        "manchas_salientes_fruto",
+                                        "manchas_encharcadas",
+                                        "queda_precoce_folhas",
+                                        "manchas_amareladas"})
+        self.assertEqual(hip[0].doenca_id, "pimentao_mancha_bacteriana")
         self.assertEqual(hip[0].compatibilidade, 1.0)
 
     def test_sem_sintomas_nao_devolve_nada(self):
-        self.assertEqual(diagnosticar("Tomato", set()), [])
+        self.assertEqual(diagnosticar("tomate", set()), [])
 
     def test_sintoma_desconhecido_e_ignorado_e_nao_vira_ruido(self):
         """Um id fora do catalogo (bundle antigo em cache) nao pode penalizar.
@@ -76,27 +78,27 @@ class TestPontuacao(unittest.TestCase):
         Se virasse ruido, um unico id obsoleto derrubaria todas as hipoteses
         por igual e estragaria o diagnostico inteiro.
         """
-        com_lixo = diagnosticar("Tomato", {"manchas_escuras_aneis", "xyz_nao_existe"})
-        limpo = diagnosticar("Tomato", {"manchas_escuras_aneis"})
+        com_lixo = diagnosticar("tomate", {"manchas_escuras_aneis", "xyz_nao_existe"})
+        limpo = diagnosticar("tomate", {"manchas_escuras_aneis"})
         self.assertEqual([h.doenca_id for h in com_lixo],
                          [h.doenca_id for h in limpo])
         self.assertEqual(com_lixo[0].compatibilidade, limpo[0].compatibilidade)
 
     def test_so_sintoma_desconhecido_nao_devolve_nada(self):
-        self.assertEqual(diagnosticar("Tomato", {"xyz_nao_existe"}), [])
+        self.assertEqual(diagnosticar("tomate", {"xyz_nao_existe"}), [])
 
 
 class TestOrdenacaoDeterministica(unittest.TestCase):
     """A saida precisa ser reproduzivel: e o que o porte em TS tem que bater."""
 
     def test_listas_de_sintomas_vem_do_maior_peso_para_o_menor(self):
-        hip = diagnosticar("Tomato", {"manchas_escuras_aneis"})[0]
+        hip = diagnosticar("tomate", {"manchas_escuras_aneis"})[0]
         pesos = [s.peso for s in hip.sintomas_esperados_ausentes]
         self.assertEqual(pesos, sorted(pesos, reverse=True))
 
     def test_empate_de_compatibilidade_sobe_a_doenca_mais_grave(self):
         """Custa mais ignorar a doenca destrutiva do que a branda."""
-        hip = diagnosticar("Tomato", {"manchas_escuras_aneis", "lesoes_no_caule"})
+        hip = diagnosticar("tomate", {"manchas_escuras_aneis", "lesoes_no_caule"})
         empatadas = [h for h in hip
                      if abs(h.compatibilidade - hip[0].compatibilidade) < 1e-9]
         gravidades = [h.gravidade for h in empatadas]
@@ -106,9 +108,9 @@ class TestOrdenacaoDeterministica(unittest.TestCase):
         marcados = {"manchas_amareladas", "desfolha_baixo_para_cima",
                     "lesoes_no_caule"}
         primeira = [(h.doenca_id, h.compatibilidade)
-                    for h in diagnosticar("Tomato", marcados)]
+                    for h in diagnosticar("tomate", marcados)]
         segunda = [(h.doenca_id, h.compatibilidade)
-                   for h in diagnosticar("Tomato", marcados)]
+                   for h in diagnosticar("tomate", marcados)]
         self.assertEqual(primeira, segunda)
 
 
@@ -118,7 +120,7 @@ class TestMelhorPergunta(unittest.TestCase):
         """Pinta-preta x mancha-alvo empatam justamente nos aneis
         concentricos. A pergunta util nao pode ser um sintoma que as duas
         esperam igualmente forte."""
-        hip = diagnosticar("Tomato", {"manchas_escuras_aneis", "lesoes_no_caule"})
+        hip = diagnosticar("tomate", {"manchas_escuras_aneis", "lesoes_no_caule"})
         self.assertEqual(hip[0].doenca_id, "tomate_pinta_preta")
         self.assertEqual(hip[1].doenca_id, "tomate_mancha_alvo")
 
@@ -129,7 +131,7 @@ class TestMelhorPergunta(unittest.TestCase):
         self.assertEqual(pergunta.descarta, hip[1].nome)
 
     def test_com_hipotese_unica_pergunta_o_sintoma_mais_caracteristico(self):
-        hip = diagnosticar("Tomato", {"pontuacoes_finas_cloroticas", "teia_fina"})
+        hip = diagnosticar("tomate", {"pontuacoes_finas_cloroticas", "teia_fina"})
         self.assertEqual(len(hip), 1)
         pergunta = melhor_pergunta(hip)
         self.assertEqual(pergunta.sintoma_id,
@@ -139,8 +141,10 @@ class TestMelhorPergunta(unittest.TestCase):
     def test_nao_promete_descartar_quando_a_segunda_tambem_espera(self):
         """Se as duas esperam o sintoma, a resposta confirma mas nao decide -
         e a interface nao pode dizer que decide."""
-        hip = diagnosticar("Corn", {"manchas_alongadas_entre_nervuras",
-                                    "desfolha_baixo_para_cima"})
+        hip = diagnosticar("tomate", {"manchas_amareladas",
+                                      "mofo_oliva_face_inferior"})
+        self.assertEqual(hip[0].doenca_id, "tomate_mofo_de_folha")
+        self.assertEqual(hip[1].doenca_id, "tomate_oidio")
         pergunta = melhor_pergunta(hip)
         perfil_segunda = {s.id for s in hip[1].sintomas_compativeis} | {
             s.id for s in hip[1].sintomas_esperados_ausentes}
@@ -154,39 +158,44 @@ class TestMelhorPergunta(unittest.TestCase):
 class TestCatalogo(unittest.TestCase):
 
     def test_sintomas_sao_filtrados_por_cultura(self):
-        """Nao faz sentido perguntar de mofo branco de folha para milho."""
-        ids_milho = {s["id"] for s in listar_sintomas_da_cultura("Corn")}
-        self.assertIn("pustulas_ferruginosas", ids_milho)
-        self.assertNotIn("mofo_branco_face_inferior", ids_milho)
+        """A batata nao tem fruto no fluxo, e perguntar de lesao no fruto
+        seria pedir ao produtor que procurasse o que nao existe."""
+        ids_batata = {s["id"] for s in listar_sintomas_da_cultura("batata")}
+        ids_tomate = {s["id"] for s in listar_sintomas_da_cultura("tomate")}
+        self.assertIn("manchas_escuras_aneis", ids_batata)
+        self.assertNotIn("lesoes_no_fruto", ids_batata)
+        self.assertIn("lesoes_no_fruto", ids_tomate)
 
     def test_sintomas_vem_agrupados_na_ordem_em_que_se_olha_a_planta(self):
         """Folha antes de caule, fruto e planta - nao em ordem alfabetica."""
         orgaos = []
-        for s in listar_sintomas_da_cultura("Apple"):
+        for s in listar_sintomas_da_cultura("tomate"):
             if s["orgao"] not in orgaos:
                 orgaos.append(s["orgao"])
         self.assertEqual(orgaos[0], "folha")
         self.assertEqual(orgaos, ["folha", "caule", "fruto", "planta"])
 
-    def test_culturas_sem_doenca_ficam_fora_do_fluxo_por_sintomas(self):
-        """Mirtilo e framboesa so existem como classe saudavel no
-        PlantVillage: oferece-las seria um beco sem saida."""
+    def test_toda_cultura_cadastrada_tem_ficha(self):
+        """Cultura sem doenca seria um beco sem saida no fluxo por sintomas:
+        o produtor a escolhe e nao tem o que marcar."""
         todas = {c["id"] for c in listar_culturas()}
         com_doenca = {c["id"] for c in listar_culturas(apenas_com_doencas=True)}
-        self.assertEqual(len(todas), 17)
-        self.assertEqual(todas - com_doenca, {"Blueberry", "Raspberry"})
+        self.assertEqual(todas - com_doenca, set())
 
-        # Cana, cafe e algodao NAO entram nesse filtro: o fluxo por sintomas
-        # as alcanca inteiras. O que elas nao tem e classe no modelo de
-        # imagem, que e outra coisa e nao pode virar exclusao aqui.
-        self.assertLessEqual({"Sugarcane", "Coffee", "Cotton"}, com_doenca)
+    def test_cultura_carrega_grupo_e_familia(self):
+        """O grupo agrupa o seletor na tela; a familia sustenta o alerta de
+        rotacao e explica o reuso do catalogo de sintomas entre culturas."""
+        for c in listar_culturas():
+            self.assertIn(c["grupo"],
+                          {"fruto", "folha", "flor", "haste", "raiz"})
+            self.assertTrue(c["familia"])
 
 
 class TestFicha(unittest.TestCase):
 
     def test_ficha_completa_tem_todos_os_blocos(self):
-        d = detalhar_doenca("soja_ferrugem_asiatica")
-        self.assertEqual(d["cultura"], "Soja")
+        d = detalhar_doenca("batata_requeima")
+        self.assertEqual(d["cultura"], "Batata")
         self.assertEqual(d["gravidade"], 5)
         self.assertTrue(d["descricao"])
         self.assertTrue(d["tratamentos"])
@@ -196,7 +205,7 @@ class TestFicha(unittest.TestCase):
     def test_tratamentos_vem_na_ordem_do_manejo_integrado(self):
         """Cultural antes de biologico antes de quimico - nao e cosmetico,
         e a ordem que o MIP recomenda."""
-        tipos = [t["tipo"] for t in detalhar_doenca("soja_mofo_branco")["tratamentos"]]
+        tipos = [t["tipo"] for t in detalhar_doenca("batata_requeima")["tratamentos"]]
         self.assertEqual(tipos, sorted(
             tipos, key=lambda t: {"cultural": 1, "biologico": 2, "quimico": 3}[t]))
 
@@ -219,49 +228,6 @@ class TestBaseDeConhecimento(unittest.TestCase):
 
     def test_a_base_versionada_e_valida(self):
         validar(self.base)
-
-    def test_cobre_as_26_doencas_do_plantvillage(self):
-        """O modelo da fase 4 tem 38 classes: 26 doencas e 12 saudaveis.
-        Toda classe de doenca precisa de conteudo pronto aqui."""
-        classes = [d["classe_modelo"]
-                   for c in self.base["culturas"] for d in c["doencas"]
-                   if d["classe_modelo"] is not None]
-        self.assertEqual(len(classes), 26)
-        self.assertEqual(len(set(classes)), 26)
-
-    def test_doencas_sem_classe_no_modelo_sao_declaradas(self):
-        """As que so o fluxo por sintomas alcanca, separadas por MOTIVO.
-
-        Sao dois casos com consequencias diferentes para o app, e por isso o
-        teste os separa em vez de somar tudo num conjunto so:
-
-        - cultura que o modelo cobre, doenca que ele nao conhece. E o caso
-          perigoso: a folha doente cai na classe saudavel com confianca alta,
-          e so o laudo avisando salva o agronomo;
-        - cultura inteira fora do dataset. O app nem chama o modelo, porque
-          `culturas_fora_do_modelo` resolve antes da foto.
-        """
-        fora = {c["cultura_id"] for c in self.base["culturas_fora_do_modelo"]}
-
-        em_cultura_coberta = set()
-        em_cultura_fora = set()
-        for c in self.base["culturas"]:
-            for d in c["doencas"]:
-                if d["classe_modelo"] is not None:
-                    continue
-                alvo = em_cultura_fora if c["id"] in fora else em_cultura_coberta
-                alvo.add(d["id"])
-
-        self.assertEqual(
-            em_cultura_coberta,
-            {"soja_ferrugem_asiatica", "soja_mofo_branco", "tomate_oidio"})
-
-        # Toda doenca de cana, cafe e algodao esta aqui - nenhuma tem classe,
-        # porque nenhuma poderia ter.
-        n_fora = sum(len(c["doencas"]) for c in self.base["culturas"]
-                     if c["id"] in fora)
-        self.assertEqual(len(em_cultura_fora), n_fora)
-        self.assertEqual(fora, {"Sugarcane", "Coffee", "Cotton"})
 
     def test_validador_pega_sintoma_com_id_errado(self):
         """Erro de digitacao num id sumiria do perfil em silencio, e a doenca
