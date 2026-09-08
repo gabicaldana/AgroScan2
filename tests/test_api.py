@@ -26,12 +26,14 @@ from app import fixtures
 try:
     from fastapi.testclient import TestClient
 
+    from app.api import banco as banco_api
     from app.api.principal import app
 
     CLIENTE = TestClient(app)
     TEM_API = True
 except ImportError:  # pragma: no cover - depende do ambiente
     CLIENTE = None
+    banco_api = None
     TEM_API = False
 
 
@@ -115,9 +117,42 @@ class TestParidadeHttp(unittest.TestCase):
 class TestCatalogoHttp(unittest.TestCase):
 
     def test_saude_responde_sem_banco_configurado(self):
-        """O catalogo e servido da memoria: a API informa, nao quebra."""
-        corpo = CLIENTE.get(f"{PREFIXO}/saude").json()
-        self.assertIn(corpo["banco"], ("ok", "nao_configurado"))
+        """O catalogo e servido da memoria: a API informa, nao quebra.
+
+        Sem DATABASE_URL a API nao tenta conectar - nao ha rede envolvida, e o
+        teste e deterministico em qualquer maquina.
+        """
+        from unittest.mock import patch
+
+        with patch.object(banco_api, "disponivel", return_value=False):
+            resposta = CLIENTE.get(f"{PREFIXO}/saude")
+
+        self.assertEqual(resposta.status_code, 200)
+        corpo = resposta.json()
+        self.assertEqual(corpo["banco"], "nao_configurado")
+        self.assertIsNone(corpo["migracao_aplicada"])
+        self.assertTrue(corpo["versao_catalogo"])
+
+    def test_saude_relata_a_falha_de_conexao_em_vez_de_quebrar(self):
+        """Banco fora do ar tem que virar diagnostico, nao erro 500.
+
+        A mensagem entra na resposta de proposito: e o que transforma
+        "nao funciona" em "a string de conexao esta errada".
+        """
+        from unittest.mock import patch
+
+        with (
+            patch.object(banco_api, "disponivel", return_value=True),
+            patch.object(banco_api, "consultar_um",
+                         side_effect=OSError("porta 5432 bloqueada")),
+        ):
+            resposta = CLIENTE.get(f"{PREFIXO}/saude")
+
+        self.assertEqual(resposta.status_code, 200)
+        corpo = resposta.json()
+        self.assertTrue(corpo["banco"].startswith("erro:"))
+        self.assertIn("porta 5432 bloqueada", corpo["banco"])
+        # O catalogo continua respondendo: ele nao vem do banco.
         self.assertTrue(corpo["versao_catalogo"])
 
     def test_culturas_batem_com_as_fixtures(self):

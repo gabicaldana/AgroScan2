@@ -70,7 +70,9 @@ def _conectar(url: str | None = None):
         raise SystemExit(
             "Defina DATABASE_URL_DIRETA (string NAO-pooled) para aplicar "
             "migracoes e carregar o catalogo.")
-    return psycopg.connect(destino, autocommit=False)
+    # 10s: o suficiente para o compute do Neon acordar, curto o bastante para
+    # nao parecer travamento quando a porta 5432 esta bloqueada pela rede.
+    return psycopg.connect(destino, autocommit=False, connect_timeout=10)
 
 
 def migracoes_disponiveis() -> list[tuple[int, str, Path]]:
@@ -297,12 +299,158 @@ def conferir() -> None:
         con.close()
 
 
+def _literal(valor) -> str:
+    """Valor Python -> literal SQL. Aspas simples dobradas, None vira NULL."""
+    if valor is None:
+        return "NULL"
+    if isinstance(valor, bool):
+        return "TRUE" if valor else "FALSE"
+    if isinstance(valor, (int, float)):
+        return repr(valor)
+    return "'" + str(valor).replace("'", "''") + "'"
+
+
+def gerar_sql(base: dict, destino: Path) -> None:
+    """Escreve esquema + catalogo num arquivo .sql unico.
+
+    Existe porque nem toda rede deixa sair trafego PostgreSQL: firewall
+    institucional costuma bloquear a porta 5432 e liberar so a 443. Sem isto,
+    quem esta atras de uma rede assim nao consegue preparar o banco de lugar
+    nenhum - e o editor SQL do Neon, que roda no navegador, resolve.
+
+    O conteudo e o MESMO que `carregar_catalogo` aplica; muda so o transporte.
+    Continua sendo gerado a partir do JSON curado, nunca escrito a mao.
+    """
+    L = _literal
+    partes: list[str] = [
+        "-- GERADO por `python -m app.seed --gerar-sql`. Nao editar a mao.",
+        f"-- Base {base['versao']} - checksum {checksum_da_base()}",
+        "--",
+        "-- Cole no editor SQL do Neon (Console -> SQL Editor) e execute.",
+        "-- Idempotente: rodar duas vezes deixa o banco no mesmo estado.",
+        "",
+        "BEGIN;",
+        "",
+    ]
+
+    for numero, nome, caminho in migracoes_disponiveis():
+        partes.append(f"-- ===== migracao {numero:03d}_{nome} =====")
+        partes.append(caminho.read_text(encoding="utf-8"))
+        if numero > 0:
+            partes.append(
+                f"INSERT INTO migracao_aplicada (numero, nome) "
+                f"VALUES ({numero}, {L(nome)}) "
+                f"ON CONFLICT (numero) DO NOTHING;")
+        partes.append("")
+
+    partes.append("-- ===== catalogo curado =====")
+    partes.append(
+        f"INSERT INTO versao_catalogo (versao, checksum_sha256, notas) VALUES "
+        f"({L(base['versao'])}, {L(checksum_da_base())}, "
+        f"{L('carga via --gerar-sql')}) "
+        f"ON CONFLICT (versao) DO UPDATE SET "
+        f"checksum_sha256 = EXCLUDED.checksum_sha256, notas = EXCLUDED.notas;")
+
+    for o in base["orgaos"]:
+        partes.append(
+            f"INSERT INTO orgao (id, rotulo, ordem) VALUES "
+            f"({L(o['id'])}, {L(o['rotulo'])}, {o['ordem']}) "
+            f"ON CONFLICT (id) DO UPDATE SET rotulo = EXCLUDED.rotulo, "
+            f"ordem = EXCLUDED.ordem;")
+
+    for sintoma in base["sintomas"]:
+        partes.append(
+            f"INSERT INTO sintoma (id, nome, orgao_id) VALUES "
+            f"({L(sintoma['id'])}, {L(sintoma['nome'])}, "
+            f"{L(sintoma['orgao'])}) "
+            f"ON CONFLICT (id) DO UPDATE SET nome = EXCLUDED.nome, "
+            f"orgao_id = EXCLUDED.orgao_id;")
+
+    for c in base["culturas"]:
+        partes.append(
+            f"INSERT INTO cultura (id, nome, nome_cientifico, grupo, familia, "
+            f"emoji, ciclo_dias) VALUES ({L(c['id'])}, "
+            f"{L(c['nome'])}, {L(c['nome_cientifico'])}, "
+            f"{L(c['grupo'])}, {L(c['familia'])}, "
+            f"{L(c.get('emoji'))}, {L(c.get('ciclo_dias'))}) "
+            f"ON CONFLICT (id) DO UPDATE SET nome = EXCLUDED.nome, "
+            f"nome_cientifico = EXCLUDED.nome_cientifico, "
+            f"grupo = EXCLUDED.grupo, familia = EXCLUDED.familia, "
+            f"emoji = EXCLUDED.emoji, ciclo_dias = EXCLUDED.ciclo_dias;")
+
+        for d in c["doencas"]:
+            cond = d["condicoes_favoraveis"]
+            tipo = TIPO_AGENTE_NO_BANCO[d["tipo_agente"]]
+            partes.append(
+                f"INSERT INTO doenca (id, cultura_id, nome, agente, "
+                f"tipo_agente, gravidade, descricao, condicao_temperatura, "
+                f"condicao_umidade, condicao_observacao) VALUES "
+                f"({L(d['id'])}, {L(c['id'])}, "
+                f"{L(d['nome'])}, {L(d['agente'])}, "
+                f"{L(tipo)}, {d['gravidade']}, "
+                f"{L(d['descricao'])}, "
+                f"{L(cond['temperatura'])}, "
+                f"{L(cond['umidade'])}, "
+                f"{L(cond['observacao'])}) "
+                f"ON CONFLICT (id) DO UPDATE SET "
+                f"cultura_id = EXCLUDED.cultura_id, nome = EXCLUDED.nome, "
+                f"agente = EXCLUDED.agente, tipo_agente = EXCLUDED.tipo_agente, "
+                f"gravidade = EXCLUDED.gravidade, "
+                f"descricao = EXCLUDED.descricao, "
+                f"condicao_temperatura = EXCLUDED.condicao_temperatura, "
+                f"condicao_umidade = EXCLUDED.condicao_umidade, "
+                f"condicao_observacao = EXCLUDED.condicao_observacao;")
+
+            partes.append(
+                f"DELETE FROM doenca_sintoma WHERE doenca_id = {L(d['id'])};")
+            for sp in d["sintomas"]:
+                partes.append(
+                    f"INSERT INTO doenca_sintoma (doenca_id, sintoma_id, peso) "
+                    f"VALUES ({L(d['id'])}, {L(sp['id'])}, {sp['peso']});")
+
+            partes.append(
+                f"DELETE FROM tratamento WHERE doenca_id = {L(d['id'])};")
+            posicao: dict[str, int] = {}
+            for t in sorted(d["tratamentos"],
+                            key=lambda t: ORDEM_DO_TRATAMENTO.get(t["tipo"], 4)):
+                posicao[t["tipo"]] = posicao.get(t["tipo"], 0) + 1
+                partes.append(
+                    f"INSERT INTO tratamento (doenca_id, tipo, descricao, ordem) "
+                    f"VALUES ({L(d['id'])}, {L(t['tipo'])}, "
+                    f"{L(t['descricao'])}, {posicao[t['tipo']]});")
+
+            partes.append(
+                f"DELETE FROM ingrediente_ativo WHERE doenca_id = {L(d['id'])};")
+            for i in d["ingredientes_ativos"]:
+                partes.append(
+                    f"INSERT INTO ingrediente_ativo (doenca_id, nome, grupo, "
+                    f"acao) VALUES ({L(d['id'])}, {L(i['nome'])}, "
+                    f"{L(i.get('grupo'))}, {L(i.get('acao'))});")
+
+    partes.append("")
+    partes.append("COMMIT;")
+    partes.append("")
+
+    destino.write_text(chr(10).join(partes), encoding="utf-8", newline=chr(10))
+
+
 def main(argv: list[str] | None = None) -> None:
     argumentos = set(argv if argv is not None else sys.argv[1:])
 
     if "--conferir" in argumentos:
         conferir()
         return
+
+    if "--gerar-sql" in argumentos:
+        base = carregar_json()
+        validar(base)
+        destino = RAIZ / "carga_catalogo.sql"
+        gerar_sql(base, destino)
+        n = destino.read_text(encoding="utf-8").count(chr(10))
+        print(f"SQL gerado em {destino} ({n} linhas)")
+        print("Cole no editor SQL do Neon (Console -> SQL Editor) e execute.")
+        return
+
 
     so_migracoes = "--apenas-migracoes" in argumentos
     so_catalogo = "--apenas-catalogo" in argumentos

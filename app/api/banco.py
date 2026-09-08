@@ -40,6 +40,11 @@ def _abrir():
         # Falhar rapido e melhor que segurar uma conexao do pool: o limite de
         # tempo da funcao serverless e menor que a paciencia de um cliente.
         options="-c statement_timeout=5000",
+        # Sem isto, uma rede que bloqueia a porta 5432 nao devolve recusa: ela
+        # engole o pacote, e a conexao fica pendurada ate o timeout do sistema
+        # operacional. /saude existe para diagnosticar em segundos, entao ele
+        # precisa desistir em segundos.
+        connect_timeout=5,
     )
 
 

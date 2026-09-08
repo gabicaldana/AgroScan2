@@ -41,3 +41,7 @@ Thumbs.db
 
 # Back-end e deploy
 *.pyc
+
+# Transporte do catalogo para redes que bloqueiam a porta 5432.
+# Regeravel: python -m app.seed --gerar-sql
+carga_catalogo.sql
