@@ -12,7 +12,13 @@ no celular e funcional em modo avião.
 > curadas — tomate, batata e pimentão — e cresce por família botânica: as
 > brássicas são as próximas. A câmera captura e pré-processa; falta o modelo de
 > visão, e até ele existir o app diz isso em vez de chutar. O banco relacional
-> está modelado e versionado em `migracoes/`; a API ainda não foi construída.
+> está modelado e versionado em `migracoes/`, a **API REST está implementada**
+> (catálogo, diagnóstico, conta e caderno de campo) e o front-end já a consome,
+> com fila de sincronização offline. Faltam **hortas e canteiros** e os
+> **relatórios agregados**: as tabelas existem, as rotas e as telas não.
+>
+> Verificado em 12/09/2026: **176 testes automatizados, nenhuma falha** — 74 em
+> Python e 102 no porte em TypeScript.
 
 ---
 
@@ -53,8 +59,8 @@ Daí a divisão de responsabilidade que organiza o projeto inteiro:
       descrição · manejo · gravidade · clima · aviso legal
                      │
         ┌────────────▼────────────┐
-        │  API + PostgreSQL       │  🔄 modelado; histórico, hortas,
-        └─────────────────────────┘     canteiros e relatórios
+        │  API + PostgreSQL       │  ✅ conta, histórico e sincronização
+        └─────────────────────────┘  ⬜ hortas, canteiros e relatórios
 ```
 
 ### Decisões que sustentam o projeto
@@ -122,10 +128,24 @@ python -m app.preprocessamento  # regera as fixtures de pixel
 python -m unittest discover -s tests -t .
 ```
 
+Sem as dependências do back-end os testes de API, caderno e segurança **se
+pulam sozinhos** — a suíte passa, mas verificando menos do que parece. Confira a
+linha `skipped=` na saída. Para rodar a suíte inteira:
+
+```bash
+pip install -r requirements-dev.txt
+python -m unittest discover -s tests -t .   # 74 testes, nenhum pulado
+```
+
+`requirements-dev.txt` inclui o `requirements.txt` de produção mais o cliente
+HTTP que o `TestClient` do Starlette exige e não declara. O CI instala este
+arquivo e **confere explicitamente** que os testes da API vão rodar antes de
+executar a suíte: no CI, pular é passar sem verificar.
+
 ### API e banco
 
 ```bash
-pip install -r requirements.txt
+pip install -r requirements.txt      # runtime; use requirements-dev.txt p/ testes
 cp .env.example .env          # preencha as strings de conexão
 
 python -m app.seed --conferir  # testa a conexão, não escreve nada
@@ -240,7 +260,9 @@ justamente as divergências reais que o teste existe para pegar, então a
 igualdade é exata.
 
 Também são comparados o catálogo de sintomas de cada cultura e as fichas
-completas: **88 testes** no porte e **41** no motor de referência.
+completas. No total, **176 testes**: 102 no porte em TypeScript e 74 em Python —
+destes, 28 no motor de referência, 13 no pré-processamento, 11 na segurança, 14
+no contrato do caderno e 8 na API.
 
 ---
 
@@ -411,10 +433,10 @@ textual, para continuar legível por quem não distingue as cores.
 | Motor portado para TS com paridade exata | ✅ |
 | Câmera, pré-processamento com paridade de pixel, recusa | ✅ |
 | Modelo de dados relacional e DDL versionado | ✅ |
-| Curadoria por família: brássicas, solanáceas, cucurbitáceas… | 🔄 |
-| API + PostgreSQL: conta, histórico, sincronização offline | ⬜ |
-| Horta, canteiros, manejo e relatórios agregados | ⬜ |
-| Identificação por imagem — condicionada à auditoria do acervo | ⬜ |
+| API + PostgreSQL: conta, histórico, sincronização offline | ✅ |
+| Curadoria por família: brássicas, solanáceas, cucurbitáceas… | 🔄 3 de 24 culturas |
+| Horta, canteiros, manejo e relatórios agregados | ⬜ tabelas prontas, rotas e telas não |
+| Identificação por imagem — condicionada à auditoria do acervo | ⬜ falta o modelo |
 
 A identificação por foto é **escopo condicionado**: depende de um acervo de
 imagens de hortaliças brasileiras com volume suficiente por classe, ainda não
