@@ -23,9 +23,9 @@ Produtores de hortaliças - sobretudo pequenos agricultores, horticultores urban
 
 ## Solução proposta
 
-O AgroScan é uma aplicação PWA (Progressive Web App) projetada para funcionar offline e orientar a tomada de decisão no canteiro. 
-. A Solução: O sistema permite a identificação de doenças por meio da seleção de sintomas em hortaliças. Ele calcula hipóteses com base em graus de compatibilidade, faz perguntas de desempate quando há dúvidas e orienta o manejo focado no Manejo Integrado de Pragas (medidas culturais, biológicas e químicas, nesta ordem). Além disso, oferece caderno de campo com histórico de consultas e relatórios de incidência. 
-. Público atendido: Pequenos e médios produtores de hortaliças, agricultores familiares, gestores de hortas comunitárias/escolares (usuários primários/terciários) e técnicos agrícolas/extensionistas (usuários secundários). 
+O AgroScan é uma aplicação PWA (Progressive Web App) projetada para funcionar offline e orientar a tomada de decisão no canteiro.  
+. A Solução: O sistema permite a identificação de doenças por meio da seleção de sintomas em hortaliças. Ele calcula hipóteses com base em graus de compatibilidade, faz perguntas de desempate quando há dúvidas e orienta o manejo focado no Manejo Integrado de Pragas (medidas culturais, biológicas e químicas, nesta ordem). Além disso, oferece caderno de campo com histórico de consultas e relatórios de incidência.  
+. Público atendido: Pequenos e médios produtores de hortaliças, agricultores familiares, gestores de hortas comunitárias/escolares (usuários primários/terciários) e técnicos agrícolas/extensionistas (usuários secundários).  
 . Valor esperado: Redução de perdas de safra, minimização do uso de defensivos químicos, autonomia técnica para quem não tem acesso frequente a agrônomos e registro histórico de manejo, mesmo em áreas sem conectividade.
 
 ## Estrutura deste repositório
