@@ -24,6 +24,23 @@ const TOTAL_DE_DOENCAS = CULTURAS.reduce((n, c) => n + c.nDoencas, 0);
 /**
  * Camada 1: foto -> laudo, tudo no aparelho.
  *
+ * ┌───────────────────────────────────────────────────────────────────────┐
+ * │ FORA DA NAVEGACAO - nao ha rota apontando para este componente.       │
+ * │                                                                       │
+ * │ O diagnostico por imagem e escopo CONDICIONADO: depende de um modelo  │
+ * │ de visao que ainda nao existe, e cujo treino depende de um acervo de  │
+ * │ imagens de hortalicas brasileiras ainda nao auditado. Enquanto isso,  │
+ * │ a tela so teria um aviso de indisponibilidade para oferecer - e por   │
+ * │ isso saiu da interface (ADR 0008).                                    │
+ * │                                                                       │
+ * │ O que sustenta a decisao de MANTER o codigo: o caminho ao redor do    │
+ * │ modelo esta pronto e testado - captura em resolucao nativa,           │
+ * │ pre-processamento com paridade de pixel contra a referencia em Python │
+ * │ (digest SHA-256) e camada de recusa sobre os logits crus. Sao 29      │
+ * │ testes que continuam rodando no CI. Quando houver modelo, religar e   │
+ * │ criar a rota e apontar para ca.                                       │
+ * └───────────────────────────────────────────────────────────────────────┘
+ *
  * O classificador entra por `carregarClassificador`, que hoje devolve null
  * porque ainda não existe modelo publicado. Isso não é erro e não é tratado
  * como erro: a tela diz o que falta e manda o produtor para o fluxo por
@@ -93,8 +110,8 @@ export function PainelScanner() {
         <span className="bg-borda h-0.5 flex-1" />
       </div>
 
-      <BotaoLink href="/sintomas" variante="secundario">
-        Buscar por sintomas
+      <BotaoLink href="/" variante="secundario">
+        Diagnosticar por sintomas
       </BotaoLink>
     </div>
   );

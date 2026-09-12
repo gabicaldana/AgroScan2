@@ -95,7 +95,7 @@ export function PainelCaderno() {
         <EstadoVazio
           titulo="Nenhum diagnóstico salvo ainda"
           acao={
-            <BotaoLink href="/sintomas" variante="primario">
+            <BotaoLink href="/" variante="primario">
               Marcar sintomas
             </BotaoLink>
           }

@@ -38,8 +38,8 @@ export function Laudo() {
       <EstadoVazio
         titulo="Laudo sem doença"
         acao={
-          <BotaoLink href="/sintomas" variante="secundario">
-            Buscar por sintomas
+          <BotaoLink href="/" variante="secundario">
+            Diagnosticar por sintomas
           </BotaoLink>
         }
       >
@@ -157,7 +157,7 @@ export function Laudo() {
       </div>
 
       <div className="mt-6 flex flex-col gap-3">
-        <BotaoLink href="/sintomas" variante="secundario">
+        <BotaoLink href="/" variante="secundario">
           Voltar aos sintomas
         </BotaoLink>
       </div>

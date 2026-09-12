@@ -18,13 +18,20 @@
  * e uma resposta velha ali seria um diagnostico errado.
  */
 
-const VERSAO = "v4";
+// v5: a raiz deixou de ser a captura por foto e virou o diagnostico por
+// sintomas (ADR 0008). Subir a versao e obrigatorio aqui, e nao cosmetico:
+// quem ja tem o app instalado guardou a casca antiga em cache, e sem a troca
+// de nome do cache continuaria abrindo a tela de camera offline por tempo
+// indeterminado.
+const VERSAO = "v5";
 const CACHE_APP = `agroscan-app-${VERSAO}`;
 const CACHE_ESTATICO = `agroscan-estatico-${VERSAO}`;
 
 // Rotas que precisam abrir sem rede. A raiz e tambem a rede de seguranca
 // para qualquer navegacao offline que nao esteja nesta lista.
-const CASCA = ["/", "/sintomas", "/resultado", "/caderno"];
+// /sintomas saiu: virou redirecionamento para a raiz, e cachear um redirect
+// so gastaria espaco.
+const CASCA = ["/", "/resultado", "/caderno"];
 
 /**
  * Extrai do HTML os arquivos que a pagina precisa para renderizar.

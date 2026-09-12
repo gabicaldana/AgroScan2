@@ -4,12 +4,15 @@ import Link from "next/link";
 import { usePathname } from "next/navigation";
 
 /**
- * Navegacao ancorada na base - zona alcancavel pelo polegar com o
- * celular numa mao so, que e como o agronomo vai usar em campo.
+ * Navegacao ancorada na base - zona alcancavel pelo polegar com o celular
+ * numa mao so, que e como o produtor usa no canteiro.
+ *
+ * Duas abas, nao tres: a captura por foto saiu da navegacao enquanto nao
+ * houver modelo de visao (ADR 0008). Uma aba que so leva a um aviso de
+ * indisponibilidade gasta a zona mais valiosa da tela.
  */
 const ABAS = [
-  { href: "/", rotulo: "Escanear", icone: IconeCamera },
-  { href: "/sintomas", rotulo: "Sintomas", icone: IconeLista },
+  { href: "/", rotulo: "Diagnosticar", icone: IconeLista },
   { href: "/caderno", rotulo: "Caderno", icone: IconeCaderno },
 ] as const;
 
@@ -46,24 +49,6 @@ export function BarraInferior() {
 
 /* Ícones inline: sem dependência externa, sem requisição de rede.
    `currentColor` faz cada um herdar o estado ativo/inativo do link. */
-
-function IconeCamera() {
-  return (
-    <svg
-      viewBox="0 0 24 24"
-      className="size-6"
-      fill="none"
-      stroke="currentColor"
-      strokeWidth="2"
-      strokeLinecap="round"
-      strokeLinejoin="round"
-      aria-hidden="true"
-    >
-      <path d="M4 7h3l2-2h6l2 2h3v12H4z" />
-      <circle cx="12" cy="13" r="3.5" />
-    </svg>
-  );
-}
 
 function IconeLista() {
   return (
