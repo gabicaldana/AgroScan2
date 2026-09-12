@@ -14,7 +14,7 @@ Repositório institucional de Projeto Integrador criado a partir do template do 
 | Instituição | CEUB |
 | Organização no GitHub | CampusCEUB |
 | Professor(a) responsável pela criação: | Adriana Falcomer Pontes |
-| Equipe | Gabriela Pedersoli Caldana e Thaís Regina Dias da Mota |
+| Equipe | Gabriela Pedersoli Caldana (22404253) e Thaís Regina Dias da Mota (22403754) |
 | IDProjeto | 20260286 |
 
 ## Problema
@@ -28,12 +28,64 @@ O AgroScan é uma aplicação PWA (Progressive Web App) projetada para funcionar
 . Público atendido: Pequenos e médios produtores de hortaliças, agricultores familiares, gestores de hortas comunitárias/escolares (usuários primários/terciários) e técnicos agrícolas/extensionistas (usuários secundários).  
 . Valor esperado: Redução de perdas de safra, minimização do uso de defensivos químicos, autonomia técnica para quem não tem acesso frequente a agrônomos e registro histórico de manejo, mesmo em áreas sem conectividade.
 
+## Entregas avaliativas
+
+| Artefato | Conteúdo | Entrega | Documento |
+| --- | --- | --- | --- |
+| **1** | Gestão do Negócio/Domínio - análise de usuário | 14/09/2026 | [docs/artefato-1-analise-de-usuario.md](docs/artefato-1-analise-de-usuario.md) |
+| **2** | Gestão do Projeto - EAP, backlog do produto, planejamento das sprints, projeto no repositório institucional | 14/09/2026 | [docs/artefato-2-gestao-do-projeto.md](docs/artefato-2-gestao-do-projeto.md) |
+| **3** | Gestão do Produto - arquitetura da informação, design arquitetural, testes de integração, protótipo de baixo nível, storyboard | 14/09/2026 | [docs/artefato-3-gestao-do-produto.md](docs/artefato-3-gestao-do-produto.md) |
+| **5** | Gestão dos Ativos - website com dados e documentação | a definir | a produzir |
+| **6** | Gestão do Negócio/Domínio - análise do usuário *(2º bim.)* | a definir | a produzir |
+| **7** | Gestão do Projeto - execução e revisão das sprints; vitrine de ativos *(2º bim.)* | a definir | a produzir |
+| **8** | Gestão do Produto - arquitetura de software; testes de sistema *(2º bim.)* | a definir | a produzir |
+| **9** | Gestão dos Ativos - dashboards incorporados *(2º bim.)* | a definir | a produzir |
+
+Os registros de cada entrega, com critérios atendidos, validação, limitações e
+pendências, estão em [entregas/](entregas/README.md).
+
 ## Estrutura deste repositório
 
 | Item | Link |
 | --- | --- |
-| Backlog | Vincular o GitHub Project |
+| Backlog | ⚠️ Vincular o GitHub Project |
 | Sprints | [sprints/README.md](sprints/README.md) |
 | Entregas | [entregas/README.md](entregas/README.md) |
 | Requisitos | [docs/requisitos.md](docs/requisitos.md) |
 | Arquitetura | [docs/arquitetura.md](docs/arquitetura.md) |
+| Decisões arquiteturais (ADRs) | [docs/decisoes/README.md](docs/decisoes/README.md) |
+| Reuniões | [docs/reunioes/README.md](docs/reunioes/README.md) |
+| Histórico de mudanças | [CHANGELOG.md](CHANGELOG.md) |
+
+## Repositório de código
+
+O código da aplicação, a base de conhecimento curada, a API, o banco de dados e
+os testes automatizados ficam em um repositório próprio:
+
+**https://github.com/gabicaldana/AgroScan2**
+
+A separação mantém a documentação avaliativa legível neste repositório, sem
+dispersá-la no histórico de desenvolvimento. Todo documento daqui que trata de
+uma decisão técnica aponta para o arquivo correspondente lá.
+
+### Estado do desenvolvimento
+
+Estado verificado em 12/09/2026, ao encerramento da Sprint 1.
+
+| Épico | Estado |
+| --- | --- |
+| Diagnóstico por sintomas offline | ✅ concluído |
+| Plataforma - API REST, PostgreSQL, PWA, integração contínua | ✅ concluído |
+| Identidade e conta | 🟡 API concluída; tela de exclusão pendente |
+| Caderno de campo | 🟡 histórico e sincronização concluídos; confirmação e anotações pendentes |
+| Base de conhecimento | 🔄 3 de 24 culturas · 13 de 88 fichas de doença |
+| Horta, canteiros e manejo | ⬜ tabelas modeladas; rotas e telas pendentes |
+| Relatórios agregados | ⬜ consultas SQL especificadas |
+| Identificação por imagem | 🟡 escopo condicionado - captura, pré-processamento e recusa prontos; sem modelo |
+
+| Indicador | Valor |
+| --- | --- |
+| Pontos concluídos do núcleo | 88 de 172 (51%) |
+| Testes automatizados | 176, nenhuma falha |
+| Tabelas no banco de dados | 19 |
+| Endpoints da API | 16 |
