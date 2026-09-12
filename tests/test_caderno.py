@@ -5,6 +5,12 @@ chamar, o que é recusado antes de chegar ao banco, e como a fila offline é
 particionada na resposta. A camada de SQL é substituída por um dublê, porque
 misturar as duas faria o teste falhar por motivos que nada têm a ver com a
 regra sendo verificada.
+
+Sobre o `except` abaixo capturar RuntimeError junto de ImportError: o
+TestClient do Starlette exige um cliente HTTP que ele não declara como
+dependência obrigatória, e sinaliza a ausência com RuntimeError. Sem isso, a
+falta da dependência fazia o módulo ERRAR no import em vez de se pular. Para
+que estes testes rodem de verdade, instale `requirements-dev.txt`.
 """
 
 import unittest
@@ -20,7 +26,7 @@ try:
 
     CLIENTE = TestClient(app)
     TEM_API = True
-except ImportError:  # pragma: no cover - depende do ambiente
+except (ImportError, RuntimeError):  # pragma: no cover - depende do ambiente
     CLIENTE = None
     seguranca = None
     app = None

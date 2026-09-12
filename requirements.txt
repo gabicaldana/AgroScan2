@@ -10,6 +10,11 @@
 # deixa de ter wheel binario nas versoes mais novas do interpretador.
 # `psycopg[binary]` traz o driver compilado, que e o que funciona no runtime
 # da Vercel sem etapa de build.
+#
+# Este arquivo e o que sobe para o runtime da Vercel, e por isso NAO carrega
+# dependencia de teste. Para rodar a suite completa, use
+# `pip install -r requirements-dev.txt`: ele inclui este arquivo mais o
+# cliente HTTP que o TestClient do Starlette exige e nao declara.
 
 fastapi>=0.118,<1.0
 psycopg[binary]>=3.2,<4.0

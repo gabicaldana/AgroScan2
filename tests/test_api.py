@@ -14,8 +14,17 @@ Se as tres concordam caso a caso, nao existe caminho pelo qual o usuario receba
 um diagnostico diferente do que a base curada determina.
 
 As dependencias do back-end nao sao necessarias para o resto da suite: o motor
-e a validacao sao stdlib pura. Por isso o modulo se pula sozinho quando o
-FastAPI nao esta instalado, em vez de quebrar `python -m unittest`.
+e a validacao sao stdlib pura. Por isso o modulo se pula sozinho quando elas
+nao estao instaladas, em vez de quebrar `python -m unittest`.
+
+RuntimeError entra no except junto de ImportError de proposito. O TestClient do
+Starlette exige um cliente HTTP que ele NAO declara como dependencia
+obrigatoria, e sinaliza a ausencia levantando RuntimeError - nao ImportError.
+Com a protecao capturando so ImportError, faltar esse cliente fazia a suite
+ERRAR no import do modulo em vez de pular, e o CI acusava dependencia faltante
+como se fosse defeito de codigo. Para que estes testes de fato RODEM, e nao se
+pulem, instale `requirements-dev.txt` - e o CI verifica isso explicitamente
+antes de rodar a suite.
 """
 
 import json
@@ -31,7 +40,7 @@ try:
 
     CLIENTE = TestClient(app)
     TEM_API = True
-except ImportError:  # pragma: no cover - depende do ambiente
+except (ImportError, RuntimeError):  # pragma: no cover - depende do ambiente
     CLIENTE = None
     banco_api = None
     TEM_API = False

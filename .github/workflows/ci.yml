@@ -44,10 +44,36 @@ jobs:
           python -m app.fixtures
           python -m app.preprocessamento
 
-      - name: Dependencias do back-end
-        run: pip install -r requirements.txt
+      # requirements-dev.txt, e nao requirements.txt: ele inclui o de producao
+      # mais o cliente HTTP que o TestClient do Starlette exige e nao declara.
+      # Sem ele, os testes da API se pulam - e um passo verde que nao verificou
+      # nada e pior do que um passo vermelho.
+      - name: Dependencias do back-end e de teste
+        run: pip install -r requirements-dev.txt
 
-      # Depois do pip, para que os testes da API rodem em vez de se pularem.
+      # Os modulos de teste da API se pulam sozinhos quando as dependencias
+      # faltam, o que e o comportamento certo no desenvolvimento local e o
+      # comportamento ERRADO aqui: no CI, pular e passar sem verificar. Este
+      # passo transforma "pulou" em falha alta, antes de a suite rodar.
+      - name: Conferir que os testes da API vao rodar, e nao se pular
+        run: |
+          python - <<'PY'
+          import sys
+          try:
+              from fastapi.testclient import TestClient
+              from app.api.principal import app
+              TestClient(app)
+          except Exception as erro:
+              print("Os testes da API NAO rodariam nesta maquina.")
+              print(f"{type(erro).__name__}: {erro}")
+              print()
+              print("A suite se pularia em silencio e o CI ficaria verde sem")
+              print("verificar a paridade HTTP nem o contrato do caderno.")
+              print("Confira requirements-dev.txt.")
+              sys.exit(1)
+          print("TestClient operante: os 22 testes da API vao rodar.")
+          PY
+
       # Entre eles esta a paridade HTTP: a resposta de POST /diagnosticos tem
       # que reproduzir as fixtures caso a caso, campo a campo.
       - name: Testes do motor e da API
