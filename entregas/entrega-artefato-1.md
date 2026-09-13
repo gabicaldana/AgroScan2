@@ -50,8 +50,28 @@ artefato e se resume a três incoerências da versão anterior:
 | Repositório de código | https://github.com/gabicaldana/AgroScan2 |
 | Ambiente publicado | https://agroscan-blond.vercel.app *(ver ressalva em Limitações)* |
 | Milestone | ⚠️ a vincular |
-| Issues | ⚠️ a vincular |
+| Issue | [#1 - Artefato 1: Gestão do Negócio/Domínio](https://github.com/CAMPUSCEUB/AgroScan/issues/1), aberta por Thaís Regina Dias da Mota |
 | Pull requests | ⚠️ a vincular |
+
+## Critérios de conclusão da issue
+
+A [issue #1](https://github.com/CAMPUSCEUB/AgroScan/issues/1), que originou esta entrega, define oito critérios de
+conclusão. O estado de cada um:
+
+| # | Critério de conclusão | Estado | Onde |
+| --- | --- | --- | --- |
+| 1 | Usuário-alvo identificado e descrito | ✅ | Seções 2, 3 e 4 - três níveis com perfil, necessidade e uso diferenciado |
+| 2 | Contexto de uso em campo documentado | ✅ | Seção 2.2 - cinco condições do ambiente, cada uma ligada à decisão de projeto que provocou |
+| 3 | Necessidades e dificuldades do usuário levantadas | ✅ | Seções 2.3 e 2.4 - cinco necessidades e cinco dores, com a forma em que se manifestam hoje |
+| 4 | Objetivos do usuário definidos | ✅ | Seção 2.5 |
+| 5 | Relação entre usuário e solução apresentada | ✅ | Seção 6 - tabela de onze linhas ligando característica do usuário, decisão no sistema e requisito |
+| 6 | Documento revisado pela equipe | ⬜ | Pendente de revisão cruzada antes do envio |
+| 7 | Artefato final inserido no repositório | ⬜ | Pendente do envio ao repositório institucional |
+| 8 | Issue atualizada e encerrada após a conclusão | ⬜ | Pendente |
+
+O escopo declarado na issue - identificação do usuário-alvo, contexto de uso,
+necessidades, dores, objetivos e relação com as funcionalidades - está coberto
+integralmente. A prioridade registrada é **Alta**.
 
 ## Critérios atendidos
 

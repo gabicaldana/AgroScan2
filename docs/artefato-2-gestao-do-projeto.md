@@ -26,6 +26,16 @@ agronômica (pacote 2) e o desenvolvimento da aplicação (pacotes 4 e 5) correm
 paralelo durante todo o semestre, porque a curadoria é trabalho de pesquisa e
 não depende do código para avançar.
 
+![Estrutura Analítica do Projeto: o AgroScan decomposto em quatro frentes - Base de Conhecimento, Aplicativo PWA, Diagnóstico por Imagem, e Validação e Evolução - cada uma desdobrada em pacotes de trabalho](imagens/eap.png)
+
+**Figura 1 - Estrutura Analítica do Projeto.** Elaboração: Thaís Regina Dias da
+Mota.
+
+O diagrama organiza o trabalho em quatro frentes. A decomposição textual a
+seguir a desdobra em **sete pacotes**, separando o back-end e o banco de dados
+numa frente própria: quando o diagrama foi elaborado, o sistema ainda era
+puramente cliente, e a camada de servidor passou a existir depois.
+
 ```mermaid
 graph TD
     A[AgroScan]

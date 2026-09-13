@@ -112,6 +112,17 @@ Componentes transversais: `CabecalhoApp`, `BarraInferior`, `IndicadorRede`,
 
 ## 1.4 Correção aplicada na hierarquia de entrada
 
+![Mapa de navegação anterior: a partir da tela inicial, três caminhos - Por imagem, Sintomas e Caderno de campo - convergindo para Resultado/Laudo e Ficha da doença](imagens/arquitetura-da-informacao.png)
+
+**Figura 1 - Mapa de navegação concebido no início do projeto.** Elaboração:
+Thaís Regina Dias da Mota.
+
+O diagrama registra a concepção original, em que a captura por imagem era o
+primeiro caminho oferecido e o caderno de campo estava previsto como melhoria
+futura. Os dois pontos mudaram: o caderno foi implementado, e a captura por
+imagem saiu da navegação. O mapa vigente é o da seção 1.1; o que motivou a
+mudança está descrito a seguir.
+
 **Situação anterior.** A tela inicial era "Escanear planta", com a captura por
 foto como primeira ação oferecida, e o fluxo por sintomas aparecia como
 alternativa secundária, sob um separador "ou". A barra de navegação tinha três
@@ -834,6 +845,16 @@ houver modelo:
 ---
 
 # 5. Storyboard
+
+![Storyboard em seis painéis: identificação do problema no campo, percepção de que não há conexão, abertura do AgroScan, seleção dos sintomas observados, lista de hipóteses com grau de compatibilidade, e consulta à ficha da doença](imagens/storyboard.png)
+
+**Figura 2 - Storyboard do fluxo de diagnóstico.** Elaboração: Thaís Regina
+Dias da Mota.
+
+A narrativa detalhada a seguir percorre a mesma jornada em nove quadros,
+acrescentando a pergunta de desempate, a ida ao campo para verificar o sintoma
+sugerido, a sincronização da fila ao reencontrar sinal e a confirmação do
+diagnóstico duas semanas depois.
 
 **Cenário.** Terça-feira, 9h40. Dona Marisa cultiva tomate, alface e couve num
 terreno de meio hectare na periferia de Brasília. Vende na feira de sábado. Não

@@ -86,10 +86,19 @@ as inconsistências herdadas da versão anterior do escopo.
 
 ## Issues concluídas
 
-> ⚠️ **A preencher.** As `issues` correspondentes às histórias desta sprint
-> ainda não foram criadas no repositório institucional. Enquanto isso, a
-> rastreabilidade é feita pelos identificadores de história (US02, US06-US19,
-> US31-US35) e pelos commits do repositório de código, listados abaixo.
+| Issue | Título | Artefato | Estado |
+| --- | --- | --- | --- |
+| [#1](https://github.com/CAMPUSCEUB/AgroScan/issues/1) | Artefato 1 - Gestão do Negócio/Domínio | 1 | Em andamento - encerra na entrega de 14/09 |
+
+Os oito critérios de conclusão da issue #1 estão mapeados, um a um, no
+[registro de entrega do Artefato 1](../entregas/entrega-artefato-1.md#critérios-de-conclusão-da-issue).
+Cinco estão atendidos; os três restantes dependem da revisão cruzada, do envio
+ao repositório e do encerramento da própria issue.
+
+> ⚠️ As `issues` das demais histórias desta sprint (US02, US06-US19, US31-US35)
+> ainda não foram criadas. Enquanto isso, a rastreabilidade é feita pelos
+> identificadores de história e pelos commits do repositório de código,
+> listados abaixo.
 
 ## Pull requests aceitos
 
