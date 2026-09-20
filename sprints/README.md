@@ -27,6 +27,27 @@ entrega dos Artefatos 1, 2 e 3.
 | 7 | 24/11 - 07/12 | Ativos e documentação técnica | **Artefatos 5 e 8** *(datas a definir)* | a criar |
 | 8 | 08/12 - 19/12 | Fechamento do semestre | **Artefato 7** *(data a definir)* | a criar |
 
+## Milestones e reuniões
+
+Cada sprint corresponde a uma `milestone` no GitHub e tem **duas reuniões**:
+planejamento na abertura e revisão no encerramento. As atas ficam em
+[`docs/reunioes/`](../docs/reunioes/README.md), e cada reunião tem uma `issue`
+com a etiqueta `reuniao`, vinculada à `milestone` da sprint.
+
+| Sprint | Milestone | Planejamento | Revisão |
+| --- | --- | --- | --- |
+| **1** | Sprint 1 - Especificação e gestão | [31/08](../docs/reunioes/sprint-01-planejamento.md) | [14/09](../docs/reunioes/sprint-01-revisao.md) |
+| 2 | Sprint 2 - Base de conhecimento e publicação | [15/09](../docs/reunioes/sprint-02-planejamento.md) | [28/09](../docs/reunioes/sprint-02-revisao.md) |
+| 3 | Sprint 3 - Horta, canteiros e manejo | [29/09](../docs/reunioes/sprint-03-planejamento.md) | [12/10](../docs/reunioes/sprint-03-revisao.md) |
+| 4 | Sprint 4 - Relatórios agregados | [13/10](../docs/reunioes/sprint-04-planejamento.md) | [26/10](../docs/reunioes/sprint-04-revisao.md) |
+| 5 | Sprint 5 - Base completa, feedback e dashboards | [27/10](../docs/reunioes/sprint-05-planejamento.md) | [09/11](../docs/reunioes/sprint-05-revisao.md) |
+| 6 | Sprint 6 - Comunidade e validação | [10/11](../docs/reunioes/sprint-06-planejamento.md) | [23/11](../docs/reunioes/sprint-06-revisao.md) |
+| 7 | Sprint 7 - Ativos e documentação técnica | [24/11](../docs/reunioes/sprint-07-planejamento.md) | [07/12](../docs/reunioes/sprint-07-revisao.md) |
+| 8 | Sprint 8 - Fechamento do semestre | [08/12](../docs/reunioes/sprint-08-planejamento.md) | [19/12](../docs/reunioes/sprint-08-revisao.md) |
+
+O alinhamento de meio de sprint é assíncrono e não gera ata própria: impedimento
+que bloqueie por mais de 48 horas vira comentário na `issue` correspondente.
+
 > **Somente a data de 14/09/2026 foi fixada pela disciplina**, para os Artefatos
 > 1, 2 e 3. As datas dos Artefatos 5 a 9 e da apresentação à comunidade estão a
 > definir. As demais datas são proposta da equipe, derivada da cadência de duas
