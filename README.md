@@ -48,7 +48,9 @@ pendências, estão em [entregas/](entregas/README.md).
 
 | Item | Link |
 | --- | --- |
-| Backlog | ⚠️ Vincular o GitHub Project |
+| Backlog | [GitHub Project](https://github.com/orgs/CAMPUSCEUB/projects/223) |
+| Milestones | [8 sprints](https://github.com/CampusCEUB/AgroScan/milestones?state=all) |
+| Issues | [81 issues](https://github.com/CampusCEUB/AgroScan/issues?q=is%3Aissue) |
 | Sprints | [sprints/README.md](sprints/README.md) |
 | Entregas | [entregas/README.md](entregas/README.md) |
 | Requisitos | [docs/requisitos.md](docs/requisitos.md) |
@@ -56,6 +58,11 @@ pendências, estão em [entregas/](entregas/README.md).
 | Decisões arquiteturais (ADRs) | [docs/decisoes/README.md](docs/decisoes/README.md) |
 | Reuniões | [docs/reunioes/README.md](docs/reunioes/README.md) |
 | Histórico de mudanças | [CHANGELOG.md](CHANGELOG.md) |
+
+O backlog está no GitHub Project, com cada item classificado por **Tipo**,
+**Épico**, **Prioridade** (MoSCoW, no campo `Priority`), **Pontos** (no campo
+`Estimate`) e **Milestone** da sprint. As 81 issues cobrem as 41 histórias de
+usuário, as 8 entregas avaliativas, as 16 reuniões e 16 tarefas de sprint.
 
 ## Repositório de código
 

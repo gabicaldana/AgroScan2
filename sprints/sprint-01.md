@@ -20,9 +20,15 @@ as inconsistências herdadas da versão anterior do escopo.
 
 ## Milestone
 
-> ⚠️ **A vincular** - `milestone` "Sprint 1 - Especificação e gestão" a ser
-> criada no repositório institucional. A criação das `milestones` e `issues` é
-> pendência registrada no Artefato 2, §5.
+[**Sprint 1 - Especificação e gestão**](https://github.com/CampusCEUB/AgroScan/milestone/1) -
+encerrada em 14/09/2026, com 24 `issues`, todas fechadas.
+
+## Reuniões
+
+| Evento | Data | Issue | Ata |
+| --- | --- | --- | --- |
+| Planejamento | 31/08/2026 | [#50](https://github.com/CampusCEUB/AgroScan/issues/50) | [`sprint-01-planejamento.md`](../docs/reunioes/sprint-01-planejamento.md) |
+| Revisão | 14/09/2026 | [#51](https://github.com/CampusCEUB/AgroScan/issues/51) | [`sprint-01-revisao.md`](../docs/reunioes/sprint-01-revisao.md) |
 
 ## Itens planejados
 
@@ -86,19 +92,52 @@ as inconsistências herdadas da versão anterior do escopo.
 
 ## Issues concluídas
 
-| Issue | Título | Artefato | Estado |
-| --- | --- | --- | --- |
-| [#1](https://github.com/CAMPUSCEUB/AgroScan/issues/1) | Artefato 1 - Gestão do Negócio/Domínio | 1 | Em andamento - encerra na entrega de 14/09 |
+As 24 `issues` da milestone, todas fechadas.
+
+### Entregas avaliativas
+
+| Issue | Título | Artefato |
+| --- | --- | --- |
+| [#1](https://github.com/CampusCEUB/AgroScan/issues/1) | [Artefato 01] Análise de Usuário | 1 |
+| [#2](https://github.com/CampusCEUB/AgroScan/issues/2) | DOC02 - Artefato 2: Gestão do Projeto | 2 |
+| [#3](https://github.com/CampusCEUB/AgroScan/issues/3) | DOC03 - Artefato 3: Gestão do Produto | 3 |
 
 Os oito critérios de conclusão da issue #1 estão mapeados, um a um, no
 [registro de entrega do Artefato 1](../entregas/entrega-artefato-1.md#critérios-de-conclusão-da-issue).
-Cinco estão atendidos; os três restantes dependem da revisão cruzada, do envio
-ao repositório e do encerramento da própria issue.
 
-> ⚠️ As `issues` das demais histórias desta sprint (US02, US06-US19, US31-US35)
-> ainda não foram criadas. Enquanto isso, a rastreabilidade é feita pelos
-> identificadores de história e pelos commits do repositório de código,
-> listados abaixo.
+### Histórias de usuário
+
+| Issue | História | Épico | Pts |
+| --- | --- | --- | --- |
+| [#5](https://github.com/CampusCEUB/AgroScan/issues/5) | US02 - Recusar fichas incompletas na base de conhecimento | E1 | 5 |
+| [#9](https://github.com/CampusCEUB/AgroScan/issues/9) | US06 - Marcar os sintomas que vejo na planta | E2 | 3 |
+| [#10](https://github.com/CampusCEUB/AgroScan/issues/10) | US07 - Ver as doenças mais compatíveis com o que observei | E2 | 5 |
+| [#11](https://github.com/CampusCEUB/AgroScan/issues/11) | US08 - Ser avisado quando o sistema não souber responder | E2 | 2 |
+| [#12](https://github.com/CampusCEUB/AgroScan/issues/12) | US09 - Saber qual outro sintoma procurar quando houver dúvida | E2 | 5 |
+| [#13](https://github.com/CampusCEUB/AgroScan/issues/13) | US10 - Ler o laudo completo da doença | E2 | 5 |
+| [#14](https://github.com/CampusCEUB/AgroScan/issues/14) | US11 - Usar o aplicativo sem internet | E2 | 5 |
+| [#15](https://github.com/CampusCEUB/AgroScan/issues/15) | US12 - Criar uma conta | E3 | 5 |
+| [#16](https://github.com/CampusCEUB/AgroScan/issues/16) | US13 - Entrar na minha conta e permanecer conectado | E3 | 3 |
+| [#17](https://github.com/CampusCEUB/AgroScan/issues/17) | US14 - Usar o diagnóstico sem criar conta | E3 | 2 |
+| [#19](https://github.com/CampusCEUB/AgroScan/issues/19) | US16 - Ter minhas consultas salvas | E4 | 5 |
+| [#20](https://github.com/CampusCEUB/AgroScan/issues/20) | US17 - Registrar consultas mesmo sem sinal | E4 | 8 |
+| [#21](https://github.com/CampusCEUB/AgroScan/issues/21) | US18 - Não ver consulta duplicada após reenvio | E4 | 3 |
+| [#22](https://github.com/CampusCEUB/AgroScan/issues/22) | US19 - Ver meu histórico filtrado | E4 | 5 |
+| [#35](https://github.com/CampusCEUB/AgroScan/issues/35) | US31 - Instalar o AgroScan como aplicativo no celular | E7 | 3 |
+| [#36](https://github.com/CampusCEUB/AgroScan/issues/36) | US32 - API publicada e acessível | E7 | 8 |
+| [#37](https://github.com/CampusCEUB/AgroScan/issues/37) | US33 - Banco PostgreSQL modelado e populado | E7 | 8 |
+| [#38](https://github.com/CampusCEUB/AgroScan/issues/38) | US34 - Servidor e navegador produzindo o mesmo diagnóstico | E7 | 5 |
+| [#39](https://github.com/CampusCEUB/AgroScan/issues/39) | US35 - Integração contínua bloqueando artefatos desatualizados | E7 | 3 |
+
+**19 histórias, 88 pontos** - os 88 de 172 pontos do núcleo registrados na
+totalização do [Artefato 2, §2.6](../docs/artefato-2-gestao-do-projeto.md#26-totalização).
+
+> **Nota sobre a data de criação destas `issues`.** As três `issues` de entrega
+> avaliativa foram abertas durante a sprint. As 19 histórias e as 2 reuniões
+> foram registradas **em retrospecto**, junto com a estruturação do backlog no
+> GitHub, para recuperar a rastreabilidade entre backlog e execução - a falha
+> apontada na retrospectiva abaixo. O trabalho que elas descrevem foi executado
+> e verificado dentro do período da sprint; o que não existia era o registro.
 
 ## Pull requests aceitos
 

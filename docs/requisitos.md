@@ -79,7 +79,6 @@ cultural → biológica → química.
 | 2 | Brássicas curadas (6 culturas); batata e pimentão em conformidade com a RN05; ambiente publicado refletindo o código |
 | 3 | Horta, membros, canteiros e manejo funcionais ponta a ponta; cucurbitáceas curadas |
 | 4 | Quatro relatórios agregados operando sobre histórico real; apiáceas e amarilidáceas curadas |
-| 5 | Base completa: 24 culturas e 88 doenças; confirmação de diagnóstico na interface; auditoria do acervo de imagens concluída |
 | 5 | Base completa: 24 culturas e 88 doenças; confirmação de diagnóstico na interface; dashboards incorporados (Artefato 9); auditoria do acervo de imagens |
 | 6 | Apresentação à comunidade; análise de usuário validada com produtores (Artefato 6); conformidade LGPD; auditoria de acessibilidade; testes ponta a ponta do fluxo offline |
 | 7 | Website com dados e documentação (Artefato 5); arquitetura de software e testes de sistema (Artefato 8); relatórios de extensão |
@@ -226,45 +225,56 @@ Definition of Done:
 
 ## 9. Matriz de rastreabilidade
 
-Liga requisito → história → sprint → verificação. A coluna `issue` é preenchida
-quando o GitHub Project for criado.
+Liga requisito → história → sprint → verificação → `issue`. As `issues` estão no
+repositório institucional, uma por história, com o identificador da história no
+título e vinculadas à `milestone` da sprint.
 
 | Requisito | História | Sprint | Verificação | Issue |
 | --- | --- | --- | --- | --- |
-| RF01 | US01 | 2 | Validação da base: 24 culturas presentes | - |
-| RF02, RF03 | US06 | 1 | `lib/diagnostico.test.ts`, TI04 | - |
-| RF04 | US07 | 1 | TI01, TI03 - paridade de três implementações | - |
-| RF05 | US08 | 1 | Teste de limiar (RN03) | - |
-| RF06 | US09 | 1 | TI02 - desempate por HTTP e no cliente | - |
-| RF07 | US10 | 1 | TI05 - ficha completa bate com a fixture | - |
-| RF08, RF09 | US10 | 1 | Inspeção C1; ordem garantida na base | - |
-| RF10, RF11 | US37 | 6 | Inspeção; `lib/recusa.test.ts` | - |
-| RF12, RF13 | US12, US13 | 1 | TI26-TI32 - segurança | - |
-| RF14 | US14 | 1 | TI13 - diagnóstico não exige autenticação | - |
-| RF15, RNF17 | US15 | 6 | `DELETE /autenticacao/eu`; tela pendente | - |
-| RF16 | US16 | 1 | TI07 | - |
-| RF17 | US17 | 1 | TI09, TI10, `lib/fila.test.ts` | - |
-| RF18 | US18 | 1 | TI08 - reenvio não duplica | - |
-| RF19 | US19 | 1 | Listagem com filtros; filtro por canteiro na Sprint 3 | - |
-| RF20 | US20 | 5 | TI21, TI22 - coerência do feedback | - |
-| RF21 | US21 | 5 | ⬜ | - |
-| RF22, RNF16 | US22 | 6 | TI19 - coordenada pela metade recusada | - |
-| RF23-RF26 | US22-US25 | 3 | ⬜ | - |
-| RF27 | US26 | 3 | ⬜ | - |
-| RF28 | US27 | 4 | Consulta especificada em `modelo-de-dados.md` §6.1 | - |
-| RF29 | US29 | 4 | `modelo-de-dados.md` §6.3 | - |
-| RF30 | US28 | 4 | `modelo-de-dados.md` §6.2 | - |
-| RF31 | US30 | 4 | `modelo-de-dados.md` §6.4 | - |
-| RF37 | US41 | 5 | ⬜ | - |
-| RF32, RNF25 | US31 | 1 | Instalação verificada em Android | - |
-| RF33 | US32 | 1 | TI01, TI04, TI05, TI20, TI23-TI25 | - |
-| RF34 | US36 | 2 | TI25 - checksum da versão do catálogo | - |
-| RF35, RN10 | US16 | 1 | TI11 | - |
-| RF36 | US11 | 1 | Inspeção do `IndicadorRede` | - |
-| RNF18 | US02 | 1 | `python -m app.validacao` | - |
-| RNF19 | US34 | 1 | TI01-TI03, TI06 | - |
-| RNF20 | US35 | 1 | Árvore limpa no CI | - |
-| RNF27 | US40 | 6 | ⬜ | - |
+| RF01 | US01 | 2 | Validação da base: 24 culturas presentes | [#4](https://github.com/CampusCEUB/AgroScan/issues/4) |
+| RF02, RF03 | US06 | 1 | `lib/diagnostico.test.ts`, TI04 | [#9](https://github.com/CampusCEUB/AgroScan/issues/9) |
+| RF04 | US07 | 1 | TI01, TI03 - paridade de três implementações | [#10](https://github.com/CampusCEUB/AgroScan/issues/10) |
+| RF05 | US08 | 1 | Teste de limiar (RN03) | [#11](https://github.com/CampusCEUB/AgroScan/issues/11) |
+| RF06 | US09 | 1 | TI02 - desempate por HTTP e no cliente | [#12](https://github.com/CampusCEUB/AgroScan/issues/12) |
+| RF07 | US10 | 1 | TI05 - ficha completa bate com a fixture | [#13](https://github.com/CampusCEUB/AgroScan/issues/13) |
+| RF08, RF09 | US10 | 1 | Inspeção C1; ordem garantida na base | [#13](https://github.com/CampusCEUB/AgroScan/issues/13) |
+| RF10, RF11 | US37 | 6 | Inspeção; `lib/recusa.test.ts` | [#42](https://github.com/CampusCEUB/AgroScan/issues/42) |
+| RF12, RF13 | US12, US13 | 1 | TI26-TI32 - segurança | [#15](https://github.com/CampusCEUB/AgroScan/issues/15), [#16](https://github.com/CampusCEUB/AgroScan/issues/16) |
+| RF14 | US14 | 1 | TI13 - diagnóstico não exige autenticação | [#17](https://github.com/CampusCEUB/AgroScan/issues/17) |
+| RF15, RNF17 | US15 | 6 | `DELETE /autenticacao/eu`; tela pendente | [#18](https://github.com/CampusCEUB/AgroScan/issues/18) |
+| RF16 | US16 | 1 | TI07 | [#19](https://github.com/CampusCEUB/AgroScan/issues/19) |
+| RF17 | US17 | 1 | TI09, TI10, `lib/fila.test.ts` | [#20](https://github.com/CampusCEUB/AgroScan/issues/20) |
+| RF18 | US18 | 1 | TI08 - reenvio não duplica | [#21](https://github.com/CampusCEUB/AgroScan/issues/21) |
+| RF19 | US19 | 1 | Listagem com filtros; filtro por canteiro na Sprint 3 | [#22](https://github.com/CampusCEUB/AgroScan/issues/22) |
+| RF20 | US20 | 5 | TI21, TI22 - coerência do feedback | [#23](https://github.com/CampusCEUB/AgroScan/issues/23) |
+| RF21 | US21 | 5 | ⬜ | [#24](https://github.com/CampusCEUB/AgroScan/issues/24) |
+| RF22, RNF16 | US22 | 6 | TI19 - coordenada pela metade recusada | ⚠️ ver nota |
+| RF23-RF26 | US22-US25 | 3 | ⬜ | [#25](https://github.com/CampusCEUB/AgroScan/issues/25), [#26](https://github.com/CampusCEUB/AgroScan/issues/26), [#27](https://github.com/CampusCEUB/AgroScan/issues/27), [#28](https://github.com/CampusCEUB/AgroScan/issues/28) |
+| RF27 | US26 | 3 | ⬜ | [#29](https://github.com/CampusCEUB/AgroScan/issues/29) |
+| RF28 | US27 | 4 | Consulta especificada em `modelo-de-dados.md` §6.1 | [#30](https://github.com/CampusCEUB/AgroScan/issues/30) |
+| RF29 | US29 | 4 | `modelo-de-dados.md` §6.3 | [#32](https://github.com/CampusCEUB/AgroScan/issues/32) |
+| RF30 | US28 | 4 | `modelo-de-dados.md` §6.2 | [#31](https://github.com/CampusCEUB/AgroScan/issues/31) |
+| RF31 | US30 | 4 | `modelo-de-dados.md` §6.4 | [#33](https://github.com/CampusCEUB/AgroScan/issues/33) |
+| RF37 | US41 | 5 | ⬜ | [#34](https://github.com/CampusCEUB/AgroScan/issues/34) |
+| RF32, RNF25 | US31 | 1 | Instalação verificada em Android | [#35](https://github.com/CampusCEUB/AgroScan/issues/35) |
+| RF33 | US32 | 1 | TI01, TI04, TI05, TI20, TI23-TI25 | [#36](https://github.com/CampusCEUB/AgroScan/issues/36) |
+| RF34 | US36 | 2 | TI25 - checksum da versão do catálogo | [#40](https://github.com/CampusCEUB/AgroScan/issues/40) |
+| RF35, RN10 | US16 | 1 | TI11 | [#19](https://github.com/CampusCEUB/AgroScan/issues/19) |
+| RF36 | US11 | 1 | Inspeção do `IndicadorRede` | [#14](https://github.com/CampusCEUB/AgroScan/issues/14) |
+| RNF18 | US02 | 1 | `python -m app.validacao` | [#5](https://github.com/CampusCEUB/AgroScan/issues/5) |
+| RNF19 | US34 | 1 | TI01-TI03, TI06 | [#38](https://github.com/CampusCEUB/AgroScan/issues/38) |
+| RNF20 | US35 | 1 | Árvore limpa no CI | [#39](https://github.com/CampusCEUB/AgroScan/issues/39) |
+| RNF27 | US40 | 6 | ⬜ | [#41](https://github.com/CampusCEUB/AgroScan/issues/41) |
+
+> ⚠️ **A linha RF22 / RNF16 precisa de correção.** Ela aponta para `US22`, que
+> no backlog é *"Como gestor de horta, quero cadastrar minha horta"* (épico E5).
+> A geolocalização da consulta mediante consentimento explícito **não tem
+> história própria** no backlog: o requisito existe, o modelo de dados já aceita
+> e valida a coordenada, mas o consentimento na interface nunca foi convertido
+> em item de trabalho. São duas saídas possíveis - criar uma história nova no
+> épico E4, ou acrescentar o consentimento aos critérios de aceite de uma
+> história existente. Enquanto a escolha não é feita, a célula fica sem `issue`,
+> para não registrar um vínculo falso.
 
 ## 10. Riscos ligados a requisitos
 

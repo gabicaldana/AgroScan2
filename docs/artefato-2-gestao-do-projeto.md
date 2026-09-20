@@ -614,23 +614,55 @@ Conforme o `CONTRIBUTING.md` do repositório:
 ## 4.4 Milestones e issues
 
 Cada sprint corresponde a uma `milestone`, e cada história de usuário a uma
-`issue`. Os identificadores das histórias (`US01` a `US40`) são usados no título
+`issue`. Os identificadores das histórias (`US01` a `US41`) são usados no título
 da `issue` para preservar a rastreabilidade entre backlog, `issue`, `pull
 request` e relatório de sprint.
 
-| Milestone | Sprint | Histórias |
-| --- | --- | --- |
-| Sprint 1 - Especificação e gestão | 1 | US02, US06-US14, US16-US19, US31-US35 |
-| Sprint 2 - Base e publicação | 2 | US01, US03, US36 |
-| Sprint 3 - Horta e canteiros | 3 | US04, US22-US26 |
-| Sprint 4 - Relatórios | 4 | US27-US30 |
-| Sprint 5 - Feedback e base completa | 5 | US05, US20, US21, US38 |
-| Sprint 6 - Comunidade e endurecimento | 6 | US15, US37, US40 |
-| Sprint 7 - Gestão dos ativos | 7 | US39 *(condicionado)* |
+O repositório tem **81 issues** distribuídas em **8 milestones**:
 
-> ⚠️ **Pendência** - criação do GitHub Project e das `milestones` no repositório
-> institucional, com a vinculação das `issues` acima. O `README.md` do
-> repositório mantém o campo "Backlog" reservado para o link do Project.
+| Milestone | Sprint | Histórias | Total de issues |
+| --- | --- | --- | --- |
+| Sprint 1 - Especificação e gestão | 1 | US02, US06-US14, US16-US19, US31-US35 | 24 *(encerrada)* |
+| Sprint 2 - Base de conhecimento e publicação | 2 | US01, US03, US36 | 14 |
+| Sprint 3 - Horta, canteiros e manejo | 3 | US04, US22-US26 | 8 |
+| Sprint 4 - Relatórios agregados | 4 | US27-US30 | 6 |
+| Sprint 5 - Base completa, feedback e dashboards | 5 | US05, US20, US21, US38, US41 | 8 |
+| Sprint 6 - Comunidade e validação | 6 | US15, US37, US40 | 10 |
+| Sprint 7 - Ativos e documentação técnica | 7 | US39 *(condicionado)* | 6 |
+| Sprint 8 - Fechamento do semestre | 8 | - | 5 |
+
+Além das 41 histórias, as `issues` cobrem as 8 entregas avaliativas, as 16
+reuniões (planejamento e revisão de cada sprint) e 16 tarefas de sprint que não
+são histórias de usuário - correções de risco, definições pendentes com
+terceiros e atividades de entrega.
+
+### Classificação das issues
+
+Toda `issue` recebe etiquetas em três eixos, o que permite filtrar o backlog por
+natureza do trabalho, por área do produto e por urgência:
+
+| Eixo | Etiquetas |
+| --- | --- |
+| **Tipo** | `enhancement` (requisito), `documentation`, `research` (pesquisa), `bug` (correção), `reuniao`, `entrega-avaliativa`, `curadoria`, `infraestrutura` |
+| **Épico** | `E1 base de conhecimento` … `E8 imagem` |
+| **Prioridade** (MoSCoW) | `prioridade: obrigatorio`, `prioridade: importante`, `prioridade: desejavel` |
+
+Duas etiquetas complementares marcam condições especiais: `escopo-condicionado`,
+para o épico E8, e `bloqueado`, para o que depende de definição externa à
+equipe. Os quatro primeiros tipos são os impostos pelos modelos de `issue` em
+`.github/ISSUE_TEMPLATE/`.
+
+As estimativas em pontos de história **não** viram etiqueta: são campo numérico
+no GitHub Project, onde somam por épico e por sprint.
+
+### Reuniões
+
+Cada sprint tem duas reuniões, conforme a cadência de eventos definida na seção
+3.1: **planejamento** na abertura e **revisão** no encerramento. Cada uma tem
+`issue` própria, com a etiqueta `reuniao` e vinculada à `milestone` da sprint, e
+ata correspondente em [`docs/reunioes/`](reunioes/README.md). O alinhamento de
+meio de sprint é assíncrono e não gera ata: impedimento que bloqueie por mais de
+48 horas vira comentário na `issue` correspondente.
 
 ## 4.5 Definition of Done
 
@@ -660,10 +692,24 @@ Ambas as integrantes atuam em desenvolvimento e em curadoria agronômica.
 
 # 5. Pendências desta entrega
 
-| Item | Natureza | Responsável |
-| --- | --- | --- |
-| Distribuição dos papéis Scrum entre as integrantes | Dado da equipe | Equipe |
-| Identificação da comunidade parceira (R03) | Definição externa | Coordenação da disciplina |
-| Data do Artefato 5 e da apresentação à comunidade | Definição externa | Professora |
-| Criação do GitHub Project, milestones e issues | Execução | Equipe |
-| Link do Project no `README.md` | Execução | Equipe |
+| Item | Natureza | Responsável | Situação |
+| --- | --- | --- | --- |
+| Distribuição dos papéis Scrum entre as integrantes | Dado da equipe | Equipe | Aberta - [#72](https://github.com/CampusCEUB/AgroScan/issues/72) |
+| Identificação da comunidade parceira (R03) | Definição externa | Coordenação da disciplina | Aberta - [#73](https://github.com/CampusCEUB/AgroScan/issues/73) |
+| Data do Artefato 5 e da apresentação à comunidade | Definição externa | Professora | Aberta - [#74](https://github.com/CampusCEUB/AgroScan/issues/74) |
+| Criação do GitHub Project, milestones e issues | Execução | Equipe | **Resolvida** - 8 milestones, 81 issues |
+| Link do Project no `README.md` | Execução | Equipe | **Resolvida** |
+
+As três pendências que permanecem abertas dependem de definição externa ou de
+acordo entre as integrantes, e cada uma tem `issue` própria na `milestone` da
+Sprint 2, com a etiqueta `bloqueado` quando o desfecho não está sob controle da
+equipe.
+
+Uma inconsistência da matriz de rastreabilidade foi identificada durante a
+criação das `issues` e está registrada em
+[`docs/requisitos.md`, §9](requisitos.md#9-matriz-de-rastreabilidade): os
+requisitos **RF22 e RNF16** - geolocalização da consulta mediante consentimento
+explícito - apontam para `US22`, que é uma história do épico E5. A
+geolocalização não tem história própria no backlog, e a decisão entre criar uma
+história nova ou incorporar o consentimento aos critérios de uma existente ainda
+não foi tomada.
