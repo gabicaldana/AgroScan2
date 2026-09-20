@@ -113,7 +113,7 @@ semestre, com rastreabilidade entre requisito, história, sprint e verificação
 - [x] Calendário de sprints com marcos acadêmicos e ordem de corte definida
 - [x] Riscos identificados com mitigação
 - [x] Repositório institucional estruturado, com ADRs das decisões já tomadas
-- [ ] `Milestones` e `issues` criadas no GitHub *(pendente)*
+- [x] `Milestones` e `issues` criadas no GitHub *(8 milestones, 81 issues, backlog no [GitHub Project](https://github.com/orgs/CAMPUSCEUB/projects/223))*
 - [ ] Papéis Scrum atribuídos nominalmente *(pendente)*
 
 ## Riscos
