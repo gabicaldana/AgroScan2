@@ -314,8 +314,8 @@ no dado, não numa regra genérica sobre viroses.
 
 ## O banco de dados
 
-O modelo relacional está em [`docs/modelo-de-dados.md`](docs/modelo-de-dados.md)
-e o DDL em [`migracoes/`](migracoes/), numerado e com par de reversão.
+O modelo relacional está em [`docs/modelo-de-dados.md`](modelo-de-dados.md)
+e o DDL em [`migracoes/`](../migracoes/), numerado e com par de reversão.
 
 O catálogo agronômico é **carregado**, nunca escrito à mão: ninguém digita um
 `INSERT` de doença. As tabelas que justificam o banco são as outras — as

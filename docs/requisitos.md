@@ -24,10 +24,10 @@ recebe hipóteses de doença ordenadas por grau de compatibilidade, cada uma com
 descrição, nível de gravidade, condições climáticas favoráveis e manejo
 apresentado na ordem do manejo integrado.
 
-O recorte coberto neste repositório é a documentação de gestão do negócio, do
-projeto e do produto. O código, a base de conhecimento curada, a API, o banco de
-dados e os testes automatizados estão em
-[`gabicaldana/AgroScan2`](https://github.com/gabicaldana/AgroScan2).
+Este repositório reúne a documentação de gestão do negócio, do projeto e do
+produto **e** a aplicação: o código, a base de conhecimento curada, a API, o
+banco de dados e os testes automatizados. Até a Sprint 2 o código vivia em
+`gabicaldana/AgroScan2`, cujo histórico segue publicado.
 
 O resultado esperado é duplo: acadêmico, exercitando modelagem e implementação
 de banco relacional, back-end com API, front-end responsivo e acessível,

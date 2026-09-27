@@ -13,8 +13,7 @@
 | Equipe | Gabriela Pedersoli Caldana (22404253) · Thaís Regina Dias da Mota (22403754) |
 | Entrega | 14/09/2026 |
 | Sprint | Sprint 1 - Especificação e gestão |
-| Repositório institucional | `CampusCEUB/AgroScan` |
-| Repositório de código | https://github.com/gabicaldana/AgroScan2 |
+| Repositório | [`CampusCEUB/AgroScan`](https://github.com/CampusCEUB/AgroScan) - aplicação e documentação |
 
 ---
 
@@ -86,7 +85,7 @@ graph TD
 ## 1.1 EAP em forma de lista
 
 Versão textual da mesma decomposição, com o estado atual de cada pacote de
-trabalho. O estado é verificável no repositório de código.
+trabalho. O estado é verificável neste repositório.
 
 | Legenda | Significado |
 | --- | --- |
@@ -564,23 +563,61 @@ de arriscar um palpite.
 
 # 4. Projeto no repositório institucional
 
-## 4.1 Organização de dois repositórios
+## 4.1 Repositório único
 
-O projeto opera com dois repositórios, com papéis distintos:
+O projeto opera em **um único repositório**, `CampusCEUB/AgroScan`, que reúne a
+aplicação e a documentação que a descreve.
 
 | Repositório | Papel | Conteúdo |
 | --- | --- | --- |
-| `CampusCEUB/AgroScan` | **Institucional** - é o repositório avaliado | Artefatos acadêmicos, requisitos, arquitetura, registros de sprint, entregas, ADRs e atas |
-| `gabicaldana/AgroScan2` | **Código** | Aplicação, base de conhecimento, API, banco, testes e integração contínua |
+| `CampusCEUB/AgroScan` | **Institucional** - é o repositório avaliado | Aplicação, base de conhecimento, API, banco, testes e integração contínua; artefatos acadêmicos, requisitos, arquitetura, registros de sprint, entregas, ADRs e atas |
 
-A separação evita que a documentação avaliativa fique dispersa no histórico do
-código, e mantém o repositório institucional legível para quem avalia. Todo
-documento institucional que se refere a uma decisão técnica aponta para o
-arquivo correspondente no repositório de código.
+### Por que deixou de haver dois
 
-## 4.2 Estrutura do repositório institucional
+Até a Sprint 2 o projeto operava com dois repositórios: o institucional, com a
+documentação avaliada, e `gabicaldana/AgroScan2`, com o código. A separação
+pretendia manter o repositório avaliado legível, evitando que os artefatos
+ficassem dispersos no histórico do código.
+
+Na prática ela produziu o efeito contrário. O que a disciplina avalia é o
+repositório institucional, e ele não continha o produto - apenas descrições
+dele. Cada afirmação técnica dos artefatos apontava para um endereço externo,
+e a verificação dependia de sair do repositório avaliado. A Sprint 1 já havia
+registrado o custo dessa distância na retrospectiva: a documentação envelheceu
+em relação ao código, e o README do repositório de código afirmava que a API
+não fora construída quando ela já estava implementada, publicada e testada.
+
+Com a unificação, o teste que comprova um requisito e o documento que o declara
+vivem no mesmo histórico, e a integração contínua roda sobre o repositório que
+é avaliado.
+
+> **O histórico anterior ao merge permanece em `gabicaldana/AgroScan2`.** A
+> migração condensou os 12 commits do repositório de código em um só. Os hashes
+> citados no [relatório da Sprint 1](../sprints/sprint-01.md#pull-requests-aceitos)
+> resolvem no repositório de origem, que segue publicado.
+
+> ⚠️ **Pendência: o ambiente publicado.** O deploy na Vercel está ligado a
+> `gabicaldana/AgroScan2`. Enquanto não for reapontado para
+> `CampusCEUB/AgroScan`, o código evolui aqui e o ambiente publicado continua
+> saindo do repositório antigo. Agrava o risco R06 e mantém aberta a `issue`
+> [#67](https://github.com/CampusCEUB/AgroScan/issues/67).
+
+## 4.2 Estrutura do repositório
 
 ```
+app/                                    Aplicação em Python
+  motor.py                              Motor de diagnóstico - stdlib pura
+  validacao.py                          Validação automática da base
+  fixtures.py, preprocessamento.py      Geradores de artefatos versionados
+  api/                                  API REST em FastAPI
+  seed.py                               Carga idempotente do catálogo
+api/                                    Ponto de entrada da função serverless
+web/                                    PWA em Next.js
+  lib/                                  Porte TypeScript do motor e cliente da API
+  components/, app/                     Telas do fluxo de diagnóstico
+tests/                                  74 testes Python, 22 deles da API
+migracoes/                              DDL numerado e reversível
+data/                                   Base de conhecimento curada - fonte única
 entregas/                               Entregas avaliativas: documento e registro
   artefato-1-analise-de-usuario.md      Artefato 1 - Gestão do Negócio/Domínio
   artefato-2-gestao-do-projeto.md       Artefato 2 - Gestão do Projeto (este documento)
@@ -589,14 +626,17 @@ entregas/                               Entregas avaliativas: documento e regist
   entrega-artefato-2.md
   entrega-artefato-3.md
 docs/                                   Documentação técnica de apoio
+  aplicacao.md                          Como a aplicação funciona e como rodá-la
   requisitos.md                         Requisitos consolidados e rastreabilidade
   arquitetura.md                        Arquitetura da solução
+  modelo-de-dados.md                    19 tabelas, DER e consultas dos relatórios
   decisoes/                             ADRs - registros de decisão arquitetural
   reunioes/                             Atas das reuniões de sprint
   imagens/                              Figuras dos artefatos
 sprints/                                Relatórios de sprint
   sprint-00-planejamento.md             Planejamento inicial
   sprint-01.md a sprint-08.md           Um relatório por sprint
+.github/workflows/ci.yml                Integração contínua
 CHANGELOG.md                            Mudanças por sprint ou marco
 ```
 
@@ -605,6 +645,9 @@ correspondente, de modo que cada entrega avaliativa se apresente como uma
 unidade: o que foi produzido e a evidência de que foi submetido. A pasta `docs/`
 guarda a documentação técnica que sustenta os artefatos sem ser, ela própria,
 uma entrega.
+
+A aplicação ocupa a raiz para que os caminhos esperados pela integração
+contínua e pelo `vercel.json` continuem valendo sem ajuste.
 
 ## 4.3 Fluxo de trabalho
 

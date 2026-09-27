@@ -13,8 +13,7 @@
 | Equipe | Gabriela Pedersoli Caldana (22404253) · Thaís Regina Dias da Mota (22403754) |
 | Entrega | 14/09/2026 |
 | Sprint | Sprint 1 - Especificação e gestão |
-| Repositório institucional | `CampusCEUB/AgroScan` |
-| Repositório de código | https://github.com/gabicaldana/AgroScan2 |
+| Repositório | [`CampusCEUB/AgroScan`](https://github.com/CampusCEUB/AgroScan) - aplicação e documentação |
 
 > **Nota de revisão.** Esta versão substitui a análise de usuário entregue
 > anteriormente, que definia como público-alvo principal o engenheiro agrônomo

@@ -64,16 +64,27 @@ O backlog está no GitHub Project, com cada item classificado por **Tipo**,
 `Estimate`) e **Milestone** da sprint. As 81 issues cobrem as 41 histórias de
 usuário, as 8 entregas avaliativas, as 16 reuniões e 16 tarefas de sprint.
 
-## Repositório de código
+## A aplicação
 
-O código da aplicação, a base de conhecimento curada, a API, o banco de dados e
-os testes automatizados ficam em um repositório próprio:
+O código, a base de conhecimento curada, a API, o banco de dados e os testes
+automatizados vivem **neste mesmo repositório**, ao lado da documentação que os
+descreve.
 
-**https://github.com/gabicaldana/AgroScan2**
+| Pasta | Conteúdo |
+| --- | --- |
+| [app/](app/) | Motor de diagnóstico, validação da base, geradores e API em FastAPI |
+| [web/](web/) | PWA em Next.js, com o porte TypeScript do motor |
+| [tests/](tests/) | 74 testes Python, 22 deles da API |
+| [migracoes/](migracoes/) | DDL numerado e reversível |
+| [data/](data/) | Base de conhecimento curada - a fonte única |
 
-A separação mantém a documentação avaliativa legível neste repositório, sem
-dispersá-la no histórico de desenvolvimento. Todo documento daqui que trata de
-uma decisão técnica aponta para o arquivo correspondente lá.
+Como a aplicação funciona e como rodá-la localmente:
+[docs/aplicacao.md](docs/aplicacao.md).
+
+> Até a Sprint 2 o código ficava em um repositório separado,
+> `gabicaldana/AgroScan2`, cujo histórico segue publicado. A unificação está
+> justificada no
+> [Artefato 2, §4.1](entregas/artefato-2-gestao-do-projeto.md#41-repositório-único).
 
 ### Estado do desenvolvimento
 

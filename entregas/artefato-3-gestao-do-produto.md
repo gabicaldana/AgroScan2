@@ -13,7 +13,6 @@
 | Equipe | Gabriela Pedersoli Caldana (22404253) · Thaís Regina Dias da Mota (22403754) |
 | Entrega | 14/09/2026 |
 | Sprint | Sprint 1 - Especificação e gestão |
-| Repositório de código | https://github.com/gabicaldana/AgroScan2 |
 
 ---
 
@@ -279,7 +278,7 @@ de conta começa no caderno de campo, onde há dado pessoal a proteger.
 | Acompanhamento | `feedback`, `manejo`, `anotacao` | Escrito pela aplicação |
 
 O DDL está em `migracoes/`, numerado e com par de reversão. Modelo completo em
-`docs/modelo-de-dados.md` no repositório de código.
+[`docs/modelo-de-dados.md`](../docs/modelo-de-dados.md).
 
 ## 2.4 Fluxo 1 - diagnóstico sem conexão
 

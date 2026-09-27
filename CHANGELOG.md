@@ -4,6 +4,29 @@ Registre aqui as mudanças relevantes por sprint ou marco avaliativo.
 
 ## Sprint 2 - Base de conhecimento e publicação · 15/09 a 28/09/2026
 
+### Repositório único: a aplicação veio para o institucional
+
+O código deixou de viver em `gabicaldana/AgroScan2` e passou a ocupar a raiz
+deste repositório, ao lado da documentação que o descreve. O que a disciplina
+avalia é o repositório institucional, e ele não continha o produto — apenas
+descrições dele, com cada afirmação técnica apontando para um endereço externo.
+
+- **103 arquivos** trazidos: `app/`, `api/`, `web/`, `tests/`, `migracoes/`, `data/`, mais `vercel.json`, `requirements.txt`, `requirements-dev.txt` e `.env.example`.
+- **Histórico condensado** num commit só, por decisão da equipe. Os 12 commits originais seguem em `gabicaldana/AgroScan2` — são os que o relatório da Sprint 1 cita por hash, e continuam resolvendo lá.
+- **Colisões resolvidas**: o README institucional continua a capa avaliada e o README da aplicação virou [`docs/aplicacao.md`](docs/aplicacao.md); os `.github/` eram complementares (templates de um lado, `ci.yml` do outro); os `.gitignore` foram fundidos; adotado o `.gitattributes` do repo de código, cujo `* text=auto eol=lf` é necessário para o teste de frescor dos artefatos gerados não falhar em clone no Windows.
+- **Verificado no novo local antes do commit**: validação da base aprovada; 74 testes Python e 102 TypeScript passando; regeração completa dos artefatos sem nenhuma divergência — o passo mais rígido do CI.
+- **Documentação realinhada**: a §4.1 do Artefato 2 passou de "Organização de dois repositórios" para "Repositório único", com o registro de por que a separação foi desfeita; §4.2, README, `requisitos.md` e `arquitetura.md` atualizados.
+
+Os registros históricos — atas, relatório da Sprint 1 e registros de entrega —
+**não** foram reescritos: descrevem o que era verdade na época, e seus links
+para o repositório antigo continuam válidos.
+
+> ⚠️ **Pendência que a migração não resolve.** O ambiente publicado sai da
+> Vercel ligada a `gabicaldana/AgroScan2`. Enquanto ela não for reapontada para
+> `CampusCEUB/AgroScan`, o código evolui aqui e o deploy sai de lá. Agrava o
+> risco R06 e mantém aberta a issue
+> [#67](https://github.com/CampusCEUB/AgroScan/issues/67).
+
 ### Relatórios das oito sprints
 
 Criados os relatórios das Sprints 2 a 8 em `sprints/`, completando a série. A
