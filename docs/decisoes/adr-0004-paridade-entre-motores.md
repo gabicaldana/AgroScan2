@@ -89,5 +89,5 @@ o que verificar o porte.
 
 - Requisitos: RNF19, RNF20
 - Código: `app/diagnostico.py`, `app/fixtures.py`, `web/lib/diagnostico.test.ts`, `tests/test_api.py`
-- [Artefato 3, §3 - Testes de integração](../artefato-3-gestao-do-produto.md#3-testes-de-integração)
+- [Artefato 3, §3 - Testes de integração](../../entregas/artefato-3-gestao-do-produto.md#3-testes-de-integração)
 - [ADR 0003 - Base como fonte única](adr-0003-base-como-fonte-unica.md)

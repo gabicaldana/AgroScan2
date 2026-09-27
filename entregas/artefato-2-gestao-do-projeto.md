@@ -26,7 +26,7 @@ agronômica (pacote 2) e o desenvolvimento da aplicação (pacotes 4 e 5) correm
 paralelo durante todo o semestre, porque a curadoria é trabalho de pesquisa e
 não depende do código para avançar.
 
-![Estrutura Analítica do Projeto: o AgroScan decomposto em quatro frentes - Base de Conhecimento, Aplicativo PWA, Diagnóstico por Imagem, e Validação e Evolução - cada uma desdobrada em pacotes de trabalho](imagens/eap.png)
+![Estrutura Analítica do Projeto: o AgroScan decomposto em quatro frentes - Base de Conhecimento, Aplicativo PWA, Diagnóstico por Imagem, e Validação e Evolução - cada uma desdobrada em pacotes de trabalho](../docs/imagens/eap.png)
 
 **Figura 1 - Estrutura Analítica do Projeto.** Elaboração: Thaís Regina Dias da
 Mota.
@@ -155,7 +155,7 @@ Prioridade segundo MoSCoW: **Obrigatório** (must), **Importante** (should),
 **Desejável** (could).
 
 > As tabelas a seguir reproduzem o documento canônico
-> [`docs/requisitos.md`](requisitos.md), que acrescenta o estado de
+> [`docs/requisitos.md`](../docs/requisitos.md), que acrescenta o estado de
 > implementação de cada requisito, os critérios transversais de aceitação e a
 > matriz de rastreabilidade requisito → história → sprint → verificação. Em caso
 > de divergência, o documento canônico prevalece.
@@ -581,23 +581,30 @@ arquivo correspondente no repositório de código.
 ## 4.2 Estrutura do repositório institucional
 
 ```
-docs/
+entregas/                               Entregas avaliativas: documento e registro
   artefato-1-analise-de-usuario.md      Artefato 1 - Gestão do Negócio/Domínio
   artefato-2-gestao-do-projeto.md       Artefato 2 - Gestão do Projeto (este documento)
   artefato-3-gestao-do-produto.md       Artefato 3 - Gestão do Produto
-  requisitos.md                         Requisitos consolidados e rastreabilidade
-  arquitetura.md                        Arquitetura da solução
-  decisoes/                             ADRs - registros de decisão arquitetural
-  reunioes/                             Atas e checkpoints
-sprints/
-  sprint-00-planejamento.md             Planejamento inicial
-  sprint-01.md                          Relatório da sprint corrente
-entregas/
   entrega-artefato-1.md                 Registro de entrega avaliativa
   entrega-artefato-2.md
   entrega-artefato-3.md
+docs/                                   Documentação técnica de apoio
+  requisitos.md                         Requisitos consolidados e rastreabilidade
+  arquitetura.md                        Arquitetura da solução
+  decisoes/                             ADRs - registros de decisão arquitetural
+  reunioes/                             Atas das reuniões de sprint
+  imagens/                              Figuras dos artefatos
+sprints/                                Relatórios de sprint
+  sprint-00-planejamento.md             Planejamento inicial
+  sprint-01.md a sprint-08.md           Um relatório por sprint
 CHANGELOG.md                            Mudanças por sprint ou marco
 ```
+
+Os documentos dos artefatos ficam em `entregas/`, junto ao registro de entrega
+correspondente, de modo que cada entrega avaliativa se apresente como uma
+unidade: o que foi produzido e a evidência de que foi submetido. A pasta `docs/`
+guarda a documentação técnica que sustenta os artefatos sem ser, ela própria,
+uma entrega.
 
 ## 4.3 Fluxo de trabalho
 
@@ -660,7 +667,7 @@ no GitHub Project, onde somam por épico e por sprint.
 Cada sprint tem duas reuniões, conforme a cadência de eventos definida na seção
 3.1: **planejamento** na abertura e **revisão** no encerramento. Cada uma tem
 `issue` própria, com a etiqueta `reuniao` e vinculada à `milestone` da sprint, e
-ata correspondente em [`docs/reunioes/`](reunioes/README.md). O alinhamento de
+ata correspondente em [`docs/reunioes/`](../docs/reunioes/README.md). O alinhamento de
 meio de sprint é assíncrono e não gera ata: impedimento que bloqueie por mais de
 48 horas vira comentário na `issue` correspondente.
 
@@ -707,7 +714,7 @@ equipe.
 
 Uma inconsistência da matriz de rastreabilidade foi identificada durante a
 criação das `issues` e está registrada em
-[`docs/requisitos.md`, §9](requisitos.md#9-matriz-de-rastreabilidade): os
+[`docs/requisitos.md`, §9](../docs/requisitos.md#9-matriz-de-rastreabilidade): os
 requisitos **RF22 e RNF16** - geolocalização da consulta mediante consentimento
 explícito - apontam para `US22`, que é uma história do épico E5. A
 geolocalização não tem história própria no backlog, e a decisão entre criar uma

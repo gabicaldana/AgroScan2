@@ -62,9 +62,9 @@ encerrada em 14/09/2026, com 24 `issues`, todas fechadas.
 
 | Entrega | Arquivo |
 | --- | --- |
-| Artefato 1 - análise de usuário, com correção do público-alvo | [`docs/artefato-1-analise-de-usuario.md`](../docs/artefato-1-analise-de-usuario.md) |
-| Artefato 2 - EAP, backlog, sprints e repositório | [`docs/artefato-2-gestao-do-projeto.md`](../docs/artefato-2-gestao-do-projeto.md) |
-| Artefato 3 - arquitetura da informação, design arquitetural, testes, protótipo e storyboard | [`docs/artefato-3-gestao-do-produto.md`](../docs/artefato-3-gestao-do-produto.md) |
+| Artefato 1 - análise de usuário, com correção do público-alvo | [`entregas/artefato-1-analise-de-usuario.md`](../entregas/artefato-1-analise-de-usuario.md) |
+| Artefato 2 - EAP, backlog, sprints e repositório | [`entregas/artefato-2-gestao-do-projeto.md`](../entregas/artefato-2-gestao-do-projeto.md) |
+| Artefato 3 - arquitetura da informação, design arquitetural, testes, protótipo e storyboard | [`entregas/artefato-3-gestao-do-produto.md`](../entregas/artefato-3-gestao-do-produto.md) |
 | Requisitos consolidados com matriz de rastreabilidade | [`docs/requisitos.md`](../docs/requisitos.md) |
 | Arquitetura da solução | [`docs/arquitetura.md`](../docs/arquitetura.md) |
 | Nove ADRs das decisões arquiteturais | [`docs/decisoes/`](../docs/decisoes/) |
@@ -130,7 +130,7 @@ Os oito critérios de conclusão da issue #1 estão mapeados, um a um, no
 | [#39](https://github.com/CampusCEUB/AgroScan/issues/39) | US35 - Integração contínua bloqueando artefatos desatualizados | E7 | 3 |
 
 **19 histórias, 88 pontos** - os 88 de 172 pontos do núcleo registrados na
-totalização do [Artefato 2, §2.6](../docs/artefato-2-gestao-do-projeto.md#26-totalização).
+totalização do [Artefato 2, §2.6](../entregas/artefato-2-gestao-do-projeto.md#26-totalização).
 
 > **Nota sobre a data de criação destas `issues`.** As três `issues` de entrega
 > avaliativa foram abertas durante a sprint. As 19 histórias e as 2 reuniões
@@ -178,7 +178,7 @@ $ cd web && npm test
 ```
 
 **Total: 176 testes automatizados, nenhuma falha.** Distribuição e mapeamento
-para requisitos no [Artefato 3, §3](../docs/artefato-3-gestao-do-produto.md#3-testes-de-integração).
+para requisitos no [Artefato 3, §3](../entregas/artefato-3-gestao-do-produto.md#3-testes-de-integração).
 
 ### Validação da base de conhecimento
 

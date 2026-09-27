@@ -123,6 +123,6 @@ Após a implementação, em 12/09/2026:
 - Riscos: R04 - acervo de imagens não auditado
 - Histórias: US37
 - [ADR 0006 - Recusa sobre logits crus](adr-0006-recusa-sobre-logits-crus.md)
-- [Artefato 3, §1 - Arquitetura da informação](../artefato-3-gestao-do-produto.md#1-arquitetura-da-informação)
+- [Artefato 3, §1 - Arquitetura da informação](../../entregas/artefato-3-gestao-do-produto.md#1-arquitetura-da-informação)
 - Código alterado: `web/app/page.tsx`, `web/components/BarraInferior.tsx`, `web/components/Laudo.tsx`, `web/components/PainelCaderno.tsx`, `web/next.config.ts`, `web/public/sw.js`
 - Código preservado fora da navegação: `web/components/PainelScanner.tsx`, `web/components/Camera.tsx`, `web/lib/preprocessamento.ts`, `web/lib/recusa.ts`, `web/lib/classificador.ts`, `web/lib/diagnostico-por-imagem.ts`

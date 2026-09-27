@@ -4,6 +4,28 @@ Registre aqui as mudanças relevantes por sprint ou marco avaliativo.
 
 ## Sprint 2 - Base de conhecimento e publicação · 15/09 a 28/09/2026
 
+### Relatórios das oito sprints
+
+Criados os relatórios das Sprints 2 a 8 em `sprints/`, completando a série. A
+pasta deixou de ter apenas a sprint encerrada e a de planejamento inicial.
+
+- **7 relatórios novos** (`sprint-02.md` a `sprint-08.md`), preenchidos até o planejamento: período, objetivo, `milestone`, reuniões, itens planejados com `issue` e pontos, responsáveis, impedimentos herdados e riscos ativos do ciclo. As seções de execução - entregas, `issues` concluídas, `pull requests`, evidências e retrospectiva - ficam marcadas para preenchimento na revisão de cada sprint.
+- **Itens extraídos das milestones do GitHub**, e não do calendário em prosa: as contagens por sprint (14, 8, 6, 8, 10, 6 e 5 `issues`) conferem com a tabela do Artefato 2, §4.4.
+- **Links pendentes resolvidos**: as 16 atas de reunião já apontavam para `sprints/sprint-0N.md`, que não existiam.
+- **Divergência registrada**: a US05 aparece como "4-5" no backlog do Artefato 2 e como item integral da Sprint 5 na `milestone`. Anotada em `sprint-04.md` para decisão no planejamento daquele ciclo.
+
+### Artefatos movidos para `entregas/`
+
+Concluída a mudança de local pedida pela disciplina. Os documentos dos
+artefatos passaram de `docs/` para `entregas/`, junto aos registros de entrega
+correspondentes, de modo que cada entrega avaliativa se apresente como uma
+unidade. A pasta `docs/` guarda agora apenas a documentação técnica de apoio.
+
+- **3 documentos movidos**: Artefatos 1, 2 e 3. As cópias em `docs/` foram removidas - por um tempo o repositório manteve as duas versões, idênticas, com risco de divergirem.
+- **~50 links reapontados** em README, requisitos, arquitetura, 9 ADRs, 16 atas de reunião, registros de entrega e relatórios de sprint.
+- **Links internos dos próprios artefatos corrigidos**: apontavam para `requisitos.md`, `decisoes/` e `reunioes/` como vizinhos, o que deixou de valer com a mudança de pasta.
+- **Artefato 2, §4.2** atualizado, pois descrevia a estrutura antiga de pastas.
+
 ### Gestão do projeto no GitHub
 
 Resolvidas as pendências 4 e 5 do Artefato 2, §5, e o item 1 das "Próximas

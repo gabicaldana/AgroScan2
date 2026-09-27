@@ -28,7 +28,7 @@ produtor o usa no canteiro. As demais telas são alcançadas a partir delas.
 A captura por foto **não integra a navegação**: o diagnóstico por imagem é
 escopo condicionado e o modelo de visão não existe, de modo que uma aba
 permanente para ele só teria um aviso de indisponibilidade a oferecer. A decisão
-está registrada no [ADR 0008](decisoes/adr-0008-hierarquia-de-entrada.md), e o
+está registrada no [ADR 0008](../docs/decisoes/adr-0008-hierarquia-de-entrada.md), e o
 código do caminho de imagem permanece no repositório, verificado por 29 testes.
 
 ```mermaid
@@ -112,7 +112,7 @@ Componentes transversais: `CabecalhoApp`, `BarraInferior`, `IndicadorRede`,
 
 ## 1.4 Correção aplicada na hierarquia de entrada
 
-![Mapa de navegação anterior: a partir da tela inicial, três caminhos - Por imagem, Sintomas e Caderno de campo - convergindo para Resultado/Laudo e Ficha da doença](imagens/arquitetura-da-informacao.png)
+![Mapa de navegação anterior: a partir da tela inicial, três caminhos - Por imagem, Sintomas e Caderno de campo - convergindo para Resultado/Laudo e Ficha da doença](../docs/imagens/arquitetura-da-informacao.png)
 
 **Figura 1 - Mapa de navegação concebido no início do projeto.** Elaboração:
 Thaís Regina Dias da Mota.
@@ -161,7 +161,7 @@ quem já tem o aplicativo instalado continuaria abrindo a tela de câmera offlin
 indefinidamente.
 
 > Decisão aprovada e implementada na Sprint 1. Ver
-> [ADR 0008](decisoes/adr-0008-hierarquia-de-entrada.md).
+> [ADR 0008](../docs/decisoes/adr-0008-hierarquia-de-entrada.md).
 
 ---
 
@@ -803,7 +803,7 @@ hipótese atinge 15%:
 Esta tela **não está na navegação** e nenhuma rota aponta para ela. O
 componente permanece no repositório porque o caminho ao redor do modelo está
 pronto e verificado; falta o modelo de visão. Ver
-[ADR 0008](decisoes/adr-0008-hierarquia-de-entrada.md).
+[ADR 0008](../docs/decisoes/adr-0008-hierarquia-de-entrada.md).
 
 O wireframe fica registrado como especificação do que será religado quando
 houver modelo:
@@ -846,7 +846,7 @@ houver modelo:
 
 # 5. Storyboard
 
-![Storyboard em seis painéis: identificação do problema no campo, percepção de que não há conexão, abertura do AgroScan, seleção dos sintomas observados, lista de hipóteses com grau de compatibilidade, e consulta à ficha da doença](imagens/storyboard.png)
+![Storyboard em seis painéis: identificação do problema no campo, percepção de que não há conexão, abertura do AgroScan, seleção dos sintomas observados, lista de hipóteses com grau de compatibilidade, e consulta à ficha da doença](../docs/imagens/storyboard.png)
 
 **Figura 2 - Storyboard do fluxo de diagnóstico.** Elaboração: Thaís Regina
 Dias da Mota.

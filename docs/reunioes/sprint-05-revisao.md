@@ -46,5 +46,5 @@ Reunião de encerramento da **Sprint 5 - Base completa, feedback e dashboards** 
 | Milestone | `Sprint 5 - Base completa, feedback e dashboards` |
 | Issue desta reunião | [#59](https://github.com/CampusCEUB/AgroScan/issues/59) |
 | Relatório da sprint | [`sprints/sprint-05.md`](../../sprints/sprint-05.md) |
-| Backlog | [Artefato 2, §2.5](../artefato-2-gestao-do-projeto.md) |
+| Backlog | [Artefato 2, §2.5](../../entregas/artefato-2-gestao-do-projeto.md) |
 | Calendário das sprints | [`sprints/README.md`](../../sprints/README.md) |

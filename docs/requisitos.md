@@ -1,7 +1,7 @@
 # Requisitos
 
 > **Documento canônico de requisitos do AgroScan.** As tabelas de requisitos
-> reproduzidas no [Artefato 2](artefato-2-gestao-do-projeto.md) derivam deste
+> reproduzidas no [Artefato 2](../entregas/artefato-2-gestao-do-projeto.md) derivam deste
 > documento. Em caso de divergência, este prevalece.
 
 | Campo | Informação |
@@ -44,7 +44,7 @@ público que hoje decide sem ela.
 | Avaliação | Professora responsável e banca da disciplina | Verificar competências e rastreabilidade das entregas |
 | Validação | Comunidade parceira da Atividade de Extensão | Usar o sistema e validar as decisões de projeto |
 
-Análise completa em [Artefato 1](artefato-1-analise-de-usuario.md).
+Análise completa em [Artefato 1](../entregas/artefato-1-analise-de-usuario.md).
 
 **Fora do público-alvo:** o sistema não substitui o engenheiro agrônomo, não
 emite receituário agronômico e não atende grandes lavouras de commodities.
@@ -192,7 +192,7 @@ Estado verificado em 12/09/2026 sobre o commit `068b6d9`.
 ## 7. Critérios de aceitação
 
 Os critérios por história de usuário estão no
-[Artefato 2, seção 2.5](artefato-2-gestao-do-projeto.md#25-histórias-de-usuário).
+[Artefato 2, seção 2.5](../entregas/artefato-2-gestao-do-projeto.md#25-histórias-de-usuário).
 Os critérios transversais abaixo se aplicam a **toda** entrega e integram o
 Definition of Done:
 
@@ -278,7 +278,7 @@ título e vinculadas à `milestone` da sprint.
 
 ## 10. Riscos ligados a requisitos
 
-Registro completo no [Artefato 2, seção 3.5](artefato-2-gestao-do-projeto.md#35-riscos).
+Registro completo no [Artefato 2, seção 3.5](../entregas/artefato-2-gestao-do-projeto.md#35-riscos).
 Ligação direta com requisitos:
 
 | Risco | Requisitos ameaçados | Mitigação |

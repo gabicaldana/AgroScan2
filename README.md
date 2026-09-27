@@ -32,9 +32,9 @@ O AgroScan é uma aplicação PWA (Progressive Web App) projetada para funcionar
 
 | Artefato | Conteúdo | Entrega | Documento |
 | --- | --- | --- | --- |
-| **1** | Gestão do Negócio/Domínio - análise de usuário | 14/09/2026 | [docs/artefato-1-analise-de-usuario.md](docs/artefato-1-analise-de-usuario.md) |
-| **2** | Gestão do Projeto - EAP, backlog do produto, planejamento das sprints, projeto no repositório institucional | 14/09/2026 | [docs/artefato-2-gestao-do-projeto.md](docs/artefato-2-gestao-do-projeto.md) |
-| **3** | Gestão do Produto - arquitetura da informação, design arquitetural, testes de integração, protótipo de baixo nível, storyboard | 14/09/2026 | [docs/artefato-3-gestao-do-produto.md](docs/artefato-3-gestao-do-produto.md) |
+| **1** | Gestão do Negócio/Domínio - análise de usuário | 14/09/2026 | [entregas/artefato-1-analise-de-usuario.md](entregas/artefato-1-analise-de-usuario.md) |
+| **2** | Gestão do Projeto - EAP, backlog do produto, planejamento das sprints, projeto no repositório institucional | 14/09/2026 | [entregas/artefato-2-gestao-do-projeto.md](entregas/artefato-2-gestao-do-projeto.md) |
+| **3** | Gestão do Produto - arquitetura da informação, design arquitetural, testes de integração, protótipo de baixo nível, storyboard | 14/09/2026 | [entregas/artefato-3-gestao-do-produto.md](entregas/artefato-3-gestao-do-produto.md) |
 | **5** | Gestão dos Ativos - website com dados e documentação | a definir | a produzir |
 | **6** | Gestão do Negócio/Domínio - análise do usuário *(2º bim.)* | a definir | a produzir |
 | **7** | Gestão do Projeto - execução e revisão das sprints; vitrine de ativos *(2º bim.)* | a definir | a produzir |

@@ -46,5 +46,5 @@ Reunião de encerramento da **Sprint 3 - Horta, canteiros e manejo** (29/09/2026
 | Milestone | `Sprint 3 - Horta, canteiros e manejo` |
 | Issue desta reunião | [#55](https://github.com/CampusCEUB/AgroScan/issues/55) |
 | Relatório da sprint | [`sprints/sprint-03.md`](../../sprints/sprint-03.md) |
-| Backlog | [Artefato 2, §2.5](../artefato-2-gestao-do-projeto.md) |
+| Backlog | [Artefato 2, §2.5](../../entregas/artefato-2-gestao-do-projeto.md) |
 | Calendário das sprints | [`sprints/README.md`](../../sprints/README.md) |

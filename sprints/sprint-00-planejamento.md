@@ -138,7 +138,7 @@ avaliação de um engenheiro agrônomo.
 ## Backlog inicial
 
 Priorização MoSCoW e estimativa em pontos de história no
-[Artefato 2](../docs/artefato-2-gestao-do-projeto.md). Resumo por épico:
+[Artefato 2](../entregas/artefato-2-gestao-do-projeto.md). Resumo por épico:
 
 | Épico | Descrição | Pts | Prioridade |
 | --- | --- | --- | --- |

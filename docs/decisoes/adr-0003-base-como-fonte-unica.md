@@ -89,4 +89,4 @@ exatamente o cenário de divergência silenciosa descrito no contexto.
 - Requisitos: RNF18, RNF20, RN04, RN05, RN06, RN07
 - Código: `data/base_conhecimento.json`, `app/validacao.py`, `app/seed.py`, `web/scripts/gerar-base.mjs`
 - [ADR 0004 - Paridade entre motores](adr-0004-paridade-entre-motores.md)
-- [Artefato 3, §2.7](../artefato-3-gestao-do-produto.md#27-como-a-base-curada-chega-aos-três-lugares)
+- [Artefato 3, §2.7](../../entregas/artefato-3-gestao-do-produto.md#27-como-a-base-curada-chega-aos-três-lugares)

@@ -85,4 +85,4 @@ causa de uma inválida.
 - Requisitos e regras: RF17, RF18, RN10, RN11, RNF28
 - Histórias: US17, US18
 - Código: `web/lib/fila.ts`, `app/api/rotas/consultas.py`, `app/api/repositorios/consultas.py`, `migracoes/001_esquema_inicial.sql`
-- [Artefato 3, §2.5 - Fluxo de sincronização](../artefato-3-gestao-do-produto.md#25-fluxo-2---sincronização-da-fila)
+- [Artefato 3, §2.5 - Fluxo de sincronização](../../entregas/artefato-3-gestao-do-produto.md#25-fluxo-2---sincronização-da-fila)

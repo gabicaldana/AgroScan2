@@ -46,5 +46,5 @@ Reunião de encerramento da **Sprint 7 - Ativos e documentação técnica** (24/
 | Milestone | `Sprint 7 - Ativos e documentação técnica` |
 | Issue desta reunião | [#63](https://github.com/CampusCEUB/AgroScan/issues/63) |
 | Relatório da sprint | [`sprints/sprint-07.md`](../../sprints/sprint-07.md) |
-| Backlog | [Artefato 2, §2.5](../artefato-2-gestao-do-projeto.md) |
+| Backlog | [Artefato 2, §2.5](../../entregas/artefato-2-gestao-do-projeto.md) |
 | Calendário das sprints | [`sprints/README.md`](../../sprints/README.md) |

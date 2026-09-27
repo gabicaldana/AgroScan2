@@ -19,13 +19,19 @@ entrega dos Artefatos 1, 2 e 3.
 | --- | --- | --- | --- | --- |
 | 00 | - | Planejamento e acordos de trabalho | - | [sprint-00-planejamento.md](sprint-00-planejamento.md) |
 | **1** | 31/08 - 14/09 | Especificação e gestão | **Artefatos 1, 2 e 3 - 14/09** | [sprint-01.md](sprint-01.md) |
-| 2 | 15/09 - 28/09 | Base de conhecimento e publicação | Incremento funcional | a criar |
-| 3 | 29/09 - 12/10 | Horta, canteiros e manejo | Sprint Review | a criar |
-| 4 | 13/10 - 26/10 | Relatórios agregados | Sprint Review | a criar |
-| 5 | 27/10 - 09/11 | Base completa, feedback e dashboards | **Artefato 9** *(data a definir)* | a criar |
-| 6 | 10/11 - 23/11 | Comunidade e validação | Apresentação à Comunidade · **Artefato 6** *(datas a definir)* | a criar |
-| 7 | 24/11 - 07/12 | Ativos e documentação técnica | **Artefatos 5 e 8** *(datas a definir)* | a criar |
-| 8 | 08/12 - 19/12 | Fechamento do semestre | **Artefato 7** *(data a definir)* | a criar |
+| **2** | 15/09 - 28/09 | Base de conhecimento e publicação | Incremento funcional | [sprint-02.md](sprint-02.md) |
+| 3 | 29/09 - 12/10 | Horta, canteiros e manejo | Sprint Review | [sprint-03.md](sprint-03.md) |
+| 4 | 13/10 - 26/10 | Relatórios agregados | Sprint Review | [sprint-04.md](sprint-04.md) |
+| 5 | 27/10 - 09/11 | Base completa, feedback e dashboards | **Artefato 9** *(data a definir)* | [sprint-05.md](sprint-05.md) |
+| 6 | 10/11 - 23/11 | Comunidade e validação | Apresentação à Comunidade · **Artefato 6** *(datas a definir)* | [sprint-06.md](sprint-06.md) |
+| 7 | 24/11 - 07/12 | Ativos e documentação técnica | **Artefatos 5 e 8** *(datas a definir)* | [sprint-07.md](sprint-07.md) |
+| 8 | 08/12 - 19/12 | Fechamento do semestre | **Artefato 7** *(data a definir)* | [sprint-08.md](sprint-08.md) |
+
+As sprints 1 e 2 estão em negrito por serem, respectivamente, a encerrada e a
+corrente. Os relatórios das sprints 3 a 8 já existem preenchidos até o
+planejamento - período, objetivo, `milestone`, itens e responsáveis - e trazem
+as seções de execução marcadas como *a preencher*, para serem completadas na
+revisão de cada ciclo.
 
 ## Milestones e reuniões
 
@@ -56,7 +62,7 @@ que bloqueie por mais de 48 horas vira comentário na `issue` correspondente.
 > O semestre tem **nove artefatos avaliativos** distribuídos em dois bimestres,
 > em quatro eixos que se repetem: Negócio/Domínio, Projeto, Produto e Ativos. A
 > relação completa está no
-> [Artefato 2, seção 3.1](../docs/artefato-2-gestao-do-projeto.md#31-cadência-e-premissas).
+> [Artefato 2, seção 3.1](../entregas/artefato-2-gestao-do-projeto.md#31-cadência-e-premissas).
 
 Planejamento completo, com entregas e histórias alocadas por sprint, no
-[Artefato 2, seção 3](../docs/artefato-2-gestao-do-projeto.md#3-planejamento-das-sprints).
+[Artefato 2, seção 3](../entregas/artefato-2-gestao-do-projeto.md#3-planejamento-das-sprints).

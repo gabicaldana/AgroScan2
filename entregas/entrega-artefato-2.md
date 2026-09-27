@@ -43,7 +43,7 @@ Quatro componentes exigidos pela disciplina:
 
 | Item | Link |
 | --- | --- |
-| Documento do artefato | [`docs/artefato-2-gestao-do-projeto.md`](../docs/artefato-2-gestao-do-projeto.md) |
+| Documento do artefato | [`entregas/artefato-2-gestao-do-projeto.md`](artefato-2-gestao-do-projeto.md) |
 | Requisitos canônicos e rastreabilidade | [`docs/requisitos.md`](../docs/requisitos.md) |
 | Planejamento inicial e acordos de trabalho | [`sprints/sprint-00-planejamento.md`](../sprints/sprint-00-planejamento.md) |
 | Relatório da Sprint 1 | [`sprints/sprint-01.md`](../sprints/sprint-01.md) |

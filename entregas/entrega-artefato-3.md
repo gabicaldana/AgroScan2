@@ -41,7 +41,7 @@ o componente 1, e com três imprecisões, corrigidas aqui:
 
 | Item | Link |
 | --- | --- |
-| Documento do artefato | [`docs/artefato-3-gestao-do-produto.md`](../docs/artefato-3-gestao-do-produto.md) |
+| Documento do artefato | [`entregas/artefato-3-gestao-do-produto.md`](artefato-3-gestao-do-produto.md) |
 | Arquitetura consolidada | [`docs/arquitetura.md`](../docs/arquitetura.md) |
 | ADRs | [`docs/decisoes/`](../docs/decisoes/) |
 | Modelo de dados (19 tabelas, DER, consultas dos relatórios) | https://github.com/gabicaldana/AgroScan2/blob/main/docs/modelo-de-dados.md |
