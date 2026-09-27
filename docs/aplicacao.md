@@ -19,8 +19,8 @@ no celular e funcional em modo avião.
 > com fila de sincronização offline. Faltam **hortas e canteiros** e os
 > **relatórios agregados**: as tabelas existem, as rotas e as telas não.
 >
-> Verificado em 27/09/2026: **245 testes automatizados, nenhuma falha** — 74 em
-> Python e 171 no porte em TypeScript.
+> Verificado em 27/09/2026: **267 testes automatizados, nenhuma falha** — 74 em
+> Python e 193 no porte em TypeScript.
 
 ---
 

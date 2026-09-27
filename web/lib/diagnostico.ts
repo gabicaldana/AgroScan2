@@ -26,7 +26,9 @@ import {
   type Cultura,
   type Doenca,
   type Gravidade,
+  type Orgao,
   type OrgaoId,
+  type Sintoma,
 } from "./base-conhecimento.ts";
 
 /** Quanto penalizar um sintoma marcado que a doenca nao explica.
@@ -108,23 +110,58 @@ export type Ficha = {
 
 /* ---------------------------------------------------------------- indices */
 
-const NOME_DO_SINTOMA = new Map(SINTOMAS.map((s) => [s.id, s.nome]));
-const ORGAO_POR_ID = new Map(ORGAOS.map((o) => [o.id, o]));
-const CULTURA_POR_ID = new Map(CULTURAS.map((c) => [c.id, c]));
+/**
+ * Os indices sao derivados do CATALOGO ATIVO, que pode deixar de ser o
+ * embutido no bundle: a curadoria continua depois do deploy, e o app baixa
+ * uma base mais nova sem exigir reinstalacao (US36, `catalogo.ts`).
+ *
+ * Por isso sao `let` e nao `const`. O motor em si nao muda - as mesmas
+ * estruturas, o mesmo calculo, a mesma paridade com o Python. O que muda e
+ * de onde o conteudo vem, e `reconstruirIndices` e o unico ponto onde isso
+ * acontece.
+ */
+let CULTURAS_ATIVAS: readonly Cultura[] = CULTURAS;
+let SINTOMAS_ATIVOS: readonly Sintoma[] = SINTOMAS;
 
-const DOENCA_POR_ID = new Map<string, { doenca: Doenca; cultura: Cultura }>(
-  CULTURAS.flatMap((cultura) =>
-    cultura.doencas.map((doenca) => [doenca.id, { doenca, cultura }] as const),
-  ),
-);
-
+let NOME_DO_SINTOMA!: Map<string, string>;
+let ORGAO_POR_ID!: Map<OrgaoId, Orgao>;
+let CULTURA_POR_ID!: Map<string, Cultura>;
+let DOENCA_POR_ID!: Map<string, { doenca: Doenca; cultura: Cultura }>;
 /** doencaId -> { sintomaId: peso } */
-const PERFIL_POR_DOENCA = new Map<string, Map<string, number>>(
-  [...DOENCA_POR_ID].map(([id, { doenca }]) => [
-    id,
-    new Map(doenca.sintomas.map((s) => [s.id, s.peso])),
-  ]),
-);
+let PERFIL_POR_DOENCA!: Map<string, Map<string, number>>;
+
+export function reconstruirIndices(catalogo: {
+  orgaos: readonly Orgao[];
+  sintomas: readonly Sintoma[];
+  culturas: readonly Cultura[];
+}): void {
+  CULTURAS_ATIVAS = catalogo.culturas;
+  SINTOMAS_ATIVOS = catalogo.sintomas;
+
+  NOME_DO_SINTOMA = new Map(catalogo.sintomas.map((s) => [s.id, s.nome]));
+  ORGAO_POR_ID = new Map(catalogo.orgaos.map((o) => [o.id, o]));
+  CULTURA_POR_ID = new Map(catalogo.culturas.map((c) => [c.id, c]));
+
+  DOENCA_POR_ID = new Map(
+    catalogo.culturas.flatMap((cultura) =>
+      cultura.doencas.map(
+        (doenca) => [doenca.id, { doenca, cultura }] as const,
+      ),
+    ),
+  );
+
+  PERFIL_POR_DOENCA = new Map(
+    [...DOENCA_POR_ID].map(([id, { doenca }]) => [
+      id,
+      new Map(doenca.sintomas.map((s) => [s.id, s.peso])),
+    ]),
+  );
+}
+
+// O motor nasce sobre o catalogo embutido. Sem rede, sem `localStorage` e na
+// geracao estatica das paginas, e este o estado - e e o mesmo que as fixtures
+// de paridade verificam.
+reconstruirIndices({ orgaos: ORGAOS, sintomas: SINTOMAS, culturas: CULTURAS });
 
 /* ----------------------------------------------------------------- ordem  */
 
@@ -203,7 +240,7 @@ function arredondarMeioParaPar(valor: number): number {
  * saida.
  */
 export function listarCulturas(apenasComDoencas = false): CulturaResumida[] {
-  return CULTURAS.filter((c) => !apenasComDoencas || c.doencas.length > 0)
+  return CULTURAS_ATIVAS.filter((c) => !apenasComDoencas || c.doencas.length > 0)
     .map((c) => ({
       id: c.id,
       nome: c.nome,
@@ -232,7 +269,7 @@ export function listarSintomasDaCultura(culturaId: string): SintomaDoCatalogo[] 
     cultura.doencas.flatMap((d) => d.sintomas.map((s) => s.id)),
   );
 
-  return SINTOMAS.filter((s) => usados.has(s.id))
+  return SINTOMAS_ATIVOS.filter((s) => usados.has(s.id))
     .map((s) => {
       const orgao = ORGAO_POR_ID.get(s.orgao)!;
       return {

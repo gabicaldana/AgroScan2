@@ -79,6 +79,62 @@ apenas descrições dele, com cada afirmação técnica apontando para um endere
 externo. Justificativa completa no
 [Artefato 2, §4.1](../entregas/artefato-2-gestao-do-projeto.md#41-repositório-único).
 
+### Atualização do catálogo sem reinstalar (US36)
+
+O app nasce com a base embutida no bundle - é o que faz o diagnóstico
+funcionar em modo avião na primeira abertura, sem nunca ter visto a rede. Mas a
+curadoria continua depois do deploy, e obrigar o produtor a reinstalar para
+receber uma ficha nova seria perder justamente quem tem sinal ruim.
+
+O servidor já estava pronto desde a Sprint 1: `/catalogo/versao` é a chamada
+barata e `/catalogo` traz a base com `ETag`. Esta sprint construiu o cliente.
+
+| Peça | O que faz |
+| --- | --- |
+| [`web/lib/catalogo.ts`](../web/lib/catalogo.ts) | Guarda o catálogo baixado, decide qual está ativo e sincroniza |
+| [`web/components/SincronizacaoDoCatalogo.tsx`](../web/components/SincronizacaoDoCatalogo.tsx) | Dispara a verificação depois da montagem, sem bloquear nada |
+| `reconstruirIndices` em [`web/lib/diagnostico.ts`](../web/lib/diagnostico.ts) | Único ponto em que o motor troca de conteúdo |
+
+**Duas requisições, e a primeira é barata de propósito.** Na maioria das
+aberturas a resposta é "já atual" e nada mais trafega - o que importa para quem
+paga internet por megabyte.
+
+Quatro decisões que valem registro:
+
+- **`localStorage`, não IndexedDB.** A fila do caderno escolheu IndexedDB porque cresce sem teto enquanto o produtor fica sem sinal. O catálogo é o caso oposto: um documento só, limitado pelo escopo do projeto, que precisa ser lido de forma **síncrona** quando o motor monta seus índices.
+- **A promoção acontece depois da montagem, não no `import`.** Durante a geração estática e na primeira renderização do cliente o app usa o catálogo embutido, igual dos dois lados. Promover antes produziria HTML divergente do que o React monta na hidratação.
+- **A conversão `snake_case` → `camelCase` existe duas vezes.** O gerador do build converte o JSON curado; o cliente precisa converter a resposta da API, que serve os objetos crus do Python. Sem isso, `nomeCientifico` e `ingredientesAtivos` chegariam como `undefined`, e a falha apareceria só na tela do laudo - longe da causa.
+- **A troca não acontece sob o dedo do usuário.** Uma tela já montada continua com a lista anterior até a próxima navegação: trocar o catálogo no meio de uma marcação de sintomas seria pior do que esperar.
+
+**O diagnóstico nunca espera por isso.** O motor já está operante sobre o
+catálogo embutido antes de a sincronização rodar, e toda falha é silenciosa -
+sem rede, com a API fora do ar ou com resposta malformada, o app segue com o
+que tem. É a ADR 0001 preservada: o cliente é autoridade sobre a resposta.
+
+**22 testes novos**, cobrindo o que pode dar errado: JSON corrompido,
+`localStorage` bloqueado ou inexistente, HTTP de erro, catálogo malformado,
+ausência de rede, e o caso em que o servidor troca de release entre as duas
+requisições. Um deles pegou um defeito real durante o desenvolvimento - o
+`lerGuardado` devolvia `null` para JSON corrompido **sem apagar a chave**, e o
+lixo ficaria no `localStorage` para sempre, sendo reparseado a cada abertura.
+
+### Nome científico no seletor de cultura (US01, parcial)
+
+O `SeletorCultura` passou a exibir o nome científico e a família da cultura
+selecionada. Fica **abaixo** do seletor, e não dentro da `option`: no seletor
+nativo do celular o texto longo trunca, e "*Brassica oleracea* var. *acephala*"
+sumiria justamente na parte que a distingue de outra variedade.
+
+Atende o segundo dos três critérios da US01. O primeiro - agrupamento por
+grupo - já estava pronto e passou a ser exercitado de verdade pelas brássicas.
+O terceiro, **24 culturas presentes**, depende da US04 e da US05, alocadas às
+Sprints 3 e 5.
+
+> ⚠️ **A US01 não tinha como fechar nesta sprint.** Ela foi alocada à Sprint 2
+> com um critério de aceite que só as sprints seguintes podem satisfazer.
+> Registrar para o planejamento: ou o critério é fatiado por família curada, ou
+> a história é realocada à Sprint 5, quando a base fecha.
+
 ### Curadoria das brássicas (US03) - 6 culturas, 18 fichas
 
 A meta-título da sprint. Seis culturas novas, todas da família Brassicaceae,
@@ -161,7 +217,8 @@ concluída a mudança dos artefatos para `entregas/`, que estava pela metade.
 | [#66](https://github.com/CampusCEUB/AgroScan/issues/66) | Corrigir a dependência de teste ausente e confirmar que o CI executa os testes da API | Suíte executada em 27/09: 74 testes, **nenhum pulado**. O `ci.yml` tem o passo que transforma "pulou" em falha antes de a suíte rodar |
 | [#69](https://github.com/CampusCEUB/AgroScan/issues/69) | Atualizar o README do repositório de código para o estado real | Feito no commit `9570990`; o documento é hoje [`docs/aplicacao.md`](../docs/aplicacao.md), atualizado para 16 doenças e 185 testes |
 | [#70](https://github.com/CampusCEUB/AgroScan/issues/70) | Elevar batata e pimentão ao mínimo de três doenças | Validação automática sem avisos - ver Evidências |
-| [#6](https://github.com/CampusCEUB/AgroScan/issues/6) | **US03** - Cadastrar as doenças das brássicas | 6 culturas com 3 doenças cada; validação aprovada; 245 testes passando |
+| [#6](https://github.com/CampusCEUB/AgroScan/issues/6) | **US03** - Cadastrar as doenças das brássicas | 6 culturas com 3 doenças cada; validação aprovada |
+| [#40](https://github.com/CampusCEUB/AgroScan/issues/40) | **US36** - Receber atualizações do catálogo sem reinstalar | 22 testes cobrindo rede ausente, resposta malformada e armazenamento bloqueado |
 
 > **Sobre #66 e #69.** A correção em código foi aplicada em 12/09, ainda dentro
 > da Sprint 1, nos commits `8053fc8` e `9570990`. As `issues` nasceram das
@@ -170,8 +227,7 @@ concluída a mudança dos artefatos para `entregas/`, que estava pela metade.
 
 ### Abertas nesta data
 
-[#4](https://github.com/CampusCEUB/AgroScan/issues/4) (US01 - avançou de 3 para 9 das 24 culturas, mas o critério pede as 24),
-[#40](https://github.com/CampusCEUB/AgroScan/issues/40) (US36),
+[#4](https://github.com/CampusCEUB/AgroScan/issues/4) (US01 - dois dos três critérios atendidos; o terceiro pede 24 culturas e depende das Sprints 3 e 5),
 [#67](https://github.com/CampusCEUB/AgroScan/issues/67),
 [#68](https://github.com/CampusCEUB/AgroScan/issues/68),
 [#72](https://github.com/CampusCEUB/AgroScan/issues/72),
@@ -231,15 +287,16 @@ OK
 
 ```
 $ cd web && npm test
-ℹ tests 171
-ℹ pass 171
+ℹ tests 193
+ℹ pass 193
 ℹ fail 0
 ℹ skipped 0
 ```
 
-**Total: 245 testes, nenhuma falha e nenhum pulado.** Subiu de 176 para 185 com
-as três fichas das solanáceas, e de 185 para 245 com as brássicas: as fixtures
-de paridade foram de 42 para 84 casos, porque são geradas a partir da base.
+**Total: 267 testes, nenhuma falha e nenhum pulado.** Subiu de 176 para 185 com
+as três fichas das solanáceas, de 185 para 245 com as brássicas - as fixtures
+de paridade são geradas da base e foram de 42 para 84 casos - e de 245 para 267
+com os testes da sincronização de catálogo.
 
 O campo `skipped 0` e os 74 testes em Python são a evidência direta da `issue`
 [#66](https://github.com/CampusCEUB/AgroScan/issues/66): os 22 testes da API

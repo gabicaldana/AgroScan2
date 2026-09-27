@@ -152,7 +152,7 @@ Estado verificado em 12/09/2026 sobre o commit `068b6d9`.
 | --- | --- | --- | --- |
 | RF32 | Ser instalável como aplicativo no celular (PWA) | Obrigatório | ✅ |
 | RF33 | Disponibilizar API REST para consulta ao catálogo e ao diagnóstico | Obrigatório | ✅ |
-| RF34 | Sincronizar o catálogo quando houver versão mais recente no servidor | Importante | 🟡 endpoint de versão ✅; consumo no cliente ⬜ |
+| RF34 | Sincronizar o catálogo quando houver versão mais recente no servidor | Importante | ✅ endpoint de versão e consumo no cliente |
 | RF35 | Registrar, em cada consulta, a versão do catálogo usada no diagnóstico | Importante | ✅ |
 | RF36 | Indicar visualmente quando está operando sem conexão | Importante | ✅ |
 

@@ -4,6 +4,7 @@ import "./globals.css";
 import { BarraInferior } from "@/components/BarraInferior";
 import { CabecalhoApp } from "@/components/CabecalhoApp";
 import { RegistroServiceWorker } from "@/components/RegistroServiceWorker";
+import { SincronizacaoDoCatalogo } from "@/components/SincronizacaoDoCatalogo";
 
 // Auto-hospedada pelo next/font: nao depende de rede para renderizar,
 // o que importa num app que precisa abrir offline.
@@ -41,6 +42,7 @@ export default function RootLayout({
     <html lang="pt-BR" className={`${plex.variable} h-full antialiased`}>
       <body className="bg-fundo text-texto flex min-h-full flex-col">
         <RegistroServiceWorker />
+        <SincronizacaoDoCatalogo />
         <CabecalhoApp />
         <main className="flex-1 pb-[calc(var(--spacing-toque)+env(safe-area-inset-bottom))]">
           {children}

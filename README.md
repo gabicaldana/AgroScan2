@@ -104,6 +104,6 @@ Estado verificado em 27/09/2026, durante a Sprint 2.
 | Indicador | Valor |
 | --- | --- |
 | Pontos concluídos do núcleo | 88 de 172 (51%) |
-| Testes automatizados | 245, nenhuma falha |
+| Testes automatizados | 267, nenhuma falha |
 | Tabelas no banco de dados | 19 |
 | Endpoints da API | 16 |
