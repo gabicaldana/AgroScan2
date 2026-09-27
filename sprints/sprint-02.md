@@ -201,13 +201,47 @@ Rodado no repositório institucional, após a migração:
 | `npm run build` | 7 rotas geradas |
 | Regerar tudo e conferir `git status` | Nenhum artefato gerado divergiu - o passo mais rígido do CI |
 
+### Integração contínua - primeira execução no repositório institucional
+
+[Execução #36340336427](https://github.com/CampusCEUB/AgroScan/actions/runs/36340336427),
+disparada pelo [PR #83](https://github.com/CampusCEUB/AgroScan/pull/83) em
+27/09/2026. **Conclusão: `success`**, com os nove passos verdes.
+
+O passo que existe justamente para impedir que a suíte se pule em silêncio:
+
+```
+Conferir que os testes da API vao rodar, e nao se pular
+  TestClient operante: os 22 testes da API vao rodar.
+
+Testes do motor e da API
+  Ran 74 tests in 11.161s
+  OK
+
+Testes do porte em TypeScript
+  tests 111
+
+Nenhum artefato gerado ficou para tras
+  ✓
+```
+
+Esta é a evidência que a `issue`
+[#66](https://github.com/CampusCEUB/AgroScan/issues/66) pedia: não a suíte
+passando na máquina de alguém, mas **o CI executando os 22 testes da API**. Até
+aqui o pipeline rodava no repositório de código; é a primeira vez que roda no
+repositório avaliado.
+
 ### Ainda a produzir
 
 | Evidência | Depende de |
 | --- | --- |
 | Ambiente publicado servindo a versão `2026.09.27` | Reapontar a Vercel - [#67](https://github.com/CampusCEUB/AgroScan/issues/67) |
 | Hierarquia de entrada conferida no publicado | O mesmo - [#68](https://github.com/CampusCEUB/AgroScan/issues/68) |
-| Execução verde do CI no repositório institucional | Primeiro `push` com os workflows já migrados |
+
+> **Manutenção anotada na primeira execução.** O CI emitiu dois avisos, sem
+> falhar: as actions `checkout@v4`, `setup-node@v4` e `setup-python@v5` ainda
+> declaram Node.js 20, já depreciado e forçado para o 24; e o rótulo
+> `ubuntu-latest` migra para o Ubuntu 26 a partir de 19/10/2026. Nenhum dos dois
+> quebra hoje, mas convém atualizar antes que quebrem.
 
 Verificações obrigatórias neste ciclo, por decorrerem dos riscos herdados:
 
