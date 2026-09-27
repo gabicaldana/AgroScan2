@@ -1,0 +1,57 @@
+{
+  "_comentario": "Contrato do pipeline de imagem: como um pixel vira tensor, e quando o app deve dizer 'nao sei' em vez de responder. Curado a mao - e decisao de engenharia, nao conteudo agronomico, e por isso nao mora em base_conhecimento.json. Os valores existem ANTES do modelo de proposito: quem treinar tem que obedecer a este arquivo, e nao o contrario. Se o app redimensionar de um jeito e o treino de outro, o modelo recebe um tensor que nunca viu e mesmo assim responde com confianca alta - a acuracia perdida some dentro de um numero que continua parecendo bom.",
+
+  "preprocessamento": {
+    "entrada": {
+      "largura": 224,
+      "altura": 224,
+      "canais": 3,
+      "layout": "NCHW",
+      "tipo": "float32"
+    },
+    "redimensionamento": {
+      "_comentario": "Redimensiona o lado menor para 256 mantendo proporcao, depois recorta 224 no centro. O algoritmo e filtro triangular com suporte escalado, definido em app/preprocessamento.py e portado em web/lib/preprocessamento.ts - os dois sao comparados por digest SHA-256 do tensor. O drawImage do navegador NAO serve: nao redimensiona igual entre navegadores.",
+      "lado_menor": 256,
+      "recorte": "central",
+      "metodo": "bilinear",
+      "cantos_alinhados": false
+    },
+    "normalizacao": {
+      "escala": 255.0,
+      "media": [0.485, 0.456, 0.406],
+      "desvio": [0.229, 0.224, 0.225]
+    },
+    "saida": {
+      "_comentario": "Logits, nunca softmax. O softmax fica do lado do TypeScript porque a recusa precisa de temperatura e de energia, e as duas sao impossiveis de calcular depois que o grafo ja normalizou.",
+      "tipo": "logits"
+    }
+  },
+
+  "recusa": {
+    "_comentario": "Quando o app deve dizer 'nao sei'. Os tres numeros sao NULOS ate existir um modelo treinado: eles saem da curva risco-cobertura medida sobre imagens de validacao, e chutar um limiar seria pior que nao ter nenhum - daria ao produtor uma recusa que nao significa nada. Enquanto forem nulos, o app calcula as pontuacoes e declara que nao esta calibrado.",
+    "temperatura": null,
+    "limiar_msp": null,
+    "limiar_energia": null,
+    "calibrado_em": null,
+    "medir_sobre": "LOGITS CRUS, antes de qualquer mascara por cultura. Mascarar renormaliza sobre as classes de uma cultura so, e isso faz QUALQUER imagem - inclusive uma folha de outra especie apontada como tomate - sair com confianca alta. Calcular a recusa depois da mascara e o mesmo que nao ter recusa.",
+    "sabores_de_fora_da_distribuicao": [
+      "hortalica da base que o acervo de imagens nao cobre: o fluxo por sintomas a alcanca inteira, mas a camera nao. So a recusa protege quem fotografar assim mesmo.",
+      "especie fora da base inteira - uma arvore, uma planta ornamental. So a recusa pega.",
+      "cultura conhecida e doenca desconhecida. E o caso mais perigoso: a foto cai numa classe vizinha com confianca alta, e o laudo precisa dizer isso em voz alta."
+    ]
+  },
+
+  "arquivo": {
+    "_comentario": "Preenchido quando existir um modelo publicado. Enquanto nome e sha256 forem nulos, modeloDisponivel() devolve false e o app diz ao usuario que a identificacao por imagem ainda nao existe, em vez de chutar.",
+    "nome": null,
+    "sha256": null
+  },
+
+  "contrato_de_treino": {
+    "_comentario": "O que o notebook tem que garantir. Fica aqui, e nao so na prosa do notebook, para que a checagem seja copiavel e nao dependa de alguem lembrar.",
+    "preprocessamento": "Usar EXATAMENTE a transformacao descrita acima na avaliacao e no export. Nao substituir por transforms.Resize sem reconferir o digest.",
+    "saida": "Exportar logits. Nunca embutir softmax no grafo.",
+    "classes": "Gravar a lista de classes em metadata_props['classes'] do ONNX, na mesma ordem da saida. O carregador confere e recusa rodar se divergir - e a unica defesa contra service worker servindo modelo antigo com bundle novo.",
+    "metricas": "Publicar metricas.json com a acuracia medida em validacao externa, e nao apenas no conjunto de teste do proprio acervo. A queda faz parte do resultado."
+  }
+}

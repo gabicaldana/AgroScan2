@@ -46,5 +46,5 @@ Reunião de abertura da **Sprint 4 - Relatórios agregados** (13/10/2026 a 26/10
 | Milestone | `Sprint 4 - Relatórios agregados` |
 | Issue desta reunião | [#56](https://github.com/CampusCEUB/AgroScan/issues/56) |
 | Relatório da sprint | [`sprints/sprint-04.md`](../../sprints/sprint-04.md) |
-| Backlog | [Artefato 2, §2.5](../artefato-2-gestao-do-projeto.md) |
+| Backlog | [Artefato 2, §2.5](../../entregas/artefato-2-gestao-do-projeto.md) |
 | Calendário das sprints | [`sprints/README.md`](../../sprints/README.md) |

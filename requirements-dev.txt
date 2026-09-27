@@ -1,0 +1,24 @@
+# Dependencias necessarias apenas para RODAR A SUITE DE TESTES.
+#
+# Por que existe um arquivo separado: o runtime da Vercel instala
+# requirements.txt, e um cliente HTTP de teste nao tem por que subir junto com
+# a funcao em producao. Mas o CI precisa dele, porque sem ele os testes da API
+# nao rodam.
+#
+# O historico do problema, que este arquivo corrige: `fastapi.testclient`
+# delega para `starlette.testclient`, que exige um cliente HTTP proprio e NAO
+# o declara como dependencia obrigatoria - e apenas um extra `starlette[full]`.
+# Sem ele, os 22 testes de tests/test_api.py e tests/test_caderno.py nao
+# apenas se pulavam: a ausencia levanta RuntimeError, e a protecao dos modulos
+# capturava somente ImportError. O resultado era a suite ERRANDO em vez de
+# pular, e o CI ficando vermelho por dependencia faltante em vez de por
+# defeito de codigo.
+#
+# Instalar `starlette[full]` resolveria, mas arrastaria jinja2, pyyaml e
+# itsdangerous, que o projeto nao usa. Declaramos so o cliente HTTP.
+#
+#   pip install -r requirements-dev.txt
+
+-r requirements.txt
+
+httpx2>=2.0.0,<3.0

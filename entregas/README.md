@@ -12,9 +12,9 @@ Atualize um registro sempre que houver submissão parcial, revisão avaliativa, 
 
 | Artefato | Título | Entrega | Sprint | Natureza | Registro | Documento |
 | --- | --- | --- | --- | --- | --- | --- |
-| **1** | Gestão do Negócio/Domínio - análise de usuário | 14/09/2026 | 1 | Reapresentação | [entrega-artefato-1.md](entrega-artefato-1.md) | [documento](../docs/artefato-1-analise-de-usuario.md) |
-| **2** | Gestão do Projeto - EAP, backlog, sprints, repositório | 14/09/2026 | 1 | Reapresentação | [entrega-artefato-2.md](entrega-artefato-2.md) | [documento](../docs/artefato-2-gestao-do-projeto.md) |
-| **3** | Gestão do Produto - arquitetura da informação, design arquitetural, testes de integração, protótipo, storyboard | 14/09/2026 | 1 | Complementação | [entrega-artefato-3.md](entrega-artefato-3.md) | [documento](../docs/artefato-3-gestao-do-produto.md) |
+| **1** | Gestão do Negócio/Domínio - análise de usuário | 14/09/2026 | 1 | Reapresentação | [entrega-artefato-1.md](entrega-artefato-1.md) | [documento](artefato-1-analise-de-usuario.md) |
+| **2** | Gestão do Projeto - EAP, backlog, sprints, repositório | 14/09/2026 | 1 | Reapresentação | [entrega-artefato-2.md](entrega-artefato-2.md) | [documento](artefato-2-gestao-do-projeto.md) |
+| **3** | Gestão do Produto - arquitetura da informação, design arquitetural, testes de integração, protótipo, storyboard | 14/09/2026 | 1 | Complementação | [entrega-artefato-3.md](entrega-artefato-3.md) | [documento](artefato-3-gestao-do-produto.md) |
 | **5** | Gestão dos Ativos - website com dados e documentação | a definir | 7 | - | a criar | a produzir |
 | **6** | Gestão do Negócio/Domínio - análise do usuário | a definir | 6 | - | a criar | a produzir |
 | **7** | Gestão do Projeto - execução e revisão das sprints; publicação na vitrine de ativos | a definir | 8 | - | a criar | a produzir |

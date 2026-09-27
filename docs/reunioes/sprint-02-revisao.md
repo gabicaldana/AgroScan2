@@ -51,5 +51,5 @@ Reunião de encerramento da **Sprint 2 - Base de conhecimento e publicação** (
 | Milestone | `Sprint 2 - Base de conhecimento e publicação` |
 | Issue desta reunião | [#53](https://github.com/CampusCEUB/AgroScan/issues/53) |
 | Relatório da sprint | [`sprints/sprint-02.md`](../../sprints/sprint-02.md) |
-| Backlog | [Artefato 2, §2.5](../artefato-2-gestao-do-projeto.md) |
+| Backlog | [Artefato 2, §2.5](../../entregas/artefato-2-gestao-do-projeto.md) |
 | Calendário das sprints | [`sprints/README.md`](../../sprints/README.md) |

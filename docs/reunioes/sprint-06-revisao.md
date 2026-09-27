@@ -46,5 +46,5 @@ Reunião de encerramento da **Sprint 6 - Comunidade e validação** (10/11/2026 
 | Milestone | `Sprint 6 - Comunidade e validação` |
 | Issue desta reunião | [#61](https://github.com/CampusCEUB/AgroScan/issues/61) |
 | Relatório da sprint | [`sprints/sprint-06.md`](../../sprints/sprint-06.md) |
-| Backlog | [Artefato 2, §2.5](../artefato-2-gestao-do-projeto.md) |
+| Backlog | [Artefato 2, §2.5](../../entregas/artefato-2-gestao-do-projeto.md) |
 | Calendário das sprints | [`sprints/README.md`](../../sprints/README.md) |

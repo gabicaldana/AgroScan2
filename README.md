@@ -32,9 +32,9 @@ O AgroScan é uma aplicação PWA (Progressive Web App) projetada para funcionar
 
 | Artefato | Conteúdo | Entrega | Documento |
 | --- | --- | --- | --- |
-| **1** | Gestão do Negócio/Domínio - análise de usuário | 14/09/2026 | [docs/artefato-1-analise-de-usuario.md](docs/artefato-1-analise-de-usuario.md) |
-| **2** | Gestão do Projeto - EAP, backlog do produto, planejamento das sprints, projeto no repositório institucional | 14/09/2026 | [docs/artefato-2-gestao-do-projeto.md](docs/artefato-2-gestao-do-projeto.md) |
-| **3** | Gestão do Produto - arquitetura da informação, design arquitetural, testes de integração, protótipo de baixo nível, storyboard | 14/09/2026 | [docs/artefato-3-gestao-do-produto.md](docs/artefato-3-gestao-do-produto.md) |
+| **1** | Gestão do Negócio/Domínio - análise de usuário | 14/09/2026 | [entregas/artefato-1-analise-de-usuario.md](entregas/artefato-1-analise-de-usuario.md) |
+| **2** | Gestão do Projeto - EAP, backlog do produto, planejamento das sprints, projeto no repositório institucional | 14/09/2026 | [entregas/artefato-2-gestao-do-projeto.md](entregas/artefato-2-gestao-do-projeto.md) |
+| **3** | Gestão do Produto - arquitetura da informação, design arquitetural, testes de integração, protótipo de baixo nível, storyboard | 14/09/2026 | [entregas/artefato-3-gestao-do-produto.md](entregas/artefato-3-gestao-do-produto.md) |
 | **5** | Gestão dos Ativos - website com dados e documentação | a definir | a produzir |
 | **6** | Gestão do Negócio/Domínio - análise do usuário *(2º bim.)* | a definir | a produzir |
 | **7** | Gestão do Projeto - execução e revisão das sprints; vitrine de ativos *(2º bim.)* | a definir | a produzir |
@@ -64,20 +64,31 @@ O backlog está no GitHub Project, com cada item classificado por **Tipo**,
 `Estimate`) e **Milestone** da sprint. As 81 issues cobrem as 41 histórias de
 usuário, as 8 entregas avaliativas, as 16 reuniões e 16 tarefas de sprint.
 
-## Repositório de código
+## A aplicação
 
-O código da aplicação, a base de conhecimento curada, a API, o banco de dados e
-os testes automatizados ficam em um repositório próprio:
+O código, a base de conhecimento curada, a API, o banco de dados e os testes
+automatizados vivem **neste mesmo repositório**, ao lado da documentação que os
+descreve.
 
-**https://github.com/gabicaldana/AgroScan2**
+| Pasta | Conteúdo |
+| --- | --- |
+| [app/](app/) | Motor de diagnóstico, validação da base, geradores e API em FastAPI |
+| [web/](web/) | PWA em Next.js, com o porte TypeScript do motor |
+| [tests/](tests/) | 74 testes Python, 22 deles da API |
+| [migracoes/](migracoes/) | DDL numerado e reversível |
+| [data/](data/) | Base de conhecimento curada - a fonte única |
 
-A separação mantém a documentação avaliativa legível neste repositório, sem
-dispersá-la no histórico de desenvolvimento. Todo documento daqui que trata de
-uma decisão técnica aponta para o arquivo correspondente lá.
+Como a aplicação funciona e como rodá-la localmente:
+[docs/aplicacao.md](docs/aplicacao.md).
+
+> Até a Sprint 2 o código ficava em um repositório separado,
+> `gabicaldana/AgroScan2`, cujo histórico segue publicado. A unificação está
+> justificada no
+> [Artefato 2, §4.1](entregas/artefato-2-gestao-do-projeto.md#41-repositório-único).
 
 ### Estado do desenvolvimento
 
-Estado verificado em 12/09/2026, ao encerramento da Sprint 1.
+Estado verificado em 27/09/2026, durante a Sprint 2.
 
 | Épico | Estado |
 | --- | --- |
@@ -85,7 +96,7 @@ Estado verificado em 12/09/2026, ao encerramento da Sprint 1.
 | Plataforma - API REST, PostgreSQL, PWA, integração contínua | ✅ concluído |
 | Identidade e conta | 🟡 API concluída; tela de exclusão pendente |
 | Caderno de campo | 🟡 histórico e sincronização concluídos; confirmação e anotações pendentes |
-| Base de conhecimento | 🔄 3 de 24 culturas · 13 de 88 fichas de doença |
+| Base de conhecimento | 🔄 9 de 24 culturas · 34 de 88 fichas de doença · nenhuma cultura abaixo do mínimo de 3 doenças |
 | Horta, canteiros e manejo | ⬜ tabelas modeladas; rotas e telas pendentes |
 | Relatórios agregados | ⬜ consultas SQL especificadas |
 | Identificação por imagem | 🟡 escopo condicionado - captura, pré-processamento e recusa prontos; sem modelo |
@@ -93,6 +104,6 @@ Estado verificado em 12/09/2026, ao encerramento da Sprint 1.
 | Indicador | Valor |
 | --- | --- |
 | Pontos concluídos do núcleo | 88 de 172 (51%) |
-| Testes automatizados | 176, nenhuma falha |
+| Testes automatizados | 270, nenhuma falha |
 | Tabelas no banco de dados | 19 |
 | Endpoints da API | 16 |

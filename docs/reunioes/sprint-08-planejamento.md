@@ -46,5 +46,5 @@ Reunião de abertura da **Sprint 8 - Fechamento do semestre** (08/12/2026 a 19/1
 | Milestone | `Sprint 8 - Fechamento do semestre` |
 | Issue desta reunião | [#64](https://github.com/CampusCEUB/AgroScan/issues/64) |
 | Relatório da sprint | [`sprints/sprint-08.md`](../../sprints/sprint-08.md) |
-| Backlog | [Artefato 2, §2.5](../artefato-2-gestao-do-projeto.md) |
+| Backlog | [Artefato 2, §2.5](../../entregas/artefato-2-gestao-do-projeto.md) |
 | Calendário das sprints | [`sprints/README.md`](../../sprints/README.md) |

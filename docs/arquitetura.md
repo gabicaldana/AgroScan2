@@ -2,17 +2,16 @@
 
 > Visão arquitetural consolidada do AgroScan. O detalhamento por fluxo, com
 > diagramas de sequência e implantação, está no
-> [Artefato 3, seção 2](artefato-3-gestao-do-produto.md#2-design-arquitetural).
+> [Artefato 3, seção 2](../entregas/artefato-3-gestao-do-produto.md#2-design-arquitetural).
 > O modelo de dados completo está em
-> [`docs/modelo-de-dados.md`](https://github.com/gabicaldana/AgroScan2/blob/main/docs/modelo-de-dados.md)
-> no repositório de código.
+> [`docs/modelo-de-dados.md`](modelo-de-dados.md).
 
 | Campo | Informação |
 | --- | --- |
 | Projeto | AgroScan - PWA para diagnóstico de doenças em hortaliças |
 | Equipe | Gabriela Pedersoli Caldana (22404253) · Thaís Regina Dias da Mota (22403754) |
 | Última revisão | 12/09/2026 - Sprint 1 |
-| Repositório de código | https://github.com/gabicaldana/AgroScan2 |
+| Repositório | [`CampusCEUB/AgroScan`](https://github.com/CampusCEUB/AgroScan) - aplicação e documentação |
 
 ---
 
@@ -220,11 +219,11 @@ fixtures compartilhadas.
 
 | Diagrama | Onde está | ADR relacionado |
 | --- | --- | --- |
-| Mapa de navegação (arquitetura da informação) | [Artefato 3, §1.1](artefato-3-gestao-do-produto.md#11-mapa-de-navegação) | 0008 |
-| Visão em camadas | [Artefato 3, §2.2](artefato-3-gestao-do-produto.md#22-visão-em-camadas) | 0001 |
+| Mapa de navegação (arquitetura da informação) | [Artefato 3, §1.1](../entregas/artefato-3-gestao-do-produto.md#11-mapa-de-navegação) | 0008 |
+| Visão em camadas | [Artefato 3, §2.2](../entregas/artefato-3-gestao-do-produto.md#22-visão-em-camadas) | 0001 |
 | Componentes e fronteiras | §2 deste documento | 0001, 0004 |
-| Sequência - diagnóstico sem conexão | [Artefato 3, §2.4](artefato-3-gestao-do-produto.md#24-fluxo-1---diagnóstico-sem-conexão) | 0001, 0002 |
-| Sequência - sincronização da fila | [Artefato 3, §2.5](artefato-3-gestao-do-produto.md#25-fluxo-2---sincronização-da-fila) | 0009 |
-| Implantação | [Artefato 3, §2.6](artefato-3-gestao-do-produto.md#26-implantação) | 0007 |
-| Entidade-relacionamento | `docs/modelo-de-dados.md` (repositório de código) | 0003, 0009 |
+| Sequência - diagnóstico sem conexão | [Artefato 3, §2.4](../entregas/artefato-3-gestao-do-produto.md#24-fluxo-1---diagnóstico-sem-conexão) | 0001, 0002 |
+| Sequência - sincronização da fila | [Artefato 3, §2.5](../entregas/artefato-3-gestao-do-produto.md#25-fluxo-2---sincronização-da-fila) | 0009 |
+| Implantação | [Artefato 3, §2.6](../entregas/artefato-3-gestao-do-produto.md#26-implantação) | 0007 |
+| Entidade-relacionamento | [`docs/modelo-de-dados.md`](modelo-de-dados.md) | 0003, 0009 |
 | Derivação da base curada | §4.1 deste documento | 0003, 0004 |

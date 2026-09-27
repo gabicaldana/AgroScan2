@@ -13,8 +13,7 @@
 | Equipe | Gabriela Pedersoli Caldana (22404253) · Thaís Regina Dias da Mota (22403754) |
 | Entrega | 14/09/2026 |
 | Sprint | Sprint 1 - Especificação e gestão |
-| Repositório institucional | `CampusCEUB/AgroScan` |
-| Repositório de código | https://github.com/gabicaldana/AgroScan2 |
+| Repositório | [`CampusCEUB/AgroScan`](https://github.com/CampusCEUB/AgroScan) - aplicação e documentação |
 
 ---
 
@@ -26,7 +25,7 @@ agronômica (pacote 2) e o desenvolvimento da aplicação (pacotes 4 e 5) correm
 paralelo durante todo o semestre, porque a curadoria é trabalho de pesquisa e
 não depende do código para avançar.
 
-![Estrutura Analítica do Projeto: o AgroScan decomposto em quatro frentes - Base de Conhecimento, Aplicativo PWA, Diagnóstico por Imagem, e Validação e Evolução - cada uma desdobrada em pacotes de trabalho](imagens/eap.png)
+![Estrutura Analítica do Projeto: o AgroScan decomposto em quatro frentes - Base de Conhecimento, Aplicativo PWA, Diagnóstico por Imagem, e Validação e Evolução - cada uma desdobrada em pacotes de trabalho](../docs/imagens/eap.png)
 
 **Figura 1 - Estrutura Analítica do Projeto.** Elaboração: Thaís Regina Dias da
 Mota.
@@ -86,7 +85,7 @@ graph TD
 ## 1.1 EAP em forma de lista
 
 Versão textual da mesma decomposição, com o estado atual de cada pacote de
-trabalho. O estado é verificável no repositório de código.
+trabalho. O estado é verificável neste repositório.
 
 | Legenda | Significado |
 | --- | --- |
@@ -101,7 +100,7 @@ trabalho. O estado é verificável no repositório de código.
   - 1.3 Repositório institucional: requisitos, arquitetura, sprints, entregas, ADRs - 🔄
 - **2. Base de conhecimento**
   - 2.1 Modelagem do catálogo: órgãos, sintomas, culturas, doenças, tratamentos, ingredientes ativos - ✅
-  - 2.2 Curadoria por família botânica - 🔄 *(3 de 24 culturas, 13 de 88 doenças)*
+  - 2.2 Curadoria por família botânica - 🔄 *(9 de 24 culturas, 34 de 88 doenças; solanáceas e brássicas fechadas)*
   - 2.3 Validação automática da base - ✅
   - 2.4 Fontes e referências técnicas - 🔄
 - **3. Motor de diagnóstico**
@@ -155,7 +154,7 @@ Prioridade segundo MoSCoW: **Obrigatório** (must), **Importante** (should),
 **Desejável** (could).
 
 > As tabelas a seguir reproduzem o documento canônico
-> [`docs/requisitos.md`](requisitos.md), que acrescenta o estado de
+> [`docs/requisitos.md`](../docs/requisitos.md), que acrescenta o estado de
 > implementação de cada requisito, os critérios transversais de aceitação e a
 > matriz de rastreabilidade requisito → história → sprint → verificação. Em caso
 > de divergência, o documento canônico prevalece.
@@ -564,40 +563,91 @@ de arriscar um palpite.
 
 # 4. Projeto no repositório institucional
 
-## 4.1 Organização de dois repositórios
+## 4.1 Repositório único
 
-O projeto opera com dois repositórios, com papéis distintos:
+O projeto opera em **um único repositório**, `CampusCEUB/AgroScan`, que reúne a
+aplicação e a documentação que a descreve.
 
 | Repositório | Papel | Conteúdo |
 | --- | --- | --- |
-| `CampusCEUB/AgroScan` | **Institucional** - é o repositório avaliado | Artefatos acadêmicos, requisitos, arquitetura, registros de sprint, entregas, ADRs e atas |
-| `gabicaldana/AgroScan2` | **Código** | Aplicação, base de conhecimento, API, banco, testes e integração contínua |
+| `CampusCEUB/AgroScan` | **Institucional** - é o repositório avaliado | Aplicação, base de conhecimento, API, banco, testes e integração contínua; artefatos acadêmicos, requisitos, arquitetura, registros de sprint, entregas, ADRs e atas |
 
-A separação evita que a documentação avaliativa fique dispersa no histórico do
-código, e mantém o repositório institucional legível para quem avalia. Todo
-documento institucional que se refere a uma decisão técnica aponta para o
-arquivo correspondente no repositório de código.
+### Por que deixou de haver dois
 
-## 4.2 Estrutura do repositório institucional
+Até a Sprint 2 o projeto operava com dois repositórios: o institucional, com a
+documentação avaliada, e `gabicaldana/AgroScan2`, com o código. A separação
+pretendia manter o repositório avaliado legível, evitando que os artefatos
+ficassem dispersos no histórico do código.
+
+Na prática ela produziu o efeito contrário. O que a disciplina avalia é o
+repositório institucional, e ele não continha o produto - apenas descrições
+dele. Cada afirmação técnica dos artefatos apontava para um endereço externo,
+e a verificação dependia de sair do repositório avaliado. A Sprint 1 já havia
+registrado o custo dessa distância na retrospectiva: a documentação envelheceu
+em relação ao código, e o README do repositório de código afirmava que a API
+não fora construída quando ela já estava implementada, publicada e testada.
+
+Com a unificação, o teste que comprova um requisito e o documento que o declara
+vivem no mesmo histórico, e a integração contínua roda sobre o repositório que
+é avaliado.
+
+> **O histórico anterior ao merge permanece em `gabicaldana/AgroScan2`.** A
+> migração condensou os 12 commits do repositório de código em um só. Os hashes
+> citados no [relatório da Sprint 1](../sprints/sprint-01.md#pull-requests-aceitos)
+> resolvem no repositório de origem, que segue publicado.
+
+> ⚠️ **Pendência: o ambiente publicado.** O deploy na Vercel está ligado a
+> `gabicaldana/AgroScan2`. Enquanto não for reapontado para
+> `CampusCEUB/AgroScan`, o código evolui aqui e o ambiente publicado continua
+> saindo do repositório antigo. Agrava o risco R06 e mantém aberta a `issue`
+> [#67](https://github.com/CampusCEUB/AgroScan/issues/67).
+
+## 4.2 Estrutura do repositório
 
 ```
-docs/
+app/                                    Aplicação em Python
+  motor.py                              Motor de diagnóstico - stdlib pura
+  validacao.py                          Validação automática da base
+  fixtures.py, preprocessamento.py      Geradores de artefatos versionados
+  api/                                  API REST em FastAPI
+  seed.py                               Carga idempotente do catálogo
+api/                                    Ponto de entrada da função serverless
+web/                                    PWA em Next.js
+  lib/                                  Porte TypeScript do motor e cliente da API
+  components/, app/                     Telas do fluxo de diagnóstico
+tests/                                  74 testes Python, 22 deles da API
+migracoes/                              DDL numerado e reversível
+data/                                   Base de conhecimento curada - fonte única
+entregas/                               Entregas avaliativas: documento e registro
   artefato-1-analise-de-usuario.md      Artefato 1 - Gestão do Negócio/Domínio
   artefato-2-gestao-do-projeto.md       Artefato 2 - Gestão do Projeto (este documento)
   artefato-3-gestao-do-produto.md       Artefato 3 - Gestão do Produto
-  requisitos.md                         Requisitos consolidados e rastreabilidade
-  arquitetura.md                        Arquitetura da solução
-  decisoes/                             ADRs - registros de decisão arquitetural
-  reunioes/                             Atas e checkpoints
-sprints/
-  sprint-00-planejamento.md             Planejamento inicial
-  sprint-01.md                          Relatório da sprint corrente
-entregas/
   entrega-artefato-1.md                 Registro de entrega avaliativa
   entrega-artefato-2.md
   entrega-artefato-3.md
+docs/                                   Documentação técnica de apoio
+  aplicacao.md                          Como a aplicação funciona e como rodá-la
+  requisitos.md                         Requisitos consolidados e rastreabilidade
+  arquitetura.md                        Arquitetura da solução
+  modelo-de-dados.md                    19 tabelas, DER e consultas dos relatórios
+  decisoes/                             ADRs - registros de decisão arquitetural
+  reunioes/                             Atas das reuniões de sprint
+  imagens/                              Figuras dos artefatos
+sprints/                                Relatórios de sprint
+  sprint-00-planejamento.md             Planejamento inicial
+  sprint-01.md a sprint-08.md           Um relatório por sprint
+.github/workflows/ci.yml                Integração contínua
 CHANGELOG.md                            Mudanças por sprint ou marco
 ```
+
+Os documentos dos artefatos ficam em `entregas/`, junto ao registro de entrega
+correspondente, de modo que cada entrega avaliativa se apresente como uma
+unidade: o que foi produzido e a evidência de que foi submetido. A pasta `docs/`
+guarda a documentação técnica que sustenta os artefatos sem ser, ela própria,
+uma entrega.
+
+A aplicação ocupa a raiz para que os caminhos esperados pela integração
+contínua e pelo `vercel.json` continuem valendo sem ajuste.
 
 ## 4.3 Fluxo de trabalho
 
@@ -660,7 +710,7 @@ no GitHub Project, onde somam por épico e por sprint.
 Cada sprint tem duas reuniões, conforme a cadência de eventos definida na seção
 3.1: **planejamento** na abertura e **revisão** no encerramento. Cada uma tem
 `issue` própria, com a etiqueta `reuniao` e vinculada à `milestone` da sprint, e
-ata correspondente em [`docs/reunioes/`](reunioes/README.md). O alinhamento de
+ata correspondente em [`docs/reunioes/`](../docs/reunioes/README.md). O alinhamento de
 meio de sprint é assíncrono e não gera ata: impedimento que bloqueie por mais de
 48 horas vira comentário na `issue` correspondente.
 
@@ -707,7 +757,7 @@ equipe.
 
 Uma inconsistência da matriz de rastreabilidade foi identificada durante a
 criação das `issues` e está registrada em
-[`docs/requisitos.md`, §9](requisitos.md#9-matriz-de-rastreabilidade): os
+[`docs/requisitos.md`, §9](../docs/requisitos.md#9-matriz-de-rastreabilidade): os
 requisitos **RF22 e RNF16** - geolocalização da consulta mediante consentimento
 explícito - apontam para `US22`, que é uma história do épico E5. A
 geolocalização não tem história própria no backlog, e a decisão entre criar uma

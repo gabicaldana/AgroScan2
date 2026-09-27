@@ -4,6 +4,51 @@ Registre aqui as mudanças relevantes por sprint ou marco avaliativo.
 
 ## Sprint 2 - Base de conhecimento e publicação · 15/09 a 28/09/2026
 
+### Repositório único: a aplicação veio para o institucional
+
+O código deixou de viver em `gabicaldana/AgroScan2` e passou a ocupar a raiz
+deste repositório, ao lado da documentação que o descreve. O que a disciplina
+avalia é o repositório institucional, e ele não continha o produto — apenas
+descrições dele, com cada afirmação técnica apontando para um endereço externo.
+
+- **103 arquivos** trazidos: `app/`, `api/`, `web/`, `tests/`, `migracoes/`, `data/`, mais `vercel.json`, `requirements.txt`, `requirements-dev.txt` e `.env.example`.
+- **Histórico condensado** num commit só, por decisão da equipe. Os 12 commits originais seguem em `gabicaldana/AgroScan2` — são os que o relatório da Sprint 1 cita por hash, e continuam resolvendo lá.
+- **Colisões resolvidas**: o README institucional continua a capa avaliada e o README da aplicação virou [`docs/aplicacao.md`](docs/aplicacao.md); os `.github/` eram complementares (templates de um lado, `ci.yml` do outro); os `.gitignore` foram fundidos; adotado o `.gitattributes` do repo de código, cujo `* text=auto eol=lf` é necessário para o teste de frescor dos artefatos gerados não falhar em clone no Windows.
+- **Verificado no novo local antes do commit**: validação da base aprovada; 74 testes Python e 102 TypeScript passando; regeração completa dos artefatos sem nenhuma divergência — o passo mais rígido do CI.
+- **Documentação realinhada**: a §4.1 do Artefato 2 passou de "Organização de dois repositórios" para "Repositório único", com o registro de por que a separação foi desfeita; §4.2, README, `requisitos.md` e `arquitetura.md` atualizados.
+
+Os registros históricos — atas, relatório da Sprint 1 e registros de entrega —
+**não** foram reescritos: descrevem o que era verdade na época, e seus links
+para o repositório antigo continuam válidos.
+
+> ⚠️ **Pendência que a migração não resolve.** O ambiente publicado sai da
+> Vercel ligada a `gabicaldana/AgroScan2`. Enquanto ela não for reapontada para
+> `CampusCEUB/AgroScan`, o código evolui aqui e o deploy sai de lá. Agrava o
+> risco R06 e mantém aberta a issue
+> [#67](https://github.com/CampusCEUB/AgroScan/issues/67).
+
+### Relatórios das oito sprints
+
+Criados os relatórios das Sprints 2 a 8 em `sprints/`, completando a série. A
+pasta deixou de ter apenas a sprint encerrada e a de planejamento inicial.
+
+- **7 relatórios novos** (`sprint-02.md` a `sprint-08.md`), preenchidos até o planejamento: período, objetivo, `milestone`, reuniões, itens planejados com `issue` e pontos, responsáveis, impedimentos herdados e riscos ativos do ciclo. As seções de execução - entregas, `issues` concluídas, `pull requests`, evidências e retrospectiva - ficam marcadas para preenchimento na revisão de cada sprint.
+- **Itens extraídos das milestones do GitHub**, e não do calendário em prosa: as contagens por sprint (14, 8, 6, 8, 10, 6 e 5 `issues`) conferem com a tabela do Artefato 2, §4.4.
+- **Links pendentes resolvidos**: as 16 atas de reunião já apontavam para `sprints/sprint-0N.md`, que não existiam.
+- **Divergência registrada**: a US05 aparece como "4-5" no backlog do Artefato 2 e como item integral da Sprint 5 na `milestone`. Anotada em `sprint-04.md` para decisão no planejamento daquele ciclo.
+
+### Artefatos movidos para `entregas/`
+
+Concluída a mudança de local pedida pela disciplina. Os documentos dos
+artefatos passaram de `docs/` para `entregas/`, junto aos registros de entrega
+correspondentes, de modo que cada entrega avaliativa se apresente como uma
+unidade. A pasta `docs/` guarda agora apenas a documentação técnica de apoio.
+
+- **3 documentos movidos**: Artefatos 1, 2 e 3. As cópias em `docs/` foram removidas - por um tempo o repositório manteve as duas versões, idênticas, com risco de divergirem.
+- **~50 links reapontados** em README, requisitos, arquitetura, 9 ADRs, 16 atas de reunião, registros de entrega e relatórios de sprint.
+- **Links internos dos próprios artefatos corrigidos**: apontavam para `requisitos.md`, `decisoes/` e `reunioes/` como vizinhos, o que deixou de valer com a mudança de pasta.
+- **Artefato 2, §4.2** atualizado, pois descrevia a estrutura antiga de pastas.
+
 ### Gestão do projeto no GitHub
 
 Resolvidas as pendências 4 e 5 do Artefato 2, §5, e o item 1 das "Próximas

@@ -31,7 +31,7 @@ Reunião de abertura da **Sprint 1 - Especificação e gestão** (31/08/2026 a 1
 
 As decisões abaixo estão registradas em
 [`sprints/sprint-00-planejamento.md`](../../sprints/sprint-00-planejamento.md) e
-no [Artefato 2](../artefato-2-gestao-do-projeto.md). Esta ata as consolida como
+no [Artefato 2](../../entregas/artefato-2-gestao-do-projeto.md). Esta ata as consolida como
 o acordo de abertura do ciclo.
 
 ### Cadência e eventos
@@ -93,5 +93,5 @@ qualquer pressão de prazo.
 | Milestone | `Sprint 1 - Especificação e gestão` |
 | Issue desta reunião | [#50](https://github.com/CampusCEUB/AgroScan/issues/50) |
 | Relatório da sprint | [`sprints/sprint-01.md`](../../sprints/sprint-01.md) |
-| Backlog | [Artefato 2, §2.5](../artefato-2-gestao-do-projeto.md) |
+| Backlog | [Artefato 2, §2.5](../../entregas/artefato-2-gestao-do-projeto.md) |
 | Calendário das sprints | [`sprints/README.md`](../../sprints/README.md) |

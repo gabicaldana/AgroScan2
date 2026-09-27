@@ -44,7 +44,7 @@ artefato e se resume a três incoerências da versão anterior:
 
 | Item | Link |
 | --- | --- |
-| Documento do artefato | [`docs/artefato-1-analise-de-usuario.md`](../docs/artefato-1-analise-de-usuario.md) |
+| Documento do artefato | [`entregas/artefato-1-analise-de-usuario.md`](artefato-1-analise-de-usuario.md) |
 | Requisitos consolidados | [`docs/requisitos.md`](../docs/requisitos.md) |
 | Relatório da sprint | [`sprints/sprint-01.md`](../sprints/sprint-01.md) |
 | Repositório de código | https://github.com/gabicaldana/AgroScan2 |

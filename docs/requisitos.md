@@ -1,7 +1,7 @@
 # Requisitos
 
 > **Documento canônico de requisitos do AgroScan.** As tabelas de requisitos
-> reproduzidas no [Artefato 2](artefato-2-gestao-do-projeto.md) derivam deste
+> reproduzidas no [Artefato 2](../entregas/artefato-2-gestao-do-projeto.md) derivam deste
 > documento. Em caso de divergência, este prevalece.
 
 | Campo | Informação |
@@ -24,10 +24,10 @@ recebe hipóteses de doença ordenadas por grau de compatibilidade, cada uma com
 descrição, nível de gravidade, condições climáticas favoráveis e manejo
 apresentado na ordem do manejo integrado.
 
-O recorte coberto neste repositório é a documentação de gestão do negócio, do
-projeto e do produto. O código, a base de conhecimento curada, a API, o banco de
-dados e os testes automatizados estão em
-[`gabicaldana/AgroScan2`](https://github.com/gabicaldana/AgroScan2).
+Este repositório reúne a documentação de gestão do negócio, do projeto e do
+produto **e** a aplicação: o código, a base de conhecimento curada, a API, o
+banco de dados e os testes automatizados. Até a Sprint 2 o código vivia em
+`gabicaldana/AgroScan2`, cujo histórico segue publicado.
 
 O resultado esperado é duplo: acadêmico, exercitando modelagem e implementação
 de banco relacional, back-end com API, front-end responsivo e acessível,
@@ -44,7 +44,7 @@ público que hoje decide sem ela.
 | Avaliação | Professora responsável e banca da disciplina | Verificar competências e rastreabilidade das entregas |
 | Validação | Comunidade parceira da Atividade de Extensão | Usar o sistema e validar as decisões de projeto |
 
-Análise completa em [Artefato 1](artefato-1-analise-de-usuario.md).
+Análise completa em [Artefato 1](../entregas/artefato-1-analise-de-usuario.md).
 
 **Fora do público-alvo:** o sistema não substitui o engenheiro agrônomo, não
 emite receituário agronômico e não atende grandes lavouras de commodities.
@@ -93,7 +93,7 @@ Estado verificado em 12/09/2026 sobre o commit `068b6d9`.
 
 | ID | Requisito | Prioridade | Estado |
 | --- | --- | --- | --- |
-| RF01 | Selecionar a hortaliça, com culturas agrupadas por grupo (fruto, folha, flor, haste, raiz) | Obrigatório | 🔄 3 de 24 culturas |
+| RF01 | Selecionar a hortaliça, com culturas agrupadas por grupo (fruto, folha, flor, haste, raiz) | Obrigatório | 🔄 9 de 24 culturas; grupos folha e flor estreiam com as brássicas |
 | RF02 | Apresentar os sintomas da cultura selecionada, agrupados pelo órgão da planta | Obrigatório | ✅ |
 | RF03 | Marcar e desmarcar os sintomas observados | Obrigatório | ✅ |
 | RF04 | Calcular e apresentar hipóteses ordenadas por grau de compatibilidade | Obrigatório | ✅ |
@@ -152,7 +152,7 @@ Estado verificado em 12/09/2026 sobre o commit `068b6d9`.
 | --- | --- | --- | --- |
 | RF32 | Ser instalável como aplicativo no celular (PWA) | Obrigatório | ✅ |
 | RF33 | Disponibilizar API REST para consulta ao catálogo e ao diagnóstico | Obrigatório | ✅ |
-| RF34 | Sincronizar o catálogo quando houver versão mais recente no servidor | Importante | 🟡 endpoint de versão ✅; consumo no cliente ⬜ |
+| RF34 | Sincronizar o catálogo quando houver versão mais recente no servidor | Importante | ✅ endpoint de versão e consumo no cliente |
 | RF35 | Registrar, em cada consulta, a versão do catálogo usada no diagnóstico | Importante | ✅ |
 | RF36 | Indicar visualmente quando está operando sem conexão | Importante | ✅ |
 
@@ -192,7 +192,7 @@ Estado verificado em 12/09/2026 sobre o commit `068b6d9`.
 ## 7. Critérios de aceitação
 
 Os critérios por história de usuário estão no
-[Artefato 2, seção 2.5](artefato-2-gestao-do-projeto.md#25-histórias-de-usuário).
+[Artefato 2, seção 2.5](../entregas/artefato-2-gestao-do-projeto.md#25-histórias-de-usuário).
 Os critérios transversais abaixo se aplicam a **toda** entrega e integram o
 Definition of Done:
 
@@ -278,7 +278,7 @@ título e vinculadas à `milestone` da sprint.
 
 ## 10. Riscos ligados a requisitos
 
-Registro completo no [Artefato 2, seção 3.5](artefato-2-gestao-do-projeto.md#35-riscos).
+Registro completo no [Artefato 2, seção 3.5](../entregas/artefato-2-gestao-do-projeto.md#35-riscos).
 Ligação direta com requisitos:
 
 | Risco | Requisitos ameaçados | Mitigação |
