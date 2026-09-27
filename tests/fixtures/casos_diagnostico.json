@@ -9,7 +9,7 @@
       "grupo": "raiz",
       "familia": "Solanaceae",
       "emoji": "🥔",
-      "n_doencas": 2
+      "n_doencas": 3
     },
     {
       "id": "pimentao",
@@ -18,7 +18,7 @@
       "grupo": "fruto",
       "familia": "Solanaceae",
       "emoji": "🫑",
-      "n_doencas": 1
+      "n_doencas": 3
     },
     {
       "id": "tomate",
@@ -70,6 +70,13 @@
           "orgao_ordem": 2
         },
         {
+          "id": "crescimento_reduzido",
+          "nome": "Crescimento reduzido / nanismo",
+          "orgao": "planta",
+          "orgao_rotulo": "Na planta inteira",
+          "orgao_ordem": 5
+        },
+        {
           "id": "murcha",
           "nome": "Murcha da planta",
           "orgao": "planta",
@@ -110,11 +117,46 @@
           "orgao_ordem": 1
         },
         {
+          "id": "po_branco_superficie",
+          "nome": "Pó branco, farináceo, na superfície da folha",
+          "orgao": "folha",
+          "orgao_rotulo": "Na folha",
+          "orgao_ordem": 1
+        },
+        {
+          "id": "pontuacoes_pretas_na_lesao",
+          "nome": "Pontinhos pretos dentro da lesão",
+          "orgao": "folha",
+          "orgao_rotulo": "Na folha",
+          "orgao_ordem": 1
+        },
+        {
+          "id": "lesoes_no_fruto",
+          "nome": "Lesões deprimidas ou podridão no fruto",
+          "orgao": "fruto",
+          "orgao_rotulo": "No fruto",
+          "orgao_ordem": 4
+        },
+        {
           "id": "manchas_salientes_fruto",
           "nome": "Manchas ásperas e salientes, tipo verruga, no fruto",
           "orgao": "fruto",
           "orgao_rotulo": "No fruto",
           "orgao_ordem": 4
+        },
+        {
+          "id": "queda_de_frutos",
+          "nome": "Queda prematura de frutos",
+          "orgao": "fruto",
+          "orgao_rotulo": "No fruto",
+          "orgao_ordem": 4
+        },
+        {
+          "id": "desfolha_baixo_para_cima",
+          "nome": "Queda de folhas começando pelas mais baixas",
+          "orgao": "planta",
+          "orgao_rotulo": "Na planta inteira",
+          "orgao_ordem": 5
         },
         {
           "id": "queda_precoce_folhas",
@@ -425,6 +467,47 @@
       ]
     },
     {
+      "id": "batata_canela_preta",
+      "nome": "Canela-preta da batata",
+      "cultura": "Batata",
+      "emoji": "🥔",
+      "agente": "Pectobacterium atrosepticum",
+      "tipo_agente": "bacteria",
+      "gravidade": 4,
+      "descricao": "Apodrecimento escuro e mole que comeca na base da haste, junto ao tuberculo-semente, e sobe pelo caule. A planta amarelece, murcha e tomba. A bacteria entra por ferimento ou pelo proprio tuberculo infectado, e o encharcamento do solo e o que decide se o foco se espalha. Nao ha controle curativo: o manejo e de prevencao e de eliminacao do foco.",
+      "condicoes_favoraveis": {
+        "temperatura": "18 a 24 graus C",
+        "umidade": "Alta - solo encharcado e o fator determinante",
+        "observacao": "Plantio em solo frio e umido logo apos o corte do tuberculo-semente e a situacao de maior risco. Excesso de irrigacao e drenagem ruim espalham o foco pela agua."
+      },
+      "tratamentos": [
+        {
+          "tipo": "cultural",
+          "descricao": "Usar tuberculo-semente sadio e certificado; evitar cortar a semente ou deixar cicatrizar antes do plantio; nao plantar em solo encharcado; melhorar a drenagem; arrancar e retirar da area as plantas doentes; nao irrigar em excesso."
+        },
+        {
+          "tipo": "biologico",
+          "descricao": "Nao ha produto biologico registrado com eficacia comprovada para esta bacteriose. A prevencao pela sanidade da semente e o que funciona."
+        },
+        {
+          "tipo": "quimico",
+          "descricao": "Nao ha bactericida curativo. Produtos cupricos tem acao apenas preventiva e de superficie, e nao alcancam a bacteria dentro do caule."
+        }
+      ],
+      "ingredientes_ativos": [
+        {
+          "nome": "Oxicloreto de cobre",
+          "grupo": "Inorganico",
+          "acao": "protetor"
+        },
+        {
+          "nome": "Hidroxido de cobre",
+          "grupo": "Inorganico",
+          "acao": "protetor"
+        }
+      ]
+    },
+    {
       "id": "pimentao_mancha_bacteriana",
       "nome": "Mancha-bacteriana do pimentão",
       "cultura": "Pimentão",
@@ -475,6 +558,98 @@
           "nome": "Casugamicina",
           "grupo": "Antibiótico agrícola",
           "acao": "bactericida"
+        }
+      ]
+    },
+    {
+      "id": "pimentao_antracnose",
+      "nome": "Antracnose do pimentao",
+      "cultura": "Pimentão",
+      "emoji": "🫑",
+      "agente": "Colletotrichum spp.",
+      "tipo_agente": "fungo",
+      "gravidade": 4,
+      "descricao": "Ataca principalmente o fruto, sobretudo o maduro. A lesao e circular e deprimida, como se o fruto tivesse sido pressionado, e dentro dela aparecem pontinhos pretos dispostos em circulos concentricos - as estruturas de frutificacao do fungo. E a doenca que mais compromete o produto na fase de colheita, porque a lesao so se revela quando o fruto ja esta formado.",
+      "condicoes_favoraveis": {
+        "temperatura": "22 a 28 graus C",
+        "umidade": "Alta - molhamento do fruto por chuva ou aspersao",
+        "observacao": "O fungo sobrevive em restos culturais e na semente. Chuva e irrigacao por aspersao respingam o inoculo do solo para o fruto."
+      },
+      "tratamentos": [
+        {
+          "tipo": "cultural",
+          "descricao": "Usar semente sadia; fazer rotacao com especies fora das solanaceas; eliminar restos culturais e frutos doentes da area; preferir irrigacao localizada a aspersao; colher os frutos no ponto, sem deixar amadurecer demais na planta."
+        },
+        {
+          "tipo": "biologico",
+          "descricao": "Aplicacoes preventivas de Trichoderma spp. e de Bacillus subtilis reduzem o inoculo, com efeito melhor quando associadas ao manejo cultural."
+        },
+        {
+          "tipo": "quimico",
+          "descricao": "Fungicidas protetores em aplicacao preventiva, desde o inicio da frutificacao, com rodizio de grupo quimico para evitar resistencia."
+        }
+      ],
+      "ingredientes_ativos": [
+        {
+          "nome": "Mancozebe",
+          "grupo": "Ditiocarbamato",
+          "acao": "protetor"
+        },
+        {
+          "nome": "Azoxistrobina",
+          "grupo": "Estrobilurina",
+          "acao": "sistemico"
+        },
+        {
+          "nome": "Difenoconazol",
+          "grupo": "Triazol",
+          "acao": "sistemico"
+        }
+      ]
+    },
+    {
+      "id": "pimentao_oidio",
+      "nome": "Oidio do pimentao",
+      "cultura": "Pimentão",
+      "emoji": "🫑",
+      "agente": "Leveillula taurica",
+      "tipo_agente": "fungo",
+      "gravidade": 3,
+      "descricao": "Manchas amareladas na face superior da folha e po esbranquicado na face inferior. A desfolha comeca pelas folhas mais velhas e expoe os frutos ao sol, causando queima. Como o oidio do tomateiro, e a excecao entre os fungos foliares: prospera no tempo seco, e agua livre na folha atrapalha a germinacao do esporo.",
+      "condicoes_favoraveis": {
+        "temperatura": "20 a 27 graus C",
+        "umidade": "Moderada a baixa - nao exige molhamento foliar",
+        "observacao": "Comum em cultivo protegido e em periodos secos. Ao contrario das demais doencas fungicas desta base, molhar a folha nao favorece o patogeno."
+      },
+      "tratamentos": [
+        {
+          "tipo": "cultural",
+          "descricao": "Melhorar a ventilacao, sobretudo em estufa; evitar adubacao nitrogenada em excesso, que deixa o tecido mais suscetivel; eliminar folhas muito atacadas."
+        },
+        {
+          "tipo": "biologico",
+          "descricao": "Bacillus subtilis em aplicacao preventiva tem bom efeito, e e compativel com o cultivo protegido."
+        },
+        {
+          "tipo": "quimico",
+          "descricao": "Enxofre em aplicacao preventiva, respeitando o limite de temperatura para nao causar fitotoxidez; triazois quando a doenca ja se instalou."
+        }
+      ],
+      "ingredientes_ativos": [
+        {
+          "nome": "Enxofre",
+          "grupo": "Inorganico",
+          "acao": "protetor"
+        },
+        {
+          "nome": "Tebuconazol",
+          "grupo": "Triazol",
+          "acao": "sistemico"
+        },
+        {
+          "nome": "Azoxistrobina",
+          "grupo": "Estrobilurina",
+          "acao": "sistemico"
         }
       ]
     },
@@ -2370,6 +2545,54 @@
             "sintomas_nao_explicados": [],
             "compatibilidade_pct": 100,
             "rotulo_gravidade": "Alta"
+          },
+          {
+            "doenca_id": "pimentao_oidio",
+            "nome": "Oidio do pimentao",
+            "agente": "Leveillula taurica",
+            "tipo_agente": "fungo",
+            "gravidade": 3,
+            "compatibilidade": 0.2619047619047619,
+            "sintomas_compativeis": [
+              {
+                "id": "manchas_amareladas",
+                "nome": "Manchas amareladas (cloróticas)",
+                "peso": 0.7
+              },
+              {
+                "id": "queda_precoce_folhas",
+                "nome": "Queda precoce de folhas por toda a planta",
+                "peso": 0.4
+              }
+            ],
+            "sintomas_esperados_ausentes": [
+              {
+                "id": "po_branco_superficie",
+                "nome": "Pó branco, farináceo, na superfície da folha",
+                "peso": 1.0
+              },
+              {
+                "id": "desfolha_baixo_para_cima",
+                "nome": "Queda de folhas começando pelas mais baixas",
+                "peso": 0.6
+              }
+            ],
+            "sintomas_nao_explicados": [
+              {
+                "id": "manchas_angulares_halo_amarelo",
+                "nome": "Manchas angulares com halo amarelo ao redor"
+              },
+              {
+                "id": "manchas_encharcadas",
+                "nome": "Lesões encharcadas, com aspecto de queimadura"
+              },
+              {
+                "id": "manchas_salientes_fruto",
+                "nome": "Manchas ásperas e salientes, tipo verruga, no fruto"
+              }
+            ],
+            "compatibilidade_pct": 26,
+            "rotulo_gravidade": "Media"
           }
         ],
         "pergunta": null
@@ -2418,6 +2641,50 @@
             "sintomas_esperados_ausentes": [],
             "sintomas_nao_explicados": [],
             "compatibilidade_pct": 100,
+            "rotulo_gravidade": "Alta"
+          },
+          {
+            "doenca_id": "batata_canela_preta",
+            "nome": "Canela-preta da batata",
+            "agente": "Pectobacterium atrosepticum",
+            "tipo_agente": "bacteria",
+            "gravidade": 4,
+            "compatibilidade": 0.4054054054054054,
+            "sintomas_compativeis": [
+              {
+                "id": "lesoes_no_caule",
+                "nome": "Lesões escuras no caule ou haste",
+                "peso": 1.0
+              },
+              {
+                "id": "manchas_amareladas",
+                "nome": "Manchas amareladas (cloróticas)",
+                "peso": 0.5
+              }
+            ],
+            "sintomas_esperados_ausentes": [
+              {
+                "id": "murcha",
+                "nome": "Murcha da planta",
+                "peso": 0.8
+              },
+              {
+                "id": "crescimento_reduzido",
+                "nome": "Crescimento reduzido / nanismo",
+                "peso": 0.4
+              }
+            ],
+            "sintomas_nao_explicados": [
+              {
+                "id": "desfolha_baixo_para_cima",
+                "nome": "Queda de folhas começando pelas mais baixas"
+              },
+              {
+                "id": "manchas_escuras_aneis",
+                "nome": "Manchas escuras com anéis concêntricos, como um alvo"
+              }
+            ],
+            "compatibilidade_pct": 41,
             "rotulo_gravidade": "Alta"
           }
         ],
@@ -2520,6 +2787,50 @@
             "sintomas_nao_explicados": [],
             "compatibilidade_pct": 100,
             "rotulo_gravidade": "Muito alta"
+          },
+          {
+            "doenca_id": "batata_canela_preta",
+            "nome": "Canela-preta da batata",
+            "agente": "Pectobacterium atrosepticum",
+            "tipo_agente": "bacteria",
+            "gravidade": 4,
+            "compatibilidade": 0.48648648648648646,
+            "sintomas_compativeis": [
+              {
+                "id": "lesoes_no_caule",
+                "nome": "Lesões escuras no caule ou haste",
+                "peso": 1.0
+              },
+              {
+                "id": "murcha",
+                "nome": "Murcha da planta",
+                "peso": 0.8
+              }
+            ],
+            "sintomas_esperados_ausentes": [
+              {
+                "id": "manchas_amareladas",
+                "nome": "Manchas amareladas (cloróticas)",
+                "peso": 0.5
+              },
+              {
+                "id": "crescimento_reduzido",
+                "nome": "Crescimento reduzido / nanismo",
+                "peso": 0.4
+              }
+            ],
+            "sintomas_nao_explicados": [
+              {
+                "id": "manchas_encharcadas",
+                "nome": "Lesões encharcadas, com aspecto de queimadura"
+              },
+              {
+                "id": "mofo_branco_face_inferior",
+                "nome": "Mofo esbranquiçado na face inferior da folha"
+              }
+            ],
+            "compatibilidade_pct": 49,
+            "rotulo_gravidade": "Alta"
           }
         ],
         "pergunta": null
@@ -2578,6 +2889,230 @@
       }
     },
     {
+      "nome": "perfil completo de batata_canela_preta",
+      "cultura": "batata",
+      "sintomas": [
+        "crescimento_reduzido",
+        "lesoes_no_caule",
+        "manchas_amareladas",
+        "murcha"
+      ],
+      "esperado": {
+        "hipoteses": [
+          {
+            "doenca_id": "batata_canela_preta",
+            "nome": "Canela-preta da batata",
+            "agente": "Pectobacterium atrosepticum",
+            "tipo_agente": "bacteria",
+            "gravidade": 4,
+            "compatibilidade": 1.0,
+            "sintomas_compativeis": [
+              {
+                "id": "lesoes_no_caule",
+                "nome": "Lesões escuras no caule ou haste",
+                "peso": 1.0
+              },
+              {
+                "id": "murcha",
+                "nome": "Murcha da planta",
+                "peso": 0.8
+              },
+              {
+                "id": "manchas_amareladas",
+                "nome": "Manchas amareladas (cloróticas)",
+                "peso": 0.5
+              },
+              {
+                "id": "crescimento_reduzido",
+                "nome": "Crescimento reduzido / nanismo",
+                "peso": 0.4
+              }
+            ],
+            "sintomas_esperados_ausentes": [],
+            "sintomas_nao_explicados": [],
+            "compatibilidade_pct": 100,
+            "rotulo_gravidade": "Alta"
+          },
+          {
+            "doenca_id": "batata_requeima",
+            "nome": "Requeima da batata",
+            "agente": "Phytophthora infestans",
+            "tipo_agente": "oomiceto",
+            "gravidade": 5,
+            "compatibilidade": 0.23684210526315788,
+            "sintomas_compativeis": [
+              {
+                "id": "lesoes_no_caule",
+                "nome": "Lesões escuras no caule ou haste",
+                "peso": 0.6
+              },
+              {
+                "id": "murcha",
+                "nome": "Murcha da planta",
+                "peso": 0.3
+              }
+            ],
+            "sintomas_esperados_ausentes": [
+              {
+                "id": "manchas_encharcadas",
+                "nome": "Lesões encharcadas, com aspecto de queimadura",
+                "peso": 1.0
+              },
+              {
+                "id": "mofo_branco_face_inferior",
+                "nome": "Mofo esbranquiçado na face inferior da folha",
+                "peso": 0.9
+              }
+            ],
+            "sintomas_nao_explicados": [
+              {
+                "id": "crescimento_reduzido",
+                "nome": "Crescimento reduzido / nanismo"
+              },
+              {
+                "id": "manchas_amareladas",
+                "nome": "Manchas amareladas (cloróticas)"
+              }
+            ],
+            "compatibilidade_pct": 24,
+            "rotulo_gravidade": "Muito alta"
+          },
+          {
+            "doenca_id": "batata_pinta_preta",
+            "nome": "Pinta-preta da batata",
+            "agente": "Alternaria solani",
+            "tipo_agente": "fungo",
+            "gravidade": 4,
+            "compatibilidade": 0.19999999999999998,
+            "sintomas_compativeis": [
+              {
+                "id": "manchas_amareladas",
+                "nome": "Manchas amareladas (cloróticas)",
+                "peso": 0.4
+              },
+              {
+                "id": "lesoes_no_caule",
+                "nome": "Lesões escuras no caule ou haste",
+                "peso": 0.3
+              }
+            ],
+            "sintomas_esperados_ausentes": [
+              {
+                "id": "manchas_escuras_aneis",
+                "nome": "Manchas escuras com anéis concêntricos, como um alvo",
+                "peso": 1.0
+              },
+              {
+                "id": "desfolha_baixo_para_cima",
+                "nome": "Queda de folhas começando pelas mais baixas",
+                "peso": 0.8
+              }
+            ],
+            "sintomas_nao_explicados": [
+              {
+                "id": "crescimento_reduzido",
+                "nome": "Crescimento reduzido / nanismo"
+              },
+              {
+                "id": "murcha",
+                "nome": "Murcha da planta"
+              }
+            ],
+            "compatibilidade_pct": 20,
+            "rotulo_gravidade": "Alta"
+          }
+        ],
+        "pergunta": null
+      }
+    },
+    {
+      "nome": "sintoma principal isolado de batata_canela_preta",
+      "cultura": "batata",
+      "sintomas": [
+        "lesoes_no_caule"
+      ],
+      "esperado": {
+        "hipoteses": [
+          {
+            "doenca_id": "batata_canela_preta",
+            "nome": "Canela-preta da batata",
+            "agente": "Pectobacterium atrosepticum",
+            "tipo_agente": "bacteria",
+            "gravidade": 4,
+            "compatibilidade": 0.37037037037037035,
+            "sintomas_compativeis": [
+              {
+                "id": "lesoes_no_caule",
+                "nome": "Lesões escuras no caule ou haste",
+                "peso": 1.0
+              }
+            ],
+            "sintomas_esperados_ausentes": [
+              {
+                "id": "murcha",
+                "nome": "Murcha da planta",
+                "peso": 0.8
+              },
+              {
+                "id": "manchas_amareladas",
+                "nome": "Manchas amareladas (cloróticas)",
+                "peso": 0.5
+              },
+              {
+                "id": "crescimento_reduzido",
+                "nome": "Crescimento reduzido / nanismo",
+                "peso": 0.4
+              }
+            ],
+            "sintomas_nao_explicados": [],
+            "compatibilidade_pct": 37,
+            "rotulo_gravidade": "Alta"
+          },
+          {
+            "doenca_id": "batata_requeima",
+            "nome": "Requeima da batata",
+            "agente": "Phytophthora infestans",
+            "tipo_agente": "oomiceto",
+            "gravidade": 5,
+            "compatibilidade": 0.21428571428571425,
+            "sintomas_compativeis": [
+              {
+                "id": "lesoes_no_caule",
+                "nome": "Lesões escuras no caule ou haste",
+                "peso": 0.6
+              }
+            ],
+            "sintomas_esperados_ausentes": [
+              {
+                "id": "manchas_encharcadas",
+                "nome": "Lesões encharcadas, com aspecto de queimadura",
+                "peso": 1.0
+              },
+              {
+                "id": "mofo_branco_face_inferior",
+                "nome": "Mofo esbranquiçado na face inferior da folha",
+                "peso": 0.9
+              },
+              {
+                "id": "murcha",
+                "nome": "Murcha da planta",
+                "peso": 0.3
+              }
+            ],
+            "sintomas_nao_explicados": [],
+            "compatibilidade_pct": 21,
+            "rotulo_gravidade": "Muito alta"
+          }
+        ],
+        "pergunta": {
+          "sintoma_id": "murcha",
+          "nome": "Murcha da planta",
+          "confirma": "Canela-preta da batata",
+          "descarta": null
+        }
+      }
+    },
+    {
       "nome": "perfil completo de pimentao_mancha_bacteriana",
       "cultura": "pimentao",
       "sintomas": [
@@ -2627,6 +3162,54 @@
             "sintomas_nao_explicados": [],
             "compatibilidade_pct": 100,
             "rotulo_gravidade": "Alta"
+          },
+          {
+            "doenca_id": "pimentao_oidio",
+            "nome": "Oidio do pimentao",
+            "agente": "Leveillula taurica",
+            "tipo_agente": "fungo",
+            "gravidade": 3,
+            "compatibilidade": 0.2619047619047619,
+            "sintomas_compativeis": [
+              {
+                "id": "manchas_amareladas",
+                "nome": "Manchas amareladas (cloróticas)",
+                "peso": 0.7
+              },
+              {
+                "id": "queda_precoce_folhas",
+                "nome": "Queda precoce de folhas por toda a planta",
+                "peso": 0.4
+              }
+            ],
+            "sintomas_esperados_ausentes": [
+              {
+                "id": "po_branco_superficie",
+                "nome": "Pó branco, farináceo, na superfície da folha",
+                "peso": 1.0
+              },
+              {
+                "id": "desfolha_baixo_para_cima",
+                "nome": "Queda de folhas começando pelas mais baixas",
+                "peso": 0.6
+              }
+            ],
+            "sintomas_nao_explicados": [
+              {
+                "id": "manchas_angulares_halo_amarelo",
+                "nome": "Manchas angulares com halo amarelo ao redor"
+              },
+              {
+                "id": "manchas_encharcadas",
+                "nome": "Lesões encharcadas, com aspecto de queimadura"
+              },
+              {
+                "id": "manchas_salientes_fruto",
+                "nome": "Manchas ásperas e salientes, tipo verruga, no fruto"
+              }
+            ],
+            "compatibilidade_pct": 26,
+            "rotulo_gravidade": "Media"
           }
         ],
         "pergunta": null
@@ -2685,6 +3268,246 @@
           "sintoma_id": "manchas_salientes_fruto",
           "nome": "Manchas ásperas e salientes, tipo verruga, no fruto",
           "confirma": "Mancha-bacteriana do pimentão",
+          "descarta": null
+        }
+      }
+    },
+    {
+      "nome": "perfil completo de pimentao_antracnose",
+      "cultura": "pimentao",
+      "sintomas": [
+        "lesoes_no_fruto",
+        "pontuacoes_pretas_na_lesao",
+        "queda_de_frutos"
+      ],
+      "esperado": {
+        "hipoteses": [
+          {
+            "doenca_id": "pimentao_antracnose",
+            "nome": "Antracnose do pimentao",
+            "agente": "Colletotrichum spp.",
+            "tipo_agente": "fungo",
+            "gravidade": 4,
+            "compatibilidade": 1.0,
+            "sintomas_compativeis": [
+              {
+                "id": "lesoes_no_fruto",
+                "nome": "Lesões deprimidas ou podridão no fruto",
+                "peso": 1.0
+              },
+              {
+                "id": "pontuacoes_pretas_na_lesao",
+                "nome": "Pontinhos pretos dentro da lesão",
+                "peso": 0.8
+              },
+              {
+                "id": "queda_de_frutos",
+                "nome": "Queda prematura de frutos",
+                "peso": 0.5
+              }
+            ],
+            "sintomas_esperados_ausentes": [],
+            "sintomas_nao_explicados": [],
+            "compatibilidade_pct": 100,
+            "rotulo_gravidade": "Alta"
+          }
+        ],
+        "pergunta": null
+      }
+    },
+    {
+      "nome": "sintoma principal isolado de pimentao_antracnose",
+      "cultura": "pimentao",
+      "sintomas": [
+        "lesoes_no_fruto"
+      ],
+      "esperado": {
+        "hipoteses": [
+          {
+            "doenca_id": "pimentao_antracnose",
+            "nome": "Antracnose do pimentao",
+            "agente": "Colletotrichum spp.",
+            "tipo_agente": "fungo",
+            "gravidade": 4,
+            "compatibilidade": 0.4347826086956522,
+            "sintomas_compativeis": [
+              {
+                "id": "lesoes_no_fruto",
+                "nome": "Lesões deprimidas ou podridão no fruto",
+                "peso": 1.0
+              }
+            ],
+            "sintomas_esperados_ausentes": [
+              {
+                "id": "pontuacoes_pretas_na_lesao",
+                "nome": "Pontinhos pretos dentro da lesão",
+                "peso": 0.8
+              },
+              {
+                "id": "queda_de_frutos",
+                "nome": "Queda prematura de frutos",
+                "peso": 0.5
+              }
+            ],
+            "sintomas_nao_explicados": [],
+            "compatibilidade_pct": 43,
+            "rotulo_gravidade": "Alta"
+          }
+        ],
+        "pergunta": {
+          "sintoma_id": "pontuacoes_pretas_na_lesao",
+          "nome": "Pontinhos pretos dentro da lesão",
+          "confirma": "Antracnose do pimentao",
+          "descarta": null
+        }
+      }
+    },
+    {
+      "nome": "perfil completo de pimentao_oidio",
+      "cultura": "pimentao",
+      "sintomas": [
+        "desfolha_baixo_para_cima",
+        "manchas_amareladas",
+        "po_branco_superficie",
+        "queda_precoce_folhas"
+      ],
+      "esperado": {
+        "hipoteses": [
+          {
+            "doenca_id": "pimentao_oidio",
+            "nome": "Oidio do pimentao",
+            "agente": "Leveillula taurica",
+            "tipo_agente": "fungo",
+            "gravidade": 3,
+            "compatibilidade": 1.0,
+            "sintomas_compativeis": [
+              {
+                "id": "po_branco_superficie",
+                "nome": "Pó branco, farináceo, na superfície da folha",
+                "peso": 1.0
+              },
+              {
+                "id": "manchas_amareladas",
+                "nome": "Manchas amareladas (cloróticas)",
+                "peso": 0.7
+              },
+              {
+                "id": "desfolha_baixo_para_cima",
+                "nome": "Queda de folhas começando pelas mais baixas",
+                "peso": 0.6
+              },
+              {
+                "id": "queda_precoce_folhas",
+                "nome": "Queda precoce de folhas por toda a planta",
+                "peso": 0.4
+              }
+            ],
+            "sintomas_esperados_ausentes": [],
+            "sintomas_nao_explicados": [],
+            "compatibilidade_pct": 100,
+            "rotulo_gravidade": "Media"
+          },
+          {
+            "doenca_id": "pimentao_mancha_bacteriana",
+            "nome": "Mancha-bacteriana do pimentão",
+            "agente": "Xanthomonas euvesicatoria",
+            "tipo_agente": "bactéria",
+            "gravidade": 4,
+            "compatibilidade": 0.2127659574468085,
+            "sintomas_compativeis": [
+              {
+                "id": "queda_precoce_folhas",
+                "nome": "Queda precoce de folhas por toda a planta",
+                "peso": 0.7
+              },
+              {
+                "id": "manchas_amareladas",
+                "nome": "Manchas amareladas (cloróticas)",
+                "peso": 0.3
+              }
+            ],
+            "sintomas_esperados_ausentes": [
+              {
+                "id": "manchas_angulares_halo_amarelo",
+                "nome": "Manchas angulares com halo amarelo ao redor",
+                "peso": 1.0
+              },
+              {
+                "id": "manchas_salientes_fruto",
+                "nome": "Manchas ásperas e salientes, tipo verruga, no fruto",
+                "peso": 0.9
+              },
+              {
+                "id": "manchas_encharcadas",
+                "nome": "Lesões encharcadas, com aspecto de queimadura",
+                "peso": 0.8
+              }
+            ],
+            "sintomas_nao_explicados": [
+              {
+                "id": "desfolha_baixo_para_cima",
+                "nome": "Queda de folhas começando pelas mais baixas"
+              },
+              {
+                "id": "po_branco_superficie",
+                "nome": "Pó branco, farináceo, na superfície da folha"
+              }
+            ],
+            "compatibilidade_pct": 21,
+            "rotulo_gravidade": "Alta"
+          }
+        ],
+        "pergunta": null
+      }
+    },
+    {
+      "nome": "sintoma principal isolado de pimentao_oidio",
+      "cultura": "pimentao",
+      "sintomas": [
+        "po_branco_superficie"
+      ],
+      "esperado": {
+        "hipoteses": [
+          {
+            "doenca_id": "pimentao_oidio",
+            "nome": "Oidio do pimentao",
+            "agente": "Leveillula taurica",
+            "tipo_agente": "fungo",
+            "gravidade": 3,
+            "compatibilidade": 0.37037037037037035,
+            "sintomas_compativeis": [
+              {
+                "id": "po_branco_superficie",
+                "nome": "Pó branco, farináceo, na superfície da folha",
+                "peso": 1.0
+              }
+            ],
+            "sintomas_esperados_ausentes": [
+              {
+                "id": "manchas_amareladas",
+                "nome": "Manchas amareladas (cloróticas)",
+                "peso": 0.7
+              },
+              {
+                "id": "desfolha_baixo_para_cima",
+                "nome": "Queda de folhas começando pelas mais baixas",
+                "peso": 0.6
+              },
+              {
+                "id": "queda_precoce_folhas",
+                "nome": "Queda precoce de folhas por toda a planta",
+                "peso": 0.4
+              }
+            ],
+            "sintomas_nao_explicados": [],
+            "compatibilidade_pct": 37,
+            "rotulo_gravidade": "Media"
+          }
+        ],
+        "pergunta": {
+          "sintoma_id": "manchas_amareladas",
+          "nome": "Manchas amareladas (cloróticas)",
+          "confirma": "Oidio do pimentao",
           "descarta": null
         }
       }

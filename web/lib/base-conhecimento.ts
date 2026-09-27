@@ -65,7 +65,7 @@ export type Cultura = {
   doencas: Doenca[];
 };
 
-export const VERSAO_DA_BASE: string = "2026.09.03";
+export const VERSAO_DA_BASE: string = "2026.09.27";
 
 export const ORGAOS: readonly Orgao[] = [
   {
@@ -379,6 +379,63 @@ export const CULTURAS: readonly Cultura[] = [
             "acao": "protetor"
           }
         ]
+      },
+      {
+        "id": "batata_canela_preta",
+        "nome": "Canela-preta da batata",
+        "agente": "Pectobacterium atrosepticum",
+        "tipoAgente": "bacteria",
+        "gravidade": 4,
+        "descricao": "Apodrecimento escuro e mole que comeca na base da haste, junto ao tuberculo-semente, e sobe pelo caule. A planta amarelece, murcha e tomba. A bacteria entra por ferimento ou pelo proprio tuberculo infectado, e o encharcamento do solo e o que decide se o foco se espalha. Nao ha controle curativo: o manejo e de prevencao e de eliminacao do foco.",
+        "sintomas": [
+          {
+            "id": "lesoes_no_caule",
+            "peso": 1
+          },
+          {
+            "id": "murcha",
+            "peso": 0.8
+          },
+          {
+            "id": "manchas_amareladas",
+            "peso": 0.5
+          },
+          {
+            "id": "crescimento_reduzido",
+            "peso": 0.4
+          }
+        ],
+        "condicoesFavoraveis": {
+          "temperatura": "18 a 24 graus C",
+          "umidade": "Alta - solo encharcado e o fator determinante",
+          "observacao": "Plantio em solo frio e umido logo apos o corte do tuberculo-semente e a situacao de maior risco. Excesso de irrigacao e drenagem ruim espalham o foco pela agua."
+        },
+        "tratamentos": [
+          {
+            "tipo": "cultural",
+            "descricao": "Usar tuberculo-semente sadio e certificado; evitar cortar a semente ou deixar cicatrizar antes do plantio; nao plantar em solo encharcado; melhorar a drenagem; arrancar e retirar da area as plantas doentes; nao irrigar em excesso."
+          },
+          {
+            "tipo": "biologico",
+            "descricao": "Nao ha produto biologico registrado com eficacia comprovada para esta bacteriose. A prevencao pela sanidade da semente e o que funciona."
+          },
+          {
+            "tipo": "quimico",
+            "descricao": "Nao ha bactericida curativo. Produtos cupricos tem acao apenas preventiva e de superficie, e nao alcancam a bacteria dentro do caule."
+          }
+        ],
+        "ingredientesAtivos": [
+          {
+            "nome": "Oxicloreto de cobre",
+            "grupo": "Inorganico",
+            "acao": "protetor"
+          },
+          {
+            "nome": "Hidroxido de cobre",
+            "grupo": "Inorganico",
+            "acao": "protetor"
+          }
+        ]
       }
     ]
   },
@@ -462,6 +519,126 @@ export const CULTURAS: readonly Cultura[] = [
             "nome": "Casugamicina",
             "grupo": "Antibiótico agrícola",
             "acao": "bactericida"
+          }
+        ]
+      },
+      {
+        "id": "pimentao_antracnose",
+        "nome": "Antracnose do pimentao",
+        "agente": "Colletotrichum spp.",
+        "tipoAgente": "fungo",
+        "gravidade": 4,
+        "descricao": "Ataca principalmente o fruto, sobretudo o maduro. A lesao e circular e deprimida, como se o fruto tivesse sido pressionado, e dentro dela aparecem pontinhos pretos dispostos em circulos concentricos - as estruturas de frutificacao do fungo. E a doenca que mais compromete o produto na fase de colheita, porque a lesao so se revela quando o fruto ja esta formado.",
+        "sintomas": [
+          {
+            "id": "lesoes_no_fruto",
+            "peso": 1
+          },
+          {
+            "id": "pontuacoes_pretas_na_lesao",
+            "peso": 0.8
+          },
+          {
+            "id": "queda_de_frutos",
+            "peso": 0.5
+          }
+        ],
+        "condicoesFavoraveis": {
+          "temperatura": "22 a 28 graus C",
+          "umidade": "Alta - molhamento do fruto por chuva ou aspersao",
+          "observacao": "O fungo sobrevive em restos culturais e na semente. Chuva e irrigacao por aspersao respingam o inoculo do solo para o fruto."
+        },
+        "tratamentos": [
+          {
+            "tipo": "cultural",
+            "descricao": "Usar semente sadia; fazer rotacao com especies fora das solanaceas; eliminar restos culturais e frutos doentes da area; preferir irrigacao localizada a aspersao; colher os frutos no ponto, sem deixar amadurecer demais na planta."
+          },
+          {
+            "tipo": "biologico",
+            "descricao": "Aplicacoes preventivas de Trichoderma spp. e de Bacillus subtilis reduzem o inoculo, com efeito melhor quando associadas ao manejo cultural."
+          },
+          {
+            "tipo": "quimico",
+            "descricao": "Fungicidas protetores em aplicacao preventiva, desde o inicio da frutificacao, com rodizio de grupo quimico para evitar resistencia."
+          }
+        ],
+        "ingredientesAtivos": [
+          {
+            "nome": "Mancozebe",
+            "grupo": "Ditiocarbamato",
+            "acao": "protetor"
+          },
+          {
+            "nome": "Azoxistrobina",
+            "grupo": "Estrobilurina",
+            "acao": "sistemico"
+          },
+          {
+            "nome": "Difenoconazol",
+            "grupo": "Triazol",
+            "acao": "sistemico"
+          }
+        ]
+      },
+      {
+        "id": "pimentao_oidio",
+        "nome": "Oidio do pimentao",
+        "agente": "Leveillula taurica",
+        "tipoAgente": "fungo",
+        "gravidade": 3,
+        "descricao": "Manchas amareladas na face superior da folha e po esbranquicado na face inferior. A desfolha comeca pelas folhas mais velhas e expoe os frutos ao sol, causando queima. Como o oidio do tomateiro, e a excecao entre os fungos foliares: prospera no tempo seco, e agua livre na folha atrapalha a germinacao do esporo.",
+        "sintomas": [
+          {
+            "id": "po_branco_superficie",
+            "peso": 1
+          },
+          {
+            "id": "manchas_amareladas",
+            "peso": 0.7
+          },
+          {
+            "id": "desfolha_baixo_para_cima",
+            "peso": 0.6
+          },
+          {
+            "id": "queda_precoce_folhas",
+            "peso": 0.4
+          }
+        ],
+        "condicoesFavoraveis": {
+          "temperatura": "20 a 27 graus C",
+          "umidade": "Moderada a baixa - nao exige molhamento foliar",
+          "observacao": "Comum em cultivo protegido e em periodos secos. Ao contrario das demais doencas fungicas desta base, molhar a folha nao favorece o patogeno."
+        },
+        "tratamentos": [
+          {
+            "tipo": "cultural",
+            "descricao": "Melhorar a ventilacao, sobretudo em estufa; evitar adubacao nitrogenada em excesso, que deixa o tecido mais suscetivel; eliminar folhas muito atacadas."
+          },
+          {
+            "tipo": "biologico",
+            "descricao": "Bacillus subtilis em aplicacao preventiva tem bom efeito, e e compativel com o cultivo protegido."
+          },
+          {
+            "tipo": "quimico",
+            "descricao": "Enxofre em aplicacao preventiva, respeitando o limite de temperatura para nao causar fitotoxidez; triazois quando a doenca ja se instalou."
+          }
+        ],
+        "ingredientesAtivos": [
+          {
+            "nome": "Enxofre",
+            "grupo": "Inorganico",
+            "acao": "protetor"
+          },
+          {
+            "nome": "Tebuconazol",
+            "grupo": "Triazol",
+            "acao": "sistemico"
+          },
+          {
+            "nome": "Azoxistrobina",
+            "grupo": "Estrobilurina",
+            "acao": "sistemico"
           }
         ]
       }

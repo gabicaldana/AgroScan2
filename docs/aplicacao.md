@@ -8,17 +8,18 @@ manejo integrado e as condições climáticas que favorecem o aparecimento.
 no celular e funcional em modo avião.
 
 > **Estado atual:** o motor de diagnóstico por sintomas funciona ponta a ponta,
-> offline, sem foto e sem rede. A base cobre **3 hortaliças e 13 doenças**
-> curadas — tomate, batata e pimentão — e cresce por família botânica: as
-> brássicas são as próximas. A câmera captura e pré-processa; falta o modelo de
+> offline, sem foto e sem rede. A base cobre **3 hortaliças e 16 doenças**
+> curadas — tomate, batata e pimentão, todas com o mínimo de 3 doenças que a
+> pergunta de desempate exige — e cresce por família botânica: as brássicas são
+> as próximas. A câmera captura e pré-processa; falta o modelo de
 > visão, e até ele existir o app diz isso em vez de chutar. O banco relacional
 > está modelado e versionado em `migracoes/`, a **API REST está implementada**
 > (catálogo, diagnóstico, conta e caderno de campo) e o front-end já a consome,
 > com fila de sincronização offline. Faltam **hortas e canteiros** e os
 > **relatórios agregados**: as tabelas existem, as rotas e as telas não.
 >
-> Verificado em 12/09/2026: **176 testes automatizados, nenhuma falha** — 74 em
-> Python e 102 no porte em TypeScript.
+> Verificado em 27/09/2026: **185 testes automatizados, nenhuma falha** — 74 em
+> Python e 111 no porte em TypeScript.
 
 ---
 

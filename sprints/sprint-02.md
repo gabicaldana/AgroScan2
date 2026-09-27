@@ -70,18 +70,59 @@ prazo em 28/09/2026, com 14 `issues`.
 
 ## Entregas
 
-> ⚠️ **A preencher no encerramento da sprint.** Registrar as fichas de doença
-> acrescentadas à base, a versão do catálogo publicada e o resultado da
-> validação automática.
+### Repositório unificado
+
+O código deixou de viver em `gabicaldana/AgroScan2` e passou a ocupar a raiz do
+repositório institucional, ao lado da documentação que o descreve. O que a
+disciplina avalia é o repositório institucional, e ele não continha o produto -
+apenas descrições dele, com cada afirmação técnica apontando para um endereço
+externo. Justificativa completa no
+[Artefato 2, §4.1](../entregas/artefato-2-gestao-do-projeto.md#41-repositório-único).
+
+### Curadoria: batata e pimentão em conformidade com a RN05
+
+Três fichas de doença acrescentadas, elevando as duas culturas que estavam
+abaixo do mínimo:
+
+| Cultura | Antes | Depois | Fichas acrescentadas |
+| --- | --- | --- | --- |
+| Batata | 2 doenças | **3** | Canela-preta (*Pectobacterium atrosepticum*) |
+| Pimentão | 1 doença | **3** | Antracnose (*Colletotrichum* spp.) e oídio (*Leveillula taurica*) |
+
+A base passou da versão `2026.09.03` para `2026.09.27`, com **16 fichas** no
+lugar de 13. A validação automática deixou de emitir avisos: nenhuma cultura
+está abaixo de três doenças, e a pergunta de desempate volta a funcionar nas
+três culturas.
+
+### Relatórios das sprints 2 a 8
+
+Criados os sete relatórios que faltavam em `sprints/`, completando a série, e
+concluída a mudança dos artefatos para `entregas/`, que estava pela metade.
 
 ## Issues concluídas
 
-| Issue | Título | Situação |
+| Issue | Título | Como foi verificada |
 | --- | --- | --- |
-| [#71](https://github.com/CampusCEUB/AgroScan/issues/71) | Criar milestones, issues e GitHub Project do backlog | ✅ Fechada - 8 milestones, 81 issues e 16 reuniões |
+| [#71](https://github.com/CampusCEUB/AgroScan/issues/71) | Criar milestones, issues e GitHub Project do backlog | 8 milestones, 81 issues e 16 reuniões |
+| [#66](https://github.com/CampusCEUB/AgroScan/issues/66) | Corrigir a dependência de teste ausente e confirmar que o CI executa os testes da API | Suíte executada em 27/09: 74 testes, **nenhum pulado**. O `ci.yml` tem o passo que transforma "pulou" em falha antes de a suíte rodar |
+| [#69](https://github.com/CampusCEUB/AgroScan/issues/69) | Atualizar o README do repositório de código para o estado real | Feito no commit `9570990`; o documento é hoje [`docs/aplicacao.md`](../docs/aplicacao.md), atualizado para 16 doenças e 185 testes |
+| [#70](https://github.com/CampusCEUB/AgroScan/issues/70) | Elevar batata e pimentão ao mínimo de três doenças | Validação automática sem avisos - ver Evidências |
 
-> ⚠️ **A completar no encerramento.** As demais `issues` da milestone seguem
-> abertas nesta data.
+> **Sobre #66 e #69.** A correção em código foi aplicada em 12/09, ainda dentro
+> da Sprint 1, nos commits `8053fc8` e `9570990`. As `issues` nasceram das
+> "Próximas ações" da retrospectiva e permaneceram abertas porque o que faltava
+> era a **verificação**, não o código. É o que esta sprint fecha.
+
+### Abertas nesta data
+
+[#4](https://github.com/CampusCEUB/AgroScan/issues/4) (US01),
+[#6](https://github.com/CampusCEUB/AgroScan/issues/6) (US03),
+[#40](https://github.com/CampusCEUB/AgroScan/issues/40) (US36),
+[#67](https://github.com/CampusCEUB/AgroScan/issues/67),
+[#68](https://github.com/CampusCEUB/AgroScan/issues/68),
+[#72](https://github.com/CampusCEUB/AgroScan/issues/72),
+[#73](https://github.com/CampusCEUB/AgroScan/issues/73) e
+[#74](https://github.com/CampusCEUB/AgroScan/issues/74).
 
 ## Pull requests aceitos
 
@@ -96,9 +137,85 @@ retrospectiva da Sprint 1.
 
 ## Evidências
 
-> ⚠️ **A preencher no encerramento da sprint.** Reunir a saída da validação da
-> base, a execução das suítes de teste, o endereço publicado com a versão do
-> catálogo conferida e o resultado da integração contínua.
+### Validação da base - execução em 27/09/2026
+
+Antes, com as duas culturas abaixo do mínimo:
+
+```
+$ python -m app.validacao
+Base valida - versao 2026.09.03
+  3 hortalicas, 13 doencas, 26 sintomas no catalogo
+
+  2 aviso(s) de curadoria incompleta:
+    - cultura batata: 2 doenca(s). Abaixo de 3 o motor nunca tem segunda
+      hipotese, e a pergunta de desempate nao funciona nesta cultura
+    - cultura pimentao: 1 doenca(s). [...]
+```
+
+Depois das três fichas:
+
+```
+$ python -m app.validacao
+Base valida - versao 2026.09.27
+  3 hortalicas, 16 doencas, 26 sintomas no catalogo
+    fruto  pimentao, tomate
+    raiz   batata
+```
+
+**Nenhum aviso.** É o critério da RN05 atendido.
+
+### Testes automatizados - execução em 27/09/2026
+
+```
+$ python -m unittest discover -s tests -t .
+Ran 74 tests in 8.434s
+OK
+```
+
+```
+$ cd web && npm test
+ℹ tests 111
+ℹ pass 111
+ℹ fail 0
+ℹ skipped 0
+```
+
+**Total: 185 testes, nenhuma falha e nenhum pulado.** Subiu de 176 porque as
+fixtures de paridade passaram de 42 para 48 casos, acompanhando as três fichas
+novas.
+
+O campo `skipped 0` e os 74 testes em Python são a evidência direta da `issue`
+[#66](https://github.com/CampusCEUB/AgroScan/issues/66): os 22 testes da API
+executam, e não se pulam.
+
+### Verificação da migração do código
+
+Rodado no repositório institucional, após a migração:
+
+| Verificação | Resultado |
+| --- | --- |
+| `python -m app.validacao` | Base válida, sem avisos |
+| `python -m unittest discover -s tests -t .` | 74 testes, OK |
+| `cd web && npm test` | 111 testes, 0 falhas |
+| `npm run lint` | Sem apontamentos |
+| `npm run build` | 7 rotas geradas |
+| Regerar tudo e conferir `git status` | Nenhum artefato gerado divergiu - o passo mais rígido do CI |
+
+### Ainda a produzir
+
+| Evidência | Depende de |
+| --- | --- |
+| Ambiente publicado servindo a versão `2026.09.27` | Reapontar a Vercel - [#67](https://github.com/CampusCEUB/AgroScan/issues/67) |
+| Hierarquia de entrada conferida no publicado | O mesmo - [#68](https://github.com/CampusCEUB/AgroScan/issues/68) |
+| Execução verde do CI no repositório institucional | Primeiro `push` com os workflows já migrados |
+
+Verificações obrigatórias neste ciclo, por decorrerem dos riscos herdados:
+
+| Verificação | Risco | Situação |
+| --- | --- | --- |
+| A integração contínua **executa** - e não pula - os testes da API | R07 | ✅ Verificado: 74 testes, `skipped 0` |
+| O endereço publicado serve a versão corrente do catálogo | R06 | ⬜ Bloqueado pela Vercel |
+| A tela inicial é o diagnóstico por sintomas | ADR 0008 | 🟡 Em código desde `c679d48`; falta conferir no publicado |
 
 Verificações obrigatórias neste ciclo, por decorrerem dos riscos herdados:
 
@@ -115,7 +232,8 @@ Verificações obrigatórias neste ciclo, por decorrerem dos riscos herdados:
 | 1 | **Comunidade parceira da Atividade de Extensão não definida** (R03) | Impede fixar a priorização das famílias botânicas e a data da apresentação | Herdado da Sprint 1 - [#73](https://github.com/CampusCEUB/AgroScan/issues/73) |
 | 2 | **Datas dos Artefatos 5 a 9 não divulgadas** | O calendário das Sprints 5 a 8 é provisório | Herdado da Sprint 1 - [#74](https://github.com/CampusCEUB/AgroScan/issues/74) |
 | 3 | **Papéis Scrum não atribuídos nominalmente** | Impede a atribuição nominal de responsáveis nos registros | Herdado da Sprint 1 - [#72](https://github.com/CampusCEUB/AgroScan/issues/72) |
-| 4 | **Dependência de teste ausente** (R07) | 22 testes de integração da API não executam de forma confiável | Herdado da Sprint 1 - correção neste ciclo, [#66](https://github.com/CampusCEUB/AgroScan/issues/66) |
+| 4 | **Dependência de teste ausente** (R07) | 22 testes de integração da API não executavam de forma confiável | ✅ **Resolvido** - `requirements-dev.txt` declara a dependência e o CI falha se a suíte se pular. Verificado em 27/09: `skipped 0` |
+| 5 | **Vercel ligada ao repositório antigo** | O código passou a viver em `CampusCEUB/AgroScan`, mas o deploy continua saindo de `gabicaldana/AgroScan2`. Enquanto não for reapontada, o ambiente publicado não reflete o que se desenvolve | **Novo, criado pela migração.** Depende do painel da Vercel, fora do alcance do repositório. Agrava o R06 e mantém [#67](https://github.com/CampusCEUB/AgroScan/issues/67) e [#68](https://github.com/CampusCEUB/AgroScan/issues/68) bloqueadas |
 
 ## Retrospectiva
 
