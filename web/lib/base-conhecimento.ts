@@ -225,10 +225,195 @@ export const SINTOMAS: readonly Sintoma[] = [
     "id": "crescimento_reduzido",
     "nome": "Crescimento reduzido / nanismo",
     "orgao": "planta"
+  },
+  {
+    "id": "lesao_em_v_na_borda",
+    "orgao": "folha",
+    "nome": "Lesão amarela em forma de V, começando na borda da folha"
+  },
+  {
+    "id": "nervuras_escurecidas",
+    "orgao": "folha",
+    "nome": "Nervuras escurecidas, quase pretas"
+  },
+  {
+    "id": "galhas_na_raiz",
+    "orgao": "raiz",
+    "nome": "Raízes engrossadas e deformadas, com galhas"
+  },
+  {
+    "id": "apodrecimento_mole_malcheiroso",
+    "orgao": "planta",
+    "nome": "Apodrecimento mole e malcheiroso"
   }
 ];
 
 export const CULTURAS: readonly Cultura[] = [
+  {
+    "id": "agriao",
+    "nome": "Agrião",
+    "nomeCientifico": "Nasturtium officinale",
+    "grupo": "folha",
+    "familia": "Brassicaceae",
+    "emoji": "🌿",
+    "cicloDias": 60,
+    "doencas": [
+      {
+        "id": "agriao_mildio",
+        "nome": "Míldio do agrião",
+        "agente": "Hyaloperonospora brassicae",
+        "tipoAgente": "oomiceto",
+        "gravidade": 4,
+        "descricao": "Manchas amareladas de contorno anguloso na face superior da folha e, embaixo delas, um mofo branco-acinzentado na face inferior - é o sinal que confirma o diagnóstico. No agrião, cultivado em água corrente, a umidade é permanente por definição do sistema de cultivo - o manejo não pode contar com a folha secar. Avança rápido em tempo fresco e úmido, e é a doença que mais aparece em plantio adensado.",
+        "sintomas": [
+          {
+            "id": "manchas_amareladas",
+            "peso": 1
+          },
+          {
+            "id": "mofo_branco_face_inferior",
+            "peso": 0.9
+          },
+          {
+            "id": "queda_precoce_folhas",
+            "peso": 0.4
+          }
+        ],
+        "condicoesFavoraveis": {
+          "temperatura": "10 a 20 °C",
+          "umidade": "Alta - orvalho ou molhamento foliar prolongado",
+          "observacao": "Noites frias com orvalho pela manhã são a condição clássica. Plantio adensado segura a umidade entre as folhas e prolonga o molhamento."
+        },
+        "tratamentos": [
+          {
+            "tipo": "cultural",
+            "descricao": "Ampliar o espaçamento para arejar a folhagem; irrigar de manhã, para a folha secar durante o dia; preferir irrigação localizada à aspersão; eliminar restos culturais; fazer rotação com espécies fora das brássicas."
+          },
+          {
+            "tipo": "biologico",
+            "descricao": "Bacillus subtilis em aplicação preventiva, iniciada antes do período de maior umidade."
+          },
+          {
+            "tipo": "quimico",
+            "descricao": "Fungicidas específicos para oomicetos, em aplicação preventiva. Produto para fungo verdadeiro não tem efeito aqui."
+          }
+        ],
+        "ingredientesAtivos": [
+          {
+            "nome": "Metalaxil-M",
+            "grupo": "Acilalaninato",
+            "acao": "sistêmico"
+          },
+          {
+            "nome": "Mancozebe",
+            "grupo": "Ditiocarbamato",
+            "acao": "protetor"
+          },
+          {
+            "nome": "Fosetil-alumínio",
+            "grupo": "Fosfonato",
+            "acao": "sistêmico"
+          }
+        ]
+      },
+      {
+        "id": "agriao_cercosporiose",
+        "nome": "Cercosporiose do agrião",
+        "agente": "Cercospora nasturtii",
+        "tipoAgente": "fungo",
+        "gravidade": 3,
+        "descricao": "Manchas pequenas e arredondadas, de centro claro e borda escura, espalhadas pela folha. No agrião, cultivado em água corrente, a umidade é permanente por definição do sistema de cultivo - o manejo não pode contar com a folha secar. Quando numerosas, as manchas se juntam e a folha seca, o que inviabiliza a venda de um produto que é consumido justamente pela folha.",
+        "sintomas": [
+          {
+            "id": "manchas_pequenas_centro_claro",
+            "peso": 1
+          },
+          {
+            "id": "manchas_amareladas",
+            "peso": 0.5
+          },
+          {
+            "id": "queda_precoce_folhas",
+            "peso": 0.3
+          }
+        ],
+        "condicoesFavoraveis": {
+          "temperatura": "22 a 28 °C",
+          "umidade": "Alta - constante no cultivo em água corrente",
+          "observacao": "O cultivo alagado mantém a umidade sempre alta, o que torna a doença recorrente e exige manejo preventivo contínuo."
+        },
+        "tratamentos": [
+          {
+            "tipo": "cultural",
+            "descricao": "Renovar a água do canteiro e garantir circulação; evitar adensamento; colher as folhas mais velhas primeiro; eliminar restos vegetais da área de cultivo."
+          },
+          {
+            "tipo": "biologico",
+            "descricao": "Bacillus subtilis em aplicação preventiva, respeitando o intervalo de segurança curto exigido por hortaliça folhosa."
+          },
+          {
+            "tipo": "quimico",
+            "descricao": "Uso restrito: o agrião tem ciclo curto e é consumido cru. Conferir registro para a cultura no AGROFIT e respeitar rigorosamente o intervalo de segurança."
+          }
+        ],
+        "ingredientesAtivos": [
+          {
+            "nome": "Azoxistrobina",
+            "grupo": "Estrobilurina",
+            "acao": "sistêmico"
+          }
+        ]
+      },
+      {
+        "id": "agriao_podridao_mole",
+        "nome": "Podridão-mole do agrião",
+        "agente": "Pectobacterium carotovorum",
+        "tipoAgente": "bactéria",
+        "gravidade": 4,
+        "descricao": "O tecido amolece, encharca e apodrece, com cheiro forte e desagradável que identifica a doença sem exame. No agrião, cultivado em água corrente, a umidade é permanente por definição do sistema de cultivo - o manejo não pode contar com a folha secar. A bactéria entra por ferimento, e por isso a colheita e o manuseio são o momento de maior risco.",
+        "sintomas": [
+          {
+            "id": "apodrecimento_mole_malcheiroso",
+            "peso": 1
+          },
+          {
+            "id": "murcha",
+            "peso": 0.6
+          },
+          {
+            "id": "lesoes_no_caule",
+            "peso": 0.5
+          }
+        ],
+        "condicoesFavoraveis": {
+          "temperatura": "25 a 30 °C",
+          "umidade": "Muito alta - água parada é o fator decisivo",
+          "observacao": "Calor com encharcamento é a combinação clássica. Ferimentos de colheita abrem a porta de entrada."
+        },
+        "tratamentos": [
+          {
+            "tipo": "cultural",
+            "descricao": "Evitar encharcamento e garantir renovação da água; colher com cuidado, sem ferir o tecido; não colher com a planta molhada; resfriar rapidamente após a colheita; descartar o material doente longe da área."
+          },
+          {
+            "tipo": "biologico",
+            "descricao": "Não há produto biológico com eficácia comprovada. O controle é de manejo e de higiene na colheita."
+          },
+          {
+            "tipo": "quimico",
+            "descricao": "Não há bactericida curativo. Produtos cúpricos têm ação apenas preventiva e de superfície."
+          }
+        ],
+        "ingredientesAtivos": [
+          {
+            "nome": "Oxicloreto de cobre",
+            "grupo": "Inorgânico",
+            "acao": "protetor"
+          }
+        ]
+      }
+    ]
+  },
   {
     "id": "batata",
     "nome": "Batata",
@@ -384,9 +569,9 @@ export const CULTURAS: readonly Cultura[] = [
         "id": "batata_canela_preta",
         "nome": "Canela-preta da batata",
         "agente": "Pectobacterium atrosepticum",
-        "tipoAgente": "bacteria",
+        "tipoAgente": "bactéria",
         "gravidade": 4,
-        "descricao": "Apodrecimento escuro e mole que comeca na base da haste, junto ao tuberculo-semente, e sobe pelo caule. A planta amarelece, murcha e tomba. A bacteria entra por ferimento ou pelo proprio tuberculo infectado, e o encharcamento do solo e o que decide se o foco se espalha. Nao ha controle curativo: o manejo e de prevencao e de eliminacao do foco.",
+        "descricao": "Apodrecimento escuro e mole que começa na base da haste, junto ao tubérculo-semente, e sobe pelo caule. A planta amarelece, murcha e tomba. A bactéria entra por ferimento ou pelo próprio tubérculo infectado, e o encharcamento do solo é o que decide se o foco se espalha. Não há controle curativo: o manejo é de prevenção e de eliminação do foco.",
         "sintomas": [
           {
             "id": "lesoes_no_caule",
@@ -406,36 +591,576 @@ export const CULTURAS: readonly Cultura[] = [
           }
         ],
         "condicoesFavoraveis": {
-          "temperatura": "18 a 24 graus C",
-          "umidade": "Alta - solo encharcado e o fator determinante",
-          "observacao": "Plantio em solo frio e umido logo apos o corte do tuberculo-semente e a situacao de maior risco. Excesso de irrigacao e drenagem ruim espalham o foco pela agua."
+          "temperatura": "18 a 24 °C",
+          "umidade": "Alta - solo encharcado é o fator determinante",
+          "observacao": "Plantio em solo frio e úmido logo após o corte do tubérculo-semente é a situação de maior risco. Excesso de irrigação e drenagem ruim espalham o foco pela água."
         },
         "tratamentos": [
           {
             "tipo": "cultural",
-            "descricao": "Usar tuberculo-semente sadio e certificado; evitar cortar a semente ou deixar cicatrizar antes do plantio; nao plantar em solo encharcado; melhorar a drenagem; arrancar e retirar da area as plantas doentes; nao irrigar em excesso."
+            "descricao": "Usar tubérculo-semente sadio e certificado; evitar cortar a semente, ou deixá-la cicatrizar antes do plantio; não plantar em solo encharcado; melhorar a drenagem; arrancar e retirar da área as plantas doentes; não irrigar em excesso."
           },
           {
             "tipo": "biologico",
-            "descricao": "Nao ha produto biologico registrado com eficacia comprovada para esta bacteriose. A prevencao pela sanidade da semente e o que funciona."
+            "descricao": "Não há produto biológico registrado com eficácia comprovada para esta bacteriose. A prevenção pela sanidade da semente é o que funciona."
           },
           {
             "tipo": "quimico",
-            "descricao": "Nao ha bactericida curativo. Produtos cupricos tem acao apenas preventiva e de superficie, e nao alcancam a bacteria dentro do caule."
+            "descricao": "Não há bactericida curativo. Produtos cúpricos têm ação apenas preventiva e de superfície, e não alcançam a bactéria dentro do caule."
           }
         ],
         "ingredientesAtivos": [
           {
             "nome": "Oxicloreto de cobre",
-            "grupo": "Inorganico",
+            "grupo": "Inorgânico",
             "acao": "protetor"
           },
           {
-            "nome": "Hidroxido de cobre",
-            "grupo": "Inorganico",
+            "nome": "Hidróxido de cobre",
+            "grupo": "Inorgânico",
             "acao": "protetor"
           }
         ]
+      }
+    ]
+  },
+  {
+    "id": "brocolis",
+    "nome": "Brócolis",
+    "nomeCientifico": "Brassica oleracea var. italica",
+    "grupo": "flor",
+    "familia": "Brassicaceae",
+    "emoji": "🥦",
+    "cicloDias": 90,
+    "doencas": [
+      {
+        "id": "brocolis_mildio",
+        "nome": "Míldio do brócolis",
+        "agente": "Hyaloperonospora brassicae",
+        "tipoAgente": "oomiceto",
+        "gravidade": 4,
+        "descricao": "Manchas amareladas de contorno anguloso na face superior da folha e, embaixo delas, um mofo branco-acinzentado na face inferior - é o sinal que confirma o diagnóstico. No brócolis, a perda de área foliar antes da formação da inflorescência resulta em cabeça pequena e de baixo valor. Avança rápido em tempo fresco e úmido, e é a doença que mais aparece em plantio adensado.",
+        "sintomas": [
+          {
+            "id": "manchas_amareladas",
+            "peso": 1
+          },
+          {
+            "id": "mofo_branco_face_inferior",
+            "peso": 0.9
+          },
+          {
+            "id": "queda_precoce_folhas",
+            "peso": 0.4
+          }
+        ],
+        "condicoesFavoraveis": {
+          "temperatura": "10 a 20 °C",
+          "umidade": "Alta - orvalho ou molhamento foliar prolongado",
+          "observacao": "Noites frias com orvalho pela manhã são a condição clássica. Plantio adensado segura a umidade entre as folhas e prolonga o molhamento."
+        },
+        "tratamentos": [
+          {
+            "tipo": "cultural",
+            "descricao": "Ampliar o espaçamento para arejar a folhagem; irrigar de manhã, para a folha secar durante o dia; preferir irrigação localizada à aspersão; eliminar restos culturais; fazer rotação com espécies fora das brássicas."
+          },
+          {
+            "tipo": "biologico",
+            "descricao": "Bacillus subtilis em aplicação preventiva, iniciada antes do período de maior umidade."
+          },
+          {
+            "tipo": "quimico",
+            "descricao": "Fungicidas específicos para oomicetos, em aplicação preventiva. Produto para fungo verdadeiro não tem efeito aqui."
+          }
+        ],
+        "ingredientesAtivos": [
+          {
+            "nome": "Metalaxil-M",
+            "grupo": "Acilalaninato",
+            "acao": "sistêmico"
+          },
+          {
+            "nome": "Mancozebe",
+            "grupo": "Ditiocarbamato",
+            "acao": "protetor"
+          },
+          {
+            "nome": "Fosetil-alumínio",
+            "grupo": "Fosfonato",
+            "acao": "sistêmico"
+          }
+        ]
+      },
+      {
+        "id": "brocolis_alternariose",
+        "nome": "Alternariose do brócolis",
+        "agente": "Alternaria brassicae",
+        "tipoAgente": "fungo",
+        "gravidade": 3,
+        "descricao": "Manchas escuras e arredondadas com anéis concêntricos, como um alvo, que crescem e se juntam até secar a folha. No brócolis, a perda de área foliar antes da formação da inflorescência resulta em cabeça pequena e de baixo valor. O fungo sobrevive na semente e em restos culturais, o que faz da semente sadia a primeira medida de controle.",
+        "sintomas": [
+          {
+            "id": "manchas_escuras_aneis",
+            "peso": 1
+          },
+          {
+            "id": "manchas_amareladas",
+            "peso": 0.5
+          },
+          {
+            "id": "queda_precoce_folhas",
+            "peso": 0.4
+          }
+        ],
+        "condicoesFavoraveis": {
+          "temperatura": "20 a 28 °C",
+          "umidade": "Alta - exige molhamento foliar para infectar",
+          "observacao": "Chuva frequente e irrigação por aspersão favorecem. Plantas mal nutridas adoecem mais."
+        },
+        "tratamentos": [
+          {
+            "tipo": "cultural",
+            "descricao": "Usar semente sadia ou tratada; fazer rotação por dois anos com espécies fora das brássicas; eliminar restos culturais logo após a colheita; evitar irrigação por aspersão no fim da tarde."
+          },
+          {
+            "tipo": "biologico",
+            "descricao": "Trichoderma spp. aplicado ao solo reduz o inóculo dos restos culturais."
+          },
+          {
+            "tipo": "quimico",
+            "descricao": "Fungicidas protetores em aplicação preventiva, com rodízio de grupo químico."
+          }
+        ],
+        "ingredientesAtivos": [
+          {
+            "nome": "Mancozebe",
+            "grupo": "Ditiocarbamato",
+            "acao": "protetor"
+          },
+          {
+            "nome": "Iprodiona",
+            "grupo": "Dicarboximida",
+            "acao": "protetor"
+          },
+          {
+            "nome": "Azoxistrobina",
+            "grupo": "Estrobilurina",
+            "acao": "sistêmico"
+          }
+        ]
+      },
+      {
+        "id": "brocolis_podridao_negra",
+        "nome": "Podridão-negra do brócolis",
+        "agente": "Xanthomonas campestris pv. campestris",
+        "tipoAgente": "bactéria",
+        "gravidade": 5,
+        "descricao": "A lesão começa na borda da folha e avança para dentro em forma de V, amarela, com as nervuras escurecendo até ficarem pretas - a bactéria caminha pelos vasos. No brócolis, a perda de área foliar antes da formação da inflorescência resulta em cabeça pequena e de baixo valor. É a doença mais destrutiva das brássicas e não tem controle curativo: tudo se decide na sanidade da semente e na rotação.",
+        "sintomas": [
+          {
+            "id": "lesao_em_v_na_borda",
+            "peso": 1
+          },
+          {
+            "id": "nervuras_escurecidas",
+            "peso": 0.9
+          },
+          {
+            "id": "manchas_amareladas",
+            "peso": 0.5
+          },
+          {
+            "id": "murcha",
+            "peso": 0.4
+          }
+        ],
+        "condicoesFavoraveis": {
+          "temperatura": "25 a 30 °C",
+          "umidade": "Alta - chuva com vento espalha a bactéria",
+          "observacao": "A bactéria entra pelos hidatódios da borda da folha e por ferimentos. Trabalhar no canteiro com a folhagem molhada espalha o foco planta a planta."
+        },
+        "tratamentos": [
+          {
+            "tipo": "cultural",
+            "descricao": "Usar semente sadia ou submetida a tratamento térmico; fazer rotação de dois a três anos com espécies fora das brássicas; não trabalhar no canteiro com as plantas molhadas; arrancar e retirar da área as plantas doentes; eliminar plantas daninhas da família."
+          },
+          {
+            "tipo": "biologico",
+            "descricao": "Não há produto biológico com eficácia comprovada contra esta bacteriose. O controle é preventivo."
+          },
+          {
+            "tipo": "quimico",
+            "descricao": "Não há bactericida curativo. Produtos cúpricos têm ação apenas preventiva e de superfície, e não alcançam a bactéria dentro dos vasos."
+          }
+        ],
+        "ingredientesAtivos": [
+          {
+            "nome": "Oxicloreto de cobre",
+            "grupo": "Inorgânico",
+            "acao": "protetor"
+          },
+          {
+            "nome": "Hidróxido de cobre",
+            "grupo": "Inorgânico",
+            "acao": "protetor"
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "couve",
+    "nome": "Couve",
+    "nomeCientifico": "Brassica oleracea var. acephala",
+    "grupo": "folha",
+    "familia": "Brassicaceae",
+    "emoji": "🥬",
+    "cicloDias": 70,
+    "doencas": [
+      {
+        "id": "couve_mildio",
+        "nome": "Míldio da couve",
+        "agente": "Hyaloperonospora brassicae",
+        "tipoAgente": "oomiceto",
+        "gravidade": 4,
+        "descricao": "Manchas amareladas de contorno anguloso na face superior da folha e, embaixo delas, um mofo branco-acinzentado na face inferior - é o sinal que confirma o diagnóstico. Na couve, que é colhida folha a folha ao longo de meses, cada folha perdida é produto que não vai para a feira. Avança rápido em tempo fresco e úmido, e é a doença que mais aparece em plantio adensado.",
+        "sintomas": [
+          {
+            "id": "manchas_amareladas",
+            "peso": 1
+          },
+          {
+            "id": "mofo_branco_face_inferior",
+            "peso": 0.9
+          },
+          {
+            "id": "queda_precoce_folhas",
+            "peso": 0.4
+          }
+        ],
+        "condicoesFavoraveis": {
+          "temperatura": "10 a 20 °C",
+          "umidade": "Alta - orvalho ou molhamento foliar prolongado",
+          "observacao": "Noites frias com orvalho pela manhã são a condição clássica. Plantio adensado segura a umidade entre as folhas e prolonga o molhamento."
+        },
+        "tratamentos": [
+          {
+            "tipo": "cultural",
+            "descricao": "Ampliar o espaçamento para arejar a folhagem; irrigar de manhã, para a folha secar durante o dia; preferir irrigação localizada à aspersão; eliminar restos culturais; fazer rotação com espécies fora das brássicas."
+          },
+          {
+            "tipo": "biologico",
+            "descricao": "Bacillus subtilis em aplicação preventiva, iniciada antes do período de maior umidade."
+          },
+          {
+            "tipo": "quimico",
+            "descricao": "Fungicidas específicos para oomicetos, em aplicação preventiva. Produto para fungo verdadeiro não tem efeito aqui."
+          }
+        ],
+        "ingredientesAtivos": [
+          {
+            "nome": "Metalaxil-M",
+            "grupo": "Acilalaninato",
+            "acao": "sistêmico"
+          },
+          {
+            "nome": "Mancozebe",
+            "grupo": "Ditiocarbamato",
+            "acao": "protetor"
+          },
+          {
+            "nome": "Fosetil-alumínio",
+            "grupo": "Fosfonato",
+            "acao": "sistêmico"
+          }
+        ]
+      },
+      {
+        "id": "couve_alternariose",
+        "nome": "Alternariose da couve",
+        "agente": "Alternaria brassicae",
+        "tipoAgente": "fungo",
+        "gravidade": 3,
+        "descricao": "Manchas escuras e arredondadas com anéis concêntricos, como um alvo, que crescem e se juntam até secar a folha. Na couve, que é colhida folha a folha ao longo de meses, cada folha perdida é produto que não vai para a feira. O fungo sobrevive na semente e em restos culturais, o que faz da semente sadia a primeira medida de controle.",
+        "sintomas": [
+          {
+            "id": "manchas_escuras_aneis",
+            "peso": 1
+          },
+          {
+            "id": "manchas_amareladas",
+            "peso": 0.5
+          },
+          {
+            "id": "queda_precoce_folhas",
+            "peso": 0.4
+          }
+        ],
+        "condicoesFavoraveis": {
+          "temperatura": "20 a 28 °C",
+          "umidade": "Alta - exige molhamento foliar para infectar",
+          "observacao": "Chuva frequente e irrigação por aspersão favorecem. Plantas mal nutridas adoecem mais."
+        },
+        "tratamentos": [
+          {
+            "tipo": "cultural",
+            "descricao": "Usar semente sadia ou tratada; fazer rotação por dois anos com espécies fora das brássicas; eliminar restos culturais logo após a colheita; evitar irrigação por aspersão no fim da tarde."
+          },
+          {
+            "tipo": "biologico",
+            "descricao": "Trichoderma spp. aplicado ao solo reduz o inóculo dos restos culturais."
+          },
+          {
+            "tipo": "quimico",
+            "descricao": "Fungicidas protetores em aplicação preventiva, com rodízio de grupo químico."
+          }
+        ],
+        "ingredientesAtivos": [
+          {
+            "nome": "Mancozebe",
+            "grupo": "Ditiocarbamato",
+            "acao": "protetor"
+          },
+          {
+            "nome": "Iprodiona",
+            "grupo": "Dicarboximida",
+            "acao": "protetor"
+          },
+          {
+            "nome": "Azoxistrobina",
+            "grupo": "Estrobilurina",
+            "acao": "sistêmico"
+          }
+        ]
+      },
+      {
+        "id": "couve_podridao_negra",
+        "nome": "Podridão-negra da couve",
+        "agente": "Xanthomonas campestris pv. campestris",
+        "tipoAgente": "bactéria",
+        "gravidade": 5,
+        "descricao": "A lesão começa na borda da folha e avança para dentro em forma de V, amarela, com as nervuras escurecendo até ficarem pretas - a bactéria caminha pelos vasos. Na couve, que é colhida folha a folha ao longo de meses, cada folha perdida é produto que não vai para a feira. É a doença mais destrutiva das brássicas e não tem controle curativo: tudo se decide na sanidade da semente e na rotação.",
+        "sintomas": [
+          {
+            "id": "lesao_em_v_na_borda",
+            "peso": 1
+          },
+          {
+            "id": "nervuras_escurecidas",
+            "peso": 0.9
+          },
+          {
+            "id": "manchas_amareladas",
+            "peso": 0.5
+          },
+          {
+            "id": "murcha",
+            "peso": 0.4
+          }
+        ],
+        "condicoesFavoraveis": {
+          "temperatura": "25 a 30 °C",
+          "umidade": "Alta - chuva com vento espalha a bactéria",
+          "observacao": "A bactéria entra pelos hidatódios da borda da folha e por ferimentos. Trabalhar no canteiro com a folhagem molhada espalha o foco planta a planta."
+        },
+        "tratamentos": [
+          {
+            "tipo": "cultural",
+            "descricao": "Usar semente sadia ou submetida a tratamento térmico; fazer rotação de dois a três anos com espécies fora das brássicas; não trabalhar no canteiro com as plantas molhadas; arrancar e retirar da área as plantas doentes; eliminar plantas daninhas da família."
+          },
+          {
+            "tipo": "biologico",
+            "descricao": "Não há produto biológico com eficácia comprovada contra esta bacteriose. O controle é preventivo."
+          },
+          {
+            "tipo": "quimico",
+            "descricao": "Não há bactericida curativo. Produtos cúpricos têm ação apenas preventiva e de superfície, e não alcançam a bactéria dentro dos vasos."
+          }
+        ],
+        "ingredientesAtivos": [
+          {
+            "nome": "Oxicloreto de cobre",
+            "grupo": "Inorgânico",
+            "acao": "protetor"
+          },
+          {
+            "nome": "Hidróxido de cobre",
+            "grupo": "Inorgânico",
+            "acao": "protetor"
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "couve_flor",
+    "nome": "Couve-flor",
+    "nomeCientifico": "Brassica oleracea var. botrytis",
+    "grupo": "flor",
+    "familia": "Brassicaceae",
+    "emoji": "🥦",
+    "cicloDias": 110,
+    "doencas": [
+      {
+        "id": "couve_flor_mildio",
+        "nome": "Míldio da couve-flor",
+        "agente": "Hyaloperonospora brassicae",
+        "tipoAgente": "oomiceto",
+        "gravidade": 4,
+        "descricao": "Manchas amareladas de contorno anguloso na face superior da folha e, embaixo delas, um mofo branco-acinzentado na face inferior - é o sinal que confirma o diagnóstico. Na couve-flor, o ciclo longo expõe a planta por mais tempo, e a cabeça manchada perde valor comercial mesmo quando o dano é superficial. Avança rápido em tempo fresco e úmido, e é a doença que mais aparece em plantio adensado.",
+        "sintomas": [
+          {
+            "id": "manchas_amareladas",
+            "peso": 1
+          },
+          {
+            "id": "mofo_branco_face_inferior",
+            "peso": 0.9
+          },
+          {
+            "id": "queda_precoce_folhas",
+            "peso": 0.4
+          }
+        ],
+        "condicoesFavoraveis": {
+          "temperatura": "10 a 20 °C",
+          "umidade": "Alta - orvalho ou molhamento foliar prolongado",
+          "observacao": "Noites frias com orvalho pela manhã são a condição clássica. Plantio adensado segura a umidade entre as folhas e prolonga o molhamento."
+        },
+        "tratamentos": [
+          {
+            "tipo": "cultural",
+            "descricao": "Ampliar o espaçamento para arejar a folhagem; irrigar de manhã, para a folha secar durante o dia; preferir irrigação localizada à aspersão; eliminar restos culturais; fazer rotação com espécies fora das brássicas."
+          },
+          {
+            "tipo": "biologico",
+            "descricao": "Bacillus subtilis em aplicação preventiva, iniciada antes do período de maior umidade."
+          },
+          {
+            "tipo": "quimico",
+            "descricao": "Fungicidas específicos para oomicetos, em aplicação preventiva. Produto para fungo verdadeiro não tem efeito aqui."
+          }
+        ],
+        "ingredientesAtivos": [
+          {
+            "nome": "Metalaxil-M",
+            "grupo": "Acilalaninato",
+            "acao": "sistêmico"
+          },
+          {
+            "nome": "Mancozebe",
+            "grupo": "Ditiocarbamato",
+            "acao": "protetor"
+          },
+          {
+            "nome": "Fosetil-alumínio",
+            "grupo": "Fosfonato",
+            "acao": "sistêmico"
+          }
+        ]
+      },
+      {
+        "id": "couve_flor_podridao_negra",
+        "nome": "Podridão-negra da couve-flor",
+        "agente": "Xanthomonas campestris pv. campestris",
+        "tipoAgente": "bactéria",
+        "gravidade": 5,
+        "descricao": "A lesão começa na borda da folha e avança para dentro em forma de V, amarela, com as nervuras escurecendo até ficarem pretas - a bactéria caminha pelos vasos. Na couve-flor, o ciclo longo expõe a planta por mais tempo, e a cabeça manchada perde valor comercial mesmo quando o dano é superficial. É a doença mais destrutiva das brássicas e não tem controle curativo: tudo se decide na sanidade da semente e na rotação.",
+        "sintomas": [
+          {
+            "id": "lesao_em_v_na_borda",
+            "peso": 1
+          },
+          {
+            "id": "nervuras_escurecidas",
+            "peso": 0.9
+          },
+          {
+            "id": "manchas_amareladas",
+            "peso": 0.5
+          },
+          {
+            "id": "murcha",
+            "peso": 0.4
+          }
+        ],
+        "condicoesFavoraveis": {
+          "temperatura": "25 a 30 °C",
+          "umidade": "Alta - chuva com vento espalha a bactéria",
+          "observacao": "A bactéria entra pelos hidatódios da borda da folha e por ferimentos. Trabalhar no canteiro com a folhagem molhada espalha o foco planta a planta."
+        },
+        "tratamentos": [
+          {
+            "tipo": "cultural",
+            "descricao": "Usar semente sadia ou submetida a tratamento térmico; fazer rotação de dois a três anos com espécies fora das brássicas; não trabalhar no canteiro com as plantas molhadas; arrancar e retirar da área as plantas doentes; eliminar plantas daninhas da família."
+          },
+          {
+            "tipo": "biologico",
+            "descricao": "Não há produto biológico com eficácia comprovada contra esta bacteriose. O controle é preventivo."
+          },
+          {
+            "tipo": "quimico",
+            "descricao": "Não há bactericida curativo. Produtos cúpricos têm ação apenas preventiva e de superfície, e não alcançam a bactéria dentro dos vasos."
+          }
+        ],
+        "ingredientesAtivos": [
+          {
+            "nome": "Oxicloreto de cobre",
+            "grupo": "Inorgânico",
+            "acao": "protetor"
+          },
+          {
+            "nome": "Hidróxido de cobre",
+            "grupo": "Inorgânico",
+            "acao": "protetor"
+          }
+        ]
+      },
+      {
+        "id": "couve_flor_hernia",
+        "nome": "Hérnia das crucíferas da couve-flor",
+        "agente": "Plasmodiophora brassicae",
+        "tipoAgente": "protista",
+        "gravidade": 5,
+        "descricao": "A parte de cima da planta murcha nas horas quentes e se recupera à noite, cresce pouco e amarelece - e a causa não está na folha. Ao arrancar, as raízes aparecem engrossadas e deformadas, com galhas. Na couve-flor, o ciclo longo expõe a planta por mais tempo, e a cabeça manchada perde valor comercial mesmo quando o dano é superficial. O patógeno persiste no solo por até vinte anos, o que torna a área contaminada um problema de longo prazo.",
+        "sintomas": [
+          {
+            "id": "galhas_na_raiz",
+            "peso": 1
+          },
+          {
+            "id": "murcha",
+            "peso": 0.8
+          },
+          {
+            "id": "crescimento_reduzido",
+            "peso": 0.7
+          },
+          {
+            "id": "manchas_amareladas",
+            "peso": 0.4
+          }
+        ],
+        "condicoesFavoraveis": {
+          "temperatura": "18 a 25 °C",
+          "umidade": "Alta - solo úmido e mal drenado",
+          "observacao": "Solo ácido, abaixo de pH 6,5, é o fator que mais favorece. A calagem elevando o pH é a medida de maior efeito, e é preventiva: não cura a planta já infectada."
+        },
+        "tratamentos": [
+          {
+            "tipo": "cultural",
+            "descricao": "Fazer calagem para elevar o pH do solo acima de 7,0; melhorar a drenagem; usar mudas produzidas em substrato sadio; não transitar com máquinas e implementos da área contaminada para a área limpa; rotação longa, de pelo menos sete anos, fora das brássicas."
+          },
+          {
+            "tipo": "biologico",
+            "descricao": "Trichoderma spp. e Bacillus subtilis aplicados ao substrato de mudas reduzem a infecção inicial, sem eliminar o patógeno do solo."
+          },
+          {
+            "tipo": "quimico",
+            "descricao": "Não há produto químico que controle o patógeno no solo em condições de campo. A calagem e a rotação são o manejo disponível."
+          }
+        ],
+        "ingredientesAtivos": []
       }
     ]
   },
@@ -524,11 +1249,11 @@ export const CULTURAS: readonly Cultura[] = [
       },
       {
         "id": "pimentao_antracnose",
-        "nome": "Antracnose do pimentao",
+        "nome": "Antracnose do pimentão",
         "agente": "Colletotrichum spp.",
         "tipoAgente": "fungo",
         "gravidade": 4,
-        "descricao": "Ataca principalmente o fruto, sobretudo o maduro. A lesao e circular e deprimida, como se o fruto tivesse sido pressionado, e dentro dela aparecem pontinhos pretos dispostos em circulos concentricos - as estruturas de frutificacao do fungo. E a doenca que mais compromete o produto na fase de colheita, porque a lesao so se revela quando o fruto ja esta formado.",
+        "descricao": "Ataca principalmente o fruto, sobretudo o maduro. A lesão é circular e deprimida, como se o fruto tivesse sido pressionado, e dentro dela aparecem pontinhos pretos dispostos em círculos concêntricos - as estruturas de frutificação do fungo. É a doença que mais compromete o produto na fase de colheita, porque a lesão só se revela quando o fruto já está formado.",
         "sintomas": [
           {
             "id": "lesoes_no_fruto",
@@ -544,22 +1269,22 @@ export const CULTURAS: readonly Cultura[] = [
           }
         ],
         "condicoesFavoraveis": {
-          "temperatura": "22 a 28 graus C",
-          "umidade": "Alta - molhamento do fruto por chuva ou aspersao",
-          "observacao": "O fungo sobrevive em restos culturais e na semente. Chuva e irrigacao por aspersao respingam o inoculo do solo para o fruto."
+          "temperatura": "22 a 28 °C",
+          "umidade": "Alta - molhamento do fruto por chuva ou aspersão",
+          "observacao": "O fungo sobrevive em restos culturais e na semente. Chuva e irrigação por aspersão respingam o inóculo do solo para o fruto."
         },
         "tratamentos": [
           {
             "tipo": "cultural",
-            "descricao": "Usar semente sadia; fazer rotacao com especies fora das solanaceas; eliminar restos culturais e frutos doentes da area; preferir irrigacao localizada a aspersao; colher os frutos no ponto, sem deixar amadurecer demais na planta."
+            "descricao": "Usar semente sadia; fazer rotação com espécies fora das solanáceas; eliminar restos culturais e frutos doentes da área; preferir irrigação localizada à aspersão; colher os frutos no ponto, sem deixar amadurecer demais na planta."
           },
           {
             "tipo": "biologico",
-            "descricao": "Aplicacoes preventivas de Trichoderma spp. e de Bacillus subtilis reduzem o inoculo, com efeito melhor quando associadas ao manejo cultural."
+            "descricao": "Aplicações preventivas de Trichoderma spp. e de Bacillus subtilis reduzem o inóculo, com efeito melhor quando associadas ao manejo cultural."
           },
           {
             "tipo": "quimico",
-            "descricao": "Fungicidas protetores em aplicacao preventiva, desde o inicio da frutificacao, com rodizio de grupo quimico para evitar resistencia."
+            "descricao": "Fungicidas protetores em aplicação preventiva, desde o início da frutificação, com rodízio de grupo químico para evitar resistência."
           }
         ],
         "ingredientesAtivos": [
@@ -571,22 +1296,22 @@ export const CULTURAS: readonly Cultura[] = [
           {
             "nome": "Azoxistrobina",
             "grupo": "Estrobilurina",
-            "acao": "sistemico"
+            "acao": "sistêmico"
           },
           {
             "nome": "Difenoconazol",
             "grupo": "Triazol",
-            "acao": "sistemico"
+            "acao": "sistêmico"
           }
         ]
       },
       {
         "id": "pimentao_oidio",
-        "nome": "Oidio do pimentao",
+        "nome": "Oídio do pimentão",
         "agente": "Leveillula taurica",
         "tipoAgente": "fungo",
         "gravidade": 3,
-        "descricao": "Manchas amareladas na face superior da folha e po esbranquicado na face inferior. A desfolha comeca pelas folhas mais velhas e expoe os frutos ao sol, causando queima. Como o oidio do tomateiro, e a excecao entre os fungos foliares: prospera no tempo seco, e agua livre na folha atrapalha a germinacao do esporo.",
+        "descricao": "Manchas amareladas na face superior da folha e pó esbranquiçado na face inferior. A desfolha começa pelas folhas mais velhas e expõe os frutos ao sol, causando queima. Como o oídio do tomateiro, é a exceção entre os fungos foliares: prospera no tempo seco, e água livre na folha atrapalha a germinação do esporo.",
         "sintomas": [
           {
             "id": "po_branco_superficie",
@@ -606,39 +1331,391 @@ export const CULTURAS: readonly Cultura[] = [
           }
         ],
         "condicoesFavoraveis": {
-          "temperatura": "20 a 27 graus C",
-          "umidade": "Moderada a baixa - nao exige molhamento foliar",
-          "observacao": "Comum em cultivo protegido e em periodos secos. Ao contrario das demais doencas fungicas desta base, molhar a folha nao favorece o patogeno."
+          "temperatura": "20 a 27 °C",
+          "umidade": "Moderada a baixa - não exige molhamento foliar",
+          "observacao": "Comum em cultivo protegido e em períodos secos. Ao contrário das demais doenças fúngicas desta base, molhar a folha não favorece o patógeno."
         },
         "tratamentos": [
           {
             "tipo": "cultural",
-            "descricao": "Melhorar a ventilacao, sobretudo em estufa; evitar adubacao nitrogenada em excesso, que deixa o tecido mais suscetivel; eliminar folhas muito atacadas."
+            "descricao": "Melhorar a ventilação, sobretudo em estufa; evitar adubação nitrogenada em excesso, que deixa o tecido mais suscetível; eliminar folhas muito atacadas."
           },
           {
             "tipo": "biologico",
-            "descricao": "Bacillus subtilis em aplicacao preventiva tem bom efeito, e e compativel com o cultivo protegido."
+            "descricao": "Bacillus subtilis em aplicação preventiva tem bom efeito, e é compatível com o cultivo protegido."
           },
           {
             "tipo": "quimico",
-            "descricao": "Enxofre em aplicacao preventiva, respeitando o limite de temperatura para nao causar fitotoxidez; triazois quando a doenca ja se instalou."
+            "descricao": "Enxofre em aplicação preventiva, respeitando o limite de temperatura para não causar fitotoxidez; triazóis quando a doença já se instalou."
           }
         ],
         "ingredientesAtivos": [
           {
             "nome": "Enxofre",
-            "grupo": "Inorganico",
+            "grupo": "Inorgânico",
             "acao": "protetor"
           },
           {
             "nome": "Tebuconazol",
             "grupo": "Triazol",
-            "acao": "sistemico"
+            "acao": "sistêmico"
           },
           {
             "nome": "Azoxistrobina",
             "grupo": "Estrobilurina",
-            "acao": "sistemico"
+            "acao": "sistêmico"
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "repolho",
+    "nome": "Repolho",
+    "nomeCientifico": "Brassica oleracea var. capitata",
+    "grupo": "folha",
+    "familia": "Brassicaceae",
+    "emoji": "🥬",
+    "cicloDias": 100,
+    "doencas": [
+      {
+        "id": "repolho_podridao_negra",
+        "nome": "Podridão-negra do repolho",
+        "agente": "Xanthomonas campestris pv. campestris",
+        "tipoAgente": "bactéria",
+        "gravidade": 5,
+        "descricao": "A lesão começa na borda da folha e avança para dentro em forma de V, amarela, com as nervuras escurecendo até ficarem pretas - a bactéria caminha pelos vasos. No repolho, o ataque às folhas externas compromete a formação da cabeça, que é o produto. É a doença mais destrutiva das brássicas e não tem controle curativo: tudo se decide na sanidade da semente e na rotação.",
+        "sintomas": [
+          {
+            "id": "lesao_em_v_na_borda",
+            "peso": 1
+          },
+          {
+            "id": "nervuras_escurecidas",
+            "peso": 0.9
+          },
+          {
+            "id": "manchas_amareladas",
+            "peso": 0.5
+          },
+          {
+            "id": "murcha",
+            "peso": 0.4
+          }
+        ],
+        "condicoesFavoraveis": {
+          "temperatura": "25 a 30 °C",
+          "umidade": "Alta - chuva com vento espalha a bactéria",
+          "observacao": "A bactéria entra pelos hidatódios da borda da folha e por ferimentos. Trabalhar no canteiro com a folhagem molhada espalha o foco planta a planta."
+        },
+        "tratamentos": [
+          {
+            "tipo": "cultural",
+            "descricao": "Usar semente sadia ou submetida a tratamento térmico; fazer rotação de dois a três anos com espécies fora das brássicas; não trabalhar no canteiro com as plantas molhadas; arrancar e retirar da área as plantas doentes; eliminar plantas daninhas da família."
+          },
+          {
+            "tipo": "biologico",
+            "descricao": "Não há produto biológico com eficácia comprovada contra esta bacteriose. O controle é preventivo."
+          },
+          {
+            "tipo": "quimico",
+            "descricao": "Não há bactericida curativo. Produtos cúpricos têm ação apenas preventiva e de superfície, e não alcançam a bactéria dentro dos vasos."
+          }
+        ],
+        "ingredientesAtivos": [
+          {
+            "nome": "Oxicloreto de cobre",
+            "grupo": "Inorgânico",
+            "acao": "protetor"
+          },
+          {
+            "nome": "Hidróxido de cobre",
+            "grupo": "Inorgânico",
+            "acao": "protetor"
+          }
+        ]
+      },
+      {
+        "id": "repolho_alternariose",
+        "nome": "Alternariose do repolho",
+        "agente": "Alternaria brassicae",
+        "tipoAgente": "fungo",
+        "gravidade": 3,
+        "descricao": "Manchas escuras e arredondadas com anéis concêntricos, como um alvo, que crescem e se juntam até secar a folha. No repolho, o ataque às folhas externas compromete a formação da cabeça, que é o produto. O fungo sobrevive na semente e em restos culturais, o que faz da semente sadia a primeira medida de controle.",
+        "sintomas": [
+          {
+            "id": "manchas_escuras_aneis",
+            "peso": 1
+          },
+          {
+            "id": "manchas_amareladas",
+            "peso": 0.5
+          },
+          {
+            "id": "queda_precoce_folhas",
+            "peso": 0.4
+          }
+        ],
+        "condicoesFavoraveis": {
+          "temperatura": "20 a 28 °C",
+          "umidade": "Alta - exige molhamento foliar para infectar",
+          "observacao": "Chuva frequente e irrigação por aspersão favorecem. Plantas mal nutridas adoecem mais."
+        },
+        "tratamentos": [
+          {
+            "tipo": "cultural",
+            "descricao": "Usar semente sadia ou tratada; fazer rotação por dois anos com espécies fora das brássicas; eliminar restos culturais logo após a colheita; evitar irrigação por aspersão no fim da tarde."
+          },
+          {
+            "tipo": "biologico",
+            "descricao": "Trichoderma spp. aplicado ao solo reduz o inóculo dos restos culturais."
+          },
+          {
+            "tipo": "quimico",
+            "descricao": "Fungicidas protetores em aplicação preventiva, com rodízio de grupo químico."
+          }
+        ],
+        "ingredientesAtivos": [
+          {
+            "nome": "Mancozebe",
+            "grupo": "Ditiocarbamato",
+            "acao": "protetor"
+          },
+          {
+            "nome": "Iprodiona",
+            "grupo": "Dicarboximida",
+            "acao": "protetor"
+          },
+          {
+            "nome": "Azoxistrobina",
+            "grupo": "Estrobilurina",
+            "acao": "sistêmico"
+          }
+        ]
+      },
+      {
+        "id": "repolho_hernia",
+        "nome": "Hérnia das crucíferas do repolho",
+        "agente": "Plasmodiophora brassicae",
+        "tipoAgente": "protista",
+        "gravidade": 5,
+        "descricao": "A parte de cima da planta murcha nas horas quentes e se recupera à noite, cresce pouco e amarelece - e a causa não está na folha. Ao arrancar, as raízes aparecem engrossadas e deformadas, com galhas. No repolho, o ataque às folhas externas compromete a formação da cabeça, que é o produto. O patógeno persiste no solo por até vinte anos, o que torna a área contaminada um problema de longo prazo.",
+        "sintomas": [
+          {
+            "id": "galhas_na_raiz",
+            "peso": 1
+          },
+          {
+            "id": "murcha",
+            "peso": 0.8
+          },
+          {
+            "id": "crescimento_reduzido",
+            "peso": 0.7
+          },
+          {
+            "id": "manchas_amareladas",
+            "peso": 0.4
+          }
+        ],
+        "condicoesFavoraveis": {
+          "temperatura": "18 a 25 °C",
+          "umidade": "Alta - solo úmido e mal drenado",
+          "observacao": "Solo ácido, abaixo de pH 6,5, é o fator que mais favorece. A calagem elevando o pH é a medida de maior efeito, e é preventiva: não cura a planta já infectada."
+        },
+        "tratamentos": [
+          {
+            "tipo": "cultural",
+            "descricao": "Fazer calagem para elevar o pH do solo acima de 7,0; melhorar a drenagem; usar mudas produzidas em substrato sadio; não transitar com máquinas e implementos da área contaminada para a área limpa; rotação longa, de pelo menos sete anos, fora das brássicas."
+          },
+          {
+            "tipo": "biologico",
+            "descricao": "Trichoderma spp. e Bacillus subtilis aplicados ao substrato de mudas reduzem a infecção inicial, sem eliminar o patógeno do solo."
+          },
+          {
+            "tipo": "quimico",
+            "descricao": "Não há produto químico que controle o patógeno no solo em condições de campo. A calagem e a rotação são o manejo disponível."
+          }
+        ],
+        "ingredientesAtivos": []
+      }
+    ]
+  },
+  {
+    "id": "rucula",
+    "nome": "Rúcula",
+    "nomeCientifico": "Eruca vesicaria",
+    "grupo": "folha",
+    "familia": "Brassicaceae",
+    "emoji": "🌿",
+    "cicloDias": 40,
+    "doencas": [
+      {
+        "id": "rucula_mildio",
+        "nome": "Míldio da rúcula",
+        "agente": "Hyaloperonospora brassicae",
+        "tipoAgente": "oomiceto",
+        "gravidade": 4,
+        "descricao": "Manchas amareladas de contorno anguloso na face superior da folha e, embaixo delas, um mofo branco-acinzentado na face inferior - é o sinal que confirma o diagnóstico. Na rúcula, de ciclo muito curto e folha consumida crua, a margem para intervenção química é mínima e o manejo preventivo é quase tudo. Avança rápido em tempo fresco e úmido, e é a doença que mais aparece em plantio adensado.",
+        "sintomas": [
+          {
+            "id": "manchas_amareladas",
+            "peso": 1
+          },
+          {
+            "id": "mofo_branco_face_inferior",
+            "peso": 0.9
+          },
+          {
+            "id": "queda_precoce_folhas",
+            "peso": 0.4
+          }
+        ],
+        "condicoesFavoraveis": {
+          "temperatura": "10 a 20 °C",
+          "umidade": "Alta - orvalho ou molhamento foliar prolongado",
+          "observacao": "Noites frias com orvalho pela manhã são a condição clássica. Plantio adensado segura a umidade entre as folhas e prolonga o molhamento."
+        },
+        "tratamentos": [
+          {
+            "tipo": "cultural",
+            "descricao": "Ampliar o espaçamento para arejar a folhagem; irrigar de manhã, para a folha secar durante o dia; preferir irrigação localizada à aspersão; eliminar restos culturais; fazer rotação com espécies fora das brássicas."
+          },
+          {
+            "tipo": "biologico",
+            "descricao": "Bacillus subtilis em aplicação preventiva, iniciada antes do período de maior umidade."
+          },
+          {
+            "tipo": "quimico",
+            "descricao": "Fungicidas específicos para oomicetos, em aplicação preventiva. Produto para fungo verdadeiro não tem efeito aqui."
+          }
+        ],
+        "ingredientesAtivos": [
+          {
+            "nome": "Metalaxil-M",
+            "grupo": "Acilalaninato",
+            "acao": "sistêmico"
+          },
+          {
+            "nome": "Mancozebe",
+            "grupo": "Ditiocarbamato",
+            "acao": "protetor"
+          },
+          {
+            "nome": "Fosetil-alumínio",
+            "grupo": "Fosfonato",
+            "acao": "sistêmico"
+          }
+        ]
+      },
+      {
+        "id": "rucula_alternariose",
+        "nome": "Alternariose da rúcula",
+        "agente": "Alternaria brassicae",
+        "tipoAgente": "fungo",
+        "gravidade": 3,
+        "descricao": "Manchas escuras e arredondadas com anéis concêntricos, como um alvo, que crescem e se juntam até secar a folha. Na rúcula, de ciclo muito curto e folha consumida crua, a margem para intervenção química é mínima e o manejo preventivo é quase tudo. O fungo sobrevive na semente e em restos culturais, o que faz da semente sadia a primeira medida de controle.",
+        "sintomas": [
+          {
+            "id": "manchas_escuras_aneis",
+            "peso": 1
+          },
+          {
+            "id": "manchas_amareladas",
+            "peso": 0.5
+          },
+          {
+            "id": "queda_precoce_folhas",
+            "peso": 0.4
+          }
+        ],
+        "condicoesFavoraveis": {
+          "temperatura": "20 a 28 °C",
+          "umidade": "Alta - exige molhamento foliar para infectar",
+          "observacao": "Chuva frequente e irrigação por aspersão favorecem. Plantas mal nutridas adoecem mais."
+        },
+        "tratamentos": [
+          {
+            "tipo": "cultural",
+            "descricao": "Usar semente sadia ou tratada; fazer rotação por dois anos com espécies fora das brássicas; eliminar restos culturais logo após a colheita; evitar irrigação por aspersão no fim da tarde."
+          },
+          {
+            "tipo": "biologico",
+            "descricao": "Trichoderma spp. aplicado ao solo reduz o inóculo dos restos culturais."
+          },
+          {
+            "tipo": "quimico",
+            "descricao": "Fungicidas protetores em aplicação preventiva, com rodízio de grupo químico."
+          }
+        ],
+        "ingredientesAtivos": [
+          {
+            "nome": "Mancozebe",
+            "grupo": "Ditiocarbamato",
+            "acao": "protetor"
+          },
+          {
+            "nome": "Iprodiona",
+            "grupo": "Dicarboximida",
+            "acao": "protetor"
+          },
+          {
+            "nome": "Azoxistrobina",
+            "grupo": "Estrobilurina",
+            "acao": "sistêmico"
+          }
+        ]
+      },
+      {
+        "id": "rucula_oidio",
+        "nome": "Oídio da rúcula",
+        "agente": "Erysiphe cruciferarum",
+        "tipoAgente": "fungo",
+        "gravidade": 3,
+        "descricao": "Pó branco e farináceo sobre a folha, que se espalha até cobrir a superfície e reduzir a fotossíntese. Na rúcula, de ciclo muito curto e folha consumida crua, a margem para intervenção química é mínima e o manejo preventivo é quase tudo. Como os demais oídios, é a exceção entre os fungos foliares: prospera no tempo seco, e água livre na folha atrapalha a germinação do esporo.",
+        "sintomas": [
+          {
+            "id": "po_branco_superficie",
+            "peso": 1
+          },
+          {
+            "id": "manchas_amareladas",
+            "peso": 0.6
+          },
+          {
+            "id": "desfolha_baixo_para_cima",
+            "peso": 0.4
+          }
+        ],
+        "condicoesFavoraveis": {
+          "temperatura": "18 a 26 °C",
+          "umidade": "Moderada a baixa - não exige molhamento foliar",
+          "observacao": "Períodos secos com noites amenas favorecem. Cultivo protegido concentra o problema."
+        },
+        "tratamentos": [
+          {
+            "tipo": "cultural",
+            "descricao": "Melhorar a ventilação; evitar excesso de adubação nitrogenada; eliminar folhas muito atacadas; espaçar as plantas."
+          },
+          {
+            "tipo": "biologico",
+            "descricao": "Bacillus subtilis em aplicação preventiva tem bom resultado nesta doença."
+          },
+          {
+            "tipo": "quimico",
+            "descricao": "Enxofre em aplicação preventiva, respeitando o limite de temperatura para não causar fitotoxidez."
+          }
+        ],
+        "ingredientesAtivos": [
+          {
+            "nome": "Enxofre",
+            "grupo": "Inorgânico",
+            "acao": "protetor"
+          },
+          {
+            "nome": "Tebuconazol",
+            "grupo": "Triazol",
+            "acao": "sistêmico"
           }
         ]
       }

@@ -8,18 +8,19 @@ manejo integrado e as condições climáticas que favorecem o aparecimento.
 no celular e funcional em modo avião.
 
 > **Estado atual:** o motor de diagnóstico por sintomas funciona ponta a ponta,
-> offline, sem foto e sem rede. A base cobre **3 hortaliças e 16 doenças**
-> curadas — tomate, batata e pimentão, todas com o mínimo de 3 doenças que a
-> pergunta de desempate exige — e cresce por família botânica: as brássicas são
-> as próximas. A câmera captura e pré-processa; falta o modelo de
+> offline, sem foto e sem rede. A base cobre **9 hortaliças e 34 doenças**
+> curadas — as três solanáceas (tomate, batata, pimentão) e as seis brássicas
+> (couve, repolho, brócolis, couve-flor, rúcula, agrião), todas com o mínimo de
+> 3 doenças que a pergunta de desempate exige. A curadoria avança por família
+> botânica: as cucurbitáceas são as próximas. A câmera captura e pré-processa; falta o modelo de
 > visão, e até ele existir o app diz isso em vez de chutar. O banco relacional
 > está modelado e versionado em `migracoes/`, a **API REST está implementada**
 > (catálogo, diagnóstico, conta e caderno de campo) e o front-end já a consome,
 > com fila de sincronização offline. Faltam **hortas e canteiros** e os
 > **relatórios agregados**: as tabelas existem, as rotas e as telas não.
 >
-> Verificado em 27/09/2026: **185 testes automatizados, nenhuma falha** — 74 em
-> Python e 111 no porte em TypeScript.
+> Verificado em 27/09/2026: **245 testes automatizados, nenhuma falha** — 74 em
+> Python e 171 no porte em TypeScript.
 
 ---
 
@@ -435,7 +436,7 @@ textual, para continuar legível por quem não distingue as cores.
 | Câmera, pré-processamento com paridade de pixel, recusa | ✅ |
 | Modelo de dados relacional e DDL versionado | ✅ |
 | API + PostgreSQL: conta, histórico, sincronização offline | ✅ |
-| Curadoria por família: brássicas, solanáceas, cucurbitáceas… | 🔄 3 de 24 culturas |
+| Curadoria por família: brássicas, solanáceas, cucurbitáceas… | 🔄 9 de 24 culturas |
 | Horta, canteiros, manejo e relatórios agregados | ⬜ tabelas prontas, rotas e telas não |
 | Identificação por imagem — condicionada à auditoria do acervo | ⬜ falta o modelo |
 

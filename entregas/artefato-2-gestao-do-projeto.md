@@ -100,7 +100,7 @@ trabalho. O estado é verificável neste repositório.
   - 1.3 Repositório institucional: requisitos, arquitetura, sprints, entregas, ADRs - 🔄
 - **2. Base de conhecimento**
   - 2.1 Modelagem do catálogo: órgãos, sintomas, culturas, doenças, tratamentos, ingredientes ativos - ✅
-  - 2.2 Curadoria por família botânica - 🔄 *(3 de 24 culturas, 16 de 88 doenças)*
+  - 2.2 Curadoria por família botânica - 🔄 *(9 de 24 culturas, 34 de 88 doenças; solanáceas e brássicas fechadas)*
   - 2.3 Validação automática da base - ✅
   - 2.4 Fontes e referências técnicas - 🔄
 - **3. Motor de diagnóstico**

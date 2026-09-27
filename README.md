@@ -96,7 +96,7 @@ Estado verificado em 27/09/2026, durante a Sprint 2.
 | Plataforma - API REST, PostgreSQL, PWA, integração contínua | ✅ concluído |
 | Identidade e conta | 🟡 API concluída; tela de exclusão pendente |
 | Caderno de campo | 🟡 histórico e sincronização concluídos; confirmação e anotações pendentes |
-| Base de conhecimento | 🔄 3 de 24 culturas · 16 de 88 fichas de doença · nenhuma cultura abaixo do mínimo de 3 doenças |
+| Base de conhecimento | 🔄 9 de 24 culturas · 34 de 88 fichas de doença · nenhuma cultura abaixo do mínimo de 3 doenças |
 | Horta, canteiros e manejo | ⬜ tabelas modeladas; rotas e telas pendentes |
 | Relatórios agregados | ⬜ consultas SQL especificadas |
 | Identificação por imagem | 🟡 escopo condicionado - captura, pré-processamento e recusa prontos; sem modelo |
@@ -104,6 +104,6 @@ Estado verificado em 27/09/2026, durante a Sprint 2.
 | Indicador | Valor |
 | --- | --- |
 | Pontos concluídos do núcleo | 88 de 172 (51%) |
-| Testes automatizados | 185, nenhuma falha |
+| Testes automatizados | 245, nenhuma falha |
 | Tabelas no banco de dados | 19 |
 | Endpoints da API | 16 |

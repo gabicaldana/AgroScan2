@@ -93,7 +93,7 @@ Estado verificado em 12/09/2026 sobre o commit `068b6d9`.
 
 | ID | Requisito | Prioridade | Estado |
 | --- | --- | --- | --- |
-| RF01 | Selecionar a hortaliça, com culturas agrupadas por grupo (fruto, folha, flor, haste, raiz) | Obrigatório | 🔄 3 de 24 culturas |
+| RF01 | Selecionar a hortaliça, com culturas agrupadas por grupo (fruto, folha, flor, haste, raiz) | Obrigatório | 🔄 9 de 24 culturas; grupos folha e flor estreiam com as brássicas |
 | RF02 | Apresentar os sintomas da cultura selecionada, agrupados pelo órgão da planta | Obrigatório | ✅ |
 | RF03 | Marcar e desmarcar os sintomas observados | Obrigatório | ✅ |
 | RF04 | Calcular e apresentar hipóteses ordenadas por grau de compatibilidade | Obrigatório | ✅ |

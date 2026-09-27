@@ -79,6 +79,60 @@ apenas descrições dele, com cada afirmação técnica apontando para um endere
 externo. Justificativa completa no
 [Artefato 2, §4.1](../entregas/artefato-2-gestao-do-projeto.md#41-repositório-único).
 
+### Curadoria das brássicas (US03) - 6 culturas, 18 fichas
+
+A meta-título da sprint. Seis culturas novas, todas da família Brassicaceae,
+cada uma com três doenças curadas:
+
+| Cultura | Nome científico | Grupo | Doenças |
+| --- | --- | --- | --- |
+| Couve | *Brassica oleracea* var. *acephala* | folha | Míldio, alternariose, podridão-negra |
+| Repolho | *Brassica oleracea* var. *capitata* | folha | Podridão-negra, alternariose, hérnia |
+| Brócolis | *Brassica oleracea* var. *italica* | flor | Míldio, alternariose, podridão-negra |
+| Couve-flor | *Brassica oleracea* var. *botrytis* | flor | Míldio, podridão-negra, hérnia |
+| Rúcula | *Eruca vesicaria* | folha | Míldio, alternariose, oídio |
+| Agrião | *Nasturtium officinale* | folha | Míldio, cercosporiose, podridão-mole |
+
+A curadoria por família se pagou como previsto no
+[Artefato 2, §3.5](../entregas/artefato-2-gestao-do-projeto.md#35-riscos),
+mitigação do R01: um levantamento sobre patógenos de crucíferas cobriu as seis
+culturas, porque *Hyaloperonospora brassicae*, *Alternaria brassicae* e
+*Xanthomonas campestris* pv. *campestris* atacam todas. O que muda por cultura
+é o órgão afetado e o efeito econômico, e é isso que cada ficha descreve.
+
+**Quatro sintomas novos** no catálogo, que a curadoria das solanáceas não havia
+exigido:
+
+| Sintoma | Órgão | Doença que o torna necessário |
+| --- | --- | --- |
+| Lesão amarela em forma de V, começando na borda da folha | folha | Podridão-negra |
+| Nervuras escurecidas, quase pretas | folha | Podridão-negra |
+| Raízes engrossadas e deformadas, com galhas | **raiz** | Hérnia das crucíferas |
+| Apodrecimento mole e malcheiroso | planta | Podridão-mole |
+
+O órgão `raiz` estava no catálogo mas **sem nenhum sintoma** desde o início - a
+própria base registrava isso como pendência. A hérnia das crucíferas o estreia,
+e é um caso em que o sinal só aparece ao arrancar a planta: a parte aérea
+apenas murcha e amarelece, o que levaria a um diagnóstico errado se o produtor
+não tivesse como marcar o que viu na raiz.
+
+Os grupos `folha` e `flor` também estreiam: até aqui a base só tinha `fruto` e
+`raiz`. A tela de seleção de cultura passa a exercitar de verdade o
+agrupamento que a **US01** pede.
+
+> **A validar pela equipe.** A validação automática aprova a estrutura, não a
+> agronomia. Agente, perfil de sintomas, condições favoráveis e ingredientes
+> ativos precisam de conferência contra as fontes e de revisão cruzada, como
+> exige o Definition of Done para fichas da base. A **hérnia das crucíferas**
+> merece atenção: é a única ficha com `ingredientes_ativos` vazio, porque não
+> há produto que controle *Plasmodiophora brassicae* no solo em campo - o
+> manejo é calagem e rotação longa.
+>
+> A apresentação dessa ficha sem defensivo **foi verificada**: o `Laudo.tsx` já
+> trata lista vazia e exibe "não há produto que resolva esta doença depois de
+> instalada - o manejo é todo preventivo, pelas medidas culturais acima", que é
+> exatamente o caso. Nenhum ajuste de interface foi necessário.
+
 ### Curadoria: batata e pimentão em conformidade com a RN05
 
 Três fichas de doença acrescentadas, elevando as duas culturas que estavam
@@ -107,6 +161,7 @@ concluída a mudança dos artefatos para `entregas/`, que estava pela metade.
 | [#66](https://github.com/CampusCEUB/AgroScan/issues/66) | Corrigir a dependência de teste ausente e confirmar que o CI executa os testes da API | Suíte executada em 27/09: 74 testes, **nenhum pulado**. O `ci.yml` tem o passo que transforma "pulou" em falha antes de a suíte rodar |
 | [#69](https://github.com/CampusCEUB/AgroScan/issues/69) | Atualizar o README do repositório de código para o estado real | Feito no commit `9570990`; o documento é hoje [`docs/aplicacao.md`](../docs/aplicacao.md), atualizado para 16 doenças e 185 testes |
 | [#70](https://github.com/CampusCEUB/AgroScan/issues/70) | Elevar batata e pimentão ao mínimo de três doenças | Validação automática sem avisos - ver Evidências |
+| [#6](https://github.com/CampusCEUB/AgroScan/issues/6) | **US03** - Cadastrar as doenças das brássicas | 6 culturas com 3 doenças cada; validação aprovada; 245 testes passando |
 
 > **Sobre #66 e #69.** A correção em código foi aplicada em 12/09, ainda dentro
 > da Sprint 1, nos commits `8053fc8` e `9570990`. As `issues` nasceram das
@@ -115,8 +170,7 @@ concluída a mudança dos artefatos para `entregas/`, que estava pela metade.
 
 ### Abertas nesta data
 
-[#4](https://github.com/CampusCEUB/AgroScan/issues/4) (US01),
-[#6](https://github.com/CampusCEUB/AgroScan/issues/6) (US03),
+[#4](https://github.com/CampusCEUB/AgroScan/issues/4) (US01 - avançou de 3 para 9 das 24 culturas, mas o critério pede as 24),
 [#40](https://github.com/CampusCEUB/AgroScan/issues/40) (US36),
 [#67](https://github.com/CampusCEUB/AgroScan/issues/67),
 [#68](https://github.com/CampusCEUB/AgroScan/issues/68),
@@ -157,32 +211,35 @@ Depois das três fichas:
 ```
 $ python -m app.validacao
 Base valida - versao 2026.09.27
-  3 hortalicas, 16 doencas, 26 sintomas no catalogo
+  9 hortalicas, 34 doencas, 30 sintomas no catalogo
+    flor   brocolis, couve_flor
+    folha  agriao, couve, repolho, rucula
     fruto  pimentao, tomate
     raiz   batata
 ```
 
-**Nenhum aviso.** É o critério da RN05 atendido.
+**Nenhum aviso**, com as brássicas já incluídas. É o critério da RN05
+atendido, e os quatro grupos do catálogo passam a ter cultura.
 
 ### Testes automatizados - execução em 27/09/2026
 
 ```
 $ python -m unittest discover -s tests -t .
-Ran 74 tests in 8.434s
+Ran 74 tests in 8.689s
 OK
 ```
 
 ```
 $ cd web && npm test
-ℹ tests 111
-ℹ pass 111
+ℹ tests 171
+ℹ pass 171
 ℹ fail 0
 ℹ skipped 0
 ```
 
-**Total: 185 testes, nenhuma falha e nenhum pulado.** Subiu de 176 porque as
-fixtures de paridade passaram de 42 para 48 casos, acompanhando as três fichas
-novas.
+**Total: 245 testes, nenhuma falha e nenhum pulado.** Subiu de 176 para 185 com
+as três fichas das solanáceas, e de 185 para 245 com as brássicas: as fixtures
+de paridade foram de 42 para 84 casos, porque são geradas a partir da base.
 
 O campo `skipped 0` e os 74 testes em Python são a evidência direta da `issue`
 [#66](https://github.com/CampusCEUB/AgroScan/issues/66): os 22 testes da API

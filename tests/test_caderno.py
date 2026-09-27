@@ -95,11 +95,16 @@ class TestCadernoAutenticado(unittest.TestCase):
     # --- validação antes do banco ---
 
     def test_cultura_desconhecida_e_recusada_antes_do_banco(self):
+        # O identificador precisa ser impossivel de virar cultura real. Este
+        # teste ja quebrou uma vez por usar "couve" como exemplo de cultura
+        # inexistente: a curadoria das brassicas cadastrou a couve e a
+        # premissa caiu. Nome de hortalica, por mais improvavel que pareca,
+        # e candidato a entrar na base.
         with patch("app.api.rotas.consultas.repo") as repo:
             r = CLIENTE.post(f"{PREFIXO}/consultas",
-                             json=consulta_valida(cultura_id="couve"))
+                             json=consulta_valida(cultura_id="nao_e_cultura"))
         self.assertEqual(r.status_code, 422)
-        self.assertIn("couve", r.json()["detail"])
+        self.assertIn("nao_e_cultura", r.json()["detail"])
         repo.registrar.assert_not_called()
 
     def test_sintoma_desconhecido_e_recusado(self):
@@ -155,7 +160,7 @@ class TestCadernoAutenticado(unittest.TestCase):
         precisa poder limpar da fila o que foi aceito."""
         nova = consulta_valida()
         repetida = consulta_valida()
-        invalida = consulta_valida(cultura_id="couve")
+        invalida = consulta_valida(cultura_id="nao_e_cultura")
 
         def registrar(**kwargs):
             return ({"id": 1}, kwargs["offline_id"] == nova["offline_id"])
@@ -173,7 +178,7 @@ class TestCadernoAutenticado(unittest.TestCase):
         self.assertEqual(len(corpo["rejeitadas"]), 1)
         self.assertEqual(corpo["rejeitadas"][0]["offline_id"],
                          invalida["offline_id"])
-        self.assertIn("couve", corpo["rejeitadas"][0]["motivo"])
+        self.assertIn("nao_e_cultura", corpo["rejeitadas"][0]["motivo"])
 
     def test_lote_vazio_responde_sem_erro(self):
         r = CLIENTE.post(f"{PREFIXO}/consultas/sincronizar",
