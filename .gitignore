@@ -41,3 +41,31 @@ temp/
 *.pem
 *.p12
 *.pfx
+
+# === Aplicação ===
+# Acrescentado quando o código veio do repositório gabicaldana/AgroScan2.
+
+# O banco é artefato gerado a partir de data/base_conhecimento.json.
+# A fonte da verdade é o JSON, que fica versionado.
+data/*.db
+*.pyc
+
+# Next.js
+.next/
+next-env.d.ts
+*.tsbuildinfo
+
+# Deploy
+.vercel/
+
+# Transporte do catálogo para redes que bloqueiam a porta 5432.
+# Regerável: python -m app.seed --gerar-sql
+carga_catalogo.sql
+
+# Modelos de visão computacional: pesos são grandes e reprodutíveis pelo
+# notebook de treino. O ONNX final entra por Git LFS ou pelo pipeline de
+# build, não aqui.
+*.pt
+*.onnx
+datasets/
+runs/

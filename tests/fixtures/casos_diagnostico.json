@@ -1,0 +1,5172 @@
+{
+  "_comentario": "GERADO AUTOMATICAMENTE por `python -m app.fixtures`. Nao editar a mao. Contrato compartilhado entre o motor de referencia em Python e o porte em TypeScript: os dois tem que produzir exatamente estes valores.",
+  "gerado_por": "python -m app.fixtures",
+  "culturas": [
+    {
+      "id": "batata",
+      "nome": "Batata",
+      "nome_cientifico": "Solanum tuberosum",
+      "grupo": "raiz",
+      "familia": "Solanaceae",
+      "emoji": "🥔",
+      "n_doencas": 2
+    },
+    {
+      "id": "pimentao",
+      "nome": "Pimentão",
+      "nome_cientifico": "Capsicum annuum",
+      "grupo": "fruto",
+      "familia": "Solanaceae",
+      "emoji": "🫑",
+      "n_doencas": 1
+    },
+    {
+      "id": "tomate",
+      "nome": "Tomate",
+      "nome_cientifico": "Solanum lycopersicum",
+      "grupo": "fruto",
+      "familia": "Solanaceae",
+      "emoji": "🍅",
+      "n_doencas": 10
+    }
+  ],
+  "catalogos": [
+    {
+      "cultura": "batata",
+      "sintomas": [
+        {
+          "id": "manchas_encharcadas",
+          "nome": "Lesões encharcadas, com aspecto de queimadura",
+          "orgao": "folha",
+          "orgao_rotulo": "Na folha",
+          "orgao_ordem": 1
+        },
+        {
+          "id": "manchas_amareladas",
+          "nome": "Manchas amareladas (cloróticas)",
+          "orgao": "folha",
+          "orgao_rotulo": "Na folha",
+          "orgao_ordem": 1
+        },
+        {
+          "id": "manchas_escuras_aneis",
+          "nome": "Manchas escuras com anéis concêntricos, como um alvo",
+          "orgao": "folha",
+          "orgao_rotulo": "Na folha",
+          "orgao_ordem": 1
+        },
+        {
+          "id": "mofo_branco_face_inferior",
+          "nome": "Mofo esbranquiçado na face inferior da folha",
+          "orgao": "folha",
+          "orgao_rotulo": "Na folha",
+          "orgao_ordem": 1
+        },
+        {
+          "id": "lesoes_no_caule",
+          "nome": "Lesões escuras no caule ou haste",
+          "orgao": "caule",
+          "orgao_rotulo": "No caule, ramo ou haste",
+          "orgao_ordem": 2
+        },
+        {
+          "id": "murcha",
+          "nome": "Murcha da planta",
+          "orgao": "planta",
+          "orgao_rotulo": "Na planta inteira",
+          "orgao_ordem": 5
+        },
+        {
+          "id": "desfolha_baixo_para_cima",
+          "nome": "Queda de folhas começando pelas mais baixas",
+          "orgao": "planta",
+          "orgao_rotulo": "Na planta inteira",
+          "orgao_ordem": 5
+        }
+      ]
+    },
+    {
+      "cultura": "pimentao",
+      "sintomas": [
+        {
+          "id": "manchas_encharcadas",
+          "nome": "Lesões encharcadas, com aspecto de queimadura",
+          "orgao": "folha",
+          "orgao_rotulo": "Na folha",
+          "orgao_ordem": 1
+        },
+        {
+          "id": "manchas_amareladas",
+          "nome": "Manchas amareladas (cloróticas)",
+          "orgao": "folha",
+          "orgao_rotulo": "Na folha",
+          "orgao_ordem": 1
+        },
+        {
+          "id": "manchas_angulares_halo_amarelo",
+          "nome": "Manchas angulares com halo amarelo ao redor",
+          "orgao": "folha",
+          "orgao_rotulo": "Na folha",
+          "orgao_ordem": 1
+        },
+        {
+          "id": "manchas_salientes_fruto",
+          "nome": "Manchas ásperas e salientes, tipo verruga, no fruto",
+          "orgao": "fruto",
+          "orgao_rotulo": "No fruto",
+          "orgao_ordem": 4
+        },
+        {
+          "id": "queda_precoce_folhas",
+          "nome": "Queda precoce de folhas por toda a planta",
+          "orgao": "planta",
+          "orgao_rotulo": "Na planta inteira",
+          "orgao_ordem": 5
+        }
+      ]
+    },
+    {
+      "cultura": "tomate",
+      "sintomas": [
+        {
+          "id": "acaros_face_inferior",
+          "nome": "Ácaros minúsculos na face inferior (visíveis com lupa)",
+          "orgao": "folha",
+          "orgao_rotulo": "Na folha",
+          "orgao_ordem": 1
+        },
+        {
+          "id": "nervuras_amareladas",
+          "nome": "Amarelecimento entre as nervuras",
+          "orgao": "folha",
+          "orgao_rotulo": "Na folha",
+          "orgao_ordem": 1
+        },
+        {
+          "id": "bronzeamento_folha",
+          "nome": "Folha bronzeada, cor de palha",
+          "orgao": "folha",
+          "orgao_rotulo": "Na folha",
+          "orgao_ordem": 1
+        },
+        {
+          "id": "folhas_deformadas",
+          "nome": "Folhas deformadas, enroladas ou reduzidas",
+          "orgao": "folha",
+          "orgao_rotulo": "Na folha",
+          "orgao_ordem": 1
+        },
+        {
+          "id": "folhas_filiformes",
+          "nome": "Folhas estreitas e filiformes, com aspecto de samambaia",
+          "orgao": "folha",
+          "orgao_rotulo": "Na folha",
+          "orgao_ordem": 1
+        },
+        {
+          "id": "insetos_face_inferior",
+          "nome": "Insetos pequenos na face inferior da folha",
+          "orgao": "folha",
+          "orgao_rotulo": "Na folha",
+          "orgao_ordem": 1
+        },
+        {
+          "id": "manchas_encharcadas",
+          "nome": "Lesões encharcadas, com aspecto de queimadura",
+          "orgao": "folha",
+          "orgao_rotulo": "Na folha",
+          "orgao_ordem": 1
+        },
+        {
+          "id": "manchas_amareladas",
+          "nome": "Manchas amareladas (cloróticas)",
+          "orgao": "folha",
+          "orgao_rotulo": "Na folha",
+          "orgao_ordem": 1
+        },
+        {
+          "id": "manchas_angulares_halo_amarelo",
+          "nome": "Manchas angulares com halo amarelo ao redor",
+          "orgao": "folha",
+          "orgao_rotulo": "Na folha",
+          "orgao_ordem": 1
+        },
+        {
+          "id": "manchas_escuras_aneis",
+          "nome": "Manchas escuras com anéis concêntricos, como um alvo",
+          "orgao": "folha",
+          "orgao_rotulo": "Na folha",
+          "orgao_ordem": 1
+        },
+        {
+          "id": "manchas_pequenas_centro_claro",
+          "nome": "Manchas pequenas com centro claro e borda escura",
+          "orgao": "folha",
+          "orgao_rotulo": "Na folha",
+          "orgao_ordem": 1
+        },
+        {
+          "id": "mofo_oliva_face_inferior",
+          "nome": "Mofo aveludado verde-oliva a pardo na face inferior",
+          "orgao": "folha",
+          "orgao_rotulo": "Na folha",
+          "orgao_ordem": 1
+        },
+        {
+          "id": "mofo_branco_face_inferior",
+          "nome": "Mofo esbranquiçado na face inferior da folha",
+          "orgao": "folha",
+          "orgao_rotulo": "Na folha",
+          "orgao_ordem": 1
+        },
+        {
+          "id": "mosaico_verde_claro_escuro",
+          "nome": "Mosaico de verde claro e verde escuro",
+          "orgao": "folha",
+          "orgao_rotulo": "Na folha",
+          "orgao_ordem": 1
+        },
+        {
+          "id": "po_branco_superficie",
+          "nome": "Pó branco, farináceo, na superfície da folha",
+          "orgao": "folha",
+          "orgao_rotulo": "Na folha",
+          "orgao_ordem": 1
+        },
+        {
+          "id": "pontuacoes_pretas_na_lesao",
+          "nome": "Pontinhos pretos dentro da lesão",
+          "orgao": "folha",
+          "orgao_rotulo": "Na folha",
+          "orgao_ordem": 1
+        },
+        {
+          "id": "pontuacoes_finas_cloroticas",
+          "nome": "Pontuações finas e claras, como picadas de agulha",
+          "orgao": "folha",
+          "orgao_rotulo": "Na folha",
+          "orgao_ordem": 1
+        },
+        {
+          "id": "teia_fina",
+          "nome": "Teia fina entre as folhas e hastes",
+          "orgao": "folha",
+          "orgao_rotulo": "Na folha",
+          "orgao_ordem": 1
+        },
+        {
+          "id": "lesoes_no_caule",
+          "nome": "Lesões escuras no caule ou haste",
+          "orgao": "caule",
+          "orgao_rotulo": "No caule, ramo ou haste",
+          "orgao_ordem": 2
+        },
+        {
+          "id": "lesoes_no_fruto",
+          "nome": "Lesões deprimidas ou podridão no fruto",
+          "orgao": "fruto",
+          "orgao_rotulo": "No fruto",
+          "orgao_ordem": 4
+        },
+        {
+          "id": "manchas_salientes_fruto",
+          "nome": "Manchas ásperas e salientes, tipo verruga, no fruto",
+          "orgao": "fruto",
+          "orgao_rotulo": "No fruto",
+          "orgao_ordem": 4
+        },
+        {
+          "id": "queda_de_frutos",
+          "nome": "Queda prematura de frutos",
+          "orgao": "fruto",
+          "orgao_rotulo": "No fruto",
+          "orgao_ordem": 4
+        },
+        {
+          "id": "crescimento_reduzido",
+          "nome": "Crescimento reduzido / nanismo",
+          "orgao": "planta",
+          "orgao_rotulo": "Na planta inteira",
+          "orgao_ordem": 5
+        },
+        {
+          "id": "murcha",
+          "nome": "Murcha da planta",
+          "orgao": "planta",
+          "orgao_rotulo": "Na planta inteira",
+          "orgao_ordem": 5
+        },
+        {
+          "id": "desfolha_baixo_para_cima",
+          "nome": "Queda de folhas começando pelas mais baixas",
+          "orgao": "planta",
+          "orgao_rotulo": "Na planta inteira",
+          "orgao_ordem": 5
+        },
+        {
+          "id": "queda_precoce_folhas",
+          "nome": "Queda precoce de folhas por toda a planta",
+          "orgao": "planta",
+          "orgao_rotulo": "Na planta inteira",
+          "orgao_ordem": 5
+        }
+      ]
+    }
+  ],
+  "fichas": [
+    {
+      "id": "batata_pinta_preta",
+      "nome": "Pinta-preta da batata",
+      "cultura": "Batata",
+      "emoji": "🥔",
+      "agente": "Alternaria solani",
+      "tipo_agente": "fungo",
+      "gravidade": 4,
+      "descricao": "Mesmo fungo da pinta-preta do tomate. Começa pelas folhas mais velhas, próximas ao solo, com lesões escuras de anéis concêntricos que lembram um alvo, e progride para cima. A desfolha reduz a área fotossintética justamente na fase de tuberização, cortando a produtividade.",
+      "condicoes_favoraveis": {
+        "temperatura": "24 a 29 °C",
+        "umidade": "Orvalho ou molhamento foliar alternando com períodos secos",
+        "observacao": "Ataca preferencialmente a planta debilitada, no fim do ciclo e sob deficiência de nitrogênio. Adubação equilibrada é uma medida de controle, não só de produtividade."
+      },
+      "tratamentos": [
+        {
+          "tipo": "cultural",
+          "descricao": "Rotação de culturas evitando solanáceas (tomate, berinjela, pimentão)."
+        },
+        {
+          "tipo": "cultural",
+          "descricao": "Batata-semente sadia e eliminação de restos culturais e plantas voluntárias."
+        },
+        {
+          "tipo": "cultural",
+          "descricao": "Manter a nutrição equilibrada ao longo de todo o ciclo."
+        },
+        {
+          "tipo": "quimico",
+          "descricao": "Protetores em programa preventivo, alternando com sistêmicos para retardar resistência."
+        }
+      ],
+      "ingredientes_ativos": [
+        {
+          "nome": "Mancozebe",
+          "grupo": "Ditiocarbamato",
+          "acao": "protetor"
+        },
+        {
+          "nome": "Clorotalonil",
+          "grupo": "Isoftalonitrila",
+          "acao": "protetor"
+        },
+        {
+          "nome": "Difenoconazol",
+          "grupo": "Triazol",
+          "acao": "sistêmico"
+        },
+        {
+          "nome": "Azoxistrobina",
+          "grupo": "Estrobilurina",
+          "acao": "sistêmico"
+        }
+      ]
+    },
+    {
+      "id": "batata_requeima",
+      "nome": "Requeima da batata",
+      "cultura": "Batata",
+      "emoji": "🥔",
+      "agente": "Phytophthora infestans",
+      "tipo_agente": "oomiceto",
+      "gravidade": 5,
+      "descricao": "A doença mais destrutiva da batata. Lesões grandes de aspecto encharcado, verde-escuras a pardas, com mofo esbranquiçado na face inferior em manhãs úmidas. Em condições ideais o ciclo se fecha em quatro a cinco dias e a lavoura vai a zero em duas semanas.",
+      "condicoes_favoraveis": {
+        "temperatura": "12 a 20 °C (noites frias)",
+        "umidade": "Acima de 90%, com neblina ou chuva frequente",
+        "observacao": "É o patógeno que causou a Grande Fome Irlandesa e continua sendo a principal ameaça da cultura. Noite fria e úmida seguida de dia ameno é o cenário de epidemia explosiva. Controle curativo praticamente não existe: ou se protege antes, ou se perde."
+      },
+      "tratamentos": [
+        {
+          "tipo": "cultural",
+          "descricao": "Batata-semente sadia e cultivares com resistência quando disponíveis."
+        },
+        {
+          "tipo": "cultural",
+          "descricao": "Amontoa bem-feita, que protege os tubérculos dos esporos que descem com a água."
+        },
+        {
+          "tipo": "cultural",
+          "descricao": "Eliminar montes de descarte e plantas voluntárias, que são a ponte entre safras."
+        },
+        {
+          "tipo": "quimico",
+          "descricao": "Programa estritamente preventivo, guiado por previsão climática e não por calendário."
+        }
+      ],
+      "ingredientes_ativos": [
+        {
+          "nome": "Mancozebe",
+          "grupo": "Ditiocarbamato",
+          "acao": "protetor"
+        },
+        {
+          "nome": "Cimoxanil",
+          "grupo": "Cianoacetamida-oxima",
+          "acao": "sistêmico"
+        },
+        {
+          "nome": "Metalaxil-M",
+          "grupo": "Acilalaninato",
+          "acao": "sistêmico"
+        },
+        {
+          "nome": "Fluazinam",
+          "grupo": "Fenilpiridinilamina",
+          "acao": "protetor"
+        }
+      ]
+    },
+    {
+      "id": "pimentao_mancha_bacteriana",
+      "nome": "Mancha-bacteriana do pimentão",
+      "cultura": "Pimentão",
+      "emoji": "🫑",
+      "agente": "Xanthomonas euvesicatoria",
+      "tipo_agente": "bactéria",
+      "gravidade": 4,
+      "descricao": "Manchas angulares de aspecto encharcado, com halo amarelo, que depois secam e ficam pardas. A desfolha expõe os frutos ao sol e causa escaldadura. No fruto surgem manchas ásperas e salientes, tipo verruga, que inviabilizam a venda mesmo em ataques leves.",
+      "condicoes_favoraveis": {
+        "temperatura": "24 a 30 °C",
+        "umidade": "Muito alta, com chuva ou irrigação por aspersão",
+        "observacao": "Semente e muda contaminadas são a principal porta de entrada. Depois de instalada, a bactéria se espalha em horas pelos respingos de chuva e pelo manuseio das plantas molhadas - por isso a regra de nunca entrar na lavoura com a folhagem úmida."
+      },
+      "tratamentos": [
+        {
+          "tipo": "cultural",
+          "descricao": "Sementes certificadas ou tratadas termicamente; mudas de viveiro idôneo."
+        },
+        {
+          "tipo": "cultural",
+          "descricao": "Não manusear nem pulverizar com as plantas molhadas."
+        },
+        {
+          "tipo": "cultural",
+          "descricao": "Rotação de dois anos com não solanáceas e eliminação dos restos culturais."
+        },
+        {
+          "tipo": "biologico",
+          "descricao": "Bacillus subtilis em programa preventivo, como complemento aos cúpricos."
+        },
+        {
+          "tipo": "quimico",
+          "descricao": "Cúpricos preventivos, geralmente associados a mancozebe. Não existe curativo para bacteriose: o que se faz é proteger o tecido sadio."
+        }
+      ],
+      "ingredientes_ativos": [
+        {
+          "nome": "Oxicloreto de cobre",
+          "grupo": "Cúprico",
+          "acao": "protetor"
+        },
+        {
+          "nome": "Hidróxido de cobre",
+          "grupo": "Cúprico",
+          "acao": "protetor"
+        },
+        {
+          "nome": "Casugamicina",
+          "grupo": "Antibiótico agrícola",
+          "acao": "bactericida"
+        }
+      ]
+    },
+    {
+      "id": "tomate_mancha_bacteriana",
+      "nome": "Mancha-bacteriana do tomateiro",
+      "cultura": "Tomate",
+      "emoji": "🍅",
+      "agente": "Xanthomonas spp.",
+      "tipo_agente": "bactéria",
+      "gravidade": 4,
+      "descricao": "Manchas pequenas, angulares e encharcadas, com halo amarelo, que depois secam e ficam pardas. Sob alta umidade avançam rápido e provocam desfolha, expondo os frutos à escaldadura. No fruto surgem manchas ásperas e salientes, tipo verruga, que derrubam a classificação da caixa.",
+      "condicoes_favoraveis": {
+        "temperatura": "24 a 30 °C",
+        "umidade": "Muito alta, com chuva ou irrigação por aspersão",
+        "observacao": "Semente e muda contaminadas são a principal porta de entrada. Respingos de chuva e o manuseio das plantas molhadas espalham a bactéria pela lavoura em poucas horas."
+      },
+      "tratamentos": [
+        {
+          "tipo": "cultural",
+          "descricao": "Sementes tratadas termicamente e mudas de viveiro idôneo."
+        },
+        {
+          "tipo": "cultural",
+          "descricao": "Não realizar desbrota, amarrio ou pulverização com as plantas molhadas."
+        },
+        {
+          "tipo": "cultural",
+          "descricao": "Rotação de dois anos com não solanáceas e eliminação dos restos culturais."
+        },
+        {
+          "tipo": "biologico",
+          "descricao": "Bacillus subtilis como complemento preventivo aos cúpricos."
+        },
+        {
+          "tipo": "quimico",
+          "descricao": "Cúpricos preventivos, em geral associados a mancozebe. Bacteriose não tem curativo: o que se faz é proteger o tecido ainda sadio."
+        }
+      ],
+      "ingredientes_ativos": [
+        {
+          "nome": "Oxicloreto de cobre",
+          "grupo": "Cúprico",
+          "acao": "protetor"
+        },
+        {
+          "nome": "Hidróxido de cobre",
+          "grupo": "Cúprico",
+          "acao": "protetor"
+        },
+        {
+          "nome": "Casugamicina",
+          "grupo": "Antibiótico agrícola",
+          "acao": "bactericida"
+        }
+      ]
+    },
+    {
+      "id": "tomate_pinta_preta",
+      "nome": "Pinta-preta (mancha-de-alternária)",
+      "cultura": "Tomate",
+      "emoji": "🍅",
+      "agente": "Alternaria solani",
+      "tipo_agente": "fungo",
+      "gravidade": 4,
+      "descricao": "Doença foliar muito comum no tomateiro. Começa pelas folhas mais velhas, próximas ao solo, e progride para cima. As lesões são escuras e apresentam anéis concêntricos característicos, que lembram um alvo. Em ataques severos causa desfolha intensa, expondo os frutos ao sol e reduzindo drasticamente a produtividade.",
+      "condicoes_favoraveis": {
+        "temperatura": "24 a 29 °C",
+        "umidade": "Alta, com molhamento foliar prolongado (acima de 8 h)",
+        "observacao": "Alternância de períodos úmidos e secos favorece o ciclo. Comum em lavouras com adubação nitrogenada deficiente e plantas debilitadas após a frutificação."
+      },
+      "tratamentos": [
+        {
+          "tipo": "cultural",
+          "descricao": "Rotação de culturas por no mínimo 2 anos, evitando solanáceas (batata, berinjela, pimentão)."
+        },
+        {
+          "tipo": "cultural",
+          "descricao": "Eliminar restos culturais e plantas voluntárias, que são fonte de inóculo."
+        },
+        {
+          "tipo": "cultural",
+          "descricao": "Irrigação por gotejamento em vez de aspersão, para reduzir o molhamento foliar."
+        },
+        {
+          "tipo": "cultural",
+          "descricao": "Manter nutrição equilibrada; plantas bem nutridas toleram melhor a doença."
+        },
+        {
+          "tipo": "quimico",
+          "descricao": "Fungicidas protetores em aplicações preventivas, alternando com sistêmicos para evitar resistência."
+        }
+      ],
+      "ingredientes_ativos": [
+        {
+          "nome": "Mancozebe",
+          "grupo": "Ditiocarbamato",
+          "acao": "protetor"
+        },
+        {
+          "nome": "Clorotalonil",
+          "grupo": "Isoftalonitrila",
+          "acao": "protetor"
+        },
+        {
+          "nome": "Azoxistrobina",
+          "grupo": "Estrobilurina",
+          "acao": "sistêmico"
+        },
+        {
+          "nome": "Difenoconazol",
+          "grupo": "Triazol",
+          "acao": "sistêmico"
+        }
+      ]
+    },
+    {
+      "id": "tomate_requeima",
+      "nome": "Requeima (míldio)",
+      "cultura": "Tomate",
+      "emoji": "🍅",
+      "agente": "Phytophthora infestans",
+      "tipo_agente": "oomiceto",
+      "gravidade": 5,
+      "descricao": "A doença mais destrutiva do tomateiro. Em condições favoráveis pode destruir uma lavoura inteira em poucos dias. As lesões são grandes, de aspecto encharcado, com coloração verde-escura a marrom, e frequentemente apresentam um mofo branco acinzentado na face inferior da folha em manhãs úmidas.",
+      "condicoes_favoraveis": {
+        "temperatura": "12 a 20 °C (noites frias)",
+        "umidade": "Muito alta, acima de 90%, com neblina ou chuvas frequentes",
+        "observacao": "Época clássica: outono e inverno em regiões serranas. A combinação de noite fria e úmida com dia ameno é o cenário ideal para epidemia explosiva."
+      },
+      "tratamentos": [
+        {
+          "tipo": "cultural",
+          "descricao": "Usar mudas sadias e cultivares com resistência quando disponíveis."
+        },
+        {
+          "tipo": "cultural",
+          "descricao": "Aumentar espaçamento e melhorar a condução para ventilar o dossel."
+        },
+        {
+          "tipo": "cultural",
+          "descricao": "Eliminar e destruir plantas doentes imediatamente - não deixar no campo."
+        },
+        {
+          "tipo": "quimico",
+          "descricao": "Controle estritamente preventivo. O curativo raramente funciona: aplicar antes do período de risco climático."
+        }
+      ],
+      "ingredientes_ativos": [
+        {
+          "nome": "Mancozebe",
+          "grupo": "Ditiocarbamato",
+          "acao": "protetor"
+        },
+        {
+          "nome": "Cimoxanil",
+          "grupo": "Cianoacetamida-oxima",
+          "acao": "sistêmico"
+        },
+        {
+          "nome": "Metalaxil-M",
+          "grupo": "Acilalaninato",
+          "acao": "sistêmico"
+        },
+        {
+          "nome": "Fluazinam",
+          "grupo": "Fenilpiridinilamina",
+          "acao": "protetor"
+        }
+      ]
+    },
+    {
+      "id": "tomate_mofo_de_folha",
+      "nome": "Mofo-de-folha (cladosporiose)",
+      "cultura": "Tomate",
+      "emoji": "🍅",
+      "agente": "Passalora fulva (Fulvia fulva)",
+      "tipo_agente": "fungo",
+      "gravidade": 3,
+      "descricao": "Manchas amarelas difusas, de contorno indefinido, na face superior da folha. Virando a folha, embaixo de cada mancha aparece um mofo aveludado verde-oliva a pardo - é esse contraste entre as duas faces que fecha o diagnóstico. Praticamente exclusiva de cultivo protegido.",
+      "condicoes_favoraveis": {
+        "temperatura": "20 a 25 °C",
+        "umidade": "Acima de 85% - abaixo disso o fungo não esporula",
+        "observacao": "Doença de estufa: em campo aberto raramente é problema. O gatilho é umidade relativa alta e constante, e ventilação noturna resolve mais que fungicida. Como o patógeno tem raças, cultivares com genes Cf perdem eficácia com o tempo."
+      },
+      "tratamentos": [
+        {
+          "tipo": "cultural",
+          "descricao": "Ventilar e desumidificar a estufa, sobretudo no fim da tarde e à noite."
+        },
+        {
+          "tipo": "cultural",
+          "descricao": "Aumentar espaçamento e fazer desbrota para abrir o dossel."
+        },
+        {
+          "tipo": "cultural",
+          "descricao": "Cultivares com genes de resistência Cf, alternando os disponíveis."
+        },
+        {
+          "tipo": "quimico",
+          "descricao": "Protetores preventivos, alternando grupos por causa da variabilidade de raças."
+        }
+      ],
+      "ingredientes_ativos": [
+        {
+          "nome": "Clorotalonil",
+          "grupo": "Isoftalonitrila",
+          "acao": "protetor"
+        },
+        {
+          "nome": "Mancozebe",
+          "grupo": "Ditiocarbamato",
+          "acao": "protetor"
+        },
+        {
+          "nome": "Difenoconazol",
+          "grupo": "Triazol",
+          "acao": "sistêmico"
+        }
+      ]
+    },
+    {
+      "id": "tomate_septoriose",
+      "nome": "Septoriose (mancha-de-septória)",
+      "cultura": "Tomate",
+      "emoji": "🍅",
+      "agente": "Septoria lycopersici",
+      "tipo_agente": "fungo",
+      "gravidade": 3,
+      "descricao": "Provoca grande número de manchas pequenas e circulares nas folhas, com centro acinzentado ou pálido e borda escura bem definida. Dentro do centro claro veem-se pontinhos pretos, os picnídios. É frequentemente confundida com a pinta-preta, mas as lesões são menores, muito mais numerosas e não apresentam anéis concêntricos.",
+      "condicoes_favoraveis": {
+        "temperatura": "20 a 25 °C",
+        "umidade": "Alta, com chuvas frequentes e respingos de solo",
+        "observacao": "Dissemina-se principalmente por respingos de água da chuva ou de irrigação por aspersão, que levam esporos do solo para as folhas baixeiras."
+      },
+      "tratamentos": [
+        {
+          "tipo": "cultural",
+          "descricao": "Cobertura morta no solo para reduzir respingos."
+        },
+        {
+          "tipo": "cultural",
+          "descricao": "Rotação de culturas e eliminação de restos culturais."
+        },
+        {
+          "tipo": "quimico",
+          "descricao": "Fungicidas protetores em programa preventivo, iniciando antes do fechamento do dossel."
+        }
+      ],
+      "ingredientes_ativos": [
+        {
+          "nome": "Clorotalonil",
+          "grupo": "Isoftalonitrila",
+          "acao": "protetor"
+        },
+        {
+          "nome": "Mancozebe",
+          "grupo": "Ditiocarbamato",
+          "acao": "protetor"
+        },
+        {
+          "nome": "Difenoconazol",
+          "grupo": "Triazol",
+          "acao": "sistêmico"
+        }
+      ]
+    },
+    {
+      "id": "tomate_mancha_alvo",
+      "nome": "Mancha-alvo",
+      "cultura": "Tomate",
+      "emoji": "🍅",
+      "agente": "Corynespora cassiicola",
+      "tipo_agente": "fungo",
+      "gravidade": 4,
+      "descricao": "Lesões com anéis concêntricos, muito parecidas com as da pinta-preta. As diferenças práticas: aqui as lesões são menores e mais numerosas, aparecem cedo também no terço médio e superior da planta, e o ataque ao fruto é bem mais agressivo. Na dúvida entre as duas, olhe o fruto e a altura das primeiras lesões.",
+      "condicoes_favoraveis": {
+        "temperatura": "22 a 28 °C",
+        "umidade": "Alta, com molhamento foliar prolongado",
+        "observacao": "Vem ganhando importância em tomate de mesa e industrial. Já existem relatos de resistência a estrobilurinas, então repetir o mesmo grupo é receita para perder a ferramenta."
+      },
+      "tratamentos": [
+        {
+          "tipo": "cultural",
+          "descricao": "Rotação de culturas e destruição dos restos culturais."
+        },
+        {
+          "tipo": "cultural",
+          "descricao": "Condução e desbrota que arejem o dossel e encurtem o molhamento foliar."
+        },
+        {
+          "tipo": "quimico",
+          "descricao": "Protetores como base, associados a carboxamidas ou estrobilurinas, sempre alternando grupos."
+        }
+      ],
+      "ingredientes_ativos": [
+        {
+          "nome": "Clorotalonil",
+          "grupo": "Isoftalonitrila",
+          "acao": "protetor"
+        },
+        {
+          "nome": "Mancozebe",
+          "grupo": "Ditiocarbamato",
+          "acao": "protetor"
+        },
+        {
+          "nome": "Boscalida",
+          "grupo": "Carboxamida",
+          "acao": "sistêmico"
+        },
+        {
+          "nome": "Difenoconazol",
+          "grupo": "Triazol",
+          "acao": "sistêmico"
+        }
+      ]
+    },
+    {
+      "id": "tomate_acaro_rajado",
+      "nome": "Ácaro-rajado",
+      "cultura": "Tomate",
+      "emoji": "🍅",
+      "agente": "Tetranychus urticae",
+      "tipo_agente": "ácaro",
+      "gravidade": 3,
+      "descricao": "Não é doença: é praga. O ácaro raspa a face inferior da folha e o dano aparece na face superior como pontuações finas e claras, do tamanho de picadas de agulha. Com a população alta a folha bronzeia, aparece uma teia fina entre folhas e hastes, e a planta seca de baixo para cima.",
+      "condicoes_favoraveis": {
+        "temperatura": "27 a 35 °C",
+        "umidade": "Baixa, abaixo de 60% - quanto mais seco e quente, mais rápido o ciclo",
+        "observacao": "Surtos clássicos aparecem logo depois de aplicações de piretroides ou de inseticidas de largo espectro, que matam os ácaros predadores e liberam a população. Poeira de carreador também favorece. Aqui, pulverizar errado é o que cria o problema."
+      },
+      "tratamentos": [
+        {
+          "tipo": "cultural",
+          "descricao": "Evitar poeira nos carreadores e manter a lavoura bem irrigada; planta com estresse hídrico agrava o ataque."
+        },
+        {
+          "tipo": "cultural",
+          "descricao": "Eliminar plantas daninhas hospedeiras nas bordaduras."
+        },
+        {
+          "tipo": "biologico",
+          "descricao": "Soltura de ácaros predadores (Neoseiulus californicus, Phytoseiulus persimilis) e uso de Beauveria bassiana."
+        },
+        {
+          "tipo": "quimico",
+          "descricao": "Acaricidas específicos, alternando grupos. Evitar piretroides de largo espectro, que agravam o surto ao eliminar os predadores."
+        }
+      ],
+      "ingredientes_ativos": [
+        {
+          "nome": "Abamectina",
+          "grupo": "Avermectina",
+          "acao": "acaricida"
+        },
+        {
+          "nome": "Espiromesifeno",
+          "grupo": "Cetoenol",
+          "acao": "acaricida"
+        },
+        {
+          "nome": "Ciflumetofem",
+          "grupo": "Benzoilacetonitrila",
+          "acao": "acaricida"
+        },
+        {
+          "nome": "Óleo mineral",
+          "grupo": "Mineral",
+          "acao": "acaricida de contato"
+        }
+      ]
+    },
+    {
+      "id": "tomate_geminivirus",
+      "nome": "Geminivirose (vírus do enrolamento amarelo)",
+      "cultura": "Tomate",
+      "emoji": "🍅",
+      "agente": "Begomovirus, transmitido pela mosca-branca (Bemisia tabaci)",
+      "tipo_agente": "vírus",
+      "gravidade": 5,
+      "descricao": "Doença viral sem controle curativo. As folhas ficam reduzidas, enroladas para cima e amareladas entre as nervuras, e a planta apresenta forte nanismo. Plantas infectadas ainda jovens praticamente não produzem. O controle é feito exclusivamente sobre o inseto vetor, a mosca-branca.",
+      "condicoes_favoraveis": {
+        "temperatura": "25 a 32 °C",
+        "umidade": "Baixa a moderada - clima seco e quente favorece a mosca-branca",
+        "observacao": "Epidemias acompanham a população do vetor. Proximidade de lavouras de soja, feijão ou algodão em fim de ciclo aumenta muito o risco, porque a mosca-branca migra em massa quando aquela cultura seca."
+      },
+      "tratamentos": [
+        {
+          "tipo": "cultural",
+          "descricao": "Não há controle curativo. Arrancar e destruir as plantas infectadas para reduzir a fonte de vírus."
+        },
+        {
+          "tipo": "cultural",
+          "descricao": "Produção de mudas em ambiente protegido com tela antiafídeo."
+        },
+        {
+          "tipo": "cultural",
+          "descricao": "Vazio sanitário e evitar plantios escalonados próximos entre si."
+        },
+        {
+          "tipo": "biologico",
+          "descricao": "Preservar inimigos naturais da mosca-branca, como Encarsia formosa e fungos entomopatogênicos."
+        },
+        {
+          "tipo": "quimico",
+          "descricao": "Controle do vetor com inseticidas, alternando modos de ação para retardar a resistência."
+        }
+      ],
+      "ingredientes_ativos": [
+        {
+          "nome": "Imidacloprido",
+          "grupo": "Neonicotinoide",
+          "acao": "inseticida sistêmico (vetor)"
+        },
+        {
+          "nome": "Espiromesifeno",
+          "grupo": "Cetoenol",
+          "acao": "inseticida (vetor)"
+        },
+        {
+          "nome": "Piriproxifem",
+          "grupo": "Regulador de crescimento",
+          "acao": "inseticida (vetor)"
+        }
+      ]
+    },
+    {
+      "id": "tomate_mosaico",
+      "nome": "Mosaico do tomateiro (ToMV)",
+      "cultura": "Tomate",
+      "emoji": "🍅",
+      "agente": "Tomato mosaic virus",
+      "tipo_agente": "vírus",
+      "gravidade": 4,
+      "descricao": "Mosaico de verde claro e verde escuro nas folhas, muitas vezes acompanhado de folhas estreitas e filiformes, com aspecto de samambaia. Ao contrário da geminivirose, não tem inseto vetor: a transmissão é mecânica, pelas mãos e ferramentas de quem trabalha na lavoura, e por semente.",
+      "condicoes_favoraveis": {
+        "temperatura": "Indiferente - o vírus não depende de clima",
+        "umidade": "Indiferente",
+        "observacao": "O vírus é extremamente estável: sobrevive meses em restos culturais secos e em fumo processado. Trabalhador que fuma e manuseia planta sem lavar as mãos é fonte documentada de contaminação. Como não há vetor, tudo se resolve com higiene e semente sadia."
+      },
+      "tratamentos": [
+        {
+          "tipo": "cultural",
+          "descricao": "Sementes sadias e cultivares com o gene de resistência Tm-2²."
+        },
+        {
+          "tipo": "cultural",
+          "descricao": "Lavar as mãos e desinfetar ferramentas entre plantas; leite desnatado ou fosfato trissódico inativam o vírus."
+        },
+        {
+          "tipo": "cultural",
+          "descricao": "Proibir o uso de fumo dentro da lavoura e do viveiro."
+        },
+        {
+          "tipo": "cultural",
+          "descricao": "Arrancar e destruir as plantas doentes, sem sacudir a folhagem das vizinhas."
+        },
+        {
+          "tipo": "quimico",
+          "descricao": "Não existe: nenhum defensivo age sobre vírus de planta. Qualquer produto vendido com essa promessa é fraude."
+        }
+      ],
+      "ingredientes_ativos": []
+    },
+    {
+      "id": "tomate_oidio",
+      "nome": "Oídio do tomateiro",
+      "cultura": "Tomate",
+      "emoji": "🍅",
+      "agente": "Leveillula taurica (Oidiopsis taurica)",
+      "tipo_agente": "fungo",
+      "gravidade": 3,
+      "descricao": "Caracteriza-se por manchas amareladas na face superior da folha e crescimento de um pó esbranquiçado, geralmente na face inferior. Diferente da maioria dos fungos foliares, o oídio se desenvolve bem em condições de baixa umidade relativa.",
+      "condicoes_favoraveis": {
+        "temperatura": "20 a 27 °C",
+        "umidade": "Moderada a baixa - não exige molhamento foliar",
+        "observacao": "Comum em cultivo protegido e em períodos secos. É a exceção entre as doenças fúngicas: água livre na folha atrapalha a germinação dos esporos."
+      },
+      "tratamentos": [
+        {
+          "tipo": "cultural",
+          "descricao": "Melhorar a ventilação, especialmente em estufas."
+        },
+        {
+          "tipo": "biologico",
+          "descricao": "Aplicações de Bacillus subtilis têm bom efeito preventivo."
+        },
+        {
+          "tipo": "quimico",
+          "descricao": "Fungicidas à base de enxofre ou triazóis em aplicações preventivas."
+        }
+      ],
+      "ingredientes_ativos": [
+        {
+          "nome": "Enxofre",
+          "grupo": "Inorgânico",
+          "acao": "protetor"
+        },
+        {
+          "nome": "Tebuconazol",
+          "grupo": "Triazol",
+          "acao": "sistêmico"
+        },
+        {
+          "nome": "Azoxistrobina",
+          "grupo": "Estrobilurina",
+          "acao": "sistêmico"
+        }
+      ]
+    }
+  ],
+  "casos": [
+    {
+      "nome": "sintoma classico isolado",
+      "cultura": "tomate",
+      "sintomas": [
+        "manchas_escuras_aneis"
+      ],
+      "esperado": {
+        "hipoteses": [
+          {
+            "doenca_id": "tomate_pinta_preta",
+            "nome": "Pinta-preta (mancha-de-alternária)",
+            "agente": "Alternaria solani",
+            "tipo_agente": "fungo",
+            "gravidade": 4,
+            "compatibilidade": 0.3448275862068965,
+            "sintomas_compativeis": [
+              {
+                "id": "manchas_escuras_aneis",
+                "nome": "Manchas escuras com anéis concêntricos, como um alvo",
+                "peso": 1.0
+              }
+            ],
+            "sintomas_esperados_ausentes": [
+              {
+                "id": "desfolha_baixo_para_cima",
+                "nome": "Queda de folhas começando pelas mais baixas",
+                "peso": 0.8
+              },
+              {
+                "id": "lesoes_no_caule",
+                "nome": "Lesões escuras no caule ou haste",
+                "peso": 0.4
+              },
+              {
+                "id": "manchas_amareladas",
+                "nome": "Manchas amareladas (cloróticas)",
+                "peso": 0.4
+              },
+              {
+                "id": "lesoes_no_fruto",
+                "nome": "Lesões deprimidas ou podridão no fruto",
+                "peso": 0.3
+              }
+            ],
+            "sintomas_nao_explicados": [],
+            "compatibilidade_pct": 34,
+            "rotulo_gravidade": "Alta"
+          },
+          {
+            "doenca_id": "tomate_mancha_alvo",
+            "nome": "Mancha-alvo",
+            "agente": "Corynespora cassiicola",
+            "tipo_agente": "fungo",
+            "gravidade": 4,
+            "compatibilidade": 0.30303030303030304,
+            "sintomas_compativeis": [
+              {
+                "id": "manchas_escuras_aneis",
+                "nome": "Manchas escuras com anéis concêntricos, como um alvo",
+                "peso": 1.0
+              }
+            ],
+            "sintomas_esperados_ausentes": [
+              {
+                "id": "lesoes_no_fruto",
+                "nome": "Lesões deprimidas ou podridão no fruto",
+                "peso": 0.7
+              },
+              {
+                "id": "manchas_pequenas_centro_claro",
+                "nome": "Manchas pequenas com centro claro e borda escura",
+                "peso": 0.6
+              },
+              {
+                "id": "desfolha_baixo_para_cima",
+                "nome": "Queda de folhas começando pelas mais baixas",
+                "peso": 0.5
+              },
+              {
+                "id": "lesoes_no_caule",
+                "nome": "Lesões escuras no caule ou haste",
+                "peso": 0.5
+              }
+            ],
+            "sintomas_nao_explicados": [],
+            "compatibilidade_pct": 30,
+            "rotulo_gravidade": "Alta"
+          }
+        ],
+        "pergunta": {
+          "sintoma_id": "manchas_amareladas",
+          "nome": "Manchas amareladas (cloróticas)",
+          "confirma": "Pinta-preta (mancha-de-alternária)",
+          "descarta": "Mancha-alvo"
+        }
+      }
+    },
+    {
+      "nome": "quadro classico completo",
+      "cultura": "tomate",
+      "sintomas": [
+        "desfolha_baixo_para_cima",
+        "manchas_escuras_aneis"
+      ],
+      "esperado": {
+        "hipoteses": [
+          {
+            "doenca_id": "tomate_pinta_preta",
+            "nome": "Pinta-preta (mancha-de-alternária)",
+            "agente": "Alternaria solani",
+            "tipo_agente": "fungo",
+            "gravidade": 4,
+            "compatibilidade": 0.6206896551724137,
+            "sintomas_compativeis": [
+              {
+                "id": "manchas_escuras_aneis",
+                "nome": "Manchas escuras com anéis concêntricos, como um alvo",
+                "peso": 1.0
+              },
+              {
+                "id": "desfolha_baixo_para_cima",
+                "nome": "Queda de folhas começando pelas mais baixas",
+                "peso": 0.8
+              }
+            ],
+            "sintomas_esperados_ausentes": [
+              {
+                "id": "lesoes_no_caule",
+                "nome": "Lesões escuras no caule ou haste",
+                "peso": 0.4
+              },
+              {
+                "id": "manchas_amareladas",
+                "nome": "Manchas amareladas (cloróticas)",
+                "peso": 0.4
+              },
+              {
+                "id": "lesoes_no_fruto",
+                "nome": "Lesões deprimidas ou podridão no fruto",
+                "peso": 0.3
+              }
+            ],
+            "sintomas_nao_explicados": [],
+            "compatibilidade_pct": 62,
+            "rotulo_gravidade": "Alta"
+          },
+          {
+            "doenca_id": "tomate_mancha_alvo",
+            "nome": "Mancha-alvo",
+            "agente": "Corynespora cassiicola",
+            "tipo_agente": "fungo",
+            "gravidade": 4,
+            "compatibilidade": 0.4545454545454546,
+            "sintomas_compativeis": [
+              {
+                "id": "manchas_escuras_aneis",
+                "nome": "Manchas escuras com anéis concêntricos, como um alvo",
+                "peso": 1.0
+              },
+              {
+                "id": "desfolha_baixo_para_cima",
+                "nome": "Queda de folhas começando pelas mais baixas",
+                "peso": 0.5
+              }
+            ],
+            "sintomas_esperados_ausentes": [
+              {
+                "id": "lesoes_no_fruto",
+                "nome": "Lesões deprimidas ou podridão no fruto",
+                "peso": 0.7
+              },
+              {
+                "id": "manchas_pequenas_centro_claro",
+                "nome": "Manchas pequenas com centro claro e borda escura",
+                "peso": 0.6
+              },
+              {
+                "id": "lesoes_no_caule",
+                "nome": "Lesões escuras no caule ou haste",
+                "peso": 0.5
+              }
+            ],
+            "sintomas_nao_explicados": [],
+            "compatibilidade_pct": 45,
+            "rotulo_gravidade": "Alta"
+          },
+          {
+            "doenca_id": "tomate_septoriose",
+            "nome": "Septoriose (mancha-de-septória)",
+            "agente": "Septoria lycopersici",
+            "tipo_agente": "fungo",
+            "gravidade": 3,
+            "compatibilidade": 0.21874999999999997,
+            "sintomas_compativeis": [
+              {
+                "id": "desfolha_baixo_para_cima",
+                "nome": "Queda de folhas começando pelas mais baixas",
+                "peso": 0.7
+              }
+            ],
+            "sintomas_esperados_ausentes": [
+              {
+                "id": "manchas_pequenas_centro_claro",
+                "nome": "Manchas pequenas com centro claro e borda escura",
+                "peso": 1.0
+              },
+              {
+                "id": "pontuacoes_pretas_na_lesao",
+                "nome": "Pontinhos pretos dentro da lesão",
+                "peso": 0.6
+              },
+              {
+                "id": "manchas_amareladas",
+                "nome": "Manchas amareladas (cloróticas)",
+                "peso": 0.4
+              }
+            ],
+            "sintomas_nao_explicados": [
+              {
+                "id": "manchas_escuras_aneis",
+                "nome": "Manchas escuras com anéis concêntricos, como um alvo"
+              }
+            ],
+            "compatibilidade_pct": 22,
+            "rotulo_gravidade": "Media"
+          },
+          {
+            "doenca_id": "tomate_mofo_de_folha",
+            "nome": "Mofo-de-folha (cladosporiose)",
+            "agente": "Passalora fulva (Fulvia fulva)",
+            "tipo_agente": "fungo",
+            "gravidade": 3,
+            "compatibilidade": 0.1724137931034483,
+            "sintomas_compativeis": [
+              {
+                "id": "desfolha_baixo_para_cima",
+                "nome": "Queda de folhas começando pelas mais baixas",
+                "peso": 0.5
+              }
+            ],
+            "sintomas_esperados_ausentes": [
+              {
+                "id": "mofo_oliva_face_inferior",
+                "nome": "Mofo aveludado verde-oliva a pardo na face inferior",
+                "peso": 1.0
+              },
+              {
+                "id": "manchas_amareladas",
+                "nome": "Manchas amareladas (cloróticas)",
+                "peso": 0.9
+              }
+            ],
+            "sintomas_nao_explicados": [
+              {
+                "id": "manchas_escuras_aneis",
+                "nome": "Manchas escuras com anéis concêntricos, como um alvo"
+              }
+            ],
+            "compatibilidade_pct": 17,
+            "rotulo_gravidade": "Media"
+          },
+          {
+            "doenca_id": "tomate_oidio",
+            "nome": "Oídio do tomateiro",
+            "agente": "Leveillula taurica (Oidiopsis taurica)",
+            "tipo_agente": "fungo",
+            "gravidade": 3,
+            "compatibilidade": 0.15384615384615385,
+            "sintomas_compativeis": [
+              {
+                "id": "desfolha_baixo_para_cima",
+                "nome": "Queda de folhas começando pelas mais baixas",
+                "peso": 0.4
+              }
+            ],
+            "sintomas_esperados_ausentes": [
+              {
+                "id": "po_branco_superficie",
+                "nome": "Pó branco, farináceo, na superfície da folha",
+                "peso": 1.0
+              },
+              {
+                "id": "manchas_amareladas",
+                "nome": "Manchas amareladas (cloróticas)",
+                "peso": 0.7
+              }
+            ],
+            "sintomas_nao_explicados": [
+              {
+                "id": "manchas_escuras_aneis",
+                "nome": "Manchas escuras com anéis concêntricos, como um alvo"
+              }
+            ],
+            "compatibilidade_pct": 15,
+            "rotulo_gravidade": "Media"
+          }
+        ],
+        "pergunta": {
+          "sintoma_id": "manchas_amareladas",
+          "nome": "Manchas amareladas (cloróticas)",
+          "confirma": "Pinta-preta (mancha-de-alternária)",
+          "descarta": "Mancha-alvo"
+        }
+      }
+    },
+    {
+      "nome": "sintoma inespecifico gera muitas hipoteses fracas",
+      "cultura": "tomate",
+      "sintomas": [
+        "manchas_amareladas"
+      ],
+      "esperado": {
+        "hipoteses": [
+          {
+            "doenca_id": "tomate_mofo_de_folha",
+            "nome": "Mofo-de-folha (cladosporiose)",
+            "agente": "Passalora fulva (Fulvia fulva)",
+            "tipo_agente": "fungo",
+            "gravidade": 3,
+            "compatibilidade": 0.375,
+            "sintomas_compativeis": [
+              {
+                "id": "manchas_amareladas",
+                "nome": "Manchas amareladas (cloróticas)",
+                "peso": 0.9
+              }
+            ],
+            "sintomas_esperados_ausentes": [
+              {
+                "id": "mofo_oliva_face_inferior",
+                "nome": "Mofo aveludado verde-oliva a pardo na face inferior",
+                "peso": 1.0
+              },
+              {
+                "id": "desfolha_baixo_para_cima",
+                "nome": "Queda de folhas começando pelas mais baixas",
+                "peso": 0.5
+              }
+            ],
+            "sintomas_nao_explicados": [],
+            "compatibilidade_pct": 38,
+            "rotulo_gravidade": "Media"
+          },
+          {
+            "doenca_id": "tomate_oidio",
+            "nome": "Oídio do tomateiro",
+            "agente": "Leveillula taurica (Oidiopsis taurica)",
+            "tipo_agente": "fungo",
+            "gravidade": 3,
+            "compatibilidade": 0.33333333333333337,
+            "sintomas_compativeis": [
+              {
+                "id": "manchas_amareladas",
+                "nome": "Manchas amareladas (cloróticas)",
+                "peso": 0.7
+              }
+            ],
+            "sintomas_esperados_ausentes": [
+              {
+                "id": "po_branco_superficie",
+                "nome": "Pó branco, farináceo, na superfície da folha",
+                "peso": 1.0
+              },
+              {
+                "id": "desfolha_baixo_para_cima",
+                "nome": "Queda de folhas começando pelas mais baixas",
+                "peso": 0.4
+              }
+            ],
+            "sintomas_nao_explicados": [],
+            "compatibilidade_pct": 33,
+            "rotulo_gravidade": "Media"
+          }
+        ],
+        "pergunta": {
+          "sintoma_id": "mofo_oliva_face_inferior",
+          "nome": "Mofo aveludado verde-oliva a pardo na face inferior",
+          "confirma": "Mofo-de-folha (cladosporiose)",
+          "descarta": "Oídio do tomateiro"
+        }
+      }
+    },
+    {
+      "nome": "ruido derruba a pontuacao",
+      "cultura": "tomate",
+      "sintomas": [
+        "manchas_escuras_aneis",
+        "po_branco_superficie"
+      ],
+      "esperado": {
+        "hipoteses": [
+          {
+            "doenca_id": "tomate_oidio",
+            "nome": "Oídio do tomateiro",
+            "agente": "Leveillula taurica (Oidiopsis taurica)",
+            "tipo_agente": "fungo",
+            "gravidade": 3,
+            "compatibilidade": 0.3846153846153846,
+            "sintomas_compativeis": [
+              {
+                "id": "po_branco_superficie",
+                "nome": "Pó branco, farináceo, na superfície da folha",
+                "peso": 1.0
+              }
+            ],
+            "sintomas_esperados_ausentes": [
+              {
+                "id": "manchas_amareladas",
+                "nome": "Manchas amareladas (cloróticas)",
+                "peso": 0.7
+              },
+              {
+                "id": "desfolha_baixo_para_cima",
+                "nome": "Queda de folhas começando pelas mais baixas",
+                "peso": 0.4
+              }
+            ],
+            "sintomas_nao_explicados": [
+              {
+                "id": "manchas_escuras_aneis",
+                "nome": "Manchas escuras com anéis concêntricos, como um alvo"
+              }
+            ],
+            "compatibilidade_pct": 38,
+            "rotulo_gravidade": "Media"
+          },
+          {
+            "doenca_id": "tomate_pinta_preta",
+            "nome": "Pinta-preta (mancha-de-alternária)",
+            "agente": "Alternaria solani",
+            "tipo_agente": "fungo",
+            "gravidade": 4,
+            "compatibilidade": 0.2941176470588235,
+            "sintomas_compativeis": [
+              {
+                "id": "manchas_escuras_aneis",
+                "nome": "Manchas escuras com anéis concêntricos, como um alvo",
+                "peso": 1.0
+              }
+            ],
+            "sintomas_esperados_ausentes": [
+              {
+                "id": "desfolha_baixo_para_cima",
+                "nome": "Queda de folhas começando pelas mais baixas",
+                "peso": 0.8
+              },
+              {
+                "id": "lesoes_no_caule",
+                "nome": "Lesões escuras no caule ou haste",
+                "peso": 0.4
+              },
+              {
+                "id": "manchas_amareladas",
+                "nome": "Manchas amareladas (cloróticas)",
+                "peso": 0.4
+              },
+              {
+                "id": "lesoes_no_fruto",
+                "nome": "Lesões deprimidas ou podridão no fruto",
+                "peso": 0.3
+              }
+            ],
+            "sintomas_nao_explicados": [
+              {
+                "id": "po_branco_superficie",
+                "nome": "Pó branco, farináceo, na superfície da folha"
+              }
+            ],
+            "compatibilidade_pct": 29,
+            "rotulo_gravidade": "Alta"
+          },
+          {
+            "doenca_id": "tomate_mancha_alvo",
+            "nome": "Mancha-alvo",
+            "agente": "Corynespora cassiicola",
+            "tipo_agente": "fungo",
+            "gravidade": 4,
+            "compatibilidade": 0.2631578947368421,
+            "sintomas_compativeis": [
+              {
+                "id": "manchas_escuras_aneis",
+                "nome": "Manchas escuras com anéis concêntricos, como um alvo",
+                "peso": 1.0
+              }
+            ],
+            "sintomas_esperados_ausentes": [
+              {
+                "id": "lesoes_no_fruto",
+                "nome": "Lesões deprimidas ou podridão no fruto",
+                "peso": 0.7
+              },
+              {
+                "id": "manchas_pequenas_centro_claro",
+                "nome": "Manchas pequenas com centro claro e borda escura",
+                "peso": 0.6
+              },
+              {
+                "id": "desfolha_baixo_para_cima",
+                "nome": "Queda de folhas começando pelas mais baixas",
+                "peso": 0.5
+              },
+              {
+                "id": "lesoes_no_caule",
+                "nome": "Lesões escuras no caule ou haste",
+                "peso": 0.5
+              }
+            ],
+            "sintomas_nao_explicados": [
+              {
+                "id": "po_branco_superficie",
+                "nome": "Pó branco, farináceo, na superfície da folha"
+              }
+            ],
+            "compatibilidade_pct": 26,
+            "rotulo_gravidade": "Alta"
+          }
+        ],
+        "pergunta": {
+          "sintoma_id": "manchas_amareladas",
+          "nome": "Manchas amareladas (cloróticas)",
+          "confirma": "Oídio do tomateiro",
+          "descarta": null
+        }
+      }
+    },
+    {
+      "nome": "par classicamente confundido: pinta-preta x mancha-alvo",
+      "cultura": "tomate",
+      "sintomas": [
+        "lesoes_no_caule",
+        "manchas_escuras_aneis"
+      ],
+      "esperado": {
+        "hipoteses": [
+          {
+            "doenca_id": "tomate_pinta_preta",
+            "nome": "Pinta-preta (mancha-de-alternária)",
+            "agente": "Alternaria solani",
+            "tipo_agente": "fungo",
+            "gravidade": 4,
+            "compatibilidade": 0.48275862068965514,
+            "sintomas_compativeis": [
+              {
+                "id": "manchas_escuras_aneis",
+                "nome": "Manchas escuras com anéis concêntricos, como um alvo",
+                "peso": 1.0
+              },
+              {
+                "id": "lesoes_no_caule",
+                "nome": "Lesões escuras no caule ou haste",
+                "peso": 0.4
+              }
+            ],
+            "sintomas_esperados_ausentes": [
+              {
+                "id": "desfolha_baixo_para_cima",
+                "nome": "Queda de folhas começando pelas mais baixas",
+                "peso": 0.8
+              },
+              {
+                "id": "manchas_amareladas",
+                "nome": "Manchas amareladas (cloróticas)",
+                "peso": 0.4
+              },
+              {
+                "id": "lesoes_no_fruto",
+                "nome": "Lesões deprimidas ou podridão no fruto",
+                "peso": 0.3
+              }
+            ],
+            "sintomas_nao_explicados": [],
+            "compatibilidade_pct": 48,
+            "rotulo_gravidade": "Alta"
+          },
+          {
+            "doenca_id": "tomate_mancha_alvo",
+            "nome": "Mancha-alvo",
+            "agente": "Corynespora cassiicola",
+            "tipo_agente": "fungo",
+            "gravidade": 4,
+            "compatibilidade": 0.4545454545454546,
+            "sintomas_compativeis": [
+              {
+                "id": "manchas_escuras_aneis",
+                "nome": "Manchas escuras com anéis concêntricos, como um alvo",
+                "peso": 1.0
+              },
+              {
+                "id": "lesoes_no_caule",
+                "nome": "Lesões escuras no caule ou haste",
+                "peso": 0.5
+              }
+            ],
+            "sintomas_esperados_ausentes": [
+              {
+                "id": "lesoes_no_fruto",
+                "nome": "Lesões deprimidas ou podridão no fruto",
+                "peso": 0.7
+              },
+              {
+                "id": "manchas_pequenas_centro_claro",
+                "nome": "Manchas pequenas com centro claro e borda escura",
+                "peso": 0.6
+              },
+              {
+                "id": "desfolha_baixo_para_cima",
+                "nome": "Queda de folhas começando pelas mais baixas",
+                "peso": 0.5
+              }
+            ],
+            "sintomas_nao_explicados": [],
+            "compatibilidade_pct": 45,
+            "rotulo_gravidade": "Alta"
+          },
+          {
+            "doenca_id": "tomate_requeima",
+            "nome": "Requeima (míldio)",
+            "agente": "Phytophthora infestans",
+            "tipo_agente": "oomiceto",
+            "gravidade": 5,
+            "compatibilidade": 0.15384615384615385,
+            "sintomas_compativeis": [
+              {
+                "id": "lesoes_no_caule",
+                "nome": "Lesões escuras no caule ou haste",
+                "peso": 0.6
+              }
+            ],
+            "sintomas_esperados_ausentes": [
+              {
+                "id": "manchas_encharcadas",
+                "nome": "Lesões encharcadas, com aspecto de queimadura",
+                "peso": 1.0
+              },
+              {
+                "id": "mofo_branco_face_inferior",
+                "nome": "Mofo esbranquiçado na face inferior da folha",
+                "peso": 0.9
+              },
+              {
+                "id": "lesoes_no_fruto",
+                "nome": "Lesões deprimidas ou podridão no fruto",
+                "peso": 0.6
+              },
+              {
+                "id": "murcha",
+                "nome": "Murcha da planta",
+                "peso": 0.3
+              }
+            ],
+            "sintomas_nao_explicados": [
+              {
+                "id": "manchas_escuras_aneis",
+                "nome": "Manchas escuras com anéis concêntricos, como um alvo"
+              }
+            ],
+            "compatibilidade_pct": 15,
+            "rotulo_gravidade": "Muito alta"
+          }
+        ],
+        "pergunta": {
+          "sintoma_id": "manchas_amareladas",
+          "nome": "Manchas amareladas (cloróticas)",
+          "confirma": "Pinta-preta (mancha-de-alternária)",
+          "descarta": "Mancha-alvo"
+        }
+      }
+    },
+    {
+      "nome": "o fruto separa a mancha-alvo da pinta-preta",
+      "cultura": "tomate",
+      "sintomas": [
+        "lesoes_no_fruto",
+        "manchas_escuras_aneis"
+      ],
+      "esperado": {
+        "hipoteses": [
+          {
+            "doenca_id": "tomate_mancha_alvo",
+            "nome": "Mancha-alvo",
+            "agente": "Corynespora cassiicola",
+            "tipo_agente": "fungo",
+            "gravidade": 4,
+            "compatibilidade": 0.5151515151515151,
+            "sintomas_compativeis": [
+              {
+                "id": "manchas_escuras_aneis",
+                "nome": "Manchas escuras com anéis concêntricos, como um alvo",
+                "peso": 1.0
+              },
+              {
+                "id": "lesoes_no_fruto",
+                "nome": "Lesões deprimidas ou podridão no fruto",
+                "peso": 0.7
+              }
+            ],
+            "sintomas_esperados_ausentes": [
+              {
+                "id": "manchas_pequenas_centro_claro",
+                "nome": "Manchas pequenas com centro claro e borda escura",
+                "peso": 0.6
+              },
+              {
+                "id": "desfolha_baixo_para_cima",
+                "nome": "Queda de folhas começando pelas mais baixas",
+                "peso": 0.5
+              },
+              {
+                "id": "lesoes_no_caule",
+                "nome": "Lesões escuras no caule ou haste",
+                "peso": 0.5
+              }
+            ],
+            "sintomas_nao_explicados": [],
+            "compatibilidade_pct": 52,
+            "rotulo_gravidade": "Alta"
+          },
+          {
+            "doenca_id": "tomate_pinta_preta",
+            "nome": "Pinta-preta (mancha-de-alternária)",
+            "agente": "Alternaria solani",
+            "tipo_agente": "fungo",
+            "gravidade": 4,
+            "compatibilidade": 0.44827586206896547,
+            "sintomas_compativeis": [
+              {
+                "id": "manchas_escuras_aneis",
+                "nome": "Manchas escuras com anéis concêntricos, como um alvo",
+                "peso": 1.0
+              },
+              {
+                "id": "lesoes_no_fruto",
+                "nome": "Lesões deprimidas ou podridão no fruto",
+                "peso": 0.3
+              }
+            ],
+            "sintomas_esperados_ausentes": [
+              {
+                "id": "desfolha_baixo_para_cima",
+                "nome": "Queda de folhas começando pelas mais baixas",
+                "peso": 0.8
+              },
+              {
+                "id": "lesoes_no_caule",
+                "nome": "Lesões escuras no caule ou haste",
+                "peso": 0.4
+              },
+              {
+                "id": "manchas_amareladas",
+                "nome": "Manchas amareladas (cloróticas)",
+                "peso": 0.4
+              }
+            ],
+            "sintomas_nao_explicados": [],
+            "compatibilidade_pct": 45,
+            "rotulo_gravidade": "Alta"
+          },
+          {
+            "doenca_id": "tomate_requeima",
+            "nome": "Requeima (míldio)",
+            "agente": "Phytophthora infestans",
+            "tipo_agente": "oomiceto",
+            "gravidade": 5,
+            "compatibilidade": 0.15384615384615385,
+            "sintomas_compativeis": [
+              {
+                "id": "lesoes_no_fruto",
+                "nome": "Lesões deprimidas ou podridão no fruto",
+                "peso": 0.6
+              }
+            ],
+            "sintomas_esperados_ausentes": [
+              {
+                "id": "manchas_encharcadas",
+                "nome": "Lesões encharcadas, com aspecto de queimadura",
+                "peso": 1.0
+              },
+              {
+                "id": "mofo_branco_face_inferior",
+                "nome": "Mofo esbranquiçado na face inferior da folha",
+                "peso": 0.9
+              },
+              {
+                "id": "lesoes_no_caule",
+                "nome": "Lesões escuras no caule ou haste",
+                "peso": 0.6
+              },
+              {
+                "id": "murcha",
+                "nome": "Murcha da planta",
+                "peso": 0.3
+              }
+            ],
+            "sintomas_nao_explicados": [
+              {
+                "id": "manchas_escuras_aneis",
+                "nome": "Manchas escuras com anéis concêntricos, como um alvo"
+              }
+            ],
+            "compatibilidade_pct": 15,
+            "rotulo_gravidade": "Muito alta"
+          }
+        ],
+        "pergunta": {
+          "sintoma_id": "manchas_pequenas_centro_claro",
+          "nome": "Manchas pequenas com centro claro e borda escura",
+          "confirma": "Mancha-alvo",
+          "descarta": "Pinta-preta (mancha-de-alternária)"
+        }
+      }
+    },
+    {
+      "nome": "as duas faces da folha separam requeima de mofo-de-folha",
+      "cultura": "tomate",
+      "sintomas": [
+        "manchas_amareladas",
+        "mofo_oliva_face_inferior"
+      ],
+      "esperado": {
+        "hipoteses": [
+          {
+            "doenca_id": "tomate_mofo_de_folha",
+            "nome": "Mofo-de-folha (cladosporiose)",
+            "agente": "Passalora fulva (Fulvia fulva)",
+            "tipo_agente": "fungo",
+            "gravidade": 3,
+            "compatibilidade": 0.7916666666666666,
+            "sintomas_compativeis": [
+              {
+                "id": "mofo_oliva_face_inferior",
+                "nome": "Mofo aveludado verde-oliva a pardo na face inferior",
+                "peso": 1.0
+              },
+              {
+                "id": "manchas_amareladas",
+                "nome": "Manchas amareladas (cloróticas)",
+                "peso": 0.9
+              }
+            ],
+            "sintomas_esperados_ausentes": [
+              {
+                "id": "desfolha_baixo_para_cima",
+                "nome": "Queda de folhas começando pelas mais baixas",
+                "peso": 0.5
+              }
+            ],
+            "sintomas_nao_explicados": [],
+            "compatibilidade_pct": 79,
+            "rotulo_gravidade": "Media"
+          },
+          {
+            "doenca_id": "tomate_oidio",
+            "nome": "Oídio do tomateiro",
+            "agente": "Leveillula taurica (Oidiopsis taurica)",
+            "tipo_agente": "fungo",
+            "gravidade": 3,
+            "compatibilidade": 0.2692307692307693,
+            "sintomas_compativeis": [
+              {
+                "id": "manchas_amareladas",
+                "nome": "Manchas amareladas (cloróticas)",
+                "peso": 0.7
+              }
+            ],
+            "sintomas_esperados_ausentes": [
+              {
+                "id": "po_branco_superficie",
+                "nome": "Pó branco, farináceo, na superfície da folha",
+                "peso": 1.0
+              },
+              {
+                "id": "desfolha_baixo_para_cima",
+                "nome": "Queda de folhas começando pelas mais baixas",
+                "peso": 0.4
+              }
+            ],
+            "sintomas_nao_explicados": [
+              {
+                "id": "mofo_oliva_face_inferior",
+                "nome": "Mofo aveludado verde-oliva a pardo na face inferior"
+              }
+            ],
+            "compatibilidade_pct": 27,
+            "rotulo_gravidade": "Media"
+          }
+        ],
+        "pergunta": {
+          "sintoma_id": "desfolha_baixo_para_cima",
+          "nome": "Queda de folhas começando pelas mais baixas",
+          "confirma": "Mofo-de-folha (cladosporiose)",
+          "descarta": null
+        }
+      }
+    },
+    {
+      "nome": "praga, nao doenca",
+      "cultura": "tomate",
+      "sintomas": [
+        "pontuacoes_finas_cloroticas",
+        "teia_fina"
+      ],
+      "esperado": {
+        "hipoteses": [
+          {
+            "doenca_id": "tomate_acaro_rajado",
+            "nome": "Ácaro-rajado",
+            "agente": "Tetranychus urticae",
+            "tipo_agente": "ácaro",
+            "gravidade": 3,
+            "compatibilidade": 0.48648648648648646,
+            "sintomas_compativeis": [
+              {
+                "id": "pontuacoes_finas_cloroticas",
+                "nome": "Pontuações finas e claras, como picadas de agulha",
+                "peso": 1.0
+              },
+              {
+                "id": "teia_fina",
+                "nome": "Teia fina entre as folhas e hastes",
+                "peso": 0.8
+              }
+            ],
+            "sintomas_esperados_ausentes": [
+              {
+                "id": "acaros_face_inferior",
+                "nome": "Ácaros minúsculos na face inferior (visíveis com lupa)",
+                "peso": 0.9
+              },
+              {
+                "id": "bronzeamento_folha",
+                "nome": "Folha bronzeada, cor de palha",
+                "peso": 0.7
+              },
+              {
+                "id": "desfolha_baixo_para_cima",
+                "nome": "Queda de folhas começando pelas mais baixas",
+                "peso": 0.3
+              }
+            ],
+            "sintomas_nao_explicados": [],
+            "compatibilidade_pct": 49,
+            "rotulo_gravidade": "Media"
+          }
+        ],
+        "pergunta": {
+          "sintoma_id": "acaros_face_inferior",
+          "nome": "Ácaros minúsculos na face inferior (visíveis com lupa)",
+          "confirma": "Ácaro-rajado",
+          "descarta": null
+        }
+      }
+    },
+    {
+      "nome": "dois virus de tomate: mosaico x geminivirose",
+      "cultura": "tomate",
+      "sintomas": [
+        "crescimento_reduzido",
+        "folhas_deformadas"
+      ],
+      "esperado": {
+        "hipoteses": [
+          {
+            "doenca_id": "tomate_geminivirus",
+            "nome": "Geminivirose (vírus do enrolamento amarelo)",
+            "agente": "Begomovirus, transmitido pela mosca-branca (Bemisia tabaci)",
+            "tipo_agente": "vírus",
+            "gravidade": 5,
+            "compatibilidade": 0.48717948717948717,
+            "sintomas_compativeis": [
+              {
+                "id": "folhas_deformadas",
+                "nome": "Folhas deformadas, enroladas ou reduzidas",
+                "peso": 1.0
+              },
+              {
+                "id": "crescimento_reduzido",
+                "nome": "Crescimento reduzido / nanismo",
+                "peso": 0.9
+              }
+            ],
+            "sintomas_esperados_ausentes": [
+              {
+                "id": "insetos_face_inferior",
+                "nome": "Insetos pequenos na face inferior da folha",
+                "peso": 0.8
+              },
+              {
+                "id": "nervuras_amareladas",
+                "nome": "Amarelecimento entre as nervuras",
+                "peso": 0.8
+              },
+              {
+                "id": "queda_de_frutos",
+                "nome": "Queda prematura de frutos",
+                "peso": 0.4
+              }
+            ],
+            "sintomas_nao_explicados": [],
+            "compatibilidade_pct": 49,
+            "rotulo_gravidade": "Muito alta"
+          },
+          {
+            "doenca_id": "tomate_mosaico",
+            "nome": "Mosaico do tomateiro (ToMV)",
+            "agente": "Tomato mosaic virus",
+            "tipo_agente": "vírus",
+            "gravidade": 4,
+            "compatibilidade": 0.3548387096774194,
+            "sintomas_compativeis": [
+              {
+                "id": "folhas_deformadas",
+                "nome": "Folhas deformadas, enroladas ou reduzidas",
+                "peso": 0.6
+              },
+              {
+                "id": "crescimento_reduzido",
+                "nome": "Crescimento reduzido / nanismo",
+                "peso": 0.5
+              }
+            ],
+            "sintomas_esperados_ausentes": [
+              {
+                "id": "mosaico_verde_claro_escuro",
+                "nome": "Mosaico de verde claro e verde escuro",
+                "peso": 1.0
+              },
+              {
+                "id": "folhas_filiformes",
+                "nome": "Folhas estreitas e filiformes, com aspecto de samambaia",
+                "peso": 0.7
+              },
+              {
+                "id": "lesoes_no_fruto",
+                "nome": "Lesões deprimidas ou podridão no fruto",
+                "peso": 0.3
+              }
+            ],
+            "sintomas_nao_explicados": [],
+            "compatibilidade_pct": 35,
+            "rotulo_gravidade": "Alta"
+          }
+        ],
+        "pergunta": {
+          "sintoma_id": "insetos_face_inferior",
+          "nome": "Insetos pequenos na face inferior da folha",
+          "confirma": "Geminivirose (vírus do enrolamento amarelo)",
+          "descarta": "Mosaico do tomateiro (ToMV)"
+        }
+      }
+    },
+    {
+      "nome": "nenhum sintoma nao devolve nada",
+      "cultura": "tomate",
+      "sintomas": [],
+      "esperado": {
+        "hipoteses": [],
+        "pergunta": null
+      }
+    },
+    {
+      "nome": "sintoma que nao existe no catalogo e apenas ruido",
+      "cultura": "tomate",
+      "sintomas": [
+        "manchas_escuras_aneis",
+        "sintoma_inventado"
+      ],
+      "esperado": {
+        "hipoteses": [
+          {
+            "doenca_id": "tomate_pinta_preta",
+            "nome": "Pinta-preta (mancha-de-alternária)",
+            "agente": "Alternaria solani",
+            "tipo_agente": "fungo",
+            "gravidade": 4,
+            "compatibilidade": 0.3448275862068965,
+            "sintomas_compativeis": [
+              {
+                "id": "manchas_escuras_aneis",
+                "nome": "Manchas escuras com anéis concêntricos, como um alvo",
+                "peso": 1.0
+              }
+            ],
+            "sintomas_esperados_ausentes": [
+              {
+                "id": "desfolha_baixo_para_cima",
+                "nome": "Queda de folhas começando pelas mais baixas",
+                "peso": 0.8
+              },
+              {
+                "id": "lesoes_no_caule",
+                "nome": "Lesões escuras no caule ou haste",
+                "peso": 0.4
+              },
+              {
+                "id": "manchas_amareladas",
+                "nome": "Manchas amareladas (cloróticas)",
+                "peso": 0.4
+              },
+              {
+                "id": "lesoes_no_fruto",
+                "nome": "Lesões deprimidas ou podridão no fruto",
+                "peso": 0.3
+              }
+            ],
+            "sintomas_nao_explicados": [],
+            "compatibilidade_pct": 34,
+            "rotulo_gravidade": "Alta"
+          },
+          {
+            "doenca_id": "tomate_mancha_alvo",
+            "nome": "Mancha-alvo",
+            "agente": "Corynespora cassiicola",
+            "tipo_agente": "fungo",
+            "gravidade": 4,
+            "compatibilidade": 0.30303030303030304,
+            "sintomas_compativeis": [
+              {
+                "id": "manchas_escuras_aneis",
+                "nome": "Manchas escuras com anéis concêntricos, como um alvo",
+                "peso": 1.0
+              }
+            ],
+            "sintomas_esperados_ausentes": [
+              {
+                "id": "lesoes_no_fruto",
+                "nome": "Lesões deprimidas ou podridão no fruto",
+                "peso": 0.7
+              },
+              {
+                "id": "manchas_pequenas_centro_claro",
+                "nome": "Manchas pequenas com centro claro e borda escura",
+                "peso": 0.6
+              },
+              {
+                "id": "desfolha_baixo_para_cima",
+                "nome": "Queda de folhas começando pelas mais baixas",
+                "peso": 0.5
+              },
+              {
+                "id": "lesoes_no_caule",
+                "nome": "Lesões escuras no caule ou haste",
+                "peso": 0.5
+              }
+            ],
+            "sintomas_nao_explicados": [],
+            "compatibilidade_pct": 30,
+            "rotulo_gravidade": "Alta"
+          }
+        ],
+        "pergunta": {
+          "sintoma_id": "manchas_amareladas",
+          "nome": "Manchas amareladas (cloróticas)",
+          "confirma": "Pinta-preta (mancha-de-alternária)",
+          "descarta": "Mancha-alvo"
+        }
+      }
+    },
+    {
+      "nome": "pinta-preta na batata, nao no tomate",
+      "cultura": "batata",
+      "sintomas": [
+        "desfolha_baixo_para_cima",
+        "manchas_escuras_aneis"
+      ],
+      "esperado": {
+        "hipoteses": [
+          {
+            "doenca_id": "batata_pinta_preta",
+            "nome": "Pinta-preta da batata",
+            "agente": "Alternaria solani",
+            "tipo_agente": "fungo",
+            "gravidade": 4,
+            "compatibilidade": 0.72,
+            "sintomas_compativeis": [
+              {
+                "id": "manchas_escuras_aneis",
+                "nome": "Manchas escuras com anéis concêntricos, como um alvo",
+                "peso": 1.0
+              },
+              {
+                "id": "desfolha_baixo_para_cima",
+                "nome": "Queda de folhas começando pelas mais baixas",
+                "peso": 0.8
+              }
+            ],
+            "sintomas_esperados_ausentes": [
+              {
+                "id": "manchas_amareladas",
+                "nome": "Manchas amareladas (cloróticas)",
+                "peso": 0.4
+              },
+              {
+                "id": "lesoes_no_caule",
+                "nome": "Lesões escuras no caule ou haste",
+                "peso": 0.3
+              }
+            ],
+            "sintomas_nao_explicados": [],
+            "compatibilidade_pct": 72,
+            "rotulo_gravidade": "Alta"
+          }
+        ],
+        "pergunta": {
+          "sintoma_id": "manchas_amareladas",
+          "nome": "Manchas amareladas (cloróticas)",
+          "confirma": "Pinta-preta da batata",
+          "descarta": null
+        }
+      }
+    },
+    {
+      "nome": "requeima: a doenca que decide a safra de batata",
+      "cultura": "batata",
+      "sintomas": [
+        "manchas_encharcadas",
+        "mofo_branco_face_inferior"
+      ],
+      "esperado": {
+        "hipoteses": [
+          {
+            "doenca_id": "batata_requeima",
+            "nome": "Requeima da batata",
+            "agente": "Phytophthora infestans",
+            "tipo_agente": "oomiceto",
+            "gravidade": 5,
+            "compatibilidade": 0.6785714285714286,
+            "sintomas_compativeis": [
+              {
+                "id": "manchas_encharcadas",
+                "nome": "Lesões encharcadas, com aspecto de queimadura",
+                "peso": 1.0
+              },
+              {
+                "id": "mofo_branco_face_inferior",
+                "nome": "Mofo esbranquiçado na face inferior da folha",
+                "peso": 0.9
+              }
+            ],
+            "sintomas_esperados_ausentes": [
+              {
+                "id": "lesoes_no_caule",
+                "nome": "Lesões escuras no caule ou haste",
+                "peso": 0.6
+              },
+              {
+                "id": "murcha",
+                "nome": "Murcha da planta",
+                "peso": 0.3
+              }
+            ],
+            "sintomas_nao_explicados": [],
+            "compatibilidade_pct": 68,
+            "rotulo_gravidade": "Muito alta"
+          }
+        ],
+        "pergunta": {
+          "sintoma_id": "lesoes_no_caule",
+          "nome": "Lesões escuras no caule ou haste",
+          "confirma": "Requeima da batata",
+          "descarta": null
+        }
+      }
+    },
+    {
+      "nome": "so ruido: nada passa do limiar",
+      "cultura": "batata",
+      "sintomas": [
+        "folhas_deformadas",
+        "po_branco_superficie"
+      ],
+      "esperado": {
+        "hipoteses": [],
+        "pergunta": null
+      }
+    },
+    {
+      "nome": "hipotese unica: nao ha segunda para desempatar",
+      "cultura": "pimentao",
+      "sintomas": [
+        "manchas_angulares_halo_amarelo"
+      ],
+      "esperado": {
+        "hipoteses": [
+          {
+            "doenca_id": "pimentao_mancha_bacteriana",
+            "nome": "Mancha-bacteriana do pimentão",
+            "agente": "Xanthomonas euvesicatoria",
+            "tipo_agente": "bactéria",
+            "gravidade": 4,
+            "compatibilidade": 0.27027027027027023,
+            "sintomas_compativeis": [
+              {
+                "id": "manchas_angulares_halo_amarelo",
+                "nome": "Manchas angulares com halo amarelo ao redor",
+                "peso": 1.0
+              }
+            ],
+            "sintomas_esperados_ausentes": [
+              {
+                "id": "manchas_salientes_fruto",
+                "nome": "Manchas ásperas e salientes, tipo verruga, no fruto",
+                "peso": 0.9
+              },
+              {
+                "id": "manchas_encharcadas",
+                "nome": "Lesões encharcadas, com aspecto de queimadura",
+                "peso": 0.8
+              },
+              {
+                "id": "queda_precoce_folhas",
+                "nome": "Queda precoce de folhas por toda a planta",
+                "peso": 0.7
+              },
+              {
+                "id": "manchas_amareladas",
+                "nome": "Manchas amareladas (cloróticas)",
+                "peso": 0.3
+              }
+            ],
+            "sintomas_nao_explicados": [],
+            "compatibilidade_pct": 27,
+            "rotulo_gravidade": "Alta"
+          }
+        ],
+        "pergunta": {
+          "sintoma_id": "manchas_salientes_fruto",
+          "nome": "Manchas ásperas e salientes, tipo verruga, no fruto",
+          "confirma": "Mancha-bacteriana do pimentão",
+          "descarta": null
+        }
+      }
+    },
+    {
+      "nome": "perfil inteiro marcado: compatibilidade maxima",
+      "cultura": "pimentao",
+      "sintomas": [
+        "manchas_amareladas",
+        "manchas_angulares_halo_amarelo",
+        "manchas_encharcadas",
+        "manchas_salientes_fruto",
+        "queda_precoce_folhas"
+      ],
+      "esperado": {
+        "hipoteses": [
+          {
+            "doenca_id": "pimentao_mancha_bacteriana",
+            "nome": "Mancha-bacteriana do pimentão",
+            "agente": "Xanthomonas euvesicatoria",
+            "tipo_agente": "bactéria",
+            "gravidade": 4,
+            "compatibilidade": 1.0,
+            "sintomas_compativeis": [
+              {
+                "id": "manchas_angulares_halo_amarelo",
+                "nome": "Manchas angulares com halo amarelo ao redor",
+                "peso": 1.0
+              },
+              {
+                "id": "manchas_salientes_fruto",
+                "nome": "Manchas ásperas e salientes, tipo verruga, no fruto",
+                "peso": 0.9
+              },
+              {
+                "id": "manchas_encharcadas",
+                "nome": "Lesões encharcadas, com aspecto de queimadura",
+                "peso": 0.8
+              },
+              {
+                "id": "queda_precoce_folhas",
+                "nome": "Queda precoce de folhas por toda a planta",
+                "peso": 0.7
+              },
+              {
+                "id": "manchas_amareladas",
+                "nome": "Manchas amareladas (cloróticas)",
+                "peso": 0.3
+              }
+            ],
+            "sintomas_esperados_ausentes": [],
+            "sintomas_nao_explicados": [],
+            "compatibilidade_pct": 100,
+            "rotulo_gravidade": "Alta"
+          }
+        ],
+        "pergunta": null
+      }
+    },
+    {
+      "nome": "perfil completo de batata_pinta_preta",
+      "cultura": "batata",
+      "sintomas": [
+        "desfolha_baixo_para_cima",
+        "lesoes_no_caule",
+        "manchas_amareladas",
+        "manchas_escuras_aneis"
+      ],
+      "esperado": {
+        "hipoteses": [
+          {
+            "doenca_id": "batata_pinta_preta",
+            "nome": "Pinta-preta da batata",
+            "agente": "Alternaria solani",
+            "tipo_agente": "fungo",
+            "gravidade": 4,
+            "compatibilidade": 1.0,
+            "sintomas_compativeis": [
+              {
+                "id": "manchas_escuras_aneis",
+                "nome": "Manchas escuras com anéis concêntricos, como um alvo",
+                "peso": 1.0
+              },
+              {
+                "id": "desfolha_baixo_para_cima",
+                "nome": "Queda de folhas começando pelas mais baixas",
+                "peso": 0.8
+              },
+              {
+                "id": "manchas_amareladas",
+                "nome": "Manchas amareladas (cloróticas)",
+                "peso": 0.4
+              },
+              {
+                "id": "lesoes_no_caule",
+                "nome": "Lesões escuras no caule ou haste",
+                "peso": 0.3
+              }
+            ],
+            "sintomas_esperados_ausentes": [],
+            "sintomas_nao_explicados": [],
+            "compatibilidade_pct": 100,
+            "rotulo_gravidade": "Alta"
+          }
+        ],
+        "pergunta": null
+      }
+    },
+    {
+      "nome": "sintoma principal isolado de batata_pinta_preta",
+      "cultura": "batata",
+      "sintomas": [
+        "manchas_escuras_aneis"
+      ],
+      "esperado": {
+        "hipoteses": [
+          {
+            "doenca_id": "batata_pinta_preta",
+            "nome": "Pinta-preta da batata",
+            "agente": "Alternaria solani",
+            "tipo_agente": "fungo",
+            "gravidade": 4,
+            "compatibilidade": 0.4,
+            "sintomas_compativeis": [
+              {
+                "id": "manchas_escuras_aneis",
+                "nome": "Manchas escuras com anéis concêntricos, como um alvo",
+                "peso": 1.0
+              }
+            ],
+            "sintomas_esperados_ausentes": [
+              {
+                "id": "desfolha_baixo_para_cima",
+                "nome": "Queda de folhas começando pelas mais baixas",
+                "peso": 0.8
+              },
+              {
+                "id": "manchas_amareladas",
+                "nome": "Manchas amareladas (cloróticas)",
+                "peso": 0.4
+              },
+              {
+                "id": "lesoes_no_caule",
+                "nome": "Lesões escuras no caule ou haste",
+                "peso": 0.3
+              }
+            ],
+            "sintomas_nao_explicados": [],
+            "compatibilidade_pct": 40,
+            "rotulo_gravidade": "Alta"
+          }
+        ],
+        "pergunta": {
+          "sintoma_id": "desfolha_baixo_para_cima",
+          "nome": "Queda de folhas começando pelas mais baixas",
+          "confirma": "Pinta-preta da batata",
+          "descarta": null
+        }
+      }
+    },
+    {
+      "nome": "perfil completo de batata_requeima",
+      "cultura": "batata",
+      "sintomas": [
+        "lesoes_no_caule",
+        "manchas_encharcadas",
+        "mofo_branco_face_inferior",
+        "murcha"
+      ],
+      "esperado": {
+        "hipoteses": [
+          {
+            "doenca_id": "batata_requeima",
+            "nome": "Requeima da batata",
+            "agente": "Phytophthora infestans",
+            "tipo_agente": "oomiceto",
+            "gravidade": 5,
+            "compatibilidade": 1.0,
+            "sintomas_compativeis": [
+              {
+                "id": "manchas_encharcadas",
+                "nome": "Lesões encharcadas, com aspecto de queimadura",
+                "peso": 1.0
+              },
+              {
+                "id": "mofo_branco_face_inferior",
+                "nome": "Mofo esbranquiçado na face inferior da folha",
+                "peso": 0.9
+              },
+              {
+                "id": "lesoes_no_caule",
+                "nome": "Lesões escuras no caule ou haste",
+                "peso": 0.6
+              },
+              {
+                "id": "murcha",
+                "nome": "Murcha da planta",
+                "peso": 0.3
+              }
+            ],
+            "sintomas_esperados_ausentes": [],
+            "sintomas_nao_explicados": [],
+            "compatibilidade_pct": 100,
+            "rotulo_gravidade": "Muito alta"
+          }
+        ],
+        "pergunta": null
+      }
+    },
+    {
+      "nome": "sintoma principal isolado de batata_requeima",
+      "cultura": "batata",
+      "sintomas": [
+        "manchas_encharcadas"
+      ],
+      "esperado": {
+        "hipoteses": [
+          {
+            "doenca_id": "batata_requeima",
+            "nome": "Requeima da batata",
+            "agente": "Phytophthora infestans",
+            "tipo_agente": "oomiceto",
+            "gravidade": 5,
+            "compatibilidade": 0.35714285714285715,
+            "sintomas_compativeis": [
+              {
+                "id": "manchas_encharcadas",
+                "nome": "Lesões encharcadas, com aspecto de queimadura",
+                "peso": 1.0
+              }
+            ],
+            "sintomas_esperados_ausentes": [
+              {
+                "id": "mofo_branco_face_inferior",
+                "nome": "Mofo esbranquiçado na face inferior da folha",
+                "peso": 0.9
+              },
+              {
+                "id": "lesoes_no_caule",
+                "nome": "Lesões escuras no caule ou haste",
+                "peso": 0.6
+              },
+              {
+                "id": "murcha",
+                "nome": "Murcha da planta",
+                "peso": 0.3
+              }
+            ],
+            "sintomas_nao_explicados": [],
+            "compatibilidade_pct": 36,
+            "rotulo_gravidade": "Muito alta"
+          }
+        ],
+        "pergunta": {
+          "sintoma_id": "mofo_branco_face_inferior",
+          "nome": "Mofo esbranquiçado na face inferior da folha",
+          "confirma": "Requeima da batata",
+          "descarta": null
+        }
+      }
+    },
+    {
+      "nome": "perfil completo de pimentao_mancha_bacteriana",
+      "cultura": "pimentao",
+      "sintomas": [
+        "manchas_amareladas",
+        "manchas_angulares_halo_amarelo",
+        "manchas_encharcadas",
+        "manchas_salientes_fruto",
+        "queda_precoce_folhas"
+      ],
+      "esperado": {
+        "hipoteses": [
+          {
+            "doenca_id": "pimentao_mancha_bacteriana",
+            "nome": "Mancha-bacteriana do pimentão",
+            "agente": "Xanthomonas euvesicatoria",
+            "tipo_agente": "bactéria",
+            "gravidade": 4,
+            "compatibilidade": 1.0,
+            "sintomas_compativeis": [
+              {
+                "id": "manchas_angulares_halo_amarelo",
+                "nome": "Manchas angulares com halo amarelo ao redor",
+                "peso": 1.0
+              },
+              {
+                "id": "manchas_salientes_fruto",
+                "nome": "Manchas ásperas e salientes, tipo verruga, no fruto",
+                "peso": 0.9
+              },
+              {
+                "id": "manchas_encharcadas",
+                "nome": "Lesões encharcadas, com aspecto de queimadura",
+                "peso": 0.8
+              },
+              {
+                "id": "queda_precoce_folhas",
+                "nome": "Queda precoce de folhas por toda a planta",
+                "peso": 0.7
+              },
+              {
+                "id": "manchas_amareladas",
+                "nome": "Manchas amareladas (cloróticas)",
+                "peso": 0.3
+              }
+            ],
+            "sintomas_esperados_ausentes": [],
+            "sintomas_nao_explicados": [],
+            "compatibilidade_pct": 100,
+            "rotulo_gravidade": "Alta"
+          }
+        ],
+        "pergunta": null
+      }
+    },
+    {
+      "nome": "sintoma principal isolado de pimentao_mancha_bacteriana",
+      "cultura": "pimentao",
+      "sintomas": [
+        "manchas_angulares_halo_amarelo"
+      ],
+      "esperado": {
+        "hipoteses": [
+          {
+            "doenca_id": "pimentao_mancha_bacteriana",
+            "nome": "Mancha-bacteriana do pimentão",
+            "agente": "Xanthomonas euvesicatoria",
+            "tipo_agente": "bactéria",
+            "gravidade": 4,
+            "compatibilidade": 0.27027027027027023,
+            "sintomas_compativeis": [
+              {
+                "id": "manchas_angulares_halo_amarelo",
+                "nome": "Manchas angulares com halo amarelo ao redor",
+                "peso": 1.0
+              }
+            ],
+            "sintomas_esperados_ausentes": [
+              {
+                "id": "manchas_salientes_fruto",
+                "nome": "Manchas ásperas e salientes, tipo verruga, no fruto",
+                "peso": 0.9
+              },
+              {
+                "id": "manchas_encharcadas",
+                "nome": "Lesões encharcadas, com aspecto de queimadura",
+                "peso": 0.8
+              },
+              {
+                "id": "queda_precoce_folhas",
+                "nome": "Queda precoce de folhas por toda a planta",
+                "peso": 0.7
+              },
+              {
+                "id": "manchas_amareladas",
+                "nome": "Manchas amareladas (cloróticas)",
+                "peso": 0.3
+              }
+            ],
+            "sintomas_nao_explicados": [],
+            "compatibilidade_pct": 27,
+            "rotulo_gravidade": "Alta"
+          }
+        ],
+        "pergunta": {
+          "sintoma_id": "manchas_salientes_fruto",
+          "nome": "Manchas ásperas e salientes, tipo verruga, no fruto",
+          "confirma": "Mancha-bacteriana do pimentão",
+          "descarta": null
+        }
+      }
+    },
+    {
+      "nome": "perfil completo de tomate_mancha_bacteriana",
+      "cultura": "tomate",
+      "sintomas": [
+        "manchas_amareladas",
+        "manchas_angulares_halo_amarelo",
+        "manchas_encharcadas",
+        "manchas_salientes_fruto",
+        "queda_precoce_folhas"
+      ],
+      "esperado": {
+        "hipoteses": [
+          {
+            "doenca_id": "tomate_mancha_bacteriana",
+            "nome": "Mancha-bacteriana do tomateiro",
+            "agente": "Xanthomonas spp.",
+            "tipo_agente": "bactéria",
+            "gravidade": 4,
+            "compatibilidade": 1.0,
+            "sintomas_compativeis": [
+              {
+                "id": "manchas_angulares_halo_amarelo",
+                "nome": "Manchas angulares com halo amarelo ao redor",
+                "peso": 1.0
+              },
+              {
+                "id": "manchas_encharcadas",
+                "nome": "Lesões encharcadas, com aspecto de queimadura",
+                "peso": 0.8
+              },
+              {
+                "id": "manchas_salientes_fruto",
+                "nome": "Manchas ásperas e salientes, tipo verruga, no fruto",
+                "peso": 0.8
+              },
+              {
+                "id": "queda_precoce_folhas",
+                "nome": "Queda precoce de folhas por toda a planta",
+                "peso": 0.5
+              },
+              {
+                "id": "manchas_amareladas",
+                "nome": "Manchas amareladas (cloróticas)",
+                "peso": 0.3
+              }
+            ],
+            "sintomas_esperados_ausentes": [],
+            "sintomas_nao_explicados": [],
+            "compatibilidade_pct": 100,
+            "rotulo_gravidade": "Alta"
+          },
+          {
+            "doenca_id": "tomate_mofo_de_folha",
+            "nome": "Mofo-de-folha (cladosporiose)",
+            "agente": "Passalora fulva (Fulvia fulva)",
+            "tipo_agente": "fungo",
+            "gravidade": 3,
+            "compatibilidade": 0.20454545454545453,
+            "sintomas_compativeis": [
+              {
+                "id": "manchas_amareladas",
+                "nome": "Manchas amareladas (cloróticas)",
+                "peso": 0.9
+              }
+            ],
+            "sintomas_esperados_ausentes": [
+              {
+                "id": "mofo_oliva_face_inferior",
+                "nome": "Mofo aveludado verde-oliva a pardo na face inferior",
+                "peso": 1.0
+              },
+              {
+                "id": "desfolha_baixo_para_cima",
+                "nome": "Queda de folhas começando pelas mais baixas",
+                "peso": 0.5
+              }
+            ],
+            "sintomas_nao_explicados": [
+              {
+                "id": "manchas_angulares_halo_amarelo",
+                "nome": "Manchas angulares com halo amarelo ao redor"
+              },
+              {
+                "id": "manchas_encharcadas",
+                "nome": "Lesões encharcadas, com aspecto de queimadura"
+              },
+              {
+                "id": "manchas_salientes_fruto",
+                "nome": "Manchas ásperas e salientes, tipo verruga, no fruto"
+              },
+              {
+                "id": "queda_precoce_folhas",
+                "nome": "Queda precoce de folhas por toda a planta"
+              }
+            ],
+            "compatibilidade_pct": 20,
+            "rotulo_gravidade": "Media"
+          },
+          {
+            "doenca_id": "tomate_requeima",
+            "nome": "Requeima (míldio)",
+            "agente": "Phytophthora infestans",
+            "tipo_agente": "oomiceto",
+            "gravidade": 5,
+            "compatibilidade": 0.18518518518518517,
+            "sintomas_compativeis": [
+              {
+                "id": "manchas_encharcadas",
+                "nome": "Lesões encharcadas, com aspecto de queimadura",
+                "peso": 1.0
+              }
+            ],
+            "sintomas_esperados_ausentes": [
+              {
+                "id": "mofo_branco_face_inferior",
+                "nome": "Mofo esbranquiçado na face inferior da folha",
+                "peso": 0.9
+              },
+              {
+                "id": "lesoes_no_caule",
+                "nome": "Lesões escuras no caule ou haste",
+                "peso": 0.6
+              },
+              {
+                "id": "lesoes_no_fruto",
+                "nome": "Lesões deprimidas ou podridão no fruto",
+                "peso": 0.6
+              },
+              {
+                "id": "murcha",
+                "nome": "Murcha da planta",
+                "peso": 0.3
+              }
+            ],
+            "sintomas_nao_explicados": [
+              {
+                "id": "manchas_amareladas",
+                "nome": "Manchas amareladas (cloróticas)"
+              },
+              {
+                "id": "manchas_angulares_halo_amarelo",
+                "nome": "Manchas angulares com halo amarelo ao redor"
+              },
+              {
+                "id": "manchas_salientes_fruto",
+                "nome": "Manchas ásperas e salientes, tipo verruga, no fruto"
+              },
+              {
+                "id": "queda_precoce_folhas",
+                "nome": "Queda precoce de folhas por toda a planta"
+              }
+            ],
+            "compatibilidade_pct": 19,
+            "rotulo_gravidade": "Muito alta"
+          },
+          {
+            "doenca_id": "tomate_oidio",
+            "nome": "Oídio do tomateiro",
+            "agente": "Leveillula taurica (Oidiopsis taurica)",
+            "tipo_agente": "fungo",
+            "gravidade": 3,
+            "compatibilidade": 0.17073170731707318,
+            "sintomas_compativeis": [
+              {
+                "id": "manchas_amareladas",
+                "nome": "Manchas amareladas (cloróticas)",
+                "peso": 0.7
+              }
+            ],
+            "sintomas_esperados_ausentes": [
+              {
+                "id": "po_branco_superficie",
+                "nome": "Pó branco, farináceo, na superfície da folha",
+                "peso": 1.0
+              },
+              {
+                "id": "desfolha_baixo_para_cima",
+                "nome": "Queda de folhas começando pelas mais baixas",
+                "peso": 0.4
+              }
+            ],
+            "sintomas_nao_explicados": [
+              {
+                "id": "manchas_angulares_halo_amarelo",
+                "nome": "Manchas angulares com halo amarelo ao redor"
+              },
+              {
+                "id": "manchas_encharcadas",
+                "nome": "Lesões encharcadas, com aspecto de queimadura"
+              },
+              {
+                "id": "manchas_salientes_fruto",
+                "nome": "Manchas ásperas e salientes, tipo verruga, no fruto"
+              },
+              {
+                "id": "queda_precoce_folhas",
+                "nome": "Queda precoce de folhas por toda a planta"
+              }
+            ],
+            "compatibilidade_pct": 17,
+            "rotulo_gravidade": "Media"
+          }
+        ],
+        "pergunta": null
+      }
+    },
+    {
+      "nome": "sintoma principal isolado de tomate_mancha_bacteriana",
+      "cultura": "tomate",
+      "sintomas": [
+        "manchas_angulares_halo_amarelo"
+      ],
+      "esperado": {
+        "hipoteses": [
+          {
+            "doenca_id": "tomate_mancha_bacteriana",
+            "nome": "Mancha-bacteriana do tomateiro",
+            "agente": "Xanthomonas spp.",
+            "tipo_agente": "bactéria",
+            "gravidade": 4,
+            "compatibilidade": 0.29411764705882354,
+            "sintomas_compativeis": [
+              {
+                "id": "manchas_angulares_halo_amarelo",
+                "nome": "Manchas angulares com halo amarelo ao redor",
+                "peso": 1.0
+              }
+            ],
+            "sintomas_esperados_ausentes": [
+              {
+                "id": "manchas_encharcadas",
+                "nome": "Lesões encharcadas, com aspecto de queimadura",
+                "peso": 0.8
+              },
+              {
+                "id": "manchas_salientes_fruto",
+                "nome": "Manchas ásperas e salientes, tipo verruga, no fruto",
+                "peso": 0.8
+              },
+              {
+                "id": "queda_precoce_folhas",
+                "nome": "Queda precoce de folhas por toda a planta",
+                "peso": 0.5
+              },
+              {
+                "id": "manchas_amareladas",
+                "nome": "Manchas amareladas (cloróticas)",
+                "peso": 0.3
+              }
+            ],
+            "sintomas_nao_explicados": [],
+            "compatibilidade_pct": 29,
+            "rotulo_gravidade": "Alta"
+          }
+        ],
+        "pergunta": {
+          "sintoma_id": "manchas_encharcadas",
+          "nome": "Lesões encharcadas, com aspecto de queimadura",
+          "confirma": "Mancha-bacteriana do tomateiro",
+          "descarta": null
+        }
+      }
+    },
+    {
+      "nome": "perfil completo de tomate_pinta_preta",
+      "cultura": "tomate",
+      "sintomas": [
+        "desfolha_baixo_para_cima",
+        "lesoes_no_caule",
+        "lesoes_no_fruto",
+        "manchas_amareladas",
+        "manchas_escuras_aneis"
+      ],
+      "esperado": {
+        "hipoteses": [
+          {
+            "doenca_id": "tomate_pinta_preta",
+            "nome": "Pinta-preta (mancha-de-alternária)",
+            "agente": "Alternaria solani",
+            "tipo_agente": "fungo",
+            "gravidade": 4,
+            "compatibilidade": 1.0,
+            "sintomas_compativeis": [
+              {
+                "id": "manchas_escuras_aneis",
+                "nome": "Manchas escuras com anéis concêntricos, como um alvo",
+                "peso": 1.0
+              },
+              {
+                "id": "desfolha_baixo_para_cima",
+                "nome": "Queda de folhas começando pelas mais baixas",
+                "peso": 0.8
+              },
+              {
+                "id": "lesoes_no_caule",
+                "nome": "Lesões escuras no caule ou haste",
+                "peso": 0.4
+              },
+              {
+                "id": "manchas_amareladas",
+                "nome": "Manchas amareladas (cloróticas)",
+                "peso": 0.4
+              },
+              {
+                "id": "lesoes_no_fruto",
+                "nome": "Lesões deprimidas ou podridão no fruto",
+                "peso": 0.3
+              }
+            ],
+            "sintomas_esperados_ausentes": [],
+            "sintomas_nao_explicados": [],
+            "compatibilidade_pct": 100,
+            "rotulo_gravidade": "Alta"
+          },
+          {
+            "doenca_id": "tomate_mancha_alvo",
+            "nome": "Mancha-alvo",
+            "agente": "Corynespora cassiicola",
+            "tipo_agente": "fungo",
+            "gravidade": 4,
+            "compatibilidade": 0.7105263157894737,
+            "sintomas_compativeis": [
+              {
+                "id": "manchas_escuras_aneis",
+                "nome": "Manchas escuras com anéis concêntricos, como um alvo",
+                "peso": 1.0
+              },
+              {
+                "id": "lesoes_no_fruto",
+                "nome": "Lesões deprimidas ou podridão no fruto",
+                "peso": 0.7
+              },
+              {
+                "id": "desfolha_baixo_para_cima",
+                "nome": "Queda de folhas começando pelas mais baixas",
+                "peso": 0.5
+              },
+              {
+                "id": "lesoes_no_caule",
+                "nome": "Lesões escuras no caule ou haste",
+                "peso": 0.5
+              }
+            ],
+            "sintomas_esperados_ausentes": [
+              {
+                "id": "manchas_pequenas_centro_claro",
+                "nome": "Manchas pequenas com centro claro e borda escura",
+                "peso": 0.6
+              }
+            ],
+            "sintomas_nao_explicados": [
+              {
+                "id": "manchas_amareladas",
+                "nome": "Manchas amareladas (cloróticas)"
+              }
+            ],
+            "compatibilidade_pct": 71,
+            "rotulo_gravidade": "Alta"
+          },
+          {
+            "doenca_id": "tomate_mofo_de_folha",
+            "nome": "Mofo-de-folha (cladosporiose)",
+            "agente": "Passalora fulva (Fulvia fulva)",
+            "tipo_agente": "fungo",
+            "gravidade": 3,
+            "compatibilidade": 0.358974358974359,
+            "sintomas_compativeis": [
+              {
+                "id": "manchas_amareladas",
+                "nome": "Manchas amareladas (cloróticas)",
+                "peso": 0.9
+              },
+              {
+                "id": "desfolha_baixo_para_cima",
+                "nome": "Queda de folhas começando pelas mais baixas",
+                "peso": 0.5
+              }
+            ],
+            "sintomas_esperados_ausentes": [
+              {
+                "id": "mofo_oliva_face_inferior",
+                "nome": "Mofo aveludado verde-oliva a pardo na face inferior",
+                "peso": 1.0
+              }
+            ],
+            "sintomas_nao_explicados": [
+              {
+                "id": "lesoes_no_caule",
+                "nome": "Lesões escuras no caule ou haste"
+              },
+              {
+                "id": "lesoes_no_fruto",
+                "nome": "Lesões deprimidas ou podridão no fruto"
+              },
+              {
+                "id": "manchas_escuras_aneis",
+                "nome": "Manchas escuras com anéis concêntricos, como um alvo"
+              }
+            ],
+            "compatibilidade_pct": 36,
+            "rotulo_gravidade": "Media"
+          },
+          {
+            "doenca_id": "tomate_oidio",
+            "nome": "Oídio do tomateiro",
+            "agente": "Leveillula taurica (Oidiopsis taurica)",
+            "tipo_agente": "fungo",
+            "gravidade": 3,
+            "compatibilidade": 0.3055555555555556,
+            "sintomas_compativeis": [
+              {
+                "id": "manchas_amareladas",
+                "nome": "Manchas amareladas (cloróticas)",
+                "peso": 0.7
+              },
+              {
+                "id": "desfolha_baixo_para_cima",
+                "nome": "Queda de folhas começando pelas mais baixas",
+                "peso": 0.4
+              }
+            ],
+            "sintomas_esperados_ausentes": [
+              {
+                "id": "po_branco_superficie",
+                "nome": "Pó branco, farináceo, na superfície da folha",
+                "peso": 1.0
+              }
+            ],
+            "sintomas_nao_explicados": [
+              {
+                "id": "lesoes_no_caule",
+                "nome": "Lesões escuras no caule ou haste"
+              },
+              {
+                "id": "lesoes_no_fruto",
+                "nome": "Lesões deprimidas ou podridão no fruto"
+              },
+              {
+                "id": "manchas_escuras_aneis",
+                "nome": "Manchas escuras com anéis concêntricos, como um alvo"
+              }
+            ],
+            "compatibilidade_pct": 31,
+            "rotulo_gravidade": "Media"
+          },
+          {
+            "doenca_id": "tomate_septoriose",
+            "nome": "Septoriose (mancha-de-septória)",
+            "agente": "Septoria lycopersici",
+            "tipo_agente": "fungo",
+            "gravidade": 3,
+            "compatibilidade": 0.2619047619047619,
+            "sintomas_compativeis": [
+              {
+                "id": "desfolha_baixo_para_cima",
+                "nome": "Queda de folhas começando pelas mais baixas",
+                "peso": 0.7
+              },
+              {
+                "id": "manchas_amareladas",
+                "nome": "Manchas amareladas (cloróticas)",
+                "peso": 0.4
+              }
+            ],
+            "sintomas_esperados_ausentes": [
+              {
+                "id": "manchas_pequenas_centro_claro",
+                "nome": "Manchas pequenas com centro claro e borda escura",
+                "peso": 1.0
+              },
+              {
+                "id": "pontuacoes_pretas_na_lesao",
+                "nome": "Pontinhos pretos dentro da lesão",
+                "peso": 0.6
+              }
+            ],
+            "sintomas_nao_explicados": [
+              {
+                "id": "lesoes_no_caule",
+                "nome": "Lesões escuras no caule ou haste"
+              },
+              {
+                "id": "lesoes_no_fruto",
+                "nome": "Lesões deprimidas ou podridão no fruto"
+              },
+              {
+                "id": "manchas_escuras_aneis",
+                "nome": "Manchas escuras com anéis concêntricos, como um alvo"
+              }
+            ],
+            "compatibilidade_pct": 26,
+            "rotulo_gravidade": "Media"
+          },
+          {
+            "doenca_id": "tomate_requeima",
+            "nome": "Requeima (míldio)",
+            "agente": "Phytophthora infestans",
+            "tipo_agente": "oomiceto",
+            "gravidade": 5,
+            "compatibilidade": 0.24489795918367344,
+            "sintomas_compativeis": [
+              {
+                "id": "lesoes_no_caule",
+                "nome": "Lesões escuras no caule ou haste",
+                "peso": 0.6
+              },
+              {
+                "id": "lesoes_no_fruto",
+                "nome": "Lesões deprimidas ou podridão no fruto",
+                "peso": 0.6
+              }
+            ],
+            "sintomas_esperados_ausentes": [
+              {
+                "id": "manchas_encharcadas",
+                "nome": "Lesões encharcadas, com aspecto de queimadura",
+                "peso": 1.0
+              },
+              {
+                "id": "mofo_branco_face_inferior",
+                "nome": "Mofo esbranquiçado na face inferior da folha",
+                "peso": 0.9
+              },
+              {
+                "id": "murcha",
+                "nome": "Murcha da planta",
+                "peso": 0.3
+              }
+            ],
+            "sintomas_nao_explicados": [
+              {
+                "id": "desfolha_baixo_para_cima",
+                "nome": "Queda de folhas começando pelas mais baixas"
+              },
+              {
+                "id": "manchas_amareladas",
+                "nome": "Manchas amareladas (cloróticas)"
+              },
+              {
+                "id": "manchas_escuras_aneis",
+                "nome": "Manchas escuras com anéis concêntricos, como um alvo"
+              }
+            ],
+            "compatibilidade_pct": 24,
+            "rotulo_gravidade": "Muito alta"
+          }
+        ],
+        "pergunta": null
+      }
+    },
+    {
+      "nome": "sintoma principal isolado de tomate_pinta_preta",
+      "cultura": "tomate",
+      "sintomas": [
+        "manchas_escuras_aneis"
+      ],
+      "esperado": {
+        "hipoteses": [
+          {
+            "doenca_id": "tomate_pinta_preta",
+            "nome": "Pinta-preta (mancha-de-alternária)",
+            "agente": "Alternaria solani",
+            "tipo_agente": "fungo",
+            "gravidade": 4,
+            "compatibilidade": 0.3448275862068965,
+            "sintomas_compativeis": [
+              {
+                "id": "manchas_escuras_aneis",
+                "nome": "Manchas escuras com anéis concêntricos, como um alvo",
+                "peso": 1.0
+              }
+            ],
+            "sintomas_esperados_ausentes": [
+              {
+                "id": "desfolha_baixo_para_cima",
+                "nome": "Queda de folhas começando pelas mais baixas",
+                "peso": 0.8
+              },
+              {
+                "id": "lesoes_no_caule",
+                "nome": "Lesões escuras no caule ou haste",
+                "peso": 0.4
+              },
+              {
+                "id": "manchas_amareladas",
+                "nome": "Manchas amareladas (cloróticas)",
+                "peso": 0.4
+              },
+              {
+                "id": "lesoes_no_fruto",
+                "nome": "Lesões deprimidas ou podridão no fruto",
+                "peso": 0.3
+              }
+            ],
+            "sintomas_nao_explicados": [],
+            "compatibilidade_pct": 34,
+            "rotulo_gravidade": "Alta"
+          },
+          {
+            "doenca_id": "tomate_mancha_alvo",
+            "nome": "Mancha-alvo",
+            "agente": "Corynespora cassiicola",
+            "tipo_agente": "fungo",
+            "gravidade": 4,
+            "compatibilidade": 0.30303030303030304,
+            "sintomas_compativeis": [
+              {
+                "id": "manchas_escuras_aneis",
+                "nome": "Manchas escuras com anéis concêntricos, como um alvo",
+                "peso": 1.0
+              }
+            ],
+            "sintomas_esperados_ausentes": [
+              {
+                "id": "lesoes_no_fruto",
+                "nome": "Lesões deprimidas ou podridão no fruto",
+                "peso": 0.7
+              },
+              {
+                "id": "manchas_pequenas_centro_claro",
+                "nome": "Manchas pequenas com centro claro e borda escura",
+                "peso": 0.6
+              },
+              {
+                "id": "desfolha_baixo_para_cima",
+                "nome": "Queda de folhas começando pelas mais baixas",
+                "peso": 0.5
+              },
+              {
+                "id": "lesoes_no_caule",
+                "nome": "Lesões escuras no caule ou haste",
+                "peso": 0.5
+              }
+            ],
+            "sintomas_nao_explicados": [],
+            "compatibilidade_pct": 30,
+            "rotulo_gravidade": "Alta"
+          }
+        ],
+        "pergunta": {
+          "sintoma_id": "manchas_amareladas",
+          "nome": "Manchas amareladas (cloróticas)",
+          "confirma": "Pinta-preta (mancha-de-alternária)",
+          "descarta": "Mancha-alvo"
+        }
+      }
+    },
+    {
+      "nome": "perfil completo de tomate_requeima",
+      "cultura": "tomate",
+      "sintomas": [
+        "lesoes_no_caule",
+        "lesoes_no_fruto",
+        "manchas_encharcadas",
+        "mofo_branco_face_inferior",
+        "murcha"
+      ],
+      "esperado": {
+        "hipoteses": [
+          {
+            "doenca_id": "tomate_requeima",
+            "nome": "Requeima (míldio)",
+            "agente": "Phytophthora infestans",
+            "tipo_agente": "oomiceto",
+            "gravidade": 5,
+            "compatibilidade": 1.0,
+            "sintomas_compativeis": [
+              {
+                "id": "manchas_encharcadas",
+                "nome": "Lesões encharcadas, com aspecto de queimadura",
+                "peso": 1.0
+              },
+              {
+                "id": "mofo_branco_face_inferior",
+                "nome": "Mofo esbranquiçado na face inferior da folha",
+                "peso": 0.9
+              },
+              {
+                "id": "lesoes_no_caule",
+                "nome": "Lesões escuras no caule ou haste",
+                "peso": 0.6
+              },
+              {
+                "id": "lesoes_no_fruto",
+                "nome": "Lesões deprimidas ou podridão no fruto",
+                "peso": 0.6
+              },
+              {
+                "id": "murcha",
+                "nome": "Murcha da planta",
+                "peso": 0.3
+              }
+            ],
+            "sintomas_esperados_ausentes": [],
+            "sintomas_nao_explicados": [],
+            "compatibilidade_pct": 100,
+            "rotulo_gravidade": "Muito alta"
+          },
+          {
+            "doenca_id": "tomate_mancha_alvo",
+            "nome": "Mancha-alvo",
+            "agente": "Corynespora cassiicola",
+            "tipo_agente": "fungo",
+            "gravidade": 4,
+            "compatibilidade": 0.25,
+            "sintomas_compativeis": [
+              {
+                "id": "lesoes_no_fruto",
+                "nome": "Lesões deprimidas ou podridão no fruto",
+                "peso": 0.7
+              },
+              {
+                "id": "lesoes_no_caule",
+                "nome": "Lesões escuras no caule ou haste",
+                "peso": 0.5
+              }
+            ],
+            "sintomas_esperados_ausentes": [
+              {
+                "id": "manchas_escuras_aneis",
+                "nome": "Manchas escuras com anéis concêntricos, como um alvo",
+                "peso": 1.0
+              },
+              {
+                "id": "manchas_pequenas_centro_claro",
+                "nome": "Manchas pequenas com centro claro e borda escura",
+                "peso": 0.6
+              },
+              {
+                "id": "desfolha_baixo_para_cima",
+                "nome": "Queda de folhas começando pelas mais baixas",
+                "peso": 0.5
+              }
+            ],
+            "sintomas_nao_explicados": [
+              {
+                "id": "manchas_encharcadas",
+                "nome": "Lesões encharcadas, com aspecto de queimadura"
+              },
+              {
+                "id": "mofo_branco_face_inferior",
+                "nome": "Mofo esbranquiçado na face inferior da folha"
+              },
+              {
+                "id": "murcha",
+                "nome": "Murcha da planta"
+              }
+            ],
+            "compatibilidade_pct": 25,
+            "rotulo_gravidade": "Alta"
+          },
+          {
+            "doenca_id": "tomate_pinta_preta",
+            "nome": "Pinta-preta (mancha-de-alternária)",
+            "agente": "Alternaria solani",
+            "tipo_agente": "fungo",
+            "gravidade": 4,
+            "compatibilidade": 0.15909090909090906,
+            "sintomas_compativeis": [
+              {
+                "id": "lesoes_no_caule",
+                "nome": "Lesões escuras no caule ou haste",
+                "peso": 0.4
+              },
+              {
+                "id": "lesoes_no_fruto",
+                "nome": "Lesões deprimidas ou podridão no fruto",
+                "peso": 0.3
+              }
+            ],
+            "sintomas_esperados_ausentes": [
+              {
+                "id": "manchas_escuras_aneis",
+                "nome": "Manchas escuras com anéis concêntricos, como um alvo",
+                "peso": 1.0
+              },
+              {
+                "id": "desfolha_baixo_para_cima",
+                "nome": "Queda de folhas começando pelas mais baixas",
+                "peso": 0.8
+              },
+              {
+                "id": "manchas_amareladas",
+                "nome": "Manchas amareladas (cloróticas)",
+                "peso": 0.4
+              }
+            ],
+            "sintomas_nao_explicados": [
+              {
+                "id": "manchas_encharcadas",
+                "nome": "Lesões encharcadas, com aspecto de queimadura"
+              },
+              {
+                "id": "mofo_branco_face_inferior",
+                "nome": "Mofo esbranquiçado na face inferior da folha"
+              },
+              {
+                "id": "murcha",
+                "nome": "Murcha da planta"
+              }
+            ],
+            "compatibilidade_pct": 16,
+            "rotulo_gravidade": "Alta"
+          }
+        ],
+        "pergunta": null
+      }
+    },
+    {
+      "nome": "sintoma principal isolado de tomate_requeima",
+      "cultura": "tomate",
+      "sintomas": [
+        "manchas_encharcadas"
+      ],
+      "esperado": {
+        "hipoteses": [
+          {
+            "doenca_id": "tomate_requeima",
+            "nome": "Requeima (míldio)",
+            "agente": "Phytophthora infestans",
+            "tipo_agente": "oomiceto",
+            "gravidade": 5,
+            "compatibilidade": 0.29411764705882354,
+            "sintomas_compativeis": [
+              {
+                "id": "manchas_encharcadas",
+                "nome": "Lesões encharcadas, com aspecto de queimadura",
+                "peso": 1.0
+              }
+            ],
+            "sintomas_esperados_ausentes": [
+              {
+                "id": "mofo_branco_face_inferior",
+                "nome": "Mofo esbranquiçado na face inferior da folha",
+                "peso": 0.9
+              },
+              {
+                "id": "lesoes_no_caule",
+                "nome": "Lesões escuras no caule ou haste",
+                "peso": 0.6
+              },
+              {
+                "id": "lesoes_no_fruto",
+                "nome": "Lesões deprimidas ou podridão no fruto",
+                "peso": 0.6
+              },
+              {
+                "id": "murcha",
+                "nome": "Murcha da planta",
+                "peso": 0.3
+              }
+            ],
+            "sintomas_nao_explicados": [],
+            "compatibilidade_pct": 29,
+            "rotulo_gravidade": "Muito alta"
+          },
+          {
+            "doenca_id": "tomate_mancha_bacteriana",
+            "nome": "Mancha-bacteriana do tomateiro",
+            "agente": "Xanthomonas spp.",
+            "tipo_agente": "bactéria",
+            "gravidade": 4,
+            "compatibilidade": 0.23529411764705882,
+            "sintomas_compativeis": [
+              {
+                "id": "manchas_encharcadas",
+                "nome": "Lesões encharcadas, com aspecto de queimadura",
+                "peso": 0.8
+              }
+            ],
+            "sintomas_esperados_ausentes": [
+              {
+                "id": "manchas_angulares_halo_amarelo",
+                "nome": "Manchas angulares com halo amarelo ao redor",
+                "peso": 1.0
+              },
+              {
+                "id": "manchas_salientes_fruto",
+                "nome": "Manchas ásperas e salientes, tipo verruga, no fruto",
+                "peso": 0.8
+              },
+              {
+                "id": "queda_precoce_folhas",
+                "nome": "Queda precoce de folhas por toda a planta",
+                "peso": 0.5
+              },
+              {
+                "id": "manchas_amareladas",
+                "nome": "Manchas amareladas (cloróticas)",
+                "peso": 0.3
+              }
+            ],
+            "sintomas_nao_explicados": [],
+            "compatibilidade_pct": 24,
+            "rotulo_gravidade": "Alta"
+          }
+        ],
+        "pergunta": {
+          "sintoma_id": "mofo_branco_face_inferior",
+          "nome": "Mofo esbranquiçado na face inferior da folha",
+          "confirma": "Requeima (míldio)",
+          "descarta": "Mancha-bacteriana do tomateiro"
+        }
+      }
+    },
+    {
+      "nome": "perfil completo de tomate_mofo_de_folha",
+      "cultura": "tomate",
+      "sintomas": [
+        "desfolha_baixo_para_cima",
+        "manchas_amareladas",
+        "mofo_oliva_face_inferior"
+      ],
+      "esperado": {
+        "hipoteses": [
+          {
+            "doenca_id": "tomate_mofo_de_folha",
+            "nome": "Mofo-de-folha (cladosporiose)",
+            "agente": "Passalora fulva (Fulvia fulva)",
+            "tipo_agente": "fungo",
+            "gravidade": 3,
+            "compatibilidade": 1.0,
+            "sintomas_compativeis": [
+              {
+                "id": "mofo_oliva_face_inferior",
+                "nome": "Mofo aveludado verde-oliva a pardo na face inferior",
+                "peso": 1.0
+              },
+              {
+                "id": "manchas_amareladas",
+                "nome": "Manchas amareladas (cloróticas)",
+                "peso": 0.9
+              },
+              {
+                "id": "desfolha_baixo_para_cima",
+                "nome": "Queda de folhas começando pelas mais baixas",
+                "peso": 0.5
+              }
+            ],
+            "sintomas_esperados_ausentes": [],
+            "sintomas_nao_explicados": [],
+            "compatibilidade_pct": 100,
+            "rotulo_gravidade": "Media"
+          },
+          {
+            "doenca_id": "tomate_oidio",
+            "nome": "Oídio do tomateiro",
+            "agente": "Leveillula taurica (Oidiopsis taurica)",
+            "tipo_agente": "fungo",
+            "gravidade": 3,
+            "compatibilidade": 0.4230769230769231,
+            "sintomas_compativeis": [
+              {
+                "id": "manchas_amareladas",
+                "nome": "Manchas amareladas (cloróticas)",
+                "peso": 0.7
+              },
+              {
+                "id": "desfolha_baixo_para_cima",
+                "nome": "Queda de folhas começando pelas mais baixas",
+                "peso": 0.4
+              }
+            ],
+            "sintomas_esperados_ausentes": [
+              {
+                "id": "po_branco_superficie",
+                "nome": "Pó branco, farináceo, na superfície da folha",
+                "peso": 1.0
+              }
+            ],
+            "sintomas_nao_explicados": [
+              {
+                "id": "mofo_oliva_face_inferior",
+                "nome": "Mofo aveludado verde-oliva a pardo na face inferior"
+              }
+            ],
+            "compatibilidade_pct": 42,
+            "rotulo_gravidade": "Media"
+          },
+          {
+            "doenca_id": "tomate_pinta_preta",
+            "nome": "Pinta-preta (mancha-de-alternária)",
+            "agente": "Alternaria solani",
+            "tipo_agente": "fungo",
+            "gravidade": 4,
+            "compatibilidade": 0.35294117647058826,
+            "sintomas_compativeis": [
+              {
+                "id": "desfolha_baixo_para_cima",
+                "nome": "Queda de folhas começando pelas mais baixas",
+                "peso": 0.8
+              },
+              {
+                "id": "manchas_amareladas",
+                "nome": "Manchas amareladas (cloróticas)",
+                "peso": 0.4
+              }
+            ],
+            "sintomas_esperados_ausentes": [
+              {
+                "id": "manchas_escuras_aneis",
+                "nome": "Manchas escuras com anéis concêntricos, como um alvo",
+                "peso": 1.0
+              },
+              {
+                "id": "lesoes_no_caule",
+                "nome": "Lesões escuras no caule ou haste",
+                "peso": 0.4
+              },
+              {
+                "id": "lesoes_no_fruto",
+                "nome": "Lesões deprimidas ou podridão no fruto",
+                "peso": 0.3
+              }
+            ],
+            "sintomas_nao_explicados": [
+              {
+                "id": "mofo_oliva_face_inferior",
+                "nome": "Mofo aveludado verde-oliva a pardo na face inferior"
+              }
+            ],
+            "compatibilidade_pct": 35,
+            "rotulo_gravidade": "Alta"
+          },
+          {
+            "doenca_id": "tomate_septoriose",
+            "nome": "Septoriose (mancha-de-septória)",
+            "agente": "Septoria lycopersici",
+            "tipo_agente": "fungo",
+            "gravidade": 3,
+            "compatibilidade": 0.34375,
+            "sintomas_compativeis": [
+              {
+                "id": "desfolha_baixo_para_cima",
+                "nome": "Queda de folhas começando pelas mais baixas",
+                "peso": 0.7
+              },
+              {
+                "id": "manchas_amareladas",
+                "nome": "Manchas amareladas (cloróticas)",
+                "peso": 0.4
+              }
+            ],
+            "sintomas_esperados_ausentes": [
+              {
+                "id": "manchas_pequenas_centro_claro",
+                "nome": "Manchas pequenas com centro claro e borda escura",
+                "peso": 1.0
+              },
+              {
+                "id": "pontuacoes_pretas_na_lesao",
+                "nome": "Pontinhos pretos dentro da lesão",
+                "peso": 0.6
+              }
+            ],
+            "sintomas_nao_explicados": [
+              {
+                "id": "mofo_oliva_face_inferior",
+                "nome": "Mofo aveludado verde-oliva a pardo na face inferior"
+              }
+            ],
+            "compatibilidade_pct": 34,
+            "rotulo_gravidade": "Media"
+          }
+        ],
+        "pergunta": null
+      }
+    },
+    {
+      "nome": "sintoma principal isolado de tomate_mofo_de_folha",
+      "cultura": "tomate",
+      "sintomas": [
+        "mofo_oliva_face_inferior"
+      ],
+      "esperado": {
+        "hipoteses": [
+          {
+            "doenca_id": "tomate_mofo_de_folha",
+            "nome": "Mofo-de-folha (cladosporiose)",
+            "agente": "Passalora fulva (Fulvia fulva)",
+            "tipo_agente": "fungo",
+            "gravidade": 3,
+            "compatibilidade": 0.4166666666666667,
+            "sintomas_compativeis": [
+              {
+                "id": "mofo_oliva_face_inferior",
+                "nome": "Mofo aveludado verde-oliva a pardo na face inferior",
+                "peso": 1.0
+              }
+            ],
+            "sintomas_esperados_ausentes": [
+              {
+                "id": "manchas_amareladas",
+                "nome": "Manchas amareladas (cloróticas)",
+                "peso": 0.9
+              },
+              {
+                "id": "desfolha_baixo_para_cima",
+                "nome": "Queda de folhas começando pelas mais baixas",
+                "peso": 0.5
+              }
+            ],
+            "sintomas_nao_explicados": [],
+            "compatibilidade_pct": 42,
+            "rotulo_gravidade": "Media"
+          }
+        ],
+        "pergunta": {
+          "sintoma_id": "manchas_amareladas",
+          "nome": "Manchas amareladas (cloróticas)",
+          "confirma": "Mofo-de-folha (cladosporiose)",
+          "descarta": null
+        }
+      }
+    },
+    {
+      "nome": "perfil completo de tomate_septoriose",
+      "cultura": "tomate",
+      "sintomas": [
+        "desfolha_baixo_para_cima",
+        "manchas_amareladas",
+        "manchas_pequenas_centro_claro",
+        "pontuacoes_pretas_na_lesao"
+      ],
+      "esperado": {
+        "hipoteses": [
+          {
+            "doenca_id": "tomate_septoriose",
+            "nome": "Septoriose (mancha-de-septória)",
+            "agente": "Septoria lycopersici",
+            "tipo_agente": "fungo",
+            "gravidade": 3,
+            "compatibilidade": 1.0,
+            "sintomas_compativeis": [
+              {
+                "id": "manchas_pequenas_centro_claro",
+                "nome": "Manchas pequenas com centro claro e borda escura",
+                "peso": 1.0
+              },
+              {
+                "id": "desfolha_baixo_para_cima",
+                "nome": "Queda de folhas começando pelas mais baixas",
+                "peso": 0.7
+              },
+              {
+                "id": "pontuacoes_pretas_na_lesao",
+                "nome": "Pontinhos pretos dentro da lesão",
+                "peso": 0.6
+              },
+              {
+                "id": "manchas_amareladas",
+                "nome": "Manchas amareladas (cloróticas)",
+                "peso": 0.4
+              }
+            ],
+            "sintomas_esperados_ausentes": [],
+            "sintomas_nao_explicados": [],
+            "compatibilidade_pct": 100,
+            "rotulo_gravidade": "Media"
+          },
+          {
+            "doenca_id": "tomate_mofo_de_folha",
+            "nome": "Mofo-de-folha (cladosporiose)",
+            "agente": "Passalora fulva (Fulvia fulva)",
+            "tipo_agente": "fungo",
+            "gravidade": 3,
+            "compatibilidade": 0.4117647058823529,
+            "sintomas_compativeis": [
+              {
+                "id": "manchas_amareladas",
+                "nome": "Manchas amareladas (cloróticas)",
+                "peso": 0.9
+              },
+              {
+                "id": "desfolha_baixo_para_cima",
+                "nome": "Queda de folhas começando pelas mais baixas",
+                "peso": 0.5
+              }
+            ],
+            "sintomas_esperados_ausentes": [
+              {
+                "id": "mofo_oliva_face_inferior",
+                "nome": "Mofo aveludado verde-oliva a pardo na face inferior",
+                "peso": 1.0
+              }
+            ],
+            "sintomas_nao_explicados": [
+              {
+                "id": "manchas_pequenas_centro_claro",
+                "nome": "Manchas pequenas com centro claro e borda escura"
+              },
+              {
+                "id": "pontuacoes_pretas_na_lesao",
+                "nome": "Pontinhos pretos dentro da lesão"
+              }
+            ],
+            "compatibilidade_pct": 41,
+            "rotulo_gravidade": "Media"
+          },
+          {
+            "doenca_id": "tomate_oidio",
+            "nome": "Oídio do tomateiro",
+            "agente": "Leveillula taurica (Oidiopsis taurica)",
+            "tipo_agente": "fungo",
+            "gravidade": 3,
+            "compatibilidade": 0.3548387096774194,
+            "sintomas_compativeis": [
+              {
+                "id": "manchas_amareladas",
+                "nome": "Manchas amareladas (cloróticas)",
+                "peso": 0.7
+              },
+              {
+                "id": "desfolha_baixo_para_cima",
+                "nome": "Queda de folhas começando pelas mais baixas",
+                "peso": 0.4
+              }
+            ],
+            "sintomas_esperados_ausentes": [
+              {
+                "id": "po_branco_superficie",
+                "nome": "Pó branco, farináceo, na superfície da folha",
+                "peso": 1.0
+              }
+            ],
+            "sintomas_nao_explicados": [
+              {
+                "id": "manchas_pequenas_centro_claro",
+                "nome": "Manchas pequenas com centro claro e borda escura"
+              },
+              {
+                "id": "pontuacoes_pretas_na_lesao",
+                "nome": "Pontinhos pretos dentro da lesão"
+              }
+            ],
+            "compatibilidade_pct": 35,
+            "rotulo_gravidade": "Media"
+          },
+          {
+            "doenca_id": "tomate_pinta_preta",
+            "nome": "Pinta-preta (mancha-de-alternária)",
+            "agente": "Alternaria solani",
+            "tipo_agente": "fungo",
+            "gravidade": 4,
+            "compatibilidade": 0.3076923076923077,
+            "sintomas_compativeis": [
+              {
+                "id": "desfolha_baixo_para_cima",
+                "nome": "Queda de folhas começando pelas mais baixas",
+                "peso": 0.8
+              },
+              {
+                "id": "manchas_amareladas",
+                "nome": "Manchas amareladas (cloróticas)",
+                "peso": 0.4
+              }
+            ],
+            "sintomas_esperados_ausentes": [
+              {
+                "id": "manchas_escuras_aneis",
+                "nome": "Manchas escuras com anéis concêntricos, como um alvo",
+                "peso": 1.0
+              },
+              {
+                "id": "lesoes_no_caule",
+                "nome": "Lesões escuras no caule ou haste",
+                "peso": 0.4
+              },
+              {
+                "id": "lesoes_no_fruto",
+                "nome": "Lesões deprimidas ou podridão no fruto",
+                "peso": 0.3
+              }
+            ],
+            "sintomas_nao_explicados": [
+              {
+                "id": "manchas_pequenas_centro_claro",
+                "nome": "Manchas pequenas com centro claro e borda escura"
+              },
+              {
+                "id": "pontuacoes_pretas_na_lesao",
+                "nome": "Pontinhos pretos dentro da lesão"
+              }
+            ],
+            "compatibilidade_pct": 31,
+            "rotulo_gravidade": "Alta"
+          },
+          {
+            "doenca_id": "tomate_mancha_alvo",
+            "nome": "Mancha-alvo",
+            "agente": "Corynespora cassiicola",
+            "tipo_agente": "fungo",
+            "gravidade": 4,
+            "compatibilidade": 0.25581395348837205,
+            "sintomas_compativeis": [
+              {
+                "id": "manchas_pequenas_centro_claro",
+                "nome": "Manchas pequenas com centro claro e borda escura",
+                "peso": 0.6
+              },
+              {
+                "id": "desfolha_baixo_para_cima",
+                "nome": "Queda de folhas começando pelas mais baixas",
+                "peso": 0.5
+              }
+            ],
+            "sintomas_esperados_ausentes": [
+              {
+                "id": "manchas_escuras_aneis",
+                "nome": "Manchas escuras com anéis concêntricos, como um alvo",
+                "peso": 1.0
+              },
+              {
+                "id": "lesoes_no_fruto",
+                "nome": "Lesões deprimidas ou podridão no fruto",
+                "peso": 0.7
+              },
+              {
+                "id": "lesoes_no_caule",
+                "nome": "Lesões escuras no caule ou haste",
+                "peso": 0.5
+              }
+            ],
+            "sintomas_nao_explicados": [
+              {
+                "id": "manchas_amareladas",
+                "nome": "Manchas amareladas (cloróticas)"
+              },
+              {
+                "id": "pontuacoes_pretas_na_lesao",
+                "nome": "Pontinhos pretos dentro da lesão"
+              }
+            ],
+            "compatibilidade_pct": 26,
+            "rotulo_gravidade": "Alta"
+          }
+        ],
+        "pergunta": null
+      }
+    },
+    {
+      "nome": "sintoma principal isolado de tomate_septoriose",
+      "cultura": "tomate",
+      "sintomas": [
+        "manchas_pequenas_centro_claro"
+      ],
+      "esperado": {
+        "hipoteses": [
+          {
+            "doenca_id": "tomate_septoriose",
+            "nome": "Septoriose (mancha-de-septória)",
+            "agente": "Septoria lycopersici",
+            "tipo_agente": "fungo",
+            "gravidade": 3,
+            "compatibilidade": 0.37037037037037035,
+            "sintomas_compativeis": [
+              {
+                "id": "manchas_pequenas_centro_claro",
+                "nome": "Manchas pequenas com centro claro e borda escura",
+                "peso": 1.0
+              }
+            ],
+            "sintomas_esperados_ausentes": [
+              {
+                "id": "desfolha_baixo_para_cima",
+                "nome": "Queda de folhas começando pelas mais baixas",
+                "peso": 0.7
+              },
+              {
+                "id": "pontuacoes_pretas_na_lesao",
+                "nome": "Pontinhos pretos dentro da lesão",
+                "peso": 0.6
+              },
+              {
+                "id": "manchas_amareladas",
+                "nome": "Manchas amareladas (cloróticas)",
+                "peso": 0.4
+              }
+            ],
+            "sintomas_nao_explicados": [],
+            "compatibilidade_pct": 37,
+            "rotulo_gravidade": "Media"
+          },
+          {
+            "doenca_id": "tomate_mancha_alvo",
+            "nome": "Mancha-alvo",
+            "agente": "Corynespora cassiicola",
+            "tipo_agente": "fungo",
+            "gravidade": 4,
+            "compatibilidade": 0.1818181818181818,
+            "sintomas_compativeis": [
+              {
+                "id": "manchas_pequenas_centro_claro",
+                "nome": "Manchas pequenas com centro claro e borda escura",
+                "peso": 0.6
+              }
+            ],
+            "sintomas_esperados_ausentes": [
+              {
+                "id": "manchas_escuras_aneis",
+                "nome": "Manchas escuras com anéis concêntricos, como um alvo",
+                "peso": 1.0
+              },
+              {
+                "id": "lesoes_no_fruto",
+                "nome": "Lesões deprimidas ou podridão no fruto",
+                "peso": 0.7
+              },
+              {
+                "id": "desfolha_baixo_para_cima",
+                "nome": "Queda de folhas começando pelas mais baixas",
+                "peso": 0.5
+              },
+              {
+                "id": "lesoes_no_caule",
+                "nome": "Lesões escuras no caule ou haste",
+                "peso": 0.5
+              }
+            ],
+            "sintomas_nao_explicados": [],
+            "compatibilidade_pct": 18,
+            "rotulo_gravidade": "Alta"
+          }
+        ],
+        "pergunta": {
+          "sintoma_id": "pontuacoes_pretas_na_lesao",
+          "nome": "Pontinhos pretos dentro da lesão",
+          "confirma": "Septoriose (mancha-de-septória)",
+          "descarta": "Mancha-alvo"
+        }
+      }
+    },
+    {
+      "nome": "perfil completo de tomate_mancha_alvo",
+      "cultura": "tomate",
+      "sintomas": [
+        "desfolha_baixo_para_cima",
+        "lesoes_no_caule",
+        "lesoes_no_fruto",
+        "manchas_escuras_aneis",
+        "manchas_pequenas_centro_claro"
+      ],
+      "esperado": {
+        "hipoteses": [
+          {
+            "doenca_id": "tomate_mancha_alvo",
+            "nome": "Mancha-alvo",
+            "agente": "Corynespora cassiicola",
+            "tipo_agente": "fungo",
+            "gravidade": 4,
+            "compatibilidade": 1.0,
+            "sintomas_compativeis": [
+              {
+                "id": "manchas_escuras_aneis",
+                "nome": "Manchas escuras com anéis concêntricos, como um alvo",
+                "peso": 1.0
+              },
+              {
+                "id": "lesoes_no_fruto",
+                "nome": "Lesões deprimidas ou podridão no fruto",
+                "peso": 0.7
+              },
+              {
+                "id": "manchas_pequenas_centro_claro",
+                "nome": "Manchas pequenas com centro claro e borda escura",
+                "peso": 0.6
+              },
+              {
+                "id": "desfolha_baixo_para_cima",
+                "nome": "Queda de folhas começando pelas mais baixas",
+                "peso": 0.5
+              },
+              {
+                "id": "lesoes_no_caule",
+                "nome": "Lesões escuras no caule ou haste",
+                "peso": 0.5
+              }
+            ],
+            "sintomas_esperados_ausentes": [],
+            "sintomas_nao_explicados": [],
+            "compatibilidade_pct": 100,
+            "rotulo_gravidade": "Alta"
+          },
+          {
+            "doenca_id": "tomate_pinta_preta",
+            "nome": "Pinta-preta (mancha-de-alternária)",
+            "agente": "Alternaria solani",
+            "tipo_agente": "fungo",
+            "gravidade": 4,
+            "compatibilidade": 0.7352941176470589,
+            "sintomas_compativeis": [
+              {
+                "id": "manchas_escuras_aneis",
+                "nome": "Manchas escuras com anéis concêntricos, como um alvo",
+                "peso": 1.0
+              },
+              {
+                "id": "desfolha_baixo_para_cima",
+                "nome": "Queda de folhas começando pelas mais baixas",
+                "peso": 0.8
+              },
+              {
+                "id": "lesoes_no_caule",
+                "nome": "Lesões escuras no caule ou haste",
+                "peso": 0.4
+              },
+              {
+                "id": "lesoes_no_fruto",
+                "nome": "Lesões deprimidas ou podridão no fruto",
+                "peso": 0.3
+              }
+            ],
+            "sintomas_esperados_ausentes": [
+              {
+                "id": "manchas_amareladas",
+                "nome": "Manchas amareladas (cloróticas)",
+                "peso": 0.4
+              }
+            ],
+            "sintomas_nao_explicados": [
+              {
+                "id": "manchas_pequenas_centro_claro",
+                "nome": "Manchas pequenas com centro claro e borda escura"
+              }
+            ],
+            "compatibilidade_pct": 74,
+            "rotulo_gravidade": "Alta"
+          },
+          {
+            "doenca_id": "tomate_septoriose",
+            "nome": "Septoriose (mancha-de-septória)",
+            "agente": "Septoria lycopersici",
+            "tipo_agente": "fungo",
+            "gravidade": 3,
+            "compatibilidade": 0.4047619047619047,
+            "sintomas_compativeis": [
+              {
+                "id": "manchas_pequenas_centro_claro",
+                "nome": "Manchas pequenas com centro claro e borda escura",
+                "peso": 1.0
+              },
+              {
+                "id": "desfolha_baixo_para_cima",
+                "nome": "Queda de folhas começando pelas mais baixas",
+                "peso": 0.7
+              }
+            ],
+            "sintomas_esperados_ausentes": [
+              {
+                "id": "pontuacoes_pretas_na_lesao",
+                "nome": "Pontinhos pretos dentro da lesão",
+                "peso": 0.6
+              },
+              {
+                "id": "manchas_amareladas",
+                "nome": "Manchas amareladas (cloróticas)",
+                "peso": 0.4
+              }
+            ],
+            "sintomas_nao_explicados": [
+              {
+                "id": "lesoes_no_caule",
+                "nome": "Lesões escuras no caule ou haste"
+              },
+              {
+                "id": "lesoes_no_fruto",
+                "nome": "Lesões deprimidas ou podridão no fruto"
+              },
+              {
+                "id": "manchas_escuras_aneis",
+                "nome": "Manchas escuras com anéis concêntricos, como um alvo"
+              }
+            ],
+            "compatibilidade_pct": 40,
+            "rotulo_gravidade": "Media"
+          },
+          {
+            "doenca_id": "tomate_requeima",
+            "nome": "Requeima (míldio)",
+            "agente": "Phytophthora infestans",
+            "tipo_agente": "oomiceto",
+            "gravidade": 5,
+            "compatibilidade": 0.24489795918367344,
+            "sintomas_compativeis": [
+              {
+                "id": "lesoes_no_caule",
+                "nome": "Lesões escuras no caule ou haste",
+                "peso": 0.6
+              },
+              {
+                "id": "lesoes_no_fruto",
+                "nome": "Lesões deprimidas ou podridão no fruto",
+                "peso": 0.6
+              }
+            ],
+            "sintomas_esperados_ausentes": [
+              {
+                "id": "manchas_encharcadas",
+                "nome": "Lesões encharcadas, com aspecto de queimadura",
+                "peso": 1.0
+              },
+              {
+                "id": "mofo_branco_face_inferior",
+                "nome": "Mofo esbranquiçado na face inferior da folha",
+                "peso": 0.9
+              },
+              {
+                "id": "murcha",
+                "nome": "Murcha da planta",
+                "peso": 0.3
+              }
+            ],
+            "sintomas_nao_explicados": [
+              {
+                "id": "desfolha_baixo_para_cima",
+                "nome": "Queda de folhas começando pelas mais baixas"
+              },
+              {
+                "id": "manchas_escuras_aneis",
+                "nome": "Manchas escuras com anéis concêntricos, como um alvo"
+              },
+              {
+                "id": "manchas_pequenas_centro_claro",
+                "nome": "Manchas pequenas com centro claro e borda escura"
+              }
+            ],
+            "compatibilidade_pct": 24,
+            "rotulo_gravidade": "Muito alta"
+          }
+        ],
+        "pergunta": null
+      }
+    },
+    {
+      "nome": "sintoma principal isolado de tomate_mancha_alvo",
+      "cultura": "tomate",
+      "sintomas": [
+        "manchas_escuras_aneis"
+      ],
+      "esperado": {
+        "hipoteses": [
+          {
+            "doenca_id": "tomate_pinta_preta",
+            "nome": "Pinta-preta (mancha-de-alternária)",
+            "agente": "Alternaria solani",
+            "tipo_agente": "fungo",
+            "gravidade": 4,
+            "compatibilidade": 0.3448275862068965,
+            "sintomas_compativeis": [
+              {
+                "id": "manchas_escuras_aneis",
+                "nome": "Manchas escuras com anéis concêntricos, como um alvo",
+                "peso": 1.0
+              }
+            ],
+            "sintomas_esperados_ausentes": [
+              {
+                "id": "desfolha_baixo_para_cima",
+                "nome": "Queda de folhas começando pelas mais baixas",
+                "peso": 0.8
+              },
+              {
+                "id": "lesoes_no_caule",
+                "nome": "Lesões escuras no caule ou haste",
+                "peso": 0.4
+              },
+              {
+                "id": "manchas_amareladas",
+                "nome": "Manchas amareladas (cloróticas)",
+                "peso": 0.4
+              },
+              {
+                "id": "lesoes_no_fruto",
+                "nome": "Lesões deprimidas ou podridão no fruto",
+                "peso": 0.3
+              }
+            ],
+            "sintomas_nao_explicados": [],
+            "compatibilidade_pct": 34,
+            "rotulo_gravidade": "Alta"
+          },
+          {
+            "doenca_id": "tomate_mancha_alvo",
+            "nome": "Mancha-alvo",
+            "agente": "Corynespora cassiicola",
+            "tipo_agente": "fungo",
+            "gravidade": 4,
+            "compatibilidade": 0.30303030303030304,
+            "sintomas_compativeis": [
+              {
+                "id": "manchas_escuras_aneis",
+                "nome": "Manchas escuras com anéis concêntricos, como um alvo",
+                "peso": 1.0
+              }
+            ],
+            "sintomas_esperados_ausentes": [
+              {
+                "id": "lesoes_no_fruto",
+                "nome": "Lesões deprimidas ou podridão no fruto",
+                "peso": 0.7
+              },
+              {
+                "id": "manchas_pequenas_centro_claro",
+                "nome": "Manchas pequenas com centro claro e borda escura",
+                "peso": 0.6
+              },
+              {
+                "id": "desfolha_baixo_para_cima",
+                "nome": "Queda de folhas começando pelas mais baixas",
+                "peso": 0.5
+              },
+              {
+                "id": "lesoes_no_caule",
+                "nome": "Lesões escuras no caule ou haste",
+                "peso": 0.5
+              }
+            ],
+            "sintomas_nao_explicados": [],
+            "compatibilidade_pct": 30,
+            "rotulo_gravidade": "Alta"
+          }
+        ],
+        "pergunta": {
+          "sintoma_id": "manchas_amareladas",
+          "nome": "Manchas amareladas (cloróticas)",
+          "confirma": "Pinta-preta (mancha-de-alternária)",
+          "descarta": "Mancha-alvo"
+        }
+      }
+    },
+    {
+      "nome": "perfil completo de tomate_acaro_rajado",
+      "cultura": "tomate",
+      "sintomas": [
+        "acaros_face_inferior",
+        "bronzeamento_folha",
+        "desfolha_baixo_para_cima",
+        "pontuacoes_finas_cloroticas",
+        "teia_fina"
+      ],
+      "esperado": {
+        "hipoteses": [
+          {
+            "doenca_id": "tomate_acaro_rajado",
+            "nome": "Ácaro-rajado",
+            "agente": "Tetranychus urticae",
+            "tipo_agente": "ácaro",
+            "gravidade": 3,
+            "compatibilidade": 1.0,
+            "sintomas_compativeis": [
+              {
+                "id": "pontuacoes_finas_cloroticas",
+                "nome": "Pontuações finas e claras, como picadas de agulha",
+                "peso": 1.0
+              },
+              {
+                "id": "acaros_face_inferior",
+                "nome": "Ácaros minúsculos na face inferior (visíveis com lupa)",
+                "peso": 0.9
+              },
+              {
+                "id": "teia_fina",
+                "nome": "Teia fina entre as folhas e hastes",
+                "peso": 0.8
+              },
+              {
+                "id": "bronzeamento_folha",
+                "nome": "Folha bronzeada, cor de palha",
+                "peso": 0.7
+              },
+              {
+                "id": "desfolha_baixo_para_cima",
+                "nome": "Queda de folhas começando pelas mais baixas",
+                "peso": 0.3
+              }
+            ],
+            "sintomas_esperados_ausentes": [],
+            "sintomas_nao_explicados": [],
+            "compatibilidade_pct": 100,
+            "rotulo_gravidade": "Media"
+          },
+          {
+            "doenca_id": "tomate_pinta_preta",
+            "nome": "Pinta-preta (mancha-de-alternária)",
+            "agente": "Alternaria solani",
+            "tipo_agente": "fungo",
+            "gravidade": 4,
+            "compatibilidade": 0.16326530612244897,
+            "sintomas_compativeis": [
+              {
+                "id": "desfolha_baixo_para_cima",
+                "nome": "Queda de folhas começando pelas mais baixas",
+                "peso": 0.8
+              }
+            ],
+            "sintomas_esperados_ausentes": [
+              {
+                "id": "manchas_escuras_aneis",
+                "nome": "Manchas escuras com anéis concêntricos, como um alvo",
+                "peso": 1.0
+              },
+              {
+                "id": "lesoes_no_caule",
+                "nome": "Lesões escuras no caule ou haste",
+                "peso": 0.4
+              },
+              {
+                "id": "manchas_amareladas",
+                "nome": "Manchas amareladas (cloróticas)",
+                "peso": 0.4
+              },
+              {
+                "id": "lesoes_no_fruto",
+                "nome": "Lesões deprimidas ou podridão no fruto",
+                "peso": 0.3
+              }
+            ],
+            "sintomas_nao_explicados": [
+              {
+                "id": "acaros_face_inferior",
+                "nome": "Ácaros minúsculos na face inferior (visíveis com lupa)"
+              },
+              {
+                "id": "bronzeamento_folha",
+                "nome": "Folha bronzeada, cor de palha"
+              },
+              {
+                "id": "pontuacoes_finas_cloroticas",
+                "nome": "Pontuações finas e claras, como picadas de agulha"
+              },
+              {
+                "id": "teia_fina",
+                "nome": "Teia fina entre as folhas e hastes"
+              }
+            ],
+            "compatibilidade_pct": 16,
+            "rotulo_gravidade": "Alta"
+          }
+        ],
+        "pergunta": null
+      }
+    },
+    {
+      "nome": "sintoma principal isolado de tomate_acaro_rajado",
+      "cultura": "tomate",
+      "sintomas": [
+        "pontuacoes_finas_cloroticas"
+      ],
+      "esperado": {
+        "hipoteses": [
+          {
+            "doenca_id": "tomate_acaro_rajado",
+            "nome": "Ácaro-rajado",
+            "agente": "Tetranychus urticae",
+            "tipo_agente": "ácaro",
+            "gravidade": 3,
+            "compatibilidade": 0.27027027027027023,
+            "sintomas_compativeis": [
+              {
+                "id": "pontuacoes_finas_cloroticas",
+                "nome": "Pontuações finas e claras, como picadas de agulha",
+                "peso": 1.0
+              }
+            ],
+            "sintomas_esperados_ausentes": [
+              {
+                "id": "acaros_face_inferior",
+                "nome": "Ácaros minúsculos na face inferior (visíveis com lupa)",
+                "peso": 0.9
+              },
+              {
+                "id": "teia_fina",
+                "nome": "Teia fina entre as folhas e hastes",
+                "peso": 0.8
+              },
+              {
+                "id": "bronzeamento_folha",
+                "nome": "Folha bronzeada, cor de palha",
+                "peso": 0.7
+              },
+              {
+                "id": "desfolha_baixo_para_cima",
+                "nome": "Queda de folhas começando pelas mais baixas",
+                "peso": 0.3
+              }
+            ],
+            "sintomas_nao_explicados": [],
+            "compatibilidade_pct": 27,
+            "rotulo_gravidade": "Media"
+          }
+        ],
+        "pergunta": {
+          "sintoma_id": "acaros_face_inferior",
+          "nome": "Ácaros minúsculos na face inferior (visíveis com lupa)",
+          "confirma": "Ácaro-rajado",
+          "descarta": null
+        }
+      }
+    },
+    {
+      "nome": "perfil completo de tomate_geminivirus",
+      "cultura": "tomate",
+      "sintomas": [
+        "crescimento_reduzido",
+        "folhas_deformadas",
+        "insetos_face_inferior",
+        "nervuras_amareladas",
+        "queda_de_frutos"
+      ],
+      "esperado": {
+        "hipoteses": [
+          {
+            "doenca_id": "tomate_geminivirus",
+            "nome": "Geminivirose (vírus do enrolamento amarelo)",
+            "agente": "Begomovirus, transmitido pela mosca-branca (Bemisia tabaci)",
+            "tipo_agente": "vírus",
+            "gravidade": 5,
+            "compatibilidade": 1.0,
+            "sintomas_compativeis": [
+              {
+                "id": "folhas_deformadas",
+                "nome": "Folhas deformadas, enroladas ou reduzidas",
+                "peso": 1.0
+              },
+              {
+                "id": "crescimento_reduzido",
+                "nome": "Crescimento reduzido / nanismo",
+                "peso": 0.9
+              },
+              {
+                "id": "insetos_face_inferior",
+                "nome": "Insetos pequenos na face inferior da folha",
+                "peso": 0.8
+              },
+              {
+                "id": "nervuras_amareladas",
+                "nome": "Amarelecimento entre as nervuras",
+                "peso": 0.8
+              },
+              {
+                "id": "queda_de_frutos",
+                "nome": "Queda prematura de frutos",
+                "peso": 0.4
+              }
+            ],
+            "sintomas_esperados_ausentes": [],
+            "sintomas_nao_explicados": [],
+            "compatibilidade_pct": 100,
+            "rotulo_gravidade": "Muito alta"
+          },
+          {
+            "doenca_id": "tomate_mosaico",
+            "nome": "Mosaico do tomateiro (ToMV)",
+            "agente": "Tomato mosaic virus",
+            "tipo_agente": "vírus",
+            "gravidade": 4,
+            "compatibilidade": 0.23913043478260873,
+            "sintomas_compativeis": [
+              {
+                "id": "folhas_deformadas",
+                "nome": "Folhas deformadas, enroladas ou reduzidas",
+                "peso": 0.6
+              },
+              {
+                "id": "crescimento_reduzido",
+                "nome": "Crescimento reduzido / nanismo",
+                "peso": 0.5
+              }
+            ],
+            "sintomas_esperados_ausentes": [
+              {
+                "id": "mosaico_verde_claro_escuro",
+                "nome": "Mosaico de verde claro e verde escuro",
+                "peso": 1.0
+              },
+              {
+                "id": "folhas_filiformes",
+                "nome": "Folhas estreitas e filiformes, com aspecto de samambaia",
+                "peso": 0.7
+              },
+              {
+                "id": "lesoes_no_fruto",
+                "nome": "Lesões deprimidas ou podridão no fruto",
+                "peso": 0.3
+              }
+            ],
+            "sintomas_nao_explicados": [
+              {
+                "id": "insetos_face_inferior",
+                "nome": "Insetos pequenos na face inferior da folha"
+              },
+              {
+                "id": "nervuras_amareladas",
+                "nome": "Amarelecimento entre as nervuras"
+              },
+              {
+                "id": "queda_de_frutos",
+                "nome": "Queda prematura de frutos"
+              }
+            ],
+            "compatibilidade_pct": 24,
+            "rotulo_gravidade": "Alta"
+          }
+        ],
+        "pergunta": null
+      }
+    },
+    {
+      "nome": "sintoma principal isolado de tomate_geminivirus",
+      "cultura": "tomate",
+      "sintomas": [
+        "folhas_deformadas"
+      ],
+      "esperado": {
+        "hipoteses": [
+          {
+            "doenca_id": "tomate_geminivirus",
+            "nome": "Geminivirose (vírus do enrolamento amarelo)",
+            "agente": "Begomovirus, transmitido pela mosca-branca (Bemisia tabaci)",
+            "tipo_agente": "vírus",
+            "gravidade": 5,
+            "compatibilidade": 0.2564102564102564,
+            "sintomas_compativeis": [
+              {
+                "id": "folhas_deformadas",
+                "nome": "Folhas deformadas, enroladas ou reduzidas",
+                "peso": 1.0
+              }
+            ],
+            "sintomas_esperados_ausentes": [
+              {
+                "id": "crescimento_reduzido",
+                "nome": "Crescimento reduzido / nanismo",
+                "peso": 0.9
+              },
+              {
+                "id": "insetos_face_inferior",
+                "nome": "Insetos pequenos na face inferior da folha",
+                "peso": 0.8
+              },
+              {
+                "id": "nervuras_amareladas",
+                "nome": "Amarelecimento entre as nervuras",
+                "peso": 0.8
+              },
+              {
+                "id": "queda_de_frutos",
+                "nome": "Queda prematura de frutos",
+                "peso": 0.4
+              }
+            ],
+            "sintomas_nao_explicados": [],
+            "compatibilidade_pct": 26,
+            "rotulo_gravidade": "Muito alta"
+          },
+          {
+            "doenca_id": "tomate_mosaico",
+            "nome": "Mosaico do tomateiro (ToMV)",
+            "agente": "Tomato mosaic virus",
+            "tipo_agente": "vírus",
+            "gravidade": 4,
+            "compatibilidade": 0.1935483870967742,
+            "sintomas_compativeis": [
+              {
+                "id": "folhas_deformadas",
+                "nome": "Folhas deformadas, enroladas ou reduzidas",
+                "peso": 0.6
+              }
+            ],
+            "sintomas_esperados_ausentes": [
+              {
+                "id": "mosaico_verde_claro_escuro",
+                "nome": "Mosaico de verde claro e verde escuro",
+                "peso": 1.0
+              },
+              {
+                "id": "folhas_filiformes",
+                "nome": "Folhas estreitas e filiformes, com aspecto de samambaia",
+                "peso": 0.7
+              },
+              {
+                "id": "crescimento_reduzido",
+                "nome": "Crescimento reduzido / nanismo",
+                "peso": 0.5
+              },
+              {
+                "id": "lesoes_no_fruto",
+                "nome": "Lesões deprimidas ou podridão no fruto",
+                "peso": 0.3
+              }
+            ],
+            "sintomas_nao_explicados": [],
+            "compatibilidade_pct": 19,
+            "rotulo_gravidade": "Alta"
+          }
+        ],
+        "pergunta": {
+          "sintoma_id": "insetos_face_inferior",
+          "nome": "Insetos pequenos na face inferior da folha",
+          "confirma": "Geminivirose (vírus do enrolamento amarelo)",
+          "descarta": "Mosaico do tomateiro (ToMV)"
+        }
+      }
+    },
+    {
+      "nome": "perfil completo de tomate_mosaico",
+      "cultura": "tomate",
+      "sintomas": [
+        "crescimento_reduzido",
+        "folhas_deformadas",
+        "folhas_filiformes",
+        "lesoes_no_fruto",
+        "mosaico_verde_claro_escuro"
+      ],
+      "esperado": {
+        "hipoteses": [
+          {
+            "doenca_id": "tomate_mosaico",
+            "nome": "Mosaico do tomateiro (ToMV)",
+            "agente": "Tomato mosaic virus",
+            "tipo_agente": "vírus",
+            "gravidade": 4,
+            "compatibilidade": 1.0,
+            "sintomas_compativeis": [
+              {
+                "id": "mosaico_verde_claro_escuro",
+                "nome": "Mosaico de verde claro e verde escuro",
+                "peso": 1.0
+              },
+              {
+                "id": "folhas_filiformes",
+                "nome": "Folhas estreitas e filiformes, com aspecto de samambaia",
+                "peso": 0.7
+              },
+              {
+                "id": "folhas_deformadas",
+                "nome": "Folhas deformadas, enroladas ou reduzidas",
+                "peso": 0.6
+              },
+              {
+                "id": "crescimento_reduzido",
+                "nome": "Crescimento reduzido / nanismo",
+                "peso": 0.5
+              },
+              {
+                "id": "lesoes_no_fruto",
+                "nome": "Lesões deprimidas ou podridão no fruto",
+                "peso": 0.3
+              }
+            ],
+            "sintomas_esperados_ausentes": [],
+            "sintomas_nao_explicados": [],
+            "compatibilidade_pct": 100,
+            "rotulo_gravidade": "Alta"
+          },
+          {
+            "doenca_id": "tomate_geminivirus",
+            "nome": "Geminivirose (vírus do enrolamento amarelo)",
+            "agente": "Begomovirus, transmitido pela mosca-branca (Bemisia tabaci)",
+            "tipo_agente": "vírus",
+            "gravidade": 5,
+            "compatibilidade": 0.3518518518518518,
+            "sintomas_compativeis": [
+              {
+                "id": "folhas_deformadas",
+                "nome": "Folhas deformadas, enroladas ou reduzidas",
+                "peso": 1.0
+              },
+              {
+                "id": "crescimento_reduzido",
+                "nome": "Crescimento reduzido / nanismo",
+                "peso": 0.9
+              }
+            ],
+            "sintomas_esperados_ausentes": [
+              {
+                "id": "insetos_face_inferior",
+                "nome": "Insetos pequenos na face inferior da folha",
+                "peso": 0.8
+              },
+              {
+                "id": "nervuras_amareladas",
+                "nome": "Amarelecimento entre as nervuras",
+                "peso": 0.8
+              },
+              {
+                "id": "queda_de_frutos",
+                "nome": "Queda prematura de frutos",
+                "peso": 0.4
+              }
+            ],
+            "sintomas_nao_explicados": [
+              {
+                "id": "folhas_filiformes",
+                "nome": "Folhas estreitas e filiformes, com aspecto de samambaia"
+              },
+              {
+                "id": "lesoes_no_fruto",
+                "nome": "Lesões deprimidas ou podridão no fruto"
+              },
+              {
+                "id": "mosaico_verde_claro_escuro",
+                "nome": "Mosaico de verde claro e verde escuro"
+              }
+            ],
+            "compatibilidade_pct": 35,
+            "rotulo_gravidade": "Muito alta"
+          }
+        ],
+        "pergunta": null
+      }
+    },
+    {
+      "nome": "sintoma principal isolado de tomate_mosaico",
+      "cultura": "tomate",
+      "sintomas": [
+        "mosaico_verde_claro_escuro"
+      ],
+      "esperado": {
+        "hipoteses": [
+          {
+            "doenca_id": "tomate_mosaico",
+            "nome": "Mosaico do tomateiro (ToMV)",
+            "agente": "Tomato mosaic virus",
+            "tipo_agente": "vírus",
+            "gravidade": 4,
+            "compatibilidade": 0.3225806451612903,
+            "sintomas_compativeis": [
+              {
+                "id": "mosaico_verde_claro_escuro",
+                "nome": "Mosaico de verde claro e verde escuro",
+                "peso": 1.0
+              }
+            ],
+            "sintomas_esperados_ausentes": [
+              {
+                "id": "folhas_filiformes",
+                "nome": "Folhas estreitas e filiformes, com aspecto de samambaia",
+                "peso": 0.7
+              },
+              {
+                "id": "folhas_deformadas",
+                "nome": "Folhas deformadas, enroladas ou reduzidas",
+                "peso": 0.6
+              },
+              {
+                "id": "crescimento_reduzido",
+                "nome": "Crescimento reduzido / nanismo",
+                "peso": 0.5
+              },
+              {
+                "id": "lesoes_no_fruto",
+                "nome": "Lesões deprimidas ou podridão no fruto",
+                "peso": 0.3
+              }
+            ],
+            "sintomas_nao_explicados": [],
+            "compatibilidade_pct": 32,
+            "rotulo_gravidade": "Alta"
+          }
+        ],
+        "pergunta": {
+          "sintoma_id": "folhas_filiformes",
+          "nome": "Folhas estreitas e filiformes, com aspecto de samambaia",
+          "confirma": "Mosaico do tomateiro (ToMV)",
+          "descarta": null
+        }
+      }
+    },
+    {
+      "nome": "perfil completo de tomate_oidio",
+      "cultura": "tomate",
+      "sintomas": [
+        "desfolha_baixo_para_cima",
+        "manchas_amareladas",
+        "po_branco_superficie"
+      ],
+      "esperado": {
+        "hipoteses": [
+          {
+            "doenca_id": "tomate_oidio",
+            "nome": "Oídio do tomateiro",
+            "agente": "Leveillula taurica (Oidiopsis taurica)",
+            "tipo_agente": "fungo",
+            "gravidade": 3,
+            "compatibilidade": 1.0,
+            "sintomas_compativeis": [
+              {
+                "id": "po_branco_superficie",
+                "nome": "Pó branco, farináceo, na superfície da folha",
+                "peso": 1.0
+              },
+              {
+                "id": "manchas_amareladas",
+                "nome": "Manchas amareladas (cloróticas)",
+                "peso": 0.7
+              },
+              {
+                "id": "desfolha_baixo_para_cima",
+                "nome": "Queda de folhas começando pelas mais baixas",
+                "peso": 0.4
+              }
+            ],
+            "sintomas_esperados_ausentes": [],
+            "sintomas_nao_explicados": [],
+            "compatibilidade_pct": 100,
+            "rotulo_gravidade": "Media"
+          },
+          {
+            "doenca_id": "tomate_mofo_de_folha",
+            "nome": "Mofo-de-folha (cladosporiose)",
+            "agente": "Passalora fulva (Fulvia fulva)",
+            "tipo_agente": "fungo",
+            "gravidade": 3,
+            "compatibilidade": 0.48275862068965514,
+            "sintomas_compativeis": [
+              {
+                "id": "manchas_amareladas",
+                "nome": "Manchas amareladas (cloróticas)",
+                "peso": 0.9
+              },
+              {
+                "id": "desfolha_baixo_para_cima",
+                "nome": "Queda de folhas começando pelas mais baixas",
+                "peso": 0.5
+              }
+            ],
+            "sintomas_esperados_ausentes": [
+              {
+                "id": "mofo_oliva_face_inferior",
+                "nome": "Mofo aveludado verde-oliva a pardo na face inferior",
+                "peso": 1.0
+              }
+            ],
+            "sintomas_nao_explicados": [
+              {
+                "id": "po_branco_superficie",
+                "nome": "Pó branco, farináceo, na superfície da folha"
+              }
+            ],
+            "compatibilidade_pct": 48,
+            "rotulo_gravidade": "Media"
+          },
+          {
+            "doenca_id": "tomate_pinta_preta",
+            "nome": "Pinta-preta (mancha-de-alternária)",
+            "agente": "Alternaria solani",
+            "tipo_agente": "fungo",
+            "gravidade": 4,
+            "compatibilidade": 0.35294117647058826,
+            "sintomas_compativeis": [
+              {
+                "id": "desfolha_baixo_para_cima",
+                "nome": "Queda de folhas começando pelas mais baixas",
+                "peso": 0.8
+              },
+              {
+                "id": "manchas_amareladas",
+                "nome": "Manchas amareladas (cloróticas)",
+                "peso": 0.4
+              }
+            ],
+            "sintomas_esperados_ausentes": [
+              {
+                "id": "manchas_escuras_aneis",
+                "nome": "Manchas escuras com anéis concêntricos, como um alvo",
+                "peso": 1.0
+              },
+              {
+                "id": "lesoes_no_caule",
+                "nome": "Lesões escuras no caule ou haste",
+                "peso": 0.4
+              },
+              {
+                "id": "lesoes_no_fruto",
+                "nome": "Lesões deprimidas ou podridão no fruto",
+                "peso": 0.3
+              }
+            ],
+            "sintomas_nao_explicados": [
+              {
+                "id": "po_branco_superficie",
+                "nome": "Pó branco, farináceo, na superfície da folha"
+              }
+            ],
+            "compatibilidade_pct": 35,
+            "rotulo_gravidade": "Alta"
+          },
+          {
+            "doenca_id": "tomate_septoriose",
+            "nome": "Septoriose (mancha-de-septória)",
+            "agente": "Septoria lycopersici",
+            "tipo_agente": "fungo",
+            "gravidade": 3,
+            "compatibilidade": 0.34375,
+            "sintomas_compativeis": [
+              {
+                "id": "desfolha_baixo_para_cima",
+                "nome": "Queda de folhas começando pelas mais baixas",
+                "peso": 0.7
+              },
+              {
+                "id": "manchas_amareladas",
+                "nome": "Manchas amareladas (cloróticas)",
+                "peso": 0.4
+              }
+            ],
+            "sintomas_esperados_ausentes": [
+              {
+                "id": "manchas_pequenas_centro_claro",
+                "nome": "Manchas pequenas com centro claro e borda escura",
+                "peso": 1.0
+              },
+              {
+                "id": "pontuacoes_pretas_na_lesao",
+                "nome": "Pontinhos pretos dentro da lesão",
+                "peso": 0.6
+              }
+            ],
+            "sintomas_nao_explicados": [
+              {
+                "id": "po_branco_superficie",
+                "nome": "Pó branco, farináceo, na superfície da folha"
+              }
+            ],
+            "compatibilidade_pct": 34,
+            "rotulo_gravidade": "Media"
+          }
+        ],
+        "pergunta": null
+      }
+    },
+    {
+      "nome": "sintoma principal isolado de tomate_oidio",
+      "cultura": "tomate",
+      "sintomas": [
+        "po_branco_superficie"
+      ],
+      "esperado": {
+        "hipoteses": [
+          {
+            "doenca_id": "tomate_oidio",
+            "nome": "Oídio do tomateiro",
+            "agente": "Leveillula taurica (Oidiopsis taurica)",
+            "tipo_agente": "fungo",
+            "gravidade": 3,
+            "compatibilidade": 0.47619047619047616,
+            "sintomas_compativeis": [
+              {
+                "id": "po_branco_superficie",
+                "nome": "Pó branco, farináceo, na superfície da folha",
+                "peso": 1.0
+              }
+            ],
+            "sintomas_esperados_ausentes": [
+              {
+                "id": "manchas_amareladas",
+                "nome": "Manchas amareladas (cloróticas)",
+                "peso": 0.7
+              },
+              {
+                "id": "desfolha_baixo_para_cima",
+                "nome": "Queda de folhas começando pelas mais baixas",
+                "peso": 0.4
+              }
+            ],
+            "sintomas_nao_explicados": [],
+            "compatibilidade_pct": 48,
+            "rotulo_gravidade": "Media"
+          }
+        ],
+        "pergunta": {
+          "sintoma_id": "manchas_amareladas",
+          "nome": "Manchas amareladas (cloróticas)",
+          "confirma": "Oídio do tomateiro",
+          "descarta": null
+        }
+      }
+    }
+  ]
+}

@@ -1,0 +1,179 @@
+"use client";
+
+import { useRouter } from "next/navigation";
+import { useEffect, useState } from "react";
+import { BotaoLink } from "@/components/Botao";
+import { Camera, type Captura } from "@/components/Camera";
+import { SeletorCultura } from "@/components/SeletorCultura";
+import {
+  carregarClassificador,
+  type Classificador,
+} from "@/lib/classificador.ts";
+import {
+  diagnosticarImagem,
+  rotaDoLaudo,
+  type ResultadoDaImagem,
+} from "@/lib/diagnostico-por-imagem.ts";
+import { listarCulturas } from "@/lib/diagnostico.ts";
+
+const CULTURAS = listarCulturas();
+
+/** Derivado, nunca escrito à mão: a base cresce e o texto da tela acompanha. */
+const TOTAL_DE_DOENCAS = CULTURAS.reduce((n, c) => n + c.nDoencas, 0);
+
+/**
+ * Camada 1: foto -> laudo, tudo no aparelho.
+ *
+ * ┌───────────────────────────────────────────────────────────────────────┐
+ * │ FORA DA NAVEGACAO - nao ha rota apontando para este componente.       │
+ * │                                                                       │
+ * │ O diagnostico por imagem e escopo CONDICIONADO: depende de um modelo  │
+ * │ de visao que ainda nao existe, e cujo treino depende de um acervo de  │
+ * │ imagens de hortalicas brasileiras ainda nao auditado. Enquanto isso,  │
+ * │ a tela so teria um aviso de indisponibilidade para oferecer - e por   │
+ * │ isso saiu da interface (ADR 0008).                                    │
+ * │                                                                       │
+ * │ O que sustenta a decisao de MANTER o codigo: o caminho ao redor do    │
+ * │ modelo esta pronto e testado - captura em resolucao nativa,           │
+ * │ pre-processamento com paridade de pixel contra a referencia em Python │
+ * │ (digest SHA-256) e camada de recusa sobre os logits crus. Sao 29      │
+ * │ testes que continuam rodando no CI. Quando houver modelo, religar e   │
+ * │ criar a rota e apontar para ca.                                       │
+ * └───────────────────────────────────────────────────────────────────────┘
+ *
+ * O classificador entra por `carregarClassificador`, que hoje devolve null
+ * porque ainda não existe modelo publicado. Isso não é erro e não é tratado
+ * como erro: a tela diz o que falta e manda o produtor para o fluxo por
+ * sintomas, que resolve o problema dele agora.
+ *
+ * Quando o modelo chegar, nada aqui muda.
+ */
+export function PainelScanner() {
+  const router = useRouter();
+  const [culturaId, setCulturaId] = useState("tomate");
+  const [classificador, setClassificador] = useState<Classificador | null>(null);
+  const [analisando, setAnalisando] = useState(false);
+  const [resultado, setResultado] = useState<ResultadoDaImagem | null>(null);
+
+  const cultura = CULTURAS.find((c) => c.id === culturaId);
+
+  useEffect(() => {
+    let vivo = true;
+    carregarClassificador()
+      .then((c) => vivo && setClassificador(c))
+      .catch(() => vivo && setClassificador(null));
+    return () => {
+      vivo = false;
+    };
+  }, []);
+
+  async function analisar(captura: Captura) {
+    setAnalisando(true);
+    setResultado(null);
+    try {
+      const r = await diagnosticarImagem(captura, culturaId, classificador);
+      setResultado(r);
+      if (r.estado === "diagnosticado" || r.estado === "nao_calibrado") {
+        router.push(rotaDoLaudo(r.previsao));
+      }
+    } finally {
+      setAnalisando(false);
+    }
+  }
+
+  return (
+    <div className="mt-6 flex flex-col gap-6">
+      <SeletorCultura
+        valor={culturaId}
+        aoTrocar={(c) => {
+          setCulturaId(c);
+          setResultado(null);
+        }}
+        ajuda="Informar a cultura restringe o diagnóstico às doenças que realmente ocorrem nela."
+      />
+
+      <Camera
+        aoCapturar={analisar}
+        ocupado={analisando}
+        legenda={
+          cultura
+            ? `Centralize a folha de ${cultura.nome.toLowerCase()}`
+            : "Centralize a folha"
+        }
+      />
+
+      {resultado && <Aviso resultado={resultado} />}
+
+      <div className="flex items-center gap-4" aria-hidden="true">
+        <span className="bg-borda h-0.5 flex-1" />
+        <span className="text-texto-suave text-sm font-semibold">ou</span>
+        <span className="bg-borda h-0.5 flex-1" />
+      </div>
+
+      <BotaoLink href="/" variante="secundario">
+        Diagnosticar por sintomas
+      </BotaoLink>
+    </div>
+  );
+}
+
+function Aviso({ resultado }: { resultado: ResultadoDaImagem }) {
+  if (resultado.estado === "sem_modelo") {
+    return (
+      <Caixa titulo="O modelo ainda não existe">
+        <p>
+          A câmera e o pré-processamento já funcionam e são exatamente os que
+          o treino vai usar. Falta o modelo, e medir a acurácia numa validação
+          de campo honesta - até lá, o app não chuta um diagnóstico.
+        </p>
+        <p className="mt-2">
+          O fluxo por sintomas cobre {TOTAL_DE_DOENCAS} doenças e funciona
+          agora, sem foto.
+        </p>
+      </Caixa>
+    );
+  }
+
+  if (resultado.estado === "recusado") {
+    return (
+      <Caixa titulo="Não reconheço esta imagem">
+        <p>{resultado.motivo}</p>
+        <p className="mt-2">
+          Recusar é a resposta certa aqui: um palpite com aparência de laudo
+          seria pior que admitir o desconhecimento.
+        </p>
+      </Caixa>
+    );
+  }
+
+  if (resultado.estado === "sem_resposta") {
+    return (
+      <Caixa titulo="Nada compatível com esta cultura">
+        <p>
+          O modelo não viu nada parecido com as doenças desta cultura. Confira
+          se a cultura selecionada é a certa, ou use o fluxo por sintomas.
+        </p>
+      </Caixa>
+    );
+  }
+
+  return null;
+}
+
+function Caixa({
+  titulo,
+  children,
+}: {
+  titulo: string;
+  children: React.ReactNode;
+}) {
+  return (
+    <div
+      role="status"
+      className="border-alerta bg-alerta-fundo rounded-xl border-2 p-4 text-sm"
+    >
+      <h2 className="text-base font-bold">{titulo}</h2>
+      <div className="mt-1">{children}</div>
+    </div>
+  );
+}
