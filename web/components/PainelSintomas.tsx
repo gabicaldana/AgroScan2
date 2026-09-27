@@ -6,6 +6,7 @@ import * as caderno from "@/lib/caderno.ts";
 import { BarraCompatibilidade } from "@/components/BarraCompatibilidade";
 import { BarraGravidade } from "@/components/BarraGravidade";
 import { SeletorCultura } from "@/components/SeletorCultura";
+import { useVersaoDoCatalogo } from "@/components/SincronizacaoDoCatalogo";
 import {
   diagnosticar,
   listarSintomasDaCultura,
@@ -30,13 +31,22 @@ export function PainelSintomas() {
   const [culturaId, setCulturaId] = useState("tomate");
   const [marcados, setMarcados] = useState<ReadonlySet<string>>(new Set());
 
+  // A versao entra nas chaves dos memos porque `listarSintomasDaCultura` e
+  // `diagnosticar` leem os indices do motor, que trocam quando um catalogo
+  // mais novo entra em uso (US36). Sem ela, a lista de sintomas ficaria a da
+  // base antiga enquanto o diagnostico ja rodaria sobre a nova - e sintoma
+  // marcado que a base nova nao conhece sumiria do calculo em silencio.
+  const versao = useVersaoDoCatalogo();
+
   const sintomas = useMemo(
     () => listarSintomasDaCultura(culturaId),
-    [culturaId],
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+    [culturaId, versao],
   );
   const hipoteses = useMemo(
     () => diagnosticar(culturaId, marcados),
-    [culturaId, marcados],
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+    [culturaId, marcados, versao],
   );
   const pergunta = useMemo(() => melhorPergunta(hipoteses), [hipoteses]);
 

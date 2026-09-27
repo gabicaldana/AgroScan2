@@ -1,8 +1,8 @@
 "use client";
 
-import { useSyncExternalStore } from "react";
+import { useEffect } from "react";
 
-import { EMBUTIDO, assinar, catalogoAtivo } from "@/lib/catalogo.ts";
+import { useVersaoDoCatalogo } from "@/components/SincronizacaoDoCatalogo";
 import { listarCulturas, type CulturaResumida } from "@/lib/diagnostico.ts";
 
 /**
@@ -38,24 +38,13 @@ export function SeletorCultura({
   ajuda?: string;
 }) {
   // A lista acompanha o catalogo ativo, que pode ter sido atualizado sem
-  // reinstalacao (US36). O valor devolvido nao e usado: quem importa e a
-  // ASSINATURA, que faz este componente renderizar de novo quando o catalogo
-  // troca. Assinamos a VERSAO, e nao a lista, porque `useSyncExternalStore`
-  // exige um instantaneo de identidade estavel - devolver um array novo a
-  // cada chamada renderizaria em laco.
-  //
-  // O instantaneo do servidor e sempre o embutido, o mesmo que a geracao
-  // estatica produziu, o que evita divergencia na hidratacao.
-  useSyncExternalStore(
-    assinar,
-    () => catalogoAtivo().versao,
-    () => EMBUTIDO.versao,
-  );
+  // reinstalacao (US36).
+  useVersaoDoCatalogo();
 
   // Sem memo, de proposito. `listarCulturas` filtra e ordena no maximo 24
   // itens, e o resultado depende de estado mutavel de modulo - os indices do
   // motor, que trocam quando um catalogo mais novo entra em uso. Memorizar
-  // exigiria declarar `versao` como chave de invalidacao de um calculo que
+  // exigiria declarar a versao como chave de invalidacao de um calculo que
   // nao a menciona, e o custo evitado nao paga a confusao.
   const culturas = listarCulturas(apenasComDoencas);
 
@@ -69,6 +58,17 @@ export function SeletorCultura({
   })).filter((g) => g.itens.length > 0);
 
   const selecionada = culturas.find((c) => c.id === valor);
+
+  // Um catalogo novo pode nao trazer mais a cultura selecionada - curadoria
+  // corrige um `id`, ou a cultura sai da base. Sem isto, o `select` exibiria
+  // a primeira opcao da lista enquanto o estado do pai continua apontando
+  // para a cultura sumida, e a tela de sintomas viria vazia sem explicar por
+  // que. Avisar o pai reconcilia os dois.
+  useEffect(() => {
+    if (!selecionada && culturas.length > 0) {
+      aoTrocar(culturas[0].id);
+    }
+  }, [selecionada, culturas, aoTrocar]);
 
   return (
     <div>

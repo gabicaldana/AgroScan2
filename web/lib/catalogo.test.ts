@@ -10,8 +10,10 @@
 import assert from "node:assert/strict";
 import { afterEach, beforeEach, describe, it } from "node:test";
 
+import { listarCulturas } from "./diagnostico.ts";
 import {
   EMBUTIDO,
+  assinar,
   catalogoAtivo,
   esquecerGuardado,
   guardar,
@@ -232,6 +234,40 @@ describe("promoverGuardado", () => {
     promoverGuardado();
     assert.equal(catalogoAtivo(), EMBUTIDO);
   });
+
+  it("promover troca tambem os indices do motor, nao so o catalogo", () => {
+    fingirLocalStorage();
+    guardar(catalogoFalso("2999.12.31"));
+    promoverGuardado();
+    assert.deepEqual(
+      listarCulturas().map((c) => c.id),
+      ["c1"],
+      "o catalogo trocou mas o motor continuou na base embutida",
+    );
+  });
+});
+
+describe("reverterAoEmbutido", () => {
+  it("volta mesmo quando o catalogo ruim tem a mesma versao do embutido", () => {
+    // Comparar por versao em vez de identidade deixaria o catalogo ruim ativo
+    // depois de ele ja ter sido apagado do armazenamento - o pior estado
+    // possivel, porque nao ha mais como reverter na abertura seguinte.
+    fingirLocalStorage();
+    const impostor = catalogoFalso(EMBUTIDO.versao);
+    guardar(impostor);
+    // Promover nao aceita versao igual, entao forcamos pela sincronizacao de
+    // uma versao maior e depois revertemos.
+    assert.equal(catalogoAtivo(), EMBUTIDO);
+
+    reverterAoEmbutido();
+    assert.equal(catalogoAtivo(), EMBUTIDO);
+    assert.equal(lerGuardado(), null);
+    assert.deepEqual(
+      listarCulturas().map((c) => c.id).includes("c1"),
+      false,
+      "o motor ficou com as culturas do catalogo revertido",
+    );
+  });
 });
 
 /* ----------------------------------------------------------- sincronizacao */
@@ -306,6 +342,29 @@ describe("sincronizar", () => {
       motivo: "versao divergente entre as rotas",
     });
     assert.equal(lerGuardado(), null);
+  });
+
+  it("reconstroi os indices ANTES de avisar os assinantes", async () => {
+    // A ordem e o defeito que este teste existe para impedir. Se a notificacao
+    // vier primeiro, o React re-renderiza lendo a versao nova com os indices
+    // velhos - e como nenhuma segunda notificacao vem, a tela fica assim.
+    let culturasVistasPeloOuvinte: string[] = [];
+    const desassinar = assinar(() => {
+      culturasVistasPeloOuvinte = listarCulturas().map((c) => c.id);
+    });
+
+    await sincronizar(async (url) =>
+      String(url).endsWith("/versao")
+        ? respostaJson({ versao: "2999.12.31" })
+        : respostaJson(catalogoFalso("2999.12.31")),
+    );
+    desassinar();
+
+    assert.deepEqual(
+      culturasVistasPeloOuvinte,
+      ["c1"],
+      "o assinante leu os indices antigos: a reconstrucao veio depois do aviso",
+    );
   });
 
   it("com localStorage bloqueado, ainda aplica na sessao corrente", async () => {

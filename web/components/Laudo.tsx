@@ -131,8 +131,9 @@ export function Laudo() {
         {ficha.ingredientesAtivos.length === 0 ? (
           // Duas razões diferentes para a lista vazia, e a distinção importa
           // para o agrônomo: no vírus não existe alvo para o produto agir;
-          // no raquitismo da cana existe alvo, mas nenhum defensivo alcança a
-          // bactéria dentro do colmo, e o controle é de muda e de facão.
+          // na hérnia das crucíferas existe alvo, mas nenhum defensivo alcança
+          // Plasmodiophora brassicae no solo em campo, e o controle é de
+          // calagem e rotação longa.
           <p>
             {ficha.tipoAgente === "vírus"
               ? "Nenhum. Não existe defensivo que aja sobre vírus de planta - o manejo é todo preventivo, pelas medidas culturais acima."

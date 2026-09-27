@@ -270,6 +270,13 @@ export function listarSintomasDaCultura(culturaId: string): SintomaDoCatalogo[] 
   );
 
   return SINTOMAS_ATIVOS.filter((s) => usados.has(s.id))
+    // Orgao desconhecido nao derruba a tela. Enquanto o catalogo vinha so do
+    // bundle, a validacao do build garantia a integridade e um `!` bastava.
+    // Agora ele pode vir da rede ou do `localStorage`, onde `pareceCatalogo`
+    // confere a forma por amostragem - e um sintoma com orgao invalido
+    // lancaria, deixando o produtor sem lista nenhuma no meio do talhao.
+    // Descartar o sintoma degrada; lancar apaga a tela.
+    .filter((s) => ORGAO_POR_ID.has(s.orgao))
     .map((s) => {
       const orgao = ORGAO_POR_ID.get(s.orgao)!;
       return {

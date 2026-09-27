@@ -5,7 +5,8 @@ import { BotaoLink } from "@/components/Botao";
 import { EstadoVazio } from "@/components/EstadoVazio";
 import * as caderno from "@/lib/caderno.ts";
 import * as sessao from "@/lib/sessao.ts";
-import { CULTURAS } from "@/lib/base-conhecimento.ts";
+import { useVersaoDoCatalogo } from "@/components/SincronizacaoDoCatalogo";
+import { catalogoAtivo } from "@/lib/catalogo.ts";
 
 /**
  * O histórico de diagnósticos.
@@ -18,9 +19,13 @@ import { CULTURAS } from "@/lib/base-conhecimento.ts";
  * produtor precisa saber disso antes de trocar de celular.
  */
 
-/** A ficha vem da base embutida, não do servidor - funciona em modo avião. */
+/** A ficha vem da base local, não do servidor - funciona em modo avião.
+ *
+ *  Do catálogo ATIVO, e não do embutido: uma consulta feita sobre uma base
+ *  baixada depois do deploy (US36) citaria cultura e doença que o bundle não
+ *  conhece, e a linha do histórico apareceria sem nome nenhum. */
 function detalhar(culturaId: string, doencaId: string) {
-  const cultura = CULTURAS.find((c) => c.id === culturaId);
+  const cultura = catalogoAtivo().culturas.find((c) => c.id === culturaId);
   if (!cultura) return null;
   const doenca = cultura.doencas.find((d) => d.id === doencaId);
   return {
@@ -31,6 +36,11 @@ function detalhar(culturaId: string, doencaId: string) {
 }
 
 export function PainelCaderno() {
+  // O historico nomeia cultura e doenca a partir do catalogo ativo; sem a
+  // assinatura, as linhas ficariam sem nome ate a proxima navegacao quando um
+  // catalogo mais novo entrasse em uso (US36).
+  useVersaoDoCatalogo();
+
   const [registros, setRegistros] = useState<caderno.RegistroDoCaderno[]>([]);
   const [carregando, setCarregando] = useState(true);
   const [temConta, setTemConta] = useState(false);

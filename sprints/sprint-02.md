@@ -111,12 +111,42 @@ catálogo embutido antes de a sincronização rodar, e toda falha é silenciosa 
 sem rede, com a API fora do ar ou com resposta malformada, o app segue com o
 que tem. É a ADR 0001 preservada: o cliente é autoridade sobre a resposta.
 
-**22 testes novos**, cobrindo o que pode dar errado: JSON corrompido,
+**25 testes novos**, cobrindo o que pode dar errado: JSON corrompido,
 `localStorage` bloqueado ou inexistente, HTTP de erro, catálogo malformado,
 ausência de rede, e o caso em que o servidor troca de release entre as duas
 requisições. Um deles pegou um defeito real durante o desenvolvimento - o
 `lerGuardado` devolvia `null` para JSON corrompido **sem apagar a chave**, e o
 lixo ficaria no `localStorage` para sempre, sendo reparseado a cada abertura.
+
+### Revisão de código sobre a US36 - 8 defeitos corrigidos
+
+Uma passada de revisão sobre o que esta sprint escreveu encontrou **oito
+defeitos**, todos no caminho da atualização de catálogo, e com uma causa comum:
+a troca de catálogo foi construída sem que a reconstrução dos índices do motor
+fosse responsabilidade de quem troca. Ficou a cargo de quem chamava, e só um
+componente foi ligado.
+
+| # | Defeito | Efeito |
+| --- | --- | --- |
+| 1 | `definirAtivo` avisava os assinantes **antes** de reconstruir os índices | O React re-renderizava lendo a versão nova com as culturas velhas, e nenhuma segunda notificação vinha |
+| 2 | A guarda `if (!vivo)` pulava a reconstrução | Sob o duplo-monte do StrictMode, os índices nunca eram reconstruídos na sessão |
+| 3 | `caderno.ts` gravava `VERSAO_DA_BASE`, a embutida | Consulta diagnosticada sobre base baixada era registrada com proveniência errada |
+| 4 | `PainelCaderno` lia `CULTURAS` do bundle | Linha do histórico de cultura nova aparecia sem nome |
+| 5 | Os `useMemo` de `PainelSintomas` não tinham a versão na chave | Lista de sintomas velha com motor novo: sintoma marcado sumia do cálculo em silêncio |
+| 6 | `ORGAO_POR_ID.get(s.orgao)!` sobre dado de rede | Órgão inválido lançava e apagava a tela de sintomas |
+| 7 | `definirAtivo` comparava por versão, não por identidade | Republicação no mesmo dia não era aplicada, e `reverterAoEmbutido` podia deixar o catálogo ruim ativo |
+| 8 | Sem reconciliação quando a cultura selecionada some do catálogo | `select` exibia uma cultura e o estado apontava para outra |
+
+A correção foi na raiz, não nos oito pontos: `definirAtivo` passou a
+reconstruir os índices **e depois** notificar, de forma atômica para quem
+observa, e um hook `useVersaoDoCatalogo` substituiu a assinatura repetida.
+Dois testes novos travam as inversões de ordem, que são o tipo de defeito que
+volta silenciosamente numa refatoração futura.
+
+> **Por que registrar isto aqui.** A retrospectiva da Sprint 1 apontou que
+> "documentação envelhecida" vinha de afirmar o estado em vários lugares. Este
+> caso é o mesmo erro em código: um estado - qual catálogo vale - com mais de
+> um dono. Vale para a retrospectiva desta sprint.
 
 ### Nome científico no seletor de cultura (US01, parcial)
 
@@ -218,7 +248,7 @@ concluída a mudança dos artefatos para `entregas/`, que estava pela metade.
 | [#69](https://github.com/CampusCEUB/AgroScan/issues/69) | Atualizar o README do repositório de código para o estado real | Feito no commit `9570990`; o documento é hoje [`docs/aplicacao.md`](../docs/aplicacao.md), atualizado para 16 doenças e 185 testes |
 | [#70](https://github.com/CampusCEUB/AgroScan/issues/70) | Elevar batata e pimentão ao mínimo de três doenças | Validação automática sem avisos - ver Evidências |
 | [#6](https://github.com/CampusCEUB/AgroScan/issues/6) | **US03** - Cadastrar as doenças das brássicas | 6 culturas com 3 doenças cada; validação aprovada |
-| [#40](https://github.com/CampusCEUB/AgroScan/issues/40) | **US36** - Receber atualizações do catálogo sem reinstalar | 22 testes cobrindo rede ausente, resposta malformada e armazenamento bloqueado |
+| [#40](https://github.com/CampusCEUB/AgroScan/issues/40) | **US36** - Receber atualizações do catálogo sem reinstalar | 25 testes cobrindo rede ausente, resposta malformada, armazenamento bloqueado e a ordem entre reconstruir índices e notificar |
 
 > **Sobre #66 e #69.** A correção em código foi aplicada em 12/09, ainda dentro
 > da Sprint 1, nos commits `8053fc8` e `9570990`. As `issues` nasceram das

@@ -20,15 +20,18 @@ on:
 
 jobs:
   verificar:
-    runs-on: ubuntu-latest
+    # Versao fixa, e nao `ubuntu-latest`: o rotulo migra para o Ubuntu 26 a
+    # partir de 19/10/2026, no meio da Sprint 4. Pipeline de projeto avaliado
+    # nao pode trocar de sistema operacional sozinho na semana da entrega.
+    runs-on: ubuntu-24.04
     steps:
-      - uses: actions/checkout@v4
+      - uses: actions/checkout@v5
 
-      - uses: actions/setup-python@v5
+      - uses: actions/setup-python@v6
         with:
           python-version: "3.13"
 
-      - uses: actions/setup-node@v4
+      - uses: actions/setup-node@v5
         with:
           node-version: "24"
           cache: npm

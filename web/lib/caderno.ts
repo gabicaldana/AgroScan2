@@ -14,7 +14,7 @@
 import * as api from "./api.ts";
 import * as fila from "./fila.ts";
 import * as sessao from "./sessao.ts";
-import { VERSAO_DA_BASE } from "./base-conhecimento.ts";
+import { catalogoAtivo } from "./catalogo.ts";
 import type { Hipotese } from "./diagnostico.ts";
 
 let armazenamento: fila.Armazenamento | null = null;
@@ -69,7 +69,11 @@ export async function salvar(
       compatibilidade: h.compatibilidade,
     })),
     registradaEm: new Date().toISOString(),
-    versaoCatalogo: VERSAO_DA_BASE,
+    // A versao do catalogo ATIVO, nao a embutida no bundle: a consulta pode
+    // ter sido diagnosticada sobre uma base baixada depois do deploy (US36), e
+    // registrar a versao errada quebraria a rastreabilidade entre o laudo
+    // guardado e as fichas que o produziram.
+    versaoCatalogo: catalogoAtivo().versao,
     latitude: coordenada?.latitude ?? null,
     longitude: coordenada?.longitude ?? null,
   });

@@ -35,6 +35,7 @@ import {
   type Orgao,
   type Sintoma,
 } from "./base-conhecimento.ts";
+import { reconstruirIndices } from "./diagnostico.ts";
 
 export type Catalogo = {
   versao: string;
@@ -198,9 +199,23 @@ export function catalogoAtivo(): Catalogo {
   return ativo;
 }
 
+/**
+ * Troca o catalogo em uso, de forma ATOMICA do ponto de vista de quem observa.
+ *
+ * A ordem aqui e a parte que importa: reconstruir os indices do motor ANTES de
+ * avisar os assinantes. Invertida, o React re-renderiza ao ser notificado e le
+ * a versao nova com os indices velhos - a tela mostra "2026.10.05" e lista as
+ * culturas de setembro, e como nenhuma segunda notificacao vem depois, fica
+ * assim ate a proxima navegacao.
+ *
+ * Comparacao por IDENTIDADE, nao por versao: duas publicacoes no mesmo dia
+ * compartilham a string de versao, e `reverterAoEmbutido` precisa conseguir
+ * voltar mesmo quando o catalogo ruim carrega a mesma versao do embutido.
+ */
 function definirAtivo(novo: Catalogo): void {
-  if (novo === ativo || novo.versao === ativo.versao) return;
+  if (novo === ativo) return;
   ativo = novo;
+  reconstruirIndices(ativo);
   for (const ouvinte of ouvintes) ouvinte();
 }
 
