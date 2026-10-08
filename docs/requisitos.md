@@ -27,7 +27,9 @@ apresentado na ordem do manejo integrado.
 Este repositório reúne a documentação de gestão do negócio, do projeto e do
 produto **e** a aplicação: o código, a base de conhecimento curada, a API, o
 banco de dados e os testes automatizados. Até a Sprint 2 o código vivia em
-`gabicaldana/AgroScan2`, cujo histórico segue publicado.
+`gabicaldana/AgroScan2`, que segue como **espelho de publicação**: tem o mesmo
+histórico deste repositório e é dele que a Vercel publica
+([ADR 0011](decisoes/adr-0011-dois-repositorios-com-espelho-de-publicacao.md)).
 
 O resultado esperado é duplo: acadêmico, exercitando modelagem e implementação
 de banco relacional, back-end com API, front-end responsivo e acessível,
@@ -182,7 +184,7 @@ Estado verificado em 12/09/2026 sobre o commit `068b6d9`.
 | RNF20 | A integração contínua deve bloquear código cujos artefatos gerados estejam desatualizados | Manutenibilidade | ✅ verificação de árvore limpa no CI |
 | RNF21 | Código e documentação versionados em Git com histórico rastreável | Manutenibilidade | ✅ |
 | RNF22 | Infraestrutura dentro dos limites de camadas gratuitas | Restrição | ✅ |
-| RNF23 | Front-end e back-end publicados em ambiente acessível por URL | Restrição | ✅ PWA e API publicados e conferidos em 08/10/2026 ([ADR 0010](decisoes/adr-0010-publicacao-em-dois-projetos.md)); a publicação ainda sai de `gabicaldana/AgroScan2` (R06) |
+| RNF23 | Front-end e back-end publicados em ambiente acessível por URL | Restrição | ✅ PWA e API publicados e conferidos em 08/10/2026 ([ADR 0010](decisoes/adr-0010-publicacao-em-dois-projetos.md)); publicação a partir do espelho `gabicaldana/AgroScan2` ([ADR 0011](decisoes/adr-0011-dois-repositorios-com-espelho-de-publicacao.md)) |
 | RNF24 | Banco de dados relacional | Restrição | ✅ PostgreSQL |
 | RNF25 | Instalável como PWA em Android, iOS e desktop, por URL pública, sem loja | Distribuição | ✅ |
 | RNF26 | Funcionar nas versões correntes de Chrome (Android), Safari (iOS) e Chromium (desktop) | Compatibilidade | 🟡 verificação em iOS pendente |
@@ -218,7 +220,7 @@ Definition of Done:
 | Definição da comunidade parceira da Atividade de Extensão | Aprovação institucional | Condiciona a priorização das famílias botânicas e a data da apresentação | ⚠️ pendente (risco R03) |
 | Data do Artefato 5 e da apresentação à comunidade | Agenda | Impede fechar o calendário das Sprints 6 e 7 | ⚠️ pendente |
 | PostgreSQL gerenciado em camada gratuita | Infraestrutura | Sem banco não há caderno, hortas nem relatórios | Ativo |
-| Plataforma de publicação (Vercel) em camada gratuita | Infraestrutura | Sem publicação, RNF23 não é atendido | Ativa, com PWA e API em dia desde 08/10/2026; ainda ligada ao repositório antigo (R06) |
+| Plataforma de publicação (Vercel) em camada gratuita | Infraestrutura | Sem publicação, RNF23 não é atendido | Ativa, com PWA e API em dia desde 08/10/2026; ligada ao espelho `gabicaldana/AgroScan2`, porque a organização não autoriza a integração (ADR 0011) |
 | Acervo de imagens de hortaliças brasileiras (Digipathos) | Dados | Sem ele, a identificação por imagem não sai do escopo condicionado | ⚠️ não auditado (risco R04) |
 | Dependência de teste do cliente HTTP | Técnica | 22 testes de integração da API não executam de forma confiável | ⚠️ em correção (risco R07) |
 | Distribuição dos papéis Scrum entre as integrantes | Dado da equipe | Papéis descritos, mas sem atribuição nominal nos artefatos | ⚠️ pendente |
@@ -288,5 +290,5 @@ Ligação direta com requisitos:
 | R03 - comunidade parceira indefinida | RF01 (priorização das culturas) | Base permite repriorizar sem retrabalho técnico |
 | R04 - acervo de imagens indisponível | RF10, RF11 | Escopo condicionado; RF11 garante que o sistema declare a ausência |
 | R05 - esgotamento de conexões | RNF03 | Conexão agrupada em execução, direta só para migração |
-| R06 - implantação defasada | RNF23 | Conferência de versão publicada no Definition of Done (C11) |
+| R06 - implantação defasada | RNF23 | Conferência de versão publicada no Definition of Done (C11); hash do `main` igual no institucional e no espelho (ADR 0011) |
 | R07 - dependência de teste ausente | RNF19, RNF20 | Declaração explícita da dependência e verificação no CI |

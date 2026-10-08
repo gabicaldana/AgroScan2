@@ -84,10 +84,10 @@ O teto de tempo fica com o `maxDuration` da função (15 s).
   precisa ser refeita, ou todo push falha na publicação da API.
 - **Cada push no ramo principal publica os dois projetos.** Uma mudança no
   `vercel.json` da raiz afeta os dois, e precisa ser conferida nos dois.
-- **A publicação ainda sai de `gabicaldana/AgroScan2`**, e não deste repositório.
-  O fluxo é: commit no AgroScan2, conferência no ambiente publicado, e então o
-  mesmo commit aqui. Reapontar a Vercel para `CampusCEUB/AgroScan` continua
-  pendente (R06).
+- **A publicação sai de `gabicaldana/AgroScan2`**, e não deste repositório: a
+  organização não autoriza ligar a Vercel aqui. Os dois repositórios mantêm o
+  mesmo histórico, com o fluxo e as regras do
+  [ADR 0011](adr-0011-dois-repositorios-com-espelho-de-publicacao.md).
 - `/api/v1/saude` devolve a mensagem de erro do banco por extenso, com nomes de
   host. Ajudou neste diagnóstico, mas é informação interna exposta numa rota
   pública, e deve ser reduzida em produção.

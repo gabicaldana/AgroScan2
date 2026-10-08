@@ -211,7 +211,7 @@ fixtures compartilhadas.
 | R02 | Descarte do armazenamento local em iOS após ~7 dias sem uso | Perda do catálogo em cache e das consultas não enviadas | Catálogo reconstruível na abertura seguinte com rede; fila esvaziada na abertura; orientação ao usuário de iOS (US40) |
 | R04 | Acervo de imagens sem cobertura suficiente de hortaliças | A identificação por imagem não sai do condicionado | Escopo fora do núcleo; RF11 garante que o sistema declare a indisponibilidade em vez de chutar |
 | R05 | Esgotamento de conexões do banco em ambiente serverless | API indisponível sob concorrência | Conexão agrupada em execução e direta apenas para migração; reaproveitamento entre requisições; tempo limite configurado |
-| R06 | Ambiente publicado defasado em relação ao código | Demonstração e avaliação sobre versão errada | Conferência da versão publicada no Definition of Done (critério C11) |
+| R06 | Ambiente publicado defasado em relação ao código | Demonstração e avaliação sobre versão errada | Conferência da versão publicada no Definition of Done (critério C11); espelho de publicação com o mesmo histórico do institucional, só por fast-forward ([ADR 0011](decisoes/adr-0011-dois-repositorios-com-espelho-de-publicacao.md)) |
 | R07 | Dependência de teste ausente na lista de dependências | 22 testes de integração da API não executam de forma confiável; RNF19 e RNF20 ficam sem evidência | Declarar a dependência e verificar que o CI executa - e não pula - os testes da API |
 | R08 | Divergência silenciosa entre as três implementações do motor | O usuário recebe diagnóstico diferente do que a base determina | Fixtures geradas e versionadas; comparação por igualdade exata, sem tolerância; teste de frescor no CI |
 

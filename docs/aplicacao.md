@@ -188,6 +188,17 @@ Duas armadilhas já encontradas:
   `"framework"` ali muda também o PWA. Configuração de um projeto só vai no
   painel daquele projeto.
 
+**A Vercel publica de `gabicaldana/AgroScan2`, não deste repositório**: a
+organização não autoriza a integração. Os dois mantêm o mesmo histórico. Uma
+mudança entra no AgroScan2, é conferida no publicado e vem para cá por PR; depois
+do merge, o espelho avança por fast-forward
+([ADR 0011](decisoes/adr-0011-dois-repositorios-com-espelho-de-publicacao.md)):
+
+```bash
+git fetch institucional
+git push origin institucional/main:main    # nunca --force
+```
+
 Conferência depois de publicar:
 
 ```bash

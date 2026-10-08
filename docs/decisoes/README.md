@@ -20,6 +20,7 @@ Use [`template-adr.md`](template-adr.md) como ponto de partida, nomeando o arqui
 | [0008](adr-0008-hierarquia-de-entrada.md) | Sintomas como tela inicial, câmera fora da navegação | Aprovado | RF10, RF11, R04 |
 | [0009](adr-0009-idempotencia-no-banco.md) | Idempotência da sincronização garantida no banco | Aprovado | RF17, RF18, RN10, RN11 |
 | [0010](adr-0010-publicacao-em-dois-projetos.md) | Publicação em dois projetos da Vercel, com a API atrás do PWA | Aprovado | RNF23, C11, R05, R06 |
+| [0011](adr-0011-dois-repositorios-com-espelho-de-publicacao.md) | Dois repositórios: o institucional completo, o pessoal como espelho de publicação | Aprovado | RNF21, RNF23, C11, R06 |
 
 ## Decisões pendentes de registro
 
