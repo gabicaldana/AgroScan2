@@ -80,6 +80,8 @@ RF23 a RF27, conforme a
 | --- | --- | --- | --- |
 | 1 | **Comunidade parceira da Atividade de Extensão não definida** (R03) | Impede fixar a priorização das famílias botânicas na curadoria | Herdado - [#73](https://github.com/CampusCEUB/AgroScan/issues/73) |
 | 2 | **Datas dos Artefatos 5 a 9 não divulgadas** | O calendário das sprints seguintes é provisório | Herdado - [#74](https://github.com/CampusCEUB/AgroScan/issues/74) |
+| 3 | **API nunca publicada** - cadastro e login davam 404 no site | Caderno e sincronização inutilizáveis no ambiente publicado | ✅ Resolvido em 08/10 - [ADR 0010](../docs/decisoes/adr-0010-publicacao-em-dois-projetos.md), [#67](https://github.com/CampusCEUB/AgroScan/issues/67) |
+| 4 | **Framework Preset do projeto `agroscan-api`** ainda FastAPI | Os próximos pushes falham na publicação da API; a produção segue na última versão válida | ⚠️ Aberto - troca para *Other* no painel da Vercel |
 
 ## Riscos ativos no ciclo
 
@@ -87,6 +89,7 @@ RF23 a RF27, conforme a
 | --- | --- | --- |
 | **R01 - volume da curadoria agronômica** | A US04 soma cucurbitáceas e o fechamento das solanáceas no mesmo ciclo, junto com 19 pontos de desenvolvimento | Curadoria por família; ordem de corte da seção 3.4 do Artefato 2, que sacrifica US26 antes das demais |
 | **R05 - esgotamento de conexões do banco** | O épico E5 acrescenta tabelas e consultas novas ao PostgreSQL | Conexão agrupada em tempo de execução, já adotada |
+| **R06 - ambiente publicado defasado** | PWA e API passaram a estar em dia em 08/10, mas a Vercel ainda publica a partir de `gabicaldana/AgroScan2` | Commit no AgroScan2, conferência no publicado, e o mesmo commit aqui; reapontar a Vercel continua pendente |
 
 ## Retrospectiva
 

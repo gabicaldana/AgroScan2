@@ -19,6 +19,7 @@ Use [`template-adr.md`](template-adr.md) como ponto de partida, nomeando o arqui
 | [0007](adr-0007-pwa-em-vez-de-nativo.md) | PWA em vez de aplicativo nativo | Aprovado | RF32, RNF25-RNF28, R02 |
 | [0008](adr-0008-hierarquia-de-entrada.md) | Sintomas como tela inicial, câmera fora da navegação | Aprovado | RF10, RF11, R04 |
 | [0009](adr-0009-idempotencia-no-banco.md) | Idempotência da sincronização garantida no banco | Aprovado | RF17, RF18, RN10, RN11 |
+| [0010](adr-0010-publicacao-em-dois-projetos.md) | Publicação em dois projetos da Vercel, com a API atrás do PWA | Aprovado | RNF23, C11, R05, R06 |
 
 ## Decisões pendentes de registro
 

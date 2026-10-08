@@ -165,6 +165,36 @@ Duas strings de conexão, e a diferença importa: `DATABASE_URL` é a **pooled**
 usada em tempo de execução; `DATABASE_URL_DIRETA` é a **não-pooled**, usada
 para migração, porque DDL não sobrevive a *transaction pooling*.
 
+### Publicação
+
+Dois projetos na Vercel, ligados ao mesmo repositório — o porquê está no
+[ADR 0010](decisoes/adr-0010-publicacao-em-dois-projetos.md):
+
+| Projeto | Root Directory | Framework Preset | Variáveis de produção |
+| --- | --- | --- | --- |
+| `agroscan` (PWA) | `web` | Next.js | `API_URL=https://agroscan-api.vercel.app` |
+| `agroscan-api` | `.` | Other | `DATABASE_URL` (pooled), `JWT_SEGREDO`, `JWT_HORAS`, `AMBIENTE=producao` |
+
+O navegador nunca fala com `agroscan-api` diretamente: o PWA encaminha
+`/api/v1/*` por *rewrite*, que só existe se `API_URL` estiver definida **no
+build**. Sem ela, toda chamada à API dá 404 e só o diagnóstico continua
+funcionando — foi exatamente o defeito corrigido em 08/10/2026.
+
+Duas armadilhas já encontradas:
+
+- **Não passe parâmetro de inicialização na conexão** (`options="-c ..."`). O
+  pooler da Neon recusa, e a API sobe sem banco.
+- **O `vercel.json` da raiz vale para os dois projetos.** Uma chave como
+  `"framework"` ali muda também o PWA. Configuração de um projeto só vai no
+  painel daquele projeto.
+
+Conferência depois de publicar:
+
+```bash
+curl https://agroscan-blond.vercel.app/api/v1/saude   # "banco": "ok"
+curl -I https://agroscan-blond.vercel.app/sintomas    # 308 para /
+```
+
 ### Depois de mexer na base ou no pré-processamento
 
 ```bash

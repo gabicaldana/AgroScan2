@@ -182,7 +182,7 @@ Estado verificado em 12/09/2026 sobre o commit `068b6d9`.
 | RNF20 | A integração contínua deve bloquear código cujos artefatos gerados estejam desatualizados | Manutenibilidade | ✅ verificação de árvore limpa no CI |
 | RNF21 | Código e documentação versionados em Git com histórico rastreável | Manutenibilidade | ✅ |
 | RNF22 | Infraestrutura dentro dos limites de camadas gratuitas | Restrição | ✅ |
-| RNF23 | Front-end e back-end publicados em ambiente acessível por URL | Restrição | 🟡 publicado, porém **defasado** em relação ao código (risco R06) |
+| RNF23 | Front-end e back-end publicados em ambiente acessível por URL | Restrição | ✅ PWA e API publicados e conferidos em 08/10/2026 ([ADR 0010](decisoes/adr-0010-publicacao-em-dois-projetos.md)); a publicação ainda sai de `gabicaldana/AgroScan2` (R06) |
 | RNF24 | Banco de dados relacional | Restrição | ✅ PostgreSQL |
 | RNF25 | Instalável como PWA em Android, iOS e desktop, por URL pública, sem loja | Distribuição | ✅ |
 | RNF26 | Funcionar nas versões correntes de Chrome (Android), Safari (iOS) e Chromium (desktop) | Compatibilidade | 🟡 verificação em iOS pendente |
@@ -218,7 +218,7 @@ Definition of Done:
 | Definição da comunidade parceira da Atividade de Extensão | Aprovação institucional | Condiciona a priorização das famílias botânicas e a data da apresentação | ⚠️ pendente (risco R03) |
 | Data do Artefato 5 e da apresentação à comunidade | Agenda | Impede fechar o calendário das Sprints 6 e 7 | ⚠️ pendente |
 | PostgreSQL gerenciado em camada gratuita | Infraestrutura | Sem banco não há caderno, hortas nem relatórios | Ativo |
-| Plataforma de publicação (Vercel) em camada gratuita | Infraestrutura | Sem publicação, RNF23 não é atendido | Ativa, porém com implantação defasada (R06) |
+| Plataforma de publicação (Vercel) em camada gratuita | Infraestrutura | Sem publicação, RNF23 não é atendido | Ativa, com PWA e API em dia desde 08/10/2026; ainda ligada ao repositório antigo (R06) |
 | Acervo de imagens de hortaliças brasileiras (Digipathos) | Dados | Sem ele, a identificação por imagem não sai do escopo condicionado | ⚠️ não auditado (risco R04) |
 | Dependência de teste do cliente HTTP | Técnica | 22 testes de integração da API não executam de forma confiável | ⚠️ em correção (risco R07) |
 | Distribuição dos papéis Scrum entre as integrantes | Dado da equipe | Papéis descritos, mas sem atribuição nominal nos artefatos | ⚠️ pendente |
