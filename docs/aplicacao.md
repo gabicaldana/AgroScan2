@@ -16,11 +16,12 @@ no celular e funcional em modo avião.
 > visão, e até ele existir o app diz isso em vez de chutar. O banco relacional
 > está modelado e versionado em `migracoes/`, a **API REST está implementada**
 > (catálogo, diagnóstico, conta e caderno de campo) e o front-end já a consome,
-> com fila de sincronização offline. Faltam **hortas e canteiros** e os
+> com fila de sincronização offline e caderno filtrável por período e cultura,
+> legível sem rede. Faltam **hortas e canteiros** e os
 > **relatórios agregados**: as tabelas existem, as rotas e as telas não.
 >
-> Verificado em 27/09/2026: **270 testes automatizados, nenhuma falha** — 74 em
-> Python e 196 no porte em TypeScript.
+> Verificado em 08/10/2026: **286 testes automatizados, nenhuma falha** — 74 em
+> Python e 212 em TypeScript.
 
 ---
 
@@ -262,7 +263,7 @@ justamente as divergências reais que o teste existe para pegar, então a
 igualdade é exata.
 
 Também são comparados o catálogo de sintomas de cada cultura e as fichas
-completas. No total, **176 testes**: 102 no porte em TypeScript e 74 em Python —
+completas. No total, **286 testes**: 212 em TypeScript e 74 em Python —
 destes, 28 no motor de referência, 13 no pré-processamento, 11 na segurança, 14
 no contrato do caderno e 8 na API.
 
@@ -436,6 +437,8 @@ textual, para continuar legível por quem não distingue as cores.
 | Câmera, pré-processamento com paridade de pixel, recusa | ✅ |
 | Modelo de dados relacional e DDL versionado | ✅ |
 | API + PostgreSQL: conta, histórico, sincronização offline | ✅ |
+| Caderno filtrável por período e cultura, legível sem rede | ✅ |
+| Instruções de instalação para iPhone | ✅ |
 | Curadoria por família: brássicas, solanáceas, cucurbitáceas… | 🔄 9 de 24 culturas |
 | Horta, canteiros, manejo e relatórios agregados | ⬜ tabelas prontas, rotas e telas não |
 | Identificação por imagem — condicionada à auditoria do acervo | ⬜ falta o modelo |
@@ -491,6 +494,10 @@ web/                                Next.js 16 · TypeScript · Tailwind 4 · PW
     preprocessamento.ts             porte do resize/normalize, paridade por digest
     recusa.ts                       MSP, energia e margem sobre os logits crus
     classificador.ts                a costura do modelo - hoje devolve null
+    fila.ts                         fila offline das consultas, sem duplicar
+    caderno.ts                      histórico: fila local + servidor + cópia offline
+    filtro-caderno.ts               filtro por período e cultura, roda no aparelho
+    plataforma.ts                   detecta iOS e app instalado
     diagnostico-por-imagem.ts       orquestra foto → laudo
     base-conhecimento.ts            gerado do JSON por `npm run base`
     contrato-visao.ts               gerado do contrato de visão

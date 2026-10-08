@@ -2,6 +2,15 @@
 
 Registre aqui as mudanças relevantes por sprint ou marco avaliativo.
 
+## Sprint 3 - Horta, canteiros e manejo · 29/09 a 12/10/2026
+
+### Caderno filtrável e legível sem rede (US19) e instalação no iPhone (US40)
+
+- **Filtro do caderno** por período (7, 30, 90 dias ou tudo) e por cultura, com paginação de 20 em 20. Roda no aparelho, sobre o que já foi carregado, para funcionar igual em modo avião. O seletor só oferece culturas que têm registro.
+- **Histórico sem rede**: antes, o caderno offline mostrava só a fila, e o que já tinha subido sumia. A última lista do servidor agora fica guardada no aparelho, vinculada ao dono e apagada ao sair da conta. A tela avisa quando mostra essa cópia.
+- **Instruções para iPhone**: o caminho Compartilhar → Adicionar à Tela de Início, com o aviso de abrir o app ao menos uma vez por semana (risco R02). Aparece só no iOS, inclusive no iPad que se apresenta como Mac, e some no app instalado ou ao ser dispensada.
+- **Verificado**: 212 testes TypeScript e 74 Python passando; build de produção sem erro.
+
 ## Sprint 2 - Base de conhecimento e publicação · 15/09 a 28/09/2026
 
 ### Repositório único: a aplicação veio para o institucional
