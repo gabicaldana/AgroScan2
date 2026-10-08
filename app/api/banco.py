@@ -37,9 +37,13 @@ def _abrir():
         row_factory=dict_row,
         # Ver o bloco de armadilha no topo do modulo. Nao remover.
         prepare_threshold=None,
-        # Falhar rapido e melhor que segurar uma conexao do pool: o limite de
-        # tempo da funcao serverless e menor que a paciencia de um cliente.
-        options="-c statement_timeout=5000",
+        # SEM `options="-c statement_timeout=..."`: o pooler da Neon recusa
+        # parametro de inicializacao ("unsupported startup parameter") e a
+        # API inteira fica sem banco em producao. Um `SET` de sessao tambem
+        # nao serve - em modo transacao ele vazaria para outra conexao fisica.
+        # O teto de tempo e o `maxDuration` da funcao; um limite por consulta,
+        # se fizer falta, vai no papel: `ALTER ROLE ... SET statement_timeout`.
+        #
         # Sem isto, uma rede que bloqueia a porta 5432 nao devolve recusa: ela
         # engole o pacote, e a conexao fica pendurada ate o timeout do sistema
         # operacional. /saude existe para diagnosticar em segundos, entao ele
