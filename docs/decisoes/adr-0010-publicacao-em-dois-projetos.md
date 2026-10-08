@@ -78,11 +78,10 @@ O teto de tempo fica com o `maxDuration` da função (15 s).
 ## Consequências
 
 - Cadastro, login, caderno e sincronização funcionam no ambiente publicado.
-- **Pendente em 08/10/2026:** o projeto `agroscan-api` ainda está com o preset
-  FastAPI, detectado automaticamente, e precisa ser trocado para **Other** no
-  painel da Vercel (Settings → Build and Deployment → Framework Preset). Até lá,
-  cada push falha na publicação da API, e a produção continua na última versão
-  válida.
+- O preset **Other** do `agroscan-api` foi definido no painel da Vercel
+  (Settings → Build and Deployment → Framework Preset) em 08/10/2026. A Vercel
+  detecta FastAPI sozinha ao criar o projeto; se ele for recriado, a troca
+  precisa ser refeita, ou todo push falha na publicação da API.
 - **Cada push no ramo principal publica os dois projetos.** Uma mudança no
   `vercel.json` da raiz afeta os dois, e precisa ser conferida nos dois.
 - **A publicação ainda sai de `gabicaldana/AgroScan2`**, e não deste repositório.

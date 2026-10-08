@@ -24,7 +24,8 @@ continuava funcionando porque roda no navegador. Decisão registrada no
 - **Função movida para `gru1` (São Paulo)**, junto do banco em `sa-east-1`; a primeira publicação saiu em Washington.
 - **Incidente durante a correção**: um `"framework": null` no `vercel.json` da raiz, colocado para a API, também valeu para o PWA, que ficou cerca de dez minutos servindo só arquivos estáticos (todas as páginas com 404). Revertido; a lição está no ADR 0010 e em [docs/aplicacao.md](docs/aplicacao.md#publicação).
 - **Verificado no ambiente publicado**: `/api/v1/saude` com banco `ok`; cadastro, login, listagem do caderno e exclusão de conta pelo endereço do PWA; `/sintomas` redireciona para `/` (308), o que atende a conferência da [#68](https://github.com/CampusCEUB/AgroScan/issues/68). Contas de teste apagadas pela própria API.
-- **Pendente**: trocar o Framework Preset do `agroscan-api` para *Other* no painel da Vercel — com o preset FastAPI detectado, os próximos pushes falham na publicação da API — e reapontar a Vercel para este repositório (R06).
+- **Framework Preset do `agroscan-api` trocado para *Other*** no painel da Vercel; publicação conferida em seguida.
+- **Pendente**: reapontar a Vercel para este repositório (R06).
 
 ## Sprint 2 - Base de conhecimento e publicação · 15/09 a 28/09/2026
 

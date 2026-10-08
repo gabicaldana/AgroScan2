@@ -81,7 +81,7 @@ RF23 a RF27, conforme a
 | 1 | **Comunidade parceira da Atividade de Extensão não definida** (R03) | Impede fixar a priorização das famílias botânicas na curadoria | Herdado - [#73](https://github.com/CampusCEUB/AgroScan/issues/73) |
 | 2 | **Datas dos Artefatos 5 a 9 não divulgadas** | O calendário das sprints seguintes é provisório | Herdado - [#74](https://github.com/CampusCEUB/AgroScan/issues/74) |
 | 3 | **API nunca publicada** - cadastro e login davam 404 no site | Caderno e sincronização inutilizáveis no ambiente publicado | ✅ Resolvido em 08/10 - [ADR 0010](../docs/decisoes/adr-0010-publicacao-em-dois-projetos.md), [#67](https://github.com/CampusCEUB/AgroScan/issues/67) |
-| 4 | **Framework Preset do projeto `agroscan-api`** ainda FastAPI | Os próximos pushes falham na publicação da API; a produção segue na última versão válida | ⚠️ Aberto - troca para *Other* no painel da Vercel |
+| 4 | **Framework Preset do projeto `agroscan-api`** detectado como FastAPI | Os pushes falhavam na publicação da API | ✅ Resolvido em 08/10 - preset trocado para *Other* no painel |
 
 ## Riscos ativos no ciclo
 
