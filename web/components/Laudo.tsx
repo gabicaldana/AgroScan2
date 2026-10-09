@@ -6,6 +6,7 @@ import { BarraCompatibilidade } from "@/components/BarraCompatibilidade";
 import { BarraGravidade } from "@/components/BarraGravidade";
 import { BotaoLink } from "@/components/Botao";
 import { EstadoVazio } from "@/components/EstadoVazio";
+import { ManejoNoLaudo } from "@/components/ManejoNoLaudo";
 import { detalharDoenca, type Ficha } from "@/lib/diagnostico.ts";
 
 const ROTULO_TRATAMENTO: Record<string, string> = {
@@ -156,6 +157,8 @@ export function Laudo() {
       <div className="mt-6">
         <AvisoLegal />
       </div>
+
+      <ManejoNoLaudo doencaId={doencaId ?? ""} />
 
       <div className="mt-6 flex flex-col gap-3">
         <BotaoLink href="/" variante="secundario">

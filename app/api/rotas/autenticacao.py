@@ -5,7 +5,7 @@ from fastapi.security import OAuth2PasswordRequestForm
 
 from app.api import seguranca
 from app.api.esquemas import PedidoDeRegistro, Token, UsuarioResposta
-from app.api.repositorios import usuarios
+from app.api.repositorios import hortas, usuarios
 
 rotas = APIRouter(prefix="/autenticacao", tags=["autenticacao"])
 
@@ -73,5 +73,32 @@ def excluir_conta(usuario: dict = Depends(seguranca.usuario_atual)) -> None:
     A LGPD dá ao titular o direito de eliminação, e "marcamos como inativo mas
     guardamos tudo" não é eliminação. As consultas têm ON DELETE CASCADE, então
     o histórico vai junto.
+
+    Horta é diferente: ela pode ter registros de outras pessoas. As hortas em
+    que a pessoa é a única participante vão junto; as que têm outros membros
+    impedem a exclusão até a responsabilidade ser transferida - apagá-las
+    apagaria trabalho alheio, e deixá-las sem responsável as tornaria órfãs.
     """
-    usuarios.desativar(usuario["id"])
+    sob_responsabilidade = hortas.hortas_sob_responsabilidade(usuario["id"])
+    compartilhadas = [h["nome"] for h in sob_responsabilidade if h["membros"] > 1]
+    if compartilhadas:
+        raise HTTPException(
+            status.HTTP_409_CONFLICT,
+            "você é responsável por hortas com outros membros ("
+            + ", ".join(compartilhadas)
+            + "): transfira a responsabilidade antes de excluir a conta")
+
+    for horta in sob_responsabilidade:
+        hortas.apagar_horta(horta["id"])
+
+    try:
+        usuarios.desativar(usuario["id"])
+    except Exception as erro:
+        # Sem a migracao 002, o manejo registrado pela pessoa ainda trava a
+        # exclusao (ON DELETE RESTRICT). Responder 409 legivel em vez de 500.
+        if type(erro).__name__ != "ForeignKeyViolation":
+            raise
+        raise HTTPException(
+            status.HTTP_409_CONFLICT,
+            "a conta tem registros de manejo que ainda impedem a exclusão; "
+            "a atualização do banco que resolve isso está pendente")

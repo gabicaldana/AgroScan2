@@ -5,6 +5,8 @@ banco fora do ar aparece como erro generico numa tela qualquer, e a pessoa
 descobre a causa depurando o front.
 """
 
+import sys
+
 from fastapi import APIRouter
 
 from app.api import banco, configuracao
@@ -26,9 +28,15 @@ def saude() -> Saude:
             migracao = linha["numero"] if linha else None
             estado_do_banco = "ok"
         except Exception as erro:
-            # A mensagem entra na resposta de proposito: e o que transforma
-            # "nao funciona" em "a string de conexao esta errada".
-            estado_do_banco = f"erro: {type(erro).__name__}: {erro}"
+            # Em desenvolvimento, a mensagem inteira entra na resposta: e o que
+            # transforma "nao funciona" em "a string de conexao esta errada".
+            # Em producao, so o tipo - a mensagem traz host, porta e usuario do
+            # banco, e esta rota e publica. O detalhe vai para o log da funcao.
+            if configuracao.E_PRODUCAO:
+                print(f"/saude: falha no banco: {erro!r}", file=sys.stderr)
+                estado_do_banco = f"erro: {type(erro).__name__}"
+            else:
+                estado_do_banco = f"erro: {type(erro).__name__}: {erro}"
 
     return Saude(
         versao_api=configuracao.VERSAO_DA_API,

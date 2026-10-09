@@ -59,6 +59,7 @@ export async function salvar(
   sintomas: Iterable<string>,
   hipoteses: readonly Hipotese[],
   coordenada?: { latitude: number; longitude: number } | null,
+  canteiroId?: number | null,
 ): Promise<{ offlineId: string; enviada: boolean }> {
   const offlineId = fila.novoOfflineId();
 
@@ -78,6 +79,7 @@ export async function salvar(
     versaoCatalogo: catalogoAtivo().versao,
     latitude: coordenada?.latitude ?? null,
     longitude: coordenada?.longitude ?? null,
+    canteiroId: canteiroId ?? null,
   });
 
   if (!sessao.autenticado()) return { offlineId, enviada: false };
@@ -115,6 +117,7 @@ export async function sincronizar(): Promise<fila.ResultadoDoDespacho> {
         versaoCatalogo: c.versaoCatalogo,
         latitude: c.latitude,
         longitude: c.longitude,
+        canteiroId: c.canteiroId ?? null,
       })),
     ),
   );

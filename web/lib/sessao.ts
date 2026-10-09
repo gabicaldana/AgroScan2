@@ -18,6 +18,7 @@
 const CHAVE_TOKEN = "agroscan.token";
 const CHAVE_USUARIO = "agroscan.usuario";
 const CHAVE_HISTORICO = "agroscan.historico";
+const CHAVE_CANTEIROS = "agroscan.canteiros";
 
 export type UsuarioDaSessao = {
   id: number;
@@ -81,6 +82,7 @@ export function encerrar(): void {
   apagar(CHAVE_TOKEN);
   apagar(CHAVE_USUARIO);
   apagar(CHAVE_HISTORICO);
+  apagar(CHAVE_CANTEIROS);
 }
 
 /**
@@ -92,13 +94,33 @@ export function encerrar(): void {
  * quem entra depois não pode ver o caderno de quem saiu.
  */
 export function guardarHistorico(itens: readonly unknown[]): void {
-  const dono = usuario();
-  if (!dono) return;
-  gravar(CHAVE_HISTORICO, JSON.stringify({ usuarioId: dono.id, itens }));
+  guardarDoDono(CHAVE_HISTORICO, itens);
 }
 
 export function historicoGuardado<T>(): T[] {
-  const bruto = ler(CHAVE_HISTORICO);
+  return guardadoDoDono<T>(CHAVE_HISTORICO);
+}
+
+/**
+ * Os canteiros ativos da pessoa, para vincular a consulta ao canteiro sem rede
+ * (US25). Mesmas garantias do histórico: do dono, e apagados ao sair.
+ */
+export function guardarCanteiros(itens: readonly unknown[]): void {
+  guardarDoDono(CHAVE_CANTEIROS, itens);
+}
+
+export function canteirosGuardados<T>(): T[] {
+  return guardadoDoDono<T>(CHAVE_CANTEIROS);
+}
+
+function guardarDoDono(chave: string, itens: readonly unknown[]): void {
+  const dono = usuario();
+  if (!dono) return;
+  gravar(chave, JSON.stringify({ usuarioId: dono.id, itens }));
+}
+
+function guardadoDoDono<T>(chave: string): T[] {
+  const bruto = ler(chave);
   const dono = usuario();
   if (!bruto || !dono) return [];
   try {
@@ -107,7 +129,7 @@ export function historicoGuardado<T>(): T[] {
       ? copia.itens
       : [];
   } catch {
-    apagar(CHAVE_HISTORICO);
+    apagar(chave);
     return [];
   }
 }

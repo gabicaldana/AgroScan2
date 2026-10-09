@@ -23,7 +23,7 @@
 // quem ja tem o app instalado guardou a casca antiga em cache, e sem a troca
 // de nome do cache continuaria abrindo a tela de camera offline por tempo
 // indeterminado.
-const VERSAO = "v5";
+const VERSAO = "v6";
 const CACHE_APP = `agroscan-app-${VERSAO}`;
 const CACHE_ESTATICO = `agroscan-estatico-${VERSAO}`;
 
@@ -31,7 +31,7 @@ const CACHE_ESTATICO = `agroscan-estatico-${VERSAO}`;
 // para qualquer navegacao offline que nao esteja nesta lista.
 // /sintomas saiu: virou redirecionamento para a raiz, e cachear um redirect
 // so gastaria espaco.
-const CASCA = ["/", "/resultado", "/caderno"];
+const CASCA = ["/", "/resultado", "/caderno", "/hortas", "/horta", "/canteiro"];
 
 /**
  * Extrai do HTML os arquivos que a pagina precisa para renderizar.
