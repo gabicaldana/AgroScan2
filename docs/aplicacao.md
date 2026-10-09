@@ -162,8 +162,22 @@ Atrás de uma rede que bloqueia a porta 5432, gere o SQL e cole no SQL Editor do
 Neon. Num banco que já existe, pule a migração 001, que não é reexecutável:
 
 ```bash
-python -m app.seed --gerar-sql --desde-migracao 2   # banco existente
-python -m app.seed --gerar-sql                      # banco vazio
+python -m app.seed --gerar-sql --desde-migracao 2 --separar   # banco existente
+python -m app.seed --gerar-sql                                # banco vazio
+```
+
+Com `--separar` saem dois arquivos: execute `carga_catalogo_1_migracoes.sql` e,
+só depois que ele terminar, `carga_catalogo_2_catalogo.sql`.
+
+**Confira o banco antes de executar.** O banco da aplicação se chama `agroscan`
+com um espaço no fim (`agroscan%20` na `DATABASE_URL`), e no seletor do SQL
+Editor ele parece igual a outros. No banco certo, isto responde `[agroscan ]`,
+`tipo_agente` e o número da última migração:
+
+```sql
+SELECT '[' || current_database() || ']' AS banco,
+       to_regtype('tipo_agente')        AS tipo,
+       (SELECT max(numero) FROM migracao_aplicada) AS migracao;
 ```
 
 O catálogo é **carregado**, nunca escrito à mão — `app/seed.py` lê o JSON
