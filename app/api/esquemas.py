@@ -123,6 +123,15 @@ class Saude(BaseModel):
         description="'ok', 'nao_configurado' ou a mensagem do erro de conexao.",
     )
     migracao_aplicada: int | None
+    catalogo_no_banco: bool | None = Field(
+        None,
+        description=(
+            "A versao do catalogo que a API serve existe no banco? Falso quer "
+            "dizer que nenhuma consulta nova consegue ser gravada: cada uma "
+            "referencia essa versao por chave estrangeira. Corrige-se com "
+            "`python -m app.seed`."
+        ),
+    )
 
 
 # =============================================================================

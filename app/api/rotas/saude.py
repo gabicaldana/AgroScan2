@@ -20,12 +20,18 @@ rotas = APIRouter(tags=["saude"])
 def saude() -> Saude:
     estado_do_banco = "nao_configurado"
     migracao = None
+    catalogo_no_banco = None
 
     if banco.disponivel():
         try:
             linha = banco.consultar_um(
                 "SELECT max(numero) AS numero FROM migracao_aplicada")
             migracao = linha["numero"] if linha else None
+            # Foi a falta disto que escondeu por duas semanas um banco preso no
+            # catalogo anterior, com toda gravacao de consulta dando 500.
+            catalogo_no_banco = banco.consultar_um(
+                "SELECT 1 AS existe FROM versao_catalogo WHERE versao = %s",
+                (catalogo().versao,)) is not None
             estado_do_banco = "ok"
         except Exception as erro:
             # Em desenvolvimento, a mensagem inteira entra na resposta: e o que
@@ -44,4 +50,5 @@ def saude() -> Saude:
         versao_catalogo=catalogo().versao,
         banco=estado_do_banco,
         migracao_aplicada=migracao,
+        catalogo_no_banco=catalogo_no_banco,
     )
