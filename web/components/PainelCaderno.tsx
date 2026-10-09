@@ -1,9 +1,10 @@
 "use client";
 
-import { useCallback, useEffect, useState } from "react";
+import { useCallback, useEffect, useMemo, useState } from "react";
 import { BotaoLink } from "@/components/Botao";
 import { EstadoVazio } from "@/components/EstadoVazio";
 import * as caderno from "@/lib/caderno.ts";
+import * as filtro from "@/lib/filtro-caderno.ts";
 import * as sessao from "@/lib/sessao.ts";
 import { useVersaoDoCatalogo } from "@/components/SincronizacaoDoCatalogo";
 import { catalogoAtivo } from "@/lib/catalogo.ts";
@@ -18,6 +19,9 @@ import { catalogoAtivo } from "@/lib/catalogo.ts";
  * esconder: é a informação de que aquele registro ainda mora só ali, e o
  * produtor precisa saber disso antes de trocar de celular.
  */
+
+/** Quantos registros a tela mostra de cada vez. */
+const POR_PAGINA = 20;
 
 /** A ficha vem da base local, não do servidor - funciona em modo avião.
  *
@@ -46,13 +50,17 @@ export function PainelCaderno() {
   const [temConta, setTemConta] = useState(false);
   const [sincronizando, setSincronizando] = useState(false);
   const [aviso, setAviso] = useState<string | null>(null);
+  const [copiaLocal, setCopiaLocal] = useState(false);
+  const [filtroAtual, setFiltroAtual] = useState<filtro.Filtro>(filtro.SEM_FILTRO);
+  const [visiveis, setVisiveis] = useState(POR_PAGINA);
 
   const recarregar = useCallback(async () => {
     // `sessao` le do localStorage, que nao existe durante a renderizacao no
     // servidor. A leitura acontece depois do primeiro await, ja no cliente -
     // e nunca de forma sincrona dentro do efeito.
-    const { registros } = await caderno.historico(detalhar);
+    const { registros, servidorRespondeu } = await caderno.historico(detalhar);
     setTemConta(sessao.autenticado());
+    setCopiaLocal(sessao.autenticado() && !servidorRespondeu);
     setRegistros(registros);
     setCarregando(false);
   }, []);
@@ -94,6 +102,21 @@ export function PainelCaderno() {
   }
 
   const pendentes = registros.filter((r) => r.pendente).length;
+
+  const culturas = useMemo(() => filtro.culturasPresentes(registros), [registros]);
+  const filtrados = useMemo(
+    () => filtro.filtrar(registros, filtroAtual, new Date()),
+    [registros, filtroAtual],
+  );
+
+  function filtrarPor(novo: Partial<filtro.Filtro>) {
+    setFiltroAtual((atual) => ({ ...atual, ...novo }));
+    setVisiveis(POR_PAGINA);
+  }
+
+  const filtrando =
+    filtroAtual.periodo !== filtro.SEM_FILTRO.periodo ||
+    filtroAtual.culturaId !== filtro.SEM_FILTRO.culturaId;
 
   if (carregando) {
     return <p className="text-texto-suave mt-6">Abrindo o caderno…</p>;
@@ -157,13 +180,116 @@ export function PainelCaderno() {
         </p>
       )}
 
-      <ul className="flex flex-col gap-3">
-        {registros.map((r) => (
-          <li key={r.offlineId}>
-            <Registro registro={r} />
-          </li>
-        ))}
-      </ul>
+      {copiaLocal && (
+        <p className="text-texto-suave text-sm">
+          Sem conexão: mostrando a última cópia salva neste aparelho.
+        </p>
+      )}
+
+      <Filtros
+        atual={filtroAtual}
+        culturas={culturas}
+        aoMudar={filtrarPor}
+      />
+
+      {filtrados.length === 0 ? (
+        <div className="border-borda rounded-lg border-2 border-dashed p-6 text-center">
+          <p className="font-bold">Nenhum registro neste filtro</p>
+          {filtrando && (
+            <button
+              type="button"
+              onClick={() => filtrarPor(filtro.SEM_FILTRO)}
+              className="text-primaria h-toque mt-2 px-4 font-bold underline"
+            >
+              Ver todos
+            </button>
+          )}
+        </div>
+      ) : (
+        <>
+          <p className="text-texto-suave text-sm" role="status">
+            {filtrados.length}{" "}
+            {filtrados.length === 1 ? "registro" : "registros"}
+            {filtrando && ` de ${registros.length}`}
+          </p>
+
+          <ul className="flex flex-col gap-3">
+            {filtrados.slice(0, visiveis).map((r) => (
+              <li key={r.offlineId}>
+                <Registro registro={r} />
+              </li>
+            ))}
+          </ul>
+
+          {filtrados.length > visiveis && (
+            <button
+              type="button"
+              onClick={() => setVisiveis((v) => v + POR_PAGINA)}
+              className="border-borda-forte h-toque w-full rounded-lg border-2 px-4 text-base font-bold"
+            >
+              Mostrar mais ({filtrados.length - visiveis})
+            </button>
+          )}
+        </>
+      )}
+    </div>
+  );
+}
+
+function Filtros({
+  atual,
+  culturas,
+  aoMudar,
+}: {
+  atual: filtro.Filtro;
+  culturas: { id: string; nome: string; emoji: string | null }[];
+  aoMudar: (novo: Partial<filtro.Filtro>) => void;
+}) {
+  return (
+    <div className="flex flex-col gap-3">
+      <fieldset>
+        <legend className="mb-2 text-sm font-semibold">Período</legend>
+        <div className="grid grid-cols-4 gap-2">
+          {filtro.PERIODOS.map((p) => {
+            const ativo = atual.periodo === p.id;
+            return (
+              <button
+                key={p.id}
+                type="button"
+                aria-pressed={ativo}
+                onClick={() => aoMudar({ periodo: p.id })}
+                className={`h-toque rounded-lg border-2 px-1 text-sm font-bold ${
+                  ativo
+                    ? "border-primaria bg-primaria text-white"
+                    : "border-borda-forte"
+                }`}
+              >
+                {p.rotulo}
+              </button>
+            );
+          })}
+        </div>
+      </fieldset>
+
+      {/* Com uma cultura só, o seletor não teria o que escolher. */}
+      {culturas.length > 1 && (
+        <label className="flex flex-col gap-2">
+          <span className="text-sm font-semibold">Cultura</span>
+          <select
+            value={atual.culturaId ?? ""}
+            onChange={(e) => aoMudar({ culturaId: e.target.value || null })}
+            className="border-borda-forte bg-fundo h-toque rounded-lg border-2 px-3 text-base"
+          >
+            <option value="">Todas as culturas</option>
+            {culturas.map((c) => (
+              <option key={c.id} value={c.id}>
+                {c.emoji ? `${c.emoji} ` : ""}
+                {c.nome}
+              </option>
+            ))}
+          </select>
+        </label>
+      )}
     </div>
   );
 }

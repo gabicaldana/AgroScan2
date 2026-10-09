@@ -17,6 +17,7 @@
 
 const CHAVE_TOKEN = "agroscan.token";
 const CHAVE_USUARIO = "agroscan.usuario";
+const CHAVE_HISTORICO = "agroscan.historico";
 
 export type UsuarioDaSessao = {
   id: number;
@@ -79,4 +80,34 @@ export function iniciar(novoToken: string, dono: UsuarioDaSessao): void {
 export function encerrar(): void {
   apagar(CHAVE_TOKEN);
   apagar(CHAVE_USUARIO);
+  apagar(CHAVE_HISTORICO);
+}
+
+/**
+ * A última cópia do histórico que o servidor devolveu, para o caderno abrir
+ * sem rede. Sem ela, o que já foi sincronizado sumiria em modo avião e o
+ * caderno mostraria só o que ainda está na fila.
+ *
+ * Guardada com o id do dono e apagada em `encerrar`: num celular compartilhado,
+ * quem entra depois não pode ver o caderno de quem saiu.
+ */
+export function guardarHistorico(itens: readonly unknown[]): void {
+  const dono = usuario();
+  if (!dono) return;
+  gravar(CHAVE_HISTORICO, JSON.stringify({ usuarioId: dono.id, itens }));
+}
+
+export function historicoGuardado<T>(): T[] {
+  const bruto = ler(CHAVE_HISTORICO);
+  const dono = usuario();
+  if (!bruto || !dono) return [];
+  try {
+    const copia = JSON.parse(bruto) as { usuarioId: number; itens: T[] };
+    return copia.usuarioId === dono.id && Array.isArray(copia.itens)
+      ? copia.itens
+      : [];
+  } catch {
+    apagar(CHAVE_HISTORICO);
+    return [];
+  }
 }

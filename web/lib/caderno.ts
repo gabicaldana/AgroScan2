@@ -19,6 +19,8 @@ import type { Hipotese } from "./diagnostico.ts";
 
 let armazenamento: fila.Armazenamento | null = null;
 
+const LIMITE_DO_SERVIDOR = 200;
+
 /** O armazenamento do app. Trocável nos testes. */
 export function deposito(): fila.Armazenamento {
   if (armazenamento === null) armazenamento = fila.armazenamentoIndexedDB();
@@ -153,33 +155,40 @@ export async function historico(
     return { registros: ordenar(registros), servidorRespondeu: false };
   }
 
+  let remotas: api.ConsultaResumida[];
+  let servidorRespondeu: boolean;
   try {
-    const remotas = await api.listarConsultas({ limite: 100 });
-    const jaNaFila = new Set(registros.map((r) => r.offlineId));
-
-    for (const c of remotas) {
-      // A fila vence: se o mesmo registro está nos dois lugares, o local é o
-      // que o produtor acabou de criar e ainda não teve confirmação lida.
-      if (jaNaFila.has(c.offline_id)) continue;
-      registros.push({
-        id: c.id,
-        offlineId: c.offline_id,
-        culturaId: c.cultura_id,
-        culturaNome: c.cultura_nome,
-        emoji: c.emoji,
-        registradaEm: c.registrada_em,
-        doencaId: c.doenca_id,
-        doencaNome: c.doenca_nome,
-        compatibilidade: c.compatibilidade,
-        pendente: false,
-        temFeedback: c.tem_feedback,
-      });
-    }
-    return { registros: ordenar(registros), servidorRespondeu: true };
+    // O limite máximo da API. O filtro roda no aparelho sobre esta lista, para
+    // funcionar igual com e sem rede; registros além dela não aparecem.
+    remotas = await api.listarConsultas({ limite: LIMITE_DO_SERVIDOR });
+    sessao.guardarHistorico(remotas);
+    servidorRespondeu = true;
   } catch {
-    // Sem rede ou servidor fora: o caderno continua mostrando o que é local.
-    return { registros: ordenar(registros), servidorRespondeu: false };
+    // Sem rede ou servidor fora: a última cópia que o servidor devolveu.
+    remotas = sessao.historicoGuardado<api.ConsultaResumida>();
+    servidorRespondeu = false;
   }
+
+  const jaNaFila = new Set(registros.map((r) => r.offlineId));
+  for (const c of remotas) {
+    // A fila vence: se o mesmo registro está nos dois lugares, o local é o
+    // que o produtor acabou de criar e ainda não teve confirmação lida.
+    if (jaNaFila.has(c.offline_id)) continue;
+    registros.push({
+      id: c.id,
+      offlineId: c.offline_id,
+      culturaId: c.cultura_id,
+      culturaNome: c.cultura_nome,
+      emoji: c.emoji,
+      registradaEm: c.registrada_em,
+      doencaId: c.doenca_id,
+      doencaNome: c.doenca_nome,
+      compatibilidade: c.compatibilidade,
+      pendente: false,
+      temFeedback: c.tem_feedback,
+    });
+  }
+  return { registros: ordenar(registros), servidorRespondeu };
 }
 
 function ordenar(registros: RegistroDoCaderno[]): RegistroDoCaderno[] {

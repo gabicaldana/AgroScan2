@@ -2,6 +2,31 @@
 
 Registre aqui as mudanças relevantes por sprint ou marco avaliativo.
 
+## Sprint 3 - Horta, canteiros e manejo · 29/09 a 12/10/2026
+
+### Caderno filtrável e legível sem rede (US19) e instalação no iPhone (US40)
+
+- **Filtro do caderno** por período (7, 30, 90 dias ou tudo) e por cultura, com paginação de 20 em 20. Roda no aparelho, sobre o que já foi carregado, para funcionar igual em modo avião. O seletor só oferece culturas que têm registro.
+- **Histórico sem rede**: antes, o caderno offline mostrava só a fila, e o que já tinha subido sumia. A última lista do servidor agora fica guardada no aparelho, vinculada ao dono e apagada ao sair da conta. A tela avisa quando mostra essa cópia.
+- **Instruções para iPhone**: o caminho Compartilhar → Adicionar à Tela de Início, com o aviso de abrir o app ao menos uma vez por semana (risco R02). Aparece só no iOS, inclusive no iPad que se apresenta como Mac, e some no app instalado ou ao ser dispensada.
+- **Verificado**: 212 testes TypeScript e 74 Python passando; build de produção sem erro.
+
+### API publicada: o cadastro dava 404 no site ([#67](https://github.com/CampusCEUB/AgroScan/issues/67))
+
+A API **nunca tinha sido publicada**. Na Vercel só existia o projeto do PWA, e
+sem a variável `API_URL` o Next não cria o encaminhamento de `/api/v1`: cadastro,
+login e sincronização caíam no próprio front e voltavam 404. O diagnóstico
+continuava funcionando porque roda no navegador. Decisão registrada no
+[ADR 0010](docs/decisoes/adr-0010-publicacao-em-dois-projetos.md).
+
+- **Novo projeto `agroscan-api`** na Vercel, com raiz no repositório, e `API_URL` no projeto do PWA. Segredo JWT de produção gerado à parte, distinto do de desenvolvimento.
+- **Conexão com o banco corrigida** em `app/api/banco.py`: o `statement_timeout` ia como parâmetro de inicialização, e o pooler da Neon o recusa — publicada, a API respondia sem banco.
+- **Função movida para `gru1` (São Paulo)**, junto do banco em `sa-east-1`; a primeira publicação saiu em Washington.
+- **Incidente durante a correção**: um `"framework": null` no `vercel.json` da raiz, colocado para a API, também valeu para o PWA, que ficou cerca de dez minutos servindo só arquivos estáticos (todas as páginas com 404). Revertido; a lição está no ADR 0010 e em [docs/aplicacao.md](docs/aplicacao.md#publicação).
+- **Verificado no ambiente publicado**: `/api/v1/saude` com banco `ok`; cadastro, login, listagem do caderno e exclusão de conta pelo endereço do PWA; `/sintomas` redireciona para `/` (308), o que atende a conferência da [#68](https://github.com/CampusCEUB/AgroScan/issues/68). Contas de teste apagadas pela própria API.
+- **Framework Preset do `agroscan-api` trocado para *Other*** no painel da Vercel; publicação conferida em seguida.
+- **Dois repositórios, por decisão** ([ADR 0011](docs/decisoes/adr-0011-dois-repositorios-com-espelho-de-publicacao.md)): a organização não autoriza ligar a Vercel aqui, então o reapontamento deixa de ser pendência. Este repositório segue completo e avaliado; `gabicaldana/AgroScan2` vira espelho de publicação, com o mesmo histórico, avançado só por fast-forward depois de cada merge.
+
 ## Sprint 2 - Base de conhecimento e publicação · 15/09 a 28/09/2026
 
 ### Repositório único: a aplicação veio para o institucional

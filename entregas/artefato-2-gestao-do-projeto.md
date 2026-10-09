@@ -596,11 +596,12 @@ vivem no mesmo histórico, e a integração contínua roda sobre o repositório 
 > citados no [relatório da Sprint 1](../sprints/sprint-01.md#pull-requests-aceitos)
 > resolvem no repositório de origem, que segue publicado.
 
-> ⚠️ **Pendência: o ambiente publicado.** O deploy na Vercel está ligado a
-> `gabicaldana/AgroScan2`. Enquanto não for reapontado para
-> `CampusCEUB/AgroScan`, o código evolui aqui e o ambiente publicado continua
-> saindo do repositório antigo. Agrava o risco R06 e mantém aberta a `issue`
-> [#67](https://github.com/CampusCEUB/AgroScan/issues/67).
+> **Atualização de 08/10/2026 - o ambiente publicado.** O deploy na Vercel
+> continua ligado a `gabicaldana/AgroScan2`: ligá-lo a `CampusCEUB/AgroScan`
+> exige uma autorização da organização que não será concedida. O AgroScan2
+> passou a ser um **espelho de publicação**, com o mesmo histórico deste
+> repositório, que segue sendo o único completo e o avaliado. Fluxo e regras no
+> [ADR 0011](../docs/decisoes/adr-0011-dois-repositorios-com-espelho-de-publicacao.md).
 
 ## 4.2 Estrutura do repositório
 

@@ -122,7 +122,7 @@ navegador - e seja verificada por igualdade exata sobre as mesmas fixtures.
 | **Embrapa Hortaliças, IAC** | Fonte técnica da curadoria de doenças, sintomas e manejo | Consulta humana, não automatizada | Baixo - material público e estável |
 | **AGROFIT/MAPA** | Referência de ingredientes ativos e registro por cultura/praga | Consulta humana | Médio - o registro muda; por isso o sistema apresenta o ingrediente como referência e **remete o usuário ao AGROFIT**, em vez de afirmar registro |
 | **Repositório Digipathos (Embrapa)** | Candidato a acervo de imagens para o modelo de visão | Download de dados, se a auditoria aprovar | Alto - cobertura de hortaliças não verificada (risco R04) |
-| **Vercel** | Publicação do front-end e da função Python da API | Plataforma | Médio - inicialização a frio afeta RNF03 |
+| **Vercel** | Publicação do front-end e da função Python da API, em dois projetos com a API atrás do PWA ([ADR 0010](decisoes/adr-0010-publicacao-em-dois-projetos.md)); função em `gru1`, perto do banco | Plataforma | Médio - inicialização a frio afeta RNF03 |
 | **PostgreSQL gerenciado** | Banco relacional | Plataforma | Médio - limite de conexões no plano gratuito (risco R05) |
 
 **Nenhuma integração é necessária para o diagnóstico funcionar.** É essa
@@ -211,7 +211,7 @@ fixtures compartilhadas.
 | R02 | Descarte do armazenamento local em iOS após ~7 dias sem uso | Perda do catálogo em cache e das consultas não enviadas | Catálogo reconstruível na abertura seguinte com rede; fila esvaziada na abertura; orientação ao usuário de iOS (US40) |
 | R04 | Acervo de imagens sem cobertura suficiente de hortaliças | A identificação por imagem não sai do condicionado | Escopo fora do núcleo; RF11 garante que o sistema declare a indisponibilidade em vez de chutar |
 | R05 | Esgotamento de conexões do banco em ambiente serverless | API indisponível sob concorrência | Conexão agrupada em execução e direta apenas para migração; reaproveitamento entre requisições; tempo limite configurado |
-| R06 | Ambiente publicado defasado em relação ao código | Demonstração e avaliação sobre versão errada | Conferência da versão publicada no Definition of Done (critério C11) |
+| R06 | Ambiente publicado defasado em relação ao código | Demonstração e avaliação sobre versão errada | Conferência da versão publicada no Definition of Done (critério C11); espelho de publicação com o mesmo histórico do institucional, só por fast-forward ([ADR 0011](decisoes/adr-0011-dois-repositorios-com-espelho-de-publicacao.md)) |
 | R07 | Dependência de teste ausente na lista de dependências | 22 testes de integração da API não executam de forma confiável; RNF19 e RNF20 ficam sem evidência | Declarar a dependência e verificar que o CI executa - e não pula - os testes da API |
 | R08 | Divergência silenciosa entre as três implementações do motor | O usuário recebe diagnóstico diferente do que a base determina | Fixtures geradas e versionadas; comparação por igualdade exata, sem tolerância; teste de frescor no CI |
 

@@ -80,6 +80,8 @@ RF23 a RF27, conforme a
 | --- | --- | --- | --- |
 | 1 | **Comunidade parceira da Atividade de Extensão não definida** (R03) | Impede fixar a priorização das famílias botânicas na curadoria | Herdado - [#73](https://github.com/CampusCEUB/AgroScan/issues/73) |
 | 2 | **Datas dos Artefatos 5 a 9 não divulgadas** | O calendário das sprints seguintes é provisório | Herdado - [#74](https://github.com/CampusCEUB/AgroScan/issues/74) |
+| 3 | **API nunca publicada** - cadastro e login davam 404 no site | Caderno e sincronização inutilizáveis no ambiente publicado | ✅ Resolvido em 08/10 - [ADR 0010](../docs/decisoes/adr-0010-publicacao-em-dois-projetos.md), [#67](https://github.com/CampusCEUB/AgroScan/issues/67) |
+| 4 | **Framework Preset do projeto `agroscan-api`** detectado como FastAPI | Os pushes falhavam na publicação da API | ✅ Resolvido em 08/10 - preset trocado para *Other* no painel |
 
 ## Riscos ativos no ciclo
 
@@ -87,6 +89,7 @@ RF23 a RF27, conforme a
 | --- | --- | --- |
 | **R01 - volume da curadoria agronômica** | A US04 soma cucurbitáceas e o fechamento das solanáceas no mesmo ciclo, junto com 19 pontos de desenvolvimento | Curadoria por família; ordem de corte da seção 3.4 do Artefato 2, que sacrifica US26 antes das demais |
 | **R05 - esgotamento de conexões do banco** | O épico E5 acrescenta tabelas e consultas novas ao PostgreSQL | Conexão agrupada em tempo de execução, já adotada |
+| **R06 - ambiente publicado defasado** | PWA e API em dia desde 08/10; a Vercel publica do espelho `gabicaldana/AgroScan2`, porque a organização não autoriza a integração | Fluxo do [ADR 0011](../docs/decisoes/adr-0011-dois-repositorios-com-espelho-de-publicacao.md): commit no espelho, conferência no publicado, PR aqui, fast-forward do espelho após o merge |
 
 ## Retrospectiva
 

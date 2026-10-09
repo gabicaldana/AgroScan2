@@ -3,6 +3,7 @@ import { IBM_Plex_Sans } from "next/font/google";
 import "./globals.css";
 import { BarraInferior } from "@/components/BarraInferior";
 import { CabecalhoApp } from "@/components/CabecalhoApp";
+import { InstrucaoIOS } from "@/components/InstrucaoIOS";
 import { RegistroServiceWorker } from "@/components/RegistroServiceWorker";
 import { SincronizacaoDoCatalogo } from "@/components/SincronizacaoDoCatalogo";
 
@@ -45,6 +46,7 @@ export default function RootLayout({
         <SincronizacaoDoCatalogo />
         <CabecalhoApp />
         <main className="flex-1 pb-[calc(var(--spacing-toque)+env(safe-area-inset-bottom))]">
+          <InstrucaoIOS />
           {children}
         </main>
         <BarraInferior />
