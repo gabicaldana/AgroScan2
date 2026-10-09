@@ -391,7 +391,7 @@ class TestExclusaoDeConta(_Autenticado):
             r = CLIENTE.delete(f"{PREFIXO}/autenticacao/eu")
         self.assertEqual(r.status_code, 409)
         self.assertIn("Horta da Escola", r.json()["detail"])
-        usuarios.desativar.assert_not_called()
+        usuarios.excluir.assert_not_called()
 
     def test_horta_so_da_pessoa_vai_junto_com_a_conta(self):
         with (patch("app.api.rotas.autenticacao.hortas") as hortas,
@@ -401,7 +401,7 @@ class TestExclusaoDeConta(_Autenticado):
             r = CLIENTE.delete(f"{PREFIXO}/autenticacao/eu")
         self.assertEqual(r.status_code, 204)
         hortas.apagar_horta.assert_called_once_with(3)
-        usuarios.desativar.assert_called_once_with(EU["id"])
+        usuarios.excluir.assert_called_once_with(EU["id"])
 
 
 if __name__ == "__main__":

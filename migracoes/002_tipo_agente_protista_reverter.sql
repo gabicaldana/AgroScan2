@@ -1,4 +1,4 @@
--- Reverte a 003. O PostgreSQL nao remove valor de ENUM: a reversao exige
+-- Reverte a 002. O PostgreSQL nao remove valor de ENUM: a reversao exige
 -- recriar o tipo, e so e segura se nenhuma doenca usar 'protista'. Falha de
 -- proposito enquanto houver - apagar a hernia das cruciferas em silencio
 -- seria pior que nao reverter.
@@ -19,4 +19,4 @@ ALTER TABLE doenca
     USING tipo_agente::text::tipo_agente;
 DROP TYPE tipo_agente_antigo;
 
-DELETE FROM migracao_aplicada WHERE numero = 3;
+DELETE FROM migracao_aplicada WHERE numero = 2;

@@ -53,7 +53,7 @@ TIPO_AGENTE_NO_BANCO = {
     "nematoide": "nematoide",
     "ácaro": "acaro",
     "abiótico": "abiotico",
-    "protista": "protista",  # migracao 003
+    "protista": "protista",  # migracao 002
     "inseto": "acaro",  # praga com o mesmo tratamento de artropode na ficha
 }
 
@@ -353,7 +353,7 @@ def gerar_sql(base: dict, destino: Path, desde_migracao: int = 1) -> None:
                 f"ON CONFLICT (numero) DO NOTHING;")
         partes.append("")
 
-    # Valor novo de ENUM (migracao 003) so pode ser usado depois de
+    # Valor novo de ENUM (migracao 002) so pode ser usado depois de
     # confirmado: as migracoes fecham a propria transacao antes do catalogo.
     partes.append("COMMIT;")
     partes.append("BEGIN;")
@@ -481,7 +481,7 @@ def main(argv: list[str] | None = None) -> None:
     try:
         if not so_catalogo:
             aplicadas = aplicar_migracoes(con)
-            # Confirma antes do catalogo: um valor novo de ENUM (migracao 003)
+            # Confirma antes do catalogo: um valor novo de ENUM (migracao 002)
             # nao pode ser usado na mesma transacao que o criou.
             con.commit()
             print(f"migracoes aplicadas agora: {aplicadas or 'nenhuma (ja estava em dia)'}")

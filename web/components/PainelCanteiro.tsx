@@ -133,7 +133,7 @@ export function PainelCanteiro() {
                 )}
                 <p className="text-texto-suave mt-1 text-sm">
                   {m.doenca_nome && `Contra ${m.doenca_nome} · `}
-                  {m.responsavel_nome ?? "autor removido"}
+                  {m.responsavel_nome}
                 </p>
               </li>
             ))}

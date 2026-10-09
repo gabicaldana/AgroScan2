@@ -285,8 +285,7 @@ def listar_manejos(canteiro_id: int) -> list[dict]:
                   mj.consulta_id, mj.tipo, mj.descricao, mj.produto, mj.dose,
                   mj.aplicado_em, mj.responsavel_id, u.nome AS responsavel_nome
              FROM manejo mj
-             -- LEFT: desde a migracao 002, o autor pode ter excluido a conta.
-             LEFT JOIN usuario u ON u.id = mj.responsavel_id
+             JOIN usuario u ON u.id = mj.responsavel_id
              LEFT JOIN doenca d ON d.id = mj.doenca_id
             WHERE mj.canteiro_id = %s
             ORDER BY mj.aplicado_em DESC, mj.id DESC""",

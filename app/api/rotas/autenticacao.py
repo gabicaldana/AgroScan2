@@ -91,14 +91,7 @@ def excluir_conta(usuario: dict = Depends(seguranca.usuario_atual)) -> None:
     for horta in sob_responsabilidade:
         hortas.apagar_horta(horta["id"])
 
-    try:
-        usuarios.desativar(usuario["id"])
-    except Exception as erro:
-        # Sem a migracao 002, o manejo registrado pela pessoa ainda trava a
-        # exclusao (ON DELETE RESTRICT). Responder 409 legivel em vez de 500.
-        if type(erro).__name__ != "ForeignKeyViolation":
-            raise
-        raise HTTPException(
-            status.HTTP_409_CONFLICT,
-            "a conta tem registros de manejo que ainda impedem a exclusão; "
-            "a atualização do banco que resolve isso está pendente")
+    # Com manejo registrado, a conta é anonimizada em vez de apagada: o
+    # registro de aplicação fica para quem continua na horta. Ver
+    # `usuarios.excluir`.
+    usuarios.excluir(usuario["id"])

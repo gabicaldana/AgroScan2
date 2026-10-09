@@ -1,5 +1,5 @@
 -- =============================================================================
--- AgroScan - Migracao 003: protista como tipo de agente
+-- AgroScan - Migracao 002: protista como tipo de agente
 -- =============================================================================
 -- Banco:    PostgreSQL 16
 --
