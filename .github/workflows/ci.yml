@@ -24,6 +24,10 @@ jobs:
     # partir de 19/10/2026, no meio da Sprint 4. Pipeline de projeto avaliado
     # nao pode trocar de sistema operacional sozinho na semana da entrega.
     runs-on: ubuntu-24.04
+    # Todo o codigo mora em src/; a raiz fica com a documentacao avaliada.
+    defaults:
+      run:
+        working-directory: src
     steps:
       - uses: actions/checkout@v5
 
@@ -35,7 +39,7 @@ jobs:
         with:
           node-version: "24"
           cache: npm
-          cache-dependency-path: web/package-lock.json
+          cache-dependency-path: src/web/package-lock.json
 
       # O motor, a validacao da base e a geracao dos artefatos sao stdlib
       # pura - rodam antes de qualquer instalacao, de proposito. Se um dia
@@ -83,19 +87,19 @@ jobs:
         run: python -m unittest discover -s tests -t . -v
 
       - name: Instalar o app
-        working-directory: web
+        working-directory: src/web
         run: npm ci
 
       - name: Regerar os modulos gerados
-        working-directory: web
+        working-directory: src/web
         run: npm run base
 
       - name: Testes do porte em TypeScript
-        working-directory: web
+        working-directory: src/web
         run: npm test
 
       - name: Lint e build
-        working-directory: web
+        working-directory: src/web
         run: |
           npm run lint
           npm run build
@@ -108,6 +112,6 @@ jobs:
             git diff
             echo
             echo "Rode: python -m app.validacao && python -m app.fixtures && python -m app.preprocessamento"
-            echo "     cd web && npm run base"
+            echo "     cd web && npm run base     (a partir de src/)"
             exit 1
           fi

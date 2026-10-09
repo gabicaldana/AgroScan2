@@ -84,5 +84,5 @@ depender de estimativas numéricas que o curador não tem como sustentar.
 ## Links relacionados
 
 - Requisitos e regras: RF04, RF05, RF06, RN01, RN02, RN03, RN04, RN08
-- Código: `app/diagnostico.py` (referência), `web/lib/diagnostico.ts` (porte)
+- Código: `src/app/diagnostico.py` (referência), `src/web/lib/diagnostico.ts` (porte)
 - [ADR 0004 - Paridade entre motores](adr-0004-paridade-entre-motores.md)

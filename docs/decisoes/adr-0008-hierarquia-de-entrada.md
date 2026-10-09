@@ -124,5 +124,5 @@ Após a implementação, em 12/09/2026:
 - Histórias: US37
 - [ADR 0006 - Recusa sobre logits crus](adr-0006-recusa-sobre-logits-crus.md)
 - [Artefato 3, §1 - Arquitetura da informação](../../entregas/artefato-3-gestao-do-produto.md#1-arquitetura-da-informação)
-- Código alterado: `web/app/page.tsx`, `web/components/BarraInferior.tsx`, `web/components/Laudo.tsx`, `web/components/PainelCaderno.tsx`, `web/next.config.ts`, `web/public/sw.js`
-- Código preservado fora da navegação: `web/components/PainelScanner.tsx`, `web/components/Camera.tsx`, `web/lib/preprocessamento.ts`, `web/lib/recusa.ts`, `web/lib/classificador.ts`, `web/lib/diagnostico-por-imagem.ts`
+- Código alterado: `src/web/app/page.tsx`, `src/web/components/BarraInferior.tsx`, `src/web/components/Laudo.tsx`, `src/web/components/PainelCaderno.tsx`, `src/web/next.config.ts`, `src/web/public/sw.js`
+- Código preservado fora da navegação: `src/web/components/PainelScanner.tsx`, `src/web/components/Camera.tsx`, `src/web/lib/preprocessamento.ts`, `src/web/lib/recusa.ts`, `src/web/lib/classificador.ts`, `src/web/lib/diagnostico-por-imagem.ts`

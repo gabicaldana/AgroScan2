@@ -93,5 +93,5 @@ representativo do que aparece numa horta, que não existe.
 
 - Requisitos: RF10, RF11
 - Riscos: R04 - acervo de imagens não auditado
-- Código: `web/lib/recusa.ts`, `web/lib/classificador.ts`, `data/contrato_visao.json`
+- Código: `src/web/lib/recusa.ts`, `src/web/lib/classificador.ts`, `src/data/contrato_visao.json`
 - [ADR 0005 - Contrato de pré-processamento](adr-0005-contrato-de-preprocessamento.md)

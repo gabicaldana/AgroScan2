@@ -5,8 +5,8 @@
 | | |
 |---|---|
 | **SGBD** | PostgreSQL 16 |
-| **Script de criação** | [`migracoes/001_esquema_inicial.sql`](../migracoes/001_esquema_inicial.sql) |
-| **Script de reversão** | [`migracoes/001_esquema_inicial_reverter.sql`](../migracoes/001_esquema_inicial_reverter.sql) |
+| **Script de criação** | [`src/migracoes/001_esquema_inicial.sql`](../src/migracoes/001_esquema_inicial.sql) |
+| **Script de reversão** | [`src/migracoes/001_esquema_inicial_reverter.sql`](../src/migracoes/001_esquema_inicial_reverter.sql) |
 | **Entidades** | 19 tabelas de aplicação + 1 de controle de migração |
 | **Versão** | 1.0 |
 
@@ -328,7 +328,7 @@ erDiagram
 | 18 | `manejo` | `id` | Crescente | Usuário |
 | 19 | `anotacao` | `id` | Crescente | Usuário |
 
-O detalhamento de cada coluna, com tipo, nulidade e restrição, está comentado diretamente em [`001_esquema_inicial.sql`](../migracoes/001_esquema_inicial.sql).
+O detalhamento de cada coluna, com tipo, nulidade e restrição, está comentado diretamente em [`001_esquema_inicial.sql`](../src/migracoes/001_esquema_inicial.sql).
 
 ---
 

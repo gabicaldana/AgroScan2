@@ -29,7 +29,7 @@ aplicativos.
 | iOS (Safari) | Compartilhar → "Adicionar à Tela de Início" | Parcial - ver limitações |
 | Desktop (Chrome, Edge) | Ícone de instalação na barra de endereço | Completo |
 
-O service worker é **escrito à mão** (`web/public/sw.js`), e não gerado por
+O service worker é **escrito à mão** (`src/web/public/sw.js`), e não gerado por
 biblioteca: ele precisa cachear a casca da aplicação e também os arquivos que o
 HTML referencia, e o comportamento tinha que ser explícito para ser auditável.
 
@@ -73,4 +73,4 @@ afetam um segmento secundário dos usuários, sem comprometer a proposta central
 - Requisitos: RF32, RNF25, RNF26, RNF27, RNF28
 - Riscos: R02 - descarte do armazenamento local em iOS
 - Histórias: US31, US40
-- Código: `web/app/manifest.ts`, `web/public/sw.js`, `web/components/RegistroServiceWorker.tsx`
+- Código: `src/web/app/manifest.ts`, `src/web/public/sw.js`, `src/web/components/RegistroServiceWorker.tsx`

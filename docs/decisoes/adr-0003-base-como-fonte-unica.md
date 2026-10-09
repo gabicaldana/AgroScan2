@@ -25,7 +25,7 @@ exceção lançada.
 
 ## Decisão
 
-`data/base_conhecimento.json` é a **fonte única da verdade** do conteúdo
+`src/data/base_conhecimento.json` é a **fonte única da verdade** do conteúdo
 agronômico. Todos os demais lugares são **derivados por geração**, e nunca
 editados à mão:
 
@@ -46,7 +46,7 @@ com ingrediente ativo de controle direto. Cultura com menos de três doenças ge
 segunda hipótese e a pergunta de desempate deixa de existir.
 
 **O catálogo é carregado, nunca escrito à mão.** Ninguém digita um `INSERT` de
-doença. `app/seed.py` lê o JSON, valida e aplica em `UPSERT` idempotente: rodar
+doença. `src/app/seed.py` lê o JSON, valida e aplica em `UPSERT` idempotente: rodar
 duas vezes deixa o banco no mesmo estado.
 
 **Os artefatos gerados não podem envelhecer em silêncio.** Os quatro artefatos
@@ -87,6 +87,6 @@ exatamente o cenário de divergência silenciosa descrito no contexto.
 ## Links relacionados
 
 - Requisitos: RNF18, RNF20, RN04, RN05, RN06, RN07
-- Código: `data/base_conhecimento.json`, `app/validacao.py`, `app/seed.py`, `web/scripts/gerar-base.mjs`
+- Código: `src/data/base_conhecimento.json`, `src/app/validacao.py`, `src/app/seed.py`, `src/web/scripts/gerar-base.mjs`
 - [ADR 0004 - Paridade entre motores](adr-0004-paridade-entre-motores.md)
 - [Artefato 3, §2.7](../../entregas/artefato-3-gestao-do-produto.md#27-como-a-base-curada-chega-aos-três-lugares)

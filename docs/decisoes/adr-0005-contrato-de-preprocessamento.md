@@ -27,11 +27,11 @@ algoritmo no projeto e obrigar o treino a usar este.
 ## Decisão
 
 O algoritmo de pré-processamento é **definido pelo projeto**, em
-`data/contrato_visao.json`, e quem treinar o modelo tem que obedecê-lo - não o
+`src/data/contrato_visao.json`, e quem treinar o modelo tem que obedecê-lo - não o
 contrário. Os valores existem **antes** do modelo, de propósito.
 
-O algoritmo mora em `app/preprocessamento.py`, é portado em
-`web/lib/preprocessamento.ts`, e os dois são comparados por **digest SHA-256 do
+O algoritmo mora em `src/app/preprocessamento.py`, é portado em
+`src/web/lib/preprocessamento.ts`, e os dois são comparados por **digest SHA-256 do
 tensor float32** sobre imagens geradas por fórmula - nenhuma imagem binária no
 repositório. Sete casos, cobrindo ampliação, redução, retrato, paisagem e
 tamanhos ímpares. Um único valor diferente no último bit muda o digest.
@@ -77,5 +77,5 @@ tornando a identificação por imagem dependente de rede.
 ## Links relacionados
 
 - Requisitos: RF10, RNF19
-- Código: `data/contrato_visao.json`, `app/preprocessamento.py`, `web/lib/preprocessamento.ts`
+- Código: `src/data/contrato_visao.json`, `src/app/preprocessamento.py`, `src/web/lib/preprocessamento.ts`
 - [ADR 0006 - Recusa sobre logits crus](adr-0006-recusa-sobre-logits-crus.md)

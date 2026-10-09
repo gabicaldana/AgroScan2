@@ -83,7 +83,7 @@ da horta (quem participa, se ela existe) é do responsável.
 ## Consequências
 
 - Uma tabela nova que referencie `usuario` com `ON DELETE CASCADE` precisa
-  entrar também na lista da anonimização (`app/api/repositorios/usuarios.py`),
+  entrar também na lista da anonimização (`src/app/api/repositorios/usuarios.py`),
   ou ficará dado pessoal para trás numa conta anonimizada.
 - Adicionar membro pelo e-mail revela se aquele e-mail tem conta — mas só a
   quem já é responsável por uma horta, e sem isso não haveria como dizer
@@ -99,4 +99,4 @@ da horta (quem participa, se ela existe) é do responsável.
   [#28](https://github.com/CampusCEUB/AgroScan/issues/28) US25,
   [#29](https://github.com/CampusCEUB/AgroScan/issues/29) US26
 - [ADR 0009](adr-0009-idempotencia-no-banco.md) - a fila offline que a US25 estende
-- Testes: `tests/test_hortas.py`
+- Testes: `src/tests/test_hortas.py`
