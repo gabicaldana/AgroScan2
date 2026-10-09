@@ -21,7 +21,7 @@ no celular e funcional em modo avião.
 > (US22-US26, [ADR 0012](decisoes/adr-0012-acesso-por-horta.md)), com a consulta
 > vinculável ao canteiro mesmo sem rede. Faltam os **relatórios agregados**.
 >
-> Verificado em 09/10/2026: **328 testes automatizados, nenhuma falha** — 114 em
+> Verificado em 09/10/2026: **331 testes automatizados, nenhuma falha** — 117 em
 > Python e 214 em TypeScript.
 
 ---

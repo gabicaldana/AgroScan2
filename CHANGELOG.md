@@ -24,6 +24,9 @@ catálogo por chave estrangeira, **toda gravação de consulta respondia 500**. 
 fila offline guardou tudo no aparelho, então nada se perdeu, mas nada subiu.
 
 - **Migração 002**: `protista` no `tipo_agente`. O seed confirma as migrações antes de carregar o catálogo, porque um valor novo de ENUM não pode ser usado na transação que o criou.
+- **Migração 003**: o id de cultura passa a aceitar sublinhado. `couve_flor` violava o `CHECK` da 001, que só aceitava hífen, e era o segundo ponto onde a carga abortava. Renomear na base quebraria as consultas de couve-flor já guardadas na fila dos aparelhos.
+- **Validação da base contra as regras do banco**: ids de cultura, sintoma e doença e o `tipo_agente` são conferidos por `python -m app.validacao`, que roda no CI. As duas falhas acima passam a quebrar o CI, e não a carga em produção.
+- **Conferido antes de ir ao Neon**, num PostgreSQL embutido (PGlite): um banco igual ao de produção (migração 001 e catálogo 2026.09.03) recebe o SQL incremental inteiro, como no SQL Editor, e de novo uma segunda vez, sem erro.
 - **`--gerar-sql --desde-migracao 2`**: SQL para banco existente. A 001 não é reexecutável, e o arquivo gerado antes abortava inteiro num banco pronto.
 - **`/saude`**: novo campo `catalogo_no_banco`, que teria denunciado o problema no primeiro dia. Em produção, a rota também deixou de expor a mensagem de erro do banco, que trazia host e usuário.
 

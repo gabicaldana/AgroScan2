@@ -35,3 +35,39 @@ class TestGerarSql(unittest.TestCase):
 
 if __name__ == "__main__":
     unittest.main()
+
+
+class TestValidacaoContraOBanco(unittest.TestCase):
+    """A base precisa obedecer as mesmas regras do banco, ou a carga aborta
+    inteira em producao - e o banco fica preso no catalogo anterior."""
+
+    def base_com(self, mudar):
+        import copy
+
+        base = copy.deepcopy(seed.carregar_json())
+        mudar(base)
+        return base
+
+    def test_id_de_cultura_fora_do_padrao_do_banco_e_erro(self):
+        from app.validacao import BaseInvalida, validar
+
+        base = self.base_com(lambda b: b["culturas"][0].update(id="Couve Flor"))
+        with self.assertRaises(BaseInvalida):
+            validar(base)
+
+    def test_tipo_de_agente_que_o_banco_nao_conhece_e_erro(self):
+        from app.validacao import BaseInvalida, validar
+
+        def mudar(b):
+            b["culturas"][0]["doencas"][0]["tipo_agente"] = "viroide"
+
+        with self.assertRaises(BaseInvalida) as erro:
+            validar(self.base_com(mudar))
+        self.assertIn("viroide", str(erro.exception))
+
+    def test_sublinhado_no_id_de_cultura_e_aceito(self):
+        """couve_flor, como esta na base desde as brassicas (migracao 003)."""
+        from app.validacao import validar
+
+        validar(self.base_com(lambda b: None))
+        self.assertIn("couve_flor", [c["id"] for c in seed.carregar_json()["culturas"]])

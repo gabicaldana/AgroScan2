@@ -16,6 +16,8 @@ A validacao distingue dois niveis:
 Rodar:  python -m app.validacao
 """
 
+import re
+
 from app.catalogo import RAIZ, CAMINHO_JSON, carregar_json
 
 # Classificacao da Embrapa por parte comestivel. 'raiz' cobre raizes,
@@ -25,6 +27,12 @@ GRUPOS = {"fruto", "folha", "flor", "haste", "raiz"}
 # Quantas doencas uma cultura precisa para que o motor consiga oferecer
 # hipotese alternativa. Abaixo disso `melhor_pergunta` nao tem o que perguntar.
 MINIMO_DE_DOENCAS = 3
+
+# As MESMAS regras dos CHECK do banco (migracoes 001 e 003). Um id que o banco
+# recusa aborta a carga do catalogo inteiro em producao - foi o que deixou o
+# banco preso no catalogo 2026.09.03 por duas semanas. Aqui ele vira erro no CI.
+SLUG_CULTURA = re.compile(r"^[a-z][a-z0-9_-]*$")
+SLUG_SINTOMA_E_DOENCA = re.compile(r"^[a-z][a-z0-9_]*$")
 
 class BaseInvalida(Exception):
     """A base de conhecimento tem um erro que impede a carga."""
@@ -47,6 +55,9 @@ def validar(base: dict) -> list[str]:
         if s["id"] in ids_sintomas:
             erros.append(f"sintoma duplicado: {s['id']}")
         ids_sintomas.add(s["id"])
+        if not SLUG_SINTOMA_E_DOENCA.match(s["id"]):
+            erros.append(f"sintoma {s['id']}: id fora do padrao do banco "
+                         f"(minusculas, digitos e sublinhado)")
         if s["orgao"] not in ids_orgaos:
             erros.append(f"sintoma {s['id']}: orgao inexistente '{s['orgao']}'")
 
@@ -59,6 +70,9 @@ def validar(base: dict) -> list[str]:
         if cid in ids_culturas:
             erros.append(f"cultura duplicada: {cid}")
         ids_culturas.add(cid)
+        if not SLUG_CULTURA.match(cid):
+            erros.append(f"cultura {cid}: id fora do padrao do banco "
+                         f"(minusculas, digitos, hifen e sublinhado)")
 
         if cultura.get("grupo") not in GRUPOS:
             erros.append(
@@ -77,6 +91,16 @@ def validar(base: dict) -> list[str]:
             if d["id"] in ids_doencas:
                 erros.append(f"doenca duplicada: {d['id']}")
             ids_doencas.add(d["id"])
+            if not SLUG_SINTOMA_E_DOENCA.match(d["id"]):
+                erros.append(f"doenca {d['id']}: id fora do padrao do banco "
+                             f"(minusculas, digitos e sublinhado)")
+            # Import tardio: o seed importa este modulo.
+            from app.seed import TIPO_AGENTE_NO_BANCO
+            if d.get("tipo_agente") not in TIPO_AGENTE_NO_BANCO:
+                erros.append(
+                    f"doenca {d['id']}: tipo_agente '{d.get('tipo_agente')}' "
+                    f"desconhecido do banco. Exige migracao no ENUM tipo_agente "
+                    f"e entrada em seed.TIPO_AGENTE_NO_BANCO")
 
             if not d["sintomas"]:
                 erros.append(f"doenca {d['id']}: nenhum sintoma no perfil")
