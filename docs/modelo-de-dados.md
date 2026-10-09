@@ -509,7 +509,7 @@ O modelo está na **Terceira Forma Normal (3FN)**:
 
 ## 8. Provisão para escopo condicionado
 
-A identificação automática de doenças por imagem é escopo condicionado (seções 6 e 11.2 do Documento de Software v2). Caso a auditoria do acervo de imagens confirme viabilidade, três entidades serão acrescentadas numa migração posterior:
+A identificação automática de doenças por imagem é escopo condicionado ([Artefato 2](../entregas/artefato-2-gestao-do-projeto.md), épico E8 na seção 2.1 e plano de contingência na seção 3.4). Caso a auditoria do acervo de imagens confirme viabilidade, três entidades serão acrescentadas numa migração posterior:
 
 | Entidade | Papel |
 |---|---|
