@@ -4,6 +4,29 @@ Registre aqui as mudanças relevantes por sprint ou marco avaliativo.
 
 ## Sprint 3 - Horta, canteiros e manejo · 29/09 a 12/10/2026
 
+### Hortas, membros, canteiros e manejo (US22-US26)
+
+Regras de acesso e de exclusão de conta no
+[ADR 0012](docs/decisoes/adr-0012-acesso-por-horta.md).
+
+- **API**: hortas ([#25](https://github.com/CampusCEUB/AgroScan/issues/25)), membros por e-mail com transferência da responsabilidade ([#26](https://github.com/CampusCEUB/AgroScan/issues/26)), canteiros encerráveis e de cultura fixa ([#27](https://github.com/CampusCEUB/AgroScan/issues/27)), consulta vinculada ao canteiro ([#28](https://github.com/CampusCEUB/AgroScan/issues/28)) e registro de manejo ([#29](https://github.com/CampusCEUB/AgroScan/issues/29)). Quem não participa da horta recebe 404.
+- **Telas**: aba Hortas; horta com canteiros e pessoas; canteiro com histórico e registro de manejo; seletor de canteiro ao salvar o diagnóstico, que funciona sem rede pela lista guardada no aparelho; atalho do laudo para registrar o manejo com a doença já marcada.
+- **Exclusão de conta**: hortas só da pessoa vão junto; as compartilhadas pedem a transferência (409, antes era 500). Com manejo registrado, a conta é anonimizada em vez de apagada, preservando a rastreabilidade do registro de defensivo.
+- **Verificado no ambiente publicado** com três contas de teste (responsável, membro e alguém de fora): criação, convite, recusas por papel, canteiro, manejo, transferência e exclusão. Contas apagadas ao fim. O vínculo consulta-canteiro **não** pôde ser conferido: esbarrou no catálogo preso no banco, descrito abaixo.
+- 36 testes novos de contrato HTTP em `tests/test_hortas.py`.
+
+### Catálogo preso no banco: toda consulta dava 500 desde 27/09
+
+A carga do catálogo `2026.09.27` nunca entrou no banco de produção. A hérnia das
+crucíferas tem `tipo_agente` "protista", que o tipo do banco e o seed não
+conheciam, e a carga abortava inteira. Como cada consulta referencia a versão do
+catálogo por chave estrangeira, **toda gravação de consulta respondia 500**. A
+fila offline guardou tudo no aparelho, então nada se perdeu, mas nada subiu.
+
+- **Migração 002**: `protista` no `tipo_agente`. O seed confirma as migrações antes de carregar o catálogo, porque um valor novo de ENUM não pode ser usado na transação que o criou.
+- **`--gerar-sql --desde-migracao 2`**: SQL para banco existente. A 001 não é reexecutável, e o arquivo gerado antes abortava inteiro num banco pronto.
+- **`/saude`**: novo campo `catalogo_no_banco`, que teria denunciado o problema no primeiro dia. Em produção, a rota também deixou de expor a mensagem de erro do banco, que trazia host e usuário.
+
 ### Caderno filtrável e legível sem rede (US19) e instalação no iPhone (US40)
 
 - **Filtro do caderno** por período (7, 30, 90 dias ou tudo) e por cultura, com paginação de 20 em 20. Roda no aparelho, sobre o que já foi carregado, para funcionar igual em modo avião. O seletor só oferece culturas que têm registro.

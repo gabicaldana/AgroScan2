@@ -21,11 +21,11 @@ Use [`template-adr.md`](template-adr.md) como ponto de partida, nomeando o arqui
 | [0009](adr-0009-idempotencia-no-banco.md) | Idempotência da sincronização garantida no banco | Aprovado | RF17, RF18, RN10, RN11 |
 | [0010](adr-0010-publicacao-em-dois-projetos.md) | Publicação em dois projetos da Vercel, com a API atrás do PWA | Aprovado | RNF23, C11, R05, R06 |
 | [0011](adr-0011-dois-repositorios-com-espelho-de-publicacao.md) | Dois repositórios: o institucional completo, o pessoal como espelho de publicação | Aprovado | RNF21, RNF23, C11, R06 |
+| [0012](adr-0012-acesso-por-horta.md) | Acesso por participação na horta, e exclusão de conta com anonimização | Aprovado | RF23-RF27, US22-US26, LGPD |
 
 ## Decisões pendentes de registro
 
 | Assunto | Motivo da pendência |
 | --- | --- |
 | Viabilidade da identificação por imagem | Depende da auditoria do acervo Digipathos, prevista para a Sprint 5 (US38) |
-| Estratégia de autorização por horta | Será definida junto da implementação de hortas e membros, na Sprint 3 |
 | Armazenamento das fotos anexadas à consulta | Depende da escolha do serviço de armazenamento de objetos em camada gratuita |

@@ -17,11 +17,12 @@ no celular e funcional em modo avião.
 > está modelado e versionado em `migracoes/`, a **API REST está implementada**
 > (catálogo, diagnóstico, conta e caderno de campo) e o front-end já a consome,
 > com fila de sincronização offline e caderno filtrável por período e cultura,
-> legível sem rede. Faltam **hortas e canteiros** e os
-> **relatórios agregados**: as tabelas existem, as rotas e as telas não.
+> legível sem rede. **Hortas, membros, canteiros e manejo** estão implementados
+> (US22-US26, [ADR 0012](decisoes/adr-0012-acesso-por-horta.md)), com a consulta
+> vinculável ao canteiro mesmo sem rede. Faltam os **relatórios agregados**.
 >
-> Verificado em 08/10/2026: **286 testes automatizados, nenhuma falha** — 74 em
-> Python e 212 em TypeScript.
+> Verificado em 09/10/2026: **328 testes automatizados, nenhuma falha** — 114 em
+> Python e 214 em TypeScript.
 
 ---
 
@@ -157,6 +158,14 @@ python -m app.seed             # aplica migrações e carrega o catálogo
 uvicorn app.api.principal:app --reload   # http://localhost:8000/api/v1/docs
 ```
 
+Atrás de uma rede que bloqueia a porta 5432, gere o SQL e cole no SQL Editor do
+Neon. Num banco que já existe, pule a migração 001, que não é reexecutável:
+
+```bash
+python -m app.seed --gerar-sql --desde-migracao 2   # banco existente
+python -m app.seed --gerar-sql                      # banco vazio
+```
+
 O catálogo é **carregado**, nunca escrito à mão — `app/seed.py` lê o JSON
 curado, valida e aplica em `UPSERT` idempotente. Rodar duas vezes deixa o banco
 no mesmo estado.
@@ -180,8 +189,13 @@ O navegador nunca fala com `agroscan-api` diretamente: o PWA encaminha
 build**. Sem ela, toda chamada à API dá 404 e só o diagnóstico continua
 funcionando — foi exatamente o defeito corrigido em 08/10/2026.
 
-Duas armadilhas já encontradas:
+Três armadilhas já encontradas:
 
+- **Catálogo novo no código exige carga no banco.** Cada consulta referencia a
+  versão do catálogo por chave estrangeira. Mudou `data/base_conhecimento.json`,
+  rode o seed no banco de produção, ou toda gravação de consulta dará 500 — foi
+  o que aconteceu entre 27/09 e 09/10/2026. O `/saude` denuncia com
+  `"catalogo_no_banco": false`.
 - **Não passe parâmetro de inicialização na conexão** (`options="-c ..."`). O
   pooler da Neon recusa, e a API sobe sem banco.
 - **O `vercel.json` da raiz vale para os dois projetos.** Uma chave como
@@ -202,7 +216,7 @@ git push origin institucional/main:main    # nunca --force
 Conferência depois de publicar:
 
 ```bash
-curl https://agroscan-blond.vercel.app/api/v1/saude   # "banco": "ok"
+curl https://agroscan-blond.vercel.app/api/v1/saude   # "banco": "ok" e "catalogo_no_banco": true
 curl -I https://agroscan-blond.vercel.app/sintomas    # 308 para /
 ```
 
@@ -481,7 +495,8 @@ textual, para continuar legível por quem não distingue as cores.
 | Caderno filtrável por período e cultura, legível sem rede | ✅ |
 | Instruções de instalação para iPhone | ✅ |
 | Curadoria por família: brássicas, solanáceas, cucurbitáceas… | 🔄 9 de 24 culturas |
-| Horta, canteiros, manejo e relatórios agregados | ⬜ tabelas prontas, rotas e telas não |
+| Horta, membros, canteiros e manejo (US22-US26) | ✅ |
+| Relatórios agregados e alerta de rotação | ⬜ Sprint 4 |
 | Identificação por imagem — condicionada à auditoria do acervo | ⬜ falta o modelo |
 
 A identificação por foto é **escopo condicionado**: depende de um acervo de
