@@ -5,7 +5,7 @@ deles, e espalha-los pelas rotas faria uma mudanca de formato passar
 despercebida.
 """
 
-from datetime import datetime
+from datetime import date, datetime
 from typing import Annotated, Literal
 from uuid import UUID
 
@@ -123,6 +123,15 @@ class Saude(BaseModel):
         description="'ok', 'nao_configurado' ou a mensagem do erro de conexao.",
     )
     migracao_aplicada: int | None
+    catalogo_no_banco: bool | None = Field(
+        None,
+        description=(
+            "A versao do catalogo que a API serve existe no banco? Falso quer "
+            "dizer que nenhuma consulta nova consegue ser gravada: cada uma "
+            "referencia essa versao por chave estrangeira. Corrige-se com "
+            "`python -m app.seed`."
+        ),
+    )
 
 
 # =============================================================================
@@ -259,3 +268,92 @@ class PedidoDeFeedback(BaseModel):
         ),
     )
     comentario: str | None = Field(None, max_length=2000)
+
+
+# =============================================================================
+# Horta, canteiros e manejo
+# =============================================================================
+
+UF = Annotated[str, StringConstraints(strip_whitespace=True, to_upper=True,
+                                      pattern=r"^[A-Za-z]{2}$")]
+TextoCurto = Annotated[str, StringConstraints(strip_whitespace=True,
+                                              min_length=1, max_length=120)]
+
+
+class PedidoDeHorta(BaseModel):
+    nome: TextoCurto
+    municipio: TextoCurto
+    uf: UF = Field(..., examples=["DF"])
+    latitude: float | None = Field(None, ge=-90, le=90)
+    longitude: float | None = Field(None, ge=-180, le=180)
+
+    @model_validator(mode="after")
+    def coordenada_completa(self):
+        """As duas, ou nenhuma - o banco tem o mesmo CHECK."""
+        if (self.latitude is None) != (self.longitude is None):
+            raise ValueError(
+                "informe latitude e longitude juntas, ou nenhuma das duas")
+        return self
+
+
+class AlteracaoDeHorta(BaseModel):
+    """Só o que se envia muda. `responsavel_id` transfere a responsabilidade,
+    e precisa apontar para alguém que já é membro."""
+
+    nome: TextoCurto | None = None
+    municipio: TextoCurto | None = None
+    uf: UF | None = None
+    responsavel_id: int | None = None
+
+
+class PedidoDeMembro(BaseModel):
+    """Entra sempre como membro. A responsabilidade muda só por transferência
+    (PATCH da horta): assim nunca há dois responsáveis, nem nenhum."""
+
+    email: EmailNaoValidado = Field(
+        ..., description="E-mail de uma conta que já existe no AgroScan.")
+
+
+class PedidoDeCanteiro(BaseModel):
+    identificacao: TextoCurto = Field(..., examples=["Canteiro 3"])
+    cultura_id: str = Field(..., examples=["alface"])
+    data_plantio: date | None = None
+    area_m2: float | None = Field(None, gt=0)
+
+
+class AlteracaoDeCanteiro(BaseModel):
+    """A cultura NÃO muda aqui. Plantar outra coisa no mesmo lugar é um ciclo
+    novo: encerra-se este canteiro e cadastra-se outro. É a sucessão de
+    canteiros encerrados que permite o alerta de rotação de família."""
+
+    identificacao: TextoCurto | None = None
+    data_plantio: date | None = None
+    area_m2: float | None = Field(None, gt=0)
+    ativo: bool | None = Field(
+        None, description="false encerra o ciclo sem apagar o histórico.")
+
+
+class PedidoDeManejo(BaseModel):
+    tipo: Literal["cultural", "biologico", "quimico"]
+    descricao: Annotated[str, StringConstraints(
+        strip_whitespace=True, min_length=1, max_length=2000)]
+    produto: Annotated[str, StringConstraints(
+        strip_whitespace=True, max_length=200)] | None = None
+    dose: Annotated[str, StringConstraints(
+        strip_whitespace=True, max_length=200)] | None = None
+    aplicado_em: date
+    doenca_id: str | None = None
+    consulta_id: int | None = None
+
+    @model_validator(mode="after")
+    def produto_so_quimico(self):
+        """Produto sem tipo químico é cadastro incoerente; o banco tem o mesmo
+        CHECK. É o campo que a rastreabilidade de resíduo exige no lugar
+        certo."""
+        if self.produto == "":
+            self.produto = None
+        if self.dose == "":
+            self.dose = None
+        if self.produto is not None and self.tipo != "quimico":
+            raise ValueError("produto só pode ser informado em manejo químico")
+        return self

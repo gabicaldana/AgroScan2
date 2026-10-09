@@ -53,6 +53,7 @@ TIPO_AGENTE_NO_BANCO = {
     "nematoide": "nematoide",
     "ácaro": "acaro",
     "abiótico": "abiotico",
+    "protista": "protista",  # migracao 002
     "inseto": "acaro",  # praga com o mesmo tratamento de artropode na ficha
 }
 
@@ -310,7 +311,7 @@ def _literal(valor) -> str:
     return "'" + str(valor).replace("'", "''") + "'"
 
 
-def gerar_sql(base: dict, destino: Path) -> None:
+def gerar_sql(base: dict, destino: Path, desde_migracao: int = 1) -> None:
     """Escreve esquema + catalogo num arquivo .sql unico.
 
     Existe porque nem toda rede deixa sair trafego PostgreSQL: firewall
@@ -320,6 +321,11 @@ def gerar_sql(base: dict, destino: Path) -> None:
 
     O conteudo e o MESMO que `carregar_catalogo` aplica; muda so o transporte.
     Continua sendo gerado a partir do JSON curado, nunca escrito a mao.
+
+    `desde_migracao` existe para banco que ja existe. A 001 cria tabelas e
+    tipos sem IF NOT EXISTS, e reexecuta-la num banco pronto aborta a
+    transacao inteira - catalogo junto. Com `--desde-migracao 2`, o arquivo
+    traz so a 000 (idempotente), as migracoes a partir da 2 e o catalogo.
     """
     L = _literal
     partes: list[str] = [
@@ -334,6 +340,10 @@ def gerar_sql(base: dict, destino: Path) -> None:
     ]
 
     for numero, nome, caminho in migracoes_disponiveis():
+        if 0 < numero < desde_migracao:
+            partes.append(f"-- (migracao {numero:03d}_{nome} omitida: "
+                          f"--desde-migracao {desde_migracao})")
+            continue
         partes.append(f"-- ===== migracao {numero:03d}_{nome} =====")
         partes.append(caminho.read_text(encoding="utf-8"))
         if numero > 0:
@@ -343,6 +353,11 @@ def gerar_sql(base: dict, destino: Path) -> None:
                 f"ON CONFLICT (numero) DO NOTHING;")
         partes.append("")
 
+    # Valor novo de ENUM (migracao 002) so pode ser usado depois de
+    # confirmado: as migracoes fecham a propria transacao antes do catalogo.
+    partes.append("COMMIT;")
+    partes.append("BEGIN;")
+    partes.append("")
     partes.append("-- ===== catalogo curado =====")
     partes.append(
         f"INSERT INTO versao_catalogo (versao, checksum_sha256, notas) VALUES "
@@ -445,7 +460,32 @@ def main(argv: list[str] | None = None) -> None:
         base = carregar_json()
         validar(base)
         destino = RAIZ / "carga_catalogo.sql"
-        gerar_sql(base, destino)
+        desde = 1
+        lista = list(argv if argv is not None else sys.argv[1:])
+        if "--desde-migracao" in lista:
+            desde = int(lista[lista.index("--desde-migracao") + 1])
+        gerar_sql(base, destino, desde_migracao=desde)
+
+        if "--separar" in argumentos:
+            # Dois arquivos, executados um de cada vez no SQL Editor. Nao
+            # depende de como o editor trata BEGIN/COMMIT num script so: o
+            # ENUM novo ja esta confirmado quando o catalogo chega. E, se a
+            # migracao falhar, o erro aparece sozinho, num arquivo pequeno.
+            texto = destino.read_text(encoding="utf-8")
+            marco = "-- ===== catalogo curado ====="
+            esquema, catalogo_sql = texto.split(marco)
+            esquema = esquema.rstrip().removesuffix("BEGIN;").rstrip() + chr(10)
+            partes = {
+                "carga_catalogo_1_migracoes.sql": esquema,
+                "carga_catalogo_2_catalogo.sql": "BEGIN;" + chr(10) + chr(10) + marco + catalogo_sql,
+            }
+            destino.unlink()
+            for nome, conteudo in partes.items():
+                (RAIZ / nome).write_text(conteudo, encoding="utf-8", newline=chr(10))
+                n = conteudo.count(chr(10))
+                print(f"  {nome} ({n} linhas)")
+            print("Execute o 1 e, so depois que ele terminar, o 2.")
+            return
         n = destino.read_text(encoding="utf-8").count(chr(10))
         print(f"SQL gerado em {destino} ({n} linhas)")
         print("Cole no editor SQL do Neon (Console -> SQL Editor) e execute.")
@@ -462,6 +502,9 @@ def main(argv: list[str] | None = None) -> None:
     try:
         if not so_catalogo:
             aplicadas = aplicar_migracoes(con)
+            # Confirma antes do catalogo: um valor novo de ENUM (migracao 002)
+            # nao pode ser usado na mesma transacao que o criou.
+            con.commit()
             print(f"migracoes aplicadas agora: {aplicadas or 'nenhuma (ja estava em dia)'}")
 
         if not so_migracoes:

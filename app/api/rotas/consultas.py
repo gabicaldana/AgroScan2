@@ -18,6 +18,7 @@ from app.api.esquemas import (
     RespostaDeSincronizacao,
 )
 from app.api.repositorios import consultas as repo
+from app.api.repositorios import hortas as repo_hortas
 from app.catalogo import catalogo
 
 rotas = APIRouter(tags=["caderno"])
@@ -43,8 +44,23 @@ def _validar(pedido: PedidoDeConsulta) -> None:
             raise HTTPException(422, f"doença desconhecida: {h.doenca_id}")
 
 
+def _validar_canteiro(usuario_id: int, canteiro_id: int | None) -> None:
+    """O canteiro precisa ser de uma horta da qual a pessoa é membro (US25).
+
+    A mensagem é a mesma para canteiro inexistente e alheio. Na fila offline,
+    o caso real é o canteiro ter sido encerrado ou a pessoa ter saído da horta
+    entre a observação e o envio: a consulta fica na fila com o motivo, em vez
+    de entrar presa a um canteiro que ela não enxerga mais.
+    """
+    if canteiro_id is None:
+        return
+    if repo_hortas.canteiro_do_membro(canteiro_id, usuario_id) is None:
+        raise HTTPException(422, f"canteiro não encontrado: {canteiro_id}")
+
+
 def _gravar(usuario_id: int, pedido: PedidoDeConsulta) -> tuple[dict, bool]:
     _validar(pedido)
+    _validar_canteiro(usuario_id, pedido.canteiro_id)
     return repo.registrar(
         usuario_id=usuario_id,
         offline_id=str(pedido.offline_id),

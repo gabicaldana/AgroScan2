@@ -29,6 +29,8 @@ export type ConsultaPendente = {
   versaoCatalogo: string;
   latitude?: number | null;
   longitude?: number | null;
+  /** O canteiro escolhido no campo (US25). Ausente em fila gravada antes. */
+  canteiroId?: number | null;
   /** Quantas vezes já se tentou enviar. Só para diagnóstico na tela. */
   tentativas: number;
 };

@@ -82,6 +82,7 @@ RF23 a RF27, conforme a
 | 2 | **Datas dos Artefatos 5 a 9 não divulgadas** | O calendário das sprints seguintes é provisório | Herdado - [#74](https://github.com/CampusCEUB/AgroScan/issues/74) |
 | 3 | **API nunca publicada** - cadastro e login davam 404 no site | Caderno e sincronização inutilizáveis no ambiente publicado | ✅ Resolvido em 08/10 - [ADR 0010](../docs/decisoes/adr-0010-publicacao-em-dois-projetos.md), [#67](https://github.com/CampusCEUB/AgroScan/issues/67) |
 | 4 | **Framework Preset do projeto `agroscan-api`** detectado como FastAPI | Os pushes falhavam na publicação da API | ✅ Resolvido em 08/10 - preset trocado para *Other* no painel |
+| 5 | **Banco preso no catálogo 2026.09.03** - a carga das brássicas abortava na hérnia das crucíferas (`tipo_agente` "protista", ausente do banco) | Toda consulta enviada desde 27/09 dava 500; a fila guardava tudo no aparelho, mas nada subia | ✅ Resolvido em 09/10 - migrações 002 e 003, validação contra as regras do banco e carga aplicada no Neon; `/saude` com `catalogo_no_banco: true` |
 
 ## Riscos ativos no ciclo
 

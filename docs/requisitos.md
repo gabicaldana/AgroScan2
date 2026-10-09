@@ -132,11 +132,11 @@ Estado verificado em 12/09/2026 sobre o commit `068b6d9`.
 
 | ID | Requisito | Prioridade | Estado |
 | --- | --- | --- | --- |
-| RF23 | Cadastrar horta com nome e município | Importante | ⬜ tabela modelada |
-| RF24 | Associar outros usuários a uma horta | Importante | ⬜ tabela modelada |
-| RF25 | Cadastrar canteiros com identificação, cultura e data de plantio | Importante | ⬜ tabela modelada |
-| RF26 | Vincular uma consulta a um canteiro | Importante | ⬜ coluna modelada |
-| RF27 | Registrar o manejo aplicado, com tipo, descrição, produto e data | Desejável | ⬜ tabela modelada |
+| RF23 | Cadastrar horta com nome e município | Importante | ✅ API e tela ([ADR 0012](decisoes/adr-0012-acesso-por-horta.md)) |
+| RF24 | Associar outros usuários a uma horta | Importante | ✅ por e-mail, com transferência da responsabilidade |
+| RF25 | Cadastrar canteiros com identificação, cultura e data de plantio | Importante | ✅ canteiro encerrado, nunca apagado |
+| RF26 | Vincular uma consulta a um canteiro | Importante | ✅ inclusive offline, pela lista guardada no aparelho |
+| RF27 | Registrar o manejo aplicado, com tipo, descrição, produto e data | Desejável | ✅ inclusive a partir do laudo |
 
 ### 5.5 Relatórios
 
@@ -251,8 +251,8 @@ título e vinculadas à `milestone` da sprint.
 | RF20 | US20 | 5 | TI21, TI22 - coerência do feedback | [#23](https://github.com/CampusCEUB/AgroScan/issues/23) |
 | RF21 | US21 | 5 | ⬜ | [#24](https://github.com/CampusCEUB/AgroScan/issues/24) |
 | RF22, RNF16 | US22 | 6 | TI19 - coordenada pela metade recusada | ⚠️ ver nota |
-| RF23-RF26 | US22-US25 | 3 | ⬜ | [#25](https://github.com/CampusCEUB/AgroScan/issues/25), [#26](https://github.com/CampusCEUB/AgroScan/issues/26), [#27](https://github.com/CampusCEUB/AgroScan/issues/27), [#28](https://github.com/CampusCEUB/AgroScan/issues/28) |
-| RF27 | US26 | 3 | ⬜ | [#29](https://github.com/CampusCEUB/AgroScan/issues/29) |
+| RF23-RF26 | US22-US25 | 3 | ✅ | [#25](https://github.com/CampusCEUB/AgroScan/issues/25), [#26](https://github.com/CampusCEUB/AgroScan/issues/26), [#27](https://github.com/CampusCEUB/AgroScan/issues/27), [#28](https://github.com/CampusCEUB/AgroScan/issues/28) |
+| RF27 | US26 | 3 | ✅ | [#29](https://github.com/CampusCEUB/AgroScan/issues/29) |
 | RF28 | US27 | 4 | Consulta especificada em `modelo-de-dados.md` §6.1 | [#30](https://github.com/CampusCEUB/AgroScan/issues/30) |
 | RF29 | US29 | 4 | `modelo-de-dados.md` §6.3 | [#32](https://github.com/CampusCEUB/AgroScan/issues/32) |
 | RF30 | US28 | 4 | `modelo-de-dados.md` §6.2 | [#31](https://github.com/CampusCEUB/AgroScan/issues/31) |

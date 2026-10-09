@@ -194,6 +194,7 @@ export type ConsultaParaEnviar = {
   versaoCatalogo: string;
   latitude?: number | null;
   longitude?: number | null;
+  canteiroId?: number | null;
 };
 
 export type ConsultaResumida = {
@@ -230,6 +231,7 @@ function paraApi(c: ConsultaParaEnviar) {
     versao_catalogo: c.versaoCatalogo,
     latitude: c.latitude ?? null,
     longitude: c.longitude ?? null,
+    canteiro_id: c.canteiroId ?? null,
   };
 }
 
@@ -278,6 +280,171 @@ export async function registrarFeedback(
       doenca_confirmada_id: doencaConfirmadaId ?? null,
       comentario: comentario ?? null,
     },
+    autenticado: true,
+  });
+}
+
+// =============================================================================
+// Horta, canteiros e manejo
+// =============================================================================
+//
+// Ao contrário do caderno, estas telas precisam de rede: a horta é dado
+// compartilhado, e o servidor é a autoridade sobre quem participa dela. A
+// única parte que funciona offline é ESCOLHER o canteiro de uma consulta,
+// sobre a lista guardada em `canteiros.ts`.
+
+export type PapelNaHorta = "responsavel" | "membro";
+
+export type Horta = {
+  id: number;
+  nome: string;
+  municipio: string;
+  uf: string;
+  responsavel_id: number;
+  papel: PapelNaHorta;
+  canteiros_ativos?: number;
+  membros?: number;
+};
+
+export type Membro = {
+  id: number;
+  nome: string;
+  email: string;
+  papel: PapelNaHorta;
+};
+
+export type Canteiro = {
+  id: number;
+  horta_id: number;
+  horta_nome?: string;
+  identificacao: string;
+  cultura_id: string;
+  cultura_nome: string;
+  emoji: string | null;
+  familia: string;
+  data_plantio: string | null;
+  area_m2: number | null;
+  ativo: boolean;
+  papel?: PapelNaHorta;
+};
+
+export type HortaDetalhada = Horta & {
+  membros: Membro[];
+  canteiros: Canteiro[];
+};
+
+export type TipoManejo = "cultural" | "biologico" | "quimico";
+
+export type Manejo = {
+  id: number;
+  canteiro_id: number;
+  doenca_id: string | null;
+  doenca_nome: string | null;
+  consulta_id: number | null;
+  tipo: TipoManejo;
+  descricao: string;
+  produto: string | null;
+  dose: string | null;
+  aplicado_em: string;
+  responsavel_id: number | null;
+  responsavel_nome: string | null;
+};
+
+export type CanteiroDetalhado = Canteiro & { manejos: Manejo[] };
+
+export function listarHortas(): Promise<Horta[]> {
+  return chamar<Horta[]>("/hortas", { autenticado: true });
+}
+
+export function criarHorta(dados: {
+  nome: string;
+  municipio: string;
+  uf: string;
+}): Promise<Horta> {
+  return chamar<Horta>("/hortas", {
+    metodo: "POST",
+    corpo: dados,
+    autenticado: true,
+  });
+}
+
+export function detalharHorta(id: number): Promise<HortaDetalhada> {
+  return chamar<HortaDetalhada>(`/hortas/${id}`, { autenticado: true });
+}
+
+export function transferirHorta(id: number, responsavelId: number) {
+  return chamar<HortaDetalhada>(`/hortas/${id}`, {
+    metodo: "PATCH",
+    corpo: { responsavel_id: responsavelId },
+    autenticado: true,
+  });
+}
+
+export function apagarHorta(id: number): Promise<void> {
+  return chamar<void>(`/hortas/${id}`, { metodo: "DELETE", autenticado: true });
+}
+
+export function adicionarMembro(hortaId: number, email: string) {
+  return chamar<Membro>(`/hortas/${hortaId}/membros`, {
+    metodo: "POST",
+    corpo: { email },
+    autenticado: true,
+  });
+}
+
+export function removerMembro(hortaId: number, usuarioId: number) {
+  return chamar<void>(`/hortas/${hortaId}/membros/${usuarioId}`, {
+    metodo: "DELETE",
+    autenticado: true,
+  });
+}
+
+export function listarMeusCanteiros(): Promise<Canteiro[]> {
+  return chamar<Canteiro[]>("/canteiros", { autenticado: true });
+}
+
+export function criarCanteiro(
+  hortaId: number,
+  dados: {
+    identificacao: string;
+    cultura_id: string;
+    data_plantio?: string | null;
+    area_m2?: number | null;
+  },
+): Promise<Canteiro> {
+  return chamar<Canteiro>(`/hortas/${hortaId}/canteiros`, {
+    metodo: "POST",
+    corpo: dados,
+    autenticado: true,
+  });
+}
+
+export function detalharCanteiro(id: number): Promise<CanteiroDetalhado> {
+  return chamar<CanteiroDetalhado>(`/canteiros/${id}`, { autenticado: true });
+}
+
+export function encerrarCanteiro(id: number): Promise<Canteiro> {
+  return chamar<Canteiro>(`/canteiros/${id}`, {
+    metodo: "PATCH",
+    corpo: { ativo: false },
+    autenticado: true,
+  });
+}
+
+export function registrarManejo(
+  canteiroId: number,
+  dados: {
+    tipo: TipoManejo;
+    descricao: string;
+    produto?: string | null;
+    dose?: string | null;
+    aplicado_em: string;
+    doenca_id?: string | null;
+  },
+): Promise<Manejo> {
+  return chamar<Manejo>(`/canteiros/${canteiroId}/manejos`, {
+    metodo: "POST",
+    corpo: dados,
     autenticado: true,
   });
 }

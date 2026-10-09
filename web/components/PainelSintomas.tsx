@@ -1,8 +1,10 @@
 "use client";
 
 import Link from "next/link";
-import { useMemo, useState } from "react";
+import { useEffect, useMemo, useState } from "react";
+import type { Canteiro } from "@/lib/api.ts";
 import * as caderno from "@/lib/caderno.ts";
+import * as canteiros from "@/lib/canteiros.ts";
 import { BarraCompatibilidade } from "@/components/BarraCompatibilidade";
 import { BarraGravidade } from "@/components/BarraGravidade";
 import { SeletorCultura } from "@/components/SeletorCultura";
@@ -53,13 +55,35 @@ export function PainelSintomas() {
   const [salvando, setSalvando] = useState(false);
   const [salvo, setSalvo] = useState<null | { enviada: boolean }>(null);
 
+  // Os canteiros vêm da cópia no aparelho quando falta rede (US25): o produtor
+  // escolhe o canteiro no campo, e a consulta sobe depois com o vínculo.
+  const [meusCanteiros, setMeusCanteiros] = useState<Canteiro[]>([]);
+  const [canteiroId, setCanteiroId] = useState("");
+  useEffect(() => {
+    let vivo = true;
+    void canteiros.atualizar().then((lista) => vivo && setMeusCanteiros(lista));
+    return () => {
+      vivo = false;
+    };
+  }, []);
+  const canteirosDaCultura = useMemo(
+    () => canteiros.daCultura(meusCanteiros, culturaId),
+    [meusCanteiros, culturaId],
+  );
+
   async function salvarNoCaderno() {
     setSalvando(true);
     try {
       // Grava no aparelho e SO ENTAO tenta enviar. A tela confirma na hora:
       // esperar o servidor para dizer "salvo" faria o app parar de funcionar
       // exatamente onde ele precisa funcionar.
-      const r = await caderno.salvar(culturaId, marcados, hipoteses);
+      const r = await caderno.salvar(
+        culturaId,
+        marcados,
+        hipoteses,
+        null,
+        canteiroId ? Number(canteiroId) : null,
+      );
       setSalvo({ enviada: r.enviada });
     } finally {
       setSalvando(false);
@@ -77,6 +101,8 @@ export function PainelSintomas() {
 
   function trocarCultura(novaCultura: string) {
     setSalvo(null);
+    // Canteiro de outra cultura não serve para esta consulta.
+    setCanteiroId("");
     setCulturaId(novaCultura);
     // Os sintomas sao especificos da cultura: manter as marcacoes ao trocar
     // levaria marcas invisiveis (que nem aparecem na nova lista) para dentro
@@ -190,6 +216,25 @@ export function PainelSintomas() {
                     : "Guardado neste aparelho - sobe quando houver rede."}
                 </p>
               ) : (
+                <>
+                {canteirosDaCultura.length > 0 && (
+                  <label className="mb-3 flex flex-col gap-2">
+                    <span className="text-base font-bold">Em qual canteiro?</span>
+                    <select
+                      value={canteiroId}
+                      onChange={(e) => setCanteiroId(e.target.value)}
+                      className="border-borda-forte bg-fundo h-toque rounded-lg border-2 px-3 text-base"
+                    >
+                      <option value="">Sem canteiro</option>
+                      {canteirosDaCultura.map((c) => (
+                        <option key={c.id} value={c.id}>
+                          {c.identificacao}
+                          {c.horta_nome ? ` - ${c.horta_nome}` : ""}
+                        </option>
+                      ))}
+                    </select>
+                  </label>
+                )}
                 <button
                   type="button"
                   onClick={salvarNoCaderno}
@@ -198,6 +243,7 @@ export function PainelSintomas() {
                 >
                   {salvando ? "Salvando…" : "Salvar no caderno"}
                 </button>
+                </>
               )}
             </div>
 

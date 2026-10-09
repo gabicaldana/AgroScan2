@@ -60,7 +60,7 @@ next-env.d.ts
 
 # Transporte do catálogo para redes que bloqueiam a porta 5432.
 # Regerável: python -m app.seed --gerar-sql
-carga_catalogo.sql
+carga_catalogo*.sql
 
 # Modelos de visão computacional: pesos são grandes e reprodutíveis pelo
 # notebook de treino. O ONNX final entra por Git LFS ou pelo pipeline de

@@ -164,6 +164,44 @@ class TestCatalogoHttp(unittest.TestCase):
         # O catalogo continua respondendo: ele nao vem do banco.
         self.assertTrue(corpo["versao_catalogo"])
 
+    def test_saude_denuncia_banco_sem_a_versao_do_catalogo(self):
+        """Banco no ar, mas preso num catalogo anterior: toda consulta nova
+        violaria a chave estrangeira de `versao_catalogo`."""
+        from unittest.mock import patch
+
+        respostas = iter([{"numero": 3}, None])
+        with (
+            patch.object(banco_api, "disponivel", return_value=True),
+            patch.object(banco_api, "consultar_um",
+                         side_effect=lambda *a, **k: next(respostas)),
+        ):
+            corpo = CLIENTE.get(f"{PREFIXO}/saude").json()
+
+        self.assertEqual(corpo["banco"], "ok")
+        self.assertIs(corpo["catalogo_no_banco"], False)
+
+    def test_em_producao_a_saude_nao_expoe_o_detalhe_do_banco(self):
+        """A rota e publica, e a mensagem do driver traz host, porta e usuario.
+
+        Em producao sai so o tipo do erro; o detalhe vai para o log da funcao.
+        """
+        from unittest.mock import patch
+
+        from app.api import configuracao
+
+        with (
+            patch.object(configuracao, "E_PRODUCAO", True),
+            patch.object(banco_api, "disponivel", return_value=True),
+            patch.object(banco_api, "consultar_um",
+                         side_effect=OSError("host ep-xyz.neon.tech porta 5432")),
+            patch("sys.stderr"),
+        ):
+            resposta = CLIENTE.get(f"{PREFIXO}/saude")
+
+        self.assertEqual(resposta.status_code, 200)
+        self.assertEqual(resposta.json()["banco"], "erro: OSError")
+        self.assertNotIn("neon", resposta.text)
+
     def test_culturas_batem_com_as_fixtures(self):
         with open(fixtures.CAMINHO_FIXTURES, encoding="utf-8") as f:
             esperadas = json.load(f)["culturas"]

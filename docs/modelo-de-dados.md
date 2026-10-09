@@ -298,7 +298,7 @@ erDiagram
 | Tipo | Valores | Observação |
 |---|---|---|
 | `grupo_hortalica` | fruto, folha, flor, haste, raiz | Classificação da Embrapa por parte comestível; `raiz` cobre raízes, tubérculos, bulbos e rizomas |
-| `tipo_agente` | fungo, oomiceto, bactéria, vírus, nematoide, ácaro, abiótico | `oomiceto` é separado de `fungo` de propósito — os míldios são oomicetos e respondem a grupos químicos distintos |
+| `tipo_agente` | fungo, oomiceto, bactéria, vírus, nematoide, ácaro, abiótico, protista | `oomiceto` é separado de `fungo` de propósito — os míldios são oomicetos e respondem a grupos químicos distintos. `protista` entrou na migração 002, com a hérnia das crucíferas (*Plasmodiophora brassicae*) |
 | `tipo_manejo` | cultural, biológico, químico | A ordem dos rótulos no tipo é a ordem de apresentação: manejo integrado começa pelo cultural |
 | `papel_usuario` | produtor, agrônomo, admin | Controla o acesso aos relatórios |
 | `papel_membro` | responsável, membro | Papel dentro de uma horta específica |
@@ -385,7 +385,7 @@ Duas regras deliberadamente **não** estão no banco, porque pertencem à aplica
 | `consulta.usuario_id` | CASCADE | A exclusão de conta exigida pela LGPD precisa remover o histórico |
 | `consulta.canteiro_id` | SET NULL | Apagar um canteiro não deve apagar o diagnóstico feito nele |
 | `horta.responsavel_id` | RESTRICT | Excluir quem responde por uma horta coletiva apagaria trabalho de outras pessoas; exige transferir a responsabilidade antes |
-| `manejo.responsavel_id` | RESTRICT | O registro de aplicação de defensivo tem valor de rastreabilidade e não deve perder a autoria |
+| `manejo.responsavel_id` | RESTRICT | O registro de aplicação de defensivo tem valor de rastreabilidade e não deve perder a autoria. Na exclusão de conta, quem tem manejo é **anonimizado**, não apagado ([ADR 0012](decisoes/adr-0012-acesso-por-horta.md)) |
 | `consulta_hipotese.doenca_id` | RESTRICT | Uma doença referenciada por histórico não pode desaparecer do catálogo |
 | Tabelas associativas | CASCADE | Existem apenas em função da entidade pai |
 
