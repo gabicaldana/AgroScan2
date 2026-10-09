@@ -465,6 +465,27 @@ def main(argv: list[str] | None = None) -> None:
         if "--desde-migracao" in lista:
             desde = int(lista[lista.index("--desde-migracao") + 1])
         gerar_sql(base, destino, desde_migracao=desde)
+
+        if "--separar" in argumentos:
+            # Dois arquivos, executados um de cada vez no SQL Editor. Nao
+            # depende de como o editor trata BEGIN/COMMIT num script so: o
+            # ENUM novo ja esta confirmado quando o catalogo chega. E, se a
+            # migracao falhar, o erro aparece sozinho, num arquivo pequeno.
+            texto = destino.read_text(encoding="utf-8")
+            marco = "-- ===== catalogo curado ====="
+            esquema, catalogo_sql = texto.split(marco)
+            esquema = esquema.rstrip().removesuffix("BEGIN;").rstrip() + chr(10)
+            partes = {
+                "carga_catalogo_1_migracoes.sql": esquema,
+                "carga_catalogo_2_catalogo.sql": "BEGIN;" + chr(10) + chr(10) + marco + catalogo_sql,
+            }
+            destino.unlink()
+            for nome, conteudo in partes.items():
+                (RAIZ / nome).write_text(conteudo, encoding="utf-8", newline=chr(10))
+                n = conteudo.count(chr(10))
+                print(f"  {nome} ({n} linhas)")
+            print("Execute o 1 e, so depois que ele terminar, o 2.")
+            return
         n = destino.read_text(encoding="utf-8").count(chr(10))
         print(f"SQL gerado em {destino} ({n} linhas)")
         print("Cole no editor SQL do Neon (Console -> SQL Editor) e execute.")
