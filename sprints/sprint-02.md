@@ -91,9 +91,9 @@ barata e `/catalogo` traz a base com `ETag`. Esta sprint construiu o cliente.
 
 | Peça | O que faz |
 | --- | --- |
-| [`web/lib/catalogo.ts`](../web/lib/catalogo.ts) | Guarda o catálogo baixado, decide qual está ativo e sincroniza |
-| [`web/components/SincronizacaoDoCatalogo.tsx`](../web/components/SincronizacaoDoCatalogo.tsx) | Dispara a verificação depois da montagem, sem bloquear nada |
-| `reconstruirIndices` em [`web/lib/diagnostico.ts`](../web/lib/diagnostico.ts) | Único ponto em que o motor troca de conteúdo |
+| [`web/lib/catalogo.ts`](../src/web/lib/catalogo.ts) | Guarda o catálogo baixado, decide qual está ativo e sincroniza |
+| [`web/components/SincronizacaoDoCatalogo.tsx`](../src/web/components/SincronizacaoDoCatalogo.tsx) | Dispara a verificação depois da montagem, sem bloquear nada |
+| `reconstruirIndices` em [`web/lib/diagnostico.ts`](../src/web/lib/diagnostico.ts) | Único ponto em que o motor troca de conteúdo |
 
 **Duas requisições, e a primeira é barata de propósito.** Na maioria das
 aberturas a resposta é "já atual" e nada mais trafega - o que importa para quem

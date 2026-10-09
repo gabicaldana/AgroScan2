@@ -67,16 +67,16 @@ usuário, as 8 entregas avaliativas, as 16 reuniões e 16 tarefas de sprint.
 ## A aplicação
 
 O código, a base de conhecimento curada, a API, o banco de dados e os testes
-automatizados vivem **neste mesmo repositório**, ao lado da documentação que os
-descreve.
+automatizados vivem **neste mesmo repositório**, na pasta [`src/`](src/), ao
+lado da documentação que os descreve.
 
 | Pasta | Conteúdo |
 | --- | --- |
-| [app/](app/) | Motor de diagnóstico, validação da base, geradores e API em FastAPI |
-| [web/](web/) | PWA em Next.js, com o porte TypeScript do motor |
-| [tests/](tests/) | 74 testes Python, 22 deles da API |
-| [migracoes/](migracoes/) | DDL numerado e reversível |
-| [data/](data/) | Base de conhecimento curada - a fonte única |
+| [src/app/](src/app/) | Motor de diagnóstico, validação da base, geradores e API em FastAPI |
+| [src/web/](src/web/) | PWA em Next.js, com o porte TypeScript do motor |
+| [src/tests/](src/tests/) | 117 testes Python, da API e do motor |
+| [src/migracoes/](src/migracoes/) | DDL numerado e reversível |
+| [src/data/](src/data/) | Base de conhecimento curada - a fonte única |
 
 Como a aplicação funciona e como rodá-la localmente:
 [docs/aplicacao.md](docs/aplicacao.md).

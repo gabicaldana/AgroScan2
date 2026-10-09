@@ -4,6 +4,12 @@ Registre aqui as mudanças relevantes por sprint ou marco avaliativo.
 
 ## Sprint 3 - Horta, canteiros e manejo · 29/09 a 12/10/2026
 
+### Código em `src/`, e os Documentos de Software saem
+
+- **Todo o código passou para `src/`**, a pedido da professora: `app/`, `api/`, `web/`, `tests/`, `migracoes/`, `data/`, os `requirements` e o `vercel.json`. A raiz fica com a documentação avaliada. Os caminhos internos são relativos entre si e não mudaram; mudaram o CI (`working-directory: src`), o `.gitattributes`, o `.gitignore` e os Root Directories na Vercel (`src/web` e `src`). O Neon não depende da estrutura do repositório.
+- **Documentos de Software v1 e v2 removidos**: os artefatos em `entregas/` os substituem.
+- Links da documentação para o código atualizados; relatórios de sprint, atas e artefatos entregues mantêm as menções de caminho da época.
+
 ### Hortas, membros, canteiros e manejo (US22-US26)
 
 Regras de acesso e de exclusão de conta no

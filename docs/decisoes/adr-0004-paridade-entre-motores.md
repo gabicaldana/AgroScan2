@@ -17,9 +17,9 @@ lugares**:
 
 | Implementação | Papel |
 | --- | --- |
-| `app/diagnostico.py` | Motor puro, sem I/O - a definição normativa |
+| `src/app/diagnostico.py` | Motor puro, sem I/O - a definição normativa |
 | `POST /api/v1/diagnosticos` | O mesmo motor, servido por HTTP |
-| `web/lib/diagnostico.ts` | O porte que roda no navegador, offline |
+| `src/web/lib/diagnostico.ts` | O porte que roda no navegador, offline |
 
 Duas implementações da mesma regra divergem sozinhas. Três, mais ainda. E a
 divergência aqui é especialmente difícil de notar: ela apareceria como um
@@ -29,7 +29,7 @@ ordenação - nada que quebre uma tela.
 ## Decisão
 
 O contrato entre as implementações é um **arquivo de fixtures gerado pelo Python
-e versionado no repositório**: `tests/fixtures/casos_diagnostico.json`.
+e versionado no repositório**: `src/tests/fixtures/casos_diagnostico.json`.
 
 Os casos incluem o perfil completo e o sintoma isolado de **cada** doença da
 base, além de casos escolhidos à mão para ruído, ambiguidade, desempate e
@@ -88,6 +88,6 @@ o que verificar o porte.
 ## Links relacionados
 
 - Requisitos: RNF19, RNF20
-- Código: `app/diagnostico.py`, `app/fixtures.py`, `web/lib/diagnostico.test.ts`, `tests/test_api.py`
+- Código: `src/app/diagnostico.py`, `src/app/fixtures.py`, `src/web/lib/diagnostico.test.ts`, `src/tests/test_api.py`
 - [Artefato 3, §3 - Testes de integração](../../entregas/artefato-3-gestao-do-produto.md#3-testes-de-integração)
 - [ADR 0003 - Base como fonte única](adr-0003-base-como-fonte-unica.md)

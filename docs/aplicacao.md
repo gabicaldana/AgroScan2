@@ -14,7 +14,7 @@ no celular e funcional em modo avião.
 > 3 doenças que a pergunta de desempate exige. A curadoria avança por família
 > botânica: as cucurbitáceas são as próximas. A câmera captura e pré-processa; falta o modelo de
 > visão, e até ele existir o app diz isso em vez de chutar. O banco relacional
-> está modelado e versionado em `migracoes/`, a **API REST está implementada**
+> está modelado e versionado em `src/migracoes/`, a **API REST está implementada**
 > (catálogo, diagnóstico, conta e caderno de campo) e o front-end já a consome,
 > com fila de sincronização offline e caderno filtrável por período e cultura,
 > legível sem rede. **Hortas, membros, canteiros e manejo** estão implementados
@@ -105,6 +105,9 @@ ver [Dois motores, um resultado](#dois-motores-um-resultado).
 
 ## Rodando
 
+Todo o código está em `src/`, e os comandos abaixo partem dela: comece com
+`cd src`. A raiz do repositório fica com a documentação avaliada.
+
 ### App web
 
 ```bash
@@ -138,7 +141,7 @@ linha `skipped=` na saída. Para rodar a suíte inteira:
 
 ```bash
 pip install -r requirements-dev.txt
-python -m unittest discover -s tests -t .   # 74 testes, nenhum pulado
+python -m unittest discover -s tests -t .   # 117 testes, nenhum pulado
 ```
 
 `requirements-dev.txt` inclui o `requirements.txt` de produção mais o cliente
@@ -180,7 +183,7 @@ SELECT '[' || current_database() || ']' AS banco,
        (SELECT max(numero) FROM migracao_aplicada) AS migracao;
 ```
 
-O catálogo é **carregado**, nunca escrito à mão — `app/seed.py` lê o JSON
+O catálogo é **carregado**, nunca escrito à mão — `src/app/seed.py` lê o JSON
 curado, valida e aplica em `UPSERT` idempotente. Rodar duas vezes deixa o banco
 no mesmo estado.
 
@@ -195,8 +198,8 @@ Dois projetos na Vercel, ligados ao mesmo repositório — o porquê está no
 
 | Projeto | Root Directory | Framework Preset | Variáveis de produção |
 | --- | --- | --- | --- |
-| `agroscan` (PWA) | `web` | Next.js | `API_URL=https://agroscan-api.vercel.app` |
-| `agroscan-api` | `.` | Other | `DATABASE_URL` (pooled), `JWT_SEGREDO`, `JWT_HORAS`, `AMBIENTE=producao` |
+| `agroscan` (PWA) | `src/web` | Next.js | `API_URL=https://agroscan-api.vercel.app` |
+| `agroscan-api` | `src` | Other | `DATABASE_URL` (pooled), `JWT_SEGREDO`, `JWT_HORAS`, `AMBIENTE=producao` |
 
 O navegador nunca fala com `agroscan-api` diretamente: o PWA encaminha
 `/api/v1/*` por *rewrite*, que só existe se `API_URL` estiver definida **no
@@ -206,15 +209,15 @@ funcionando — foi exatamente o defeito corrigido em 08/10/2026.
 Três armadilhas já encontradas:
 
 - **Catálogo novo no código exige carga no banco.** Cada consulta referencia a
-  versão do catálogo por chave estrangeira. Mudou `data/base_conhecimento.json`,
+  versão do catálogo por chave estrangeira. Mudou `src/data/base_conhecimento.json`,
   rode o seed no banco de produção, ou toda gravação de consulta dará 500 — foi
   o que aconteceu entre 27/09 e 09/10/2026. O `/saude` denuncia com
   `"catalogo_no_banco": false`.
 - **Não passe parâmetro de inicialização na conexão** (`options="-c ..."`). O
   pooler da Neon recusa, e a API sobe sem banco.
-- **O `vercel.json` da raiz vale para os dois projetos.** Uma chave como
-  `"framework"` ali muda também o PWA. Configuração de um projeto só vai no
-  painel daquele projeto.
+- **Um `vercel.json` pode valer para os dois projetos.** Em 08/10/2026, um
+  `"framework"` posto no `vercel.json` para a API mudou também o PWA, que
+  saiu do ar. Configuração de um projeto só vai no painel daquele projeto.
 
 **A Vercel publica de `gabicaldana/AgroScan2`, não deste repositório**: a
 organização não autoriza a integração. Os dois mantêm o mesmo histórico. Uma
@@ -293,8 +296,8 @@ não desempata — o motor não deixa a interface prometer mais do que ele sabe.
 
 ## Dois motores, um resultado
 
-O motor existe duas vezes: em Python (`app/diagnostico.py`, a referência) e em
-TypeScript (`web/lib/diagnostico.ts`, o que roda no celular). Duas
+O motor existe duas vezes: em Python (`src/app/diagnostico.py`, a referência) e em
+TypeScript (`src/web/lib/diagnostico.ts`, o que roda no celular). Duas
 implementações da mesma regra divergem sozinhas — basta um arredondamento
 diferente.
 
@@ -387,7 +390,7 @@ no dado, não numa regra genérica sobre viroses.
 ## O banco de dados
 
 O modelo relacional está em [`docs/modelo-de-dados.md`](modelo-de-dados.md)
-e o DDL em [`migracoes/`](../migracoes/), numerado e com par de reversão.
+e o DDL em [`src/migracoes/`](../src/migracoes/), numerado e com par de reversão.
 
 O catálogo agronômico é **carregado**, nunca escrito à mão: ninguém digita um
 `INSERT` de doença. As tabelas que justificam o banco são as outras — as
@@ -432,10 +435,10 @@ O `drawImage` do navegador não serve: ele não redimensiona igual ao PIL nem
 igual a si mesmo entre navegadores. Havia duas saídas — reproduzir o PIL bit a
 bit em TypeScript, ou definir o algoritmo aqui e mandar o treino usar este. A
 primeira acorrentaria o projeto a detalhes internos do PIL. Escolhemos a
-segunda, e ela está em `data/contrato_visao.json`.
+segunda, e ela está em `src/data/contrato_visao.json`.
 
-O algoritmo mora em `app/preprocessamento.py`, é portado em
-`web/lib/preprocessamento.ts`, e os dois são comparados por **digest SHA-256 do
+O algoritmo mora em `src/app/preprocessamento.py`, é portado em
+`src/web/lib/preprocessamento.ts`, e os dois são comparados por **digest SHA-256 do
 tensor float32** sobre imagens geradas por fórmula — nenhuma imagem binária no
 repositório. Sete casos, cobrindo ampliação, redução, retrato, paisagem e
 tamanhos ímpares. Um único valor diferente no último bit muda o digest.
@@ -537,10 +540,19 @@ ser conferido no **AGROFIT/MAPA**.
 ## Estrutura
 
 ```
+README.md, CHANGELOG.md             a capa avaliada e o histórico de mudanças
+docs/                               arquitetura, requisitos, modelo de dados, ADRs, atas
+entregas/                           os artefatos avaliados
+sprints/                            relatórios das sprints
+src/                                todo o código - detalhado abaixo
+```
+
+Dentro de `src/`:
+
+```
 data/base_conhecimento.json         fonte da verdade - conteúdo agronômico curado
 data/contrato_visao.json            contrato de pixel e de recusa, curado
 migracoes/                          DDL do PostgreSQL, numerado e reversível
-docs/                               documento de software e modelo de dados
 api/index.py                        ponto de entrada da função Python da Vercel
 app/                                Python: motor, validação e back-end
   catalogo.py                       a base curada em memória, sem banco

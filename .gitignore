@@ -47,7 +47,7 @@ temp/
 
 # O banco é artefato gerado a partir de data/base_conhecimento.json.
 # A fonte da verdade é o JSON, que fica versionado.
-data/*.db
+src/data/*.db
 *.pyc
 
 # Next.js

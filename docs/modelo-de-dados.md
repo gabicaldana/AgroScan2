@@ -5,8 +5,8 @@
 | | |
 |---|---|
 | **SGBD** | PostgreSQL 16 |
-| **Script de criação** | [`migracoes/001_esquema_inicial.sql`](../migracoes/001_esquema_inicial.sql) |
-| **Script de reversão** | [`migracoes/001_esquema_inicial_reverter.sql`](../migracoes/001_esquema_inicial_reverter.sql) |
+| **Script de criação** | [`src/migracoes/001_esquema_inicial.sql`](../src/migracoes/001_esquema_inicial.sql) |
+| **Script de reversão** | [`src/migracoes/001_esquema_inicial_reverter.sql`](../src/migracoes/001_esquema_inicial_reverter.sql) |
 | **Entidades** | 19 tabelas de aplicação + 1 de controle de migração |
 | **Versão** | 1.0 |
 
@@ -328,7 +328,7 @@ erDiagram
 | 18 | `manejo` | `id` | Crescente | Usuário |
 | 19 | `anotacao` | `id` | Crescente | Usuário |
 
-O detalhamento de cada coluna, com tipo, nulidade e restrição, está comentado diretamente em [`001_esquema_inicial.sql`](../migracoes/001_esquema_inicial.sql).
+O detalhamento de cada coluna, com tipo, nulidade e restrição, está comentado diretamente em [`001_esquema_inicial.sql`](../src/migracoes/001_esquema_inicial.sql).
 
 ---
 
@@ -509,7 +509,7 @@ O modelo está na **Terceira Forma Normal (3FN)**:
 
 ## 8. Provisão para escopo condicionado
 
-A identificação automática de doenças por imagem é escopo condicionado (seções 6 e 11.2 do Documento de Software v2). Caso a auditoria do acervo de imagens confirme viabilidade, três entidades serão acrescentadas numa migração posterior:
+A identificação automática de doenças por imagem é escopo condicionado ([Artefato 2](../entregas/artefato-2-gestao-do-projeto.md), épico E8 na seção 2.1 e plano de contingência na seção 3.4). Caso a auditoria do acervo de imagens confirme viabilidade, três entidades serão acrescentadas numa migração posterior:
 
 | Entidade | Papel |
 |---|---|

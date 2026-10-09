@@ -134,7 +134,7 @@ terceiro.
 ### 4.1 Origem e circulação
 
 O conteúdo agronômico é escrito **uma vez**, em
-`data/base_conhecimento.json`, e derivado por geração para os três lugares onde
+`src/data/base_conhecimento.json`, e derivado por geração para os três lugares onde
 precisa existir. Nunca é copiado à mão.
 
 ```

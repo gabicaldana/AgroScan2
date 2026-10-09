@@ -71,4 +71,4 @@ registrados no ADR 0007.
 - [ADR 0004 - Paridade entre motores](adr-0004-paridade-entre-motores.md)
 - [ADR 0007 - PWA em vez de nativo](adr-0007-pwa-em-vez-de-nativo.md)
 - [Artefato 3, §2.4 - Fluxo de diagnóstico sem conexão](../../entregas/artefato-3-gestao-do-produto.md#24-fluxo-1---diagnóstico-sem-conexão)
-- Código: `web/lib/diagnostico.ts`
+- Código: `src/web/lib/diagnostico.ts`
