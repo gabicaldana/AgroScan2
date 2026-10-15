@@ -51,11 +51,31 @@ Selecionados da `milestone` **Sprint 2 - Base de conhecimento e publicação**.
 **Meta do ciclo:** brássicas curadas (6 culturas); batata e pimentão em
 conformidade com a RN05; ambiente publicado refletindo o código.
 
-> ⚠️ **A preencher pela equipe.** As decisões tomadas na reunião, além da seleção de escopo acima.
+> ⚠️ **Decisões e encaminhamentos redigidos a partir dos registros do
+> repositório** (relatório da sprint, `pull requests` e CHANGELOG), em
+> 15/10/2026. Revisar pela equipe.
+
+### Outras decisões
+
+| Decisão | Registro |
+| --- | --- |
+| Toda integração passa a ser por `pull request` vinculado a uma `issue`, a começar pela estruturação do backlog | [PR #82](https://github.com/CampusCEUB/AgroScan/pull/82) |
+| O código passa a viver no repositório institucional, ao lado da documentação | [PR #83](https://github.com/CampusCEUB/AgroScan/pull/83); Artefato 2, §4.1 |
+| A curadoria do ciclo é feita por família: um levantamento sobre patógenos de crucíferas cobre as seis brássicas | [`sprint-02.md`](../../sprints/sprint-02.md#curadoria-das-brássicas-us03---6-culturas-18-fichas) |
+| O catálogo baixado fica em `localStorage`, e o diagnóstico nunca espera pela sincronização (US36) | [`sprint-02.md`](../../sprints/sprint-02.md#atualização-do-catálogo-sem-reinstalar-us36) |
 
 ## Encaminhamentos
 
-> ⚠️ **A preencher pela equipe.** Ações, responsáveis e prazos combinados.
+| # | Encaminhamento | Responsável | Issue |
+| --- | --- | --- | --- |
+| 1 | Criar milestones, `issues` e o GitHub Project | Ambas | [#71](https://github.com/CampusCEUB/AgroScan/issues/71) |
+| 2 | Verificar no CI que os testes da API executam | Ambas | [#66](https://github.com/CampusCEUB/AgroScan/issues/66) |
+| 3 | Curar as brássicas e elevar batata e pimentão a três doenças | Ambas | [#6](https://github.com/CampusCEUB/AgroScan/issues/6), [#70](https://github.com/CampusCEUB/AgroScan/issues/70) |
+| 4 | Construir a sincronização de catálogo no cliente | Ambas | [#40](https://github.com/CampusCEUB/AgroScan/issues/40) |
+| 5 | Republicar o ambiente e conferir a hierarquia de entrada | Ambas | [#67](https://github.com/CampusCEUB/AgroScan/issues/67), [#68](https://github.com/CampusCEUB/AgroScan/issues/68) |
+| 6 | Levar à professora e à coordenação as pendências de calendário e de comunidade parceira | Ambas | [#73](https://github.com/CampusCEUB/AgroScan/issues/73), [#74](https://github.com/CampusCEUB/AgroScan/issues/74) |
+
+"Ambas" enquanto os papéis Scrum não forem atribuídos ([#72](https://github.com/CampusCEUB/AgroScan/issues/72)).
 
 ## Impedimentos
 

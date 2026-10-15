@@ -6,7 +6,9 @@ Reunião de encerramento da **Sprint 3 - Horta, canteiros e manejo** (29/09/2026
 
 12/10/2026
 
-> Data prevista pela cadência de duas semanas. Reunião ainda não realizada.
+> Data prevista pela cadência de duas semanas. ⚠️ Confirmar a data em que a
+> reunião de fato ocorreu. Ata redigida em 15/10/2026 a partir dos registros do
+> repositório; revisar pela equipe.
 
 ## Participantes
 
@@ -29,15 +31,48 @@ Reunião de encerramento da **Sprint 3 - Horta, canteiros e manejo** (29/09/2026
 
 ## Decisões
 
-> ⚠️ **A preencher pela equipe.**
+### Aceite do incremento
+
+Registro completo em [`sprints/sprint-03.md`](../../sprints/sprint-03.md).
+
+| Item | Resultado | Verificação |
+| --- | --- | --- |
+| US22 - horta ([#25](https://github.com/CampusCEUB/AgroScan/issues/25)) | ✅ Aceita | Nome e município obrigatórios; quem cria vira responsável na mesma transação |
+| US23 - membros ([#26](https://github.com/CampusCEUB/AgroScan/issues/26)) | ✅ Aceita | Membro por e-mail, papel `membro`/`responsavel`, transferência; membro lista os canteiros |
+| US24 - canteiros ([#27](https://github.com/CampusCEUB/AgroScan/issues/27)) | ✅ Aceita | Identificação única por horta, cultura do catálogo, data de plantio |
+| US25 - consulta no canteiro ([#28](https://github.com/CampusCEUB/AgroScan/issues/28)) | 🟡 Parcial | Seletor de canteiro ao salvar, vínculo opcional e `GET /consultas?canteiro_id=` prontos; falta o filtro por canteiro **na tela** do caderno |
+| US26 - manejo ([#29](https://github.com/CampusCEUB/AgroScan/issues/29)) | ✅ Aceita | Tipo, descrição, produto, dose e data; atalho no laudo |
+| US04 - cucurbitáceas ([#7](https://github.com/CampusCEUB/AgroScan/issues/7)) | ❌ Não aceita | Base segue com 9 culturas; só o critério de batata e pimentão, feito na Sprint 2 |
+| Publicação ([#67](https://github.com/CampusCEUB/AgroScan/issues/67)) | ✅ Aceita | API publicada, catálogo `2026.09.27` no publicado e no banco |
+
+**Critério C11:** ✅ atendido - `/api/v1/saude` publicado informa o catálogo do
+ramo principal, com `catalogo_no_banco: true`.
+
+**Testes:** 117 Python e 214 TypeScript, CI verde no `main`.
+
+### Retrospectiva
+
+Registrada no [relatório da sprint](../../sprints/sprint-03.md#retrospectiva).
 
 ## Encaminhamentos
 
-> ⚠️ **A preencher pela equipe.** Ações, responsáveis e prazos combinados.
+| # | Encaminhamento | Issue |
+| --- | --- | --- |
+| 1 | Filtro por canteiro no caderno, para fechar a US25 | [#28](https://github.com/CampusCEUB/AgroScan/issues/28) |
+| 2 | Curadoria das cucurbitáceas, realocada à Sprint 4 | [#7](https://github.com/CampusCEUB/AgroScan/issues/7) |
+| 3 | Relatórios agregados sobre os canteiros | [#30](https://github.com/CampusCEUB/AgroScan/issues/30)-[#33](https://github.com/CampusCEUB/AgroScan/issues/33) |
+| 4 | Atualizar as actions do CI (Node 20 depreciado; `ubuntu-latest` muda em 19/10) | - |
 
 ## Impedimentos
 
-> ⚠️ **A preencher pela equipe.** Bloqueios, riscos materializados e dependências.
+| # | Impedimento | Situação |
+| --- | --- | --- |
+| 1 | Comunidade parceira da Atividade de Extensão não definida (R03) | Aberto - [#73](https://github.com/CampusCEUB/AgroScan/issues/73) |
+| 2 | Datas dos Artefatos 5 a 9 não divulgadas | Aberto - [#74](https://github.com/CampusCEUB/AgroScan/issues/74) |
+| 3 | Papéis Scrum não atribuídos nominalmente | Aberto - [#72](https://github.com/CampusCEUB/AgroScan/issues/72) |
+| 4 | API nunca publicada | ✅ Resolvido em 08/10 - ADR 0010 |
+| 5 | Catálogo `2026.09.27` fora do banco de produção | ✅ Resolvido em 09/10 - migrações 002 e 003 |
+| 6 | Vercel ligada ao repositório antigo | ✅ Resolvido por decisão - ADR 0011 |
 
 ## Links
 
