@@ -7,7 +7,7 @@ Registre aqui as mudanças relevantes por sprint ou marco avaliativo.
 ### Encerramento das Sprints 1 a 3
 
 - **Relatórios e atas preenchidos**: `sprint-02.md` e `sprint-03.md` com issues, PRs, evidências e retrospectiva; atas de planejamento e revisão das Sprints 2 e 3.
-- **Milestones 2 e 3 encerradas**. Realocadas: US01 (#4) para a Sprint 5; US04 (#7), US25 (#28) e as pendências #72, #73 e #74 para a Sprint 4.
+- **Milestones 2 e 3 encerradas** em 16/10/2026; a US40 (#41), entregue antes do previsto, foi movida para a milestone da Sprint 3. Realocadas: US01 (#4) para a Sprint 5; US04 (#7), US25 (#28) e as pendências #72, #73 e #74 para a Sprint 4.
 - **US25 fica aberta**: o filtro por canteiro existe na API, mas ainda não na tela do caderno.
 
 ### Código em `src/`, e os Documentos de Software saem

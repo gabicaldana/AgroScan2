@@ -21,7 +21,7 @@ conforme os ajustes definidos na retrospectiva da Sprint 1.
 ## Milestone
 
 [**Sprint 2 - Base de conhecimento e publicação**](https://github.com/CampusCEUB/AgroScan/milestone/2) -
-prazo em 28/09/2026, com 14 `issues`. Encerrada em 15/10/2026: as
+prazo em 28/09/2026, com 14 `issues`. Encerrada em 16/10/2026: as
 concluídas fechadas e as demais realocadas às Sprints 4 e 5 (ver
 [Não concluídas](#não-concluídas---realocadas)).
 

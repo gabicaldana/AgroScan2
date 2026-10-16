@@ -17,7 +17,7 @@ Em paralelo, a curadoria avança pelas cucurbitáceas e fecha as solanáceas.
 ## Milestone
 
 [**Sprint 3 - Horta, canteiros e manejo**](https://github.com/CampusCEUB/AgroScan/milestone/3) -
-prazo em 12/10/2026, com 8 `issues`. Encerrada em 15/10/2026; US04 e US25
+prazo em 12/10/2026, com 8 `issues`. Encerrada em 16/10/2026; US04 e US25
 realocadas à Sprint 4.
 
 ## Reuniões
