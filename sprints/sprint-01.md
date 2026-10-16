@@ -141,10 +141,11 @@ totalização do [Artefato 2, §2.6](../entregas/artefato-2-gestao-do-projeto.md
 
 ## Pull requests aceitos
 
-> ⚠️ **A preencher.** O desenvolvimento desta sprint foi integrado por commits
-> diretos no ramo principal do repositório de código, antes da adoção do fluxo
-> de `pull request` descrito no `CONTRIBUTING.md`. A partir da Sprint 2, toda
-> integração passa por `pull request` com revisão.
+**Nenhum.** O desenvolvimento desta sprint foi integrado por commits diretos no
+ramo principal do repositório de código, antes da adoção do fluxo de
+`pull request` descrito no `CONTRIBUTING.md`. A partir da Sprint 2, toda
+integração passa por `pull request` com revisão - o primeiro foi o
+[#82](https://github.com/CampusCEUB/AgroScan/pull/82).
 
 Commits que consolidaram o incremento, no repositório de código:
 

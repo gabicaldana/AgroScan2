@@ -17,7 +17,8 @@ Em paralelo, a curadoria avança pelas cucurbitáceas e fecha as solanáceas.
 ## Milestone
 
 [**Sprint 3 - Horta, canteiros e manejo**](https://github.com/CampusCEUB/AgroScan/milestone/3) -
-prazo em 12/10/2026, com 8 `issues`.
+prazo em 12/10/2026, com 8 `issues`. Encerrada em 15/10/2026; US04 e US25
+realocadas à Sprint 4.
 
 ## Reuniões
 
@@ -60,19 +61,101 @@ RF23 a RF27, conforme a
 
 ## Entregas
 
-> ⚠️ **A preencher no encerramento da sprint.**
+O detalhamento técnico está no [CHANGELOG](../CHANGELOG.md#sprint-3---horta-canteiros-e-manejo--2909-a-12102026);
+aqui fica o resumo e o aceite.
+
+### Hortas, membros, canteiros e manejo (US22-US26)
+
+- **API**: hortas, membros por e-mail com transferência da responsabilidade, canteiros encerráveis e de cultura fixa, consulta vinculada ao canteiro e registro de manejo. Quem não participa da horta recebe 404 ([ADR 0012](../docs/decisoes/adr-0012-acesso-por-horta.md)).
+- **Telas**: aba Hortas; horta com canteiros e pessoas; canteiro com registro de manejo; seletor de canteiro ao salvar o diagnóstico, que funciona sem rede; atalho do laudo para o manejo com a doença já marcada.
+- **Exclusão de conta**: hortas só da pessoa vão junto; as compartilhadas pedem a transferência; quem tem manejo registrado é anonimizado.
+- **Lacuna**: o filtro do histórico por canteiro existe na API (`GET /consultas?canteiro_id=`), mas o caderno ainda não o oferece na tela. A US25 fica aberta por isso.
+
+### Publicação: API no ar e catálogo no banco
+
+- **API publicada pela primeira vez** - cadastro e login davam 404 no site ([ADR 0010](../docs/decisoes/adr-0010-publicacao-em-dois-projetos.md)).
+- **Dois repositórios, por decisão** - a Vercel publica do espelho `gabicaldana/AgroScan2` ([ADR 0011](../docs/decisoes/adr-0011-dois-repositorios-com-espelho-de-publicacao.md)).
+- **Catálogo `2026.09.27` carregado no Neon** depois das migrações 002 e 003; a validação da base passou a conferir as regras do banco, no CI.
+
+### Caderno e iPhone (US19, US40)
+
+Filtro do caderno por período e cultura, histórico legível sem rede e
+instruções de instalação no iPhone. A US19 já estava fechada desde a Sprint 1;
+a US40 é da Sprint 6 e foi adiantada.
+
+### Código em `src/`
+
+Todo o código passou para `src/`, a pedido da professora, e os Documentos de
+Software v1 e v2 saíram - os artefatos em `entregas/` os substituem.
+
+### Não entregue: US04 (cucurbitáceas)
+
+A curadoria das cucurbitáceas não começou: a capacidade do ciclo foi para a
+publicação, que estava quebrada, e para o épico E5. A base segue com 9
+culturas. O critério de batata e pimentão já fora atendido na Sprint 2. A
+história vai para a Sprint 4.
 
 ## Issues concluídas
 
-> ⚠️ **A preencher no encerramento da sprint.**
+| Issue | Título | Como foi verificada |
+| --- | --- | --- |
+| [#25](https://github.com/CampusCEUB/AgroScan/issues/25) | US22 - Cadastrar minha horta | Nome e município obrigatórios; criador vira responsável na mesma transação; testes em `tests/test_hortas.py` |
+| [#26](https://github.com/CampusCEUB/AgroScan/issues/26) | US23 - Associar outras pessoas à horta | Membro por e-mail, papel, transferência; membro enxerga os canteiros |
+| [#27](https://github.com/CampusCEUB/AgroScan/issues/27) | US24 - Cadastrar canteiros com a cultura plantada | `UNIQUE (horta_id, identificacao)`, cultura do catálogo, `data_plantio` |
+| [#29](https://github.com/CampusCEUB/AgroScan/issues/29) | US26 - Registrar o manejo que apliquei | Tipo, descrição, produto, dose e data; acessível pelo laudo (`ManejoNoLaudo`) |
+| [#67](https://github.com/CampusCEUB/AgroScan/issues/67) | Republicar o ambiente e conferir a versão do catálogo exibida | Herdada da Sprint 2; `/api/v1/saude` publicado com catálogo `2026.09.27` |
+
+### Não concluídas - realocadas à Sprint 4
+
+| Issue | Título | O que falta |
+| --- | --- | --- |
+| [#7](https://github.com/CampusCEUB/AgroScan/issues/7) | US04 - Cadastrar as doenças das cucurbitáceas e fechar as solanáceas | Pepino, abobrinha, abóbora e jiló |
+| [#28](https://github.com/CampusCEUB/AgroScan/issues/28) | US25 - Vincular a consulta ao canteiro | Filtro por canteiro na tela do caderno |
+
+**4 histórias aceitas, 16 de 27 pontos.**
 
 ## Pull requests aceitos
 
-> ⚠️ **A preencher ao longo da sprint.**
+| PR | Conteúdo | Issue |
+| --- | --- | --- |
+| [#84](https://github.com/CampusCEUB/AgroScan/pull/84) | Publica a API, define o espelho de publicação e entrega US19/US40 | [#67](https://github.com/CampusCEUB/AgroScan/issues/67), [#68](https://github.com/CampusCEUB/AgroScan/issues/68), [#41](https://github.com/CampusCEUB/AgroScan/issues/41), [#22](https://github.com/CampusCEUB/AgroScan/issues/22) |
+| [#85](https://github.com/CampusCEUB/AgroScan/pull/85) | Hortas, membros, canteiros e manejo, e o catálogo de volta ao banco | [#25](https://github.com/CampusCEUB/AgroScan/issues/25)-[#29](https://github.com/CampusCEUB/AgroScan/issues/29) |
+| [#86](https://github.com/CampusCEUB/AgroScan/pull/86) | Todo o código em `src/`; saem os Documentos de Software | - |
 
 ## Evidências
 
-> ⚠️ **A preencher no encerramento da sprint.**
+### Testes automatizados - PR #85, 09/10/2026
+
+```text
+$ python -m unittest discover -s tests -t .
+Ran 117 tests
+OK
+
+$ cd web && npm test
+ℹ tests 214
+ℹ fail 0
+```
+
+**Total: 331 testes, nenhuma falha.** Subiu de 267 com os 36 testes de
+contrato HTTP de hortas e os testes do caderno filtrável. `tsc`, `eslint` e
+`next build` sem erro.
+
+### Integração contínua
+
+[Execução #37978274215](https://github.com/CampusCEUB/AgroScan/actions/runs/37978274215)
+no `main`, após o merge do PR #86: **`success`**.
+
+### Ambiente publicado - conferido em 15/10/2026
+
+```text
+$ curl https://agroscan-blond.vercel.app/api/v1/saude
+{"versao_api":"1.0.0","ambiente":"producao","versao_catalogo":"2026.09.27",
+ "banco":"ok","migracao_aplicada":3,"catalogo_no_banco":true}
+```
+
+Roteiro ponta a ponta com três contas de teste (responsável, membro e alguém
+de fora) - criação, convite, recusas por papel, canteiro, manejo,
+transferência e exclusão - **36 verificações sem falha** (PR #85).
 
 ## Impedimentos
 
@@ -94,7 +177,29 @@ RF23 a RF27, conforme a
 
 ## Retrospectiva
 
-> ⚠️ **A preencher na reunião de revisão de 12/10/2026.**
+> ⚠️ **Redigida a partir dos registros do repositório.** Revisar pela equipe.
+
+### O que funcionou
+
+- **O épico E5 saiu inteiro na API, com regra de acesso decidida antes do código** (ADR 0012) e 36 testes de contrato.
+- **O roteiro ponta a ponta no ambiente publicado** pegou o que os testes não pegam: o catálogo fora do banco e o 500 nas consultas.
+- **A fila offline cumpriu o papel**: durante os 12 dias de 500, nenhuma consulta se perdeu.
+
+### O que não funcionou
+
+- **Uma falha de produção ficou 12 dias sem ser vista.** Nada avisava que o catálogo não estava no banco.
+- **A curadoria das cucurbitáceas não começou.** A capacidade foi consumida pela publicação, herdada da Sprint 2.
+- **Um `"framework": null` no `vercel.json` derrubou o PWA por cerca de dez minutos**, porque o arquivo vale para os dois projetos.
+- **A US25 foi entregue sem o filtro na tela**, e o PR não sinalizou a lacuna.
+
+### Ajustes para o próximo ciclo
+
+| Ajuste | Origem |
+| --- | --- |
+| `/saude` com `catalogo_no_banco` conferido no fim de cada sprint, junto do C11 | Catálogo fora do banco |
+| Mudança de `vercel.json` conferida nos dois projetos antes do merge | Queda do PWA |
+| Cada critério de aceite marcado na `issue` antes de pedir o fechamento | US25 parcial |
+| Curadoria com capacidade reservada no planejamento, e não com a que sobrar | US04 não iniciada |
 
 ## Próximas ações
 

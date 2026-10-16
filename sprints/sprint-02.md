@@ -21,7 +21,9 @@ conforme os ajustes definidos na retrospectiva da Sprint 1.
 ## Milestone
 
 [**Sprint 2 - Base de conhecimento e publicação**](https://github.com/CampusCEUB/AgroScan/milestone/2) -
-prazo em 28/09/2026, com 14 `issues`.
+prazo em 28/09/2026, com 14 `issues`. Encerrada em 15/10/2026: as
+concluídas fechadas e as demais realocadas às Sprints 4 e 5 (ver
+[Não concluídas](#não-concluídas---realocadas)).
 
 ## Reuniões
 
@@ -255,25 +257,31 @@ concluída a mudança dos artefatos para `entregas/`, que estava pela metade.
 > "Próximas ações" da retrospectiva e permaneceram abertas porque o que faltava
 > era a **verificação**, não o código. É o que esta sprint fecha.
 
-### Abertas nesta data
+### Fechadas depois do prazo
 
-[#4](https://github.com/CampusCEUB/AgroScan/issues/4) (US01 - dois dos três critérios atendidos; o terceiro pede 24 culturas e depende das Sprints 3 e 5),
-[#67](https://github.com/CampusCEUB/AgroScan/issues/67),
-[#68](https://github.com/CampusCEUB/AgroScan/issues/68),
-[#72](https://github.com/CampusCEUB/AgroScan/issues/72),
-[#73](https://github.com/CampusCEUB/AgroScan/issues/73) e
-[#74](https://github.com/CampusCEUB/AgroScan/issues/74).
+| Issue | Título | Como foi verificada |
+| --- | --- | --- |
+| [#68](https://github.com/CampusCEUB/AgroScan/issues/68) | Conferir no ambiente publicado a nova hierarquia de entrada | Fechada em 27/09: tela inicial é o diagnóstico, `/sintomas` responde 308 para `/`, service worker `v5` servido |
+| [#67](https://github.com/CampusCEUB/AgroScan/issues/67) | Republicar o ambiente e conferir a versão do catálogo exibida | Resolvida pelo [PR #84](https://github.com/CampusCEUB/AgroScan/pull/84), já na Sprint 3. Reconferida em 15/10: `/api/v1/saude` publicado informa catálogo `2026.09.27`, igual ao de `src/data/base_conhecimento.json`, com `catalogo_no_banco: true`; o seletor não lista mais culturas de commodity. A conferência já consta do Definition of Done (Artefato 2, §4.5) |
+
+### Não concluídas - realocadas
+
+| Issue | Título | Destino | Motivo |
+| --- | --- | --- | --- |
+| [#4](https://github.com/CampusCEUB/AgroScan/issues/4) | US01 - Encontrar a hortaliça que cultivo em uma lista organizada | Sprint 5 | Dois dos três critérios atendidos; o terceiro pede as 24 culturas, que a base só alcança na Sprint 5 |
+| [#72](https://github.com/CampusCEUB/AgroScan/issues/72) | Atribuir nominalmente os papéis Scrum | Sprint 4 | Decisão da equipe ainda não tomada |
+| [#73](https://github.com/CampusCEUB/AgroScan/issues/73) | Definir a comunidade parceira da Atividade de Extensão | Sprint 4 | Bloqueada - depende da coordenação da disciplina |
+| [#74](https://github.com/CampusCEUB/AgroScan/issues/74) | Confirmar as datas dos Artefatos 5 a 9 e a existência do Artefato 4 | Sprint 4 | Bloqueada - depende da professora |
 
 ## Pull requests aceitos
 
 | PR | Conteúdo | Issue |
 | --- | --- | --- |
 | [#82](https://github.com/CampusCEUB/AgroScan/pull/82) | Estrutura o backlog no GitHub: 8 milestones, 81 issues e 16 reuniões | [#71](https://github.com/CampusCEUB/AgroScan/issues/71) |
+| [#83](https://github.com/CampusCEUB/AgroScan/pull/83) | Traz a aplicação para o repositório institucional, cria os relatórios das Sprints 2 a 8 e fecha a curadoria da RN05 (US03, US36, brássicas, batata e pimentão) | [#6](https://github.com/CampusCEUB/AgroScan/issues/6), [#40](https://github.com/CampusCEUB/AgroScan/issues/40), [#66](https://github.com/CampusCEUB/AgroScan/issues/66), [#69](https://github.com/CampusCEUB/AgroScan/issues/69), [#70](https://github.com/CampusCEUB/AgroScan/issues/70) |
 
-Primeiro `pull request` do projeto, conforme o ajuste de processo definido na
-retrospectiva da Sprint 1.
-
-> ⚠️ **A completar no encerramento.**
+O #82 foi o primeiro `pull request` do projeto, conforme o ajuste de processo
+definido na retrospectiva da Sprint 1.
 
 ## Evidências
 
@@ -374,12 +382,12 @@ passando na máquina de alguém, mas **o CI executando os 22 testes da API**. At
 aqui o pipeline rodava no repositório de código; é a primeira vez que roda no
 repositório avaliado.
 
-### Ainda a produzir
+### Produzidas depois do prazo
 
-| Evidência | Depende de |
+| Evidência | Situação |
 | --- | --- |
-| Ambiente publicado servindo a versão `2026.09.27` | Reapontar a Vercel - [#67](https://github.com/CampusCEUB/AgroScan/issues/67) |
-| Hierarquia de entrada conferida no publicado | O mesmo - [#68](https://github.com/CampusCEUB/AgroScan/issues/68) |
+| Ambiente publicado servindo a versão `2026.09.27` | ✅ Conferido em 09/10 e de novo em 15/10 - [#67](https://github.com/CampusCEUB/AgroScan/issues/67). A Vercel não foi reapontada: ela publica do espelho `gabicaldana/AgroScan2`, por decisão registrada no [ADR 0011](../docs/decisoes/adr-0011-dois-repositorios-com-espelho-de-publicacao.md) |
+| Hierarquia de entrada conferida no publicado | ✅ Conferido em 27/09 - [#68](https://github.com/CampusCEUB/AgroScan/issues/68) |
 
 > **Manutenção anotada na primeira execução.** O CI emitiu dois avisos, sem
 > falhar: as actions `checkout@v4`, `setup-node@v4` e `setup-python@v5` ainda
@@ -392,16 +400,8 @@ Verificações obrigatórias neste ciclo, por decorrerem dos riscos herdados:
 | Verificação | Risco | Situação |
 | --- | --- | --- |
 | A integração contínua **executa** - e não pula - os testes da API | R07 | ✅ Verificado: 74 testes, `skipped 0` |
-| O endereço publicado serve a versão corrente do catálogo | R06 | ⬜ Bloqueado pela Vercel |
-| A tela inicial é o diagnóstico por sintomas | ADR 0008 | 🟡 Em código desde `c679d48`; falta conferir no publicado |
-
-Verificações obrigatórias neste ciclo, por decorrerem dos riscos herdados:
-
-| Verificação | Risco | Critério |
-| --- | --- | --- |
-| A integração contínua **executa** - e não pula - os testes da API | R07 | Nenhum teste pulado no relatório do CI |
-| O endereço publicado serve a versão corrente do catálogo | R06 | Versão exibida na interface igual à da base no ramo principal |
-| A tela inicial é o diagnóstico por sintomas | ADR 0008 | `/sintomas` redireciona para `/` no ambiente publicado |
+| O endereço publicado serve a versão corrente do catálogo | R06 | ✅ Verificado em 09/10, fora do prazo da sprint - [#67](https://github.com/CampusCEUB/AgroScan/issues/67) |
+| A tela inicial é o diagnóstico por sintomas | ADR 0008 | ✅ Verificado em 27/09: `/sintomas` responde 308 para `/` |
 
 ## Impedimentos
 
@@ -411,13 +411,34 @@ Verificações obrigatórias neste ciclo, por decorrerem dos riscos herdados:
 | 2 | **Datas dos Artefatos 5 a 9 não divulgadas** | O calendário das Sprints 5 a 8 é provisório | Herdado da Sprint 1 - [#74](https://github.com/CampusCEUB/AgroScan/issues/74) |
 | 3 | **Papéis Scrum não atribuídos nominalmente** | Impede a atribuição nominal de responsáveis nos registros | Herdado da Sprint 1 - [#72](https://github.com/CampusCEUB/AgroScan/issues/72) |
 | 4 | **Dependência de teste ausente** (R07) | 22 testes de integração da API não executavam de forma confiável | ✅ **Resolvido** - `requirements-dev.txt` declara a dependência e o CI falha se a suíte se pular. Verificado em 27/09: `skipped 0` |
-| 5 | **Vercel ligada ao repositório antigo** | O código passou a viver em `CampusCEUB/AgroScan`, mas o deploy continua saindo de `gabicaldana/AgroScan2`. Enquanto não for reapontada, o ambiente publicado não reflete o que se desenvolve | **Novo, criado pela migração.** Depende do painel da Vercel, fora do alcance do repositório. Agrava o R06 e mantém [#67](https://github.com/CampusCEUB/AgroScan/issues/67) e [#68](https://github.com/CampusCEUB/AgroScan/issues/68) bloqueadas |
+| 5 | **Vercel ligada ao repositório antigo** | O código passou a viver em `CampusCEUB/AgroScan`, mas o deploy continua saindo de `gabicaldana/AgroScan2`. Enquanto não for reapontada, o ambiente publicado não reflete o que se desenvolve | ✅ **Resolvido na Sprint 3** - a organização não autoriza ligar a Vercel aqui; o deploy sai do espelho `gabicaldana/AgroScan2`, com o mesmo histórico ([ADR 0011](../docs/decisoes/adr-0011-dois-repositorios-com-espelho-de-publicacao.md)) |
 
 ## Retrospectiva
 
-> ⚠️ **A preencher na reunião de revisão de 28/09/2026.** Registrar o que
-> funcionou, o que não funcionou e os ajustes para o ciclo seguinte, incluindo a
-> avaliação do fluxo de `pull request` adotado nesta sprint.
+> ⚠️ **Redigida a partir dos registros do repositório** (este relatório, os
+> `pull requests` e o CHANGELOG). Revisar pela equipe.
+
+### O que funcionou
+
+- **O fluxo de `pull request` pegou.** Os dois PRs da sprint (#82 e #83) vieram vinculados às `issues`, e o #83 foi a primeira execução do CI no repositório avaliado, verde nos nove passos.
+- **A curadoria por família se pagou de novo.** Um levantamento sobre patógenos de crucíferas cobriu as seis brássicas; a base foi de 3 para 9 culturas e de 13 para 34 doenças sem nenhum aviso da validação.
+- **A revisão de código encontrou oito defeitos na US36 antes de chegarem ao usuário**, todos com a mesma causa, corrigidos na raiz e travados por testes.
+
+### O que não funcionou
+
+- **A US01 foi alocada com um critério que a sprint não podia cumprir** (24 culturas). A história ficou aberta não por atraso, mas por planejamento.
+- **A publicação continuou fora do controle da sprint.** A migração do código para o institucional deixou a Vercel apontando para o repositório antigo, e a #67 só fechou na Sprint 3.
+- **A carga das brássicas não chegou ao banco de produção, e ninguém notou.** O `tipo_agente` "protista" da hérnia das crucíferas abortava o seed; toda consulta enviada a partir de 27/09 respondia 500. Foi descoberto só na Sprint 3. A validação aprovava a base sem conferir as regras do banco.
+- **As atas não foram preenchidas na data das reuniões.**
+
+### Ajustes para o próximo ciclo
+
+| Ajuste | Origem |
+| --- | --- |
+| Critério de aceite que depende de outra sprint é fatiado, ou a história vai para a sprint que o satisfaz | US01 |
+| A validação da base passa a conferir as regras do banco (ids, `tipo_agente`), no CI | Carga abortada em produção |
+| `/saude` passa a informar se o catálogo corrente está no banco | Falha silenciosa por 12 dias |
+| Ata registrada no dia da reunião, ainda que curta | Atas vazias |
 
 ## Próximas ações
 

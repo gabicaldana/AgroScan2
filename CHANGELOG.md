@@ -4,6 +4,12 @@ Registre aqui as mudanças relevantes por sprint ou marco avaliativo.
 
 ## Sprint 3 - Horta, canteiros e manejo · 29/09 a 12/10/2026
 
+### Encerramento das Sprints 1 a 3
+
+- **Relatórios e atas preenchidos**: `sprint-02.md` e `sprint-03.md` com issues, PRs, evidências e retrospectiva; atas de planejamento e revisão das Sprints 2 e 3. Redigidos a partir dos registros do repositório e marcados para revisão da equipe.
+- **Milestones 2 e 3 encerradas**. Realocadas: US01 (#4) para a Sprint 5; US04 (#7), US25 (#28) e as pendências #72, #73 e #74 para a Sprint 4.
+- **US25 fica aberta**: o filtro por canteiro existe na API, mas ainda não na tela do caderno.
+
 ### Código em `src/`, e os Documentos de Software saem
 
 - **Todo o código passou para `src/`**, a pedido da professora: `app/`, `api/`, `web/`, `tests/`, `migracoes/`, `data/`, os `requirements` e o `vercel.json`. A raiz fica com a documentação avaliada. Os caminhos internos são relativos entre si e não mudaram; mudaram o CI (`working-directory: src`), o `.gitattributes`, o `.gitignore` e os Root Directories na Vercel (`src/web` e `src`). O Neon não depende da estrutura do repositório.
