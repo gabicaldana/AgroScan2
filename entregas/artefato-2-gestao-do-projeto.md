@@ -317,10 +317,10 @@ Estimativa em pontos de história na escala de Fibonacci: 1 trivial, 2 pequena,
 
 | ID | História | Critérios de aceite | Pts | Sprint | Estado |
 | --- | --- | --- | --- | --- | --- |
-| US01 | Como produtor, quero encontrar a hortaliça que cultivo em uma lista organizada, para não procurar num rol extenso | Culturas agrupadas por grupo; nome popular e científico visíveis; 24 culturas presentes | 3 | 2 | 🔄 3/24 |
+| US01 | Como produtor, quero encontrar a hortaliça que cultivo em uma lista organizada, para não procurar num rol extenso | Culturas agrupadas por grupo; nome popular e científico visíveis; 24 culturas presentes | 3 | 5 *(realocada da 2)* | 🔄 9/24 |
 | US02 | Como curadora, quero que a base recuse fichas incompletas, para que nenhum erro de digitação chegue ao produtor | Validação recusa referência quebrada, peso inválido, doença sem sintoma clássico e doença viral com ingrediente ativo; cultura com menos de 3 doenças gera aviso | 5 | 1 | ✅ |
-| US03 | Como curadora, quero cadastrar as doenças das brássicas, para cobrir couve, repolho, brócolis, couve-flor, rúcula e agrião | 6 culturas com no mínimo 3 doenças cada; fontes citadas; validação aprovada | 8 | 2 | ⬜ |
-| US04 | Como curadora, quero cadastrar as doenças das cucurbitáceas e fechar as solanáceas | Pepino, abobrinha, abóbora e jiló cobertos; batata e pimentão elevados a 3 ou mais doenças | 8 | 3 | ⬜ |
+| US03 | Como curadora, quero cadastrar as doenças das brássicas, para cobrir couve, repolho, brócolis, couve-flor, rúcula e agrião | 6 culturas com no mínimo 3 doenças cada; fontes citadas; validação aprovada | 8 | 2 | ✅ |
+| US04 | Como curadora, quero cadastrar as doenças das cucurbitáceas e fechar as solanáceas | Pepino, abobrinha, abóbora e jiló cobertos; batata e pimentão elevados a 3 ou mais doenças | 8 | 4 *(realocada da 3)* | ⬜ |
 | US05 | Como curadora, quero cadastrar as doenças das demais famílias | Apiáceas, amarilidáceas, amarantáceas, asteráceas e malváceas cobertas; base fecha 24 culturas e 88 doenças | 8 | 4-5 | ⬜ |
 
 **Subtotal E1: 32 pts**
@@ -366,11 +366,11 @@ Estimativa em pontos de história na escala de Fibonacci: 1 trivial, 2 pequena,
 
 | ID | História | Critérios de aceite | Pts | Sprint | Estado |
 | --- | --- | --- | --- | --- | --- |
-| US22 | Como gestor de horta, quero cadastrar minha horta, para organizar os registros | Cadastro com nome e município; usuário criador vira responsável | 3 | 3 | ⬜ |
-| US23 | Como gestor, quero associar outras pessoas à horta, para que todas registrem no mesmo lugar | Associação de membros com papel; membro enxerga os canteiros da horta | 5 | 3 | ⬜ |
-| US24 | Como gestor, quero cadastrar canteiros com a cultura plantada e a data | Identificação única por horta; cultura vinculada ao catálogo; data de plantio | 3 | 3 | ⬜ |
-| US25 | Como produtor, quero vincular a consulta ao canteiro onde ela foi feita | Seleção de canteiro no fluxo de diagnóstico; vínculo opcional | 3 | 3 | ⬜ |
-| US26 | Como produtor, quero registrar o manejo que apliquei | Registro com tipo, descrição, produto, dose e data, a partir do laudo | 5 | 3 | ⬜ |
+| US22 | Como gestor de horta, quero cadastrar minha horta, para organizar os registros | Cadastro com nome e município; usuário criador vira responsável | 3 | 3 | ✅ |
+| US23 | Como gestor, quero associar outras pessoas à horta, para que todas registrem no mesmo lugar | Associação de membros com papel; membro enxerga os canteiros da horta | 5 | 3 | ✅ |
+| US24 | Como gestor, quero cadastrar canteiros com a cultura plantada e a data | Identificação única por horta; cultura vinculada ao catálogo; data de plantio | 3 | 3 | ✅ |
+| US25 | Como produtor, quero vincular a consulta ao canteiro onde ela foi feita | Seleção de canteiro no fluxo de diagnóstico; vínculo opcional | 3 | 3-4 | 🟡 falta o filtro por canteiro na tela |
+| US26 | Como produtor, quero registrar o manejo que apliquei | Registro com tipo, descrição, produto, dose e data, a partir do laudo | 5 | 3 | ✅ |
 
 **Subtotal E5: 19 pts**
 
@@ -395,8 +395,8 @@ Estimativa em pontos de história na escala de Fibonacci: 1 trivial, 2 pequena,
 | US33 | Como equipe, queremos o banco PostgreSQL modelado e populado | Migração inicial aplicada; catálogo carregado a partir da base curada; carga idempotente | 8 | 1 | ✅ |
 | US34 | Como equipe, queremos que o servidor e o navegador produzam o mesmo diagnóstico | Teste automatizado compara a resposta da API com os casos de referência, campo a campo | 5 | 1 | ✅ |
 | US35 | Como equipe, queremos que a integração contínua bloqueie artefatos desatualizados | Pipeline valida a base, regenera artefatos, roda testes e falha se houver divergência | 3 | 1 | ✅ |
-| US36 | Como produtor, quero receber atualizações do catálogo sem reinstalar o aplicativo | Verificação de versão; download e uso da versão nova; funcionamento preservado sem rede | 5 | 2 | ⬜ |
-| US40 | Como usuário de iPhone, quero saber como instalar o aplicativo, já que meu aparelho não oferece o botão de instalação | Detecção do ambiente iOS; instruções do caminho Compartilhar → Adicionar à Tela de Início; aviso de que o aplicativo deve ser aberto periodicamente para preservar os dados salvos; instrução não reaparece após a instalação | 3 | 6 | ⬜ |
+| US36 | Como produtor, quero receber atualizações do catálogo sem reinstalar o aplicativo | Verificação de versão; download e uso da versão nova; funcionamento preservado sem rede | 5 | 2 | ✅ |
+| US40 | Como usuário de iPhone, quero saber como instalar o aplicativo, já que meu aparelho não oferece o botão de instalação | Detecção do ambiente iOS; instruções do caminho Compartilhar → Adicionar à Tela de Início; aviso de que o aplicativo deve ser aberto periodicamente para preservar os dados salvos; instrução não reaparece após a instalação | 3 | 3 *(antecipada da 6)* | ✅ |
 
 **Subtotal E7: 35 pts**
 
@@ -445,6 +445,28 @@ Os 88 pontos concluídos correspondem a E2 integralmente (25), E7 exceto US36 e
 US40 (27), E3 exceto US15 (10), E4 exceto US20 e US21 (21) e US02 (5). Os 6
 pontos parciais são US15 e US20, cujas rotas da API estão implementadas e
 testadas, mas ainda sem tela correspondente.
+
+### Pontos concluídos até o encerramento da Sprint 3
+
+| Sprint | Histórias aceitas | Pontos | Acumulado |
+| --- | --- | --- | --- |
+| 1 | E2, E3 exceto US15, E4 exceto US20 e US21, E7 exceto US36 e US40, US02 | 88 | 88 |
+| 2 | US03, US36 | 13 | 101 |
+| 3 | US22, US23, US24, US26 e US40 (antecipada da Sprint 6) | 19 | 120 |
+
+| Situação | Pontos do núcleo |
+| --- | --- |
+| ✅ Concluído | 120 |
+| 🟡 Parcial | 9 |
+| 🔄 / ⬜ Pendente | 43 |
+| **Núcleo (E1-E7)** | **172** |
+
+**Concluído: 120 de 172 pontos do núcleo - 70%.**
+
+Os 9 pontos parciais são US15 e US20, com a rota pronta e sem tela, e US25, que
+vincula a consulta ao canteiro mas ainda não oferece o filtro por canteiro na
+tela do caderno. A US01 segue aberta até a base alcançar as 24 culturas
+(Sprint 5), e a US04 foi realocada à Sprint 4.
 
 ---
 

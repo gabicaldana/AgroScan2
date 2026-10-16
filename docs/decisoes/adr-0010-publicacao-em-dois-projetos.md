@@ -91,9 +91,10 @@ O teto de tempo fica com o `maxDuration` da função (15 s).
   organização não autoriza ligar a Vercel aqui. Os dois repositórios mantêm o
   mesmo histórico, com o fluxo e as regras do
   [ADR 0011](adr-0011-dois-repositorios-com-espelho-de-publicacao.md).
-- `/api/v1/saude` devolve a mensagem de erro do banco por extenso, com nomes de
-  host. Ajudou neste diagnóstico, mas é informação interna exposta numa rota
-  pública, e deve ser reduzida em produção.
+- `/api/v1/saude` devolvia a mensagem de erro do banco por extenso, com nomes de
+  host. Ajudou neste diagnóstico, mas era informação interna exposta numa rota
+  pública. **Corrigido na Sprint 3:** em produção a rota não expõe mais a
+  mensagem, e ganhou o campo `catalogo_no_banco`.
 
 ## Links relacionados
 

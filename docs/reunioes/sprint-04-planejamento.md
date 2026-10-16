@@ -6,7 +6,7 @@ Reunião de abertura da **Sprint 4 - Relatórios agregados** (13/10/2026 a 26/10
 
 13/10/2026
 
-> A data corresponde ao primeiro dia da sprint, conforme a cadência definida em [`sprint-00-planejamento.md`](../../sprints/sprint-00-planejamento.md). ⚠️ Confirmar a data em que a reunião de fato ocorreu. Ata redigida em 16/10/2026 a partir dos registros do repositório (relatórios das sprints, CHANGELOG, ADRs e modelo de dados); revisar pela equipe.
+> A data corresponde ao primeiro dia da sprint, conforme a cadência definida em [`sprint-00-planejamento.md`](../../sprints/sprint-00-planejamento.md).
 
 ## Participantes
 

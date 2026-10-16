@@ -78,7 +78,7 @@ causa de uma inválida.
 
 - O cliente precisa gerar e persistir o identificador antes de tentar enviar, o que acrescenta estado local a gerenciar.
 - A resposta da sincronização é mais complexa do que um simples código de status, e o cliente precisa tratar as três categorias.
-- A restrição de unicidade no banco ainda **não é exercitada pelos testes automatizados**, que usam cliente de teste em memória sem banco real. Lacuna registrada no Artefato 3, §3.5, com correção prevista para a Sprint 3.
+- A restrição de unicidade no banco ainda **não é exercitada pelos testes automatizados**, que usam cliente de teste em memória sem banco real. Lacuna registrada no Artefato 3, §3.5. A correção estava prevista para a Sprint 3, não foi feita e passou para a Sprint 4.
 
 ## Links relacionados
 

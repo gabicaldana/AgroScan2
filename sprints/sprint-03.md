@@ -177,8 +177,6 @@ transferência e exclusão - **36 verificações sem falha** (PR #85).
 
 ## Retrospectiva
 
-> ⚠️ **Redigida a partir dos registros do repositório.** Revisar pela equipe.
-
 ### O que funcionou
 
 - **O épico E5 saiu inteiro na API, com regra de acesso decidida antes do código** (ADR 0012) e 36 testes de contrato.

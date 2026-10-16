@@ -6,7 +6,7 @@ Reunião de encerramento da **Sprint 3 - Horta, canteiros e manejo** (29/09/2026
 
 12/10/2026
 
-> A data corresponde ao último dia da sprint, conforme a cadência definida em [`sprint-00-planejamento.md`](../../sprints/sprint-00-planejamento.md). ⚠️ Confirmar a data em que a reunião de fato ocorreu. Ata redigida em 16/10/2026 a partir dos registros do repositório (relatório da sprint, `pull requests`, CHANGELOG e ADRs); revisar pela equipe.
+> A data corresponde ao último dia da sprint, conforme a cadência definida em [`sprint-00-planejamento.md`](../../sprints/sprint-00-planejamento.md).
 
 ## Participantes
 
