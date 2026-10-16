@@ -6,7 +6,7 @@ Reunião de abertura da **Sprint 2 - Base de conhecimento e publicação** (15/0
 
 15/09/2026
 
-> A data corresponde ao primeiro dia da sprint, conforme a cadência definida em [`sprint-00-planejamento.md`](../../sprints/sprint-00-planejamento.md). ⚠️ Confirmar a data em que a reunião de fato ocorreu.
+> A data corresponde ao primeiro dia da sprint, conforme a cadência definida em [`sprint-00-planejamento.md`](../../sprints/sprint-00-planejamento.md). ⚠️ Confirmar a data em que a reunião de fato ocorreu. Decisões e encaminhamentos redigidos em 16/10/2026 a partir dos registros do repositório (relatório da sprint, `pull requests`, CHANGELOG e ADRs); revisar pela equipe.
 
 ## Participantes
 
@@ -51,31 +51,62 @@ Selecionados da `milestone` **Sprint 2 - Base de conhecimento e publicação**.
 **Meta do ciclo:** brássicas curadas (6 culturas); batata e pimentão em
 conformidade com a RN05; ambiente publicado refletindo o código.
 
-> ⚠️ **Decisões e encaminhamentos redigidos a partir dos registros do
-> repositório** (relatório da sprint, `pull requests` e CHANGELOG), em
-> 15/10/2026. Revisar pela equipe.
+**3 histórias, 16 pontos**, mais nove tarefas de sprint derivadas da
+retrospectiva da Sprint 1.
 
-### Outras decisões
+### Processo: os ajustes da retrospectiva entram em vigor
 
-| Decisão | Registro |
-| --- | --- |
-| Toda integração passa a ser por `pull request` vinculado a uma `issue`, a começar pela estruturação do backlog | [PR #82](https://github.com/CampusCEUB/AgroScan/pull/82) |
-| O código passa a viver no repositório institucional, ao lado da documentação | [PR #83](https://github.com/CampusCEUB/AgroScan/pull/83); Artefato 2, §4.1 |
-| A curadoria do ciclo é feita por família: um levantamento sobre patógenos de crucíferas cobre as seis brássicas | [`sprint-02.md`](../../sprints/sprint-02.md#curadoria-das-brássicas-us03---6-culturas-18-fichas) |
-| O catálogo baixado fica em `localStorage`, e o diagnóstico nunca espera pela sincronização (US36) | [`sprint-02.md`](../../sprints/sprint-02.md#atualização-do-catálogo-sem-reinstalar-us36) |
+- **O backlog no GitHub vem antes do desenvolvimento.** A criação das `milestones`, das `issues` e do GitHub Project ([#71](https://github.com/CampusCEUB/AgroScan/issues/71)) é a primeira tarefa do ciclo. Nenhuma história começa sem `issue` aberta.
+- **Toda integração passa por `pull request`** com revisão da outra integrante, em branch `feature/`, `docs/` ou `fix/` seguido do número da `issue`, conforme o [`CONTRIBUTING.md`](../../CONTRIBUTING.md). É a primeira sprint nesse fluxo.
+- **As histórias da Sprint 1 ganham `issue` em retrospecto**, para recuperar a rastreabilidade entre backlog e execução. A nota de que foram criadas depois fica no próprio relatório da sprint.
+- **O estado do projeto é afirmado em um só lugar**, o README do código, e os demais documentos o referenciam.
+
+### Curadoria agronômica
+
+- **As brássicas vêm primeiro** entre as famílias restantes: um levantamento cobre seis culturas (couve, repolho, brócolis, couve-flor, rúcula e agrião), o maior alcance por esforço do backlog. É a aplicação direta da mitigação do R01.
+- **Batata e pimentão sobem a três doenças no mesmo ciclo** ([#70](https://github.com/CampusCEUB/AgroScan/issues/70)). Abaixo de três, o motor nunca tem segunda hipótese e a pergunta de desempate não funciona na cultura (RN05). Com isso, a parte "fechar as solanáceas" da US04 é antecipada para esta sprint.
+- **Toda ficha nova passa pela validação automática** e cita fonte técnica com data de acesso. A validação aprova a estrutura, não a agronomia: a conferência contra as fontes é feita por revisão cruzada.
+
+### Desenvolvimento
+
+- **US36 - só o cliente.** O servidor (`/catalogo/versao` e `/catalogo` com `ETag`) está pronto desde a Sprint 1. O ciclo constrói a sincronização no PWA.
+- **O diagnóstico nunca espera pela sincronização.** O motor funciona sobre o catálogo embutido antes de qualquer verificação de rede, e toda falha de sincronização é silenciosa (ADR 0001 preservada).
+- **US01 entra pelo agrupamento e pelo nome científico.** O agrupamento por grupo passa a ser exercitado de verdade com as brássicas, que estreiam os grupos `folha` e `flor`.
+
+### Correções herdadas: critério de verificação
+
+As correções de R07 e do README já estão no código desde 12/09 (commits
+`8053fc8` e `9570990`). As `issues` ficam abertas até a **verificação**, e não
+até o código. O critério de fechamento de cada uma ficou definido assim:
+
+| Verificação | Issue | Risco | Critério |
+| --- | --- | --- | --- |
+| A integração contínua **executa**, e não pula, os testes da API | [#66](https://github.com/CampusCEUB/AgroScan/issues/66) | R07 | Nenhum teste pulado no relatório do CI |
+| O endereço publicado serve a versão corrente do catálogo | [#67](https://github.com/CampusCEUB/AgroScan/issues/67) | R06 | Versão exibida na interface igual à da base no ramo principal |
+| A tela inicial é o diagnóstico por sintomas | [#68](https://github.com/CampusCEUB/AgroScan/issues/68) | ADR 0008 | `/sintomas` redireciona para `/` no ambiente publicado |
+
+### Itens que dependem de terceiros
+
+As tarefas [#73](https://github.com/CampusCEUB/AgroScan/issues/73) (comunidade
+parceira) e [#74](https://github.com/CampusCEUB/AgroScan/issues/74) (datas dos
+artefatos) ficam na `milestone` com a etiqueta `bloqueado`. O compromisso da
+equipe no ciclo é **fazer a interlocução**, não resolvê-las; não contam para a
+meta.
 
 ## Encaminhamentos
 
-| # | Encaminhamento | Responsável | Issue |
-| --- | --- | --- | --- |
-| 1 | Criar milestones, `issues` e o GitHub Project | Ambas | [#71](https://github.com/CampusCEUB/AgroScan/issues/71) |
-| 2 | Verificar no CI que os testes da API executam | Ambas | [#66](https://github.com/CampusCEUB/AgroScan/issues/66) |
-| 3 | Curar as brássicas e elevar batata e pimentão a três doenças | Ambas | [#6](https://github.com/CampusCEUB/AgroScan/issues/6), [#70](https://github.com/CampusCEUB/AgroScan/issues/70) |
-| 4 | Construir a sincronização de catálogo no cliente | Ambas | [#40](https://github.com/CampusCEUB/AgroScan/issues/40) |
-| 5 | Republicar o ambiente e conferir a hierarquia de entrada | Ambas | [#67](https://github.com/CampusCEUB/AgroScan/issues/67), [#68](https://github.com/CampusCEUB/AgroScan/issues/68) |
-| 6 | Levar à professora e à coordenação as pendências de calendário e de comunidade parceira | Ambas | [#73](https://github.com/CampusCEUB/AgroScan/issues/73), [#74](https://github.com/CampusCEUB/AgroScan/issues/74) |
-
-"Ambas" enquanto os papéis Scrum não forem atribuídos ([#72](https://github.com/CampusCEUB/AgroScan/issues/72)).
+| # | Encaminhamento | Responsável | Prazo | Issue |
+| --- | --- | --- | --- | --- |
+| 1 | Criar as 8 `milestones`, as `issues` do backlog e das reuniões, e o GitHub Project | Ambas | Primeira semana do ciclo (21/09) | [#71](https://github.com/CampusCEUB/AgroScan/issues/71) |
+| 2 | Curadoria das brássicas: 6 culturas com 3 doenças cada, com revisão cruzada | Ambas | 28/09/2026 | [#6](https://github.com/CampusCEUB/AgroScan/issues/6) |
+| 3 | Fichas de batata e pimentão até o mínimo de três doenças | Ambas | 28/09/2026 | [#70](https://github.com/CampusCEUB/AgroScan/issues/70) |
+| 4 | Sincronização do catálogo no cliente, com testes dos casos de falha | Ambas | 28/09/2026 | [#40](https://github.com/CampusCEUB/AgroScan/issues/40) |
+| 5 | Exibir nome científico e família no seletor de cultura | Ambas | 28/09/2026 | [#4](https://github.com/CampusCEUB/AgroScan/issues/4) |
+| 6 | Conferir no CI que os 22 testes da API executam | Ambas | 28/09/2026 | [#66](https://github.com/CampusCEUB/AgroScan/issues/66) |
+| 7 | Conferir o README do código contra a execução real (estado e contagem de testes) | Ambas | 28/09/2026 | [#69](https://github.com/CampusCEUB/AgroScan/issues/69) |
+| 8 | Republicar o ambiente e conferir a versão do catálogo e a hierarquia de entrada | Ambas | 28/09/2026 | [#67](https://github.com/CampusCEUB/AgroScan/issues/67), [#68](https://github.com/CampusCEUB/AgroScan/issues/68) |
+| 9 | Atribuir nominalmente os papéis Scrum | Ambas | 28/09/2026 | [#72](https://github.com/CampusCEUB/AgroScan/issues/72) |
+| 10 | Consultar a coordenação sobre a comunidade parceira e a professora sobre as datas dos Artefatos 4 a 9 | Ambas | 28/09/2026 | [#73](https://github.com/CampusCEUB/AgroScan/issues/73), [#74](https://github.com/CampusCEUB/AgroScan/issues/74) |
 
 ## Impedimentos
 
