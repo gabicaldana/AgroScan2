@@ -222,7 +222,7 @@ Definition of Done:
 | PostgreSQL gerenciado em camada gratuita | Infraestrutura | Sem banco não há caderno, hortas nem relatórios | Ativo |
 | Plataforma de publicação (Vercel) em camada gratuita | Infraestrutura | Sem publicação, RNF23 não é atendido | Ativa, com PWA e API em dia desde 08/10/2026; ligada ao espelho `gabicaldana/AgroScan2`, porque a organização não autoriza a integração (ADR 0011) |
 | Acervo de imagens de hortaliças brasileiras (Digipathos) | Dados | Sem ele, a identificação por imagem não sai do escopo condicionado | ⚠️ não auditado (risco R04) |
-| Dependência de teste do cliente HTTP | Técnica | 22 testes de integração da API não executam de forma confiável | ⚠️ em correção (risco R07) |
+| Dependência de teste do cliente HTTP | Técnica | 22 testes de integração da API não executavam de forma confiável | Resolvida na Sprint 2: `requirements-dev.txt` declara a dependência e o CI falha se a suíte se pular (risco R07) |
 | Distribuição dos papéis Scrum entre as integrantes | Dado da equipe | Papéis descritos, mas sem atribuição nominal nos artefatos | ⚠️ pendente |
 
 ## 9. Matriz de rastreabilidade

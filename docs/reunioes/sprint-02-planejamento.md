@@ -6,7 +6,7 @@ Reunião de abertura da **Sprint 2 - Base de conhecimento e publicação** (15/0
 
 15/09/2026
 
-> A data corresponde ao primeiro dia da sprint, conforme a cadência definida em [`sprint-00-planejamento.md`](../../sprints/sprint-00-planejamento.md). ⚠️ Confirmar a data em que a reunião de fato ocorreu. Decisões e encaminhamentos redigidos em 16/10/2026 a partir dos registros do repositório (relatório da sprint, `pull requests`, CHANGELOG e ADRs); revisar pela equipe.
+> A data corresponde ao primeiro dia da sprint, conforme a cadência definida em [`sprint-00-planejamento.md`](../../sprints/sprint-00-planejamento.md).
 
 ## Participantes
 

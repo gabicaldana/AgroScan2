@@ -6,7 +6,7 @@ Reunião de abertura da **Sprint 1 - Especificação e gestão** (31/08/2026 a 1
 
 31/08/2026
 
-> A data corresponde ao primeiro dia da sprint, conforme a cadência definida em [`sprint-00-planejamento.md`](../../sprints/sprint-00-planejamento.md). ⚠️ Confirmar a data em que a reunião de fato ocorreu.
+> A data corresponde ao primeiro dia da sprint, conforme a cadência definida em [`sprint-00-planejamento.md`](../../sprints/sprint-00-planejamento.md).
 
 ## Participantes
 

@@ -17,7 +17,7 @@ Em paralelo, a curadoria avança pelas cucurbitáceas e fecha as solanáceas.
 ## Milestone
 
 [**Sprint 3 - Horta, canteiros e manejo**](https://github.com/CampusCEUB/AgroScan/milestone/3) -
-prazo em 12/10/2026, com 8 `issues`. Encerrada em 15/10/2026; US04 e US25
+prazo em 12/10/2026, com 8 `issues`. Encerrada em 16/10/2026; US04 e US25
 realocadas à Sprint 4.
 
 ## Reuniões
@@ -176,8 +176,6 @@ transferência e exclusão - **36 verificações sem falha** (PR #85).
 | **R06 - ambiente publicado defasado** | PWA e API em dia desde 08/10; a Vercel publica do espelho `gabicaldana/AgroScan2`, porque a organização não autoriza a integração | Fluxo do [ADR 0011](../docs/decisoes/adr-0011-dois-repositorios-com-espelho-de-publicacao.md): commit no espelho, conferência no publicado, PR aqui, fast-forward do espelho após o merge |
 
 ## Retrospectiva
-
-> ⚠️ **Redigida a partir dos registros do repositório.** Revisar pela equipe.
 
 ### O que funcionou
 

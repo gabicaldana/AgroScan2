@@ -21,7 +21,7 @@ conforme os ajustes definidos na retrospectiva da Sprint 1.
 ## Milestone
 
 [**Sprint 2 - Base de conhecimento e publicação**](https://github.com/CampusCEUB/AgroScan/milestone/2) -
-prazo em 28/09/2026, com 14 `issues`. Encerrada em 15/10/2026: as
+prazo em 28/09/2026, com 14 `issues`. Encerrada em 16/10/2026: as
 concluídas fechadas e as demais realocadas às Sprints 4 e 5 (ver
 [Não concluídas](#não-concluídas---realocadas)).
 
@@ -208,13 +208,14 @@ Os grupos `folha` e `flor` também estreiam: até aqui a base só tinha `fruto` 
 `raiz`. A tela de seleção de cultura passa a exercitar de verdade o
 agrupamento que a **US01** pede.
 
-> **A validar pela equipe.** A validação automática aprova a estrutura, não a
-> agronomia. Agente, perfil de sintomas, condições favoráveis e ingredientes
-> ativos precisam de conferência contra as fontes e de revisão cruzada, como
-> exige o Definition of Done para fichas da base. A **hérnia das crucíferas**
-> merece atenção: é a única ficha com `ingredientes_ativos` vazio, porque não
-> há produto que controle *Plasmodiophora brassicae* no solo em campo - o
-> manejo é calagem e rotação longa.
+> **Conferência agronômica.** A validação automática aprova a estrutura, não a
+> agronomia. A conferência das fichas contra as fontes (agente, perfil de
+> sintomas, condições favoráveis e registro dos ingredientes ativos por
+> cultura) segue como encaminhamento da Sprint 4, registrado na
+> [ata de planejamento](../docs/reunioes/sprint-04-planejamento.md). A
+> **hérnia das crucíferas** é a única ficha com `ingredientes_ativos` vazio,
+> porque não há produto que controle *Plasmodiophora brassicae* no solo em
+> campo - o manejo é calagem e rotação longa.
 >
 > A apresentação dessa ficha sem defensivo **foi verificada**: o `Laudo.tsx` já
 > trata lista vazia e exibe "não há produto que resolva esta doença depois de
@@ -394,6 +395,9 @@ repositório avaliado.
 > declaram Node.js 20, já depreciado e forçado para o 24; e o rótulo
 > `ubuntu-latest` migra para o Ubuntu 26 a partir de 19/10/2026. Nenhum dos dois
 > quebra hoje, mas convém atualizar antes que quebrem.
+>
+> **Resolvido na Sprint 3** (PR #86): `checkout@v5`, `setup-python@v6`,
+> `setup-node@v5` e runner fixado em `ubuntu-24.04`.
 
 Verificações obrigatórias neste ciclo, por decorrerem dos riscos herdados:
 
@@ -414,9 +418,6 @@ Verificações obrigatórias neste ciclo, por decorrerem dos riscos herdados:
 | 5 | **Vercel ligada ao repositório antigo** | O código passou a viver em `CampusCEUB/AgroScan`, mas o deploy continua saindo de `gabicaldana/AgroScan2`. Enquanto não for reapontada, o ambiente publicado não reflete o que se desenvolve | ✅ **Resolvido na Sprint 3** - a organização não autoriza ligar a Vercel aqui; o deploy sai do espelho `gabicaldana/AgroScan2`, com o mesmo histórico ([ADR 0011](../docs/decisoes/adr-0011-dois-repositorios-com-espelho-de-publicacao.md)) |
 
 ## Retrospectiva
-
-> ⚠️ **Redigida a partir dos registros do repositório** (este relatório, os
-> `pull requests` e o CHANGELOG). Revisar pela equipe.
 
 ### O que funcionou
 
