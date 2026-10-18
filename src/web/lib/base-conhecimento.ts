@@ -65,7 +65,7 @@ export type Cultura = {
   doencas: Doenca[];
 };
 
-export const VERSAO_DA_BASE: string = "2026.09.27";
+export const VERSAO_DA_BASE: string = "2026.10.18";
 
 export const ORGAOS: readonly Orgao[] = [
   {
@@ -261,7 +261,7 @@ export const CULTURAS: readonly Cultura[] = [
       {
         "id": "agriao_mildio",
         "nome": "Míldio do agrião",
-        "agente": "Hyaloperonospora brassicae",
+        "agente": "Hyaloperonospora nasturtii-aquatici",
         "tipoAgente": "oomiceto",
         "gravidade": 4,
         "descricao": "Manchas amareladas de contorno anguloso na face superior da folha e, embaixo delas, um mofo branco-acinzentado na face inferior - é o sinal que confirma o diagnóstico. No agrião, cultivado em água corrente, a umidade é permanente por definição do sistema de cultivo - o manejo não pode contar com a folha secar. Avança rápido em tempo fresco e úmido, e é a doença que mais aparece em plantio adensado.",
@@ -287,7 +287,7 @@ export const CULTURAS: readonly Cultura[] = [
         "tratamentos": [
           {
             "tipo": "cultural",
-            "descricao": "Ampliar o espaçamento para arejar a folhagem; irrigar de manhã, para a folha secar durante o dia; preferir irrigação localizada à aspersão; eliminar restos culturais; fazer rotação com espécies fora das brássicas."
+            "descricao": "Evitar o adensamento e renovar as touceiras; manter a água corrente e limpa; retirar e destruir as plantas com sintoma; formar o canteiro com mudas sadias, longe de restos de cultivo doente."
           },
           {
             "tipo": "biologico",
@@ -694,7 +694,7 @@ export const CULTURAS: readonly Cultura[] = [
       {
         "id": "brocolis_alternariose",
         "nome": "Alternariose do brócolis",
-        "agente": "Alternaria brassicae",
+        "agente": "Alternaria brassicicola e A. brassicae",
         "tipoAgente": "fungo",
         "gravidade": 3,
         "descricao": "Manchas escuras e arredondadas com anéis concêntricos, como um alvo, que crescem e se juntam até secar a folha. No brócolis, a perda de área foliar antes da formação da inflorescência resulta em cabeça pequena e de baixo valor. O fungo sobrevive na semente e em restos culturais, o que faz da semente sadia a primeira medida de controle.",
@@ -790,21 +790,10 @@ export const CULTURAS: readonly Cultura[] = [
           },
           {
             "tipo": "quimico",
-            "descricao": "Não há bactericida curativo. Produtos cúpricos têm ação apenas preventiva e de superfície, e não alcançam a bactéria dentro dos vasos."
+            "descricao": "Não há produto registrado no MAPA para a podridão-negra em brássicas, e nenhum bactericida cura a planta já infectada. O cobre tem só efeito bacteriostático, de superfície, e já há relato de Xanthomonas resistente a ele. O controle é preventivo."
           }
         ],
-        "ingredientesAtivos": [
-          {
-            "nome": "Oxicloreto de cobre",
-            "grupo": "Inorgânico",
-            "acao": "protetor"
-          },
-          {
-            "nome": "Hidróxido de cobre",
-            "grupo": "Inorgânico",
-            "acao": "protetor"
-          }
-        ]
+        "ingredientesAtivos": []
       }
     ]
   },
@@ -878,7 +867,7 @@ export const CULTURAS: readonly Cultura[] = [
       {
         "id": "couve_alternariose",
         "nome": "Alternariose da couve",
-        "agente": "Alternaria brassicae",
+        "agente": "Alternaria brassicicola e A. brassicae",
         "tipoAgente": "fungo",
         "gravidade": 3,
         "descricao": "Manchas escuras e arredondadas com anéis concêntricos, como um alvo, que crescem e se juntam até secar a folha. Na couve, que é colhida folha a folha ao longo de meses, cada folha perdida é produto que não vai para a feira. O fungo sobrevive na semente e em restos culturais, o que faz da semente sadia a primeira medida de controle.",
@@ -974,21 +963,10 @@ export const CULTURAS: readonly Cultura[] = [
           },
           {
             "tipo": "quimico",
-            "descricao": "Não há bactericida curativo. Produtos cúpricos têm ação apenas preventiva e de superfície, e não alcançam a bactéria dentro dos vasos."
+            "descricao": "Não há produto registrado no MAPA para a podridão-negra em brássicas, e nenhum bactericida cura a planta já infectada. O cobre tem só efeito bacteriostático, de superfície, e já há relato de Xanthomonas resistente a ele. O controle é preventivo."
           }
         ],
-        "ingredientesAtivos": [
-          {
-            "nome": "Oxicloreto de cobre",
-            "grupo": "Inorgânico",
-            "acao": "protetor"
-          },
-          {
-            "nome": "Hidróxido de cobre",
-            "grupo": "Inorgânico",
-            "acao": "protetor"
-          }
-        ]
+        "ingredientesAtivos": []
       }
     ]
   },
@@ -1100,21 +1078,10 @@ export const CULTURAS: readonly Cultura[] = [
           },
           {
             "tipo": "quimico",
-            "descricao": "Não há bactericida curativo. Produtos cúpricos têm ação apenas preventiva e de superfície, e não alcançam a bactéria dentro dos vasos."
+            "descricao": "Não há produto registrado no MAPA para a podridão-negra em brássicas, e nenhum bactericida cura a planta já infectada. O cobre tem só efeito bacteriostático, de superfície, e já há relato de Xanthomonas resistente a ele. O controle é preventivo."
           }
         ],
-        "ingredientesAtivos": [
-          {
-            "nome": "Oxicloreto de cobre",
-            "grupo": "Inorgânico",
-            "acao": "protetor"
-          },
-          {
-            "nome": "Hidróxido de cobre",
-            "grupo": "Inorgânico",
-            "acao": "protetor"
-          }
-        ]
+        "ingredientesAtivos": []
       },
       {
         "id": "couve_flor_hernia",
@@ -1122,7 +1089,7 @@ export const CULTURAS: readonly Cultura[] = [
         "agente": "Plasmodiophora brassicae",
         "tipoAgente": "protista",
         "gravidade": 5,
-        "descricao": "A parte de cima da planta murcha nas horas quentes e se recupera à noite, cresce pouco e amarelece - e a causa não está na folha. Ao arrancar, as raízes aparecem engrossadas e deformadas, com galhas. Na couve-flor, o ciclo longo expõe a planta por mais tempo, e a cabeça manchada perde valor comercial mesmo quando o dano é superficial. O patógeno persiste no solo por até vinte anos, o que torna a área contaminada um problema de longo prazo.",
+        "descricao": "A parte de cima da planta murcha nas horas quentes e se recupera à noite, cresce pouco e amarelece - e a causa não está na folha. Ao arrancar, as raízes aparecem engrossadas e deformadas, com galhas. Na couve-flor, o ciclo longo expõe a planta por mais tempo, e a raiz comprometida resulta em cabeça pequena ou em nenhuma cabeça. O patógeno persiste no solo por até vinte anos, o que torna a área contaminada um problema de longo prazo.",
         "sintomas": [
           {
             "id": "galhas_na_raiz",
@@ -1153,14 +1120,20 @@ export const CULTURAS: readonly Cultura[] = [
           },
           {
             "tipo": "biologico",
-            "descricao": "Trichoderma spp. e Bacillus subtilis aplicados ao substrato de mudas reduzem a infecção inicial, sem eliminar o patógeno do solo."
+            "descricao": "Resultados inconsistentes. Em couve-flor, Trichoderma harzianum não diferiu da testemunha em ensaio de campo. Não substitui a calagem."
           },
           {
             "tipo": "quimico",
-            "descricao": "Não há produto químico que controle o patógeno no solo em condições de campo. A calagem e a rotação são o manejo disponível."
+            "descricao": "Ciazofamida tem registro para esta doença em brássicas: uma aplicação na bandeja de mudas e mais duas ou três no campo, de forma preventiva. Não elimina o patógeno do solo nem cura a planta já com galhas - a calagem e a rotação continuam sendo a base do manejo."
           }
         ],
-        "ingredientesAtivos": []
+        "ingredientesAtivos": [
+          {
+            "nome": "Ciazofamida",
+            "grupo": "Cianoimidazol",
+            "acao": "protetor"
+          }
+        ]
       }
     ]
   },
@@ -1419,26 +1392,15 @@ export const CULTURAS: readonly Cultura[] = [
           },
           {
             "tipo": "quimico",
-            "descricao": "Não há bactericida curativo. Produtos cúpricos têm ação apenas preventiva e de superfície, e não alcançam a bactéria dentro dos vasos."
+            "descricao": "Não há produto registrado no MAPA para a podridão-negra em brássicas, e nenhum bactericida cura a planta já infectada. O cobre tem só efeito bacteriostático, de superfície, e já há relato de Xanthomonas resistente a ele. O controle é preventivo."
           }
         ],
-        "ingredientesAtivos": [
-          {
-            "nome": "Oxicloreto de cobre",
-            "grupo": "Inorgânico",
-            "acao": "protetor"
-          },
-          {
-            "nome": "Hidróxido de cobre",
-            "grupo": "Inorgânico",
-            "acao": "protetor"
-          }
-        ]
+        "ingredientesAtivos": []
       },
       {
         "id": "repolho_alternariose",
         "nome": "Alternariose do repolho",
-        "agente": "Alternaria brassicae",
+        "agente": "Alternaria brassicicola e A. brassicae",
         "tipoAgente": "fungo",
         "gravidade": 3,
         "descricao": "Manchas escuras e arredondadas com anéis concêntricos, como um alvo, que crescem e se juntam até secar a folha. No repolho, o ataque às folhas externas compromete a formação da cabeça, que é o produto. O fungo sobrevive na semente e em restos culturais, o que faz da semente sadia a primeira medida de controle.",
@@ -1499,7 +1461,7 @@ export const CULTURAS: readonly Cultura[] = [
         "agente": "Plasmodiophora brassicae",
         "tipoAgente": "protista",
         "gravidade": 5,
-        "descricao": "A parte de cima da planta murcha nas horas quentes e se recupera à noite, cresce pouco e amarelece - e a causa não está na folha. Ao arrancar, as raízes aparecem engrossadas e deformadas, com galhas. No repolho, o ataque às folhas externas compromete a formação da cabeça, que é o produto. O patógeno persiste no solo por até vinte anos, o que torna a área contaminada um problema de longo prazo.",
+        "descricao": "A parte de cima da planta murcha nas horas quentes e se recupera à noite, cresce pouco e amarelece - e a causa não está na folha. Ao arrancar, as raízes aparecem engrossadas e deformadas, com galhas. No repolho, a raiz deformada não sustenta a formação da cabeça, que sai pequena ou não chega a fechar. O patógeno persiste no solo por até vinte anos, o que torna a área contaminada um problema de longo prazo.",
         "sintomas": [
           {
             "id": "galhas_na_raiz",
@@ -1530,14 +1492,20 @@ export const CULTURAS: readonly Cultura[] = [
           },
           {
             "tipo": "biologico",
-            "descricao": "Trichoderma spp. e Bacillus subtilis aplicados ao substrato de mudas reduzem a infecção inicial, sem eliminar o patógeno do solo."
+            "descricao": "Resultados inconsistentes. Em couve-flor, Trichoderma harzianum não diferiu da testemunha em ensaio de campo. Não substitui a calagem."
           },
           {
             "tipo": "quimico",
-            "descricao": "Não há produto químico que controle o patógeno no solo em condições de campo. A calagem e a rotação são o manejo disponível."
+            "descricao": "Ciazofamida tem registro para esta doença em brássicas: uma aplicação na bandeja de mudas e mais duas ou três no campo, de forma preventiva. Não elimina o patógeno do solo nem cura a planta já com galhas - a calagem e a rotação continuam sendo a base do manejo."
           }
         ],
-        "ingredientesAtivos": []
+        "ingredientesAtivos": [
+          {
+            "nome": "Ciazofamida",
+            "grupo": "Cianoimidazol",
+            "acao": "protetor"
+          }
+        ]
       }
     ]
   },

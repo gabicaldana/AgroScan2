@@ -72,7 +72,29 @@ parte parcial da US05.
 
 ## Entregas
 
-> ⚠️ **A preencher no encerramento da sprint.**
+### Conferência agronômica das brássicas
+
+Encaminhamento herdado das revisões das Sprints 2 e 3, feito em 18/10/2026. As
+18 fichas da US03 foram conferidas contra fontes técnicas, e a base passou para
+a versão `2026.10.18`. Detalhe e fontes em
+[`docs/curadoria/conferencia-brassicas.md`](../docs/curadoria/conferencia-brassicas.md).
+
+| Correção | Fichas |
+| --- | --- |
+| Cúpricos retirados: não há produto registrado no MAPA para a podridão-negra em brássicas | 4 |
+| Ciazofamida incluída na hérnia, com registro para o alvo; a ficha dizia que nenhum produto controla o patógeno | 2 |
+| Agente da alternariose em *Brassica oleracea*: *A. brassicicola* e *A. brassicae* | 3 |
+| Agente e manejo cultural do míldio do agrião | 1 |
+
+Sintomas e pesos não mudaram, e o diagnóstico de cada caso continua o mesmo.
+**A carga da `2026.10.18` no Neon precisa ser aplicada antes da publicação do
+app**, ou as consultas novas são recusadas pelo banco.
+
+Ficam para o planejamento da Sprint 5 o registro por cultura dos demais
+ingredientes ativos no AGROFIT e a decisão sobre levar as fontes para dentro
+da base, como pede o critério da US03.
+
+> ⚠️ **Demais entregas a preencher no encerramento da sprint.**
 
 ## Issues concluídas
 
