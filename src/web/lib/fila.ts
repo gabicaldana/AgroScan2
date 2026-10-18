@@ -2,12 +2,12 @@
  * A fila de consultas registradas sem rede.
  *
  * A regra que organiza tudo: **o aparelho é a fonte do registro até o servidor
- * confirmar**. O produtor marca sintomas no canteiro, recebe o laudo e salva —
+ * confirmar**. O produtor marca sintomas no canteiro, recebe o laudo e salva -
  * e nada disso pode depender de sinal. A consulta entra aqui, e sobe depois.
  *
  * O envio NÃO acontece em segundo plano. No iOS não existe Background Sync, e
  * fingir que existe daria uma promessa que o app não cumpre. A fila é
- * despachada quando o app abre e quando a conexão volta com o app em uso —
+ * despachada quando o app abre e quando a conexão volta com o app em uso -
  * momentos em que há JavaScript rodando de verdade.
  *
  * Cada consulta nasce com um `offlineId` (UUID) gerado aqui. É a chave de
@@ -61,7 +61,7 @@ const CHAVE = "pendentes";
 
 /**
  * IndexedDB, e não `localStorage`: a fila pode crescer com o produtor dias sem
- * sinal, e `localStorage` é síncrono e limitado a alguns megabytes — ele
+ * sinal, e `localStorage` é síncrono e limitado a alguns megabytes - ele
  * travaria a interface justamente no aparelho mais fraco.
  */
 export function armazenamentoIndexedDB(): Armazenamento {
@@ -193,7 +193,7 @@ export async function despachar(
   try {
     resultado = await enviar(fila);
   } catch {
-    // Falhou o lote inteiro — sem rede, ou servidor fora. A fila NÃO é
+    // Falhou o lote inteiro - sem rede, ou servidor fora. A fila NÃO é
     // esvaziada nem alterada: perder o registro do produtor por causa de uma
     // falha de rede seria o pior desfecho possível deste app.
     const comTentativa = fila.map((c) => ({
@@ -211,7 +211,7 @@ export async function despachar(
   }
 
   // Aceita e duplicada saem da fila pelo mesmo motivo: o servidor já tem.
-  // Rejeitada FICA — o motivo é um defeito a corrigir, e descartar em silêncio
+  // Rejeitada FICA - o motivo é um defeito a corrigir, e descartar em silêncio
   // apagaria a observação de campo sem ninguém notar.
   const resolvidas = [...resultado.aceitas, ...resultado.duplicadas];
   await remover(armazenamento, resolvidas);

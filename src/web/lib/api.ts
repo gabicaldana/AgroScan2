@@ -6,13 +6,13 @@
  *
  *   1. CORS deixa de existir;
  *   2. a regra do service worker que nunca cacheia `/api/` continua valendo
- *      sem exceção — ela olha o caminho, não o host;
+ *      sem exceção - ela olha o caminho, não o host;
  *   3. trocar o endereço da API vira variável de ambiente, e não um novo
  *      deploy do app.
  *
  * NENHUMA função daqui está no caminho do diagnóstico. O motor roda no
  * aparelho, sobre a base embutida no bundle, e continua respondendo em modo
- * avião. Isto aqui é o REGISTRO — histórico, conta, sincronização — e toda
+ * avião. Isto aqui é o REGISTRO - histórico, conta, sincronização - e toda
  * chamada pode falhar sem que o produtor perca o que observou.
  */
 
@@ -47,7 +47,7 @@ type Opcoes = {
   corpo?: unknown;
   /** Envia o token da sessão. Rota pública dispensa. */
   autenticado?: boolean;
-  /** Formulário em vez de JSON — só o /autenticacao/token usa. */
+  /** Formulário em vez de JSON - só o /autenticacao/token usa. */
   formulario?: Record<string, string>;
   sinal?: AbortSignal;
 };

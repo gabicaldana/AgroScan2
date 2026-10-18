@@ -14,7 +14,7 @@ O ambiente publicado servia só o PWA. A API existia no código desde a Sprint 1
 mas **nunca tinha sido publicada**: na Vercel havia um único projeto, `agroscan`,
 com Root Directory `web/`. O diagnóstico por sintomas funcionava, porque roda no
 navegador ([ADR 0001](adr-0001-diagnostico-no-cliente.md)), mas toda chamada a
-`/api/v1` — cadastro, login, sincronização do caderno, versão do catálogo —
+`/api/v1` - cadastro, login, sincronização do caderno, versão do catálogo -
 respondia **404**. O defeito foi descoberto ao tentar criar uma conta no site.
 
 Três restrições moldam a solução:

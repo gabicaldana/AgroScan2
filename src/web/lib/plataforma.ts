@@ -4,7 +4,7 @@
  * No Android o navegador oferece o botão de instalar. No iPhone, não: o único
  * caminho é Compartilhar → Adicionar à Tela de Início, e o produtor precisa ser
  * levado até lá. É também no iOS que o Safari apaga os dados de um site não
- * aberto por cerca de sete dias — catálogo em cache e fila de envio juntos.
+ * aberto por cerca de sete dias - catálogo em cache e fila de envio juntos.
  *
  * Funções puras sobre o que o navegador informa, para o teste não precisar de
  * um iPhone.

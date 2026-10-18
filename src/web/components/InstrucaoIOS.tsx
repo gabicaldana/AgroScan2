@@ -7,7 +7,7 @@ import { ambienteAtual, deveMostrarInstrucaoIOS } from "@/lib/plataforma.ts";
  * Como instalar no iPhone, que não oferece o botão de instalação.
  *
  * Só aparece no iOS e fora do app instalado: aberto pelo ícone da tela de
- * início, some sozinho. Junto vai o aviso que mais importa para o offline — o
+ * início, some sozinho. Junto vai o aviso que mais importa para o offline - o
  * iPhone apaga os dados de um site não aberto por cerca de sete dias, e com
  * eles os registros que ainda não subiram.
  */
