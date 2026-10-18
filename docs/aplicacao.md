@@ -1,15 +1,15 @@
-# AgroScan — diagnóstico de doenças em hortaliças
+# AgroScan - diagnóstico de doenças em hortaliças
 
 App web que o produtor abre no celular na horta, marca os sintomas que vê na
-planta e recebe as hipóteses de doença na hora — com descrição, gravidade,
+planta e recebe as hipóteses de doença na hora - com descrição, gravidade,
 manejo integrado e as condições climáticas que favorecem o aparecimento.
 
-**▶ [agroscan-blond.vercel.app](https://agroscan-blond.vercel.app)** — instalável
+**▶ [agroscan-blond.vercel.app](https://agroscan-blond.vercel.app)** - instalável
 no celular e funcional em modo avião.
 
 > **Estado atual:** o motor de diagnóstico por sintomas funciona ponta a ponta,
 > offline, sem foto e sem rede. A base cobre **9 hortaliças e 34 doenças**
-> curadas — as três solanáceas (tomate, batata, pimentão) e as seis brássicas
+> curadas - as três solanáceas (tomate, batata, pimentão) e as seis brássicas
 > (couve, repolho, brócolis, couve-flor, rúcula, agrião), todas com o mínimo de
 > 3 doenças que a pergunta de desempate exige. A curadoria avança por família
 > botânica: as cucurbitáceas são as próximas. A câmera captura e pré-processa; falta o modelo de
@@ -21,7 +21,7 @@ no celular e funcional em modo avião.
 > (US22-US26, [ADR 0012](decisoes/adr-0012-acesso-por-horta.md)), com a consulta
 > vinculável ao canteiro mesmo sem rede. Faltam os **relatórios agregados**.
 >
-> Verificado em 09/10/2026: **331 testes automatizados, nenhuma falha** — 117 em
+> Verificado em 09/10/2026: **331 testes automatizados, nenhuma falha** - 117 em
 > Python e 214 em TypeScript.
 
 ---
@@ -30,7 +30,7 @@ no celular e funcional em modo avião.
 
 **1. Horta tem sinal ruim ou nenhum.** Se o diagnóstico precisa de uma chamada
 de rede, o app falha exatamente onde deveria funcionar. O cálculo roda **no
-navegador**, sobre a base embutida no bundle. Isso não é economia de servidor —
+navegador**, sobre a base embutida no bundle. Isso não é economia de servidor -
 é requisito funcional.
 
 **2. Sistema que sempre responde, mente.** Um diagnóstico devolvido com ares de
@@ -70,7 +70,7 @@ Daí a divisão de responsabilidade que organiza o projeto inteiro:
 ### Decisões que sustentam o projeto
 
 **A base de conhecimento nunca carrega identidade de dataset.** As fichas
-descrevem agronomia — sintomas, agente, manejo — e nada sobre qual acervo de
+descrevem agronomia - sintomas, agente, manejo - e nada sobre qual acervo de
 imagens existe ou qual modelo foi treinado. Quando a identificação por foto
 chegar, o acervo aponta *para* a base por uma tabela própria, nunca por dentro
 dela. É isso que permite trocar de acervo sem tocar em uma linha de curadoria, e
@@ -80,25 +80,25 @@ ter escopo de app maior que o escopo do modelo.
 fitopatológica é escrita nesse nível: míldio, alternariose e podridão negra
 atingem *todas* as brássicas. Uma passada de pesquisa cobre couve, repolho,
 brócolis, couve-flor, rúcula e agrião. O catálogo de sintomas existe para ser
-reaproveitado — `manchas_escuras_aneis` serve à pinta-preta do tomate e à da
+reaproveitado - `manchas_escuras_aneis` serve à pinta-preta do tomate e à da
 batata sem nenhuma entrada nova.
 
 **Compatibilidade não é probabilidade.** Não existe modelo probabilístico por
 trás do fluxo por sintomas, e a interface diz "compatibilidade", nunca "92% de
 confiança". Se um modelo de imagem entrar, ele produzirá uma confiança de
-verdade — e os dois sinais vão conviver rotulados de forma distinta.
+verdade - e os dois sinais vão conviver rotulados de forma distinta.
 
 **A base valida antes de carregar.** O JSON é curado à mão, e um id de sintoma
 com erro de digitação sumiria do perfil da doença em silêncio: o diagnóstico
 ficaria errado sem ninguém notar. `python -m app.validacao` recusa a carga e lista
-todos os problemas de uma vez — referência quebrada, peso fora da faixa, doença
+todos os problemas de uma vez - referência quebrada, peso fora da faixa, doença
 sem sintoma clássico, sintoma órfão no catálogo. Cultura com menos de três
 doenças gera **aviso**, não erro: funciona, mas o motor não tem segunda hipótese
 ali, e a pergunta de desempate deixa de existir naquela cultura.
 
 **Python e TypeScript com papéis separados.** Python fica com a validação da
 base, o motor de referência e o tooling de dados. TypeScript fica com a
-aplicação. O porte em TS é testado contra o Python com fixtures compartilhadas —
+aplicação. O porte em TS é testado contra o Python com fixtures compartilhadas -
 ver [Dois motores, um resultado](#dois-motores-um-resultado).
 
 ---
@@ -125,7 +125,7 @@ direto: nenhuma dependência de teste, nenhum passo de build.
 
 ### Motor de diagnóstico (Python)
 
-Sem dependências externas — só a biblioteca padrão.
+Sem dependências externas - só a biblioteca padrão.
 
 ```bash
 python -m app.validacao         # valida a base curada e lista os avisos
@@ -136,7 +136,7 @@ python -m unittest discover -s tests -t .
 ```
 
 Sem as dependências do back-end os testes de API, caderno e segurança **se
-pulam sozinhos** — a suíte passa, mas verificando menos do que parece. Confira a
+pulam sozinhos** - a suíte passa, mas verificando menos do que parece. Confira a
 linha `skipped=` na saída. Para rodar a suíte inteira:
 
 ```bash
@@ -183,7 +183,7 @@ SELECT '[' || current_database() || ']' AS banco,
        (SELECT max(numero) FROM migracao_aplicada) AS migracao;
 ```
 
-O catálogo é **carregado**, nunca escrito à mão — `src/app/seed.py` lê o JSON
+O catálogo é **carregado**, nunca escrito à mão - `src/app/seed.py` lê o JSON
 curado, valida e aplica em `UPSERT` idempotente. Rodar duas vezes deixa o banco
 no mesmo estado.
 
@@ -193,7 +193,7 @@ para migração, porque DDL não sobrevive a *transaction pooling*.
 
 ### Publicação
 
-Dois projetos na Vercel, ligados ao mesmo repositório — o porquê está no
+Dois projetos na Vercel, ligados ao mesmo repositório - o porquê está no
 [ADR 0010](decisoes/adr-0010-publicacao-em-dois-projetos.md):
 
 | Projeto | Root Directory | Framework Preset | Variáveis de produção |
@@ -204,13 +204,13 @@ Dois projetos na Vercel, ligados ao mesmo repositório — o porquê está no
 O navegador nunca fala com `agroscan-api` diretamente: o PWA encaminha
 `/api/v1/*` por *rewrite*, que só existe se `API_URL` estiver definida **no
 build**. Sem ela, toda chamada à API dá 404 e só o diagnóstico continua
-funcionando — foi exatamente o defeito corrigido em 08/10/2026.
+funcionando - foi exatamente o defeito corrigido em 08/10/2026.
 
 Três armadilhas já encontradas:
 
 - **Catálogo novo no código exige carga no banco.** Cada consulta referencia a
   versão do catálogo por chave estrangeira. Mudou `src/data/base_conhecimento.json`,
-  rode o seed no banco de produção, ou toda gravação de consulta dará 500 — foi
+  rode o seed no banco de produção, ou toda gravação de consulta dará 500 - foi
   o que aconteceu entre 27/09 e 09/10/2026. O `/saude` denuncia com
   `"catalogo_no_banco": false`.
 - **Não passe parâmetro de inicialização na conexão** (`options="-c ..."`). O
@@ -244,7 +244,7 @@ python -m app.validacao && python -m app.fixtures && python -m app.preprocessame
 cd web && npm run base && npm test
 ```
 
-São quatro artefatos gerados e versionados — as fixtures do motor, as de pixel e
+São quatro artefatos gerados e versionados - as fixtures do motor, as de pixel e
 os dois módulos TypeScript. Todos têm teste de frescor, e o CI roda exatamente
 esta sequência e falha se sobrar diferença: nenhum deles pode envelhecer em
 silêncio.
@@ -262,9 +262,9 @@ compatibilidade = ────────────────────�
                   acertos + faltantes + ruído × 0.5
 ```
 
-- **acertos** — soma dos pesos dos sintomas marcados que a doença explica
-- **faltantes** — soma dos pesos dos sintomas típicos que o usuário não marcou
-- **ruído** — quantidade de sintomas marcados que a doença não explica
+- **acertos** - soma dos pesos dos sintomas marcados que a doença explica
+- **faltantes** - soma dos pesos dos sintomas típicos que o usuário não marcou
+- **ruído** - quantidade de sintomas marcados que a doença não explica
 
 É uma variante ponderada do índice de Tversky. O denominador penaliza os dois
 erros possíveis: quadro incompleto e quadro contaminado. Abaixo de 15% a
@@ -283,14 +283,14 @@ Entre os sintomas que a hipótese líder espera e que ainda não foram marcados,
 motor escolhe o de maior `peso na líder − peso na segunda`. Essa diferença é
 exatamente o quanto a resposta afasta as duas.
 
-Pegar simplesmente o de maior peso não funciona — o sintoma mais característico
+Pegar simplesmente o de maior peso não funciona - o sintoma mais característico
 da líder costuma ser característico da concorrente também, que é justamente por
 que as duas empataram. Anéis concêntricos não separam pinta-preta de
 mancha-alvo: as duas os fazem. A lesão no fruto separa.
 
 A tela só promete "afasta X" quando a segunda hipótese não espera aquele sintoma
 de forma alguma. Quando as duas o esperam, ela diz que a observação confirma mas
-não desempata — o motor não deixa a interface prometer mais do que ele sabe.
+não desempata - o motor não deixa a interface prometer mais do que ele sabe.
 
 ---
 
@@ -298,7 +298,7 @@ não desempata — o motor não deixa a interface prometer mais do que ele sabe.
 
 O motor existe duas vezes: em Python (`src/app/diagnostico.py`, a referência) e em
 TypeScript (`src/web/lib/diagnostico.ts`, o que roda no celular). Duas
-implementações da mesma regra divergem sozinhas — basta um arredondamento
+implementações da mesma regra divergem sozinhas - basta um arredondamento
 diferente.
 
 O contrato é um arquivo de fixtures gerado pelo Python e versionado:
@@ -319,7 +319,7 @@ Os casos incluem o perfil completo e o sintoma isolado de **cada** doença da
 base, além dos escolhidos à mão para ruído, ambiguidade, desempate e limiar. A
 varredura é automática: uma doença nova entra nas fixtures sozinha, sem que
 ninguém escreva um caso. Mudar um peso na base sem regerar quebra os dois lados
-— que é o objetivo.
+- que é o objetivo.
 
 Três armadilhas de portabilidade apareceram e estão tratadas no código:
 
@@ -329,15 +329,15 @@ Três armadilhas de portabilidade apareceram e estão tratadas no código:
 | `round()` do Python arredonda meio para o par; `Math.round` arredonda meio para cima | 12.5% vira 12% num lado e 13% no outro | o porte replica o meio-para-o-par |
 | Ordenar strings por código de caractere joga acento para depois do `z` | "Rúcula" depois de "Salsa"; "Ácaros" no fim da lista | os dois removem diacríticos (NFD) antes de comparar |
 
-Nenhuma delas mudaria um número na tela — erram na décima-sexta casa decimal ou
+Nenhuma delas mudaria um número na tela - erram na décima-sexta casa decimal ou
 em um ponto percentual isolado. Mas comparar com tolerância deixaria passar
 justamente as divergências reais que o teste existe para pegar, então a
 igualdade é exata.
 
 Também são comparados o catálogo de sintomas de cada cultura e as fichas
-completas. No total, **286 testes**: 212 em TypeScript e 74 em Python —
-destes, 28 no motor de referência, 13 no pré-processamento, 11 na segurança, 14
-no contrato do caderno e 8 na API.
+completas. No total, **331 testes**: 214 em TypeScript e 117 em Python -
+destes, 36 nas hortas, 28 no motor de referência, 14 no contrato do caderno, 13
+no pré-processamento, 11 na segurança, 10 na API e 5 na carga do catálogo.
 
 ---
 
@@ -345,7 +345,7 @@ no contrato do caderno e 8 na API.
 
 Hortaliças, suas doenças e o perfil de sintomas de cada uma, com descrição,
 condições favoráveis, manejo integrado e ingredientes ativos de referência. É
-trabalho de curadoria agronômica, não de programação — e é o gargalo real do
+trabalho de curadoria agronômica, não de programação - e é o gargalo real do
 projeto.
 
 Fontes: **Embrapa Hortaliças**, boletins do **IAC** e **AGROFIT/MAPA** para
@@ -354,15 +354,15 @@ ingredientes ativos e registro.
 ### Escopo
 
 As hortaliças são organizadas nos cinco grupos da classificação da Embrapa por
-parte comestível — e é assim que o seletor agrupa a lista na tela, porque uma
+parte comestível - e é assim que o seletor agrupa a lista na tela, porque uma
 lista plana de dezenas de culturas num celular sob sol vira rolagem às cegas.
 
 | Grupo | Alvo | Curadas |
 |---|---|---|
 | **Fruto** | tomate, pimentão, pepino, berinjela, jiló, abobrinha, abóbora, quiabo | tomate, pimentão |
-| **Folha** | alface, couve, repolho, rúcula, espinafre, agrião, salsa | — |
-| **Flor** | brócolis, couve-flor | — |
-| **Haste** | alho-poró, aipo | — |
+| **Folha** | alface, couve, repolho, rúcula, espinafre, agrião, salsa | - |
+| **Flor** | brócolis, couve-flor | - |
+| **Haste** | alho-poró, aipo | - |
 | **Raiz, tubérculo e bulbo** | batata, cenoura, cebola, beterraba, alho | batata |
 
 ### Pares confundíveis, de propósito
@@ -374,14 +374,14 @@ fazem, e a descrição diz onde olhar para separá-las. Fingir certeza aqui seri
 pior que a dúvida.
 
 Mofo-de-folha e oídio do tomate são o outro caso: as duas causam desfolha de
-baixo para cima, então o motor **não** promete descartar a segunda — e a
+baixo para cima, então o motor **não** promete descartar a segunda - e a
 interface repete o que o motor afirma, sem arredondar para cima.
 
 ### Virose não é ausência de manejo
 
 Nenhum defensivo age sobre o vírus dentro da planta. Mas geminivírus é
 transmitido pela mosca-branca, e a ficha traz inseticidas com ação declarada
-**(vetor)** — controla-se quem transmite. Já o mosaico, de transmissão mecânica,
+**(vetor)** - controla-se quem transmite. Já o mosaico, de transmissão mecânica,
 tem lista de ingredientes vazia e manejo inteiramente cultural. A distinção está
 no dado, não numa regra genérica sobre viroses.
 
@@ -393,18 +393,18 @@ O modelo relacional está em [`docs/modelo-de-dados.md`](modelo-de-dados.md)
 e o DDL em [`src/migracoes/`](../src/migracoes/), numerado e com par de reversão.
 
 O catálogo agronômico é **carregado**, nunca escrito à mão: ninguém digita um
-`INSERT` de doença. As tabelas que justificam o banco são as outras — as
+`INSERT` de doença. As tabelas que justificam o banco são as outras - as
 transacionais, multiusuário, que produzem junções sem equivalente no cliente:
 
-- `usuario`, `horta`, `membro_horta`, `canteiro` — a área cultivada coletivamente
-- `consulta`, `consulta_sintoma`, `consulta_hipotese` — o histórico do diagnóstico
-- `feedback`, `manejo`, `anotacao` — o laço *diagnosticou → interveio → confirmou*
+- `usuario`, `horta`, `membro_horta`, `canteiro` - a área cultivada coletivamente
+- `consulta`, `consulta_sintoma`, `consulta_hipotese` - o histórico do diagnóstico
+- `feedback`, `manejo`, `anotacao` - o laço *diagnosticou → interveio → confirmou*
 
 Duas decisões que valem destaque:
 
 **`offline_id` com restrição de unicidade.** Cada consulta nasce no aparelho com
 um identificador próprio. Reenviar a fila de sincronização é o caso normal, não
-a exceção — e a garantia de não duplicar mora no banco, não só no código.
+a exceção - e a garantia de não duplicar mora no banco, não só no código.
 
 **`versao_catalogo` gravada em cada consulta.** Um diagnóstico feito com a base
 v1 e reinterpretado com a v3 é reprodutivelmente diferente. Guardar a versão é o
@@ -428,18 +428,18 @@ Tudo isso já roda, menos a caixa marcada.
 
 O tensor que o modelo recebe em campo tem que ser **idêntico** ao que ele viu no
 treino. Se o app redimensiona de um jeito e o treino de outro, o modelo responde
-com a mesma confiança de sempre sobre uma imagem que nunca viu — e a perda de
+com a mesma confiança de sempre sobre uma imagem que nunca viu - e a perda de
 acurácia some dentro de um número que continua parecendo bom.
 
 O `drawImage` do navegador não serve: ele não redimensiona igual ao PIL nem
-igual a si mesmo entre navegadores. Havia duas saídas — reproduzir o PIL bit a
+igual a si mesmo entre navegadores. Havia duas saídas - reproduzir o PIL bit a
 bit em TypeScript, ou definir o algoritmo aqui e mandar o treino usar este. A
 primeira acorrentaria o projeto a detalhes internos do PIL. Escolhemos a
 segunda, e ela está em `src/data/contrato_visao.json`.
 
 O algoritmo mora em `src/app/preprocessamento.py`, é portado em
 `src/web/lib/preprocessamento.ts`, e os dois são comparados por **digest SHA-256 do
-tensor float32** sobre imagens geradas por fórmula — nenhuma imagem binária no
+tensor float32** sobre imagens geradas por fórmula - nenhuma imagem binária no
 repositório. Sete casos, cobrindo ampliação, redução, retrato, paisagem e
 tamanhos ímpares. Um único valor diferente no último bit muda o digest.
 
@@ -453,7 +453,7 @@ reduzidas viram cinza (desvio 0,06), e ampliadas mantêm o contraste (1,26).
 
 Restringir a saída às classes de uma cultura e renormalizar **destrói** a
 confiança como sinal de fora-da-distribuição. Renormalizar sobre quatro classes
-dá à líder um piso de 25% por pior que seja a foto — e esse piso mede como o
+dá à líder um piso de 25% por pior que seja a foto - e esse piso mede como o
 modelo divide a cultura, não o quanto ele reconheceu a imagem. Com uma classe
 só, o piso é **100%**: qualquer imagem sai com confiança total.
 
@@ -461,7 +461,7 @@ Por isso `recusa.ts` recebe os logits crus e calcula três pontuações que falh
 de formas diferentes: MSP (satura em modelos confiantes), energia livre (não
 satura) e margem entre o primeiro e o segundo (pega hesitação entre classes
 plausíveis, que é diferente de não reconhecer nada). E por isso o contrato exige
-que o modelo exporte **logits, nunca softmax** — com o softmax dentro do grafo,
+que o modelo exporte **logits, nunca softmax** - com o softmax dentro do grafo,
 temperatura e energia ficam impossíveis de calcular no cliente.
 
 **Os limiares estão nulos**, de propósito. Eles saem da curva risco-cobertura
@@ -472,7 +472,7 @@ está calibrado.
 ### O modelo é um buraco com forma
 
 `classificador.ts` é uma interface, não um runtime. Hoje devolve `null`, o app
-diz o que falta e oferece o fluxo por sintomas — não é erro, é o estado previsto
+diz o que falta e oferece o fluxo por sintomas - não é erro, é o estado previsto
 do produto. Quando houver um ONNX, ele carrega a própria lista de classes e o
 carregador recusa rodar se ela não bater com o acervo declarado: o cenário
 provável neste app é o service worker servir um modelo antigo junto de um bundle
@@ -481,14 +481,14 @@ a doença errada e nenhuma tela quebra.
 
 ---
 
-## Sistema de design — "ferramenta de campo"
+## Sistema de design - "ferramenta de campo"
 
 O contexto de uso dita o visual: sol a pino, mão suja, talvez luva, pressa.
 
 | Decisão | Razão |
 |---|---|
 | Fundo branco puro | máximo brilho reflexivo sob sol direto |
-| Texto `#1C1917` — contraste 17.9:1 | muito acima do mínimo AAA |
+| Texto `#1C1917` - contraste 17.9:1 | muito acima do mínimo AAA |
 | Bordas sólidas de 2px, sem sombras | sombra desaparece na luz do sol |
 | Corpo de 18px | acima do padrão web de 16px |
 | Alvo de toque de 56px | acima dos 44px de guideline, por causa de luva |
@@ -514,13 +514,13 @@ textual, para continuar legível por quem não distingue as cores.
 | Curadoria por família: brássicas, solanáceas, cucurbitáceas… | 🔄 9 de 24 culturas |
 | Horta, membros, canteiros e manejo (US22-US26) | ✅ |
 | Relatórios agregados e alerta de rotação | ⬜ Sprint 4 |
-| Identificação por imagem — condicionada à auditoria do acervo | ⬜ falta o modelo |
+| Identificação por imagem - condicionada à auditoria do acervo | ⬜ falta o modelo |
 
 A identificação por foto é **escopo condicionado**: depende de um acervo de
 imagens de hortaliças brasileiras com volume suficiente por classe, ainda não
 verificado. O candidato é o [repositório
 Digipathos](https://www.digipathos-rep.cnptia.embrapa.br/) da Embrapa. O produto
-está completo e utilizável sem ela — o fluxo por sintomas é o produto, a câmera
+está completo e utilizável sem ela - o fluxo por sintomas é o produto, a câmera
 é enriquecimento.
 
 ---

@@ -2,6 +2,22 @@
 
 Registre aqui as mudanças relevantes por sprint ou marco avaliativo.
 
+## Sprint 4 - Relatórios agregados · 13/10 a 26/10/2026
+
+### Conferência agronômica das brássicas - base `2026.10.18`
+
+- **Podridão-negra** (brócolis, couve, couve-flor, repolho): saem oxicloreto e hidróxido de cobre. Não há produto registrado no MAPA para o alvo em brássicas; o laudo passa a mostrar que o manejo é todo preventivo.
+- **Hérnia das crucíferas** (couve-flor, repolho): entra a ciazofamida, registrada para o alvo (Ranman, MAPA 5105), em aplicação preventiva na bandeja de mudas e no campo. O texto do controle biológico deixa de afirmar efeito do *Trichoderma*, que não diferiu da testemunha em couve-flor.
+- **Alternariose** em *Brassica oleracea*: agente passa a *Alternaria brassicicola* e *A. brassicae*.
+- **Míldio do agrião**: agente passa a *Hyaloperonospora nasturtii-aquatici*, e o manejo cultural deixa de mandar secar a folha de uma planta cultivada na água.
+- Sintomas e pesos inalterados; fixtures e módulo do app regerados. Fontes e pendências em [`docs/curadoria/conferencia-brassicas.md`](docs/curadoria/conferencia-brassicas.md).
+
+### Documentação
+
+- README, EAP e épicos do Artefato 2, `docs/aplicacao.md` e `sprints/README.md` alinhados ao estado de 18/10: 120 de 172 pontos, 331 testes, 30 endpoints.
+- US40 (#41) incluída nas issues concluídas da Sprint 3.
+- Travessões trocados por hífen em documentos e comentários de código.
+
 ## Sprint 3 - Horta, canteiros e manejo · 29/09 a 12/10/2026
 
 ### Encerramento das Sprints 1 a 3
@@ -60,7 +76,7 @@ continuava funcionando porque roda no navegador. Decisão registrada no
 [ADR 0010](docs/decisoes/adr-0010-publicacao-em-dois-projetos.md).
 
 - **Novo projeto `agroscan-api`** na Vercel, com raiz no repositório, e `API_URL` no projeto do PWA. Segredo JWT de produção gerado à parte, distinto do de desenvolvimento.
-- **Conexão com o banco corrigida** em `app/api/banco.py`: o `statement_timeout` ia como parâmetro de inicialização, e o pooler da Neon o recusa — publicada, a API respondia sem banco.
+- **Conexão com o banco corrigida** em `app/api/banco.py`: o `statement_timeout` ia como parâmetro de inicialização, e o pooler da Neon o recusa - publicada, a API respondia sem banco.
 - **Função movida para `gru1` (São Paulo)**, junto do banco em `sa-east-1`; a primeira publicação saiu em Washington.
 - **Incidente durante a correção**: um `"framework": null` no `vercel.json` da raiz, colocado para a API, também valeu para o PWA, que ficou cerca de dez minutos servindo só arquivos estáticos (todas as páginas com 404). Revertido; a lição está no ADR 0010 e em [docs/aplicacao.md](docs/aplicacao.md#publicação).
 - **Verificado no ambiente publicado**: `/api/v1/saude` com banco `ok`; cadastro, login, listagem do caderno e exclusão de conta pelo endereço do PWA; `/sintomas` redireciona para `/` (308), o que atende a conferência da [#68](https://github.com/CampusCEUB/AgroScan/issues/68). Contas de teste apagadas pela própria API.
@@ -73,16 +89,16 @@ continuava funcionando porque roda no navegador. Decisão registrada no
 
 O código deixou de viver em `gabicaldana/AgroScan2` e passou a ocupar a raiz
 deste repositório, ao lado da documentação que o descreve. O que a disciplina
-avalia é o repositório institucional, e ele não continha o produto — apenas
+avalia é o repositório institucional, e ele não continha o produto - apenas
 descrições dele, com cada afirmação técnica apontando para um endereço externo.
 
 - **103 arquivos** trazidos: `app/`, `api/`, `web/`, `tests/`, `migracoes/`, `data/`, mais `vercel.json`, `requirements.txt`, `requirements-dev.txt` e `.env.example`.
-- **Histórico condensado** num commit só, por decisão da equipe. Os 12 commits originais seguem em `gabicaldana/AgroScan2` — são os que o relatório da Sprint 1 cita por hash, e continuam resolvendo lá.
+- **Histórico condensado** num commit só, por decisão da equipe. Os 12 commits originais seguem em `gabicaldana/AgroScan2` - são os que o relatório da Sprint 1 cita por hash, e continuam resolvendo lá.
 - **Colisões resolvidas**: o README institucional continua a capa avaliada e o README da aplicação virou [`docs/aplicacao.md`](docs/aplicacao.md); os `.github/` eram complementares (templates de um lado, `ci.yml` do outro); os `.gitignore` foram fundidos; adotado o `.gitattributes` do repo de código, cujo `* text=auto eol=lf` é necessário para o teste de frescor dos artefatos gerados não falhar em clone no Windows.
-- **Verificado no novo local antes do commit**: validação da base aprovada; 74 testes Python e 102 TypeScript passando; regeração completa dos artefatos sem nenhuma divergência — o passo mais rígido do CI.
+- **Verificado no novo local antes do commit**: validação da base aprovada; 74 testes Python e 102 TypeScript passando; regeração completa dos artefatos sem nenhuma divergência - o passo mais rígido do CI.
 - **Documentação realinhada**: a §4.1 do Artefato 2 passou de "Organização de dois repositórios" para "Repositório único", com o registro de por que a separação foi desfeita; §4.2, README, `requisitos.md` e `arquitetura.md` atualizados.
 
-Os registros históricos — atas, relatório da Sprint 1 e registros de entrega —
+Os registros históricos - atas, relatório da Sprint 1 e registros de entrega -
 **não** foram reescritos: descrevem o que era verdade na época, e seus links
 para o repositório antigo continuam válidos.
 

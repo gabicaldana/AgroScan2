@@ -88,22 +88,23 @@ Como a aplicação funciona e como rodá-la localmente:
 
 ### Estado do desenvolvimento
 
-Estado verificado em 27/09/2026, durante a Sprint 2.
+Estado verificado em 18/10/2026, no início da Sprint 4, depois do encerramento
+das Sprints 1 a 3.
 
 | Épico | Estado |
 | --- | --- |
 | Diagnóstico por sintomas offline | ✅ concluído |
-| Plataforma - API REST, PostgreSQL, PWA, integração contínua | ✅ concluído |
+| Plataforma - API REST, PostgreSQL, PWA, integração contínua | ✅ concluído, com atualização do catálogo sem reinstalar e instruções de instalação no iPhone |
 | Identidade e conta | 🟡 API concluída; tela de exclusão pendente |
-| Caderno de campo | 🟡 histórico e sincronização concluídos; confirmação e anotações pendentes |
-| Base de conhecimento | 🔄 9 de 24 culturas · 34 de 88 fichas de doença · nenhuma cultura abaixo do mínimo de 3 doenças |
-| Horta, canteiros e manejo | ⬜ tabelas modeladas; rotas e telas pendentes |
-| Relatórios agregados | ⬜ consultas SQL especificadas |
+| Caderno de campo | 🟡 histórico, filtros e sincronização concluídos; confirmação e anotações pendentes |
+| Base de conhecimento | 🔄 9 de 24 culturas · 34 de 88 fichas de doença · solanáceas e brássicas fechadas e conferidas |
+| Horta, canteiros e manejo | 🟡 hortas, membros, canteiros e manejo concluídos; falta o filtro por canteiro na tela do caderno |
+| Relatórios agregados | ⬜ em desenvolvimento na Sprint 4 |
 | Identificação por imagem | 🟡 escopo condicionado - captura, pré-processamento e recusa prontos; sem modelo |
 
 | Indicador | Valor |
 | --- | --- |
-| Pontos concluídos do núcleo | 88 de 172 (51%) |
-| Testes automatizados | 270, nenhuma falha |
+| Pontos concluídos do núcleo | 120 de 172 (70%) |
+| Testes automatizados | 331, nenhuma falha - 117 em Python e 214 em TypeScript |
 | Tabelas no banco de dados | 19 |
-| Endpoints da API | 16 |
+| Endpoints da API | 30 |

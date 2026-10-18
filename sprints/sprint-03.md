@@ -103,6 +103,7 @@ história vai para a Sprint 4.
 | [#26](https://github.com/CampusCEUB/AgroScan/issues/26) | US23 - Associar outras pessoas à horta | Membro por e-mail, papel, transferência; membro enxerga os canteiros |
 | [#27](https://github.com/CampusCEUB/AgroScan/issues/27) | US24 - Cadastrar canteiros com a cultura plantada | `UNIQUE (horta_id, identificacao)`, cultura do catálogo, `data_plantio` |
 | [#29](https://github.com/CampusCEUB/AgroScan/issues/29) | US26 - Registrar o manejo que apliquei | Tipo, descrição, produto, dose e data; acessível pelo laudo (`ManejoNoLaudo`) |
+| [#41](https://github.com/CampusCEUB/AgroScan/issues/41) | US40 - Saber como instalar o aplicativo no iPhone | Antecipada da Sprint 6 e entregue no PR #84: instruções do caminho Compartilhar → Adicionar à Tela de Início, que não reaparecem depois da instalação |
 | [#67](https://github.com/CampusCEUB/AgroScan/issues/67) | Republicar o ambiente e conferir a versão do catálogo exibida | Herdada da Sprint 2; `/api/v1/saude` publicado com catálogo `2026.09.27` |
 
 ### Não concluídas - realocadas à Sprint 4
@@ -112,7 +113,9 @@ história vai para a Sprint 4.
 | [#7](https://github.com/CampusCEUB/AgroScan/issues/7) | US04 - Cadastrar as doenças das cucurbitáceas e fechar as solanáceas | Pepino, abobrinha, abóbora e jiló |
 | [#28](https://github.com/CampusCEUB/AgroScan/issues/28) | US25 - Vincular a consulta ao canteiro | Filtro por canteiro na tela do caderno |
 
-**4 histórias aceitas, 16 de 27 pontos.**
+**4 histórias planejadas aceitas, 16 de 27 pontos.** Somando a US40, que não
+estava no planejamento, a sprint aceitou 19 pontos, como registra a totalização
+do [Artefato 2](../entregas/artefato-2-gestao-do-projeto.md#pontos-concluídos-até-o-encerramento-da-sprint-3).
 
 ## Pull requests aceitos
 

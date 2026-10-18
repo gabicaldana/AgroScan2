@@ -100,7 +100,7 @@ trabalho. O estado é verificável neste repositório.
   - 1.3 Repositório institucional: requisitos, arquitetura, sprints, entregas, ADRs - 🔄
 - **2. Base de conhecimento**
   - 2.1 Modelagem do catálogo: órgãos, sintomas, culturas, doenças, tratamentos, ingredientes ativos - ✅
-  - 2.2 Curadoria por família botânica - 🔄 *(9 de 24 culturas, 34 de 88 doenças; solanáceas e brássicas fechadas)*
+  - 2.2 Curadoria por família botânica - 🔄 *(9 de 24 culturas, 34 de 88 doenças; solanáceas e brássicas fechadas, brássicas conferidas em 18/10/2026)*
   - 2.3 Validação automática da base - ✅
   - 2.4 Fontes e referências técnicas - 🔄
 - **3. Motor de diagnóstico**
@@ -119,14 +119,14 @@ trabalho. O estado é verificável neste repositório.
   - 5.3 Autenticação com scrypt e JWT; exclusão de conta - 🟡 *(API pronta; tela de exclusão pendente)*
   - 5.4 Carga idempotente do catálogo - ✅
   - 5.5 Relatórios agregados - ⬜
-  - 5.6 Hortas, membros, canteiros e manejo - ⬜ *(tabelas modeladas; rotas e telas pendentes)*
+  - 5.6 Hortas, membros, canteiros e manejo - 🔄 *(rotas e telas prontas desde a Sprint 3; falta o filtro por canteiro na tela do caderno)*
 - **6. Diagnóstico por imagem - escopo condicionado**
   - 6.1 Contrato de pré-processamento com paridade de pixel - ✅
   - 6.2 Câmera e captura em resolução nativa - 🟡 *(pronta e testada; fora da navegação até existir modelo - ADR 0008)*
   - 6.3 Camada de recusa sobre logits crus - 🟡 *(implementada; limiares dependem de imagens de validação)*
   - 6.4 Auditoria do acervo e treinamento do modelo - ⬜
 - **7. Validação e extensão**
-  - 7.1 Testes automatizados e integração contínua - ✅ *(176 testes)*
+  - 7.1 Testes automatizados e integração contínua - ✅ *(331 testes em 18/10/2026)*
   - 7.2 Auditoria de acessibilidade - ⬜
   - 7.3 Apresentação à comunidade parceira - ⬜
   - 7.4 Relatórios de extensão - ⬜
@@ -139,11 +139,11 @@ trabalho. O estado é verificável neste repositório.
 
 | ID | Épico | Descrição | Estado |
 | --- | --- | --- | --- |
-| **E1** | Base de conhecimento de hortaliças | Curadoria agronômica das 24 culturas e 88 fichas de doença | 🔄 15% |
+| **E1** | Base de conhecimento de hortaliças | Curadoria agronômica das 24 culturas e 88 fichas de doença | 🔄 39% - 34 de 88 fichas |
 | **E2** | Diagnóstico por sintomas offline | Motor de diagnóstico e telas de consulta | ✅ |
 | **E3** | Identidade e conta | Cadastro, autenticação e privacidade | 🟡 |
 | **E4** | Caderno de campo | Histórico, sincronização offline e feedback | 🟡 |
-| **E5** | Horta, canteiros e manejo | Organização coletiva da área cultivada | ⬜ |
+| **E5** | Horta, canteiros e manejo | Organização coletiva da área cultivada | 🔄 |
 | **E6** | Relatórios | Agregações sobre o histórico acumulado | ⬜ |
 | **E7** | Plataforma e infraestrutura | API, banco, publicação e integração contínua | ✅ |
 | **E8** | Identificação por imagem | Escopo condicionado - fora da navegação (ADR 0008) | 🟡 |

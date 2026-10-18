@@ -18,20 +18,21 @@ entrega dos Artefatos 1, 2 e 3.
 | Sprint | Período | Objetivo | Marco acadêmico | Registro |
 | --- | --- | --- | --- | --- |
 | 00 | - | Planejamento e acordos de trabalho | - | [sprint-00-planejamento.md](sprint-00-planejamento.md) |
-| **1** | 31/08 - 14/09 | Especificação e gestão | **Artefatos 1, 2 e 3 - 14/09** | [sprint-01.md](sprint-01.md) |
-| **2** | 15/09 - 28/09 | Base de conhecimento e publicação | Incremento funcional | [sprint-02.md](sprint-02.md) |
+| 1 | 31/08 - 14/09 | Especificação e gestão | **Artefatos 1, 2 e 3 - 14/09** | [sprint-01.md](sprint-01.md) |
+| 2 | 15/09 - 28/09 | Base de conhecimento e publicação | Incremento funcional | [sprint-02.md](sprint-02.md) |
 | 3 | 29/09 - 12/10 | Horta, canteiros e manejo | Sprint Review | [sprint-03.md](sprint-03.md) |
-| 4 | 13/10 - 26/10 | Relatórios agregados | Sprint Review | [sprint-04.md](sprint-04.md) |
+| **4** | 13/10 - 26/10 | Relatórios agregados | Sprint Review | [sprint-04.md](sprint-04.md) |
 | 5 | 27/10 - 09/11 | Base completa, feedback e dashboards | **Artefato 9** *(data a definir)* | [sprint-05.md](sprint-05.md) |
 | 6 | 10/11 - 23/11 | Comunidade e validação | Apresentação à Comunidade · **Artefato 6** *(datas a definir)* | [sprint-06.md](sprint-06.md) |
 | 7 | 24/11 - 07/12 | Ativos e documentação técnica | **Artefatos 5 e 8** *(datas a definir)* | [sprint-07.md](sprint-07.md) |
 | 8 | 08/12 - 19/12 | Fechamento do semestre | **Artefato 7** *(data a definir)* | [sprint-08.md](sprint-08.md) |
 
-As sprints 1 e 2 estão em negrito por serem, respectivamente, a encerrada e a
-corrente. Os relatórios das sprints 3 a 8 já existem preenchidos até o
-planejamento - período, objetivo, `milestone`, itens e responsáveis - e trazem
-as seções de execução marcadas como *a preencher*, para serem completadas na
-revisão de cada ciclo.
+A Sprint 4 está em negrito por ser a corrente. As Sprints 1 a 3 estão
+encerradas, com as `milestones` fechadas e os relatórios completos. Os
+relatórios das Sprints 4 a 8 já existem preenchidos até o planejamento -
+período, objetivo, `milestone`, itens e responsáveis - e trazem as seções de
+execução marcadas como *a preencher*, para serem completadas na revisão de cada
+ciclo.
 
 ## Milestones e reuniões
 
@@ -42,10 +43,10 @@ com a etiqueta `reuniao`, vinculada à `milestone` da sprint.
 
 | Sprint | Milestone | Planejamento | Revisão |
 | --- | --- | --- | --- |
-| **1** | Sprint 1 - Especificação e gestão | [31/08](../docs/reunioes/sprint-01-planejamento.md) | [14/09](../docs/reunioes/sprint-01-revisao.md) |
+| 1 | Sprint 1 - Especificação e gestão | [31/08](../docs/reunioes/sprint-01-planejamento.md) | [14/09](../docs/reunioes/sprint-01-revisao.md) |
 | 2 | Sprint 2 - Base de conhecimento e publicação | [15/09](../docs/reunioes/sprint-02-planejamento.md) | [28/09](../docs/reunioes/sprint-02-revisao.md) |
 | 3 | Sprint 3 - Horta, canteiros e manejo | [29/09](../docs/reunioes/sprint-03-planejamento.md) | [12/10](../docs/reunioes/sprint-03-revisao.md) |
-| 4 | Sprint 4 - Relatórios agregados | [13/10](../docs/reunioes/sprint-04-planejamento.md) | [26/10](../docs/reunioes/sprint-04-revisao.md) |
+| **4** | Sprint 4 - Relatórios agregados | [13/10](../docs/reunioes/sprint-04-planejamento.md) | [26/10](../docs/reunioes/sprint-04-revisao.md) |
 | 5 | Sprint 5 - Base completa, feedback e dashboards | [27/10](../docs/reunioes/sprint-05-planejamento.md) | [09/11](../docs/reunioes/sprint-05-revisao.md) |
 | 6 | Sprint 6 - Comunidade e validação | [10/11](../docs/reunioes/sprint-06-planejamento.md) | [23/11](../docs/reunioes/sprint-06-revisao.md) |
 | 7 | Sprint 7 - Ativos e documentação técnica | [24/11](../docs/reunioes/sprint-07-planejamento.md) | [07/12](../docs/reunioes/sprint-07-revisao.md) |
