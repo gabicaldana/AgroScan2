@@ -9,7 +9,7 @@ import * as api from "@/lib/api.ts";
  * Entrar ou criar conta.
  *
  * A conta existe para o histórico sobreviver à troca de aparelho e para a
- * horta ser compartilhada — não para usar o app. Diagnosticar continua
+ * horta ser compartilhada - não para usar o app. Diagnosticar continua
  * funcionando sem cadastro, e a tela diz isso, porque exigir conta para
  * responder o que a planta tem afastaria justamente quem o app atende.
  */

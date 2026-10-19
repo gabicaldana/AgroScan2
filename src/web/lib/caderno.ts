@@ -126,7 +126,7 @@ export async function sincronizar(): Promise<fila.ResultadoDoDespacho> {
 /**
  * O histórico para a tela: o que está na fila mais o que o servidor tem.
  *
- * A fila entra primeiro e sempre — mesmo sem rede, mesmo sem conta. O servidor
+ * A fila entra primeiro e sempre - mesmo sem rede, mesmo sem conta. O servidor
  * é consultado só se houver sessão, e a falha dele não impede a listagem.
  */
 export async function historico(

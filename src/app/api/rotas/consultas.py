@@ -1,6 +1,6 @@
 """O caderno de campo: consultas registradas, sincronização e feedback.
 
-O diagnóstico em si não passa por aqui — ele é calculado no aparelho, offline.
+O diagnóstico em si não passa por aqui - ele é calculado no aparelho, offline.
 Estas rotas guardam o REGISTRO do que foi diagnosticado, que é a parte que
 precisa sobreviver à troca de celular e ser vista por mais de uma pessoa.
 """
@@ -84,7 +84,7 @@ def registrar_consulta(
     """Grava uma consulta feita no aparelho.
 
     Idempotente por `offline_id`: reenviar devolve 200 com a consulta original
-    em vez de criar outra. É o caso normal, não a exceção — o aparelho não tem
+    em vez de criar outra. É o caso normal, não a exceção - o aparelho não tem
     como saber se a tentativa anterior chegou antes de a conexão cair.
     """
     linha, criada = _gravar(usuario["id"], pedido)
@@ -157,7 +157,7 @@ def registrar_feedback(
 ) -> dict:
     """Fecha o laço: o diagnóstico se confirmou?
 
-    É o que transforma o histórico em medida de acurácia percebida — sem isso
+    É o que transforma o histórico em medida de acurácia percebida - sem isso
     o sistema nunca sabe se acertou.
     """
     if not repo.pertence_ao_usuario(consulta_id, usuario["id"]):

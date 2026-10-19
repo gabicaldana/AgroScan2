@@ -27,14 +27,14 @@ vinculada à `milestone` da sprint.
 
 | Sprint | Planejamento | Revisão | Milestone |
 | --- | --- | --- | --- |
-| **1** — Especificação e gestão | [31/08](sprint-01-planejamento.md) | [14/09](sprint-01-revisao.md) | Sprint 1 |
-| **2** — Base de conhecimento e publicação | [15/09](sprint-02-planejamento.md) | [28/09](sprint-02-revisao.md) | Sprint 2 |
-| **3** — Horta, canteiros e manejo | [29/09](sprint-03-planejamento.md) | [12/10](sprint-03-revisao.md) | Sprint 3 |
-| **4** — Relatórios agregados | [13/10](sprint-04-planejamento.md) | [26/10](sprint-04-revisao.md) | Sprint 4 |
-| **5** — Base completa, feedback e dashboards | [27/10](sprint-05-planejamento.md) | [09/11](sprint-05-revisao.md) | Sprint 5 |
-| **6** — Comunidade e validação | [10/11](sprint-06-planejamento.md) | [23/11](sprint-06-revisao.md) | Sprint 6 |
-| **7** — Ativos e documentação técnica | [24/11](sprint-07-planejamento.md) | [07/12](sprint-07-revisao.md) | Sprint 7 |
-| **8** — Fechamento do semestre | [08/12](sprint-08-planejamento.md) | [19/12](sprint-08-revisao.md) | Sprint 8 |
+| **1** - Especificação e gestão | [31/08](sprint-01-planejamento.md) | [14/09](sprint-01-revisao.md) | Sprint 1 |
+| **2** - Base de conhecimento e publicação | [15/09](sprint-02-planejamento.md) | [28/09](sprint-02-revisao.md) | Sprint 2 |
+| **3** - Horta, canteiros e manejo | [29/09](sprint-03-planejamento.md) | [12/10](sprint-03-revisao.md) | Sprint 3 |
+| **4** - Relatórios agregados | [13/10](sprint-04-planejamento.md) | [26/10](sprint-04-revisao.md) | Sprint 4 |
+| **5** - Base completa, feedback e dashboards | [27/10](sprint-05-planejamento.md) | [09/11](sprint-05-revisao.md) | Sprint 5 |
+| **6** - Comunidade e validação | [10/11](sprint-06-planejamento.md) | [23/11](sprint-06-revisao.md) | Sprint 6 |
+| **7** - Ativos e documentação técnica | [24/11](sprint-07-planejamento.md) | [07/12](sprint-07-revisao.md) | Sprint 7 |
+| **8** - Fechamento do semestre | [08/12](sprint-08-planejamento.md) | [19/12](sprint-08-revisao.md) | Sprint 8 |
 
 > As datas seguem a cadência de duas semanas definida no planejamento inicial.
 > Apenas o encerramento da Sprint 1, em 14/09/2026, corresponde a um marco fixado

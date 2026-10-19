@@ -221,6 +221,12 @@ agrupamento que a **US01** pede.
 > trata lista vazia e exibe "não há produto que resolva esta doença depois de
 > instalada - o manejo é todo preventivo, pelas medidas culturais acima", que é
 > exatamente o caso. Nenhum ajuste de interface foi necessário.
+>
+> **Atualização de 18/10/2026.** A conferência foi feita na Sprint 4 e corrigiu
+> a afirmação acima: a ciazofamida tem registro para a hérnia em brássicas, e
+> quem passou a ter a lista vazia foi a podridão-negra, sem produto registrado
+> para o alvo. Detalhes em
+> [`docs/curadoria/conferencia-brassicas.md`](../docs/curadoria/conferencia-brassicas.md).
 
 ### Curadoria: batata e pimentão em conformidade com a RN05
 

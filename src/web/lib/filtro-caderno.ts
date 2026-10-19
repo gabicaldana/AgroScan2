@@ -4,7 +4,7 @@
  * Roda sobre o que já está carregado no aparelho, e não no servidor, porque o
  * caderno precisa filtrar em modo avião também. Quando há rede, o mesmo filtro
  * é repassado à API para que registros antigos fora das últimas páginas
- * apareçam — mas a regra que decide o que a tela mostra é esta.
+ * apareçam - mas a regra que decide o que a tela mostra é esta.
  *
  * Função pura: recebe o relógio por parâmetro, para o teste não depender da
  * data em que roda.

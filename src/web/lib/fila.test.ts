@@ -2,7 +2,7 @@
  * Testes da fila offline.
  *
  * Nenhum deles usa IndexedDB nem rede: o armazenamento e o envio entram por
- * parâmetro. O que está sob teste é a REGRA — o que sai da fila, o que fica, e
+ * parâmetro. O que está sob teste é a REGRA - o que sai da fila, o que fica, e
  * o que acontece quando o envio falha inteiro.
  *
  * Rodar:  npm test

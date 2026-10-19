@@ -4,7 +4,7 @@
  * Fica em `localStorage`, e não em cookie: o app é um PWA que precisa ler o
  * token com o service worker no meio do caminho e, às vezes, sem rede nenhuma.
  * Cookie `HttpOnly` seria mais seguro contra XSS, mas exigiria que toda leitura
- * passasse pelo servidor — o oposto do que este app faz.
+ * passasse pelo servidor - o oposto do que este app faz.
  *
  * A mitigação do risco de XSS mora em outro lugar: nenhuma parte do app injeta
  * HTML vindo de fora, e o conteúdo do laudo sai da base curada, embutida no

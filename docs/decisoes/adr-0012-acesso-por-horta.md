@@ -14,7 +14,7 @@ O épico E5 transforma a horta em dado **compartilhado**: várias pessoas
 cadastram canteiros e registram manejo na mesma área. Até aqui, todo registro
 tinha um dono só (a consulta é de quem a fez), e a regra de acesso era trivial.
 Com a horta, é preciso decidir quem vê, quem altera e o que acontece quando
-alguém sai — inclusive do sistema.
+alguém sai - inclusive do sistema.
 
 Duas restrições já estavam no esquema da migração 001:
 
@@ -25,7 +25,7 @@ Duas restrições já estavam no esquema da migração 001:
   ([modelo de dados](../modelo-de-dados.md)).
 
 Sem tratamento na aplicação, as duas faziam a exclusão de conta responder
-**erro 500** — e a segunda impedia para sempre a eliminação de quem tivesse
+**erro 500** - e a segunda impedia para sempre a eliminação de quem tivesse
 registrado um manejo, o que contraria a LGPD.
 
 ## Decisão
@@ -40,7 +40,7 @@ registrado um manejo, o que contraria a LGPD.
 | Sair da horta | O próprio membro (o responsável, só depois de transferir) |
 
 - **Quem não participa recebe 404, nunca 403.** Um 403 confirmaria que aquele
-  id existe — o mesmo critério já usado nas consultas.
+  id existe - o mesmo critério já usado nas consultas.
 - **Há sempre exatamente um responsável.** Membro novo entra como membro; a
   responsabilidade muda só por transferência, e só para quem já é membro.
 - **Apagar a horta exige que ela não tenha outros membros.** Com outras pessoas,
@@ -85,7 +85,7 @@ da horta (quem participa, se ela existe) é do responsável.
 - Uma tabela nova que referencie `usuario` com `ON DELETE CASCADE` precisa
   entrar também na lista da anonimização (`src/app/api/repositorios/usuarios.py`),
   ou ficará dado pessoal para trás numa conta anonimizada.
-- Adicionar membro pelo e-mail revela se aquele e-mail tem conta — mas só a
+- Adicionar membro pelo e-mail revela se aquele e-mail tem conta - mas só a
   quem já é responsável por uma horta, e sem isso não haveria como dizer
   "peça para a pessoa criar a conta primeiro".
 - A lista de canteiros fica guardada no aparelho, por dono e apagada ao sair,
