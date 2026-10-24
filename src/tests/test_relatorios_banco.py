@@ -21,7 +21,6 @@ Rodar:
 import os
 import unittest
 from datetime import date
-from decimal import Decimal
 
 URL = os.environ.get("AGROSCAN_BANCO_DE_TESTE")
 
@@ -57,8 +56,8 @@ ESPERADO_INCIDENCIA = {
 # As duas consultas sem canteiro (batata_requeima e tomate_requeima, ambas
 # confirmadas) ficam de fora: sao do caderno, nao da horta.
 ESPERADO_CONFIRMACAO = {
-    "tomate_pinta_preta": (5, 3, Decimal("60.0")),
-    "tomate_requeima": (7, 6, Decimal("85.7")),
+    "tomate_pinta_preta": (5, 3, 60.0),
+    "tomate_requeima": (7, 6, 85.7),
     "repolho_podridao_negra": (2, 2, None),
     "couve_alternariose": (1, 1, None),
     "pimentao_antracnose": (1, 0, None),
@@ -162,6 +161,9 @@ class TestRelatoriosNoBanco(unittest.TestCase):
         obtido = {l["doenca_id"]: (l["avaliadas"], l["confirmadas"], l["taxa_pct"])
                   for l in r["linhas"]}
         self.assertEqual(obtido, ESPERADO_CONFIRMACAO)
+        # Numero, e nao Decimal: Decimal sairia como texto no JSON da API.
+        self.assertTrue(all(isinstance(l["taxa_pct"], (float, type(None)))
+                            for l in r["linhas"]))
         self.assertEqual((r["consultas"], r["avaliadas"], r["confirmadas"]),
                          (25, 19, 15))
 

@@ -77,9 +77,10 @@ def confirmacao(horta_id: int, amostra_minima: int) -> dict:
                   cu.nome                                AS cultura_nome,
                   count(*)                               AS avaliadas,
                   count(*) FILTER (WHERE f.confirmado)   AS confirmadas,
+                  -- float8: numeric viraria texto no JSON da API.
                   CASE WHEN count(*) >= %(minimo)s
                        THEN round(100.0 * count(*) FILTER (WHERE f.confirmado)
-                                  / count(*), 1)
+                                  / count(*), 1)::float8
                   END                                    AS taxa_pct
              FROM feedback f
              JOIN consulta c          ON c.id = f.consulta_id
