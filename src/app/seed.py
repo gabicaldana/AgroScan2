@@ -112,8 +112,11 @@ def aplicar_migracoes(con) -> list[int]:
         if numero in ja:
             continue
         con.execute(caminho.read_text(encoding="utf-8"))
+        # ON CONFLICT, como no `--gerar-sql`: a 001 registra a si mesma, e
+        # sem isto o seed abortava em todo banco novo.
         con.execute(
-            "INSERT INTO migracao_aplicada (numero, nome) VALUES (%s, %s)",
+            "INSERT INTO migracao_aplicada (numero, nome) VALUES (%s, %s)"
+            " ON CONFLICT (numero) DO NOTHING",
             (numero, nome),
         )
         aplicadas.append(numero)
