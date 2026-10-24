@@ -15,6 +15,7 @@ import {
 import { SeletorCultura } from "@/components/SeletorCultura";
 import * as api from "@/lib/api.ts";
 import * as canteiros from "@/lib/canteiros.ts";
+import * as relatorios from "@/lib/relatorios.ts";
 import * as sessao from "@/lib/sessao.ts";
 
 /**
@@ -70,6 +71,12 @@ export function PainelHorta() {
           {horta.municipio} - {horta.uf} ·{" "}
           {responsavel ? "você é a pessoa responsável" : "você é membro"}
         </p>
+        <Link
+          href={`/relatorios?horta=${horta.id}`}
+          className="border-borda-forte h-toque mt-4 flex items-center justify-center rounded-lg border-2 px-4 font-bold"
+        >
+          Ver relatórios da horta
+        </Link>
       </header>
 
       {erro && <MensagemDeErro>{erro}</MensagemDeErro>}
@@ -85,7 +92,11 @@ export function PainelHorta() {
             ))}
           </ul>
         )}
-        <NovoCanteiro hortaId={horta.id} aoCriar={recarregar} />
+        <NovoCanteiro
+          hortaId={horta.id}
+          lugaresEncerrados={lugaresLivres(horta.canteiros)}
+          aoCriar={recarregar}
+        />
         {encerrados.length > 0 && (
           <details className="mt-2">
             <summary className="h-toque flex cursor-pointer items-center font-bold">
@@ -128,11 +139,28 @@ function CartaoCanteiro({ canteiro }: { canteiro: api.Canteiro }) {
   );
 }
 
+/**
+ * Os nomes de lugar com ciclo encerrado e nenhum canteiro ativo: onde se pode
+ * plantar de novo. Sugeridos no cadastro, porque é pelo MESMO nome que a
+ * sucessão se reconhece e o alerta de rotação funciona (US30).
+ */
+function lugaresLivres(lista: readonly api.Canteiro[]): string[] {
+  const ativos = new Set(lista.filter((c) => c.ativo).map((c) => c.identificacao));
+  const livres = new Set(
+    lista.filter((c) => !c.ativo && !ativos.has(c.identificacao)).map((c) => c.identificacao),
+  );
+  return [...livres].sort((a, b) =>
+    a.localeCompare(b, "pt-BR", { sensitivity: "base", numeric: true }),
+  );
+}
+
 function NovoCanteiro({
   hortaId,
+  lugaresEncerrados,
   aoCriar,
 }: {
   hortaId: number;
+  lugaresEncerrados: string[];
   aoCriar: () => Promise<void>;
 }) {
   const [aberto, setAberto] = useState(false);
@@ -141,6 +169,7 @@ function NovoCanteiro({
   const [dataPlantio, setDataPlantio] = useState("");
   const [ocupado, setOcupado] = useState(false);
   const [erro, setErro] = useState<string | null>(null);
+  const rotacao = useRotacaoDoCanteiroNovo(aberto ? hortaId : null, identificacao, culturaId);
 
   if (!aberto) {
     return (
@@ -179,9 +208,29 @@ function NovoCanteiro({
       <h3 className="text-lg font-bold">Novo canteiro</h3>
       <Campo id="canteiro-id" rotulo="Identificação" valor={identificacao}
         aoMudar={setIdentificacao} obrigatorio maxLength={120}
-        ajuda="Como vocês chamam este canteiro: Canteiro 3, Estufa A…" />
+        sugestoes={lugaresEncerrados}
+        ajuda={
+          lugaresEncerrados.length > 0
+            ? "Replantando um lugar já usado? Use o mesmo nome do canteiro encerrado: é assim que o histórico dele continua."
+            : "Como vocês chamam este canteiro: Canteiro 3, Estufa A…"
+        } />
       <SeletorCultura valor={culturaId} aoTrocar={setCulturaId}
-        ajuda="Para plantar outra cultura no mesmo lugar depois, encerre este canteiro e cadastre outro: é o histórico que permite avisar sobre rotação." />
+        ajuda="Para plantar outra cultura no mesmo lugar depois, encerre este canteiro e cadastre outro com o mesmo nome: é o histórico que permite avisar sobre rotação." />
+      {rotacao?.alerta && (
+        <div role="status" className="border-borda-forte rounded-lg border-2 p-4">
+          <p className="font-bold">⚠ Mesma família botânica ({rotacao.familia})</p>
+          <ul className="mt-1 list-disc pl-5 text-sm">
+            {rotacao.repeticoes.map((r) => (
+              <li key={r.ciclos_atras}>{relatorios.descreverRepeticao(r)}</li>
+            ))}
+          </ul>
+          <p className="mt-2 text-sm">
+            Repetir a família no mesmo lugar mantém no solo os patógenos dela.
+            Se puder, plante aqui uma cultura de outra família. O cadastro
+            continua liberado: quem decide é quem está no canteiro.
+          </p>
+        </div>
+      )}
       <Campo id="canteiro-plantio" rotulo="Data de plantio" tipo="date"
         valor={dataPlantio} aoMudar={setDataPlantio} />
       {erro && <MensagemDeErro>{erro}</MensagemDeErro>}
@@ -324,4 +373,40 @@ function Membros({
       )}
     </div>
   );
+}
+
+/**
+ * Pergunta à API, enquanto a pessoa preenche, se a cultura repete a família
+ * dos últimos ciclos daquele lugar (US30). Espera a digitação parar, e uma
+ * falha só deixa de mostrar o aviso: ele ajuda, mas não pode travar o
+ * cadastro.
+ */
+function useRotacaoDoCanteiroNovo(
+  hortaId: number | null,
+  identificacao: string,
+  culturaId: string,
+): api.RotacaoDoCanteiroNovo | null {
+  const [resposta, setResposta] = useState<{
+    chave: string;
+    dado: api.RotacaoDoCanteiroNovo;
+  } | null>(null);
+  const nome = identificacao.trim();
+  const chave = `${hortaId}:${nome}:${culturaId}`;
+
+  useEffect(() => {
+    if (hortaId === null || !nome) return;
+    const controle = new AbortController();
+    const espera = setTimeout(() => {
+      api
+        .rotacaoDoCanteiroNovo(hortaId, nome, culturaId, controle.signal)
+        .then((dado) => setResposta({ chave, dado }))
+        .catch(() => {});
+    }, 400);
+    return () => {
+      clearTimeout(espera);
+      controle.abort();
+    };
+  }, [hortaId, nome, culturaId, chave]);
+
+  return resposta?.chave === chave ? resposta.dado : null;
 }

@@ -448,3 +448,111 @@ export function registrarManejo(
     autenticado: true,
   });
 }
+
+// =============================================================================
+// Relatórios da horta (épico E6)
+// =============================================================================
+//
+// Como a horta, precisam de rede: são agregações que rodam no banco, sobre as
+// consultas de todas as pessoas da horta.
+
+export type LinhaDeIncidencia = {
+  /** `AAAA-MM`, no calendário de Brasília. */
+  mes: string;
+  doenca_id: string;
+  doenca_nome: string;
+  cultura_id: string;
+  cultura_nome: string;
+  ocorrencias: number;
+};
+
+export type RelatorioDeIncidencia = {
+  de: string;
+  ate: string;
+  consultas: number;
+  sem_hipotese: number;
+  linhas: LinhaDeIncidencia[];
+};
+
+export type LinhaDeConfirmacao = {
+  doenca_id: string;
+  doenca_nome: string;
+  cultura_nome: string;
+  avaliadas: number;
+  confirmadas: number;
+  /** Nula abaixo da amostra mínima: aí o que vale é a contagem. */
+  taxa_pct: number | null;
+};
+
+export type RelatorioDeConfirmacao = {
+  amostra_minima: number;
+  consultas: number;
+  avaliadas: number;
+  confirmadas: number;
+  linhas: LinhaDeConfirmacao[];
+};
+
+export type Repeticao = {
+  cultura_nome: string;
+  data_plantio: string | null;
+  ciclos_atras: number;
+};
+
+export type AlertaDeRotacao = {
+  canteiro_id: number;
+  identificacao: string;
+  cultura_nome: string;
+  familia: string;
+  repeticoes: Repeticao[];
+};
+
+export type RelatorioDeRotacao = {
+  ciclos_recentes: number;
+  alertas: AlertaDeRotacao[];
+};
+
+export type RotacaoDoCanteiroNovo = {
+  familia: string;
+  alerta: boolean;
+  repeticoes: (Repeticao & { ativo: boolean })[];
+  ciclos_conhecidos: number;
+};
+
+export function relatorioDeIncidencia(
+  hortaId: number,
+  periodo: { de?: string; ate?: string } = {},
+): Promise<RelatorioDeIncidencia> {
+  const busca = new URLSearchParams();
+  if (periodo.de) busca.set("de", periodo.de);
+  if (periodo.ate) busca.set("ate", periodo.ate);
+  const consulta = busca.toString();
+  return chamar<RelatorioDeIncidencia>(
+    `/hortas/${hortaId}/relatorios/incidencia${consulta ? `?${consulta}` : ""}`,
+    { autenticado: true },
+  );
+}
+
+export function relatorioDeConfirmacao(hortaId: number): Promise<RelatorioDeConfirmacao> {
+  return chamar<RelatorioDeConfirmacao>(`/hortas/${hortaId}/relatorios/confirmacao`, {
+    autenticado: true,
+  });
+}
+
+export function relatorioDeRotacao(hortaId: number): Promise<RelatorioDeRotacao> {
+  return chamar<RelatorioDeRotacao>(`/hortas/${hortaId}/relatorios/rotacao`, {
+    autenticado: true,
+  });
+}
+
+export function rotacaoDoCanteiroNovo(
+  hortaId: number,
+  identificacao: string,
+  culturaId: string,
+  sinal?: AbortSignal,
+): Promise<RotacaoDoCanteiroNovo> {
+  const busca = new URLSearchParams({ identificacao, cultura_id: culturaId });
+  return chamar<RotacaoDoCanteiroNovo>(
+    `/hortas/${hortaId}/canteiros/rotacao?${busca}`,
+    { autenticado: true, sinal },
+  );
+}
