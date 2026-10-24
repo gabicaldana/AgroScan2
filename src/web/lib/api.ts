@@ -203,6 +203,9 @@ export type ConsultaResumida = {
   cultura_id: string;
   cultura_nome: string;
   emoji: string | null;
+  canteiro_id: number | null;
+  /** A identificação do canteiro, mesmo depois de encerrado. */
+  canteiro_nome: string | null;
   origem: string;
   registrada_em: string;
   doenca_id: string | null;
@@ -254,11 +257,12 @@ export async function sincronizar(
 }
 
 export async function listarConsultas(
-  parametros: { limite?: number; culturaId?: string } = {},
+  parametros: { limite?: number; culturaId?: string; canteiroId?: number } = {},
 ): Promise<ConsultaResumida[]> {
   const busca = new URLSearchParams();
   if (parametros.limite) busca.set("limite", String(parametros.limite));
   if (parametros.culturaId) busca.set("cultura_id", parametros.culturaId);
+  if (parametros.canteiroId) busca.set("canteiro_id", String(parametros.canteiroId));
   const consulta = busca.toString();
 
   return chamar<ConsultaResumida[]>(

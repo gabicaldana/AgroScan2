@@ -1,5 +1,5 @@
 /**
- * Filtro do caderno de campo: por período e por cultura.
+ * Filtro do caderno de campo: por período, por cultura e por canteiro.
  *
  * Roda sobre o que já está carregado no aparelho, e não no servidor, porque o
  * caderno precisa filtrar em modo avião também. Quando há rede, o mesmo filtro
@@ -23,9 +23,15 @@ export type Filtro = {
   periodo: PeriodoId;
   /** `null` = todas as culturas. */
   culturaId: string | null;
+  /** `null` = todos os canteiros, inclusive as consultas sem canteiro. */
+  canteiroId: number | null;
 };
 
-export const SEM_FILTRO: Filtro = { periodo: "tudo", culturaId: null };
+export const SEM_FILTRO: Filtro = {
+  periodo: "tudo",
+  culturaId: null,
+  canteiroId: null,
+};
 
 const UM_DIA = 24 * 60 * 60 * 1000;
 
@@ -35,7 +41,11 @@ export function inicioDoPeriodo(periodo: PeriodoId, agora: Date): Date | null {
   return dias === null ? null : new Date(agora.getTime() - dias * UM_DIA);
 }
 
-type Filtravel = { registradaEm: string; culturaId: string };
+type Filtravel = {
+  registradaEm: string;
+  culturaId: string;
+  canteiroId: number | null;
+};
 
 export function filtrar<T extends Filtravel>(
   registros: readonly T[],
@@ -45,6 +55,9 @@ export function filtrar<T extends Filtravel>(
   const inicio = inicioDoPeriodo(filtro.periodo, agora);
   return registros.filter((r) => {
     if (filtro.culturaId !== null && r.culturaId !== filtro.culturaId) {
+      return false;
+    }
+    if (filtro.canteiroId !== null && r.canteiroId !== filtro.canteiroId) {
       return false;
     }
     // Compara instantes, não strings: o servidor devolve `+00:00` e a fila
@@ -74,4 +87,29 @@ export function culturasPresentes(
   return [...vistas.values()].sort((a, b) =>
     a.nome.localeCompare(b.nome, "pt-BR", { sensitivity: "base" }),
   );
+}
+
+/**
+ * Os canteiros que aparecem no histórico, para o seletor (RF19).
+ *
+ * Como em `culturasPresentes`, só os que têm registro - inclusive canteiros já
+ * encerrados, que não estão mais na lista do aparelho mas continuam sendo o
+ * lugar onde aquela consulta foi feita. Sem nome conhecido, o canteiro aparece
+ * pelo número, em vez de sumir do filtro.
+ */
+export function canteirosPresentes(
+  registros: readonly { canteiroId: number | null; canteiroNome: string | null }[],
+): { id: number; nome: string }[] {
+  const vistos = new Map<number, string | null>();
+  for (const r of registros) {
+    if (r.canteiroId === null) continue;
+    // O primeiro nome conhecido vence: a linha da fila pode não ter nome, e a
+    // do servidor, para o mesmo canteiro, tem.
+    if (!vistos.get(r.canteiroId)) vistos.set(r.canteiroId, r.canteiroNome);
+  }
+  return [...vistos.entries()]
+    .map(([id, nome]) => ({ id, nome: nome ?? `Canteiro nº ${id}` }))
+    .sort((a, b) =>
+      a.nome.localeCompare(b.nome, "pt-BR", { sensitivity: "base", numeric: true }),
+    );
 }

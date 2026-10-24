@@ -248,6 +248,7 @@ class ConsultaResumida(BaseModel):
     cultura_nome: str
     emoji: str | None = None
     canteiro_id: int | None = None
+    canteiro_nome: str | None = None
     origem: str
     registrada_em: datetime
     versao_catalogo: str
