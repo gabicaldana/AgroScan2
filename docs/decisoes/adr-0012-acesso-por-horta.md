@@ -46,8 +46,9 @@ registrado um manejo, o que contraria a LGPD.
 - **Apagar a horta exige que ela não tenha outros membros.** Com outras pessoas,
   o caminho é transferir ou removê-las antes.
 - **Canteiro não é apagado, é encerrado**, e a cultura dele não muda: plantar
-  outra coisa no mesmo lugar é um canteiro novo. É a sucessão de canteiros
-  encerrados que permite o alerta de rotação de família (US30).
+  outra coisa no mesmo lugar é um canteiro novo, com o mesmo nome. É a
+  sucessão de canteiros encerrados que permite o alerta de rotação de família
+  (US30); como ela se reconhece está no [ADR 0013](adr-0013-sucessao-de-canteiros-e-alerta-de-rotacao.md).
 - **A consulta só se vincula a canteiro de uma horta da pessoa** (US25). Na fila
   offline, o canteiro alheio vira "rejeitada" com o motivo, e a consulta fica no
   aparelho em vez de entrar presa a algo que a pessoa não enxerga mais.

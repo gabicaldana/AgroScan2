@@ -94,7 +94,41 @@ Ficam para o planejamento da Sprint 5 o registro por cultura dos demais
 ingredientes ativos no AGROFIT e a decisão sobre levar as fontes para dentro
 da base, como pede o critério da US03.
 
-> ⚠️ **Demais entregas a preencher no encerramento da sprint.**
+### Conferência das consultas do `modelo-de-dados.md` §6
+
+Encaminhamento 5 do planejamento, feito em 24/10/2026. As consultas foram
+executadas, como estavam escritas, num PostgreSQL 16 com a carga de exemplo, e
+comparadas com a contagem manual. Três das cinco tinham defeito; o detalhe
+está no [§6.6](../docs/modelo-de-dados.md).
+
+| Consulta | Defeito | Correção |
+| --- | --- | --- |
+| 6.1 incidência | Mês pelo fuso da sessão (UTC): a consulta das 23h30 do dia 31 caía no mês seguinte | Fuso de Brasília |
+| 6.2 confirmação | Sem filtro de horta; agrupava pelo nome da doença | Filtro pela horta; agrupamento pelo id |
+| 6.4 rotação | Não encontrava nada: o nome do canteiro era único também entre os encerrados | Migração 004 e [ADR 0013](../docs/decisoes/adr-0013-sucessao-de-canteiros-e-alerta-de-rotacao.md) |
+
+A conferência achou também que `python -m app.seed` abortava em todo banco
+novo, e o defeito foi corrigido.
+
+### Carga de registros de exemplo
+
+Encaminhamento 4, que resolve o impedimento 1. `python -m app.exemplo` cria uma
+conta de demonstração com uma horta, oito canteiros em sucessão, 27 consultas
+de abril a outubro de 2026 e 21 feedbacks. As hipóteses são calculadas pelo
+motor. O conjunto é fixo, e é sobre ele que a contagem manual foi feita.
+**A carga no Neon fica com a Gabriela**, depois da migração 004 (comandos no
+pull request).
+
+### Relatórios e alerta de rotação
+
+| História | Entrega | Situação |
+| --- | --- | --- |
+| US25 | Filtro por canteiro no caderno, no aparelho e sem rede | Em revisão |
+| US27 | Incidência por mês e doença, com período de 3, 6 ou 12 meses | Em revisão |
+| US28 | Confirmação por doença; a taxa só a partir de 5 avaliações | Em revisão |
+| US30 | Alerta no cadastro do canteiro, antes do plantio, e lista dos canteiros que repetem a família | Em revisão |
+| US29 | - | Não iniciada: primeira da ordem de corte |
+| US04 | - | Curadoria das cucurbitáceas com a equipe |
 
 ## Issues concluídas
 
@@ -106,15 +140,28 @@ da base, como pede o critério da US03.
 
 ## Evidências
 
-> ⚠️ **A preencher no encerramento da sprint.** Os relatórios exigem evidência
-> de que a agregação confere: comparar o resultado de cada consulta com uma
-> contagem manual sobre um conjunto conhecido de registros.
+Os relatórios exigem evidência de que a agregação confere: comparar o
+resultado de cada consulta com uma contagem manual sobre um conjunto conhecido
+de registros.
+
+[`src/tests/test_relatorios_banco.py`](../src/tests/test_relatorios_banco.py)
+carrega a carga de exemplo num PostgreSQL 16 e compara cada relatório com as
+tabelas contadas à mão a partir da lista de consultas. Roda no CI, num serviço
+`postgres:16`.
+
+| Relatório | Contagem manual conferida |
+| --- | --- |
+| Incidência (US27) | 22 pares (mês, doença), 25 consultas na horta; a de 31/05 às 23h30 em maio |
+| Confirmação (US28) | Requeima do tomate 6 de 7 (85,7%), pinta-preta 3 de 5 (60,0%), seis doenças sem amostra para taxa; as 2 consultas sem canteiro fora |
+| Rotação (US30) | Alerta no Canteiro 1 (pimentão depois de tomate) e no Canteiro 3 (couve dois ciclos depois de repolho); nenhum no Canteiro 2 e na Estufa A |
+
+> ⚠️ **Demais evidências a preencher no encerramento da sprint.**
 
 ## Impedimentos
 
 | # | Impedimento | Efeito | Situação |
 | --- | --- | --- | --- |
-| 1 | **Volume de dados de teste** | Relatórios agregados sobre base vazia não demonstram nada na revisão | A tratar no planejamento - prever carga de registros de exemplo |
+| 1 | **Volume de dados de teste** | Relatórios agregados sobre base vazia não demonstram nada na revisão | Resolvido em 24/10 com a carga de exemplo; falta aplicá-la no Neon |
 | 2 | **Datas dos Artefatos 5 a 9 não divulgadas** | O calendário das sprints seguintes é provisório | Herdado - [#74](https://github.com/CampusCEUB/AgroScan/issues/74) |
 
 ## Riscos ativos no ciclo
