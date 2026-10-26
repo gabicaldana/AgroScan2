@@ -191,7 +191,7 @@ erDiagram
     CANTEIRO {
         bigint id PK
         bigint horta_id FK
-        text identificacao UK
+        text identificacao UK "único entre os ativos"
         text cultura_id FK
         date data_plantio
         numeric area_m2
@@ -399,44 +399,53 @@ Duas regras deliberadamente **não** estão no banco, porque pertencem à aplica
 
 Cada relatório previsto no backlog corresponde a uma agregação que atravessa várias tabelas - o tipo de operação que não teria equivalente prático fora do SQL.
 
+As consultas 6.1, 6.2 e 6.4 estão implementadas em [`src/app/api/repositorios/relatorios.py`](../src/app/api/repositorios/relatorios.py) e conferidas contra contagem manual em [`src/tests/test_relatorios_banco.py`](../src/tests/test_relatorios_banco.py). O texto abaixo é a versão corrigida pela conferência da Sprint 4, registrada em [6.6](#66-conferência-contra-o-esquema-real-sprint-4). Os parâmetros aparecem como `$1`, `$2` para leitura; no código, são nomeados.
+
 ### 6.1 Incidência de doenças por mês numa horta *(US27)*
 
 ```sql
-SELECT date_trunc('month', c.registrada_em) AS mes,
-       d.nome                               AS doenca,
-       cu.nome                              AS cultura,
-       count(*)                             AS ocorrencias
+SELECT to_char(date_trunc('month', c.registrada_em AT TIME ZONE 'America/Sao_Paulo'),
+               'YYYY-MM')  AS mes,
+       d.id, d.nome        AS doenca,
+       cu.nome             AS cultura,
+       count(*)            AS ocorrencias
   FROM consulta c
+  JOIN canteiro ca         ON ca.id = c.canteiro_id
   JOIN consulta_hipotese h ON h.consulta_id = c.id AND h.posicao = 1
   JOIN doenca d            ON d.id = h.doenca_id
   JOIN cultura cu          ON cu.id = c.cultura_id
-  JOIN canteiro ca         ON ca.id = c.canteiro_id
  WHERE ca.horta_id = $1
-   AND c.registrada_em >= $2
-   AND c.registrada_em <  $3
- GROUP BY mes, d.nome, cu.nome
+   AND c.registrada_em >= ($2::date::timestamp AT TIME ZONE 'America/Sao_Paulo')
+   AND c.registrada_em <  (($3::date + 1)::timestamp AT TIME ZONE 'America/Sao_Paulo')
+ GROUP BY mes, d.id, d.nome, cu.nome
  ORDER BY mes DESC, ocorrencias DESC;
 ```
 
 O filtro `h.posicao = 1` é essencial: agregar todas as hipóteses contaria como ocorrência a doença que o motor apenas considerou e descartou.
 
-### 6.2 Acurácia percebida por doença *(US28)*
+O **mês é o do calendário de Brasília**. O servidor roda em UTC, e `date_trunc` sobre `timestamptz` usa o fuso da sessão: uma consulta das 23h30 do dia 31 cairia no mês seguinte. As datas do período (`$2` e `$3`, inclusivas) também são lidas no calendário local.
+
+### 6.2 Taxa de confirmação por doença *(US28)*
 
 ```sql
-SELECT d.nome,
-       count(*)                                            AS avaliadas,
-       count(*) FILTER (WHERE f.confirmado)                AS confirmadas,
-       round(100.0 * count(*) FILTER (WHERE f.confirmado)
-                   / count(*), 1)                          AS taxa_pct
+SELECT d.id, d.nome,
+       count(*)                                     AS avaliadas,
+       count(*) FILTER (WHERE f.confirmado)         AS confirmadas,
+       CASE WHEN count(*) >= 5
+            THEN round(100.0 * count(*) FILTER (WHERE f.confirmado)
+                       / count(*), 1)
+       END                                          AS taxa_pct
   FROM feedback f
-  JOIN consulta_hipotese h ON h.consulta_id = f.consulta_id AND h.posicao = 1
+  JOIN consulta c          ON c.id = f.consulta_id
+  JOIN canteiro ca         ON ca.id = c.canteiro_id
+  JOIN consulta_hipotese h ON h.consulta_id = c.id AND h.posicao = 1
   JOIN doenca d            ON d.id = h.doenca_id
- GROUP BY d.nome
-HAVING count(*) >= 5
- ORDER BY taxa_pct;
+ WHERE ca.horta_id = $1
+ GROUP BY d.id, d.nome
+ ORDER BY taxa_pct ASC NULLS LAST, avaliadas DESC;
 ```
 
-O `HAVING count(*) >= 5` evita apresentar taxa de 0% ou 100% calculada sobre uma única avaliação. Ordenar ascendente coloca no topo as doenças em que o sistema mais erra - que é o que orienta a próxima revisão da curadoria.
+Abaixo de cinco avaliações a taxa fica nula, mas a doença **continua no relatório**, com a contagem: 1 de 1 confirmada não é "100% de acerto", e esconder a linha esconderia também que houve avaliação. Ordenar ascendente coloca no topo as doenças em que o sistema mais erra - que é o que orienta a próxima revisão da curadoria.
 
 ### 6.3 Sintomas mais marcados por cultura *(US29)*
 
@@ -450,29 +459,36 @@ SELECT cu.nome AS cultura, s.nome AS sintoma, count(*) AS marcacoes
  ORDER BY cu.nome, marcacoes DESC;
 ```
 
-Alimenta a decisão de curadoria: sintoma muito marcado numa cultura com poucas doenças cadastradas indica onde a base precisa crescer.
+Alimenta a decisão de curadoria: sintoma muito marcado numa cultura com poucas doenças cadastradas indica onde a base precisa crescer. Ao contrário das outras, esta consulta é **de todo o sistema**, e não de uma horta: é um relatório da curadoria.
 
 ### 6.4 Alerta de rotação de culturas *(US30)*
 
 ```sql
-SELECT ca.identificacao,
-       cu_atual.nome    AS cultura_atual,
-       cu_atual.familia AS familia,
-       count(*)         AS ciclos_seguidos_na_familia
+SELECT ca.identificacao, cu.nome AS cultura_atual, cu.familia,
+       json_agg(json_build_object('cultura', r.cultura_nome,
+                                  'ciclos_atras', r.ciclos_atras)) AS repeticoes
   FROM canteiro ca
-  JOIN cultura cu_atual ON cu_atual.id = ca.cultura_id
-  JOIN canteiro ant     ON ant.horta_id = ca.horta_id
-                       AND ant.identificacao = ca.identificacao
-                       AND NOT ant.ativo
-  JOIN cultura cu_ant   ON cu_ant.id = ant.cultura_id
-                       AND cu_ant.familia = cu_atual.familia
+  JOIN cultura cu ON cu.id = ca.cultura_id
+  CROSS JOIN LATERAL (
+        SELECT a.*, row_number() OVER (ORDER BY a.id DESC) AS ciclos_atras
+          FROM (SELECT ant.id, cua.nome AS cultura_nome, cua.familia
+                  FROM canteiro ant
+                  JOIN cultura cua ON cua.id = ant.cultura_id
+                 WHERE ant.horta_id = ca.horta_id
+                   AND ant.identificacao = ca.identificacao
+                   AND ant.id < ca.id
+                 ORDER BY ant.id DESC
+                 LIMIT 2) a
+  ) r
  WHERE ca.horta_id = $1
    AND ca.ativo
- GROUP BY ca.identificacao, cu_atual.nome, cu_atual.familia
-HAVING count(*) >= 2;
+   AND r.familia = cu.familia
+ GROUP BY ca.identificacao, cu.nome, cu.familia;
 ```
 
 Este relatório **só existe porque `familia` entrou no modelo**. Repetir a mesma família botânica no mesmo canteiro perpetua patógeno de solo - plantar batata depois de tomate é, do ponto de vista fitopatológico, plantar a mesma coisa duas vezes.
+
+O **lugar** é a identificação do canteiro dentro da horta, e a ordem da sucessão é o `id`: canteiro não muda de cultura, então replantar é encerrar o canteiro e cadastrar outro com o mesmo nome ([ADR 0012](decisoes/adr-0012-acesso-por-horta.md)). Para isso ser possível, a migração 004 restringiu a unicidade do nome aos canteiros ativos. O alerta olha os **dois últimos ciclos** do lugar: repetir no ciclo anterior, ou com um só de intervalo, mantém o mesmo inóculo no solo. A mesma leitura, sem o `ant.id < ca.id`, avisa **antes** do plantio, na tela de cadastro.
 
 ### 6.5 Histórico completo de um canteiro
 
@@ -489,7 +505,22 @@ SELECT c.registrada_em, d.nome AS hipotese_principal,
  ORDER BY c.registrada_em DESC;
 ```
 
-É a consulta que materializa o ciclo completo - diagnosticou, interveio, confirmou - numa única linha por evento.
+É a consulta que materializa o ciclo completo - diagnosticou, interveio, confirmou - numa única linha por evento. Uma consulta que motivou **mais de um** manejo aparece uma vez por manejo; a tela que usar esta consulta precisa agrupar, ou agregar os manejos com `json_agg`.
+
+### 6.6 Conferência contra o esquema real *(Sprint 4)*
+
+Em 24/10/2026, as consultas desta seção, como estavam escritas desde a versão 1.0 do documento, foram executadas num PostgreSQL 16 com as migrações 001 a 003 e a [carga de exemplo](../src/app/exemplo.py) (25 consultas em canteiros de uma horta, 2 sem canteiro, 21 feedbacks). O resultado de cada uma foi comparado com a contagem feita à mão.
+
+| Consulta | O que a conferência mostrou | Correção |
+| --- | --- | --- |
+| 6.1 | A consulta das 23h30 de 31/05 (Brasília) contava em **junho**: `date_trunc` usava o fuso da sessão, UTC | Mês e período no fuso `America/Sao_Paulo` |
+| 6.2 | **Sem filtro de horta**: contava as consultas de todo o sistema (8 avaliações de requeima em vez de 7). Agrupava por `d.nome`, que só é único dentro da cultura | Filtro pela horta do canteiro; agrupamento por `d.id` |
+| 6.2 | `HAVING count(*) >= 5` escondia a doença com poucas avaliações | Taxa nula abaixo de 5, linha mantida com a contagem |
+| 6.4 | **Não encontrava nada.** A 001 declarava `UNIQUE (horta_id, identificacao)` sobre todos os canteiros, e o canteiro novo não podia repetir o nome do encerrado. Sem a restrição, o `HAVING count(*) >= 2` ainda exigia duas repetições, e contava ciclos de qualquer época | Migração 004 (nome único só entre ativos); últimos dois ciclos do lugar, na ordem da sucessão |
+| 6.5 | Duplica a linha da consulta com mais de um manejo | Anotado acima; sem uso nesta sprint |
+| 6.3 | Conferida sem divergência | - |
+
+A mesma conferência achou um defeito fora do SQL dos relatórios: `python -m app.seed` abortava em todo banco novo, porque a 001 registra a si mesma em `migracao_aplicada` e o runner registrava de novo. Corrigido com `ON CONFLICT`, como o `--gerar-sql` já fazia.
 
 ---
 

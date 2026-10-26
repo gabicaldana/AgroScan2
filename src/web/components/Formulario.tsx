@@ -26,6 +26,7 @@ export function Campo({
   obrigatorio,
   autoComplete,
   maxLength,
+  sugestoes,
 }: {
   id: string;
   rotulo: string;
@@ -36,7 +37,10 @@ export function Campo({
   obrigatorio?: boolean;
   autoComplete?: string;
   maxLength?: number;
+  /** Valores oferecidos pelo teclado, sem impedir que se digite outro. */
+  sugestoes?: readonly string[];
 }) {
+  const temSugestoes = sugestoes !== undefined && sugestoes.length > 0;
   return (
     <div>
       <label htmlFor={id} className="mb-2 block text-base font-bold">
@@ -53,8 +57,16 @@ export function Campo({
         required={obrigatorio}
         autoComplete={autoComplete}
         maxLength={maxLength}
+        list={temSugestoes ? `${id}-sugestoes` : undefined}
         className={CLASSE_CAMPO}
       />
+      {temSugestoes && (
+        <datalist id={`${id}-sugestoes`}>
+          {sugestoes.map((s) => (
+            <option key={s} value={s} />
+          ))}
+        </datalist>
+      )}
       {ajuda && <p className="text-texto-suave mt-1 text-sm">{ajuda}</p>}
     </div>
   );

@@ -22,7 +22,7 @@ const ABAS = [
     href: "/hortas",
     rotulo: "Hortas",
     icone: IconeHorta,
-    prefixos: ["/horta", "/canteiro"],
+    prefixos: ["/horta", "/canteiro", "/relatorios"],
   },
 ] as const;
 

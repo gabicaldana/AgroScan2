@@ -22,6 +22,7 @@ Use [`template-adr.md`](template-adr.md) como ponto de partida, nomeando o arqui
 | [0010](adr-0010-publicacao-em-dois-projetos.md) | Publicação em dois projetos da Vercel, com a API atrás do PWA | Aprovado | RNF23, C11, R05, R06 |
 | [0011](adr-0011-dois-repositorios-com-espelho-de-publicacao.md) | Dois repositórios: o institucional completo, o pessoal como espelho de publicação | Aprovado | RNF21, RNF23, C11, R06 |
 | [0012](adr-0012-acesso-por-horta.md) | Acesso por participação na horta, e exclusão de conta com anonimização | Aprovado | RF23-RF27, US22-US26, LGPD |
+| [0013](adr-0013-sucessao-de-canteiros-e-alerta-de-rotacao.md) | Sucessão de canteiros pelo nome, e o alerta de rotação nos dois últimos ciclos | Proposto | RF31, US30 |
 
 ## Decisões pendentes de registro
 

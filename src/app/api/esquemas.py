@@ -315,6 +315,10 @@ class PedidoDeMembro(BaseModel):
 
 
 class PedidoDeCanteiro(BaseModel):
+    """O nome só se repete entre canteiros que não estão em cultivo juntos: o
+    canteiro novo no lugar de um encerrado usa o mesmo nome, e é por ele que o
+    alerta de rotação reconhece a sucessão (migração 004)."""
+
     identificacao: TextoCurto = Field(..., examples=["Canteiro 3"])
     cultura_id: str = Field(..., examples=["alface"])
     data_plantio: date | None = None
@@ -323,8 +327,9 @@ class PedidoDeCanteiro(BaseModel):
 
 class AlteracaoDeCanteiro(BaseModel):
     """A cultura NÃO muda aqui. Plantar outra coisa no mesmo lugar é um ciclo
-    novo: encerra-se este canteiro e cadastra-se outro. É a sucessão de
-    canteiros encerrados que permite o alerta de rotação de família."""
+    novo: encerra-se este canteiro e cadastra-se outro, com o mesmo nome. É a
+    sucessão de canteiros encerrados que permite o alerta de rotação de
+    família."""
 
     identificacao: TextoCurto | None = None
     data_plantio: date | None = None

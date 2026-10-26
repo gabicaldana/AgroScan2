@@ -24,6 +24,23 @@ jobs:
     # partir de 19/10/2026, no meio da Sprint 4. Pipeline de projeto avaliado
     # nao pode trocar de sistema operacional sozinho na semana da entrega.
     runs-on: ubuntu-24.04
+    # Um PostgreSQL de verdade para os relatorios (tests/test_relatorios_banco):
+    # a agregacao e conferida contra contagem manual sobre a carga de exemplo,
+    # e o mes pelo fuso de Brasilia so aparece errado num banco real. Mesma
+    # versao maior do Neon.
+    services:
+      postgres:
+        image: postgres:16
+        env:
+          POSTGRES_PASSWORD: ci
+          POSTGRES_DB: agroscan_teste
+        ports:
+          - 5432:5432
+        options: >-
+          --health-cmd pg_isready
+          --health-interval 5s
+          --health-timeout 5s
+          --health-retries 10
     # Todo o codigo mora em src/; a raiz fica com a documentacao avaliada.
     defaults:
       run:
@@ -83,7 +100,12 @@ jobs:
 
       # Entre eles esta a paridade HTTP: a resposta de POST /diagnosticos tem
       # que reproduzir as fixtures caso a caso, campo a campo.
+      # Com AGROSCAN_BANCO_DE_TESTE, os testes de relatorio rodam no
+      # PostgreSQL do servico em vez de se pular. O teste recria o schema, e
+      # por isso recusa banco sem "teste" no nome.
       - name: Testes do motor e da API
+        env:
+          AGROSCAN_BANCO_DE_TESTE: postgresql://postgres:ci@localhost:5432/agroscan_teste
         run: python -m unittest discover -s tests -t . -v
 
       - name: Instalar o app
