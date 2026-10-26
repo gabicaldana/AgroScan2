@@ -3,6 +3,24 @@
   "gerado_por": "python -m app.fixtures",
   "culturas": [
     {
+      "id": "abobora",
+      "nome": "Abóbora",
+      "nome_cientifico": "Cucurbita moschata",
+      "grupo": "fruto",
+      "familia": "Cucurbitaceae",
+      "emoji": "🎃",
+      "n_doencas": 4
+    },
+    {
+      "id": "abobrinha",
+      "nome": "Abobrinha",
+      "nome_cientifico": "Cucurbita pepo",
+      "grupo": "fruto",
+      "familia": "Cucurbitaceae",
+      "emoji": "🥒",
+      "n_doencas": 4
+    },
+    {
       "id": "agriao",
       "nome": "Agrião",
       "nome_cientifico": "Nasturtium officinale",
@@ -48,6 +66,24 @@
       "n_doencas": 3
     },
     {
+      "id": "jilo",
+      "nome": "Jiló",
+      "nome_cientifico": "Solanum aethiopicum (sin. S. gilo)",
+      "grupo": "fruto",
+      "familia": "Solanaceae",
+      "emoji": "🍆",
+      "n_doencas": 5
+    },
+    {
+      "id": "pepino",
+      "nome": "Pepino",
+      "nome_cientifico": "Cucumis sativus",
+      "grupo": "fruto",
+      "familia": "Cucurbitaceae",
+      "emoji": "🥒",
+      "n_doencas": 6
+    },
+    {
       "id": "pimentao",
       "nome": "Pimentão",
       "nome_cientifico": "Capsicum annuum",
@@ -85,6 +121,226 @@
     }
   ],
   "catalogos": [
+    {
+      "cultura": "abobora",
+      "sintomas": [
+        {
+          "id": "nervuras_amareladas",
+          "nome": "Amarelecimento entre as nervuras",
+          "orgao": "folha",
+          "orgao_rotulo": "Na folha",
+          "orgao_ordem": 1
+        },
+        {
+          "id": "folhas_com_bolhas",
+          "nome": "Folhas com bolhas e enrugadas",
+          "orgao": "folha",
+          "orgao_rotulo": "Na folha",
+          "orgao_ordem": 1
+        },
+        {
+          "id": "folhas_deformadas",
+          "nome": "Folhas deformadas, enroladas ou reduzidas",
+          "orgao": "folha",
+          "orgao_rotulo": "Na folha",
+          "orgao_ordem": 1
+        },
+        {
+          "id": "manchas_encharcadas",
+          "nome": "Lesões encharcadas, com aspecto de queimadura",
+          "orgao": "folha",
+          "orgao_rotulo": "Na folha",
+          "orgao_ordem": 1
+        },
+        {
+          "id": "manchas_amareladas",
+          "nome": "Manchas amareladas (cloróticas)",
+          "orgao": "folha",
+          "orgao_rotulo": "Na folha",
+          "orgao_ordem": 1
+        },
+        {
+          "id": "manchas_angulares_entre_nervuras",
+          "nome": "Manchas angulosas, limitadas pelas nervuras",
+          "orgao": "folha",
+          "orgao_rotulo": "Na folha",
+          "orgao_ordem": 1
+        },
+        {
+          "id": "mofo_arroxeado_face_inferior",
+          "nome": "Mofo acinzentado a arroxeado na face inferior, sob as manchas",
+          "orgao": "folha",
+          "orgao_rotulo": "Na folha",
+          "orgao_ordem": 1
+        },
+        {
+          "id": "mosaico_verde_claro_escuro",
+          "nome": "Mosaico de verde claro e verde escuro",
+          "orgao": "folha",
+          "orgao_rotulo": "Na folha",
+          "orgao_ordem": 1
+        },
+        {
+          "id": "po_branco_superficie",
+          "nome": "Pó branco, farináceo, na superfície da folha",
+          "orgao": "folha",
+          "orgao_rotulo": "Na folha",
+          "orgao_ordem": 1
+        },
+        {
+          "id": "lesoes_no_caule",
+          "nome": "Lesões escuras no caule ou haste",
+          "orgao": "caule",
+          "orgao_rotulo": "No caule, ramo ou haste",
+          "orgao_ordem": 2
+        },
+        {
+          "id": "frutos_deformados",
+          "nome": "Frutos deformados, manchados ou rachados",
+          "orgao": "fruto",
+          "orgao_rotulo": "No fruto",
+          "orgao_ordem": 4
+        },
+        {
+          "id": "lesoes_no_fruto",
+          "nome": "Lesões deprimidas ou podridão no fruto",
+          "orgao": "fruto",
+          "orgao_rotulo": "No fruto",
+          "orgao_ordem": 4
+        },
+        {
+          "id": "massa_rosada_na_lesao",
+          "nome": "Massa rosada ou alaranjada sobre a lesão, em tempo úmido",
+          "orgao": "fruto",
+          "orgao_rotulo": "No fruto",
+          "orgao_ordem": 4
+        },
+        {
+          "id": "crescimento_reduzido",
+          "nome": "Crescimento reduzido / nanismo",
+          "orgao": "planta",
+          "orgao_rotulo": "Na planta inteira",
+          "orgao_ordem": 5
+        },
+        {
+          "id": "desfolha_baixo_para_cima",
+          "nome": "Queda de folhas começando pelas mais baixas",
+          "orgao": "planta",
+          "orgao_rotulo": "Na planta inteira",
+          "orgao_ordem": 5
+        }
+      ]
+    },
+    {
+      "cultura": "abobrinha",
+      "sintomas": [
+        {
+          "id": "nervuras_amareladas",
+          "nome": "Amarelecimento entre as nervuras",
+          "orgao": "folha",
+          "orgao_rotulo": "Na folha",
+          "orgao_ordem": 1
+        },
+        {
+          "id": "folhas_com_bolhas",
+          "nome": "Folhas com bolhas e enrugadas",
+          "orgao": "folha",
+          "orgao_rotulo": "Na folha",
+          "orgao_ordem": 1
+        },
+        {
+          "id": "folhas_deformadas",
+          "nome": "Folhas deformadas, enroladas ou reduzidas",
+          "orgao": "folha",
+          "orgao_rotulo": "Na folha",
+          "orgao_ordem": 1
+        },
+        {
+          "id": "manchas_encharcadas",
+          "nome": "Lesões encharcadas, com aspecto de queimadura",
+          "orgao": "folha",
+          "orgao_rotulo": "Na folha",
+          "orgao_ordem": 1
+        },
+        {
+          "id": "manchas_amareladas",
+          "nome": "Manchas amareladas (cloróticas)",
+          "orgao": "folha",
+          "orgao_rotulo": "Na folha",
+          "orgao_ordem": 1
+        },
+        {
+          "id": "manchas_angulares_entre_nervuras",
+          "nome": "Manchas angulosas, limitadas pelas nervuras",
+          "orgao": "folha",
+          "orgao_rotulo": "Na folha",
+          "orgao_ordem": 1
+        },
+        {
+          "id": "mofo_arroxeado_face_inferior",
+          "nome": "Mofo acinzentado a arroxeado na face inferior, sob as manchas",
+          "orgao": "folha",
+          "orgao_rotulo": "Na folha",
+          "orgao_ordem": 1
+        },
+        {
+          "id": "mosaico_verde_claro_escuro",
+          "nome": "Mosaico de verde claro e verde escuro",
+          "orgao": "folha",
+          "orgao_rotulo": "Na folha",
+          "orgao_ordem": 1
+        },
+        {
+          "id": "po_branco_superficie",
+          "nome": "Pó branco, farináceo, na superfície da folha",
+          "orgao": "folha",
+          "orgao_rotulo": "Na folha",
+          "orgao_ordem": 1
+        },
+        {
+          "id": "lesoes_no_caule",
+          "nome": "Lesões escuras no caule ou haste",
+          "orgao": "caule",
+          "orgao_rotulo": "No caule, ramo ou haste",
+          "orgao_ordem": 2
+        },
+        {
+          "id": "frutos_deformados",
+          "nome": "Frutos deformados, manchados ou rachados",
+          "orgao": "fruto",
+          "orgao_rotulo": "No fruto",
+          "orgao_ordem": 4
+        },
+        {
+          "id": "lesoes_no_fruto",
+          "nome": "Lesões deprimidas ou podridão no fruto",
+          "orgao": "fruto",
+          "orgao_rotulo": "No fruto",
+          "orgao_ordem": 4
+        },
+        {
+          "id": "massa_rosada_na_lesao",
+          "nome": "Massa rosada ou alaranjada sobre a lesão, em tempo úmido",
+          "orgao": "fruto",
+          "orgao_rotulo": "No fruto",
+          "orgao_ordem": 4
+        },
+        {
+          "id": "crescimento_reduzido",
+          "nome": "Crescimento reduzido / nanismo",
+          "orgao": "planta",
+          "orgao_rotulo": "Na planta inteira",
+          "orgao_ordem": 5
+        },
+        {
+          "id": "desfolha_baixo_para_cima",
+          "nome": "Queda de folhas começando pelas mais baixas",
+          "orgao": "planta",
+          "orgao_rotulo": "Na planta inteira",
+          "orgao_ordem": 5
+        }
+      ]
+    },
     {
       "cultura": "agriao",
       "sintomas": [
@@ -363,6 +619,226 @@
         {
           "id": "queda_precoce_folhas",
           "nome": "Queda precoce de folhas por toda a planta",
+          "orgao": "planta",
+          "orgao_rotulo": "Na planta inteira",
+          "orgao_ordem": 5
+        }
+      ]
+    },
+    {
+      "cultura": "jilo",
+      "sintomas": [
+        {
+          "id": "furos_na_folha",
+          "nome": "Centro da lesão seca e cai, deixando furos na folha",
+          "orgao": "folha",
+          "orgao_rotulo": "Na folha",
+          "orgao_ordem": 1
+        },
+        {
+          "id": "lesao_em_v_na_borda",
+          "nome": "Lesão amarela em forma de V, começando na borda da folha",
+          "orgao": "folha",
+          "orgao_rotulo": "Na folha",
+          "orgao_ordem": 1
+        },
+        {
+          "id": "manchas_amareladas",
+          "nome": "Manchas amareladas (cloróticas)",
+          "orgao": "folha",
+          "orgao_rotulo": "Na folha",
+          "orgao_ordem": 1
+        },
+        {
+          "id": "manchas_pequenas_centro_claro",
+          "nome": "Manchas pequenas com centro claro e borda escura",
+          "orgao": "folha",
+          "orgao_rotulo": "Na folha",
+          "orgao_ordem": 1
+        },
+        {
+          "id": "vasos_escurecidos",
+          "nome": "Ao cortar o caule, vasos internos escurecidos",
+          "orgao": "caule",
+          "orgao_rotulo": "No caule, ramo ou haste",
+          "orgao_ordem": 2
+        },
+        {
+          "id": "lesoes_no_caule",
+          "nome": "Lesões escuras no caule ou haste",
+          "orgao": "caule",
+          "orgao_rotulo": "No caule, ramo ou haste",
+          "orgao_ordem": 2
+        },
+        {
+          "id": "galhas_na_raiz",
+          "nome": "Raízes engrossadas e deformadas, com galhas",
+          "orgao": "raiz",
+          "orgao_rotulo": "Na raiz, bulbo ou tuberculo",
+          "orgao_ordem": 3
+        },
+        {
+          "id": "lesoes_no_fruto",
+          "nome": "Lesões deprimidas ou podridão no fruto",
+          "orgao": "fruto",
+          "orgao_rotulo": "No fruto",
+          "orgao_ordem": 4
+        },
+        {
+          "id": "massa_rosada_na_lesao",
+          "nome": "Massa rosada ou alaranjada sobre a lesão, em tempo úmido",
+          "orgao": "fruto",
+          "orgao_rotulo": "No fruto",
+          "orgao_ordem": 4
+        },
+        {
+          "id": "crescimento_reduzido",
+          "nome": "Crescimento reduzido / nanismo",
+          "orgao": "planta",
+          "orgao_rotulo": "Na planta inteira",
+          "orgao_ordem": 5
+        },
+        {
+          "id": "murcha",
+          "nome": "Murcha da planta",
+          "orgao": "planta",
+          "orgao_rotulo": "Na planta inteira",
+          "orgao_ordem": 5
+        }
+      ]
+    },
+    {
+      "cultura": "pepino",
+      "sintomas": [
+        {
+          "id": "nervuras_amareladas",
+          "nome": "Amarelecimento entre as nervuras",
+          "orgao": "folha",
+          "orgao_rotulo": "Na folha",
+          "orgao_ordem": 1
+        },
+        {
+          "id": "furos_na_folha",
+          "nome": "Centro da lesão seca e cai, deixando furos na folha",
+          "orgao": "folha",
+          "orgao_rotulo": "Na folha",
+          "orgao_ordem": 1
+        },
+        {
+          "id": "folhas_deformadas",
+          "nome": "Folhas deformadas, enroladas ou reduzidas",
+          "orgao": "folha",
+          "orgao_rotulo": "Na folha",
+          "orgao_ordem": 1
+        },
+        {
+          "id": "manchas_encharcadas",
+          "nome": "Lesões encharcadas, com aspecto de queimadura",
+          "orgao": "folha",
+          "orgao_rotulo": "Na folha",
+          "orgao_ordem": 1
+        },
+        {
+          "id": "manchas_amareladas",
+          "nome": "Manchas amareladas (cloróticas)",
+          "orgao": "folha",
+          "orgao_rotulo": "Na folha",
+          "orgao_ordem": 1
+        },
+        {
+          "id": "manchas_angulares_entre_nervuras",
+          "nome": "Manchas angulosas, limitadas pelas nervuras",
+          "orgao": "folha",
+          "orgao_rotulo": "Na folha",
+          "orgao_ordem": 1
+        },
+        {
+          "id": "mofo_arroxeado_face_inferior",
+          "nome": "Mofo acinzentado a arroxeado na face inferior, sob as manchas",
+          "orgao": "folha",
+          "orgao_rotulo": "Na folha",
+          "orgao_ordem": 1
+        },
+        {
+          "id": "mosaico_verde_claro_escuro",
+          "nome": "Mosaico de verde claro e verde escuro",
+          "orgao": "folha",
+          "orgao_rotulo": "Na folha",
+          "orgao_ordem": 1
+        },
+        {
+          "id": "po_branco_superficie",
+          "nome": "Pó branco, farináceo, na superfície da folha",
+          "orgao": "folha",
+          "orgao_rotulo": "Na folha",
+          "orgao_ordem": 1
+        },
+        {
+          "id": "pontuacoes_pretas_na_lesao",
+          "nome": "Pontinhos pretos dentro da lesão",
+          "orgao": "folha",
+          "orgao_rotulo": "Na folha",
+          "orgao_ordem": 1
+        },
+        {
+          "id": "lesoes_no_caule",
+          "nome": "Lesões escuras no caule ou haste",
+          "orgao": "caule",
+          "orgao_rotulo": "No caule, ramo ou haste",
+          "orgao_ordem": 2
+        },
+        {
+          "id": "goma_no_caule",
+          "nome": "Rachadura no caule ou no colo, escorrendo goma parda",
+          "orgao": "caule",
+          "orgao_rotulo": "No caule, ramo ou haste",
+          "orgao_ordem": 2
+        },
+        {
+          "id": "frutos_deformados",
+          "nome": "Frutos deformados, manchados ou rachados",
+          "orgao": "fruto",
+          "orgao_rotulo": "No fruto",
+          "orgao_ordem": 4
+        },
+        {
+          "id": "lesoes_no_fruto",
+          "nome": "Lesões deprimidas ou podridão no fruto",
+          "orgao": "fruto",
+          "orgao_rotulo": "No fruto",
+          "orgao_ordem": 4
+        },
+        {
+          "id": "massa_rosada_na_lesao",
+          "nome": "Massa rosada ou alaranjada sobre a lesão, em tempo úmido",
+          "orgao": "fruto",
+          "orgao_rotulo": "No fruto",
+          "orgao_ordem": 4
+        },
+        {
+          "id": "apodrecimento_mole_malcheiroso",
+          "nome": "Apodrecimento mole e malcheiroso",
+          "orgao": "planta",
+          "orgao_rotulo": "Na planta inteira",
+          "orgao_ordem": 5
+        },
+        {
+          "id": "crescimento_reduzido",
+          "nome": "Crescimento reduzido / nanismo",
+          "orgao": "planta",
+          "orgao_rotulo": "Na planta inteira",
+          "orgao_ordem": 5
+        },
+        {
+          "id": "murcha",
+          "nome": "Murcha da planta",
+          "orgao": "planta",
+          "orgao_rotulo": "Na planta inteira",
+          "orgao_ordem": 5
+        },
+        {
+          "id": "desfolha_baixo_para_cima",
+          "nome": "Queda de folhas começando pelas mais baixas",
           "orgao": "planta",
           "orgao_rotulo": "Na planta inteira",
           "orgao_ordem": 5
@@ -741,6 +1217,358 @@
     }
   ],
   "fichas": [
+    {
+      "id": "abobora_mildio",
+      "nome": "Míldio da abóbora",
+      "cultura": "Abóbora",
+      "emoji": "🎃",
+      "agente": "Pseudoperonospora cubensis",
+      "tipo_agente": "oomiceto",
+      "gravidade": 4,
+      "descricao": "Começa na face de cima da folha, como manchas amarelas e angulosas, limitadas pelas nervuras, que se multiplicam e tomam o limbo. Embaixo delas, na face inferior, aparece um mofo acinzentado a arroxeado nas horas úmidas. As manchas necrosam e a folhagem queima, com séria redução da produção.",
+      "condicoes_favoraveis": {
+        "temperatura": "16 a 22 °C",
+        "umidade": "Alta, com orvalho, chuva ou irrigação por aspersão",
+        "observacao": "Parasita obrigatório, que ataca muitas cucurbitáceas. Aparece nas épocas de temperatura mais amena e se espalha pelo vento e pelos respingos de chuva."
+      },
+      "tratamentos": [
+        {
+          "tipo": "cultural",
+          "descricao": "Usar cultivares resistentes e evitar plantar em locais e épocas de orvalho prolongado."
+        },
+        {
+          "tipo": "cultural",
+          "descricao": "Preferir irrigação localizada à aspersão."
+        },
+        {
+          "tipo": "cultural",
+          "descricao": "Não plantar ao lado de outras cucurbitáceas e eliminar os restos culturais depois da última colheita."
+        },
+        {
+          "tipo": "quimico",
+          "descricao": "Fungicidas protetores em aplicação preventiva e sistêmicos quando a doença se instala, com rodízio de grupo químico. Só produtos registrados para a cultura."
+        }
+      ],
+      "ingredientes_ativos": [
+        {
+          "nome": "Mancozebe",
+          "grupo": "Ditiocarbamato",
+          "acao": "protetor"
+        },
+        {
+          "nome": "Clorotalonil",
+          "grupo": "Isoftalonitrila",
+          "acao": "protetor"
+        },
+        {
+          "nome": "Dimetomorfe",
+          "grupo": "Amida do ácido cinâmico",
+          "acao": "sistêmico"
+        }
+      ]
+    },
+    {
+      "id": "abobora_oidio",
+      "nome": "Oídio da abóbora",
+      "cultura": "Abóbora",
+      "emoji": "🎃",
+      "agente": "Podosphaera xanthii",
+      "tipo_agente": "fungo",
+      "gravidade": 3,
+      "descricao": "Pó branco e farináceo, formado pelo próprio fungo, aparece em manchas na folha e, ao se juntarem, cobre toda a área foliar. As folhas mais atacadas, a começar pelas mais velhas, secam das bordas para o centro. É a principal doença de parte aérea das cucurbitáceas.",
+      "condicoes_favoraveis": {
+        "temperatura": "Altas",
+        "umidade": "Baixa: clima seco agrava a doença",
+        "observacao": "Ao contrário do míldio, é mais severo em clima seco e quente. É mais frequente em abóboras, pepinos e melões do que em melancia."
+      },
+      "tratamentos": [
+        {
+          "tipo": "cultural",
+          "descricao": "Usar cultivares resistentes, quando houver: é a forma mais econômica de controle."
+        },
+        {
+          "tipo": "cultural",
+          "descricao": "Não plantar ao lado de lavouras velhas de cucurbitáceas e eliminar os restos culturais."
+        },
+        {
+          "tipo": "quimico",
+          "descricao": "Começar nos primeiros sintomas, que surgem na face inferior da folha. Enxofre dá bons resultados; em condições muito favoráveis, triazóis sistêmicos são mais eficientes."
+        }
+      ],
+      "ingredientes_ativos": [
+        {
+          "nome": "Difenoconazol",
+          "grupo": "Triazol",
+          "acao": "sistêmico"
+        },
+        {
+          "nome": "Enxofre",
+          "grupo": "Inorgânico",
+          "acao": "protetor"
+        },
+        {
+          "nome": "Azoxistrobina",
+          "grupo": "Estrobilurina",
+          "acao": "sistêmico"
+        }
+      ]
+    },
+    {
+      "id": "abobora_mosaico",
+      "nome": "Mosaico da abóbora",
+      "cultura": "Abóbora",
+      "emoji": "🎃",
+      "agente": "Potyvírus, sobretudo o PRSV-W (Papaya ringspot virus - tipo W), o ZYMV e o WMV, transmitidos por pulgões",
+      "tipo_agente": "vírus",
+      "gravidade": 5,
+      "descricao": "Mosqueado e mosaico de verde-claro e verde-escuro, com bolhas, enrugamento e deformação das folhas. O ZYMV também descolore a folha entre as nervuras e pode necrosar o tecido. A planta fica enfezada, e os frutos saem malformados e rachados, sem valor comercial. A infecção nos estádios iniciais é a que mais compromete a produção.",
+      "condicoes_favoraveis": {
+        "temperatura": "Ampla: acompanha a população de pulgões",
+        "umidade": "Não é fator direto",
+        "observacao": "Dezenas de espécies de pulgão transmitem o vírus de forma não persistente, e também passa por contato mecânico. O PRSV-W e o WMV não passam pela semente. É a principal virose das cucurbitáceas no Brasil, presente em lavouras de todos os estados levantados pela Embrapa entre 2008 e 2010."
+      },
+      "tratamentos": [
+        {
+          "tipo": "cultural",
+          "descricao": "Não há cura para a planta infectada. Não plantar ao lado de lavouras de cucurbitáceas em produção, abandonadas ou infectadas, e eliminar os restos culturais logo após a colheita."
+        },
+        {
+          "tipo": "cultural",
+          "descricao": "Escolher a época de plantio fora dos picos de pulgão e eliminar plantas invasoras que abrigam o vetor e o vírus."
+        },
+        {
+          "tipo": "quimico",
+          "descricao": "Inseticida contra pulgão tem efeito limitado: o vírus passa em picadas de segundos, antes de o inseto morrer. Não substitui as medidas culturais."
+        }
+      ],
+      "ingredientes_ativos": []
+    },
+    {
+      "id": "abobora_antracnose",
+      "nome": "Antracnose da abóbora",
+      "cultura": "Abóbora",
+      "emoji": "🎃",
+      "agente": "Colletotrichum orbiculare (sin. C. lagenarium)",
+      "tipo_agente": "fungo",
+      "gravidade": 3,
+      "descricao": "Nas abóboras o ataque aparece sobretudo nos frutos: lesões circulares, deprimidas e encharcadas, que crescem à medida que o fruto amadurece e, em tempo úmido, escurecem e se cobrem de uma massa de esporos rosa ou salmão. Pode haver placas brancas na casca e, por dentro, podridão seca. Nas folhas, manchas amareladas ou encharcadas que ficam marrons e quebradiças; no pecíolo e na rama, manchas alongadas e escuras, de centro claro. O fruto infectado cedo pode abortar ou se deformar.",
+      "condicoes_favoraveis": {
+        "temperatura": "21 a 27 °C",
+        "umidade": "Alta, com água livre sobre folhas e frutos",
+        "observacao": "Sobrevive em restos de cucurbitáceas cultivadas ou silvestres e na semente, e se espalha por respingos de chuva, irrigação por aspersão, insetos e ferramentas. Os sintomas podem aparecer quatro dias depois da infecção, ainda no campo ou só na pós-colheita."
+      },
+      "tratamentos": [
+        {
+          "tipo": "cultural",
+          "descricao": "Sementes e mudas certificadas, livres do patógeno, e rotação de três anos ou mais."
+        },
+        {
+          "tipo": "cultural",
+          "descricao": "Manter a lavoura arejada; evitar irrigação por aspersão ou fazê-la de manhã; em estufa, gotejamento."
+        },
+        {
+          "tipo": "cultural",
+          "descricao": "Remover e destruir os restos culturais e controlar as cucurbitáceas silvestres e voluntárias."
+        },
+        {
+          "tipo": "quimico",
+          "descricao": "Fungicidas registrados para a cultura. Não há cultivar comercial de abóbora resistente à antracnose no Brasil."
+        }
+      ],
+      "ingredientes_ativos": [
+        {
+          "nome": "Mancozebe",
+          "grupo": "Ditiocarbamato",
+          "acao": "protetor"
+        },
+        {
+          "nome": "Flutriafol",
+          "grupo": "Triazol",
+          "acao": "sistêmico"
+        },
+        {
+          "nome": "Oxicloreto de cobre",
+          "grupo": "Cúprico",
+          "acao": "protetor"
+        }
+      ]
+    },
+    {
+      "id": "abobrinha_mildio",
+      "nome": "Míldio da abobrinha",
+      "cultura": "Abobrinha",
+      "emoji": "🥒",
+      "agente": "Pseudoperonospora cubensis",
+      "tipo_agente": "oomiceto",
+      "gravidade": 4,
+      "descricao": "Começa na face de cima da folha, como manchas amarelas e angulosas, limitadas pelas nervuras, que se multiplicam e tomam o limbo. Embaixo delas, na face inferior, aparece um mofo acinzentado a arroxeado nas horas úmidas. As manchas necrosam e a folhagem queima, com séria redução da produção.",
+      "condicoes_favoraveis": {
+        "temperatura": "16 a 22 °C",
+        "umidade": "Alta, com orvalho, chuva ou irrigação por aspersão",
+        "observacao": "Parasita obrigatório, que ataca muitas cucurbitáceas. Aparece nas épocas de temperatura mais amena e se espalha pelo vento e pelos respingos de chuva."
+      },
+      "tratamentos": [
+        {
+          "tipo": "cultural",
+          "descricao": "Usar cultivares resistentes e evitar plantar em locais e épocas de orvalho prolongado."
+        },
+        {
+          "tipo": "cultural",
+          "descricao": "Preferir irrigação localizada à aspersão."
+        },
+        {
+          "tipo": "cultural",
+          "descricao": "Não plantar ao lado de outras cucurbitáceas e eliminar os restos culturais depois da última colheita."
+        },
+        {
+          "tipo": "quimico",
+          "descricao": "Fungicidas protetores em aplicação preventiva e sistêmicos quando a doença se instala, com rodízio de grupo químico. Só produtos registrados para a cultura."
+        }
+      ],
+      "ingredientes_ativos": [
+        {
+          "nome": "Clorotalonil",
+          "grupo": "Isoftalonitrila",
+          "acao": "protetor"
+        },
+        {
+          "nome": "Mancozebe",
+          "grupo": "Ditiocarbamato",
+          "acao": "protetor"
+        },
+        {
+          "nome": "Dimetomorfe",
+          "grupo": "Amida do ácido cinâmico",
+          "acao": "sistêmico"
+        }
+      ]
+    },
+    {
+      "id": "abobrinha_oidio",
+      "nome": "Oídio da abobrinha",
+      "cultura": "Abobrinha",
+      "emoji": "🥒",
+      "agente": "Podosphaera xanthii",
+      "tipo_agente": "fungo",
+      "gravidade": 3,
+      "descricao": "Pó branco e farináceo, formado pelo próprio fungo, aparece em manchas na folha e, ao se juntarem, cobre toda a área foliar. As folhas mais atacadas, a começar pelas mais velhas, secam das bordas para o centro. É a principal doença de parte aérea das cucurbitáceas.",
+      "condicoes_favoraveis": {
+        "temperatura": "Altas",
+        "umidade": "Baixa: clima seco agrava a doença",
+        "observacao": "Ao contrário do míldio, é mais severo em clima seco e quente. É mais frequente em abóboras, pepinos e melões do que em melancia."
+      },
+      "tratamentos": [
+        {
+          "tipo": "cultural",
+          "descricao": "Usar cultivares resistentes, quando houver: é a forma mais econômica de controle."
+        },
+        {
+          "tipo": "cultural",
+          "descricao": "Não plantar ao lado de lavouras velhas de cucurbitáceas e eliminar os restos culturais."
+        },
+        {
+          "tipo": "quimico",
+          "descricao": "Começar nos primeiros sintomas, que surgem na face inferior da folha. Enxofre dá bons resultados; em condições muito favoráveis, triazóis sistêmicos são mais eficientes."
+        }
+      ],
+      "ingredientes_ativos": [
+        {
+          "nome": "Difenoconazol",
+          "grupo": "Triazol",
+          "acao": "sistêmico"
+        },
+        {
+          "nome": "Enxofre",
+          "grupo": "Inorgânico",
+          "acao": "protetor"
+        },
+        {
+          "nome": "Azoxistrobina",
+          "grupo": "Estrobilurina",
+          "acao": "sistêmico"
+        }
+      ]
+    },
+    {
+      "id": "abobrinha_mosaico",
+      "nome": "Mosaico da abobrinha",
+      "cultura": "Abobrinha",
+      "emoji": "🥒",
+      "agente": "Potyvírus, sobretudo o PRSV-W (Papaya ringspot virus - tipo W), o ZYMV e o WMV, transmitidos por pulgões",
+      "tipo_agente": "vírus",
+      "gravidade": 5,
+      "descricao": "Mosqueado e mosaico de verde-claro e verde-escuro, com bolhas, enrugamento e deformação das folhas. O ZYMV também descolore a folha entre as nervuras e pode necrosar o tecido. A planta fica enfezada, e os frutos saem malformados e rachados, sem valor comercial. A infecção nos estádios iniciais é a que mais compromete a produção.",
+      "condicoes_favoraveis": {
+        "temperatura": "Ampla: acompanha a população de pulgões",
+        "umidade": "Não é fator direto",
+        "observacao": "Dezenas de espécies de pulgão transmitem o vírus de forma não persistente, e também passa por contato mecânico. O PRSV-W e o WMV não passam pela semente. É a principal virose das cucurbitáceas no Brasil, presente em lavouras de todos os estados levantados pela Embrapa entre 2008 e 2010."
+      },
+      "tratamentos": [
+        {
+          "tipo": "cultural",
+          "descricao": "Não há cura para a planta infectada. Não plantar ao lado de lavouras de cucurbitáceas em produção, abandonadas ou infectadas, e eliminar os restos culturais logo após a colheita."
+        },
+        {
+          "tipo": "cultural",
+          "descricao": "Escolher a época de plantio fora dos picos de pulgão e eliminar plantas invasoras que abrigam o vetor e o vírus."
+        },
+        {
+          "tipo": "quimico",
+          "descricao": "Inseticida contra pulgão tem efeito limitado: o vírus passa em picadas de segundos, antes de o inseto morrer. Não substitui as medidas culturais."
+        }
+      ],
+      "ingredientes_ativos": []
+    },
+    {
+      "id": "abobrinha_antracnose",
+      "nome": "Antracnose da abobrinha",
+      "cultura": "Abobrinha",
+      "emoji": "🥒",
+      "agente": "Colletotrichum orbiculare (sin. C. lagenarium)",
+      "tipo_agente": "fungo",
+      "gravidade": 3,
+      "descricao": "Nas abóboras o ataque aparece sobretudo nos frutos: lesões circulares, deprimidas e encharcadas, que crescem à medida que o fruto amadurece e, em tempo úmido, escurecem e se cobrem de uma massa de esporos rosa ou salmão. Pode haver placas brancas na casca e, por dentro, podridão seca. Nas folhas, manchas amareladas ou encharcadas que ficam marrons e quebradiças; no pecíolo e na rama, manchas alongadas e escuras, de centro claro. O fruto infectado cedo pode abortar ou se deformar.",
+      "condicoes_favoraveis": {
+        "temperatura": "21 a 27 °C",
+        "umidade": "Alta, com água livre sobre folhas e frutos",
+        "observacao": "Sobrevive em restos de cucurbitáceas cultivadas ou silvestres e na semente, e se espalha por respingos de chuva, irrigação por aspersão, insetos e ferramentas. Os sintomas podem aparecer quatro dias depois da infecção, ainda no campo ou só na pós-colheita."
+      },
+      "tratamentos": [
+        {
+          "tipo": "cultural",
+          "descricao": "Sementes e mudas certificadas, livres do patógeno, e rotação de três anos ou mais."
+        },
+        {
+          "tipo": "cultural",
+          "descricao": "Manter a lavoura arejada; evitar irrigação por aspersão ou fazê-la de manhã; em estufa, gotejamento."
+        },
+        {
+          "tipo": "cultural",
+          "descricao": "Remover e destruir os restos culturais e controlar as cucurbitáceas silvestres e voluntárias."
+        },
+        {
+          "tipo": "quimico",
+          "descricao": "Fungicidas registrados para a cultura. Não há cultivar comercial de abóbora resistente à antracnose no Brasil."
+        }
+      ],
+      "ingredientes_ativos": [
+        {
+          "nome": "Flutriafol",
+          "grupo": "Triazol",
+          "acao": "sistêmico"
+        },
+        {
+          "nome": "Azoxistrobina",
+          "grupo": "Estrobilurina",
+          "acao": "sistêmico"
+        },
+        {
+          "nome": "Difenoconazol",
+          "grupo": "Triazol",
+          "acao": "sistêmico"
+        }
+      ]
+    },
     {
       "id": "agriao_mildio",
       "nome": "Míldio do agrião",
@@ -1365,6 +2193,485 @@
           "acao": "protetor"
         }
       ]
+    },
+    {
+      "id": "jilo_antracnose",
+      "nome": "Antracnose do jiló",
+      "cultura": "Jiló",
+      "emoji": "🍆",
+      "agente": "Colletotrichum gloeosporioides e C. acutatum",
+      "tipo_agente": "fungo",
+      "gravidade": 5,
+      "descricao": "A doença mais importante do jiló. Nos frutos, lesões deprimidas, de formato e tamanho variáveis, com uma massa rosada de esporos no centro sob alta umidade. Muitas vezes aparece só depois da colheita, no transporte, e deprecia quase todo o produto. Nas folhas e nos ramos, pequenas lesões necróticas, circulares a alongadas. Em época chuvosa e com muito inóculo, pode atingir todos os frutos.",
+      "condicoes_favoraveis": {
+        "temperatura": "Clima ameno a quente; temperaturas altas favorecem",
+        "umidade": "Alta, com chuva ou irrigação por aspersão",
+        "observacao": "O fungo sobrevive em restos culturais e em frutos mumificados, e a semente contaminada o leva para longe. Os esporos se espalham na lavoura pelos respingos de água."
+      },
+      "tratamentos": [
+        {
+          "tipo": "cultural",
+          "descricao": "Sementes sadias e cultivar tolerante, como a Tinguá."
+        },
+        {
+          "tipo": "cultural",
+          "descricao": "Plantar longe de outras solanáceas, de preferência em áreas mais altas e menos úmidas; ralear para arejar as plantas."
+        },
+        {
+          "tipo": "cultural",
+          "descricao": "Eliminar frutos doentes e partes infectadas, destruir os restos culturais e fazer rotação de culturas."
+        },
+        {
+          "tipo": "quimico",
+          "descricao": "Fungicidas cúpricos, que a Embrapa recomenda e têm registro para a antracnose do jiló, em aplicação preventiva."
+        }
+      ],
+      "ingredientes_ativos": [
+        {
+          "nome": "Oxicloreto de cobre",
+          "grupo": "Cúprico",
+          "acao": "protetor"
+        },
+        {
+          "nome": "Hidróxido de cobre",
+          "grupo": "Cúprico",
+          "acao": "protetor"
+        },
+        {
+          "nome": "Flutriafol",
+          "grupo": "Triazol",
+          "acao": "sistêmico"
+        }
+      ]
+    },
+    {
+      "id": "jilo_murcha_de_verticilio",
+      "nome": "Murcha-de-verticílio",
+      "cultura": "Jiló",
+      "emoji": "🍆",
+      "agente": "Verticillium dahliae",
+      "tipo_agente": "fungo",
+      "gravidade": 4,
+      "descricao": "Começa nas folhas mais velhas, que murcham e amarelam a partir da borda, numa lesão em forma de V com a ponta voltada para a nervura principal, e depois necrosam. A murcha fica mais evidente nas horas quentes. Ao cortar a haste ou o pecíolo, os vasos estão marrons ou pretos. Aparece em reboleiras; a planta raramente morre, mas cresce menos e dá menos frutos, e menores.",
+      "condicoes_favoraveis": {
+        "temperatura": "22 a 26 °C",
+        "umidade": "Não é limitante: a umidade do solo boa para a planta também serve ao fungo",
+        "observacao": "O fungo fica no solo por muitos anos como microescleródios, mesmo sem hospedeiro, e ataca também tomate, berinjela, batata, quiabo e plantas daninhas como beldroega, guanxuma, joá e maria-pretinha. Chega pela semente e pela muda, e se espalha por máquinas e água."
+      },
+      "tratamentos": [
+        {
+          "tipo": "cultural",
+          "descricao": "Sementes sadias e plantio em área sem histórico de tomateiro e de outras hospedeiras."
+        },
+        {
+          "tipo": "cultural",
+          "descricao": "Destruir os restos culturais e controlar com rigor as plantas voluntárias e invasoras, dentro e perto da área."
+        },
+        {
+          "tipo": "cultural",
+          "descricao": "Rotação de culturas, principalmente com gramíneas, e adubação equilibrada."
+        },
+        {
+          "tipo": "cultural",
+          "descricao": "Não há cultivar resistente nem fungicida registrado para esta doença no jiló: o controle é só preventivo."
+        }
+      ],
+      "ingredientes_ativos": []
+    },
+    {
+      "id": "jilo_murcha_bacteriana",
+      "nome": "Murcha-bacteriana do jiló",
+      "cultura": "Jiló",
+      "emoji": "🍆",
+      "agente": "Ralstonia solanacearum",
+      "tipo_agente": "bactéria",
+      "gravidade": 3,
+      "descricao": "A parte aérea murcha nas horas mais quentes do dia e recupera quando a temperatura cai. Às vezes a planta não murcha e só cresce menos. No colo, um corte no sentido do caule mostra os vasos escurecidos. Aparece em reboleiras. No jiló causa menos dano que no tomate e na batata, mas há relatos de lavouras destruídas no Norte e no Nordeste.",
+      "condicoes_favoraveis": {
+        "temperatura": "28 a 30 °C",
+        "umidade": "Alta umidade do solo",
+        "observacao": "A bactéria sobrevive no solo por longos períodos e, instalada, é praticamente impossível de erradicar. Espalha-se com solo, enxurrada e implementos, e entra por ferimentos de nematoides e outras pragas de solo."
+      },
+      "tratamentos": [
+        {
+          "tipo": "cultural",
+          "descricao": "Mudas sadias e plantio longe de áreas cultivadas antes com hospedeiras da bactéria; cuidar da origem da água de irrigação."
+        },
+        {
+          "tipo": "cultural",
+          "descricao": "Em área infestada, solarizar o solo e fazer rotação com gramíneas por mais de dois anos, eliminando as plantas daninhas."
+        },
+        {
+          "tipo": "cultural",
+          "descricao": "Não há produto registrado para esta doença no jiló: a prevenção é a única medida."
+        }
+      ],
+      "ingredientes_ativos": []
+    },
+    {
+      "id": "jilo_nematoide_das_galhas",
+      "nome": "Nematoide-das-galhas",
+      "cultura": "Jiló",
+      "emoji": "🍆",
+      "agente": "Meloidogyne incognita e M. javanica",
+      "tipo_agente": "nematoide",
+      "gravidade": 4,
+      "descricao": "As raízes ficam com galhas, inchaços alongados ou grandes e irregulares, que podem apodrecer pela entrada de outros fungos e bactérias. Com a raiz comprometida, a planta não leva água e nutrientes à parte aérea: murcha, amarela e mostra deficiências. No campo, aparece em reboleiras irregulares de plantas raquíticas.",
+      "condicoes_favoraveis": {
+        "temperatura": "Acima de 27 °C",
+        "umidade": "Solos arenosos favorecem a multiplicação",
+        "observacao": "Espalha-se pela água de irrigação contaminada, pelas mudas, pelos animais, pelas máquinas e pelas pessoas que circulam na lavoura. Daninhas como arrebenta-cavalo, caruru-de-espinho, maria-pretinha e melão-de-são-caetano mantêm o nematoide na área."
+      },
+      "tratamentos": [
+        {
+          "tipo": "cultural",
+          "descricao": "Escolher bem a área de plantio e produzir mudas sadias."
+        },
+        {
+          "tipo": "cultural",
+          "descricao": "Rotação com não hospedeiras, como amendoim, braquiárias e mamona; plantas antagonistas, como Crotalaria spectabilis, C. breviflora, cravo-de-defunto e mucunas."
+        },
+        {
+          "tipo": "cultural",
+          "descricao": "Revolver o solo de 15 a 20 dias antes do plantio para expor os nematoides ao sol; incorporar matéria orgânica e eliminar as daninhas hospedeiras."
+        },
+        {
+          "tipo": "quimico",
+          "descricao": "Nematicida registrado para o jiló, só como complemento ao manejo cultural."
+        }
+      ],
+      "ingredientes_ativos": [
+        {
+          "nome": "Ciclobutrifluram",
+          "grupo": "Carboxamida",
+          "acao": "nematicida"
+        }
+      ]
+    },
+    {
+      "id": "jilo_mancha_de_estenfilio",
+      "nome": "Mancha-de-estenfílio",
+      "cultura": "Jiló",
+      "emoji": "🍆",
+      "agente": "Stemphylium solani",
+      "tipo_agente": "fungo",
+      "gravidade": 3,
+      "descricao": "Lesões necróticas, irregulares e pardas, de centro mais claro, em folhas velhas e novas; o centro pode se romper. Ataca da muda à planta adulta e reduz a área de folha. Dá prejuízo em anos muito chuvosos.",
+      "condicoes_favoraveis": {
+        "temperatura": "24 a 27 °C",
+        "umidade": "Alta umidade relativa",
+        "observacao": "Sobrevive em restos culturais, plantas voluntárias e outras hospedeiras, inclusive daninhas como lobeira e joá-bravo. Espalha-se pela muda contaminada e pelo vento, e com água e calor cresce muito numa única noite."
+      },
+      "tratamentos": [
+        {
+          "tipo": "cultural",
+          "descricao": "Rotação com espécies não hospedeiras e plantio longe de outras solanáceas."
+        },
+        {
+          "tipo": "cultural",
+          "descricao": "Destruir os restos culturais e eliminar as plantas daninhas perto da área."
+        },
+        {
+          "tipo": "cultural",
+          "descricao": "Evitar irrigações frequentes, principalmente por aspersão."
+        },
+        {
+          "tipo": "quimico",
+          "descricao": "Fungicida registrado para o alvo no jiló, em aplicação preventiva nos períodos chuvosos."
+        }
+      ],
+      "ingredientes_ativos": [
+        {
+          "nome": "Clorotalonil",
+          "grupo": "Isoftalonitrila",
+          "acao": "protetor"
+        }
+      ]
+    },
+    {
+      "id": "pepino_mildio",
+      "nome": "Míldio do pepino",
+      "cultura": "Pepino",
+      "emoji": "🥒",
+      "agente": "Pseudoperonospora cubensis",
+      "tipo_agente": "oomiceto",
+      "gravidade": 4,
+      "descricao": "Começa na face de cima da folha, como manchas amarelas e angulosas, limitadas pelas nervuras, que se multiplicam e tomam o limbo. Embaixo delas, na face inferior, aparece um mofo acinzentado a arroxeado nas horas úmidas. As manchas necrosam e a folhagem queima, com séria redução da produção.",
+      "condicoes_favoraveis": {
+        "temperatura": "16 a 22 °C",
+        "umidade": "Alta, com orvalho, chuva ou irrigação por aspersão",
+        "observacao": "Parasita obrigatório, que ataca muitas cucurbitáceas. Aparece nas épocas de temperatura mais amena e se espalha pelo vento e pelos respingos de chuva."
+      },
+      "tratamentos": [
+        {
+          "tipo": "cultural",
+          "descricao": "Usar cultivares resistentes e evitar plantar em locais e épocas de orvalho prolongado."
+        },
+        {
+          "tipo": "cultural",
+          "descricao": "Preferir irrigação localizada à aspersão."
+        },
+        {
+          "tipo": "cultural",
+          "descricao": "Não plantar ao lado de outras cucurbitáceas e eliminar os restos culturais depois da última colheita."
+        },
+        {
+          "tipo": "quimico",
+          "descricao": "Fungicidas protetores em aplicação preventiva e sistêmicos quando a doença se instala, com rodízio de grupo químico. Só produtos registrados para a cultura."
+        }
+      ],
+      "ingredientes_ativos": [
+        {
+          "nome": "Mancozebe",
+          "grupo": "Ditiocarbamato",
+          "acao": "protetor"
+        },
+        {
+          "nome": "Clorotalonil",
+          "grupo": "Isoftalonitrila",
+          "acao": "protetor"
+        },
+        {
+          "nome": "Metalaxil-M",
+          "grupo": "Fenilamida",
+          "acao": "sistêmico"
+        },
+        {
+          "nome": "Azoxistrobina",
+          "grupo": "Estrobilurina",
+          "acao": "sistêmico"
+        }
+      ]
+    },
+    {
+      "id": "pepino_oidio",
+      "nome": "Oídio do pepino",
+      "cultura": "Pepino",
+      "emoji": "🥒",
+      "agente": "Podosphaera xanthii",
+      "tipo_agente": "fungo",
+      "gravidade": 3,
+      "descricao": "Pó branco e farináceo, formado pelo próprio fungo, aparece em manchas na folha e, ao se juntarem, cobre toda a área foliar. As folhas mais atacadas, a começar pelas mais velhas, secam das bordas para o centro. É a principal doença de parte aérea das cucurbitáceas.",
+      "condicoes_favoraveis": {
+        "temperatura": "Altas",
+        "umidade": "Baixa: clima seco agrava a doença",
+        "observacao": "Ao contrário do míldio, é mais severo em clima seco e quente. É mais frequente em abóboras, pepinos e melões do que em melancia. No pepino, é mais comum em cultivo protegido."
+      },
+      "tratamentos": [
+        {
+          "tipo": "cultural",
+          "descricao": "Usar cultivares resistentes, quando houver: é a forma mais econômica de controle."
+        },
+        {
+          "tipo": "cultural",
+          "descricao": "Não plantar ao lado de lavouras velhas de cucurbitáceas e eliminar os restos culturais."
+        },
+        {
+          "tipo": "quimico",
+          "descricao": "Começar nos primeiros sintomas, que surgem na face inferior da folha. Enxofre dá bons resultados; em condições muito favoráveis, triazóis sistêmicos são mais eficientes."
+        }
+      ],
+      "ingredientes_ativos": [
+        {
+          "nome": "Enxofre",
+          "grupo": "Inorgânico",
+          "acao": "protetor"
+        },
+        {
+          "nome": "Tebuconazol",
+          "grupo": "Triazol",
+          "acao": "sistêmico"
+        },
+        {
+          "nome": "Difenoconazol",
+          "grupo": "Triazol",
+          "acao": "sistêmico"
+        }
+      ]
+    },
+    {
+      "id": "pepino_antracnose",
+      "nome": "Antracnose do pepino",
+      "cultura": "Pepino",
+      "emoji": "🥒",
+      "agente": "Colletotrichum orbiculare (sin. C. lagenarium)",
+      "tipo_agente": "fungo",
+      "gravidade": 4,
+      "descricao": "Começa nas folhas mais velhas, com lesões pequenas e encharcadas que necrosam e escurecem. No pepino o centro da lesão seca e se destaca, deixando a folha furada, e a lesão avança em ponta ao longo das nervuras. Em ataque severo a folhagem fica toda queimada. Nos frutos, hastes e pecíolos as lesões são circulares a alongadas, escuras e deprimidas, e no centro delas, em tempo úmido, aparece uma massa de esporos rosa-alaranjada. No fruto o sintoma pode surgir só depois da colheita.",
+      "condicoes_favoraveis": {
+        "temperatura": "21 a 27 °C",
+        "umidade": "Alta; bastam duas horas de folha molhada",
+        "observacao": "O fungo sobrevive até dois anos em restos culturais, em cucurbitáceas silvestres e na semente, que é a principal forma de chegar a uma área nova. Espalha-se pelo respingo de chuva e de irrigação e pelos implementos."
+      },
+      "tratamentos": [
+        {
+          "tipo": "cultural",
+          "descricao": "Cultivares resistentes: Runner (tipo aodai) e os de conserva Colônia, Guaíra, Prêmio e Supremo."
+        },
+        {
+          "tipo": "cultural",
+          "descricao": "Sementes sadias; rotação de dois a três anos sem cucurbitáceas; destruição dos restos culturais e das cucurbitáceas silvestres."
+        },
+        {
+          "tipo": "cultural",
+          "descricao": "Irrigar sem molhar a folhagem e desinfestar equipamentos e máquinas."
+        },
+        {
+          "tipo": "biologico",
+          "descricao": "Trichoderma harzianum reduziu a severidade da doença em ensaio no pepino, mas ainda não há produto biológico registrado para antracnose em cucurbitáceas."
+        },
+        {
+          "tipo": "quimico",
+          "descricao": "Fungicidas protetores ou sistêmicos registrados para o pepino, em aplicação preventiva."
+        }
+      ],
+      "ingredientes_ativos": [
+        {
+          "nome": "Mancozebe",
+          "grupo": "Ditiocarbamato",
+          "acao": "protetor"
+        },
+        {
+          "nome": "Clorotalonil",
+          "grupo": "Isoftalonitrila",
+          "acao": "protetor"
+        },
+        {
+          "nome": "Tiofanato-metílico",
+          "grupo": "Benzimidazol",
+          "acao": "sistêmico"
+        },
+        {
+          "nome": "Oxicloreto de cobre",
+          "grupo": "Cúprico",
+          "acao": "protetor"
+        }
+      ]
+    },
+    {
+      "id": "pepino_mancha_angular",
+      "nome": "Mancha-angular do pepino",
+      "cultura": "Pepino",
+      "emoji": "🥒",
+      "agente": "Pseudomonas syringae pv. lachrymans",
+      "tipo_agente": "bactéria",
+      "gravidade": 4,
+      "descricao": "Nas folhas, manchas encharcadas e angulosas, limitadas pelas nervuras, que necrosam, ficam cinza e depois pardas e podem tomar grandes áreas de aspecto brilhante. Ataca também pecíolos, ramos e frutos: no fruto começa com pequenas manchas encharcadas que necrosam e, por dentro, chegam aos vasos e às sementes; depois o fruto apodrece por bactérias oportunistas. Não há cultivar resistente e o controle químico é pouco eficiente, por isso a prevenção é o que funciona.",
+      "condicoes_favoraveis": {
+        "temperatura": "24 a 28 °C",
+        "umidade": "Alta: chuva frequente, orvalho e, em estufa, água condensada na folhagem",
+        "observacao": "A bactéria chega às sementes do fruto atacado, e por isso o tratamento da semente faz parte do controle."
+      },
+      "tratamentos": [
+        {
+          "tipo": "cultural",
+          "descricao": "Rotação de no mínimo dois anos sem cucurbitáceas."
+        },
+        {
+          "tipo": "cultural",
+          "descricao": "Tratar as sementes com ácido lático a 2% por 20 minutos."
+        },
+        {
+          "tipo": "cultural",
+          "descricao": "Em estufa, arejar e evitar excesso de água; manejar a irrigação e não exagerar no nitrogênio."
+        },
+        {
+          "tipo": "quimico",
+          "descricao": "Bactericidas com registro para a mancha-angular no pepino, de forma preventiva. Cobre fora da dose da bula causa fitotoxidez no pepino."
+        }
+      ],
+      "ingredientes_ativos": [
+        {
+          "nome": "Casugamicina",
+          "grupo": "Antibiótico agrícola",
+          "acao": "bactericida"
+        },
+        {
+          "nome": "Óxido cuproso",
+          "grupo": "Cúprico",
+          "acao": "protetor"
+        }
+      ]
+    },
+    {
+      "id": "pepino_crestamento_gomoso",
+      "nome": "Crestamento-gomoso do caule",
+      "cultura": "Pepino",
+      "emoji": "🥒",
+      "agente": "Didymella bryoniae",
+      "tipo_agente": "fungo",
+      "gravidade": 4,
+      "descricao": "O sintoma mais típico é no caule e no colo: o tecido fica encharcado, racha e escorre uma goma parda, que passa a cinza e se cobre de pontinhos pretos, as frutificações do fungo. A lesão pode envolver o caule e matar a parte da planta acima dela. Nas folhas, manchas circulares pardas, de milímetros a centímetros, também com pontinhos pretos. No colo, o quadro se confunde com o de outros fungos, como Fusarium; a confirmação só vem em laboratório.",
+      "condicoes_favoraveis": {
+        "temperatura": "20 a 24 °C, ótimo de crescimento do fungo",
+        "umidade": "Alta; no pepino, a duração do molhamento de folhas e pecíolos pesa mais que a temperatura",
+        "observacao": "Sobrevive em restos culturais, sementes e solo. A água espalha o inóculo a curta distância, e o vento, a longa. É mais grave em regiões úmidas e em estufa com água sobre os tecidos."
+      },
+      "tratamentos": [
+        {
+          "tipo": "cultural",
+          "descricao": "Rotação com culturas de fora das cucurbitáceas e plantio longe de outras lavouras de cucurbitáceas."
+        },
+        {
+          "tipo": "cultural",
+          "descricao": "Sementes tratadas; evitar locais com excesso de umidade e, em estufa, controlar rigorosamente a água de irrigação."
+        },
+        {
+          "tipo": "quimico",
+          "descricao": "Fungicidas registrados para o alvo no pepino, em aplicação preventiva nos períodos úmidos."
+        }
+      ],
+      "ingredientes_ativos": [
+        {
+          "nome": "Tiofanato-metílico",
+          "grupo": "Benzimidazol",
+          "acao": "sistêmico"
+        },
+        {
+          "nome": "Mancozebe",
+          "grupo": "Ditiocarbamato",
+          "acao": "protetor"
+        },
+        {
+          "nome": "Clorotalonil",
+          "grupo": "Isoftalonitrila",
+          "acao": "protetor"
+        }
+      ]
+    },
+    {
+      "id": "pepino_mosaico",
+      "nome": "Mosaico do pepino",
+      "cultura": "Pepino",
+      "emoji": "🥒",
+      "agente": "Potyvírus, sobretudo o PRSV-W (Papaya ringspot virus - tipo W), o ZYMV e o WMV, transmitidos por pulgões",
+      "tipo_agente": "vírus",
+      "gravidade": 4,
+      "descricao": "Começa com amarelecimento entre as nervuras, seguido de mosaico de verde-claro e verde-escuro e deformação das folhas. A planta definha, e os frutos podem sair deformados e com a cor alterada. Não há cura para a planta infectada.",
+      "condicoes_favoraveis": {
+        "temperatura": "Ampla: acompanha a população de pulgões",
+        "umidade": "Não é fator direto",
+        "observacao": "Dezenas de espécies de pulgão transmitem o vírus de forma não persistente, e também passa por contato mecânico. O PRSV-W e o WMV não passam pela semente. É a principal virose das cucurbitáceas no Brasil, presente em lavouras de todos os estados levantados pela Embrapa entre 2008 e 2010."
+      },
+      "tratamentos": [
+        {
+          "tipo": "cultural",
+          "descricao": "Usar cultivares de pepino resistentes ao PRSV-W, que já existem no mercado; cobertura do solo com material repelente, de preferência associada a óleo mineral."
+        },
+        {
+          "tipo": "cultural",
+          "descricao": "Não há cura para a planta infectada. Não plantar ao lado de lavouras de cucurbitáceas em produção, abandonadas ou infectadas, e eliminar os restos culturais logo após a colheita."
+        },
+        {
+          "tipo": "cultural",
+          "descricao": "Escolher a época de plantio fora dos picos de pulgão e eliminar plantas invasoras que abrigam o vetor e o vírus."
+        },
+        {
+          "tipo": "quimico",
+          "descricao": "Inseticida contra pulgão tem efeito limitado: o vírus passa em picadas de segundos, antes de o inseto morrer. Não substitui as medidas culturais."
+        }
+      ],
+      "ingredientes_ativos": []
     },
     {
       "id": "pimentao_mancha_bacteriana",
@@ -3703,6 +5010,836 @@
       }
     },
     {
+      "nome": "perfil completo de abobora_mildio",
+      "cultura": "abobora",
+      "sintomas": [
+        "manchas_amareladas",
+        "manchas_angulares_entre_nervuras",
+        "mofo_arroxeado_face_inferior"
+      ],
+      "esperado": {
+        "hipoteses": [
+          {
+            "doenca_id": "abobora_mildio",
+            "nome": "Míldio da abóbora",
+            "agente": "Pseudoperonospora cubensis",
+            "tipo_agente": "oomiceto",
+            "gravidade": 4,
+            "compatibilidade": 1.0,
+            "sintomas_compativeis": [
+              {
+                "id": "manchas_angulares_entre_nervuras",
+                "nome": "Manchas angulosas, limitadas pelas nervuras",
+                "peso": 1.0
+              },
+              {
+                "id": "mofo_arroxeado_face_inferior",
+                "nome": "Mofo acinzentado a arroxeado na face inferior, sob as manchas",
+                "peso": 0.9
+              },
+              {
+                "id": "manchas_amareladas",
+                "nome": "Manchas amareladas (cloróticas)",
+                "peso": 0.5
+              }
+            ],
+            "sintomas_esperados_ausentes": [],
+            "sintomas_nao_explicados": [],
+            "compatibilidade_pct": 100,
+            "rotulo_gravidade": "Alta"
+          }
+        ],
+        "pergunta": null
+      }
+    },
+    {
+      "nome": "sintoma principal isolado de abobora_mildio",
+      "cultura": "abobora",
+      "sintomas": [
+        "manchas_angulares_entre_nervuras"
+      ],
+      "esperado": {
+        "hipoteses": [
+          {
+            "doenca_id": "abobora_mildio",
+            "nome": "Míldio da abóbora",
+            "agente": "Pseudoperonospora cubensis",
+            "tipo_agente": "oomiceto",
+            "gravidade": 4,
+            "compatibilidade": 0.4166666666666667,
+            "sintomas_compativeis": [
+              {
+                "id": "manchas_angulares_entre_nervuras",
+                "nome": "Manchas angulosas, limitadas pelas nervuras",
+                "peso": 1.0
+              }
+            ],
+            "sintomas_esperados_ausentes": [
+              {
+                "id": "mofo_arroxeado_face_inferior",
+                "nome": "Mofo acinzentado a arroxeado na face inferior, sob as manchas",
+                "peso": 0.9
+              },
+              {
+                "id": "manchas_amareladas",
+                "nome": "Manchas amareladas (cloróticas)",
+                "peso": 0.5
+              }
+            ],
+            "sintomas_nao_explicados": [],
+            "compatibilidade_pct": 42,
+            "rotulo_gravidade": "Alta"
+          }
+        ],
+        "pergunta": {
+          "sintoma_id": "mofo_arroxeado_face_inferior",
+          "nome": "Mofo acinzentado a arroxeado na face inferior, sob as manchas",
+          "confirma": "Míldio da abóbora",
+          "descarta": null
+        }
+      }
+    },
+    {
+      "nome": "perfil completo de abobora_oidio",
+      "cultura": "abobora",
+      "sintomas": [
+        "desfolha_baixo_para_cima",
+        "manchas_amareladas",
+        "po_branco_superficie"
+      ],
+      "esperado": {
+        "hipoteses": [
+          {
+            "doenca_id": "abobora_oidio",
+            "nome": "Oídio da abóbora",
+            "agente": "Podosphaera xanthii",
+            "tipo_agente": "fungo",
+            "gravidade": 3,
+            "compatibilidade": 1.0,
+            "sintomas_compativeis": [
+              {
+                "id": "po_branco_superficie",
+                "nome": "Pó branco, farináceo, na superfície da folha",
+                "peso": 1.0
+              },
+              {
+                "id": "desfolha_baixo_para_cima",
+                "nome": "Queda de folhas começando pelas mais baixas",
+                "peso": 0.4
+              },
+              {
+                "id": "manchas_amareladas",
+                "nome": "Manchas amareladas (cloróticas)",
+                "peso": 0.3
+              }
+            ],
+            "sintomas_esperados_ausentes": [],
+            "sintomas_nao_explicados": [],
+            "compatibilidade_pct": 100,
+            "rotulo_gravidade": "Media"
+          }
+        ],
+        "pergunta": null
+      }
+    },
+    {
+      "nome": "sintoma principal isolado de abobora_oidio",
+      "cultura": "abobora",
+      "sintomas": [
+        "po_branco_superficie"
+      ],
+      "esperado": {
+        "hipoteses": [
+          {
+            "doenca_id": "abobora_oidio",
+            "nome": "Oídio da abóbora",
+            "agente": "Podosphaera xanthii",
+            "tipo_agente": "fungo",
+            "gravidade": 3,
+            "compatibilidade": 0.5882352941176471,
+            "sintomas_compativeis": [
+              {
+                "id": "po_branco_superficie",
+                "nome": "Pó branco, farináceo, na superfície da folha",
+                "peso": 1.0
+              }
+            ],
+            "sintomas_esperados_ausentes": [
+              {
+                "id": "desfolha_baixo_para_cima",
+                "nome": "Queda de folhas começando pelas mais baixas",
+                "peso": 0.4
+              },
+              {
+                "id": "manchas_amareladas",
+                "nome": "Manchas amareladas (cloróticas)",
+                "peso": 0.3
+              }
+            ],
+            "sintomas_nao_explicados": [],
+            "compatibilidade_pct": 59,
+            "rotulo_gravidade": "Media"
+          }
+        ],
+        "pergunta": {
+          "sintoma_id": "desfolha_baixo_para_cima",
+          "nome": "Queda de folhas começando pelas mais baixas",
+          "confirma": "Oídio da abóbora",
+          "descarta": null
+        }
+      }
+    },
+    {
+      "nome": "perfil completo de abobora_mosaico",
+      "cultura": "abobora",
+      "sintomas": [
+        "crescimento_reduzido",
+        "folhas_com_bolhas",
+        "folhas_deformadas",
+        "frutos_deformados",
+        "mosaico_verde_claro_escuro",
+        "nervuras_amareladas"
+      ],
+      "esperado": {
+        "hipoteses": [
+          {
+            "doenca_id": "abobora_mosaico",
+            "nome": "Mosaico da abóbora",
+            "agente": "Potyvírus, sobretudo o PRSV-W (Papaya ringspot virus - tipo W), o ZYMV e o WMV, transmitidos por pulgões",
+            "tipo_agente": "vírus",
+            "gravidade": 5,
+            "compatibilidade": 1.0,
+            "sintomas_compativeis": [
+              {
+                "id": "mosaico_verde_claro_escuro",
+                "nome": "Mosaico de verde claro e verde escuro",
+                "peso": 1.0
+              },
+              {
+                "id": "folhas_com_bolhas",
+                "nome": "Folhas com bolhas e enrugadas",
+                "peso": 0.8
+              },
+              {
+                "id": "folhas_deformadas",
+                "nome": "Folhas deformadas, enroladas ou reduzidas",
+                "peso": 0.8
+              },
+              {
+                "id": "frutos_deformados",
+                "nome": "Frutos deformados, manchados ou rachados",
+                "peso": 0.7
+              },
+              {
+                "id": "crescimento_reduzido",
+                "nome": "Crescimento reduzido / nanismo",
+                "peso": 0.5
+              },
+              {
+                "id": "nervuras_amareladas",
+                "nome": "Amarelecimento entre as nervuras",
+                "peso": 0.5
+              }
+            ],
+            "sintomas_esperados_ausentes": [],
+            "sintomas_nao_explicados": [],
+            "compatibilidade_pct": 100,
+            "rotulo_gravidade": "Muito alta"
+          }
+        ],
+        "pergunta": null
+      }
+    },
+    {
+      "nome": "sintoma principal isolado de abobora_mosaico",
+      "cultura": "abobora",
+      "sintomas": [
+        "mosaico_verde_claro_escuro"
+      ],
+      "esperado": {
+        "hipoteses": [
+          {
+            "doenca_id": "abobora_mosaico",
+            "nome": "Mosaico da abóbora",
+            "agente": "Potyvírus, sobretudo o PRSV-W (Papaya ringspot virus - tipo W), o ZYMV e o WMV, transmitidos por pulgões",
+            "tipo_agente": "vírus",
+            "gravidade": 5,
+            "compatibilidade": 0.23255813953488372,
+            "sintomas_compativeis": [
+              {
+                "id": "mosaico_verde_claro_escuro",
+                "nome": "Mosaico de verde claro e verde escuro",
+                "peso": 1.0
+              }
+            ],
+            "sintomas_esperados_ausentes": [
+              {
+                "id": "folhas_com_bolhas",
+                "nome": "Folhas com bolhas e enrugadas",
+                "peso": 0.8
+              },
+              {
+                "id": "folhas_deformadas",
+                "nome": "Folhas deformadas, enroladas ou reduzidas",
+                "peso": 0.8
+              },
+              {
+                "id": "frutos_deformados",
+                "nome": "Frutos deformados, manchados ou rachados",
+                "peso": 0.7
+              },
+              {
+                "id": "crescimento_reduzido",
+                "nome": "Crescimento reduzido / nanismo",
+                "peso": 0.5
+              },
+              {
+                "id": "nervuras_amareladas",
+                "nome": "Amarelecimento entre as nervuras",
+                "peso": 0.5
+              }
+            ],
+            "sintomas_nao_explicados": [],
+            "compatibilidade_pct": 23,
+            "rotulo_gravidade": "Muito alta"
+          }
+        ],
+        "pergunta": {
+          "sintoma_id": "folhas_com_bolhas",
+          "nome": "Folhas com bolhas e enrugadas",
+          "confirma": "Mosaico da abóbora",
+          "descarta": null
+        }
+      }
+    },
+    {
+      "nome": "perfil completo de abobora_antracnose",
+      "cultura": "abobora",
+      "sintomas": [
+        "frutos_deformados",
+        "lesoes_no_caule",
+        "lesoes_no_fruto",
+        "manchas_encharcadas",
+        "massa_rosada_na_lesao"
+      ],
+      "esperado": {
+        "hipoteses": [
+          {
+            "doenca_id": "abobora_antracnose",
+            "nome": "Antracnose da abóbora",
+            "agente": "Colletotrichum orbiculare (sin. C. lagenarium)",
+            "tipo_agente": "fungo",
+            "gravidade": 3,
+            "compatibilidade": 1.0,
+            "sintomas_compativeis": [
+              {
+                "id": "lesoes_no_fruto",
+                "nome": "Lesões deprimidas ou podridão no fruto",
+                "peso": 1.0
+              },
+              {
+                "id": "massa_rosada_na_lesao",
+                "nome": "Massa rosada ou alaranjada sobre a lesão, em tempo úmido",
+                "peso": 0.9
+              },
+              {
+                "id": "lesoes_no_caule",
+                "nome": "Lesões escuras no caule ou haste",
+                "peso": 0.4
+              },
+              {
+                "id": "manchas_encharcadas",
+                "nome": "Lesões encharcadas, com aspecto de queimadura",
+                "peso": 0.4
+              },
+              {
+                "id": "frutos_deformados",
+                "nome": "Frutos deformados, manchados ou rachados",
+                "peso": 0.3
+              }
+            ],
+            "sintomas_esperados_ausentes": [],
+            "sintomas_nao_explicados": [],
+            "compatibilidade_pct": 100,
+            "rotulo_gravidade": "Media"
+          }
+        ],
+        "pergunta": null
+      }
+    },
+    {
+      "nome": "sintoma principal isolado de abobora_antracnose",
+      "cultura": "abobora",
+      "sintomas": [
+        "lesoes_no_fruto"
+      ],
+      "esperado": {
+        "hipoteses": [
+          {
+            "doenca_id": "abobora_antracnose",
+            "nome": "Antracnose da abóbora",
+            "agente": "Colletotrichum orbiculare (sin. C. lagenarium)",
+            "tipo_agente": "fungo",
+            "gravidade": 3,
+            "compatibilidade": 0.3333333333333333,
+            "sintomas_compativeis": [
+              {
+                "id": "lesoes_no_fruto",
+                "nome": "Lesões deprimidas ou podridão no fruto",
+                "peso": 1.0
+              }
+            ],
+            "sintomas_esperados_ausentes": [
+              {
+                "id": "massa_rosada_na_lesao",
+                "nome": "Massa rosada ou alaranjada sobre a lesão, em tempo úmido",
+                "peso": 0.9
+              },
+              {
+                "id": "lesoes_no_caule",
+                "nome": "Lesões escuras no caule ou haste",
+                "peso": 0.4
+              },
+              {
+                "id": "manchas_encharcadas",
+                "nome": "Lesões encharcadas, com aspecto de queimadura",
+                "peso": 0.4
+              },
+              {
+                "id": "frutos_deformados",
+                "nome": "Frutos deformados, manchados ou rachados",
+                "peso": 0.3
+              }
+            ],
+            "sintomas_nao_explicados": [],
+            "compatibilidade_pct": 33,
+            "rotulo_gravidade": "Media"
+          }
+        ],
+        "pergunta": {
+          "sintoma_id": "massa_rosada_na_lesao",
+          "nome": "Massa rosada ou alaranjada sobre a lesão, em tempo úmido",
+          "confirma": "Antracnose da abóbora",
+          "descarta": null
+        }
+      }
+    },
+    {
+      "nome": "perfil completo de abobrinha_mildio",
+      "cultura": "abobrinha",
+      "sintomas": [
+        "manchas_amareladas",
+        "manchas_angulares_entre_nervuras",
+        "mofo_arroxeado_face_inferior"
+      ],
+      "esperado": {
+        "hipoteses": [
+          {
+            "doenca_id": "abobrinha_mildio",
+            "nome": "Míldio da abobrinha",
+            "agente": "Pseudoperonospora cubensis",
+            "tipo_agente": "oomiceto",
+            "gravidade": 4,
+            "compatibilidade": 1.0,
+            "sintomas_compativeis": [
+              {
+                "id": "manchas_angulares_entre_nervuras",
+                "nome": "Manchas angulosas, limitadas pelas nervuras",
+                "peso": 1.0
+              },
+              {
+                "id": "mofo_arroxeado_face_inferior",
+                "nome": "Mofo acinzentado a arroxeado na face inferior, sob as manchas",
+                "peso": 0.9
+              },
+              {
+                "id": "manchas_amareladas",
+                "nome": "Manchas amareladas (cloróticas)",
+                "peso": 0.5
+              }
+            ],
+            "sintomas_esperados_ausentes": [],
+            "sintomas_nao_explicados": [],
+            "compatibilidade_pct": 100,
+            "rotulo_gravidade": "Alta"
+          }
+        ],
+        "pergunta": null
+      }
+    },
+    {
+      "nome": "sintoma principal isolado de abobrinha_mildio",
+      "cultura": "abobrinha",
+      "sintomas": [
+        "manchas_angulares_entre_nervuras"
+      ],
+      "esperado": {
+        "hipoteses": [
+          {
+            "doenca_id": "abobrinha_mildio",
+            "nome": "Míldio da abobrinha",
+            "agente": "Pseudoperonospora cubensis",
+            "tipo_agente": "oomiceto",
+            "gravidade": 4,
+            "compatibilidade": 0.4166666666666667,
+            "sintomas_compativeis": [
+              {
+                "id": "manchas_angulares_entre_nervuras",
+                "nome": "Manchas angulosas, limitadas pelas nervuras",
+                "peso": 1.0
+              }
+            ],
+            "sintomas_esperados_ausentes": [
+              {
+                "id": "mofo_arroxeado_face_inferior",
+                "nome": "Mofo acinzentado a arroxeado na face inferior, sob as manchas",
+                "peso": 0.9
+              },
+              {
+                "id": "manchas_amareladas",
+                "nome": "Manchas amareladas (cloróticas)",
+                "peso": 0.5
+              }
+            ],
+            "sintomas_nao_explicados": [],
+            "compatibilidade_pct": 42,
+            "rotulo_gravidade": "Alta"
+          }
+        ],
+        "pergunta": {
+          "sintoma_id": "mofo_arroxeado_face_inferior",
+          "nome": "Mofo acinzentado a arroxeado na face inferior, sob as manchas",
+          "confirma": "Míldio da abobrinha",
+          "descarta": null
+        }
+      }
+    },
+    {
+      "nome": "perfil completo de abobrinha_oidio",
+      "cultura": "abobrinha",
+      "sintomas": [
+        "desfolha_baixo_para_cima",
+        "manchas_amareladas",
+        "po_branco_superficie"
+      ],
+      "esperado": {
+        "hipoteses": [
+          {
+            "doenca_id": "abobrinha_oidio",
+            "nome": "Oídio da abobrinha",
+            "agente": "Podosphaera xanthii",
+            "tipo_agente": "fungo",
+            "gravidade": 3,
+            "compatibilidade": 1.0,
+            "sintomas_compativeis": [
+              {
+                "id": "po_branco_superficie",
+                "nome": "Pó branco, farináceo, na superfície da folha",
+                "peso": 1.0
+              },
+              {
+                "id": "desfolha_baixo_para_cima",
+                "nome": "Queda de folhas começando pelas mais baixas",
+                "peso": 0.4
+              },
+              {
+                "id": "manchas_amareladas",
+                "nome": "Manchas amareladas (cloróticas)",
+                "peso": 0.3
+              }
+            ],
+            "sintomas_esperados_ausentes": [],
+            "sintomas_nao_explicados": [],
+            "compatibilidade_pct": 100,
+            "rotulo_gravidade": "Media"
+          }
+        ],
+        "pergunta": null
+      }
+    },
+    {
+      "nome": "sintoma principal isolado de abobrinha_oidio",
+      "cultura": "abobrinha",
+      "sintomas": [
+        "po_branco_superficie"
+      ],
+      "esperado": {
+        "hipoteses": [
+          {
+            "doenca_id": "abobrinha_oidio",
+            "nome": "Oídio da abobrinha",
+            "agente": "Podosphaera xanthii",
+            "tipo_agente": "fungo",
+            "gravidade": 3,
+            "compatibilidade": 0.5882352941176471,
+            "sintomas_compativeis": [
+              {
+                "id": "po_branco_superficie",
+                "nome": "Pó branco, farináceo, na superfície da folha",
+                "peso": 1.0
+              }
+            ],
+            "sintomas_esperados_ausentes": [
+              {
+                "id": "desfolha_baixo_para_cima",
+                "nome": "Queda de folhas começando pelas mais baixas",
+                "peso": 0.4
+              },
+              {
+                "id": "manchas_amareladas",
+                "nome": "Manchas amareladas (cloróticas)",
+                "peso": 0.3
+              }
+            ],
+            "sintomas_nao_explicados": [],
+            "compatibilidade_pct": 59,
+            "rotulo_gravidade": "Media"
+          }
+        ],
+        "pergunta": {
+          "sintoma_id": "desfolha_baixo_para_cima",
+          "nome": "Queda de folhas começando pelas mais baixas",
+          "confirma": "Oídio da abobrinha",
+          "descarta": null
+        }
+      }
+    },
+    {
+      "nome": "perfil completo de abobrinha_mosaico",
+      "cultura": "abobrinha",
+      "sintomas": [
+        "crescimento_reduzido",
+        "folhas_com_bolhas",
+        "folhas_deformadas",
+        "frutos_deformados",
+        "mosaico_verde_claro_escuro",
+        "nervuras_amareladas"
+      ],
+      "esperado": {
+        "hipoteses": [
+          {
+            "doenca_id": "abobrinha_mosaico",
+            "nome": "Mosaico da abobrinha",
+            "agente": "Potyvírus, sobretudo o PRSV-W (Papaya ringspot virus - tipo W), o ZYMV e o WMV, transmitidos por pulgões",
+            "tipo_agente": "vírus",
+            "gravidade": 5,
+            "compatibilidade": 1.0,
+            "sintomas_compativeis": [
+              {
+                "id": "mosaico_verde_claro_escuro",
+                "nome": "Mosaico de verde claro e verde escuro",
+                "peso": 1.0
+              },
+              {
+                "id": "folhas_com_bolhas",
+                "nome": "Folhas com bolhas e enrugadas",
+                "peso": 0.8
+              },
+              {
+                "id": "folhas_deformadas",
+                "nome": "Folhas deformadas, enroladas ou reduzidas",
+                "peso": 0.8
+              },
+              {
+                "id": "frutos_deformados",
+                "nome": "Frutos deformados, manchados ou rachados",
+                "peso": 0.7
+              },
+              {
+                "id": "crescimento_reduzido",
+                "nome": "Crescimento reduzido / nanismo",
+                "peso": 0.5
+              },
+              {
+                "id": "nervuras_amareladas",
+                "nome": "Amarelecimento entre as nervuras",
+                "peso": 0.5
+              }
+            ],
+            "sintomas_esperados_ausentes": [],
+            "sintomas_nao_explicados": [],
+            "compatibilidade_pct": 100,
+            "rotulo_gravidade": "Muito alta"
+          }
+        ],
+        "pergunta": null
+      }
+    },
+    {
+      "nome": "sintoma principal isolado de abobrinha_mosaico",
+      "cultura": "abobrinha",
+      "sintomas": [
+        "mosaico_verde_claro_escuro"
+      ],
+      "esperado": {
+        "hipoteses": [
+          {
+            "doenca_id": "abobrinha_mosaico",
+            "nome": "Mosaico da abobrinha",
+            "agente": "Potyvírus, sobretudo o PRSV-W (Papaya ringspot virus - tipo W), o ZYMV e o WMV, transmitidos por pulgões",
+            "tipo_agente": "vírus",
+            "gravidade": 5,
+            "compatibilidade": 0.23255813953488372,
+            "sintomas_compativeis": [
+              {
+                "id": "mosaico_verde_claro_escuro",
+                "nome": "Mosaico de verde claro e verde escuro",
+                "peso": 1.0
+              }
+            ],
+            "sintomas_esperados_ausentes": [
+              {
+                "id": "folhas_com_bolhas",
+                "nome": "Folhas com bolhas e enrugadas",
+                "peso": 0.8
+              },
+              {
+                "id": "folhas_deformadas",
+                "nome": "Folhas deformadas, enroladas ou reduzidas",
+                "peso": 0.8
+              },
+              {
+                "id": "frutos_deformados",
+                "nome": "Frutos deformados, manchados ou rachados",
+                "peso": 0.7
+              },
+              {
+                "id": "crescimento_reduzido",
+                "nome": "Crescimento reduzido / nanismo",
+                "peso": 0.5
+              },
+              {
+                "id": "nervuras_amareladas",
+                "nome": "Amarelecimento entre as nervuras",
+                "peso": 0.5
+              }
+            ],
+            "sintomas_nao_explicados": [],
+            "compatibilidade_pct": 23,
+            "rotulo_gravidade": "Muito alta"
+          }
+        ],
+        "pergunta": {
+          "sintoma_id": "folhas_com_bolhas",
+          "nome": "Folhas com bolhas e enrugadas",
+          "confirma": "Mosaico da abobrinha",
+          "descarta": null
+        }
+      }
+    },
+    {
+      "nome": "perfil completo de abobrinha_antracnose",
+      "cultura": "abobrinha",
+      "sintomas": [
+        "frutos_deformados",
+        "lesoes_no_caule",
+        "lesoes_no_fruto",
+        "manchas_encharcadas",
+        "massa_rosada_na_lesao"
+      ],
+      "esperado": {
+        "hipoteses": [
+          {
+            "doenca_id": "abobrinha_antracnose",
+            "nome": "Antracnose da abobrinha",
+            "agente": "Colletotrichum orbiculare (sin. C. lagenarium)",
+            "tipo_agente": "fungo",
+            "gravidade": 3,
+            "compatibilidade": 1.0,
+            "sintomas_compativeis": [
+              {
+                "id": "lesoes_no_fruto",
+                "nome": "Lesões deprimidas ou podridão no fruto",
+                "peso": 1.0
+              },
+              {
+                "id": "massa_rosada_na_lesao",
+                "nome": "Massa rosada ou alaranjada sobre a lesão, em tempo úmido",
+                "peso": 0.9
+              },
+              {
+                "id": "lesoes_no_caule",
+                "nome": "Lesões escuras no caule ou haste",
+                "peso": 0.4
+              },
+              {
+                "id": "manchas_encharcadas",
+                "nome": "Lesões encharcadas, com aspecto de queimadura",
+                "peso": 0.4
+              },
+              {
+                "id": "frutos_deformados",
+                "nome": "Frutos deformados, manchados ou rachados",
+                "peso": 0.3
+              }
+            ],
+            "sintomas_esperados_ausentes": [],
+            "sintomas_nao_explicados": [],
+            "compatibilidade_pct": 100,
+            "rotulo_gravidade": "Media"
+          }
+        ],
+        "pergunta": null
+      }
+    },
+    {
+      "nome": "sintoma principal isolado de abobrinha_antracnose",
+      "cultura": "abobrinha",
+      "sintomas": [
+        "lesoes_no_fruto"
+      ],
+      "esperado": {
+        "hipoteses": [
+          {
+            "doenca_id": "abobrinha_antracnose",
+            "nome": "Antracnose da abobrinha",
+            "agente": "Colletotrichum orbiculare (sin. C. lagenarium)",
+            "tipo_agente": "fungo",
+            "gravidade": 3,
+            "compatibilidade": 0.3333333333333333,
+            "sintomas_compativeis": [
+              {
+                "id": "lesoes_no_fruto",
+                "nome": "Lesões deprimidas ou podridão no fruto",
+                "peso": 1.0
+              }
+            ],
+            "sintomas_esperados_ausentes": [
+              {
+                "id": "massa_rosada_na_lesao",
+                "nome": "Massa rosada ou alaranjada sobre a lesão, em tempo úmido",
+                "peso": 0.9
+              },
+              {
+                "id": "lesoes_no_caule",
+                "nome": "Lesões escuras no caule ou haste",
+                "peso": 0.4
+              },
+              {
+                "id": "manchas_encharcadas",
+                "nome": "Lesões encharcadas, com aspecto de queimadura",
+                "peso": 0.4
+              },
+              {
+                "id": "frutos_deformados",
+                "nome": "Frutos deformados, manchados ou rachados",
+                "peso": 0.3
+              }
+            ],
+            "sintomas_nao_explicados": [],
+            "compatibilidade_pct": 33,
+            "rotulo_gravidade": "Media"
+          }
+        ],
+        "pergunta": {
+          "sintoma_id": "massa_rosada_na_lesao",
+          "nome": "Massa rosada ou alaranjada sobre a lesão, em tempo úmido",
+          "confirma": "Antracnose da abobrinha",
+          "descarta": null
+        }
+      }
+    },
+    {
       "nome": "perfil completo de agriao_mildio",
       "cultura": "agriao",
       "sintomas": [
@@ -6001,6 +8138,1715 @@
           "sintoma_id": "murcha",
           "nome": "Murcha da planta",
           "confirma": "Hérnia das crucíferas da couve-flor",
+          "descarta": null
+        }
+      }
+    },
+    {
+      "nome": "perfil completo de jilo_antracnose",
+      "cultura": "jilo",
+      "sintomas": [
+        "lesoes_no_caule",
+        "lesoes_no_fruto",
+        "massa_rosada_na_lesao"
+      ],
+      "esperado": {
+        "hipoteses": [
+          {
+            "doenca_id": "jilo_antracnose",
+            "nome": "Antracnose do jiló",
+            "agente": "Colletotrichum gloeosporioides e C. acutatum",
+            "tipo_agente": "fungo",
+            "gravidade": 5,
+            "compatibilidade": 1.0,
+            "sintomas_compativeis": [
+              {
+                "id": "lesoes_no_fruto",
+                "nome": "Lesões deprimidas ou podridão no fruto",
+                "peso": 1.0
+              },
+              {
+                "id": "massa_rosada_na_lesao",
+                "nome": "Massa rosada ou alaranjada sobre a lesão, em tempo úmido",
+                "peso": 0.8
+              },
+              {
+                "id": "lesoes_no_caule",
+                "nome": "Lesões escuras no caule ou haste",
+                "peso": 0.3
+              }
+            ],
+            "sintomas_esperados_ausentes": [],
+            "sintomas_nao_explicados": [],
+            "compatibilidade_pct": 100,
+            "rotulo_gravidade": "Muito alta"
+          }
+        ],
+        "pergunta": null
+      }
+    },
+    {
+      "nome": "sintoma principal isolado de jilo_antracnose",
+      "cultura": "jilo",
+      "sintomas": [
+        "lesoes_no_fruto"
+      ],
+      "esperado": {
+        "hipoteses": [
+          {
+            "doenca_id": "jilo_antracnose",
+            "nome": "Antracnose do jiló",
+            "agente": "Colletotrichum gloeosporioides e C. acutatum",
+            "tipo_agente": "fungo",
+            "gravidade": 5,
+            "compatibilidade": 0.47619047619047616,
+            "sintomas_compativeis": [
+              {
+                "id": "lesoes_no_fruto",
+                "nome": "Lesões deprimidas ou podridão no fruto",
+                "peso": 1.0
+              }
+            ],
+            "sintomas_esperados_ausentes": [
+              {
+                "id": "massa_rosada_na_lesao",
+                "nome": "Massa rosada ou alaranjada sobre a lesão, em tempo úmido",
+                "peso": 0.8
+              },
+              {
+                "id": "lesoes_no_caule",
+                "nome": "Lesões escuras no caule ou haste",
+                "peso": 0.3
+              }
+            ],
+            "sintomas_nao_explicados": [],
+            "compatibilidade_pct": 48,
+            "rotulo_gravidade": "Muito alta"
+          }
+        ],
+        "pergunta": {
+          "sintoma_id": "massa_rosada_na_lesao",
+          "nome": "Massa rosada ou alaranjada sobre a lesão, em tempo úmido",
+          "confirma": "Antracnose do jiló",
+          "descarta": null
+        }
+      }
+    },
+    {
+      "nome": "perfil completo de jilo_murcha_de_verticilio",
+      "cultura": "jilo",
+      "sintomas": [
+        "crescimento_reduzido",
+        "lesao_em_v_na_borda",
+        "murcha",
+        "vasos_escurecidos"
+      ],
+      "esperado": {
+        "hipoteses": [
+          {
+            "doenca_id": "jilo_murcha_de_verticilio",
+            "nome": "Murcha-de-verticílio",
+            "agente": "Verticillium dahliae",
+            "tipo_agente": "fungo",
+            "gravidade": 4,
+            "compatibilidade": 1.0,
+            "sintomas_compativeis": [
+              {
+                "id": "lesao_em_v_na_borda",
+                "nome": "Lesão amarela em forma de V, começando na borda da folha",
+                "peso": 1.0
+              },
+              {
+                "id": "murcha",
+                "nome": "Murcha da planta",
+                "peso": 0.8
+              },
+              {
+                "id": "vasos_escurecidos",
+                "nome": "Ao cortar o caule, vasos internos escurecidos",
+                "peso": 0.8
+              },
+              {
+                "id": "crescimento_reduzido",
+                "nome": "Crescimento reduzido / nanismo",
+                "peso": 0.5
+              }
+            ],
+            "sintomas_esperados_ausentes": [],
+            "sintomas_nao_explicados": [],
+            "compatibilidade_pct": 100,
+            "rotulo_gravidade": "Alta"
+          },
+          {
+            "doenca_id": "jilo_murcha_bacteriana",
+            "nome": "Murcha-bacteriana do jiló",
+            "agente": "Ralstonia solanacearum",
+            "tipo_agente": "bactéria",
+            "gravidade": 3,
+            "compatibilidade": 0.8148148148148149,
+            "sintomas_compativeis": [
+              {
+                "id": "murcha",
+                "nome": "Murcha da planta",
+                "peso": 1.0
+              },
+              {
+                "id": "vasos_escurecidos",
+                "nome": "Ao cortar o caule, vasos internos escurecidos",
+                "peso": 0.8
+              },
+              {
+                "id": "crescimento_reduzido",
+                "nome": "Crescimento reduzido / nanismo",
+                "peso": 0.4
+              }
+            ],
+            "sintomas_esperados_ausentes": [],
+            "sintomas_nao_explicados": [
+              {
+                "id": "lesao_em_v_na_borda",
+                "nome": "Lesão amarela em forma de V, começando na borda da folha"
+              }
+            ],
+            "compatibilidade_pct": 81,
+            "rotulo_gravidade": "Media"
+          },
+          {
+            "doenca_id": "jilo_nematoide_das_galhas",
+            "nome": "Nematoide-das-galhas",
+            "agente": "Meloidogyne incognita e M. javanica",
+            "tipo_agente": "nematoide",
+            "gravidade": 4,
+            "compatibilidade": 0.31428571428571433,
+            "sintomas_compativeis": [
+              {
+                "id": "crescimento_reduzido",
+                "nome": "Crescimento reduzido / nanismo",
+                "peso": 0.6
+              },
+              {
+                "id": "murcha",
+                "nome": "Murcha da planta",
+                "peso": 0.5
+              }
+            ],
+            "sintomas_esperados_ausentes": [
+              {
+                "id": "galhas_na_raiz",
+                "nome": "Raízes engrossadas e deformadas, com galhas",
+                "peso": 1.0
+              },
+              {
+                "id": "manchas_amareladas",
+                "nome": "Manchas amareladas (cloróticas)",
+                "peso": 0.4
+              }
+            ],
+            "sintomas_nao_explicados": [
+              {
+                "id": "lesao_em_v_na_borda",
+                "nome": "Lesão amarela em forma de V, começando na borda da folha"
+              },
+              {
+                "id": "vasos_escurecidos",
+                "nome": "Ao cortar o caule, vasos internos escurecidos"
+              }
+            ],
+            "compatibilidade_pct": 31,
+            "rotulo_gravidade": "Alta"
+          }
+        ],
+        "pergunta": null
+      }
+    },
+    {
+      "nome": "sintoma principal isolado de jilo_murcha_de_verticilio",
+      "cultura": "jilo",
+      "sintomas": [
+        "lesao_em_v_na_borda"
+      ],
+      "esperado": {
+        "hipoteses": [
+          {
+            "doenca_id": "jilo_murcha_de_verticilio",
+            "nome": "Murcha-de-verticílio",
+            "agente": "Verticillium dahliae",
+            "tipo_agente": "fungo",
+            "gravidade": 4,
+            "compatibilidade": 0.3225806451612903,
+            "sintomas_compativeis": [
+              {
+                "id": "lesao_em_v_na_borda",
+                "nome": "Lesão amarela em forma de V, começando na borda da folha",
+                "peso": 1.0
+              }
+            ],
+            "sintomas_esperados_ausentes": [
+              {
+                "id": "murcha",
+                "nome": "Murcha da planta",
+                "peso": 0.8
+              },
+              {
+                "id": "vasos_escurecidos",
+                "nome": "Ao cortar o caule, vasos internos escurecidos",
+                "peso": 0.8
+              },
+              {
+                "id": "crescimento_reduzido",
+                "nome": "Crescimento reduzido / nanismo",
+                "peso": 0.5
+              }
+            ],
+            "sintomas_nao_explicados": [],
+            "compatibilidade_pct": 32,
+            "rotulo_gravidade": "Alta"
+          }
+        ],
+        "pergunta": {
+          "sintoma_id": "murcha",
+          "nome": "Murcha da planta",
+          "confirma": "Murcha-de-verticílio",
+          "descarta": null
+        }
+      }
+    },
+    {
+      "nome": "perfil completo de jilo_murcha_bacteriana",
+      "cultura": "jilo",
+      "sintomas": [
+        "crescimento_reduzido",
+        "murcha",
+        "vasos_escurecidos"
+      ],
+      "esperado": {
+        "hipoteses": [
+          {
+            "doenca_id": "jilo_murcha_bacteriana",
+            "nome": "Murcha-bacteriana do jiló",
+            "agente": "Ralstonia solanacearum",
+            "tipo_agente": "bactéria",
+            "gravidade": 3,
+            "compatibilidade": 1.0,
+            "sintomas_compativeis": [
+              {
+                "id": "murcha",
+                "nome": "Murcha da planta",
+                "peso": 1.0
+              },
+              {
+                "id": "vasos_escurecidos",
+                "nome": "Ao cortar o caule, vasos internos escurecidos",
+                "peso": 0.8
+              },
+              {
+                "id": "crescimento_reduzido",
+                "nome": "Crescimento reduzido / nanismo",
+                "peso": 0.4
+              }
+            ],
+            "sintomas_esperados_ausentes": [],
+            "sintomas_nao_explicados": [],
+            "compatibilidade_pct": 100,
+            "rotulo_gravidade": "Media"
+          },
+          {
+            "doenca_id": "jilo_murcha_de_verticilio",
+            "nome": "Murcha-de-verticílio",
+            "agente": "Verticillium dahliae",
+            "tipo_agente": "fungo",
+            "gravidade": 4,
+            "compatibilidade": 0.6774193548387097,
+            "sintomas_compativeis": [
+              {
+                "id": "murcha",
+                "nome": "Murcha da planta",
+                "peso": 0.8
+              },
+              {
+                "id": "vasos_escurecidos",
+                "nome": "Ao cortar o caule, vasos internos escurecidos",
+                "peso": 0.8
+              },
+              {
+                "id": "crescimento_reduzido",
+                "nome": "Crescimento reduzido / nanismo",
+                "peso": 0.5
+              }
+            ],
+            "sintomas_esperados_ausentes": [
+              {
+                "id": "lesao_em_v_na_borda",
+                "nome": "Lesão amarela em forma de V, começando na borda da folha",
+                "peso": 1.0
+              }
+            ],
+            "sintomas_nao_explicados": [],
+            "compatibilidade_pct": 68,
+            "rotulo_gravidade": "Alta"
+          },
+          {
+            "doenca_id": "jilo_nematoide_das_galhas",
+            "nome": "Nematoide-das-galhas",
+            "agente": "Meloidogyne incognita e M. javanica",
+            "tipo_agente": "nematoide",
+            "gravidade": 4,
+            "compatibilidade": 0.3666666666666667,
+            "sintomas_compativeis": [
+              {
+                "id": "crescimento_reduzido",
+                "nome": "Crescimento reduzido / nanismo",
+                "peso": 0.6
+              },
+              {
+                "id": "murcha",
+                "nome": "Murcha da planta",
+                "peso": 0.5
+              }
+            ],
+            "sintomas_esperados_ausentes": [
+              {
+                "id": "galhas_na_raiz",
+                "nome": "Raízes engrossadas e deformadas, com galhas",
+                "peso": 1.0
+              },
+              {
+                "id": "manchas_amareladas",
+                "nome": "Manchas amareladas (cloróticas)",
+                "peso": 0.4
+              }
+            ],
+            "sintomas_nao_explicados": [
+              {
+                "id": "vasos_escurecidos",
+                "nome": "Ao cortar o caule, vasos internos escurecidos"
+              }
+            ],
+            "compatibilidade_pct": 37,
+            "rotulo_gravidade": "Alta"
+          }
+        ],
+        "pergunta": null
+      }
+    },
+    {
+      "nome": "sintoma principal isolado de jilo_murcha_bacteriana",
+      "cultura": "jilo",
+      "sintomas": [
+        "murcha"
+      ],
+      "esperado": {
+        "hipoteses": [
+          {
+            "doenca_id": "jilo_murcha_bacteriana",
+            "nome": "Murcha-bacteriana do jiló",
+            "agente": "Ralstonia solanacearum",
+            "tipo_agente": "bactéria",
+            "gravidade": 3,
+            "compatibilidade": 0.45454545454545453,
+            "sintomas_compativeis": [
+              {
+                "id": "murcha",
+                "nome": "Murcha da planta",
+                "peso": 1.0
+              }
+            ],
+            "sintomas_esperados_ausentes": [
+              {
+                "id": "vasos_escurecidos",
+                "nome": "Ao cortar o caule, vasos internos escurecidos",
+                "peso": 0.8
+              },
+              {
+                "id": "crescimento_reduzido",
+                "nome": "Crescimento reduzido / nanismo",
+                "peso": 0.4
+              }
+            ],
+            "sintomas_nao_explicados": [],
+            "compatibilidade_pct": 45,
+            "rotulo_gravidade": "Media"
+          },
+          {
+            "doenca_id": "jilo_murcha_de_verticilio",
+            "nome": "Murcha-de-verticílio",
+            "agente": "Verticillium dahliae",
+            "tipo_agente": "fungo",
+            "gravidade": 4,
+            "compatibilidade": 0.2580645161290323,
+            "sintomas_compativeis": [
+              {
+                "id": "murcha",
+                "nome": "Murcha da planta",
+                "peso": 0.8
+              }
+            ],
+            "sintomas_esperados_ausentes": [
+              {
+                "id": "lesao_em_v_na_borda",
+                "nome": "Lesão amarela em forma de V, começando na borda da folha",
+                "peso": 1.0
+              },
+              {
+                "id": "vasos_escurecidos",
+                "nome": "Ao cortar o caule, vasos internos escurecidos",
+                "peso": 0.8
+              },
+              {
+                "id": "crescimento_reduzido",
+                "nome": "Crescimento reduzido / nanismo",
+                "peso": 0.5
+              }
+            ],
+            "sintomas_nao_explicados": [],
+            "compatibilidade_pct": 26,
+            "rotulo_gravidade": "Alta"
+          },
+          {
+            "doenca_id": "jilo_nematoide_das_galhas",
+            "nome": "Nematoide-das-galhas",
+            "agente": "Meloidogyne incognita e M. javanica",
+            "tipo_agente": "nematoide",
+            "gravidade": 4,
+            "compatibilidade": 0.2,
+            "sintomas_compativeis": [
+              {
+                "id": "murcha",
+                "nome": "Murcha da planta",
+                "peso": 0.5
+              }
+            ],
+            "sintomas_esperados_ausentes": [
+              {
+                "id": "galhas_na_raiz",
+                "nome": "Raízes engrossadas e deformadas, com galhas",
+                "peso": 1.0
+              },
+              {
+                "id": "crescimento_reduzido",
+                "nome": "Crescimento reduzido / nanismo",
+                "peso": 0.6
+              },
+              {
+                "id": "manchas_amareladas",
+                "nome": "Manchas amareladas (cloróticas)",
+                "peso": 0.4
+              }
+            ],
+            "sintomas_nao_explicados": [],
+            "compatibilidade_pct": 20,
+            "rotulo_gravidade": "Alta"
+          }
+        ],
+        "pergunta": {
+          "sintoma_id": "vasos_escurecidos",
+          "nome": "Ao cortar o caule, vasos internos escurecidos",
+          "confirma": "Murcha-bacteriana do jiló",
+          "descarta": null
+        }
+      }
+    },
+    {
+      "nome": "perfil completo de jilo_nematoide_das_galhas",
+      "cultura": "jilo",
+      "sintomas": [
+        "crescimento_reduzido",
+        "galhas_na_raiz",
+        "manchas_amareladas",
+        "murcha"
+      ],
+      "esperado": {
+        "hipoteses": [
+          {
+            "doenca_id": "jilo_nematoide_das_galhas",
+            "nome": "Nematoide-das-galhas",
+            "agente": "Meloidogyne incognita e M. javanica",
+            "tipo_agente": "nematoide",
+            "gravidade": 4,
+            "compatibilidade": 1.0,
+            "sintomas_compativeis": [
+              {
+                "id": "galhas_na_raiz",
+                "nome": "Raízes engrossadas e deformadas, com galhas",
+                "peso": 1.0
+              },
+              {
+                "id": "crescimento_reduzido",
+                "nome": "Crescimento reduzido / nanismo",
+                "peso": 0.6
+              },
+              {
+                "id": "murcha",
+                "nome": "Murcha da planta",
+                "peso": 0.5
+              },
+              {
+                "id": "manchas_amareladas",
+                "nome": "Manchas amareladas (cloróticas)",
+                "peso": 0.4
+              }
+            ],
+            "sintomas_esperados_ausentes": [],
+            "sintomas_nao_explicados": [],
+            "compatibilidade_pct": 100,
+            "rotulo_gravidade": "Alta"
+          },
+          {
+            "doenca_id": "jilo_murcha_bacteriana",
+            "nome": "Murcha-bacteriana do jiló",
+            "agente": "Ralstonia solanacearum",
+            "tipo_agente": "bactéria",
+            "gravidade": 3,
+            "compatibilidade": 0.43749999999999994,
+            "sintomas_compativeis": [
+              {
+                "id": "murcha",
+                "nome": "Murcha da planta",
+                "peso": 1.0
+              },
+              {
+                "id": "crescimento_reduzido",
+                "nome": "Crescimento reduzido / nanismo",
+                "peso": 0.4
+              }
+            ],
+            "sintomas_esperados_ausentes": [
+              {
+                "id": "vasos_escurecidos",
+                "nome": "Ao cortar o caule, vasos internos escurecidos",
+                "peso": 0.8
+              }
+            ],
+            "sintomas_nao_explicados": [
+              {
+                "id": "galhas_na_raiz",
+                "nome": "Raízes engrossadas e deformadas, com galhas"
+              },
+              {
+                "id": "manchas_amareladas",
+                "nome": "Manchas amareladas (cloróticas)"
+              }
+            ],
+            "compatibilidade_pct": 44,
+            "rotulo_gravidade": "Media"
+          },
+          {
+            "doenca_id": "jilo_murcha_de_verticilio",
+            "nome": "Murcha-de-verticílio",
+            "agente": "Verticillium dahliae",
+            "tipo_agente": "fungo",
+            "gravidade": 4,
+            "compatibilidade": 0.3170731707317074,
+            "sintomas_compativeis": [
+              {
+                "id": "murcha",
+                "nome": "Murcha da planta",
+                "peso": 0.8
+              },
+              {
+                "id": "crescimento_reduzido",
+                "nome": "Crescimento reduzido / nanismo",
+                "peso": 0.5
+              }
+            ],
+            "sintomas_esperados_ausentes": [
+              {
+                "id": "lesao_em_v_na_borda",
+                "nome": "Lesão amarela em forma de V, começando na borda da folha",
+                "peso": 1.0
+              },
+              {
+                "id": "vasos_escurecidos",
+                "nome": "Ao cortar o caule, vasos internos escurecidos",
+                "peso": 0.8
+              }
+            ],
+            "sintomas_nao_explicados": [
+              {
+                "id": "galhas_na_raiz",
+                "nome": "Raízes engrossadas e deformadas, com galhas"
+              },
+              {
+                "id": "manchas_amareladas",
+                "nome": "Manchas amareladas (cloróticas)"
+              }
+            ],
+            "compatibilidade_pct": 32,
+            "rotulo_gravidade": "Alta"
+          }
+        ],
+        "pergunta": null
+      }
+    },
+    {
+      "nome": "sintoma principal isolado de jilo_nematoide_das_galhas",
+      "cultura": "jilo",
+      "sintomas": [
+        "galhas_na_raiz"
+      ],
+      "esperado": {
+        "hipoteses": [
+          {
+            "doenca_id": "jilo_nematoide_das_galhas",
+            "nome": "Nematoide-das-galhas",
+            "agente": "Meloidogyne incognita e M. javanica",
+            "tipo_agente": "nematoide",
+            "gravidade": 4,
+            "compatibilidade": 0.4,
+            "sintomas_compativeis": [
+              {
+                "id": "galhas_na_raiz",
+                "nome": "Raízes engrossadas e deformadas, com galhas",
+                "peso": 1.0
+              }
+            ],
+            "sintomas_esperados_ausentes": [
+              {
+                "id": "crescimento_reduzido",
+                "nome": "Crescimento reduzido / nanismo",
+                "peso": 0.6
+              },
+              {
+                "id": "murcha",
+                "nome": "Murcha da planta",
+                "peso": 0.5
+              },
+              {
+                "id": "manchas_amareladas",
+                "nome": "Manchas amareladas (cloróticas)",
+                "peso": 0.4
+              }
+            ],
+            "sintomas_nao_explicados": [],
+            "compatibilidade_pct": 40,
+            "rotulo_gravidade": "Alta"
+          }
+        ],
+        "pergunta": {
+          "sintoma_id": "crescimento_reduzido",
+          "nome": "Crescimento reduzido / nanismo",
+          "confirma": "Nematoide-das-galhas",
+          "descarta": null
+        }
+      }
+    },
+    {
+      "nome": "perfil completo de jilo_mancha_de_estenfilio",
+      "cultura": "jilo",
+      "sintomas": [
+        "furos_na_folha",
+        "manchas_pequenas_centro_claro"
+      ],
+      "esperado": {
+        "hipoteses": [
+          {
+            "doenca_id": "jilo_mancha_de_estenfilio",
+            "nome": "Mancha-de-estenfílio",
+            "agente": "Stemphylium solani",
+            "tipo_agente": "fungo",
+            "gravidade": 3,
+            "compatibilidade": 1.0,
+            "sintomas_compativeis": [
+              {
+                "id": "manchas_pequenas_centro_claro",
+                "nome": "Manchas pequenas com centro claro e borda escura",
+                "peso": 1.0
+              },
+              {
+                "id": "furos_na_folha",
+                "nome": "Centro da lesão seca e cai, deixando furos na folha",
+                "peso": 0.5
+              }
+            ],
+            "sintomas_esperados_ausentes": [],
+            "sintomas_nao_explicados": [],
+            "compatibilidade_pct": 100,
+            "rotulo_gravidade": "Media"
+          }
+        ],
+        "pergunta": null
+      }
+    },
+    {
+      "nome": "sintoma principal isolado de jilo_mancha_de_estenfilio",
+      "cultura": "jilo",
+      "sintomas": [
+        "manchas_pequenas_centro_claro"
+      ],
+      "esperado": {
+        "hipoteses": [
+          {
+            "doenca_id": "jilo_mancha_de_estenfilio",
+            "nome": "Mancha-de-estenfílio",
+            "agente": "Stemphylium solani",
+            "tipo_agente": "fungo",
+            "gravidade": 3,
+            "compatibilidade": 0.6666666666666666,
+            "sintomas_compativeis": [
+              {
+                "id": "manchas_pequenas_centro_claro",
+                "nome": "Manchas pequenas com centro claro e borda escura",
+                "peso": 1.0
+              }
+            ],
+            "sintomas_esperados_ausentes": [
+              {
+                "id": "furos_na_folha",
+                "nome": "Centro da lesão seca e cai, deixando furos na folha",
+                "peso": 0.5
+              }
+            ],
+            "sintomas_nao_explicados": [],
+            "compatibilidade_pct": 67,
+            "rotulo_gravidade": "Media"
+          }
+        ],
+        "pergunta": {
+          "sintoma_id": "furos_na_folha",
+          "nome": "Centro da lesão seca e cai, deixando furos na folha",
+          "confirma": "Mancha-de-estenfílio",
+          "descarta": null
+        }
+      }
+    },
+    {
+      "nome": "perfil completo de pepino_mildio",
+      "cultura": "pepino",
+      "sintomas": [
+        "manchas_amareladas",
+        "manchas_angulares_entre_nervuras",
+        "mofo_arroxeado_face_inferior"
+      ],
+      "esperado": {
+        "hipoteses": [
+          {
+            "doenca_id": "pepino_mildio",
+            "nome": "Míldio do pepino",
+            "agente": "Pseudoperonospora cubensis",
+            "tipo_agente": "oomiceto",
+            "gravidade": 4,
+            "compatibilidade": 1.0,
+            "sintomas_compativeis": [
+              {
+                "id": "manchas_angulares_entre_nervuras",
+                "nome": "Manchas angulosas, limitadas pelas nervuras",
+                "peso": 1.0
+              },
+              {
+                "id": "mofo_arroxeado_face_inferior",
+                "nome": "Mofo acinzentado a arroxeado na face inferior, sob as manchas",
+                "peso": 0.9
+              },
+              {
+                "id": "manchas_amareladas",
+                "nome": "Manchas amareladas (cloróticas)",
+                "peso": 0.5
+              }
+            ],
+            "sintomas_esperados_ausentes": [],
+            "sintomas_nao_explicados": [],
+            "compatibilidade_pct": 100,
+            "rotulo_gravidade": "Alta"
+          },
+          {
+            "doenca_id": "pepino_mancha_angular",
+            "nome": "Mancha-angular do pepino",
+            "agente": "Pseudomonas syringae pv. lachrymans",
+            "tipo_agente": "bactéria",
+            "gravidade": 4,
+            "compatibilidade": 0.2631578947368421,
+            "sintomas_compativeis": [
+              {
+                "id": "manchas_angulares_entre_nervuras",
+                "nome": "Manchas angulosas, limitadas pelas nervuras",
+                "peso": 1.0
+              }
+            ],
+            "sintomas_esperados_ausentes": [
+              {
+                "id": "manchas_encharcadas",
+                "nome": "Lesões encharcadas, com aspecto de queimadura",
+                "peso": 0.9
+              },
+              {
+                "id": "lesoes_no_fruto",
+                "nome": "Lesões deprimidas ou podridão no fruto",
+                "peso": 0.6
+              },
+              {
+                "id": "apodrecimento_mole_malcheiroso",
+                "nome": "Apodrecimento mole e malcheiroso",
+                "peso": 0.3
+              }
+            ],
+            "sintomas_nao_explicados": [
+              {
+                "id": "manchas_amareladas",
+                "nome": "Manchas amareladas (cloróticas)"
+              },
+              {
+                "id": "mofo_arroxeado_face_inferior",
+                "nome": "Mofo acinzentado a arroxeado na face inferior, sob as manchas"
+              }
+            ],
+            "compatibilidade_pct": 26,
+            "rotulo_gravidade": "Alta"
+          }
+        ],
+        "pergunta": null
+      }
+    },
+    {
+      "nome": "sintoma principal isolado de pepino_mildio",
+      "cultura": "pepino",
+      "sintomas": [
+        "manchas_angulares_entre_nervuras"
+      ],
+      "esperado": {
+        "hipoteses": [
+          {
+            "doenca_id": "pepino_mildio",
+            "nome": "Míldio do pepino",
+            "agente": "Pseudoperonospora cubensis",
+            "tipo_agente": "oomiceto",
+            "gravidade": 4,
+            "compatibilidade": 0.4166666666666667,
+            "sintomas_compativeis": [
+              {
+                "id": "manchas_angulares_entre_nervuras",
+                "nome": "Manchas angulosas, limitadas pelas nervuras",
+                "peso": 1.0
+              }
+            ],
+            "sintomas_esperados_ausentes": [
+              {
+                "id": "mofo_arroxeado_face_inferior",
+                "nome": "Mofo acinzentado a arroxeado na face inferior, sob as manchas",
+                "peso": 0.9
+              },
+              {
+                "id": "manchas_amareladas",
+                "nome": "Manchas amareladas (cloróticas)",
+                "peso": 0.5
+              }
+            ],
+            "sintomas_nao_explicados": [],
+            "compatibilidade_pct": 42,
+            "rotulo_gravidade": "Alta"
+          },
+          {
+            "doenca_id": "pepino_mancha_angular",
+            "nome": "Mancha-angular do pepino",
+            "agente": "Pseudomonas syringae pv. lachrymans",
+            "tipo_agente": "bactéria",
+            "gravidade": 4,
+            "compatibilidade": 0.35714285714285715,
+            "sintomas_compativeis": [
+              {
+                "id": "manchas_angulares_entre_nervuras",
+                "nome": "Manchas angulosas, limitadas pelas nervuras",
+                "peso": 1.0
+              }
+            ],
+            "sintomas_esperados_ausentes": [
+              {
+                "id": "manchas_encharcadas",
+                "nome": "Lesões encharcadas, com aspecto de queimadura",
+                "peso": 0.9
+              },
+              {
+                "id": "lesoes_no_fruto",
+                "nome": "Lesões deprimidas ou podridão no fruto",
+                "peso": 0.6
+              },
+              {
+                "id": "apodrecimento_mole_malcheiroso",
+                "nome": "Apodrecimento mole e malcheiroso",
+                "peso": 0.3
+              }
+            ],
+            "sintomas_nao_explicados": [],
+            "compatibilidade_pct": 36,
+            "rotulo_gravidade": "Alta"
+          }
+        ],
+        "pergunta": {
+          "sintoma_id": "mofo_arroxeado_face_inferior",
+          "nome": "Mofo acinzentado a arroxeado na face inferior, sob as manchas",
+          "confirma": "Míldio do pepino",
+          "descarta": "Mancha-angular do pepino"
+        }
+      }
+    },
+    {
+      "nome": "perfil completo de pepino_oidio",
+      "cultura": "pepino",
+      "sintomas": [
+        "desfolha_baixo_para_cima",
+        "manchas_amareladas",
+        "po_branco_superficie"
+      ],
+      "esperado": {
+        "hipoteses": [
+          {
+            "doenca_id": "pepino_oidio",
+            "nome": "Oídio do pepino",
+            "agente": "Podosphaera xanthii",
+            "tipo_agente": "fungo",
+            "gravidade": 3,
+            "compatibilidade": 1.0,
+            "sintomas_compativeis": [
+              {
+                "id": "po_branco_superficie",
+                "nome": "Pó branco, farináceo, na superfície da folha",
+                "peso": 1.0
+              },
+              {
+                "id": "desfolha_baixo_para_cima",
+                "nome": "Queda de folhas começando pelas mais baixas",
+                "peso": 0.4
+              },
+              {
+                "id": "manchas_amareladas",
+                "nome": "Manchas amareladas (cloróticas)",
+                "peso": 0.3
+              }
+            ],
+            "sintomas_esperados_ausentes": [],
+            "sintomas_nao_explicados": [],
+            "compatibilidade_pct": 100,
+            "rotulo_gravidade": "Media"
+          }
+        ],
+        "pergunta": null
+      }
+    },
+    {
+      "nome": "sintoma principal isolado de pepino_oidio",
+      "cultura": "pepino",
+      "sintomas": [
+        "po_branco_superficie"
+      ],
+      "esperado": {
+        "hipoteses": [
+          {
+            "doenca_id": "pepino_oidio",
+            "nome": "Oídio do pepino",
+            "agente": "Podosphaera xanthii",
+            "tipo_agente": "fungo",
+            "gravidade": 3,
+            "compatibilidade": 0.5882352941176471,
+            "sintomas_compativeis": [
+              {
+                "id": "po_branco_superficie",
+                "nome": "Pó branco, farináceo, na superfície da folha",
+                "peso": 1.0
+              }
+            ],
+            "sintomas_esperados_ausentes": [
+              {
+                "id": "desfolha_baixo_para_cima",
+                "nome": "Queda de folhas começando pelas mais baixas",
+                "peso": 0.4
+              },
+              {
+                "id": "manchas_amareladas",
+                "nome": "Manchas amareladas (cloróticas)",
+                "peso": 0.3
+              }
+            ],
+            "sintomas_nao_explicados": [],
+            "compatibilidade_pct": 59,
+            "rotulo_gravidade": "Media"
+          }
+        ],
+        "pergunta": {
+          "sintoma_id": "desfolha_baixo_para_cima",
+          "nome": "Queda de folhas começando pelas mais baixas",
+          "confirma": "Oídio do pepino",
+          "descarta": null
+        }
+      }
+    },
+    {
+      "nome": "perfil completo de pepino_antracnose",
+      "cultura": "pepino",
+      "sintomas": [
+        "furos_na_folha",
+        "lesoes_no_caule",
+        "lesoes_no_fruto",
+        "manchas_encharcadas",
+        "massa_rosada_na_lesao"
+      ],
+      "esperado": {
+        "hipoteses": [
+          {
+            "doenca_id": "pepino_antracnose",
+            "nome": "Antracnose do pepino",
+            "agente": "Colletotrichum orbiculare (sin. C. lagenarium)",
+            "tipo_agente": "fungo",
+            "gravidade": 4,
+            "compatibilidade": 1.0,
+            "sintomas_compativeis": [
+              {
+                "id": "lesoes_no_fruto",
+                "nome": "Lesões deprimidas ou podridão no fruto",
+                "peso": 1.0
+              },
+              {
+                "id": "massa_rosada_na_lesao",
+                "nome": "Massa rosada ou alaranjada sobre a lesão, em tempo úmido",
+                "peso": 0.9
+              },
+              {
+                "id": "furos_na_folha",
+                "nome": "Centro da lesão seca e cai, deixando furos na folha",
+                "peso": 0.8
+              },
+              {
+                "id": "lesoes_no_caule",
+                "nome": "Lesões escuras no caule ou haste",
+                "peso": 0.5
+              },
+              {
+                "id": "manchas_encharcadas",
+                "nome": "Lesões encharcadas, com aspecto de queimadura",
+                "peso": 0.5
+              }
+            ],
+            "sintomas_esperados_ausentes": [],
+            "sintomas_nao_explicados": [],
+            "compatibilidade_pct": 100,
+            "rotulo_gravidade": "Alta"
+          },
+          {
+            "doenca_id": "pepino_mancha_angular",
+            "nome": "Mancha-angular do pepino",
+            "agente": "Pseudomonas syringae pv. lachrymans",
+            "tipo_agente": "bactéria",
+            "gravidade": 4,
+            "compatibilidade": 0.3488372093023256,
+            "sintomas_compativeis": [
+              {
+                "id": "manchas_encharcadas",
+                "nome": "Lesões encharcadas, com aspecto de queimadura",
+                "peso": 0.9
+              },
+              {
+                "id": "lesoes_no_fruto",
+                "nome": "Lesões deprimidas ou podridão no fruto",
+                "peso": 0.6
+              }
+            ],
+            "sintomas_esperados_ausentes": [
+              {
+                "id": "manchas_angulares_entre_nervuras",
+                "nome": "Manchas angulosas, limitadas pelas nervuras",
+                "peso": 1.0
+              },
+              {
+                "id": "apodrecimento_mole_malcheiroso",
+                "nome": "Apodrecimento mole e malcheiroso",
+                "peso": 0.3
+              }
+            ],
+            "sintomas_nao_explicados": [
+              {
+                "id": "furos_na_folha",
+                "nome": "Centro da lesão seca e cai, deixando furos na folha"
+              },
+              {
+                "id": "lesoes_no_caule",
+                "nome": "Lesões escuras no caule ou haste"
+              },
+              {
+                "id": "massa_rosada_na_lesao",
+                "nome": "Massa rosada ou alaranjada sobre a lesão, em tempo úmido"
+              }
+            ],
+            "compatibilidade_pct": 35,
+            "rotulo_gravidade": "Alta"
+          },
+          {
+            "doenca_id": "pepino_crestamento_gomoso",
+            "nome": "Crestamento-gomoso do caule",
+            "agente": "Didymella bryoniae",
+            "tipo_agente": "fungo",
+            "gravidade": 4,
+            "compatibilidade": 0.16,
+            "sintomas_compativeis": [
+              {
+                "id": "lesoes_no_caule",
+                "nome": "Lesões escuras no caule ou haste",
+                "peso": 0.8
+              }
+            ],
+            "sintomas_esperados_ausentes": [
+              {
+                "id": "goma_no_caule",
+                "nome": "Rachadura no caule ou no colo, escorrendo goma parda",
+                "peso": 1.0
+              },
+              {
+                "id": "pontuacoes_pretas_na_lesao",
+                "nome": "Pontinhos pretos dentro da lesão",
+                "peso": 0.7
+              },
+              {
+                "id": "murcha",
+                "nome": "Murcha da planta",
+                "peso": 0.5
+              }
+            ],
+            "sintomas_nao_explicados": [
+              {
+                "id": "furos_na_folha",
+                "nome": "Centro da lesão seca e cai, deixando furos na folha"
+              },
+              {
+                "id": "lesoes_no_fruto",
+                "nome": "Lesões deprimidas ou podridão no fruto"
+              },
+              {
+                "id": "manchas_encharcadas",
+                "nome": "Lesões encharcadas, com aspecto de queimadura"
+              },
+              {
+                "id": "massa_rosada_na_lesao",
+                "nome": "Massa rosada ou alaranjada sobre a lesão, em tempo úmido"
+              }
+            ],
+            "compatibilidade_pct": 16,
+            "rotulo_gravidade": "Alta"
+          }
+        ],
+        "pergunta": null
+      }
+    },
+    {
+      "nome": "sintoma principal isolado de pepino_antracnose",
+      "cultura": "pepino",
+      "sintomas": [
+        "lesoes_no_fruto"
+      ],
+      "esperado": {
+        "hipoteses": [
+          {
+            "doenca_id": "pepino_antracnose",
+            "nome": "Antracnose do pepino",
+            "agente": "Colletotrichum orbiculare (sin. C. lagenarium)",
+            "tipo_agente": "fungo",
+            "gravidade": 4,
+            "compatibilidade": 0.27027027027027023,
+            "sintomas_compativeis": [
+              {
+                "id": "lesoes_no_fruto",
+                "nome": "Lesões deprimidas ou podridão no fruto",
+                "peso": 1.0
+              }
+            ],
+            "sintomas_esperados_ausentes": [
+              {
+                "id": "massa_rosada_na_lesao",
+                "nome": "Massa rosada ou alaranjada sobre a lesão, em tempo úmido",
+                "peso": 0.9
+              },
+              {
+                "id": "furos_na_folha",
+                "nome": "Centro da lesão seca e cai, deixando furos na folha",
+                "peso": 0.8
+              },
+              {
+                "id": "lesoes_no_caule",
+                "nome": "Lesões escuras no caule ou haste",
+                "peso": 0.5
+              },
+              {
+                "id": "manchas_encharcadas",
+                "nome": "Lesões encharcadas, com aspecto de queimadura",
+                "peso": 0.5
+              }
+            ],
+            "sintomas_nao_explicados": [],
+            "compatibilidade_pct": 27,
+            "rotulo_gravidade": "Alta"
+          },
+          {
+            "doenca_id": "pepino_mancha_angular",
+            "nome": "Mancha-angular do pepino",
+            "agente": "Pseudomonas syringae pv. lachrymans",
+            "tipo_agente": "bactéria",
+            "gravidade": 4,
+            "compatibilidade": 0.21428571428571425,
+            "sintomas_compativeis": [
+              {
+                "id": "lesoes_no_fruto",
+                "nome": "Lesões deprimidas ou podridão no fruto",
+                "peso": 0.6
+              }
+            ],
+            "sintomas_esperados_ausentes": [
+              {
+                "id": "manchas_angulares_entre_nervuras",
+                "nome": "Manchas angulosas, limitadas pelas nervuras",
+                "peso": 1.0
+              },
+              {
+                "id": "manchas_encharcadas",
+                "nome": "Lesões encharcadas, com aspecto de queimadura",
+                "peso": 0.9
+              },
+              {
+                "id": "apodrecimento_mole_malcheiroso",
+                "nome": "Apodrecimento mole e malcheiroso",
+                "peso": 0.3
+              }
+            ],
+            "sintomas_nao_explicados": [],
+            "compatibilidade_pct": 21,
+            "rotulo_gravidade": "Alta"
+          }
+        ],
+        "pergunta": {
+          "sintoma_id": "massa_rosada_na_lesao",
+          "nome": "Massa rosada ou alaranjada sobre a lesão, em tempo úmido",
+          "confirma": "Antracnose do pepino",
+          "descarta": "Mancha-angular do pepino"
+        }
+      }
+    },
+    {
+      "nome": "perfil completo de pepino_mancha_angular",
+      "cultura": "pepino",
+      "sintomas": [
+        "apodrecimento_mole_malcheiroso",
+        "lesoes_no_fruto",
+        "manchas_angulares_entre_nervuras",
+        "manchas_encharcadas"
+      ],
+      "esperado": {
+        "hipoteses": [
+          {
+            "doenca_id": "pepino_mancha_angular",
+            "nome": "Mancha-angular do pepino",
+            "agente": "Pseudomonas syringae pv. lachrymans",
+            "tipo_agente": "bactéria",
+            "gravidade": 4,
+            "compatibilidade": 1.0,
+            "sintomas_compativeis": [
+              {
+                "id": "manchas_angulares_entre_nervuras",
+                "nome": "Manchas angulosas, limitadas pelas nervuras",
+                "peso": 1.0
+              },
+              {
+                "id": "manchas_encharcadas",
+                "nome": "Lesões encharcadas, com aspecto de queimadura",
+                "peso": 0.9
+              },
+              {
+                "id": "lesoes_no_fruto",
+                "nome": "Lesões deprimidas ou podridão no fruto",
+                "peso": 0.6
+              },
+              {
+                "id": "apodrecimento_mole_malcheiroso",
+                "nome": "Apodrecimento mole e malcheiroso",
+                "peso": 0.3
+              }
+            ],
+            "sintomas_esperados_ausentes": [],
+            "sintomas_nao_explicados": [],
+            "compatibilidade_pct": 100,
+            "rotulo_gravidade": "Alta"
+          },
+          {
+            "doenca_id": "pepino_antracnose",
+            "nome": "Antracnose do pepino",
+            "agente": "Colletotrichum orbiculare (sin. C. lagenarium)",
+            "tipo_agente": "fungo",
+            "gravidade": 4,
+            "compatibilidade": 0.3191489361702127,
+            "sintomas_compativeis": [
+              {
+                "id": "lesoes_no_fruto",
+                "nome": "Lesões deprimidas ou podridão no fruto",
+                "peso": 1.0
+              },
+              {
+                "id": "manchas_encharcadas",
+                "nome": "Lesões encharcadas, com aspecto de queimadura",
+                "peso": 0.5
+              }
+            ],
+            "sintomas_esperados_ausentes": [
+              {
+                "id": "massa_rosada_na_lesao",
+                "nome": "Massa rosada ou alaranjada sobre a lesão, em tempo úmido",
+                "peso": 0.9
+              },
+              {
+                "id": "furos_na_folha",
+                "nome": "Centro da lesão seca e cai, deixando furos na folha",
+                "peso": 0.8
+              },
+              {
+                "id": "lesoes_no_caule",
+                "nome": "Lesões escuras no caule ou haste",
+                "peso": 0.5
+              }
+            ],
+            "sintomas_nao_explicados": [
+              {
+                "id": "apodrecimento_mole_malcheiroso",
+                "nome": "Apodrecimento mole e malcheiroso"
+              },
+              {
+                "id": "manchas_angulares_entre_nervuras",
+                "nome": "Manchas angulosas, limitadas pelas nervuras"
+              }
+            ],
+            "compatibilidade_pct": 32,
+            "rotulo_gravidade": "Alta"
+          },
+          {
+            "doenca_id": "pepino_mildio",
+            "nome": "Míldio do pepino",
+            "agente": "Pseudoperonospora cubensis",
+            "tipo_agente": "oomiceto",
+            "gravidade": 4,
+            "compatibilidade": 0.25641025641025644,
+            "sintomas_compativeis": [
+              {
+                "id": "manchas_angulares_entre_nervuras",
+                "nome": "Manchas angulosas, limitadas pelas nervuras",
+                "peso": 1.0
+              }
+            ],
+            "sintomas_esperados_ausentes": [
+              {
+                "id": "mofo_arroxeado_face_inferior",
+                "nome": "Mofo acinzentado a arroxeado na face inferior, sob as manchas",
+                "peso": 0.9
+              },
+              {
+                "id": "manchas_amareladas",
+                "nome": "Manchas amareladas (cloróticas)",
+                "peso": 0.5
+              }
+            ],
+            "sintomas_nao_explicados": [
+              {
+                "id": "apodrecimento_mole_malcheiroso",
+                "nome": "Apodrecimento mole e malcheiroso"
+              },
+              {
+                "id": "lesoes_no_fruto",
+                "nome": "Lesões deprimidas ou podridão no fruto"
+              },
+              {
+                "id": "manchas_encharcadas",
+                "nome": "Lesões encharcadas, com aspecto de queimadura"
+              }
+            ],
+            "compatibilidade_pct": 26,
+            "rotulo_gravidade": "Alta"
+          }
+        ],
+        "pergunta": null
+      }
+    },
+    {
+      "nome": "sintoma principal isolado de pepino_mancha_angular",
+      "cultura": "pepino",
+      "sintomas": [
+        "manchas_angulares_entre_nervuras"
+      ],
+      "esperado": {
+        "hipoteses": [
+          {
+            "doenca_id": "pepino_mildio",
+            "nome": "Míldio do pepino",
+            "agente": "Pseudoperonospora cubensis",
+            "tipo_agente": "oomiceto",
+            "gravidade": 4,
+            "compatibilidade": 0.4166666666666667,
+            "sintomas_compativeis": [
+              {
+                "id": "manchas_angulares_entre_nervuras",
+                "nome": "Manchas angulosas, limitadas pelas nervuras",
+                "peso": 1.0
+              }
+            ],
+            "sintomas_esperados_ausentes": [
+              {
+                "id": "mofo_arroxeado_face_inferior",
+                "nome": "Mofo acinzentado a arroxeado na face inferior, sob as manchas",
+                "peso": 0.9
+              },
+              {
+                "id": "manchas_amareladas",
+                "nome": "Manchas amareladas (cloróticas)",
+                "peso": 0.5
+              }
+            ],
+            "sintomas_nao_explicados": [],
+            "compatibilidade_pct": 42,
+            "rotulo_gravidade": "Alta"
+          },
+          {
+            "doenca_id": "pepino_mancha_angular",
+            "nome": "Mancha-angular do pepino",
+            "agente": "Pseudomonas syringae pv. lachrymans",
+            "tipo_agente": "bactéria",
+            "gravidade": 4,
+            "compatibilidade": 0.35714285714285715,
+            "sintomas_compativeis": [
+              {
+                "id": "manchas_angulares_entre_nervuras",
+                "nome": "Manchas angulosas, limitadas pelas nervuras",
+                "peso": 1.0
+              }
+            ],
+            "sintomas_esperados_ausentes": [
+              {
+                "id": "manchas_encharcadas",
+                "nome": "Lesões encharcadas, com aspecto de queimadura",
+                "peso": 0.9
+              },
+              {
+                "id": "lesoes_no_fruto",
+                "nome": "Lesões deprimidas ou podridão no fruto",
+                "peso": 0.6
+              },
+              {
+                "id": "apodrecimento_mole_malcheiroso",
+                "nome": "Apodrecimento mole e malcheiroso",
+                "peso": 0.3
+              }
+            ],
+            "sintomas_nao_explicados": [],
+            "compatibilidade_pct": 36,
+            "rotulo_gravidade": "Alta"
+          }
+        ],
+        "pergunta": {
+          "sintoma_id": "mofo_arroxeado_face_inferior",
+          "nome": "Mofo acinzentado a arroxeado na face inferior, sob as manchas",
+          "confirma": "Míldio do pepino",
+          "descarta": "Mancha-angular do pepino"
+        }
+      }
+    },
+    {
+      "nome": "perfil completo de pepino_crestamento_gomoso",
+      "cultura": "pepino",
+      "sintomas": [
+        "goma_no_caule",
+        "lesoes_no_caule",
+        "murcha",
+        "pontuacoes_pretas_na_lesao"
+      ],
+      "esperado": {
+        "hipoteses": [
+          {
+            "doenca_id": "pepino_crestamento_gomoso",
+            "nome": "Crestamento-gomoso do caule",
+            "agente": "Didymella bryoniae",
+            "tipo_agente": "fungo",
+            "gravidade": 4,
+            "compatibilidade": 1.0,
+            "sintomas_compativeis": [
+              {
+                "id": "goma_no_caule",
+                "nome": "Rachadura no caule ou no colo, escorrendo goma parda",
+                "peso": 1.0
+              },
+              {
+                "id": "lesoes_no_caule",
+                "nome": "Lesões escuras no caule ou haste",
+                "peso": 0.8
+              },
+              {
+                "id": "pontuacoes_pretas_na_lesao",
+                "nome": "Pontinhos pretos dentro da lesão",
+                "peso": 0.7
+              },
+              {
+                "id": "murcha",
+                "nome": "Murcha da planta",
+                "peso": 0.5
+              }
+            ],
+            "sintomas_esperados_ausentes": [],
+            "sintomas_nao_explicados": [],
+            "compatibilidade_pct": 100,
+            "rotulo_gravidade": "Alta"
+          }
+        ],
+        "pergunta": null
+      }
+    },
+    {
+      "nome": "sintoma principal isolado de pepino_crestamento_gomoso",
+      "cultura": "pepino",
+      "sintomas": [
+        "goma_no_caule"
+      ],
+      "esperado": {
+        "hipoteses": [
+          {
+            "doenca_id": "pepino_crestamento_gomoso",
+            "nome": "Crestamento-gomoso do caule",
+            "agente": "Didymella bryoniae",
+            "tipo_agente": "fungo",
+            "gravidade": 4,
+            "compatibilidade": 0.3333333333333333,
+            "sintomas_compativeis": [
+              {
+                "id": "goma_no_caule",
+                "nome": "Rachadura no caule ou no colo, escorrendo goma parda",
+                "peso": 1.0
+              }
+            ],
+            "sintomas_esperados_ausentes": [
+              {
+                "id": "lesoes_no_caule",
+                "nome": "Lesões escuras no caule ou haste",
+                "peso": 0.8
+              },
+              {
+                "id": "pontuacoes_pretas_na_lesao",
+                "nome": "Pontinhos pretos dentro da lesão",
+                "peso": 0.7
+              },
+              {
+                "id": "murcha",
+                "nome": "Murcha da planta",
+                "peso": 0.5
+              }
+            ],
+            "sintomas_nao_explicados": [],
+            "compatibilidade_pct": 33,
+            "rotulo_gravidade": "Alta"
+          }
+        ],
+        "pergunta": {
+          "sintoma_id": "lesoes_no_caule",
+          "nome": "Lesões escuras no caule ou haste",
+          "confirma": "Crestamento-gomoso do caule",
+          "descarta": null
+        }
+      }
+    },
+    {
+      "nome": "perfil completo de pepino_mosaico",
+      "cultura": "pepino",
+      "sintomas": [
+        "crescimento_reduzido",
+        "folhas_deformadas",
+        "frutos_deformados",
+        "mosaico_verde_claro_escuro",
+        "nervuras_amareladas"
+      ],
+      "esperado": {
+        "hipoteses": [
+          {
+            "doenca_id": "pepino_mosaico",
+            "nome": "Mosaico do pepino",
+            "agente": "Potyvírus, sobretudo o PRSV-W (Papaya ringspot virus - tipo W), o ZYMV e o WMV, transmitidos por pulgões",
+            "tipo_agente": "vírus",
+            "gravidade": 4,
+            "compatibilidade": 1.0,
+            "sintomas_compativeis": [
+              {
+                "id": "mosaico_verde_claro_escuro",
+                "nome": "Mosaico de verde claro e verde escuro",
+                "peso": 1.0
+              },
+              {
+                "id": "folhas_deformadas",
+                "nome": "Folhas deformadas, enroladas ou reduzidas",
+                "peso": 0.7
+              },
+              {
+                "id": "nervuras_amareladas",
+                "nome": "Amarelecimento entre as nervuras",
+                "peso": 0.7
+              },
+              {
+                "id": "frutos_deformados",
+                "nome": "Frutos deformados, manchados ou rachados",
+                "peso": 0.6
+              },
+              {
+                "id": "crescimento_reduzido",
+                "nome": "Crescimento reduzido / nanismo",
+                "peso": 0.5
+              }
+            ],
+            "sintomas_esperados_ausentes": [],
+            "sintomas_nao_explicados": [],
+            "compatibilidade_pct": 100,
+            "rotulo_gravidade": "Alta"
+          }
+        ],
+        "pergunta": null
+      }
+    },
+    {
+      "nome": "sintoma principal isolado de pepino_mosaico",
+      "cultura": "pepino",
+      "sintomas": [
+        "mosaico_verde_claro_escuro"
+      ],
+      "esperado": {
+        "hipoteses": [
+          {
+            "doenca_id": "pepino_mosaico",
+            "nome": "Mosaico do pepino",
+            "agente": "Potyvírus, sobretudo o PRSV-W (Papaya ringspot virus - tipo W), o ZYMV e o WMV, transmitidos por pulgões",
+            "tipo_agente": "vírus",
+            "gravidade": 4,
+            "compatibilidade": 0.2857142857142857,
+            "sintomas_compativeis": [
+              {
+                "id": "mosaico_verde_claro_escuro",
+                "nome": "Mosaico de verde claro e verde escuro",
+                "peso": 1.0
+              }
+            ],
+            "sintomas_esperados_ausentes": [
+              {
+                "id": "folhas_deformadas",
+                "nome": "Folhas deformadas, enroladas ou reduzidas",
+                "peso": 0.7
+              },
+              {
+                "id": "nervuras_amareladas",
+                "nome": "Amarelecimento entre as nervuras",
+                "peso": 0.7
+              },
+              {
+                "id": "frutos_deformados",
+                "nome": "Frutos deformados, manchados ou rachados",
+                "peso": 0.6
+              },
+              {
+                "id": "crescimento_reduzido",
+                "nome": "Crescimento reduzido / nanismo",
+                "peso": 0.5
+              }
+            ],
+            "sintomas_nao_explicados": [],
+            "compatibilidade_pct": 29,
+            "rotulo_gravidade": "Alta"
+          }
+        ],
+        "pergunta": {
+          "sintoma_id": "folhas_deformadas",
+          "nome": "Folhas deformadas, enroladas ou reduzidas",
+          "confirma": "Mosaico do pepino",
           "descarta": null
         }
       }
