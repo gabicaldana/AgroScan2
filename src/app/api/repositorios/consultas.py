@@ -119,12 +119,13 @@ def listar(
 
     return banco.consultar(
         f"""SELECT c.id, c.offline_id, c.cultura_id, cu.nome AS cultura_nome,
-                   cu.emoji, c.canteiro_id, c.origem, c.registrada_em,
-                   c.versao_catalogo,
+                   cu.emoji, c.canteiro_id, ca.identificacao AS canteiro_nome,
+                   c.origem, c.registrada_em, c.versao_catalogo,
                    p.doenca_id, p.nome AS doenca_nome, p.compatibilidade,
                    (f.consulta_id IS NOT NULL) AS tem_feedback
               FROM consulta c
               JOIN cultura cu ON cu.id = c.cultura_id
+              LEFT JOIN canteiro ca ON ca.id = c.canteiro_id
               LEFT JOIN LATERAL (
                     SELECT ch.doenca_id, d.nome, ch.compatibilidade
                       FROM consulta_hipotese ch

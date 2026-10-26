@@ -104,6 +104,11 @@ export function PainelCaderno() {
   const pendentes = registros.filter((r) => r.pendente).length;
 
   const culturas = useMemo(() => filtro.culturasPresentes(registros), [registros]);
+  const canteirosDoHistorico = useMemo(
+    () => filtro.canteirosPresentes(registros),
+    [registros],
+  );
+  const semCanteiro = registros.some((r) => r.canteiroId === null);
   const filtrados = useMemo(
     () => filtro.filtrar(registros, filtroAtual, new Date()),
     [registros, filtroAtual],
@@ -116,7 +121,8 @@ export function PainelCaderno() {
 
   const filtrando =
     filtroAtual.periodo !== filtro.SEM_FILTRO.periodo ||
-    filtroAtual.culturaId !== filtro.SEM_FILTRO.culturaId;
+    filtroAtual.culturaId !== filtro.SEM_FILTRO.culturaId ||
+    filtroAtual.canteiroId !== filtro.SEM_FILTRO.canteiroId;
 
   if (carregando) {
     return <p className="text-texto-suave mt-6">Abrindo o caderno…</p>;
@@ -189,6 +195,8 @@ export function PainelCaderno() {
       <Filtros
         atual={filtroAtual}
         culturas={culturas}
+        canteiros={canteirosDoHistorico}
+        semCanteiro={semCanteiro}
         aoMudar={filtrarPor}
       />
 
@@ -239,10 +247,15 @@ export function PainelCaderno() {
 function Filtros({
   atual,
   culturas,
+  canteiros,
+  semCanteiro,
   aoMudar,
 }: {
   atual: filtro.Filtro;
   culturas: { id: string; nome: string; emoji: string | null }[];
+  canteiros: { id: number; nome: string }[];
+  /** Há consulta feita sem canteiro: um canteiro só já separa alguma coisa. */
+  semCanteiro: boolean;
   aoMudar: (novo: Partial<filtro.Filtro>) => void;
 }) {
   return (
@@ -290,6 +303,26 @@ function Filtros({
           </select>
         </label>
       )}
+
+      {(canteiros.length > 1 || (canteiros.length === 1 && semCanteiro)) && (
+        <label className="flex flex-col gap-2">
+          <span className="text-sm font-semibold">Canteiro</span>
+          <select
+            value={atual.canteiroId ?? ""}
+            onChange={(e) =>
+              aoMudar({ canteiroId: e.target.value ? Number(e.target.value) : null })
+            }
+            className="border-borda-forte bg-fundo h-toque rounded-lg border-2 px-3 text-base"
+          >
+            <option value="">Todos os canteiros</option>
+            {canteiros.map((c) => (
+              <option key={c.id} value={c.id}>
+                {c.nome}
+              </option>
+            ))}
+          </select>
+        </label>
+      )}
     </div>
   );
 }
@@ -320,6 +353,12 @@ function Registro({ registro }: { registro: caderno.RegistroDoCaderno }) {
       <p className="mt-1 text-lg font-bold">
         {registro.doencaNome ?? "Sem hipótese registrada"}
       </p>
+
+      {registro.canteiroId !== null && (
+        <p className="text-texto-suave text-sm">
+          {registro.canteiroNome ?? `Canteiro nº ${registro.canteiroId}`}
+        </p>
+      )}
 
       {registro.compatibilidade !== null && (
         <p className="text-texto-suave text-sm">

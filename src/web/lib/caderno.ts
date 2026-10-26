@@ -12,6 +12,7 @@
  */
 
 import * as api from "./api.ts";
+import * as canteiros from "./canteiros.ts";
 import * as fila from "./fila.ts";
 import * as sessao from "./sessao.ts";
 import { catalogoAtivo } from "./catalogo.ts";
@@ -38,6 +39,9 @@ export type RegistroDoCaderno = {
   culturaNome: string;
   emoji: string | null;
   registradaEm: string;
+  /** O canteiro da consulta (US25); `null` quando foi feita sem canteiro. */
+  canteiroId: number | null;
+  canteiroNome: string | null;
   doencaId: string | null;
   doencaNome: string | null;
   compatibilidade: number | null;
@@ -137,6 +141,11 @@ export async function historico(
   } | null,
 ): Promise<{ registros: RegistroDoCaderno[]; servidorRespondeu: boolean }> {
   const locais = await fila.pendentes(deposito());
+  // O nome do canteiro de uma consulta que ainda não subiu vem da lista
+  // guardada no aparelho, a mesma em que ele foi escolhido.
+  const nomeDoCanteiro = new Map(
+    canteiros.guardados().map((c) => [c.id, c.identificacao]),
+  );
 
   const registros: RegistroDoCaderno[] = locais.map((c) => {
     const principal = c.hipoteses[0];
@@ -147,6 +156,9 @@ export async function historico(
       culturaNome: ficha?.culturaNome ?? c.culturaId,
       emoji: ficha?.emoji ?? null,
       registradaEm: c.registradaEm,
+      canteiroId: c.canteiroId ?? null,
+      canteiroNome:
+        c.canteiroId != null ? (nomeDoCanteiro.get(c.canteiroId) ?? null) : null,
       doencaId: principal?.doencaId ?? null,
       doencaNome: ficha?.doencaNome ?? null,
       compatibilidade: principal?.compatibilidade ?? null,
@@ -184,6 +196,8 @@ export async function historico(
       culturaNome: c.cultura_nome,
       emoji: c.emoji,
       registradaEm: c.registrada_em,
+      canteiroId: c.canteiro_id ?? null,
+      canteiroNome: c.canteiro_nome ?? null,
       doencaId: c.doenca_id,
       doencaNome: c.doenca_nome,
       compatibilidade: c.compatibilidade,
