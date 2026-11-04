@@ -4,6 +4,34 @@ Registre aqui as mudanças relevantes por sprint ou marco avaliativo.
 
 ## Sprint 4 - Relatórios agregados · 13/10 a 26/10/2026
 
+### Encerramento da Sprint 4
+
+- **Relatório e atas preenchidos**: `sprint-04.md` com issues, PRs, evidências e retrospectiva; ata da revisão em `docs/reunioes/sprint-04-revisao.md`.
+- **24 de 27 pontos aceitos** (US25, US27, US28, US30 e US04); o núcleo chega a **144 de 172 pontos (84%)** no Artefato 2. Realocadas à Sprint 5: US29 (#32) e as pendências #72, #73 e #74.
+- **Publicado em 04/11/2026**, e não em 26/10: migração 004 e catálogo `2026.10.24` aplicados no Neon e espelho avançado para `f89f997`. Até lá, o ambiente publicado servia a Sprint 3 (R06).
+
+### Relatórios da horta e alerta de rotação (US27, US28, US30)
+
+- **Rotas**, só para membros da horta (404 para os demais, ADR 0012): incidência por mês e doença, com período (`/hortas/{id}/relatorios/incidencia`); confirmação por doença, com a taxa só a partir de 5 avaliações (`/relatorios/confirmacao`); canteiros que repetem a família botânica de um dos dois últimos ciclos (`/relatorios/rotacao`); e o mesmo alerta antes do plantio (`/canteiros/rotacao`).
+- **Telas**: `/relatorios?horta=` com os três relatórios; alerta de rotação no cadastro do canteiro, enquanto a pessoa preenche, sem bloquear.
+- **Conferência do `modelo-de-dados.md` §6** contra a contagem manual, num PostgreSQL 16: três das cinco consultas tinham defeito. A incidência contava o mês em UTC, a confirmação não filtrava a horta e agrupava pelo nome, e a rotação não encontrava nada.
+- **Migração 004** ([ADR 0013](docs/decisoes/adr-0013-sucessao-de-canteiros-e-alerta-de-rotacao.md)): o nome do canteiro é único só entre os ativos, e o replantio no mesmo lugar reusa o nome do encerrado. É por ele que a sucessão se reconhece. A reversão roda numa transação.
+- **Carga de exemplo** (`python -m app.exemplo`, ou `--gerar-sql` para o SQL Editor): conta de demonstração com uma horta, oito canteiros em sucessão, 27 consultas e 21 feedbacks, com as hipóteses calculadas pelo motor.
+- **Teste em banco real**: `tests/test_relatorios_banco.py` carrega a carga de exemplo e compara cada relatório com a contagem manual; o CI ganhou um serviço `postgres:16`.
+- `python -m app.seed` abortava em todo banco novo; corrigido.
+
+### Filtro por canteiro no caderno (US25)
+
+- O caderno filtra por canteiro, ao lado de período e cultura, no aparelho e sem rede. O seletor só aparece quando separa alguma coisa.
+- `GET /consultas` traz `canteiro_nome`, para o canteiro encerrado continuar aparecendo pelo nome.
+
+### Cucurbitáceas e jiló - base `2026.10.24` (US04)
+
+- **4 culturas e 19 doenças novas**: pepino, abobrinha, abóbora e jiló. A base vai de 9 para 13 culturas, de 34 para 53 doenças e de 30 para 38 sintomas. Perfis anteriores inalterados; 38 casos novos de paridade, 122 no total.
+- **Ingredientes ativos conferidos nos dados abertos do AGROFIT**, cultura a cultura e alvo a alvo. Isso mudou a mancha-angular do pepino (casugamicina e óxido cuproso, no lugar dos cúpricos da fonte), o nematoide-das-galhas do jiló (ciclobutrifluram) e a antracnose do pepino.
+- **O jiló entra como solanácea**, embora o critério da US04 o agrupe com as cucurbitáceas; o alerta de rotação o trata assim.
+- Fontes e decisões em [`docs/curadoria/curadoria-cucurbitaceas-e-jilo.md`](docs/curadoria/curadoria-cucurbitaceas-e-jilo.md).
+
 ### Conferência agronômica das brássicas - base `2026.10.18`
 
 - **Podridão-negra** (brócolis, couve, couve-flor, repolho): saem oxicloreto e hidróxido de cobre. Não há produto registrado no MAPA para o alvo em brássicas; o laudo passa a mostrar que o manejo é todo preventivo.
