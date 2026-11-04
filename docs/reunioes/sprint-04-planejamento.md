@@ -104,7 +104,7 @@ Sprint 5) apresenta os mesmos indicadores e a base precisa fechar na Sprint 5.
 
 | # | Impedimento | Efeito | Situação na abertura |
 | --- | --- | --- | --- |
-| 1 | Volume de dados de teste | Relatórios sobre base vazia não demonstram nada | A tratar no ciclo - encaminhamento 3 |
+| 1 | Volume de dados de teste | Relatórios sobre base vazia não demonstram nada | A tratar no ciclo - encaminhamento 4 |
 | 2 | Tela de confirmação (US20) só na Sprint 5 | A US28 não tem feedback real para calcular | Contornado com a carga de exemplo |
 | 3 | Comunidade parceira não definida (R03) | A Sprint 6 inteira depende dela; precisa estar resolvida até o fim da Sprint 5 | Aberto - [#73](https://github.com/CampusCEUB/AgroScan/issues/73) |
 | 4 | Datas dos Artefatos 5 a 9 não divulgadas | O Artefato 9 está alocado à Sprint 5 sem prazo confirmado | Aberto - [#74](https://github.com/CampusCEUB/AgroScan/issues/74) |

@@ -52,12 +52,11 @@ O calendário do
 prevê para este ciclo o avanço da curadoria das apiáceas e amarilidáceas, como
 parte parcial da US05.
 
-> ⚠️ **Divergência a resolver no planejamento.** A `issue` da US05
-> ([#8](https://github.com/CampusCEUB/AgroScan/issues/8)) está alocada
-> integralmente à `milestone` da Sprint 5, enquanto o backlog do Artefato 2
-> registra a história como "4-5". O avanço feito neste ciclo deve ser anotado na
-> própria `issue`, ou a `issue` deve ser dividida, para que a curadoria destas
-> duas semanas não fique sem registro.
+> **Resolvido no planejamento.** As cucurbitáceas (US04) tiveram prioridade
+> sobre as apiáceas e amarilidáceas, e a US05
+> ([#8](https://github.com/CampusCEUB/AgroScan/issues/8)) seguiu inteira na
+> `milestone` da Sprint 5, sem ser dividida. Não houve avanço nas apiáceas e
+> amarilidáceas neste ciclo.
 
 ## Responsáveis
 
@@ -117,26 +116,64 @@ conta de demonstração com uma horta, oito canteiros em sucessão, 27 consultas
 de abril a outubro de 2026 e 21 feedbacks. As hipóteses são calculadas pelo
 motor. O conjunto é fixo, e é sobre ele que a contagem manual foi feita.
 **A carga no Neon fica com a Gabriela**, depois da migração 004 (comandos no
-pull request).
+pull request). A migração 004 foi aplicada em 04/11/2026; a carga de exemplo
+segue pendente, como encaminhamento da revisão.
 
 ### Relatórios e alerta de rotação
 
 | História | Entrega | Situação |
 | --- | --- | --- |
-| US25 | Filtro por canteiro no caderno, no aparelho e sem rede | Em revisão |
-| US27 | Incidência por mês e doença, com período de 3, 6 ou 12 meses | Em revisão |
-| US28 | Confirmação por doença; a taxa só a partir de 5 avaliações | Em revisão |
-| US30 | Alerta no cadastro do canteiro, antes do plantio, e lista dos canteiros que repetem a família | Em revisão |
-| US29 | - | Não iniciada: primeira da ordem de corte |
-| US04 | - | Curadoria das cucurbitáceas com a equipe |
+| US25 | Filtro por canteiro no caderno, no aparelho e sem rede | ✅ Aceita - PR #91 |
+| US27 | Incidência por mês e doença, com período de 3, 6 ou 12 meses | ✅ Aceita - PR #92 |
+| US28 | Confirmação por doença; a taxa só a partir de 5 avaliações | ✅ Aceita - PR #92 |
+| US30 | Alerta no cadastro do canteiro, antes do plantio, e lista dos canteiros que repetem a família | ✅ Aceita - PR #92 |
+| US04 | Pepino, abobrinha, abóbora e jiló, base `2026.10.24` | ✅ Aceita em 04/11, com a carga no Neon - PR #93 |
+| US29 | - | ❌ Não iniciada: primeira da ordem de corte. Realocada à Sprint 5 |
+
+### Curadoria das cucurbitáceas e do jiló - base `2026.10.24`
+
+Encaminhamento 1, feito em 24/10/2026. A base passa de 9 para 13 culturas e de
+34 para 53 doenças, com 8 sintomas novos (de 30 para 38). Cada ficha parte de
+uma publicação técnica, e os ingredientes ativos foram conferidos contra os
+dados abertos do AGROFIT, cultura a cultura e alvo a alvo. O jiló entrou como
+solanácea, e não como cucurbitácea. Detalhe e fontes em
+[`docs/curadoria/curadoria-cucurbitaceas-e-jilo.md`](../docs/curadoria/curadoria-cucurbitaceas-e-jilo.md).
 
 ## Issues concluídas
 
-> ⚠️ **A preencher no encerramento da sprint.**
+| Issue | Título | Como foi verificada |
+| --- | --- | --- |
+| [#28](https://github.com/CampusCEUB/AgroScan/issues/28) | US25 - Vincular a consulta ao canteiro | Filtro por canteiro em `lib/filtro-caderno.test.ts`, combinado com o de período; roteiro em modo avião (PR #91) |
+| [#30](https://github.com/CampusCEUB/AgroScan/issues/30) | US27 - Ver quais doenças mais ocorreram na horta | Contagem manual da incidência em `tests/test_relatorios_banco.py`, em PostgreSQL 16 |
+| [#31](https://github.com/CampusCEUB/AgroScan/issues/31) | US28 - Saber a taxa de confirmação dos diagnósticos | Contagem manual da confirmação, no mesmo teste |
+| [#33](https://github.com/CampusCEUB/AgroScan/issues/33) | US30 - Ser alertado sobre repetição de família botânica | Contagem manual do alerta de rotação, no mesmo teste; migração 004 e ADR 0013 |
+| [#7](https://github.com/CampusCEUB/AgroScan/issues/7) | US04 - Cadastrar as doenças das cucurbitáceas e fechar as solanáceas | `python -m app.validacao` sem aviso da RN05; paridade entre os motores nos 122 casos; `/saude` publicado com `2026.10.24` e `catalogo_no_banco: true` em 04/11 |
+| [#56](https://github.com/CampusCEUB/AgroScan/issues/56) | Reunião - Sprint 4 · Planejamento | Ata em [`sprint-04-planejamento.md`](../docs/reunioes/sprint-04-planejamento.md) |
+| [#57](https://github.com/CampusCEUB/AgroScan/issues/57) | Reunião - Sprint 4 · Revisão | Ata em [`sprint-04-revisao.md`](../docs/reunioes/sprint-04-revisao.md) |
+
+### Não concluídas - realocadas à Sprint 5
+
+| Issue | Título | O que falta |
+| --- | --- | --- |
+| [#32](https://github.com/CampusCEUB/AgroScan/issues/32) | US29 - Saber quais sintomas são mais marcados em cada cultura | Não iniciada |
+| [#72](https://github.com/CampusCEUB/AgroScan/issues/72) | Atribuir nominalmente os papéis Scrum | Definição pela equipe |
+| [#73](https://github.com/CampusCEUB/AgroScan/issues/73) | Definir a comunidade parceira da Atividade de Extensão | Resposta da coordenação |
+| [#74](https://github.com/CampusCEUB/AgroScan/issues/74) | Confirmar as datas dos Artefatos 5 a 9 e a existência do Artefato 4 | Resposta da professora |
+
+**5 histórias aceitas, 24 de 27 pontos planejados.** O núcleo chega a 144 de
+172 pontos (84%), como registra a totalização do
+[Artefato 2](../entregas/artefato-2-gestao-do-projeto.md#pontos-concluídos-até-o-encerramento-da-sprint-4).
 
 ## Pull requests aceitos
 
-> ⚠️ **A preencher ao longo da sprint.**
+| PR | Conteúdo | Issue |
+| --- | --- | --- |
+| [#87](https://github.com/CampusCEUB/AgroScan/pull/87) | Encerramento das Sprints 1 a 3: relatórios, atas e realocações | - |
+| [#88](https://github.com/CampusCEUB/AgroScan/pull/88) | Remove os avisos de revisão; encerramento das milestones 2 e 3 | [#41](https://github.com/CampusCEUB/AgroScan/issues/41), [#52](https://github.com/CampusCEUB/AgroScan/issues/52)-[#56](https://github.com/CampusCEUB/AgroScan/issues/56) |
+| [#90](https://github.com/CampusCEUB/AgroScan/pull/90) | Conferência agronômica das brássicas, base `2026.10.18` | - |
+| [#91](https://github.com/CampusCEUB/AgroScan/pull/91) | Filtro por canteiro no caderno | [#28](https://github.com/CampusCEUB/AgroScan/issues/28) |
+| [#92](https://github.com/CampusCEUB/AgroScan/pull/92) | Relatórios da horta, alerta de rotação, conferência do §6, migração 004 e carga de exemplo | [#30](https://github.com/CampusCEUB/AgroScan/issues/30), [#31](https://github.com/CampusCEUB/AgroScan/issues/31), [#33](https://github.com/CampusCEUB/AgroScan/issues/33) |
+| [#93](https://github.com/CampusCEUB/AgroScan/pull/93) | Cucurbitáceas e jiló, base `2026.10.24` | [#7](https://github.com/CampusCEUB/AgroScan/issues/7) |
 
 ## Evidências
 
@@ -155,7 +192,40 @@ tabelas contadas à mão a partir da lista de consultas. Roda no CI, num serviç
 | Confirmação (US28) | Requeima do tomate 6 de 7 (85,7%), pinta-preta 3 de 5 (60,0%), seis doenças sem amostra para taxa; as 2 consultas sem canteiro fora |
 | Rotação (US30) | Alerta no Canteiro 1 (pimentão depois de tomate) e no Canteiro 3 (couve dois ciclos depois de repolho); nenhum no Canteiro 2 e na Estufa A |
 
-> ⚠️ **Demais evidências a preencher no encerramento da sprint.**
+### Testes automatizados - `main` em `f89f997`, 04/11/2026
+
+```text
+$ cd src && python -m pytest -q
+131 passed, 9 skipped
+
+$ cd src/web && npm test
+ℹ tests 291
+ℹ fail 0
+```
+
+**Total: 431 testes, nenhuma falha.** Os 9 pulados localmente são os de
+`tests/test_relatorios_banco.py`, que precisam de um PostgreSQL e rodam no CI.
+Subiu de 331 no encerramento da Sprint 3.
+
+### Integração contínua
+
+[Execução #40316962883](https://github.com/CampusCEUB/AgroScan/actions/runs/40316962883)
+no `main`, após o merge do PR #91, com o serviço `postgres:16`: **`success`**.
+
+### Ambiente publicado - conferido em 04/11/2026
+
+```text
+$ curl https://agroscan-blond.vercel.app/api/v1/saude
+{"versao_api":"1.0.0","ambiente":"producao","versao_catalogo":"2026.10.24",
+ "banco":"ok","migracao_aplicada":4,"catalogo_no_banco":true}
+```
+
+A carga foi ensaiada antes num PostgreSQL embutido (PGlite) igual ao de
+produção, com a migração 3 e o catálogo `2026.10.18`: os dois arquivos gerados
+por `--gerar-sql --desde-migracao 4 --separar` levaram o banco à migração 4,
+com 13 culturas, 53 doenças e 38 sintomas, e uma segunda execução deixou o
+banco no mesmo estado. O espelho `gabicaldana/AgroScan2` foi avançado para
+`f89f997`, o mesmo hash do institucional (ADR 0011).
 
 ## Impedimentos
 
@@ -163,6 +233,8 @@ tabelas contadas à mão a partir da lista de consultas. Roda no CI, num serviç
 | --- | --- | --- | --- |
 | 1 | **Volume de dados de teste** | Relatórios agregados sobre base vazia não demonstram nada na revisão | Resolvido em 24/10 com a carga de exemplo; falta aplicá-la no Neon |
 | 2 | **Datas dos Artefatos 5 a 9 não divulgadas** | O calendário das sprints seguintes é provisório | Herdado - [#74](https://github.com/CampusCEUB/AgroScan/issues/74) |
+| 3 | **Comunidade parceira não definida** (R03) | A Sprint 6 inteira depende dela | Herdado - [#73](https://github.com/CampusCEUB/AgroScan/issues/73) |
+| 4 | **Produção defasada em relação ao `main`** (R06) | O publicado serviu a Sprint 3 de 26/10 a 04/11 | ✅ Resolvido em 04/11 - migração 004 e catálogo `2026.10.24` no Neon, espelho em `f89f997` |
 
 ## Riscos ativos no ciclo
 
@@ -173,7 +245,21 @@ tabelas contadas à mão a partir da lista de consultas. Roda no CI, num serviç
 
 ## Retrospectiva
 
-> ⚠️ **A preencher na reunião de revisão de 26/10/2026.**
+Registrada na [ata da revisão](../docs/reunioes/sprint-04-revisao.md#retrospectiva---o-que-funcionou).
+
+**Funcionou:** conferir as consultas do §6 num PostgreSQL real antes de
+construir sobre elas (três defeitos em cinco); a carga de exemplo como
+demonstração e teste ao mesmo tempo; teste em banco real no CI; a conferência
+das brássicas no prazo; a ordem de corte, que tirou só a US29.
+
+**Não funcionou:** todos os commits de código são de 24/10, a dois dias do fim,
+pela terceira sprint seguida; a curadoria não começou na primeira semana; a
+produção ficou 9 dias atrás do `main`; o teste do `offline_id` em banco real
+foi adiado pela segunda vez; #73 e #74 não andaram.
+
+**Ajustes:** o C11 passa a fazer parte do aceite na revisão; um PR por semana,
+no mínimo; curadoria começada até o quarto dia; o teste do `offline_id` como
+item próprio da Sprint 5; pedidos por escrito à professora e à coordenação.
 
 ## Próximas ações
 
