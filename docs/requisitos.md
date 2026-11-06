@@ -142,10 +142,10 @@ Estado verificado em 12/09/2026 sobre o commit `068b6d9`.
 
 | ID | Requisito | Prioridade | Estado |
 | --- | --- | --- | --- |
-| RF28 | Apresentar a incidência de doenças por período em uma horta | Importante | ⬜ consulta SQL especificada |
-| RF29 | Apresentar os sintomas mais frequentemente marcados por cultura | Desejável | ⬜ consulta SQL especificada |
-| RF30 | Apresentar a taxa de confirmação dos diagnósticos por doença | Desejável | ⬜ consulta SQL especificada |
-| RF31 | Alertar quando culturas da mesma família botânica se repetirem no mesmo canteiro | Desejável | ⬜ consulta SQL especificada |
+| RF28 | Apresentar a incidência de doenças por período em uma horta | Importante | ✅ |
+| RF29 | Apresentar os sintomas mais frequentemente marcados por cultura | Desejável | ✅ |
+| RF30 | Apresentar a taxa de confirmação dos diagnósticos por doença | Desejável | ✅ |
+| RF31 | Alertar quando culturas da mesma família botânica se repetirem no mesmo canteiro | Desejável | ✅ |
 | RF37 | Apresentar os indicadores agregados em painéis visuais incorporados à interface | Importante | ⬜ escopo do Artefato 9, 2o bimestre |
 
 ### 5.6 Plataforma
@@ -254,7 +254,7 @@ título e vinculadas à `milestone` da sprint.
 | RF23-RF26 | US22-US25 | 3 | ✅ | [#25](https://github.com/CampusCEUB/AgroScan/issues/25), [#26](https://github.com/CampusCEUB/AgroScan/issues/26), [#27](https://github.com/CampusCEUB/AgroScan/issues/27), [#28](https://github.com/CampusCEUB/AgroScan/issues/28) |
 | RF27 | US26 | 3 | ✅ | [#29](https://github.com/CampusCEUB/AgroScan/issues/29) |
 | RF28 | US27 | 4 | Consulta especificada em `modelo-de-dados.md` §6.1 | [#30](https://github.com/CampusCEUB/AgroScan/issues/30) |
-| RF29 | US29 | 4 | `modelo-de-dados.md` §6.3 | [#32](https://github.com/CampusCEUB/AgroScan/issues/32) |
+| RF29 | US29 | 5 | `modelo-de-dados.md` §6.3; `test_relatorios_banco.py`, contra a contagem da carga de exemplo | [#32](https://github.com/CampusCEUB/AgroScan/issues/32) |
 | RF30 | US28 | 4 | `modelo-de-dados.md` §6.2 | [#31](https://github.com/CampusCEUB/AgroScan/issues/31) |
 | RF31 | US30 | 4 | `modelo-de-dados.md` §6.4 | [#33](https://github.com/CampusCEUB/AgroScan/issues/33) |
 | RF37 | US41 | 5 | ⬜ | [#34](https://github.com/CampusCEUB/AgroScan/issues/34) |

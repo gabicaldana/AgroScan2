@@ -8,12 +8,17 @@ import { test, describe } from "node:test";
 import assert from "node:assert/strict";
 
 import {
+  SINTOMAS_VISIVEIS,
   agruparPorMes,
   descreverConfirmacao,
+  descreverMarcacao,
   descreverRepeticao,
   paraIso,
   periodo,
+  poucasFichas,
+  resumoDaCultura,
   rotuloDoMes,
+  veOSistema,
 } from "./relatorios.ts";
 
 function linha(mes: string, doencaId: string, ocorrencias: number) {
@@ -115,5 +120,65 @@ describe("descreverRepeticao", () => {
       descreverRepeticao({ ...r, ciclos_atras: 1, ativo: true }),
       "Tomate, em cultivo agora",
     );
+  });
+});
+
+function sintoma(marcacoes: number, doencas: number, pct: number | null = null) {
+  return {
+    sintoma_id: "manchas_escuras_aneis",
+    sintoma_nome: "Manchas escuras com anéis",
+    orgao_id: "folha",
+    marcacoes,
+    doencas_com_o_sintoma: doencas,
+    pct_das_consultas: pct,
+  };
+}
+
+describe("sintomas mais marcados (US29)", () => {
+  test("contagem sempre, percentual só quando a API manda", () => {
+    assert.deepEqual(descreverMarcacao(sintoma(3, 2, 18.8), 16), {
+      contagem: "marcado em 3 de 16 consultas",
+      pct: "18,8%",
+    });
+    assert.deepEqual(descreverMarcacao(sintoma(1, 2), 1), {
+      contagem: "marcado em 1 de 1 consulta",
+      pct: null,
+    });
+  });
+
+  test("percentual redondo mostra a casa decimal", () => {
+    assert.equal(descreverMarcacao(sintoma(8, 2, 50), 16).pct, "50,0%");
+  });
+
+  test("sintoma entre os mais marcados com uma ficha só é sinal para a curadoria", () => {
+    assert.equal(poucasFichas(sintoma(5, 1), 0), "só 1 doença cadastrada tem este sintoma");
+    assert.equal(poucasFichas(sintoma(5, 0), 2), "nenhuma doença cadastrada tem este sintoma");
+  });
+
+  test("com duas fichas ou mais, ou fora dos principais, não há sinal", () => {
+    assert.equal(poucasFichas(sintoma(5, 2), 0), null);
+    assert.equal(poucasFichas(sintoma(1, 1), SINTOMAS_VISIVEIS), null);
+  });
+
+  test("resumo da cultura no singular e no plural", () => {
+    const cultura = {
+      cultura_id: "tomate",
+      cultura_nome: "Tomate",
+      consultas: 16,
+      doencas_cadastradas: 10,
+      sintomas: [],
+    };
+    assert.equal(resumoDaCultura(cultura), "16 consultas · 10 doenças cadastradas");
+    assert.equal(
+      resumoDaCultura({ ...cultura, consultas: 1, doencas_cadastradas: 1 }),
+      "1 consulta · 1 doença cadastrada",
+    );
+  });
+
+  test("só agrônomo e administração veem o recorte do sistema", () => {
+    assert.equal(veOSistema("agronomo"), true);
+    assert.equal(veOSistema("admin"), true);
+    assert.equal(veOSistema("produtor"), false);
+    assert.equal(veOSistema(null), false);
   });
 });

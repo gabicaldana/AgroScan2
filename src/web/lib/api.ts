@@ -574,3 +574,40 @@ export function rotacaoDoCanteiroNovo(
     { autenticado: true, sinal },
   );
 }
+
+export type SintomaMarcado = {
+  sintoma_id: string;
+  sintoma_nome: string;
+  orgao_id: string;
+  marcacoes: number;
+  /** Quantas doenças da cultura usam o sintoma no perfil. */
+  doencas_com_o_sintoma: number;
+  /** Nulo abaixo da amostra mínima de consultas da cultura. */
+  pct_das_consultas: number | null;
+};
+
+export type SintomasDaCultura = {
+  cultura_id: string;
+  cultura_nome: string;
+  consultas: number;
+  doencas_cadastradas: number;
+  sintomas: SintomaMarcado[];
+};
+
+export type RelatorioDeSintomas = {
+  amostra_minima: number;
+  consultas: number;
+  culturas: SintomasDaCultura[];
+};
+
+/** Sintomas mais marcados por cultura nas consultas da horta (US29). */
+export function relatorioDeSintomas(hortaId: number): Promise<RelatorioDeSintomas> {
+  return chamar<RelatorioDeSintomas>(`/hortas/${hortaId}/relatorios/sintomas`, {
+    autenticado: true,
+  });
+}
+
+/** O mesmo, sobre todo o sistema: só agrônomo e administração (US29). */
+export function relatorioDeSintomasDoSistema(): Promise<RelatorioDeSintomas> {
+  return chamar<RelatorioDeSintomas>("/relatorios/sintomas", { autenticado: true });
+}

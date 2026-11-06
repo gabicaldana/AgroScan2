@@ -4,6 +4,14 @@ Registre aqui as mudanças relevantes por sprint ou marco avaliativo.
 
 ## Sprint 5 - Base completa, feedback e dashboards · 27/10 a 09/11/2026
 
+### Sintomas mais marcados por cultura (US29)
+
+- **Rotas**: `GET /hortas/{id}/relatorios/sintomas`, das consultas feitas nos canteiros da horta e só para os membros (ADR 0012); e `GET /relatorios/sintomas`, de todo o sistema, que é o relatório da curadoria, só para os papéis `agronomo` e `admin`.
+- **O que cada cultura traz**: consultas, doenças cadastradas e, por sintoma, as marcações e quantas doenças da cultura têm o sintoma no perfil. O percentual sobre as consultas da cultura só aparece a partir de 5 consultas.
+- **Tela**: seção "Sintomas mais marcados" nos relatórios da horta, com os 5 principais de cada cultura e "Ver todos". O sintoma entre os mais marcados que no máximo uma doença cadastrada tem recebe um aviso para a curadoria (⚠, com texto). Agrônomo e administração escolhem entre "Desta horta" e "De todo o sistema".
+- **Conferência em banco real**: os dois recortes contra a contagem feita sobre a lista de consultas da carga de exemplo (`test_relatorios_banco.py`). [`modelo-de-dados.md` §6.3](docs/modelo-de-dados.md) registra os dois recortes e as colunas a mais.
+- `requisitos.md`: RF28, RF30 e RF31, entregues na Sprint 4, passam a ✅, assim como o RF29.
+
 ### Confirmação do diagnóstico no caderno (US20)
 
 - **Tela**: cada registro do caderno já sincronizado pergunta "O diagnóstico se confirmou?". A resposta é "Sim, era" ou "Não era", com a doença real escolhida entre as da mesma cultura (ou "Não sei qual era") e um comentário opcional. A resposta registrada aparece no lugar da pergunta, com texto e símbolo, sem depender de cor, e pode ser trocada.

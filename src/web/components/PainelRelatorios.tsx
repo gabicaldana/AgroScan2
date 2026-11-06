@@ -2,7 +2,7 @@
 
 import Link from "next/link";
 import { useSearchParams } from "next/navigation";
-import { useEffect, useMemo, useState } from "react";
+import { useEffect, useMemo, useState, useSyncExternalStore } from "react";
 import { EstadoVazio } from "@/components/EstadoVazio";
 import {
   MensagemDeErro,
@@ -13,10 +13,12 @@ import {
 } from "@/components/Formulario";
 import * as api from "@/lib/api.ts";
 import * as relatorios from "@/lib/relatorios.ts";
+import * as sessao from "@/lib/sessao.ts";
 
 /**
  * Os relatórios de uma horta (épico E6): o que mais ocorreu, quanto do
- * diagnóstico se confirmou e onde a rotação de família não está acontecendo.
+ * diagnóstico se confirmou, que sintomas mais se observam e onde a rotação de
+ * família não está acontecendo.
  *
  * Os números saem do banco, sobre as consultas vinculadas aos canteiros da
  * horta, de todas as pessoas. Consulta sem canteiro é do caderno de quem a
@@ -43,6 +45,7 @@ export function PainelRelatorios() {
       </header>
       <Incidencia hortaId={id} />
       <Confirmacao hortaId={id} />
+      <Sintomas hortaId={id} />
       <Rotacao hortaId={id} />
     </div>
   );
@@ -244,6 +247,154 @@ function Confirmacao({ hortaId }: { hortaId: number }) {
         </>
       )}
     </section>
+  );
+}
+
+// =============================================================================
+// US29 - sintomas mais marcados por cultura
+// =============================================================================
+
+const semAssinatura = () => () => {};
+const papelDaSessao = () => sessao.usuario()?.papel ?? null;
+
+type Recorte = "horta" | "sistema";
+
+function Sintomas({ hortaId }: { hortaId: number }) {
+  // O papel vem do localStorage: no servidor, ninguém é da curadoria.
+  const papel = useSyncExternalStore(semAssinatura, papelDaSessao, () => null);
+  const podeVerOSistema = relatorios.veOSistema(papel);
+  const [escolhido, setEscolhido] = useState<Recorte>("horta");
+  const recorte: Recorte = podeVerOSistema ? escolhido : "horta";
+
+  const { dado, erro, carregando } = useRelatorio(
+    () =>
+      recorte === "sistema"
+        ? api.relatorioDeSintomasDoSistema()
+        : api.relatorioDeSintomas(hortaId),
+    `${recorte}:${hortaId}`,
+  );
+
+  return (
+    <section aria-labelledby="titulo-sintomas" className="flex flex-col gap-4">
+      <div>
+        <h2 id="titulo-sintomas" className="text-xl font-bold">
+          Sintomas mais marcados
+        </h2>
+        <p className="text-texto-suave text-sm">
+          O que as pessoas mais observaram em cada cultura. Sintoma muito
+          marcado que poucas doenças cadastradas têm mostra onde a base de
+          conhecimento precisa crescer.
+        </p>
+      </div>
+
+      {podeVerOSistema && (
+        <fieldset>
+          <legend className="mb-2 text-sm font-semibold">Consultas</legend>
+          <div className="grid grid-cols-2 gap-2">
+            {(
+              [
+                ["horta", "Desta horta"],
+                ["sistema", "De todo o sistema"],
+              ] as const
+            ).map(([id, rotulo]) => (
+              <button
+                key={id}
+                type="button"
+                aria-pressed={recorte === id}
+                onClick={() => setEscolhido(id)}
+                className={`h-toque rounded-lg border-2 px-1 text-sm font-bold ${
+                  recorte === id ? "border-primaria bg-primaria text-white" : "border-borda-forte"
+                }`}
+              >
+                {rotulo}
+              </button>
+            ))}
+          </div>
+        </fieldset>
+      )}
+
+      {erro && <MensagemDeErro>{erro}</MensagemDeErro>}
+      {carregando && <p className="text-texto-suave">Contando…</p>}
+
+      {dado && dado.culturas.length === 0 && (
+        <EstadoVazio titulo="Nenhuma consulta ainda">
+          <p>
+            Os sintomas aparecem aqui quando houver diagnósticos salvos
+            {recorte === "horta" ? " nos canteiros desta horta" : ""}.
+          </p>
+        </EstadoVazio>
+      )}
+
+      {dado && dado.culturas.length > 0 && (
+        <>
+          <p className="text-texto-suave text-sm" role="status">
+            {dado.consultas} {dado.consultas === 1 ? "consulta" : "consultas"}
+            {recorte === "sistema" ? " em todo o sistema" : ""}. O percentual só
+            aparece para culturas com {dado.amostra_minima} consultas ou mais.
+          </p>
+          <ul className="flex flex-col gap-4">
+            {dado.culturas.map((c) => (
+              <li key={c.cultura_id}>
+                <SintomasDaCultura cultura={c} />
+              </li>
+            ))}
+          </ul>
+        </>
+      )}
+    </section>
+  );
+}
+
+function SintomasDaCultura({ cultura }: { cultura: api.SintomasDaCultura }) {
+  const [todos, setTodos] = useState(false);
+  const visiveis = todos ? cultura.sintomas : cultura.sintomas.slice(0, relatorios.SINTOMAS_VISIVEIS);
+  const maior = Math.max(1, ...cultura.sintomas.map((s) => s.marcacoes));
+  const escondidos = cultura.sintomas.length - visiveis.length;
+
+  return (
+    <div className="border-borda rounded-lg border-2 p-4">
+      <h3 className="font-bold">{cultura.cultura_nome}</h3>
+      <p className="text-texto-suave text-sm">{relatorios.resumoDaCultura(cultura)}</p>
+
+      {cultura.sintomas.length === 0 ? (
+        <p className="text-texto-suave mt-3 text-sm">Nenhum sintoma marcado.</p>
+      ) : (
+        <ol className="mt-3 flex flex-col gap-3">
+          {visiveis.map((s, posicao) => {
+            const texto = relatorios.descreverMarcacao(s, cultura.consultas);
+            const alerta = relatorios.poucasFichas(s, posicao);
+            return (
+              <li key={s.sintoma_id}>
+                <div className="flex items-baseline justify-between gap-2 text-sm">
+                  <span className="font-semibold">{s.sintoma_nome}</span>
+                  <span className="font-bold tabular-nums">{texto.pct ?? s.marcacoes}</span>
+                </div>
+                {/* A barra repete o número, que já está escrito ao lado. */}
+                <div aria-hidden="true" className="bg-superficie mt-1 h-2 rounded">
+                  <div
+                    className="bg-primaria h-2 rounded"
+                    style={{ width: `${(s.marcacoes / maior) * 100}%` }}
+                  />
+                </div>
+                <p className="text-texto-suave mt-1 text-sm">{texto.contagem}</p>
+                {alerta && <p className="mt-1 text-sm font-semibold">⚠ {alerta}</p>}
+              </li>
+            );
+          })}
+        </ol>
+      )}
+
+      {(escondidos > 0 || todos) && cultura.sintomas.length > relatorios.SINTOMAS_VISIVEIS && (
+        <button
+          type="button"
+          onClick={() => setTodos((v) => !v)}
+          aria-expanded={todos}
+          className="text-primaria h-toque mt-2 px-1 text-sm font-bold underline"
+        >
+          {todos ? "Mostrar só os principais" : `Ver todos (${cultura.sintomas.length})`}
+        </button>
+      )}
+    </div>
   );
 }
 
