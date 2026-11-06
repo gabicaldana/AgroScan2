@@ -200,6 +200,71 @@ class TestRelatoriosNoBanco(unittest.TestCase):
         self.assertEqual([(c["cultura_id"], c["ativo"]) for c in ciclos],
                          [("couve", True), ("tomate", False)])
 
+    # ------------------------------------------------------------------ US29
+
+    @staticmethod
+    def _sintomas_esperados(so_da_horta: bool):
+        """A contagem feita em Python sobre a lista de consultas do exemplo,
+        e não pelo SQL sob teste."""
+        from collections import Counter
+
+        from app import exemplo
+        from app.catalogo import catalogo
+
+        consultas = [c for c in exemplo.montar()
+                     if c["canteiro"] is not None or not so_da_horta]
+        por_cultura = Counter(c["cultura_id"] for c in consultas)
+        marcacoes = Counter((c["cultura_id"], s)
+                            for c in consultas for s in c["sintomas"])
+
+        cat = catalogo()
+        doencas = Counter(d["cultura_id"] for d in cat.doenca_por_id.values())
+        usam = Counter((cat.doenca_por_id[d]["cultura_id"], s)
+                       for d, perfil in cat.perfil_por_doenca.items()
+                       for s in perfil)
+        return por_cultura, marcacoes, doencas, usam
+
+    def _conferir_sintomas(self, dados, so_da_horta):
+        por_cultura, marcacoes, doencas, usam = self._sintomas_esperados(so_da_horta)
+        self.assertEqual(
+            {c["cultura_id"]: c["consultas"] for c in dados["culturas"]},
+            dict(por_cultura))
+        self.assertEqual(
+            {c["cultura_id"]: c["doencas_cadastradas"] for c in dados["culturas"]},
+            {k: doencas[k] for k in por_cultura})
+        self.assertEqual(
+            {(l["cultura_id"], l["sintoma_id"]): l["marcacoes"]
+             for l in dados["linhas"]},
+            dict(marcacoes))
+        self.assertEqual(
+            {(l["cultura_id"], l["sintoma_id"]): l["doencas_com_o_sintoma"]
+             for l in dados["linhas"]},
+            {k: usam[k] for k in marcacoes})
+
+    def test_sintomas_da_horta_conferem_com_a_contagem(self):
+        """Só as 25 consultas em canteiro: batata, sem canteiro, fica fora."""
+        from app.api.repositorios import relatorios
+
+        dados = relatorios.sintomas(self.horta)
+        self._conferir_sintomas(dados, so_da_horta=True)
+        self.assertEqual(sum(c["consultas"] for c in dados["culturas"]), 25)
+        self.assertNotIn("batata", {c["cultura_id"] for c in dados["culturas"]})
+
+    def test_sintomas_do_sistema_incluem_o_caderno(self):
+        from app.api.repositorios import relatorios
+
+        dados = relatorios.sintomas(None)
+        self._conferir_sintomas(dados, so_da_horta=False)
+        self.assertEqual(sum(c["consultas"] for c in dados["culturas"]), 27)
+
+    def test_sintomas_em_ordem_de_marcacoes_dentro_da_cultura(self):
+        from app.api.repositorios import relatorios
+
+        linhas = relatorios.sintomas(self.horta)["linhas"]
+        # Sem o desempate por nome: a collation do banco não é a do Python.
+        chaves = [(l["cultura_id"], -l["marcacoes"]) for l in linhas]
+        self.assertEqual(chaves, sorted(chaves))
+
     # ------------------------------------------------------------------ US20
 
     def test_listagem_traz_a_resposta_do_feedback(self):

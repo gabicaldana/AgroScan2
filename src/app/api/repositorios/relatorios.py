@@ -106,6 +106,62 @@ def confirmacao(horta_id: int, amostra_minima: int) -> dict:
     return {**totais, "linhas": linhas}
 
 
+def sintomas(horta_id: int | None) -> dict:
+    """Sintomas mais marcados por cultura (US29, secao 6.3).
+
+    Com `horta_id`, so as consultas feitas nos canteiros daquela horta; com
+    `None`, as de todo o sistema - o relatorio da curadoria. A rota decide
+    quem ve cada recorte.
+
+    Devolve duas listas, que a rota junta por cultura:
+
+    - `culturas`: quantas consultas cada cultura teve e quantas doencas a base
+      tem para ela. E a base da leitura "sintoma muito marcado numa cultura
+      com poucas doencas cadastradas indica onde a base precisa crescer".
+    - `linhas`: marcacoes por (cultura, sintoma), com quantas doencas DAQUELA
+      cultura usam o sintoma no perfil. Sintoma muito marcado que poucas
+      fichas usam e onde o diagnostico tem menos com que separar.
+    """
+    if horta_id is None:
+        origem = "SELECT c.id, c.cultura_id FROM consulta c"
+    else:
+        origem = """SELECT c.id, c.cultura_id
+                      FROM consulta c
+                      JOIN canteiro ca ON ca.id = c.canteiro_id
+                     WHERE ca.horta_id = %(horta)s"""
+    parametros = {"horta": horta_id}
+
+    culturas = banco.consultar(
+        f"""WITH base AS ({origem})
+            SELECT b.cultura_id, cu.nome AS cultura_nome,
+                   count(*) AS consultas,
+                   (SELECT count(*) FROM doenca d
+                     WHERE d.cultura_id = b.cultura_id) AS doencas_cadastradas
+              FROM base b
+              JOIN cultura cu ON cu.id = b.cultura_id
+             GROUP BY b.cultura_id, cu.nome
+             ORDER BY consultas DESC, cu.nome""",
+        parametros,
+    )
+    linhas = banco.consultar(
+        f"""WITH base AS ({origem})
+            SELECT b.cultura_id, s.id AS sintoma_id, s.nome AS sintoma_nome,
+                   s.orgao_id,
+                   count(*) AS marcacoes,
+                   (SELECT count(*) FROM doenca_sintoma ds
+                      JOIN doenca d ON d.id = ds.doenca_id
+                     WHERE ds.sintoma_id = s.id
+                       AND d.cultura_id = b.cultura_id) AS doencas_com_o_sintoma
+              FROM base b
+              JOIN consulta_sintoma cs ON cs.consulta_id = b.id
+              JOIN sintoma s           ON s.id = cs.sintoma_id
+             GROUP BY b.cultura_id, s.id, s.nome, s.orgao_id
+             ORDER BY b.cultura_id, marcacoes DESC, s.nome""",
+        parametros,
+    )
+    return {"culturas": culturas, "linhas": linhas}
+
+
 # Os ciclos anteriores de um lugar: canteiros da mesma horta com a mesma
 # identificacao, do mais recente para o mais antigo. O id e a ordem da
 # sucessao (migracao 004).
