@@ -200,6 +200,73 @@ class TestRelatoriosNoBanco(unittest.TestCase):
         self.assertEqual([(c["cultura_id"], c["ativo"]) for c in ciclos],
                          [("couve", True), ("tomate", False)])
 
+    # ------------------------------------------------------------------ US20
+
+    def test_listagem_traz_a_resposta_do_feedback(self):
+        """O caderno mostra o que foi respondido, igual à tabela feedback."""
+        from app.api import banco
+        from app.api.repositorios import consultas
+
+        uid = banco.consultar_um("SELECT id FROM usuario")["id"]
+        tabela = {
+            f["consulta_id"]: (f["confirmado"], f["doenca_confirmada_id"],
+                               f["comentario"])
+            for f in banco.consultar(
+                "SELECT consulta_id, confirmado, doenca_confirmada_id, "
+                "comentario FROM feedback")
+        }
+        linhas = consultas.listar(uid, limite=200)
+        self.assertEqual(len(linhas), 27)
+
+        com_feedback = {
+            l["id"]: (l["confirmado"], l["doenca_confirmada_id"],
+                      l["feedback_comentario"])
+            for l in linhas if l["tem_feedback"]
+        }
+        self.assertEqual(com_feedback, tabela)
+        self.assertEqual(len(com_feedback), 21)
+        for l in linhas:
+            if not l["tem_feedback"]:
+                self.assertIsNone(l["confirmado"])
+                self.assertIsNone(l["doenca_confirmada_nome"])
+
+    def test_responder_de_novo_substitui_a_resposta(self):
+        """Um feedback por consulta: a segunda resposta troca a primeira."""
+        from app.api import banco
+        from app.api.repositorios import consultas
+
+        con = banco.conexao()
+        with con.transaction(force_rollback=True):
+            uid = banco.consultar_um("SELECT id FROM usuario")["id"]
+            consulta = banco.consultar_um(
+                """SELECT c.id, ch.doenca_id FROM consulta c
+                     JOIN consulta_hipotese ch
+                       ON ch.consulta_id = c.id AND ch.posicao = 1
+                    WHERE c.cultura_id = 'tomate'
+                      AND ch.doenca_id <> 'tomate_requeima'
+                    ORDER BY c.id LIMIT 1""")
+
+            consultas.registrar_feedback(consulta["id"], uid, True, None, None)
+            consultas.registrar_feedback(
+                consulta["id"], uid, False, "tomate_requeima", "era requeima")
+
+            self.assertEqual(banco.consultar_um(
+                "SELECT count(*) AS n FROM feedback WHERE consulta_id = %s",
+                (consulta["id"],))["n"], 1)
+
+            linha = next(l for l in consultas.listar(uid, limite=200)
+                         if l["id"] == consulta["id"])
+            self.assertIs(linha["confirmado"], False)
+            self.assertEqual(linha["doenca_confirmada_id"], "tomate_requeima")
+            nome = banco.consultar_um(
+                "SELECT nome FROM doenca WHERE id = 'tomate_requeima'")["nome"]
+            self.assertEqual(linha["doenca_confirmada_nome"], nome)
+            self.assertEqual(linha["feedback_comentario"], "era requeima")
+
+            detalhe = consultas.detalhar(uid, consulta["id"])
+            self.assertIs(detalhe["feedback"]["confirmado"], False)
+            self.assertEqual(detalhe["feedback"]["doenca_confirmada_nome"], nome)
+
     # ------------------------------------------------------- migracao 004
 
     def test_nome_so_fica_livre_depois_que_o_ciclo_encerra(self):

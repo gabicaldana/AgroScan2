@@ -38,6 +38,21 @@ USUARIO = {"id": 1, "nome": "Produtora", "email": "p@exemplo.br",
            "papel": "produtor", "ativo": True}
 
 
+def consulta_do_tomate(**extra) -> dict:
+    """O que `repo.detalhar` devolve: tomate com pinta-preta na frente."""
+    consulta = {
+        "id": 1, "cultura_id": "tomate", "cultura_nome": "Tomate",
+        "hipoteses": [
+            {"doenca_id": "tomate_pinta_preta", "nome": "Pinta-preta",
+             "posicao": 1, "compatibilidade": 0.48},
+            {"doenca_id": "tomate_requeima", "nome": "Requeima",
+             "posicao": 2, "compatibilidade": 0.31},
+        ],
+    }
+    consulta.update(extra)
+    return consulta
+
+
 def consulta_valida(**extra) -> dict:
     pedido = {
         "offline_id": str(uuid4()),
@@ -186,20 +201,23 @@ class TestCadernoAutenticado(unittest.TestCase):
         self.assertEqual(r.status_code, 200)
         self.assertEqual(r.json()["aceitas"], [])
 
-    # --- feedback ---
+    # --- feedback (US20) ---
 
     def test_confirmado_com_outra_doenca_e_incoerente(self):
+        """TI21."""
         with patch("app.api.rotas.consultas.repo") as repo:
-            repo.pertence_ao_usuario.return_value = True
+            repo.detalhar.return_value = consulta_do_tomate()
             r = CLIENTE.post(
                 f"{PREFIXO}/consultas/1/feedback",
                 json={"confirmado": True,
                       "doenca_confirmada_id": "tomate_requeima"})
         self.assertEqual(r.status_code, 422)
+        repo.registrar_feedback.assert_not_called()
 
     def test_nao_confirmado_com_a_doenca_real_e_aceito(self):
+        """TI22."""
         with patch("app.api.rotas.consultas.repo") as repo:
-            repo.pertence_ao_usuario.return_value = True
+            repo.detalhar.return_value = consulta_do_tomate()
             repo.registrar_feedback.return_value = {"consulta_id": 1}
             r = CLIENTE.post(
                 f"{PREFIXO}/consultas/1/feedback",
@@ -207,14 +225,95 @@ class TestCadernoAutenticado(unittest.TestCase):
                       "doenca_confirmada_id": "tomate_requeima",
                       "comentario": "era requeima mesmo"})
         self.assertEqual(r.status_code, 201)
+        repo.registrar_feedback.assert_called_once_with(
+            1, USUARIO["id"], False, "tomate_requeima", "era requeima mesmo")
+
+    def test_confirmado_sem_outra_doenca_e_aceito(self):
+        with patch("app.api.rotas.consultas.repo") as repo:
+            repo.detalhar.return_value = consulta_do_tomate()
+            repo.registrar_feedback.return_value = {"consulta_id": 1}
+            r = CLIENTE.post(f"{PREFIXO}/consultas/1/feedback",
+                             json={"confirmado": True})
+        self.assertEqual(r.status_code, 201)
+
+    def test_nao_confirmado_sem_saber_a_doenca_e_aceito(self):
+        with patch("app.api.rotas.consultas.repo") as repo:
+            repo.detalhar.return_value = consulta_do_tomate()
+            repo.registrar_feedback.return_value = {"consulta_id": 1}
+            r = CLIENTE.post(f"{PREFIXO}/consultas/1/feedback",
+                             json={"confirmado": False})
+        self.assertEqual(r.status_code, 201)
+
+    def test_doenca_real_de_outra_cultura_e_recusada(self):
+        """Uma ficha da batata não pode ser a doença real de um tomate."""
+        with patch("app.api.rotas.consultas.repo") as repo:
+            repo.detalhar.return_value = consulta_do_tomate()
+            r = CLIENTE.post(
+                f"{PREFIXO}/consultas/1/feedback",
+                json={"confirmado": False,
+                      "doenca_confirmada_id": "batata_requeima"})
+        self.assertEqual(r.status_code, 422)
+        self.assertIn("cultura", r.json()["detail"])
+        repo.registrar_feedback.assert_not_called()
+
+    def test_doenca_real_igual_a_hipotese_principal_e_incoerente(self):
+        with patch("app.api.rotas.consultas.repo") as repo:
+            repo.detalhar.return_value = consulta_do_tomate()
+            r = CLIENTE.post(
+                f"{PREFIXO}/consultas/1/feedback",
+                json={"confirmado": False,
+                      "doenca_confirmada_id": "tomate_pinta_preta"})
+        self.assertEqual(r.status_code, 422)
+        repo.registrar_feedback.assert_not_called()
+
+    def test_doenca_real_desconhecida_e_recusada(self):
+        with patch("app.api.rotas.consultas.repo") as repo:
+            repo.detalhar.return_value = consulta_do_tomate()
+            r = CLIENTE.post(
+                f"{PREFIXO}/consultas/1/feedback",
+                json={"confirmado": False, "doenca_confirmada_id": "nao_existe"})
+        self.assertEqual(r.status_code, 422)
+
+    def test_confirmar_consulta_sem_hipotese_e_recusado(self):
+        """Sem hipótese principal, um "confirmado" viraria acerto inventado."""
+        with patch("app.api.rotas.consultas.repo") as repo:
+            repo.detalhar.return_value = consulta_do_tomate(hipoteses=[])
+            r = CLIENTE.post(f"{PREFIXO}/consultas/1/feedback",
+                             json={"confirmado": True})
+        self.assertEqual(r.status_code, 422)
+        repo.registrar_feedback.assert_not_called()
 
     def test_feedback_em_consulta_de_outra_pessoa_da_404(self):
         """404 e não 403: um 403 confirmaria que aquele id existe."""
         with patch("app.api.rotas.consultas.repo") as repo:
-            repo.pertence_ao_usuario.return_value = False
+            repo.detalhar.return_value = None
             r = CLIENTE.post(f"{PREFIXO}/consultas/999/feedback",
                              json={"confirmado": True})
         self.assertEqual(r.status_code, 404)
+        repo.registrar_feedback.assert_not_called()
+
+    def test_listagem_traz_a_resposta_do_feedback(self):
+        linha = {
+            "id": 1, "offline_id": str(uuid4()), "cultura_id": "tomate",
+            "cultura_nome": "Tomate", "emoji": None, "canteiro_id": None,
+            "canteiro_nome": None, "origem": "sintomas",
+            "registrada_em": datetime.now(timezone.utc),
+            "versao_catalogo": "2026.10.24",
+            "doenca_id": "tomate_pinta_preta", "doenca_nome": "Pinta-preta",
+            "compatibilidade": 0.48, "tem_feedback": True,
+            "confirmado": False, "doenca_confirmada_id": "tomate_requeima",
+            "doenca_confirmada_nome": "Requeima",
+            "feedback_comentario": "o técnico confirmou",
+        }
+        with patch("app.api.rotas.consultas.repo") as repo:
+            repo.listar.return_value = [linha]
+            r = CLIENTE.get(f"{PREFIXO}/consultas")
+        self.assertEqual(r.status_code, 200)
+        corpo = r.json()[0]
+        self.assertIs(corpo["confirmado"], False)
+        self.assertEqual(corpo["doenca_confirmada_id"], "tomate_requeima")
+        self.assertEqual(corpo["doenca_confirmada_nome"], "Requeima")
+        self.assertEqual(corpo["feedback_comentario"], "o técnico confirmou")
 
     def test_consulta_de_outra_pessoa_nao_e_visivel(self):
         with patch("app.api.rotas.consultas.repo") as repo:

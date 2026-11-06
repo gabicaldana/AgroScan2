@@ -160,13 +160,9 @@ def registrar_feedback(
     É o que transforma o histórico em medida de acurácia percebida - sem isso
     o sistema nunca sabe se acertou.
     """
-    if not repo.pertence_ao_usuario(consulta_id, usuario["id"]):
+    consulta = repo.detalhar(usuario["id"], consulta_id)
+    if consulta is None:
         raise HTTPException(404, "consulta não encontrada")
-
-    if pedido.doenca_confirmada_id:
-        if pedido.doenca_confirmada_id not in catalogo().doenca_por_id:
-            raise HTTPException(
-                422, f"doença desconhecida: {pedido.doenca_confirmada_id}")
 
     # O banco tem CHECK equivalente; a checagem aqui existe para a mensagem
     # ser legível em vez de uma violação de constraint.
@@ -175,6 +171,36 @@ def registrar_feedback(
             422,
             "quando o diagnóstico é confirmado não se informa outra doença - "
             "a doença confirmada é a própria hipótese principal")
+
+    principal = next(
+        (h["doenca_id"] for h in consulta.get("hipoteses") or []
+         if h.get("posicao") == 1),
+        None,
+    )
+    # Sem hipótese principal não há o que confirmar, e o relatório de
+    # confirmação (US28) contaria um acerto que ninguém afirmou.
+    if pedido.confirmado and principal is None:
+        raise HTTPException(
+            422, "a consulta não tem hipótese principal para confirmar")
+
+    if pedido.doenca_confirmada_id:
+        doenca = catalogo().doenca_por_id.get(pedido.doenca_confirmada_id)
+        if doenca is None:
+            raise HTTPException(
+                422, f"doença desconhecida: {pedido.doenca_confirmada_id}")
+        # A doença real é da planta examinada: uma ficha de outra cultura
+        # entraria na taxa de confirmação como erro do diagnóstico.
+        if doenca["cultura_id"] != consulta["cultura_id"]:
+            raise HTTPException(
+                422,
+                f"a doença {pedido.doenca_confirmada_id} não é da cultura "
+                f"da consulta ({consulta['cultura_id']})")
+        # "Não se confirmou, era a própria hipótese" é contradição.
+        if pedido.doenca_confirmada_id == principal:
+            raise HTTPException(
+                422,
+                "a doença informada é a própria hipótese principal - nesse "
+                "caso o diagnóstico se confirmou")
 
     return repo.registrar_feedback(
         consulta_id, usuario["id"], pedido.confirmado,

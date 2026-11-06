@@ -256,6 +256,12 @@ class ConsultaResumida(BaseModel):
     doenca_nome: str | None = None
     compatibilidade: float | None = None
     tem_feedback: bool = False
+    # A resposta do feedback (US20), para o caderno mostrar o que foi dito sem
+    # uma chamada por consulta. Nulos enquanto não houver feedback.
+    confirmado: bool | None = None
+    doenca_confirmada_id: str | None = None
+    doenca_confirmada_nome: str | None = None
+    feedback_comentario: str | None = None
 
 
 class PedidoDeFeedback(BaseModel):
