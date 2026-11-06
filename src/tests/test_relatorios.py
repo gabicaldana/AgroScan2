@@ -35,6 +35,7 @@ ROTAS = [
     "/hortas/3/relatorios/incidencia",
     "/hortas/3/relatorios/confirmacao",
     "/hortas/3/relatorios/rotacao",
+    "/hortas/3/relatorios/sintomas",
     "/hortas/3/canteiros/rotacao?identificacao=Canteiro%201&cultura_id=tomate",
 ]
 
@@ -130,6 +131,96 @@ class TestConfirmacao(_Autenticado):
             r = CLIENTE.get(f"{PREFIXO}/hortas/3/relatorios/confirmacao")
         repo.confirmacao.assert_called_once_with(3, relatorios.AMOSTRA_MINIMA)
         self.assertEqual(r.json()["amostra_minima"], relatorios.AMOSTRA_MINIMA)
+
+
+def dados_de_sintomas(consultas_do_tomate: int) -> dict:
+    """O que `repo.sintomas` devolve: tomate e couve, com marcações."""
+    return {
+        "culturas": [
+            {"cultura_id": "tomate", "cultura_nome": "Tomate",
+             "consultas": consultas_do_tomate, "doencas_cadastradas": 10},
+            {"cultura_id": "couve", "cultura_nome": "Couve",
+             "consultas": 2, "doencas_cadastradas": 3},
+        ],
+        "linhas": [
+            {"cultura_id": "couve", "sintoma_id": "manchas_concentricas",
+             "sintoma_nome": "Manchas concêntricas", "orgao_id": "folha",
+             "marcacoes": 2, "doencas_com_o_sintoma": 1},
+            {"cultura_id": "tomate", "sintoma_id": "manchas_escuras_aneis",
+             "sintoma_nome": "Manchas escuras com anéis", "orgao_id": "folha",
+             "marcacoes": 3, "doencas_com_o_sintoma": 2},
+            {"cultura_id": "tomate", "sintoma_id": "mofo_branco",
+             "sintoma_nome": "Mofo branco", "orgao_id": "folha",
+             "marcacoes": 1, "doencas_com_o_sintoma": 1},
+        ],
+    }
+
+
+@unittest.skipUnless(TEM_API, "dependencias do back-end nao instaladas")
+class TestSintomas(_Autenticado):
+    """US29: o ranking por cultura, nos dois recortes."""
+
+    def _da_horta(self, consultas_do_tomate=6):
+        with patch(HORTAS) as hortas, patch(REPO) as repo:
+            hortas.papel_na_horta.return_value = "membro"
+            repo.sintomas.return_value = dados_de_sintomas(consultas_do_tomate)
+            r = CLIENTE.get(f"{PREFIXO}/hortas/3/relatorios/sintomas")
+        return r, repo
+
+    def test_recorte_da_horta_vai_para_a_consulta(self):
+        r, repo = self._da_horta()
+        self.assertEqual(r.status_code, 200)
+        repo.sintomas.assert_called_once_with(3)
+
+    def test_sintomas_agrupados_por_cultura_na_ordem_do_ranking(self):
+        corpo = self._da_horta()[0].json()
+        self.assertEqual([c["cultura_id"] for c in corpo["culturas"]],
+                         ["tomate", "couve"])
+        tomate = corpo["culturas"][0]
+        self.assertEqual([s["sintoma_id"] for s in tomate["sintomas"]],
+                         ["manchas_escuras_aneis", "mofo_branco"])
+        self.assertEqual(tomate["doencas_cadastradas"], 10)
+        self.assertEqual(tomate["sintomas"][0]["doencas_com_o_sintoma"], 2)
+        self.assertEqual(corpo["consultas"], 8)
+
+    def test_percentual_so_a_partir_da_amostra_minima(self):
+        corpo = self._da_horta(consultas_do_tomate=6)[0].json()
+        tomate, couve = corpo["culturas"]
+        self.assertEqual(tomate["sintomas"][0]["pct_das_consultas"], 50.0)
+        # Couve com 2 consultas: abaixo da amostra, só a contagem.
+        self.assertIsNone(couve["sintomas"][0]["pct_das_consultas"])
+        self.assertEqual(couve["sintomas"][0]["marcacoes"], 2)
+        self.assertEqual(corpo["amostra_minima"], relatorios.AMOSTRA_MINIMA)
+
+    def test_cultura_sem_marcacao_aparece_com_lista_vazia(self):
+        dados = dados_de_sintomas(6)
+        dados["linhas"] = [l for l in dados["linhas"] if l["cultura_id"] != "couve"]
+        with patch(HORTAS) as hortas, patch(REPO) as repo:
+            hortas.papel_na_horta.return_value = "membro"
+            repo.sintomas.return_value = dados
+            corpo = CLIENTE.get(f"{PREFIXO}/hortas/3/relatorios/sintomas").json()
+        self.assertEqual(corpo["culturas"][1]["sintomas"], [])
+
+    def test_recorte_do_sistema_e_so_da_curadoria(self):
+        """O produtor não vê o agregado de todas as hortas: 403."""
+        with patch(REPO) as repo:
+            r = CLIENTE.get(f"{PREFIXO}/relatorios/sintomas")
+        self.assertEqual(r.status_code, 403)
+        repo.sintomas.assert_not_called()
+
+    def test_agronomo_ve_o_recorte_do_sistema(self):
+        app.dependency_overrides[seguranca.usuario_atual] = (
+            lambda: {**EU, "papel": "agronomo"})
+        with patch(REPO) as repo:
+            repo.sintomas.return_value = dados_de_sintomas(6)
+            r = CLIENTE.get(f"{PREFIXO}/relatorios/sintomas")
+        self.assertEqual(r.status_code, 200)
+        repo.sintomas.assert_called_once_with(None)
+
+    def test_recorte_do_sistema_exige_autenticacao(self):
+        app.dependency_overrides.clear()
+        self.assertEqual(
+            CLIENTE.get(f"{PREFIXO}/relatorios/sintomas").status_code, 401)
 
 
 @unittest.skipUnless(TEM_API, "dependencias do back-end nao instaladas")

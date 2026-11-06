@@ -7,7 +7,13 @@
  * rede nem da data em que roda.
  */
 
-import type { LinhaDeConfirmacao, LinhaDeIncidencia, Repeticao } from "./api.ts";
+import type {
+  LinhaDeConfirmacao,
+  LinhaDeIncidencia,
+  Repeticao,
+  SintomaMarcado,
+  SintomasDaCultura,
+} from "./api.ts";
 
 export const PERIODOS_DO_RELATORIO = [
   { id: "3m", rotulo: "3 meses", meses: 3 },
@@ -93,4 +99,58 @@ export function descreverRepeticao(r: Repeticao & { ativo?: boolean }): string {
   if (r.ciclos_atras === 1) return `${r.cultura_nome} no ciclo anterior`;
   const extenso = ["", "um", "dois", "três"][r.ciclos_atras] ?? String(r.ciclos_atras);
   return `${r.cultura_nome} ${extenso} ciclos atrás`;
+}
+
+/** Quantos sintomas cada cultura mostra antes de "ver todos". */
+export const SINTOMAS_VISIVEIS = 5;
+
+/** Os papéis que veem o recorte de todo o sistema (US29). */
+export const PAPEIS_DA_CURADORIA = ["agronomo", "admin"] as const;
+
+export function veOSistema(papel: string | null | undefined): boolean {
+  return (PAPEIS_DA_CURADORIA as readonly string[]).includes(papel ?? "");
+}
+
+/**
+ * "marcado em 3 de 16 consultas", e o percentual só quando a cultura tem
+ * consultas suficientes - a API o manda nulo abaixo da amostra mínima.
+ */
+export function descreverMarcacao(
+  sintoma: SintomaMarcado,
+  consultasDaCultura: number,
+): { contagem: string; pct: string | null } {
+  const palavra = consultasDaCultura === 1 ? "consulta" : "consultas";
+  return {
+    contagem: `marcado em ${sintoma.marcacoes} de ${consultasDaCultura} ${palavra}`,
+    pct:
+      sintoma.pct_das_consultas === null
+        ? null
+        : `${sintoma.pct_das_consultas.toLocaleString("pt-BR", { minimumFractionDigits: 1 })}%`,
+  };
+}
+
+/**
+ * O sinal para a curadoria: sintoma que aparece muito e que no máximo uma
+ * ficha da cultura usa. Ali o diagnóstico tem pouco com que separar uma
+ * doença de outra, e é onde a base precisa crescer (`modelo-de-dados.md`
+ * §6.3). "Muito" é estar entre os mais marcados da cultura.
+ */
+export function poucasFichas(
+  sintoma: SintomaMarcado,
+  posicao: number,
+): string | null {
+  if (posicao >= SINTOMAS_VISIVEIS) return null;
+  if (sintoma.doencas_com_o_sintoma > 1) return null;
+  return sintoma.doencas_com_o_sintoma === 1
+    ? "só 1 doença cadastrada tem este sintoma"
+    : "nenhuma doença cadastrada tem este sintoma";
+}
+
+/** "16 consultas · 10 doenças cadastradas". */
+export function resumoDaCultura(c: SintomasDaCultura): string {
+  const consultas = `${c.consultas} ${c.consultas === 1 ? "consulta" : "consultas"}`;
+  const doencas = `${c.doencas_cadastradas} ${
+    c.doencas_cadastradas === 1 ? "doença cadastrada" : "doenças cadastradas"
+  }`;
+  return `${consultas} · ${doencas}`;
 }

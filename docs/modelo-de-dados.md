@@ -399,7 +399,7 @@ Duas regras deliberadamente **não** estão no banco, porque pertencem à aplica
 
 Cada relatório previsto no backlog corresponde a uma agregação que atravessa várias tabelas - o tipo de operação que não teria equivalente prático fora do SQL.
 
-As consultas 6.1, 6.2 e 6.4 estão implementadas em [`src/app/api/repositorios/relatorios.py`](../src/app/api/repositorios/relatorios.py) e conferidas contra contagem manual em [`src/tests/test_relatorios_banco.py`](../src/tests/test_relatorios_banco.py). O texto abaixo é a versão corrigida pela conferência da Sprint 4, registrada em [6.6](#66-conferência-contra-o-esquema-real-sprint-4). Os parâmetros aparecem como `$1`, `$2` para leitura; no código, são nomeados.
+As consultas 6.1 a 6.4 estão implementadas em [`src/app/api/repositorios/relatorios.py`](../src/app/api/repositorios/relatorios.py) e conferidas contra contagem manual em [`src/tests/test_relatorios_banco.py`](../src/tests/test_relatorios_banco.py). O texto abaixo é a versão corrigida pela conferência da Sprint 4, registrada em [6.6](#66-conferência-contra-o-esquema-real-sprint-4). Os parâmetros aparecem como `$1`, `$2` para leitura; no código, são nomeados.
 
 ### 6.1 Incidência de doenças por mês numa horta *(US27)*
 
@@ -460,6 +460,13 @@ SELECT cu.nome AS cultura, s.nome AS sintoma, count(*) AS marcacoes
 ```
 
 Alimenta a decisão de curadoria: sintoma muito marcado numa cultura com poucas doenças cadastradas indica onde a base precisa crescer. Ao contrário das outras, esta consulta é **de todo o sistema**, e não de uma horta: é um relatório da curadoria.
+
+**Como foi implementada (Sprint 5).** A mesma consulta serve a **dois recortes**. O de todo o sistema, acima, é o da curadoria, em `GET /relatorios/sintomas`, só para os papéis `agronomo` e `admin`: atravessa todas as hortas e cadernos, embora a resposta só traga contagens. O da horta, em `GET /hortas/{id}/relatorios/sintomas`, filtra pelas consultas feitas nos canteiros dela, como 6.1 e 6.2, e é o que os membros veem (ADR 0012) e o que entra nos painéis da US41. Em vez do `GROUP BY cu.nome`, a implementação agrupa pelo `id` da cultura e do sintoma, e acrescenta duas contagens que a leitura acima pede:
+
+- `doencas_cadastradas`: quantas doenças a base tem para a cultura;
+- `doencas_com_o_sintoma`: quantas doenças **daquela cultura** têm o sintoma no perfil (`doenca_sintoma`). Sintoma entre os mais marcados que no máximo uma ficha usa é onde o diagnóstico tem menos com que separar uma doença de outra, e a tela o sinaliza.
+
+O percentual (marcações sobre as consultas da cultura) só aparece a partir de 5 consultas, pela mesma regra da taxa de confirmação. A conferência está em `test_relatorios_banco.py`, contra a contagem feita sobre a lista de consultas da carga de exemplo.
 
 ### 6.4 Alerta de rotação de culturas *(US30)*
 

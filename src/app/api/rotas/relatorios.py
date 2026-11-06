@@ -126,3 +126,65 @@ def rotacao_do_canteiro_novo(
         "repeticoes": repeticoes,
         "ciclos_conhecidos": len(ciclos),
     }
+
+
+def _por_cultura(dados: dict) -> dict:
+    """Junta as marcações às culturas, na ordem de quem mais teve consultas.
+
+    O percentual é sobre as consultas da cultura - "marcado em 6 de cada 10
+    consultas de tomate" - e só aparece a partir de AMOSTRA_MINIMA consultas,
+    pelo mesmo motivo da taxa de confirmação: 1 de 1 não é 100%.
+    """
+    por_cultura: dict[str, list] = {}
+    for l in dados["linhas"]:
+        por_cultura.setdefault(l["cultura_id"], []).append(l)
+
+    culturas = []
+    for c in dados["culturas"]:
+        n = c["consultas"]
+        culturas.append({
+            **c,
+            "sintomas": [
+                {"sintoma_id": l["sintoma_id"],
+                 "sintoma_nome": l["sintoma_nome"],
+                 "orgao_id": l["orgao_id"],
+                 "marcacoes": l["marcacoes"],
+                 "doencas_com_o_sintoma": l["doencas_com_o_sintoma"],
+                 "pct_das_consultas": (round(100.0 * l["marcacoes"] / n, 1)
+                                       if n >= AMOSTRA_MINIMA else None)}
+                for l in por_cultura.get(c["cultura_id"], [])
+            ],
+        })
+    return {
+        "amostra_minima": AMOSTRA_MINIMA,
+        "consultas": sum(c["consultas"] for c in dados["culturas"]),
+        "culturas": culturas,
+    }
+
+
+@rotas.get("/hortas/{horta_id}/relatorios/sintomas")
+def sintomas_da_horta(
+    horta_id: int,
+    usuario: dict = Depends(seguranca.usuario_atual),
+) -> dict:
+    """Sintomas mais marcados por cultura nas consultas da horta (US29, RF29).
+
+    O recorte da horta: só as consultas feitas nos canteiros dela, para os
+    membros (ADR 0012).
+    """
+    _membro(horta_id, usuario)
+    return _por_cultura(repo.sintomas(horta_id))
+
+
+@rotas.get("/relatorios/sintomas")
+def sintomas_do_sistema(
+    usuario: dict = Depends(seguranca.exigir_papel("agronomo", "admin")),
+) -> dict:
+    """Sintomas mais marcados por cultura em todo o sistema (US29, RF29).
+
+    É o relatório da curadoria (`modelo-de-dados.md` §6.3): mostra onde a base
+    precisa crescer. Atravessa todas as hortas e cadernos, por isso só o
+    agrônomo e a administração o veem; a resposta só tem contagens, sem
+    consulta, pessoa ou horta.
+    """
+    return _por_cultura(repo.sintomas(None))

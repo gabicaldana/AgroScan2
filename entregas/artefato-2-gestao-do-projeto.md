@@ -380,7 +380,7 @@ Estimativa em pontos de história na escala de Fibonacci: 1 trivial, 2 pequena,
 | --- | --- | --- | --- | --- | --- |
 | US27 | Como gestor, quero ver quais doenças mais ocorreram na horta em um período | Agregação por doença e mês; filtro de período; considera apenas a hipótese principal | 5 | 4 | ✅ |
 | US28 | Como extensionista, quero saber a taxa de confirmação dos diagnósticos | Percentual de confirmação por doença, a partir dos feedbacks | 3 | 4 | ✅ |
-| US29 | Como curadora, quero saber quais sintomas são mais marcados em cada cultura, para orientar a próxima curadoria | Ranking de sintomas por cultura | 3 | 5 *(realocada da 4)* | ⬜ |
+| US29 | Como curadora, quero saber quais sintomas são mais marcados em cada cultura, para orientar a próxima curadoria | Ranking de sintomas por cultura | 3 | 5 *(realocada da 4)* | ✅ |
 | US30 | Como gestor, quero ser alertado se plantar a mesma família botânica no mesmo canteiro | Alerta quando o histórico do canteiro repete a família nos ciclos recentes | 5 | 4 | ✅ |
 | US41 | Como gestor, quero ver os indicadores da horta em painéis visuais, para entender a situação sem ler tabela | Painéis incorporados à interface, com os quatro indicadores agregados; legíveis em tela de celular; nenhuma informação transmitida só por cor | 5 | 5 | ⬜ |
 
