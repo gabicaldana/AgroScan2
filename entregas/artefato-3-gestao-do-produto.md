@@ -509,6 +509,10 @@ negócio em conjunto.
 | TI20 | Cultura inexistente responde 404, e não lista vazia | `test_cultura_desconhecida_da_404_e_nao_lista_vazia` | ✅ |
 | TI21 | Feedback marcado como confirmado apontando outra doença é incoerente | `test_confirmado_com_outra_doenca_e_incoerente` | ✅ |
 | TI22 | Feedback não confirmado **com** a doença real é aceito | `test_nao_confirmado_com_a_doenca_real_e_aceito` | ✅ |
+| TI33 | Doença real de outra cultura é recusada | `test_doenca_real_de_outra_cultura_e_recusada` | ✅ |
+| TI34 | Doença real igual à hipótese principal é incoerente | `test_doenca_real_igual_a_hipotese_principal_e_incoerente` | ✅ |
+| TI35 | Consulta sem hipótese principal não pode ser confirmada | `test_confirmar_consulta_sem_hipotese_e_recusado` | ✅ |
+| TI36 | Responder de novo substitui a resposta: um feedback por consulta, em banco real | `test_responder_de_novo_substitui_a_resposta` | ✅ |
 
 ### 3.3.5 Resiliência e observabilidade
 

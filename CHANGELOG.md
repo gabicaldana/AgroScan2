@@ -2,6 +2,16 @@
 
 Registre aqui as mudanças relevantes por sprint ou marco avaliativo.
 
+## Sprint 5 - Base completa, feedback e dashboards · 27/10 a 09/11/2026
+
+### Confirmação do diagnóstico no caderno (US20)
+
+- **Tela**: cada registro do caderno já sincronizado pergunta "O diagnóstico se confirmou?". A resposta é "Sim, era" ou "Não era", com a doença real escolhida entre as da mesma cultura (ou "Não sei qual era") e um comentário opcional. A resposta registrada aparece no lugar da pergunta, com texto e símbolo, sem depender de cor, e pode ser trocada.
+- **Um feedback por consulta**: responder de novo substitui a resposta anterior, inclusive o comentário, que volta preenchido no formulário.
+- **Precisa de rede**, porque o feedback se prende ao id que o servidor deu à consulta. O registro que ainda está só no aparelho avisa que a pergunta aparece depois que ele subir.
+- **API**: `GET /consultas` passa a trazer `confirmado`, `doenca_confirmada_id`, `doenca_confirmada_nome` e `feedback_comentario`, e `GET /consultas/{id}` traz o `feedback`. `POST /consultas/{id}/feedback` passa a recusar, com 422, a doença real de outra cultura, a doença real igual à hipótese principal e a confirmação de consulta sem hipótese. Cada um desses casos entraria na taxa de confirmação (US28) como dado falso.
+- **Testes**: TI33 a TI36 na API, um deles em banco real, e 20 casos novos em `web/lib/feedback.test.ts`.
+
 ## Sprint 4 - Relatórios agregados · 13/10 a 26/10/2026
 
 ### Encerramento da Sprint 4

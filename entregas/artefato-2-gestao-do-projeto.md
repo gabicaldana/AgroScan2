@@ -357,7 +357,7 @@ Estimativa em pontos de história na escala de Fibonacci: 1 trivial, 2 pequena,
 | US17 | Como produtor, quero registrar consultas mesmo sem sinal, para não perder o que observei no campo | Consulta gravada localmente e enfileirada; envio na abertura do aplicativo e no retorno da conexão, sem depender de sincronização em segundo plano; indicador de pendências visível | 8 | 1 | ✅ |
 | US18 | Como produtor, quero que uma consulta reenviada não apareça duplicada | Identificador próprio por consulta; reenvio da fila não cria registro novo; verificado por teste | 3 | 1 | ✅ |
 | US19 | Como produtor, quero ver meu histórico filtrado por período e cultura | Listagem paginada com filtros; funciona a partir do armazenamento local quando sem rede | 5 | 1 | ✅ |
-| US20 | Como produtor, quero informar se o diagnóstico se confirmou, para melhorar o sistema | Registro de confirmação e da doença real; um feedback por consulta | 3 | 5 | 🟡 API pronta, tela pendente |
+| US20 | Como produtor, quero informar se o diagnóstico se confirmou, para melhorar o sistema | Registro de confirmação e da doença real; um feedback por consulta | 3 | 5 | ✅ |
 | US21 | Como produtor, quero escrever anotações sobre um canteiro | Anotação livre associada a canteiro ou consulta; edição e exclusão | 3 | 5 | ⬜ |
 
 **Subtotal E4: 27 pts**

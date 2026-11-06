@@ -13,6 +13,7 @@
 
 import * as api from "./api.ts";
 import * as canteiros from "./canteiros.ts";
+import * as feedback from "./feedback.ts";
 import * as fila from "./fila.ts";
 import * as sessao from "./sessao.ts";
 import { catalogoAtivo } from "./catalogo.ts";
@@ -50,6 +51,8 @@ export type RegistroDoCaderno = {
   /** Só existe depois de sincronizada. */
   id?: number;
   temFeedback?: boolean;
+  /** O que foi respondido sobre o diagnóstico (US20), quando se sabe. */
+  feedback?: feedback.Feedback | null;
 };
 
 /**
@@ -203,9 +206,36 @@ export async function historico(
       compatibilidade: c.compatibilidade,
       pendente: false,
       temFeedback: c.tem_feedback,
+      feedback: feedback.daListagem(c),
     });
   }
   return { registros: ordenar(registros), servidorRespondeu };
+}
+
+/**
+ * Registra se o diagnóstico se confirmou (US20).
+ *
+ * Ao contrário de salvar uma consulta, precisa de rede: o feedback se prende
+ * ao id que o servidor deu à consulta. Sem resposta, a falha sobe para a tela
+ * dizer que é para tentar com sinal - nada se perde, a consulta continua lá.
+ */
+export async function responder(
+  consultaId: number,
+  pedido: feedback.PedidoDeFeedback,
+): Promise<feedback.Feedback> {
+  const salvo = await api.registrarFeedback(
+    consultaId,
+    pedido.confirmado,
+    pedido.doencaConfirmadaId,
+    pedido.comentario,
+  );
+  return {
+    confirmado: salvo.confirmado,
+    doencaConfirmadaId: salvo.doenca_confirmada_id,
+    // O POST não devolve o nome; a tela o completa pelo catálogo.
+    doencaConfirmadaNome: null,
+    comentario: salvo.comentario,
+  };
 }
 
 function ordenar(registros: RegistroDoCaderno[]): RegistroDoCaderno[] {
