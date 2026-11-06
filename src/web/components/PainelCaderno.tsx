@@ -3,6 +3,8 @@
 import { useCallback, useEffect, useMemo, useState } from "react";
 import { BotaoLink } from "@/components/Botao";
 import { EstadoVazio } from "@/components/EstadoVazio";
+import { FeedbackDaConsulta } from "@/components/FeedbackDaConsulta";
+import type { Feedback } from "@/lib/feedback.ts";
 import * as caderno from "@/lib/caderno.ts";
 import * as filtro from "@/lib/filtro-caderno.ts";
 import * as sessao from "@/lib/sessao.ts";
@@ -99,6 +101,19 @@ export function PainelCaderno() {
     } finally {
       setSincronizando(false);
     }
+  }
+
+  // A resposta entra na lista na hora; a próxima leitura do servidor (que
+  // também renova a cópia guardada) a traz de lá.
+  function aoResponder(offlineId: string, resposta: Feedback) {
+    setRegistros((atuais) =>
+      atuais.map((r) =>
+        r.offlineId === offlineId
+          ? { ...r, feedback: resposta, temFeedback: true }
+          : r,
+      ),
+    );
+    void recarregar();
   }
 
   const pendentes = registros.filter((r) => r.pendente).length;
@@ -224,7 +239,11 @@ export function PainelCaderno() {
           <ul className="flex flex-col gap-3">
             {filtrados.slice(0, visiveis).map((r) => (
               <li key={r.offlineId}>
-                <Registro registro={r} />
+                <Registro
+                  registro={r}
+                  temConta={temConta}
+                  aoResponder={aoResponder}
+                />
               </li>
             ))}
           </ul>
@@ -327,7 +346,15 @@ function Filtros({
   );
 }
 
-function Registro({ registro }: { registro: caderno.RegistroDoCaderno }) {
+function Registro({
+  registro,
+  temConta,
+  aoResponder,
+}: {
+  registro: caderno.RegistroDoCaderno;
+  temConta: boolean;
+  aoResponder: (offlineId: string, resposta: Feedback) => void;
+}) {
   const quando = new Date(registro.registradaEm);
   const data = quando.toLocaleDateString("pt-BR", {
     day: "2-digit",
@@ -374,13 +401,22 @@ function Registro({ registro }: { registro: caderno.RegistroDoCaderno }) {
     </>
   );
 
-  const classe = "border-borda block rounded-lg border-2 p-4";
-
-  return registro.doencaId ? (
-    <a href={`/resultado?doenca=${registro.doencaId}`} className={classe}>
-      {conteudo}
-    </a>
-  ) : (
-    <div className={classe}>{conteudo}</div>
+  // O link cobre só o resumo: os botões do feedback não podem ficar dentro
+  // de um <a>.
+  return (
+    <div className="border-borda rounded-lg border-2 p-4">
+      {registro.doencaId ? (
+        <a href={`/resultado?doenca=${registro.doencaId}`} className="block">
+          {conteudo}
+        </a>
+      ) : (
+        conteudo
+      )}
+      <FeedbackDaConsulta
+        registro={registro}
+        temConta={temConta}
+        aoResponder={aoResponder}
+      />
+    </div>
   );
 }

@@ -122,7 +122,10 @@ def listar(
                    cu.emoji, c.canteiro_id, ca.identificacao AS canteiro_nome,
                    c.origem, c.registrada_em, c.versao_catalogo,
                    p.doenca_id, p.nome AS doenca_nome, p.compatibilidade,
-                   (f.consulta_id IS NOT NULL) AS tem_feedback
+                   (f.consulta_id IS NOT NULL) AS tem_feedback,
+                   f.confirmado, f.doenca_confirmada_id,
+                   dc.nome AS doenca_confirmada_nome,
+                   f.comentario AS feedback_comentario
               FROM consulta c
               JOIN cultura cu ON cu.id = c.cultura_id
               LEFT JOIN canteiro ca ON ca.id = c.canteiro_id
@@ -134,6 +137,7 @@ def listar(
                      LIMIT 1
               ) p ON TRUE
               LEFT JOIN feedback f ON f.consulta_id = c.id
+              LEFT JOIN doenca dc ON dc.id = f.doenca_confirmada_id
              WHERE {' AND '.join(condicoes)}
              ORDER BY c.registrada_em DESC, c.id DESC
              LIMIT %s OFFSET %s""",
@@ -163,6 +167,15 @@ def detalhar(usuario_id: int, consulta_id: int) -> dict | None:
         """SELECT ch.doenca_id, d.nome, ch.posicao, ch.compatibilidade
              FROM consulta_hipotese ch JOIN doenca d ON d.id = ch.doenca_id
             WHERE ch.consulta_id = %s ORDER BY ch.posicao""",
+        (consulta_id,),
+    )
+    consulta["feedback"] = banco.consultar_um(
+        """SELECT f.confirmado, f.doenca_confirmada_id,
+                  d.nome AS doenca_confirmada_nome, f.comentario,
+                  f.registrado_em
+             FROM feedback f
+             LEFT JOIN doenca d ON d.id = f.doenca_confirmada_id
+            WHERE f.consulta_id = %s""",
         (consulta_id,),
     )
     return consulta

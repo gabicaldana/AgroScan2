@@ -212,6 +212,19 @@ export type ConsultaResumida = {
   doenca_nome: string | null;
   compatibilidade: number | null;
   tem_feedback: boolean;
+  /** A resposta do feedback (US20); nulos enquanto não houver. */
+  confirmado?: boolean | null;
+  doenca_confirmada_id?: string | null;
+  doenca_confirmada_nome?: string | null;
+  feedback_comentario?: string | null;
+};
+
+export type FeedbackRegistrado = {
+  consulta_id: number;
+  confirmado: boolean;
+  doenca_confirmada_id: string | null;
+  comentario: string | null;
+  registrado_em: string;
 };
 
 export type ResultadoDaSincronizacao = {
@@ -271,13 +284,14 @@ export async function listarConsultas(
   );
 }
 
+/** Um por consulta: reenviar substitui a resposta anterior. */
 export async function registrarFeedback(
   consultaId: number,
   confirmado: boolean,
   doencaConfirmadaId?: string | null,
   comentario?: string | null,
-) {
-  return chamar(`/consultas/${consultaId}/feedback`, {
+): Promise<FeedbackRegistrado> {
+  return chamar<FeedbackRegistrado>(`/consultas/${consultaId}/feedback`, {
     metodo: "POST",
     corpo: {
       confirmado,

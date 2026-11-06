@@ -124,7 +124,7 @@ Estado verificado em 12/09/2026 sobre o commit `068b6d9`.
 | RF17 | Armazenar localmente as consultas feitas sem conexão e enviá-las quando houver rede | Obrigatório | ✅ |
 | RF18 | Não duplicar consulta reenviada pela fila de sincronização | Obrigatório | ✅ |
 | RF19 | Listar o histórico com filtro por período, cultura e canteiro | Obrigatório | 🟡 período e cultura ✅; canteiro ⬜ |
-| RF20 | Registrar se o diagnóstico se confirmou e qual foi a doença real | Importante | 🟡 API pronta, tela ⬜ |
+| RF20 | Registrar se o diagnóstico se confirmou e qual foi a doença real | Importante | ✅ |
 | RF21 | Permitir anotações livres associadas a canteiro ou consulta | Desejável | ⬜ |
 | RF22 | Registrar a geolocalização da consulta, mediante consentimento explícito | Desejável | 🟡 aceita e valida coordenada; consentimento na interface ⬜ |
 
