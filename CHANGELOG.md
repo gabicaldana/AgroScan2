@@ -4,6 +4,15 @@ Registre aqui as mudanças relevantes por sprint ou marco avaliativo.
 
 ## Sprint 5 - Base completa, feedback e dashboards · 27/10 a 09/11/2026
 
+### Sair da conta (US42)
+
+- **Cabeçalho**: botão com o primeiro nome de quem está conectado, que leva à nova tela `/conta`; sem conta, "Entrar".
+- **Tela "Sua conta"**: nome e e-mail, e o botão "Sair da conta". A exclusão de conta (US15) entra nesta mesma tela.
+- **A fila vem antes da saída** ([ADR 0014](docs/decisoes/adr-0014-sair-da-conta-com-a-fila-sem-dono.md)): sair tenta enviar os diagnósticos que estão só no aparelho. Se algum não subir, por falta de rede ou por recusa do servidor, a tela diz quantos são e só sai com a escolha explícita de apagá-los. A opção padrão é "Ficar e enviar depois". Sem isso, eles subiriam para a próxima conta que entrasse no aparelho. A fila continua sem dono: o diagnóstico feito sem conta segue subindo para a conta em que a pessoa entrar (RF14).
+- **A sessão avisa quando muda**: o cabeçalho e as telas que dependem da conta se atualizam na hora em que alguém entra ou sai, também em outra aba.
+- **Backlog**: a US42 (2 pontos, E3) entrou na Sprint 5, e o núcleo passa de 172 para 174 pontos.
+- **Testes**: `web/lib/conta.test.ts`, com a saída com fila vazia, com rede, sem rede, com recusa do servidor e apagando a fila.
+
 ### Sintomas mais marcados por cultura (US29)
 
 - **Rotas**: `GET /hortas/{id}/relatorios/sintomas`, das consultas feitas nos canteiros da horta e só para os membros (ADR 0012); e `GET /relatorios/sintomas`, de todo o sistema, que é o relatório da curadoria, só para os papéis `agronomo` e `admin`.
