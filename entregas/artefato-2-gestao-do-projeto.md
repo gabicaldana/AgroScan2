@@ -346,8 +346,9 @@ Estimativa em pontos de história na escala de Fibonacci: 1 trivial, 2 pequena,
 | US13 | Como produtor, quero entrar na minha conta e permanecer conectado | Autenticação por token com expiração; sessão persistida no dispositivo | 3 | 1 | ✅ |
 | US14 | Como visitante, quero usar o diagnóstico sem criar conta, para experimentar antes de me cadastrar | Diagnóstico acessível sem autenticação; salvar histórico solicita cadastro | 2 | 1 | ✅ |
 | US15 | Como usuário, quero excluir minha conta e meus dados | Exclusão efetiva e confirmada; dados associados removidos; acessível pela interface | 3 | 6 | 🟡 API pronta, tela pendente |
+| US42 | Como produtor que divide o celular, quero sair da minha conta, para que a próxima pessoa não veja meu caderno nem registre consultas em meu nome | Saída acessível pela interface, mostrando quem está conectado; apaga a sessão e as cópias guardadas; com registros na fila, tenta enviar e, se não conseguir, só sai com a escolha explícita de apagá-los ([ADR 0014](../docs/decisoes/adr-0014-sair-da-conta-com-a-fila-sem-dono.md)) | 2 | 5 | ✅ |
 
-**Subtotal E3: 13 pts**
+**Subtotal E3: 15 pts**
 
 ### E4 - Caderno de campo
 
@@ -416,19 +417,22 @@ Estimativa em pontos de história na escala de Fibonacci: 1 trivial, 2 pequena,
 | --- | --- |
 | E1 - Base de conhecimento | 32 |
 | E2 - Diagnóstico por sintomas | 25 |
-| E3 - Identidade e conta | 13 |
+| E3 - Identidade e conta | 15 |
 | E4 - Caderno de campo | 27 |
 | E5 - Horta, canteiros e manejo | 19 |
 | E6 - Relatórios | 21 |
 | E7 - Plataforma e infraestrutura | 35 |
-| **Núcleo (E1-E7)** | **172** |
+| **Núcleo (E1-E7)** | **174** |
 | E8 - Identificação por imagem *(condicionado)* | 23 |
-| **Total com escopo condicionado** | **195** |
+| **Total com escopo condicionado** | **197** |
 
 > **Nota.** As histórias US40 e US41 receberam numeração posterior às demais por terem sido
 > incorporadas ao backlog após a definição inicial dos identificadores, que foram
 > preservados para não invalidar as referências já registradas. A US41 nasce do
-> Artefato 9 do 2o bimestre.
+> Artefato 9 do 2o bimestre. A US42, sair da conta, entrou na Sprint 5, quando se
+> notou que a interface não oferecia como encerrar a sessão
+> ([ADR 0014](../docs/decisoes/adr-0014-sair-da-conta-com-a-fila-sem-dono.md));
+> com ela, o núcleo passa de 172 para 174 pontos.
 
 ### Pontos concluídos até o encerramento da Sprint 1
 
@@ -722,7 +726,7 @@ O repositório tem **81 issues** distribuídas em **8 milestones**:
 | Sprint 2 - Base de conhecimento e publicação | 2 | US01, US03, US36 | 14 |
 | Sprint 3 - Horta, canteiros e manejo | 3 | US04, US22-US26 | 8 |
 | Sprint 4 - Relatórios agregados | 4 | US27-US30 | 6 |
-| Sprint 5 - Base completa, feedback e dashboards | 5 | US05, US20, US21, US38, US41 | 8 |
+| Sprint 5 - Base completa, feedback e dashboards | 5 | US05, US20, US21, US29, US38, US41, US42 | 8 |
 | Sprint 6 - Comunidade e validação | 6 | US15, US37, US40 | 10 |
 | Sprint 7 - Ativos e documentação técnica | 7 | US39 *(condicionado)* | 6 |
 | Sprint 8 - Fechamento do semestre | 8 | - | 5 |

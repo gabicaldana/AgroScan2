@@ -23,6 +23,7 @@ Use [`template-adr.md`](template-adr.md) como ponto de partida, nomeando o arqui
 | [0011](adr-0011-dois-repositorios-com-espelho-de-publicacao.md) | Dois repositórios: o institucional completo, o pessoal como espelho de publicação | Aprovado | RNF21, RNF23, C11, R06 |
 | [0012](adr-0012-acesso-por-horta.md) | Acesso por participação na horta, e exclusão de conta com anonimização | Aprovado | RF23-RF27, US22-US26, LGPD |
 | [0013](adr-0013-sucessao-de-canteiros-e-alerta-de-rotacao.md) | Sucessão de canteiros pelo nome, e o alerta de rotação nos dois últimos ciclos | Proposto | RF31, US30 |
+| [0014](adr-0014-sair-da-conta-com-a-fila-sem-dono.md) | Sair da conta com aviso sobre a fila, sem dono gravado nos registros | Aprovado | RF13, RF14, US42 |
 
 ## Decisões pendentes de registro
 
