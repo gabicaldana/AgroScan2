@@ -517,11 +517,13 @@ textual, para continuar legível por quem não distingue as cores.
 | Identificação por imagem - condicionada à auditoria do acervo | ⬜ falta o modelo |
 
 A identificação por foto é **escopo condicionado**: depende de um acervo de
-imagens de hortaliças brasileiras com volume suficiente por classe, ainda não
-verificado. O candidato é o [repositório
-Digipathos](https://www.digipathos-rep.cnptia.embrapa.br/) da Embrapa. O produto
-está completo e utilizável sem ela - o fluxo por sintomas é o produto, a câmera
-é enriquecimento.
+imagens de hortaliças brasileiras com volume suficiente por classe. A
+[auditoria do acervo Digipathos](auditoria-digipathos.md) da Embrapa (US38)
+mostrou que ele não serve: das 88 doenças da base, só uma tem imagens, com 4
+fotos de laboratório. O [ADR 0015](decisoes/adr-0015-identificacao-por-imagem.md)
+tira a identificação por foto do semestre e registra o que seria preciso para
+retomá-la. O produto está completo e utilizável sem ela - o fluxo por sintomas
+é o produto, a câmera é enriquecimento.
 
 ---
 
