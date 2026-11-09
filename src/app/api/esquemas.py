@@ -345,6 +345,13 @@ class AlteracaoDeCanteiro(BaseModel):
         None, description="false encerra o ciclo sem apagar o histórico.")
 
 
+class PedidoDeAnotacao(BaseModel):
+    """Texto livre do caderno de campo (US21). O banco recusa texto vazio
+    também; aqui a recusa chega antes, com 422 e mensagem."""
+    texto: Annotated[str, StringConstraints(
+        strip_whitespace=True, min_length=1, max_length=2000)]
+
+
 class PedidoDeManejo(BaseModel):
     tipo: Literal["cultural", "biologico", "quimico"]
     descricao: Annotated[str, StringConstraints(

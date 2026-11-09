@@ -4,6 +4,15 @@ Registre aqui as mudanças relevantes por sprint ou marco avaliativo.
 
 ## Sprint 5 - Base completa, feedback e dashboards · 27/10 a 09/11/2026
 
+### Anotações livres (US21)
+
+- **Rotas**: `GET` e `POST /canteiros/{id}/anotacoes`, `GET` e `POST /consultas/{id}/anotacoes`, `PATCH` e `DELETE /anotacoes/{id}`, sobre a tabela `anotacao`, que existia desde a migração 001. Não há migração nova.
+- **Quem vê e quem altera**: a anotação de canteiro é vista por todos os membros da horta, como o manejo; a de consulta, só por quem fez a consulta. Só quem escreveu edita ou apaga: outro membro recebe 403. Quem não enxerga o canteiro ou a consulta recebe 404 (ADR 0012), inclusive quem saiu da horta, mesmo para a própria anotação.
+- **Texto**: de 1 a 2000 caracteres, aparado; vazio ou só espaços é recusado com 422.
+- **Tela do canteiro**: seção "Anotações", aberta, com o campo de nova anotação e a lista com autora, data e a marca "editada em" quando alterada depois.
+- **Caderno**: cada registro já sincronizado ganha o botão "Anotações", fechado até a pessoa pedir. O registro que está só no aparelho não tem, porque a anotação se prende ao id que o servidor deu à consulta.
+- **Testes**: `test_anotacoes.py`, com 14 casos de acesso, autoria e texto, e `web/lib/anotacoes.test.ts`.
+
 ### Sair da conta (US42)
 
 - **Cabeçalho**: botão com o primeiro nome de quem está conectado, que leva à nova tela `/conta`; sem conta, "Entrar".
