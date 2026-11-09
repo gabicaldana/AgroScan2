@@ -2,6 +2,16 @@
 
 Registre aqui as mudanças relevantes por sprint ou marco avaliativo.
 
+## Sprint 6 - Comunidade e validação · 10/11 a 23/11/2026
+
+### Excluir a conta (US15)
+
+- **Tela "Sua conta"**: seção "Excluir a conta", no fim, fechada até a pessoa pedir. Aberta, diz o que é apagado e o que fica, e só exclui depois de a pessoa digitar EXCLUIR.
+- **O que a tela explica**: saem a conta, o caderno (diagnósticos, confirmações e anotações), a participação nas hortas e as hortas em que só a pessoa participa. Os manejos registrados em horta com outras pessoas ficam, como "Conta excluída", porque controlam carência e resíduo. Ser responsável por horta com outras pessoas impede a exclusão até passar a responsabilidade (comportamento da rota, que já existia).
+- **No aparelho** (`lib/conta.ts`): com o servidor aceitando, a fila offline é apagada sem ser enviada, porque enviar gravaria o que a pessoa pediu para apagar; depois a sessão e as cópias guardadas são encerradas. Se o servidor recusa (sem rede ou 409), nada é apagado e a pessoa continua conectada, com o motivo na tela.
+- **Depois da exclusão**, a tela confirma "Sua conta foi excluída" em vez de voltar para "Entre na sua conta".
+- **Testes**: 3 casos novos em `web/lib/conta.test.ts`.
+
 ## Sprint 5 - Base completa, feedback e dashboards · 27/10 a 09/11/2026
 
 ### Sair da conta (US42)
