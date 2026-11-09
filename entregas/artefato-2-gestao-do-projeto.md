@@ -517,22 +517,21 @@ Gestão dos Ativos.
 | 1º | **1** | Negócio/Domínio | Análise de usuário | **14/09/2026** |
 | 1º | **2** | Projeto | EAP, backlog do produto, planejamento das sprints, projeto no repositório institucional | **14/09/2026** |
 | 1º | **3** | Produto | Arquitetura da informação, design arquitetural, testes de integração, protótipo de baixo nível, storyboard | **14/09/2026** |
-| 1º | **5** | Ativos | Website com dados e documentação | a definir |
-| 2º | **6** | Negócio/Domínio | Análise do usuário | a definir |
-| 2º | **7** | Projeto | Execução e revisão das sprints; publicação na vitrine de ativos | a definir |
-| 2º | **8** | Produto | Arquitetura de software; testes de sistema | a definir |
-| 2º | **9** | Ativos | Dashboards incorporados | a definir |
+| 1º | **5** | Ativos | Website com dados e documentação | sem data própria |
+| 2º | **6** | Negócio/Domínio | Análise do usuário | sem data própria |
+| 2º | **7** | Projeto | Execução e revisão das sprints; publicação na vitrine de ativos | sem data própria |
+| 2º | **8** | Produto | Arquitetura de software; testes de sistema | sem data própria |
+| 2º | **9** | Ativos | Dashboards incorporados | sem data própria |
 
-> **Uma única data está fixada:** a dos Artefatos 1, 2 e 3, em **14/09/2026**.
-> Todas as demais estão a definir pela professora. O calendário de 3.2 é
-> proposta da equipe, derivada da cadência de duas semanas, e a alocação dos
-> Artefatos 5 a 9 será reajustada assim que os marcos forem divulgados.
+> **Só os Artefatos 1, 2 e 3 têm data e documento próprios**, entregues em
+> **14/09/2026**. Os Artefatos 5 a 9 não são documentos à parte: o conteúdo de
+> cada um é o próprio projeto - o sistema publicado, a documentação técnica, as
+> atas e as `milestones` -, construído ao longo das sprints. Por isso não têm
+> data de entrega própria, e o calendário de 3.2 indica a sprint em que cada
+> conteúdo fica pronto.
 
-> **Sobre a numeração.** O conjunto informado pela disciplina não contém um
-> Artefato 4. Como o 2º bimestre tem exatamente quatro artefatos (6 a 9), um por
-> eixo, a lacuna no 1º bimestre sugere que um Artefato 4 de Gestão dos Ativos
-> possa existir. A numeração foi preservada como recebida e a confirmação consta
-> das pendências, na seção 5.
+> **Sobre a numeração.** O Artefato 4 não existe. A numeração salta do 3 para o
+> 5 como foi definida pela disciplina.
 
 ### O que o 2º bimestre acrescenta
 
@@ -783,10 +782,24 @@ validação automática aprovada; revisão por outra integrante da equipe.
 
 | Integrante | Matrícula | Papel |
 | --- | --- | --- |
-| Gabriela Pedersoli Caldana | 22404253 | ⚠️ a definir - Product Owner ou Scrum Master |
-| Thaís Regina Dias da Mota | 22403754 | ⚠️ a definir - Product Owner ou Scrum Master |
+| Gabriela Pedersoli Caldana | 22404253 | Product Owner e Scrum Master, em conjunto |
+| Thaís Regina Dias da Mota | 22403754 | Product Owner e Scrum Master, em conjunto |
 
 Ambas as integrantes atuam em desenvolvimento e em curadoria agronômica.
+
+**Os papéis de Product Owner e Scrum Master são exercidos em conjunto pela
+dupla.** Numa equipe de duas pessoas, separar os papéis deixaria cada decisão
+de escopo ou de processo nas mãos de uma só integrante, sem ninguém para
+contrapor. As responsabilidades continuam as descritas no
+[planejamento da Sprint 0](../sprints/sprint-00-planejamento.md#papéis), e a
+forma de exercê-las em conjunto é esta:
+
+- **Product Owner:** a priorização do backlog e os cortes de escopo são
+  decididos pelas duas, na reunião de planejamento de cada sprint, e ficam
+  registrados na ata.
+- **Scrum Master:** a condução dos eventos e a manutenção das `milestones` e
+  das `issues` são feitas por quem abre ou fecha o item, e a outra integrante
+  revisa no *pull request*.
 
 ---
 
@@ -794,16 +807,14 @@ Ambas as integrantes atuam em desenvolvimento e em curadoria agronômica.
 
 | Item | Natureza | Responsável | Situação |
 | --- | --- | --- | --- |
-| Distribuição dos papéis Scrum entre as integrantes | Dado da equipe | Equipe | Aberta - [#72](https://github.com/CampusCEUB/AgroScan/issues/72) |
+| Distribuição dos papéis Scrum entre as integrantes | Dado da equipe | Equipe | **Resolvida** - papéis exercidos em conjunto (§4.6), [#72](https://github.com/CampusCEUB/AgroScan/issues/72) |
 | Identificação da comunidade parceira (R03) | Definição externa | Coordenação da disciplina | Aberta - [#73](https://github.com/CampusCEUB/AgroScan/issues/73) |
-| Data do Artefato 5 e da apresentação à comunidade | Definição externa | Professora | Aberta - [#74](https://github.com/CampusCEUB/AgroScan/issues/74) |
+| Datas dos Artefatos 5 a 9 e existência do Artefato 4 | Definição externa | Professora | **Resolvida** - os Artefatos 5 a 9 não têm data própria, e o Artefato 4 não existe (§3.1), [#74](https://github.com/CampusCEUB/AgroScan/issues/74). A data da apresentação à comunidade segue em [#73](https://github.com/CampusCEUB/AgroScan/issues/73) |
 | Criação do GitHub Project, milestones e issues | Execução | Equipe | **Resolvida** - 8 milestones, 81 issues |
 | Link do Project no `README.md` | Execução | Equipe | **Resolvida** |
 
-As três pendências que permanecem abertas dependem de definição externa ou de
-acordo entre as integrantes, e cada uma tem `issue` própria na `milestone` da
-Sprint 2, com a etiqueta `bloqueado` quando o desfecho não está sob controle da
-equipe.
+A única pendência que permanece aberta é a comunidade parceira, que depende de
+definição externa e tem a etiqueta `bloqueado` na sua `issue`.
 
 Uma inconsistência da matriz de rastreabilidade foi identificada durante a
 criação das `issues` e está registrada em
