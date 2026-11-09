@@ -1,5 +1,8 @@
 # AgroScan
 
+**Aplicação publicada: [agroscan-blond.vercel.app](https://agroscan-blond.vercel.app)**  
+Abre no navegador do celular e pode ser instalada na tela inicial. O diagnóstico funciona sem internet.
+
 Repositório institucional de Projeto Integrador criado a partir do template do CEUB.
 
 > **Professor(a):** Leia as AS DIRETRIZES INSTITUCIONAIS constantes no repositório [DIRETRIZES](https://github.com/CAMPUSCEUB/DIRETRIZES), em especial o [Guia dos Professores](https://github.com/CAMPUSCEUB/DIRETRIZES/guias/github-enterprise-campus-ceub.md) e o [checklist do GitHub Enterprise](https://github.com/CAMPUSCEUB/DIRETRIZES/guias/github-enterprise-campus-ceub.md).
