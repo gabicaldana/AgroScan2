@@ -4,6 +4,15 @@ Registre aqui as mudanças relevantes por sprint ou marco avaliativo.
 
 ## Sprint 5 - Base completa, feedback e dashboards · 27/10 a 09/11/2026
 
+### Painel da horta (US41)
+
+- **Tela de relatórios**: novo "Painel da horta" no topo, com quatro quadros, um por indicador: diagnósticos por mês nos últimos 6 meses, em colunas, com a doença mais frequente; confirmação no campo, com a fração confirmada; os 3 sintomas mais marcados, somando as culturas; e os canteiros que repetem a família botânica. Cada quadro leva à seção detalhada.
+- **Nada só por cor** (RNF08): todo número está escrito, as colunas e barras só o repetem, e a rotação diz o resultado com símbolo e texto (✓ ou ⚠). O gráfico de colunas é uma imagem com descrição dos valores para leitor de tela.
+- **Celular** (RNF10): uma coluna de quadros no celular, duas a partir de telas médias.
+- **A confirmação geral** só mostra a taxa a partir da mesma amostra mínima que a API usa por doença; abaixo disso, mostra a contagem.
+- **Uma busca por relatório**: o painel e as seções detalhadas usam a mesma resposta da API enquanto a tela está aberta. As chaves passam a dizer qual relatório é, porque confirmação e rotação usavam a mesma chave.
+- **Testes**: 7 casos novos em `web/lib/relatorios.test.ts`.
+
 ### Sair da conta (US42)
 
 - **Cabeçalho**: botão com o primeiro nome de quem está conectado, que leva à nova tela `/conta`; sem conta, "Entrar".

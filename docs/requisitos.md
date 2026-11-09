@@ -146,7 +146,7 @@ Estado verificado em 12/09/2026 sobre o commit `068b6d9`.
 | RF29 | Apresentar os sintomas mais frequentemente marcados por cultura | Desejável | ✅ |
 | RF30 | Apresentar a taxa de confirmação dos diagnósticos por doença | Desejável | ✅ |
 | RF31 | Alertar quando culturas da mesma família botânica se repetirem no mesmo canteiro | Desejável | ✅ |
-| RF37 | Apresentar os indicadores agregados em painéis visuais incorporados à interface | Importante | ⬜ escopo do Artefato 9, 2o bimestre |
+| RF37 | Apresentar os indicadores agregados em painéis visuais incorporados à interface | Importante | ✅ painel da horta, Artefato 9 |
 
 ### 5.6 Plataforma
 
@@ -258,7 +258,7 @@ título e vinculadas à `milestone` da sprint.
 | RF29 | US29 | 5 | `modelo-de-dados.md` §6.3; `test_relatorios_banco.py`, contra a contagem da carga de exemplo | [#32](https://github.com/CampusCEUB/AgroScan/issues/32) |
 | RF30 | US28 | 4 | `modelo-de-dados.md` §6.2 | [#31](https://github.com/CampusCEUB/AgroScan/issues/31) |
 | RF31 | US30 | 4 | `modelo-de-dados.md` §6.4 | [#33](https://github.com/CampusCEUB/AgroScan/issues/33) |
-| RF37 | US41 | 5 | ⬜ | [#34](https://github.com/CampusCEUB/AgroScan/issues/34) |
+| RF37 | US41 | 5 | `relatorios.test.ts` - série mensal, confirmação geral, sintomas em destaque, rotação | [#34](https://github.com/CampusCEUB/AgroScan/issues/34) |
 | RF32, RNF25 | US31 | 1 | Instalação verificada em Android | [#35](https://github.com/CampusCEUB/AgroScan/issues/35) |
 | RF33 | US32 | 1 | TI01, TI04, TI05, TI20, TI23-TI25 | [#36](https://github.com/CampusCEUB/AgroScan/issues/36) |
 | RF34 | US36 | 2 | TI25 - checksum da versão do catálogo | [#40](https://github.com/CampusCEUB/AgroScan/issues/40) |
