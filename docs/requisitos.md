@@ -112,7 +112,7 @@ Estado verificado em 12/09/2026 sobre o commit `068b6d9`.
 | ID | Requisito | Prioridade | Estado |
 | --- | --- | --- | --- |
 | RF12 | Cadastro de usuário com nome, e-mail e senha | Obrigatório | ✅ |
-| RF13 | Autenticar o usuário e manter a sessão | Obrigatório | ✅ |
+| RF13 | Autenticar o usuário e manter a sessão | Obrigatório | ✅ (saída pela interface na Sprint 5, US42) |
 | RF14 | Permitir o uso do diagnóstico sem cadastro, exigindo conta apenas para salvar histórico | Importante | ✅ |
 | RF15 | Permitir a exclusão da conta e dos dados associados | Obrigatório | 🟡 API pronta, tela ⬜ |
 
@@ -242,6 +242,7 @@ título e vinculadas à `milestone` da sprint.
 | RF08, RF09 | US10 | 1 | Inspeção C1; ordem garantida na base | [#13](https://github.com/CampusCEUB/AgroScan/issues/13) |
 | RF10, RF11 | US37 | 6 | Inspeção; `lib/recusa.test.ts` | [#42](https://github.com/CampusCEUB/AgroScan/issues/42) |
 | RF12, RF13 | US12, US13 | 1 | TI26-TI32 - segurança | [#15](https://github.com/CampusCEUB/AgroScan/issues/15), [#16](https://github.com/CampusCEUB/AgroScan/issues/16) |
+| RF13 | US42 | 5 | Sair da conta com aviso sobre a fila ([ADR 0014](decisoes/adr-0014-sair-da-conta-com-a-fila-sem-dono.md)) | [#97](https://github.com/CampusCEUB/AgroScan/issues/97) |
 | RF14 | US14 | 1 | TI13 - diagnóstico não exige autenticação | [#17](https://github.com/CampusCEUB/AgroScan/issues/17) |
 | RF15, RNF17 | US15 | 6 | `DELETE /autenticacao/eu`; tela pendente | [#18](https://github.com/CampusCEUB/AgroScan/issues/18) |
 | RF16 | US16 | 1 | TI07 | [#19](https://github.com/CampusCEUB/AgroScan/issues/19) |

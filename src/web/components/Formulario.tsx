@@ -164,10 +164,21 @@ export function descreverFalha(falha: unknown): string {
 
 // O token só existe no navegador. Ler pelo useSyncExternalStore, com falso no
 // servidor, evita que a casca prerenderizada e a do cliente divirjam.
-const semAssinatura = () => () => {};
 
 export function useAutenticado(): boolean {
-  return useSyncExternalStore(semAssinatura, sessao.autenticado, () => false);
+  // Assinada: sair da conta (US42) atualiza a tela na hora.
+  return useSyncExternalStore(sessao.assinar, sessao.autenticado, () => false);
+}
+
+/** Quem está conectado, ou `null`. Atualiza quando alguém entra ou sai. */
+export function useUsuario(): sessao.UsuarioDaSessao | null {
+  const bruto = useSyncExternalStore(sessao.assinar, sessao.retrato, () => null);
+  if (bruto === null) return null;
+  try {
+    return JSON.parse(bruto) as sessao.UsuarioDaSessao;
+  } catch {
+    return { id: 0, nome: "", email: "", papel: "produtor" };
+  }
 }
 
 /** O que as telas de horta mostram para quem ainda não tem conta. */

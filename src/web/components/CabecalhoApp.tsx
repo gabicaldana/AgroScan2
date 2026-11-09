@@ -1,3 +1,4 @@
+import { BotaoConta } from "./BotaoConta";
 import { IndicadorRede } from "./IndicadorRede";
 
 export function CabecalhoApp() {
@@ -7,7 +8,10 @@ export function CabecalhoApp() {
         <span className="text-lg font-bold tracking-tight">
           Agro<span className="text-primaria">Scan</span>
         </span>
-        <IndicadorRede />
+        <div className="flex items-center gap-3">
+          <IndicadorRede />
+          <BotaoConta />
+        </div>
       </div>
     </header>
   );

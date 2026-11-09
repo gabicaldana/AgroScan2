@@ -76,6 +76,7 @@ export function autenticado(): boolean {
 export function iniciar(novoToken: string, dono: UsuarioDaSessao): void {
   gravar(CHAVE_TOKEN, novoToken);
   gravar(CHAVE_USUARIO, JSON.stringify(dono));
+  avisar();
 }
 
 export function encerrar(): void {
@@ -83,6 +84,44 @@ export function encerrar(): void {
   apagar(CHAVE_USUARIO);
   apagar(CHAVE_HISTORICO);
   apagar(CHAVE_CANTEIROS);
+  avisar();
+}
+
+// -----------------------------------------------------------------------------
+// Quem está ouvindo
+// -----------------------------------------------------------------------------
+//
+// O cabeçalho mostra quem está conectado, e as telas de conta e de horta
+// mudam quando alguém entra ou sai (US42). Sem isto, a tela continuaria
+// mostrando a pessoa que acabou de sair até a próxima navegação.
+
+const ouvintes = new Set<() => void>();
+
+function avisar(): void {
+  for (const ouvinte of ouvintes) ouvinte();
+}
+
+/** Para `useSyncExternalStore`: avisa quando a sessão muda, nesta aba ou em
+ *  outra aba do mesmo aparelho (evento `storage`). */
+export function assinar(ouvinte: () => void): () => void {
+  ouvintes.add(ouvinte);
+  const deOutraAba = (e: StorageEvent) => {
+    if (e.key === null || e.key === CHAVE_TOKEN || e.key === CHAVE_USUARIO) ouvinte();
+  };
+  if (typeof window !== "undefined") window.addEventListener("storage", deOutraAba);
+  return () => {
+    ouvintes.delete(ouvinte);
+    if (typeof window !== "undefined") window.removeEventListener("storage", deOutraAba);
+  };
+}
+
+/**
+ * Quem está conectado, como TEXTO: o retrato que `useSyncExternalStore` pede
+ * precisa ser estável entre leituras, e `usuario()` devolve um objeto novo a
+ * cada chamada. `null` sem sessão.
+ */
+export function retrato(): string | null {
+  return token() === null ? null : (ler(CHAVE_USUARIO) ?? "");
 }
 
 /**

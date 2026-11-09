@@ -53,8 +53,12 @@ prazo em 09/11/2026, com 8 `issues`.
 | [#24](https://github.com/CampusCEUB/AgroScan/issues/24) | US21 - Escrever anotações sobre um canteiro | E4 | 3 | Desejável |
 | [#34](https://github.com/CampusCEUB/AgroScan/issues/34) | US41 - Ver os indicadores da horta em painéis visuais | E6 | 5 | Importante |
 | [#43](https://github.com/CampusCEUB/AgroScan/issues/43) | US38 - Auditar o acervo Digipathos | E8 | 5 | Importante *(condicionado)* |
+| [#32](https://github.com/CampusCEUB/AgroScan/issues/32) | US29 - Saber quais sintomas são mais marcados em cada cultura | E6 | 3 | Desejável |
+| [#97](https://github.com/CampusCEUB/AgroScan/issues/97) | US42 - Sair da conta | E3 | 2 | Importante |
 
-**5 histórias, 24 pontos** - 19 do núcleo e 5 do escopo condicionado.
+**7 histórias, 29 pontos** - 24 do núcleo e 5 do escopo condicionado. A US29
+vem da Sprint 4. A US42 entrou no backlog nesta sprint
+([ADR 0014](../docs/decisoes/adr-0014-sair-da-conta-com-a-fila-sem-dono.md)).
 
 > **A US20 já tem serviço pronto.** A rota da API está implementada e testada
 > desde a Sprint 1; o que falta é a tela. São 3 dos 6 pontos classificados como
@@ -62,7 +66,7 @@ prazo em 09/11/2026, com 8 `issues`.
 
 ### Requisitos cobertos
 
-RF20, RF21 e RF37, conforme a
+RF13, RF20, RF21, RF29 e RF37, conforme a
 [matriz de rastreabilidade](../entregas/artefato-2-gestao-do-projeto.md#33-rastreabilidade-entre-sprints-e-requisitos).
 
 ## Responsáveis
