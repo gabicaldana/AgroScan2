@@ -4,6 +4,20 @@ Registre aqui as mudanças relevantes por sprint ou marco avaliativo.
 
 ## Sprint 5 - Base completa, feedback e dashboards · 27/10 a 09/11/2026
 
+### Base completa: 24 culturas e 88 doenças (US05, US01)
+
+- **Base `2026.11.09`**: onze culturas e 35 doenças novas, de 13 para 24 culturas e de 53 para 88 doenças, a meta do épico E1.
+  - Berinjela (Solanaceae).
+  - Alface (Asteraceae) e quiabo (Malvaceae).
+  - Beterraba e espinafre (Amaranthaceae).
+  - Cebola, alho e alho-poró (Amaryllidaceae).
+  - Cenoura, salsa e aipo (Apiaceae).
+- **Os cinco grupos completos**: fruto (8), folha (7), flor (2), haste (2) e raiz (5). Com as 24 culturas no seletor, a US01 cumpre o último critério.
+- **Fontes**: cada ficha parte de uma publicação técnica, e cada ingrediente ativo tem registro ativo no MAPA para aquele alvo naquela cultura (dados abertos do AGROFIT de 09/11/2026). Fontes e decisões em [`docs/curadoria/curadoria-base-completa.md`](docs/curadoria/curadoria-base-completa.md). Espinafre, aipo e alho-poró não têm publicação brasileira que descreva as doenças, e o documento diz em que cada ficha se apoia.
+- **Catálogo**: de 38 para 56 sintomas. O mofo-branco com escleródios é um sintoma só para alface, alho, salsa e aipo.
+- **Os perfis das 53 doenças anteriores não mudaram**: os 122 casos anteriores das fixtures de paridade continuam idênticos, e entram 70 novos (192 no total).
+- **Sem migração**: os tipos de agente já existem. A carga no Neon é a do `app.seed --gerar-sql`.
+
 ### Sair da conta (US42)
 
 - **Cabeçalho**: botão com o primeiro nome de quem está conectado, que leva à nova tela `/conta`; sem conta, "Entrar".

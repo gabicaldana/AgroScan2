@@ -100,7 +100,7 @@ trabalho. O estado é verificável neste repositório.
   - 1.3 Repositório institucional: requisitos, arquitetura, sprints, entregas, ADRs - 🔄
 - **2. Base de conhecimento**
   - 2.1 Modelagem do catálogo: órgãos, sintomas, culturas, doenças, tratamentos, ingredientes ativos - ✅
-  - 2.2 Curadoria por família botânica - 🔄 *(9 de 24 culturas, 34 de 88 doenças; solanáceas e brássicas fechadas, brássicas conferidas em 18/10/2026)*
+  - 2.2 Curadoria por família botânica - ✅ *(24 culturas e 88 doenças, base `2026.11.09`)*
   - 2.3 Validação automática da base - ✅
   - 2.4 Fontes e referências técnicas - 🔄
 - **3. Motor de diagnóstico**
@@ -139,7 +139,7 @@ trabalho. O estado é verificável neste repositório.
 
 | ID | Épico | Descrição | Estado |
 | --- | --- | --- | --- |
-| **E1** | Base de conhecimento de hortaliças | Curadoria agronômica das 24 culturas e 88 fichas de doença | 🔄 39% - 34 de 88 fichas |
+| **E1** | Base de conhecimento de hortaliças | Curadoria agronômica das 24 culturas e 88 fichas de doença | ✅ 88 de 88 fichas |
 | **E2** | Diagnóstico por sintomas offline | Motor de diagnóstico e telas de consulta | ✅ |
 | **E3** | Identidade e conta | Cadastro, autenticação e privacidade | 🟡 |
 | **E4** | Caderno de campo | Histórico, sincronização offline e feedback | 🟡 |
@@ -317,11 +317,11 @@ Estimativa em pontos de história na escala de Fibonacci: 1 trivial, 2 pequena,
 
 | ID | História | Critérios de aceite | Pts | Sprint | Estado |
 | --- | --- | --- | --- | --- | --- |
-| US01 | Como produtor, quero encontrar a hortaliça que cultivo em uma lista organizada, para não procurar num rol extenso | Culturas agrupadas por grupo; nome popular e científico visíveis; 24 culturas presentes | 3 | 5 *(realocada da 2)* | 🔄 9/24 |
+| US01 | Como produtor, quero encontrar a hortaliça que cultivo em uma lista organizada, para não procurar num rol extenso | Culturas agrupadas por grupo; nome popular e científico visíveis; 24 culturas presentes | 3 | 5 *(realocada da 2)* | ✅ |
 | US02 | Como curadora, quero que a base recuse fichas incompletas, para que nenhum erro de digitação chegue ao produtor | Validação recusa referência quebrada, peso inválido, doença sem sintoma clássico e doença viral com ingrediente ativo; cultura com menos de 3 doenças gera aviso | 5 | 1 | ✅ |
 | US03 | Como curadora, quero cadastrar as doenças das brássicas, para cobrir couve, repolho, brócolis, couve-flor, rúcula e agrião | 6 culturas com no mínimo 3 doenças cada; fontes citadas; validação aprovada | 8 | 2 | ✅ |
 | US04 | Como curadora, quero cadastrar as doenças das cucurbitáceas e fechar as solanáceas | Pepino, abobrinha, abóbora e jiló cobertos; batata e pimentão elevados a 3 ou mais doenças | 8 | 4 *(realocada da 3)* | ✅ |
-| US05 | Como curadora, quero cadastrar as doenças das demais famílias | Apiáceas, amarilidáceas, amarantáceas, asteráceas e malváceas cobertas; base fecha 24 culturas e 88 doenças | 8 | 4-5 | ⬜ |
+| US05 | Como curadora, quero cadastrar as doenças das demais famílias | Apiáceas, amarilidáceas, amarantáceas, asteráceas e malváceas cobertas; base fecha 24 culturas e 88 doenças | 8 | 4-5 | ✅ |
 
 **Subtotal E1: 32 pts**
 
