@@ -56,3 +56,45 @@ export async function sair(
   deps.encerrar();
   return { saiu: true, apagados: 0 };
 }
+
+// =============================================================================
+// Excluir a conta (US15, RF15, RNF17)
+// =============================================================================
+
+export type DependenciasDaExclusao = {
+  armazenamento: fila.Armazenamento;
+  /** `DELETE /autenticacao/eu`; é `api.excluirConta` no app. */
+  excluirNaApi: () => Promise<void>;
+  /** Apaga a sessão e as cópias guardadas; é `sessao.encerrar` no app. */
+  encerrar: () => void;
+};
+
+export type ResultadoDaExclusao =
+  | { excluida: true; apagados: number }
+  | { excluida: false; falha: unknown };
+
+/**
+ * Exclusão é eliminação (LGPD, art. 18): o servidor apaga a conta e o que é
+ * dela, e o aparelho apaga o que guardava - a sessão, as cópias do caderno e
+ * os diagnósticos que ainda não tinham subido. Ao contrário da saída, a fila
+ * não é enviada antes: enviar seria gravar no servidor justamente o que a
+ * pessoa pediu para apagar.
+ *
+ * O servidor vem primeiro. Se ele recusa - sem rede, ou hortas com outras
+ * pessoas sob a responsabilidade dela (409) -, nada é apagado no aparelho e a
+ * pessoa continua conectada, para resolver e tentar de novo.
+ */
+export async function excluir(deps: DependenciasDaExclusao): Promise<ResultadoDaExclusao> {
+  try {
+    await deps.excluirNaApi();
+  } catch (falha) {
+    return { excluida: false, falha };
+  }
+  const restantes = await fila.pendentes(deps.armazenamento);
+  await fila.remover(
+    deps.armazenamento,
+    restantes.map((c) => c.offlineId),
+  );
+  deps.encerrar();
+  return { excluida: true, apagados: restantes.length };
+}

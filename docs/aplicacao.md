@@ -359,11 +359,14 @@ lista plana de dezenas de culturas num celular sob sol vira rolagem às cegas.
 
 | Grupo | Alvo | Curadas |
 |---|---|---|
-| **Fruto** | tomate, pimentão, pepino, berinjela, jiló, abobrinha, abóbora, quiabo | tomate, pimentão |
-| **Folha** | alface, couve, repolho, rúcula, espinafre, agrião, salsa | - |
-| **Flor** | brócolis, couve-flor | - |
-| **Haste** | alho-poró, aipo | - |
-| **Raiz, tubérculo e bulbo** | batata, cenoura, cebola, beterraba, alho | batata |
+| **Fruto** | tomate, pimentão, pepino, berinjela, jiló, abobrinha, abóbora, quiabo | todas |
+| **Folha** | alface, couve, repolho, rúcula, espinafre, agrião, salsa | todas |
+| **Flor** | brócolis, couve-flor | todas |
+| **Haste** | alho-poró, aipo | todas |
+| **Raiz, tubérculo e bulbo** | batata, cenoura, cebola, beterraba, alho | todas |
+
+A base fechou em 24 culturas e 88 doenças na versão `2026.11.09`. As fontes
+de cada ficha estão em [`docs/curadoria/`](curadoria/).
 
 ### Pares confundíveis, de propósito
 
@@ -511,17 +514,19 @@ textual, para continuar legível por quem não distingue as cores.
 | API + PostgreSQL: conta, histórico, sincronização offline | ✅ |
 | Caderno filtrável por período e cultura, legível sem rede | ✅ |
 | Instruções de instalação para iPhone | ✅ |
-| Curadoria por família: brássicas, solanáceas, cucurbitáceas… | 🔄 9 de 24 culturas |
+| Curadoria por família: brássicas, solanáceas, cucurbitáceas… | ✅ 24 culturas, 88 doenças |
 | Horta, membros, canteiros e manejo (US22-US26) | ✅ |
 | Relatórios agregados e alerta de rotação | ⬜ Sprint 4 |
 | Identificação por imagem - condicionada à auditoria do acervo | ⬜ falta o modelo |
 
 A identificação por foto é **escopo condicionado**: depende de um acervo de
-imagens de hortaliças brasileiras com volume suficiente por classe, ainda não
-verificado. O candidato é o [repositório
-Digipathos](https://www.digipathos-rep.cnptia.embrapa.br/) da Embrapa. O produto
-está completo e utilizável sem ela - o fluxo por sintomas é o produto, a câmera
-é enriquecimento.
+imagens de hortaliças brasileiras com volume suficiente por classe. A
+[auditoria do acervo Digipathos](auditoria-digipathos.md) da Embrapa (US38)
+mostrou que ele não serve: das 88 doenças da base, só uma tem imagens, com 4
+fotos de laboratório. O [ADR 0015](decisoes/adr-0015-identificacao-por-imagem.md)
+tira a identificação por foto do semestre e registra o que seria preciso para
+retomá-la. O produto está completo e utilizável sem ela - o fluxo por sintomas
+é o produto, a câmera é enriquecimento.
 
 ---
 

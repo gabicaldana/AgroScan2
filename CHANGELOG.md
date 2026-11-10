@@ -2,6 +2,16 @@
 
 Registre aqui as mudanças relevantes por sprint ou marco avaliativo.
 
+## Sprint 6 - Comunidade e validação · 10/11 a 23/11/2026
+
+### Excluir a conta (US15)
+
+- **Tela "Sua conta"**: seção "Excluir a conta", no fim, fechada até a pessoa pedir. Aberta, diz o que é apagado e o que fica, e só exclui depois de a pessoa digitar EXCLUIR.
+- **O que a tela explica**: saem a conta, o caderno (diagnósticos, confirmações e anotações), a participação nas hortas e as hortas em que só a pessoa participa. Os manejos registrados em horta com outras pessoas ficam, como "Conta excluída", porque controlam carência e resíduo. Ser responsável por horta com outras pessoas impede a exclusão até passar a responsabilidade (comportamento da rota, que já existia).
+- **No aparelho** (`lib/conta.ts`): com o servidor aceitando, a fila offline é apagada sem ser enviada, porque enviar gravaria o que a pessoa pediu para apagar; depois a sessão e as cópias guardadas são encerradas. Se o servidor recusa (sem rede ou 409), nada é apagado e a pessoa continua conectada, com o motivo na tela.
+- **Depois da exclusão**, a tela confirma "Sua conta foi excluída" em vez de voltar para "Entre na sua conta".
+- **Testes**: 3 casos novos em `web/lib/conta.test.ts`.
+
 ## Sprint 5 - Base completa, feedback e dashboards · 27/10 a 09/11/2026
 
 ### Ajustes de navegação
@@ -9,6 +19,52 @@ Registre aqui as mudanças relevantes por sprint ou marco avaliativo.
 - **Voltar**: seta no cabeçalho de todas as telas, menos a inicial. Volta para a tela anterior do app. Quando a tela foi aberta direto (link, ícone instalado, recarregamento), leva à tela de onde ela costuma ser aberta: Hortas para horta, canteiro e relatórios, o início para as demais.
 - **Barra inferior em destaque**: fundo verde-escuro com texto branco (7,13:1, AAA), altura do alvo de toque grande (72 px), ícones e rótulos maiores. A aba ativa vira uma pílula branca com rótulo em negrito, o que muda a forma e não só a cor (RNF08). O anel de foco fica branco sobre a barra.
 - **README**: o link da aplicação publicada abre o documento.
+
+### Auditoria do acervo Digipathos (US38)
+
+- **Relatório** em [`docs/auditoria-digipathos.md`](docs/auditoria-digipathos.md), sobre o registro oficial do acervo (Redape, DOI 10.48432/XA1OVL) e os próprios arquivos baixados: 2.326 fotos de 171 desordens em 21 espécies, quase todas de lavoura ou frutíferas.
+- **Cobertura**: das 24 culturas da base, só a couve aparece. Das 88 doenças, uma tem imagens (alternariose da couve, com 4 fotos de laboratório).
+- **Licença**: CC BY-NC 4.0, compatível com o projeto. O impedimento é a cobertura.
+- **Decisão** no [ADR 0015](docs/decisoes/adr-0015-identificacao-por-imagem.md), proposto: a identificação por imagem (US39) não é viável no semestre. O ADR registra o piso para retomá-la: pelo menos 100 fotos independentes por classe, parte delas de campo, e licença que permita distribuir o modelo.
+- **Risco R04** passa a materializado no Artefato 2, e as referências ao Digipathos em `aplicacao.md`, `arquitetura.md` e `requisitos.md` trazem o resultado.
+
+### Base completa: 24 culturas e 88 doenças (US05, US01)
+
+- **Base `2026.11.09`**: onze culturas e 35 doenças novas, de 13 para 24 culturas e de 53 para 88 doenças, a meta do épico E1.
+  - Berinjela (Solanaceae).
+  - Alface (Asteraceae) e quiabo (Malvaceae).
+  - Beterraba e espinafre (Amaranthaceae).
+  - Cebola, alho e alho-poró (Amaryllidaceae).
+  - Cenoura, salsa e aipo (Apiaceae).
+- **Os cinco grupos completos**: fruto (8), folha (7), flor (2), haste (2) e raiz (5). Com as 24 culturas no seletor, a US01 cumpre o último critério.
+- **Fontes**: cada ficha parte de uma publicação técnica, e cada ingrediente ativo tem registro ativo no MAPA para aquele alvo naquela cultura (dados abertos do AGROFIT de 09/11/2026). Fontes e decisões em [`docs/curadoria/curadoria-base-completa.md`](docs/curadoria/curadoria-base-completa.md). Espinafre, aipo e alho-poró não têm publicação brasileira que descreva as doenças, e o documento diz em que cada ficha se apoia.
+- **Catálogo**: de 38 para 56 sintomas. O mofo-branco com escleródios é um sintoma só para alface, alho, salsa e aipo.
+- **Os perfis das 53 doenças anteriores não mudaram**: os 122 casos anteriores das fixtures de paridade continuam idênticos, e entram 70 novos (192 no total).
+- **Sem migração**: os tipos de agente já existem. A carga no Neon é a do `app.seed --gerar-sql`.
+
+### Painel da horta (US41)
+
+- **Tela de relatórios**: novo "Painel da horta" no topo, com quatro quadros, um por indicador: diagnósticos por mês nos últimos 6 meses, em colunas, com a doença mais frequente; confirmação no campo, com a fração confirmada; os 3 sintomas mais marcados, somando as culturas; e os canteiros que repetem a família botânica. Cada quadro leva à seção detalhada.
+- **Nada só por cor** (RNF08): todo número está escrito, as colunas e barras só o repetem, e a rotação diz o resultado com símbolo e texto (✓ ou ⚠). O gráfico de colunas é uma imagem com descrição dos valores para leitor de tela.
+- **Celular** (RNF10): uma coluna de quadros no celular, duas a partir de telas médias.
+- **A confirmação geral** só mostra a taxa a partir da mesma amostra mínima que a API usa por doença; abaixo disso, mostra a contagem.
+- **Uma busca por relatório**: o painel e as seções detalhadas usam a mesma resposta da API enquanto a tela está aberta. As chaves passam a dizer qual relatório é, porque confirmação e rotação usavam a mesma chave.
+- **Testes**: 7 casos novos em `web/lib/relatorios.test.ts`.
+
+### Anotações livres (US21)
+
+- **Rotas**: `GET` e `POST /canteiros/{id}/anotacoes`, `GET` e `POST /consultas/{id}/anotacoes`, `PATCH` e `DELETE /anotacoes/{id}`, sobre a tabela `anotacao`, que existia desde a migração 001. Não há migração nova.
+- **Quem vê e quem altera**: a anotação de canteiro é vista por todos os membros da horta, como o manejo; a de consulta, só por quem fez a consulta. Só quem escreveu edita ou apaga: outro membro recebe 403. Quem não enxerga o canteiro ou a consulta recebe 404 (ADR 0012), inclusive quem saiu da horta, mesmo para a própria anotação.
+- **Texto**: de 1 a 2000 caracteres, aparado; vazio ou só espaços é recusado com 422.
+- **Tela do canteiro**: seção "Anotações", aberta, com o campo de nova anotação e a lista com autora, data e a marca "editada em" quando alterada depois.
+- **Caderno**: cada registro já sincronizado ganha o botão "Anotações", fechado até a pessoa pedir. O registro que está só no aparelho não tem, porque a anotação se prende ao id que o servidor deu à consulta.
+- **Testes**: `test_anotacoes.py`, com 14 casos de acesso, autoria e texto, e `web/lib/anotacoes.test.ts`.
+
+### Papéis Scrum e artefatos do semestre (#72, #74)
+
+- **Papéis Scrum**: Product Owner e Scrum Master são exercidos em conjunto pelas duas integrantes. Artefato 2 §4.6 registra a decisão e como cada papel é exercido; `sprint-00-planejamento.md` e `requisitos.md` §8 deixam de marcar a pendência.
+- **Artefatos 5 a 9**: não são documentos à parte nem têm data própria; o conteúdo de cada um é o próprio projeto. As tabelas do `README.md`, de `entregas/README.md` e do Artefato 2 §3.1 apontam onde está cada conteúdo.
+- **Artefato 4**: não existe. Saem as notas que sugeriam a lacuna na numeração.
 
 ### Sair da conta (US42)
 
