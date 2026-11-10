@@ -125,7 +125,7 @@ Estado verificado em 12/09/2026 sobre o commit `068b6d9`.
 | RF18 | Não duplicar consulta reenviada pela fila de sincronização | Obrigatório | ✅ |
 | RF19 | Listar o histórico com filtro por período, cultura e canteiro | Obrigatório | 🟡 período e cultura ✅; canteiro ⬜ |
 | RF20 | Registrar se o diagnóstico se confirmou e qual foi a doença real | Importante | ✅ |
-| RF21 | Permitir anotações livres associadas a canteiro ou consulta | Desejável | ⬜ |
+| RF21 | Permitir anotações livres associadas a canteiro ou consulta | Desejável | ✅ |
 | RF22 | Registrar a geolocalização da consulta, mediante consentimento explícito | Desejável | 🟡 aceita e valida coordenada; consentimento na interface ⬜ |
 
 ### 5.4 Horta e canteiros
@@ -250,7 +250,7 @@ título e vinculadas à `milestone` da sprint.
 | RF18 | US18 | 1 | TI08 - reenvio não duplica | [#21](https://github.com/CampusCEUB/AgroScan/issues/21) |
 | RF19 | US19 | 1 | Listagem com filtros; filtro por canteiro na Sprint 3 | [#22](https://github.com/CampusCEUB/AgroScan/issues/22) |
 | RF20 | US20 | 5 | TI21, TI22 - coerência do feedback | [#23](https://github.com/CampusCEUB/AgroScan/issues/23) |
-| RF21 | US21 | 5 | ⬜ | [#24](https://github.com/CampusCEUB/AgroScan/issues/24) |
+| RF21 | US21 | 5 | `test_anotacoes.py` - acesso, autoria e texto; `anotacoes.test.ts` | [#24](https://github.com/CampusCEUB/AgroScan/issues/24) |
 | RF22, RNF16 | US22 | 6 | TI19 - coordenada pela metade recusada | ⚠️ ver nota |
 | RF23-RF26 | US22-US25 | 3 | ✅ | [#25](https://github.com/CampusCEUB/AgroScan/issues/25), [#26](https://github.com/CampusCEUB/AgroScan/issues/26), [#27](https://github.com/CampusCEUB/AgroScan/issues/27), [#28](https://github.com/CampusCEUB/AgroScan/issues/28) |
 | RF27 | US26 | 3 | ✅ | [#29](https://github.com/CampusCEUB/AgroScan/issues/29) |

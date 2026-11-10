@@ -3,6 +3,7 @@
 import Link from "next/link";
 import { useSearchParams } from "next/navigation";
 import { useCallback, useEffect, useState } from "react";
+import { Anotacoes } from "@/components/Anotacoes";
 import { Botao } from "@/components/Botao";
 import {
   AreaDeTexto,
@@ -140,6 +141,8 @@ export function PainelCanteiro() {
           </ul>
         )}
       </section>
+
+      <Anotacoes alvo={{ tipo: "canteiro", id: canteiro.id }} />
 
       {canteiro.ativo && (
         <Botao type="button" variante="secundario" onClick={encerrar}
