@@ -15,23 +15,25 @@ Atualize um registro sempre que houver submissão parcial, revisão avaliativa, 
 | **1** | Gestão do Negócio/Domínio - análise de usuário | 14/09/2026 | 1 | Reapresentação | [entrega-artefato-1.md](entrega-artefato-1.md) | [documento](artefato-1-analise-de-usuario.md) |
 | **2** | Gestão do Projeto - EAP, backlog, sprints, repositório | 14/09/2026 | 1 | Reapresentação | [entrega-artefato-2.md](entrega-artefato-2.md) | [documento](artefato-2-gestao-do-projeto.md) |
 | **3** | Gestão do Produto - arquitetura da informação, design arquitetural, testes de integração, protótipo, storyboard | 14/09/2026 | 1 | Complementação | [entrega-artefato-3.md](entrega-artefato-3.md) | [documento](artefato-3-gestao-do-produto.md) |
-| **5** | Gestão dos Ativos - website com dados e documentação | a definir | 7 | - | a criar | a produzir |
-| **6** | Gestão do Negócio/Domínio - análise do usuário | a definir | 6 | - | a criar | a produzir |
-| **7** | Gestão do Projeto - execução e revisão das sprints; publicação na vitrine de ativos | a definir | 8 | - | a criar | a produzir |
-| **8** | Gestão do Produto - arquitetura de software; testes de sistema | a definir | 7 | - | a criar | a produzir |
-| **9** | Gestão dos Ativos - dashboards incorporados | a definir | 5 | - | a criar | a produzir |
+| **5** | Gestão dos Ativos - website com dados e documentação | sem data própria | 7 | Conteúdo do projeto | - | [aplicação](https://agroscan-blond.vercel.app), [API](https://agroscan-api.vercel.app/api/v1/docs), [docs/](../docs/) |
+| **6** | Gestão do Negócio/Domínio - análise do usuário | sem data própria | 6 | Conteúdo do projeto | - | depende da comunidade parceira ([#73](https://github.com/CampusCEUB/AgroScan/issues/73)) |
+| **7** | Gestão do Projeto - execução e revisão das sprints; publicação na vitrine de ativos | sem data própria | 8 | Conteúdo do projeto | - | [sprints/](../sprints/), [atas](../docs/reunioes/), [milestones](https://github.com/CampusCEUB/AgroScan/milestones?state=all) |
+| **8** | Gestão do Produto - arquitetura de software; testes de sistema | sem data própria | 7 | Conteúdo do projeto | - | [arquitetura](../docs/arquitetura.md), [ADRs](../docs/decisoes/), [testes](../src/tests/) |
+| **9** | Gestão dos Ativos - dashboards incorporados | sem data própria | 5 | Conteúdo do projeto | - | painéis da horta (US41) |
 
 O semestre tem nove artefatos, distribuídos em dois bimestres e em quatro eixos
 que se repetem: Gestão do Negócio/Domínio, Gestão do Projeto, Gestão do Produto
 e Gestão dos Ativos. Os Artefatos 1, 2, 3 e 5 pertencem ao 1º bimestre; os
 Artefatos 6, 7, 8 e 9, ao 2º.
 
-> **Sobre o Artefato 4.** O conjunto informado pela disciplina não inclui um
-> Artefato 4. Como o 2º bimestre tem exatamente quatro artefatos, um por eixo, a
-> lacuna no 1º bimestre sugere que um Artefato 4 de Gestão dos Ativos possa
-> existir. A numeração foi preservada como recebida, e a confirmação consta das
-> pendências do
-> [registro do Artefato 2](entrega-artefato-2.md#pendências-conhecidas).
+> **Só os Artefatos 1, 2 e 3 são documentos com registro de entrega.** O
+> conteúdo dos Artefatos 5 a 9 é o próprio projeto - o sistema publicado, a
+> documentação técnica, as atas e as `milestones` -, e por isso eles não têm
+> data nem documento próprios. A coluna Sprint indica quando cada conteúdo fica
+> pronto.
+
+> **Sobre o Artefato 4.** O Artefato 4 não existe. A numeração salta do 3 para
+> o 5 como foi definida pela disciplina.
 
 ## Por que há reapresentação
 
