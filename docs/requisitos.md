@@ -125,7 +125,7 @@ Estado verificado em 12/09/2026 sobre o commit `068b6d9`.
 | RF18 | Não duplicar consulta reenviada pela fila de sincronização | Obrigatório | ✅ |
 | RF19 | Listar o histórico com filtro por período, cultura e canteiro | Obrigatório | 🟡 período e cultura ✅; canteiro ⬜ |
 | RF20 | Registrar se o diagnóstico se confirmou e qual foi a doença real | Importante | ✅ |
-| RF21 | Permitir anotações livres associadas a canteiro ou consulta | Desejável | ⬜ |
+| RF21 | Permitir anotações livres associadas a canteiro ou consulta | Desejável | ✅ |
 | RF22 | Registrar a geolocalização da consulta, mediante consentimento explícito | Desejável | 🟡 aceita e valida coordenada; consentimento na interface ⬜ |
 
 ### 5.4 Horta e canteiros
@@ -218,12 +218,12 @@ Definition of Done:
 | --- | --- | --- | --- |
 | Fontes técnicas de curadoria - Embrapa Hortaliças, IAC, AGROFIT/MAPA | Dados | Sem elas não há base de conhecimento; é o insumo do épico E1 | Disponíveis publicamente |
 | Definição da comunidade parceira da Atividade de Extensão | Aprovação institucional | Condiciona a priorização das famílias botânicas e a data da apresentação | ⚠️ pendente (risco R03) |
-| Data do Artefato 5 e da apresentação à comunidade | Agenda | Impede fechar o calendário das Sprints 6 e 7 | ⚠️ pendente |
+| Data do Artefato 5 e da apresentação à comunidade | Agenda | Impede fechar o calendário das Sprints 6 e 7 | Resolvida para o Artefato 5: os Artefatos 5 a 9 não têm data própria, porque o conteúdo deles é o próprio projeto. A data da apresentação depende da comunidade parceira |
 | PostgreSQL gerenciado em camada gratuita | Infraestrutura | Sem banco não há caderno, hortas nem relatórios | Ativo |
 | Plataforma de publicação (Vercel) em camada gratuita | Infraestrutura | Sem publicação, RNF23 não é atendido | Ativa, com PWA e API em dia desde 08/10/2026; ligada ao espelho `gabicaldana/AgroScan2`, porque a organização não autoriza a integração (ADR 0011) |
 | Acervo de imagens de hortaliças brasileiras (Digipathos) | Dados | Sem ele, a identificação por imagem não sai do escopo condicionado | ⚠️ não auditado (risco R04) |
 | Dependência de teste do cliente HTTP | Técnica | 22 testes de integração da API não executavam de forma confiável | Resolvida na Sprint 2: `requirements-dev.txt` declara a dependência e o CI falha se a suíte se pular (risco R07) |
-| Distribuição dos papéis Scrum entre as integrantes | Dado da equipe | Papéis descritos, mas sem atribuição nominal nos artefatos | ⚠️ pendente |
+| Distribuição dos papéis Scrum entre as integrantes | Dado da equipe | Papéis descritos, mas sem atribuição nominal nos artefatos | Resolvida: Product Owner e Scrum Master exercidos em conjunto pela dupla (Artefato 2, §4.6) |
 
 ## 9. Matriz de rastreabilidade
 
@@ -250,7 +250,7 @@ título e vinculadas à `milestone` da sprint.
 | RF18 | US18 | 1 | TI08 - reenvio não duplica | [#21](https://github.com/CampusCEUB/AgroScan/issues/21) |
 | RF19 | US19 | 1 | Listagem com filtros; filtro por canteiro na Sprint 3 | [#22](https://github.com/CampusCEUB/AgroScan/issues/22) |
 | RF20 | US20 | 5 | TI21, TI22 - coerência do feedback | [#23](https://github.com/CampusCEUB/AgroScan/issues/23) |
-| RF21 | US21 | 5 | ⬜ | [#24](https://github.com/CampusCEUB/AgroScan/issues/24) |
+| RF21 | US21 | 5 | `test_anotacoes.py` - acesso, autoria e texto; `anotacoes.test.ts` | [#24](https://github.com/CampusCEUB/AgroScan/issues/24) |
 | RF22, RNF16 | US22 | 6 | TI19 - coordenada pela metade recusada | ⚠️ ver nota |
 | RF23-RF26 | US22-US25 | 3 | ✅ | [#25](https://github.com/CampusCEUB/AgroScan/issues/25), [#26](https://github.com/CampusCEUB/AgroScan/issues/26), [#27](https://github.com/CampusCEUB/AgroScan/issues/27), [#28](https://github.com/CampusCEUB/AgroScan/issues/28) |
 | RF27 | US26 | 3 | ✅ | [#29](https://github.com/CampusCEUB/AgroScan/issues/29) |

@@ -13,6 +13,21 @@ Registre aqui as mudanças relevantes por sprint ou marco avaliativo.
 - **Uma busca por relatório**: o painel e as seções detalhadas usam a mesma resposta da API enquanto a tela está aberta. As chaves passam a dizer qual relatório é, porque confirmação e rotação usavam a mesma chave.
 - **Testes**: 7 casos novos em `web/lib/relatorios.test.ts`.
 
+### Anotações livres (US21)
+
+- **Rotas**: `GET` e `POST /canteiros/{id}/anotacoes`, `GET` e `POST /consultas/{id}/anotacoes`, `PATCH` e `DELETE /anotacoes/{id}`, sobre a tabela `anotacao`, que existia desde a migração 001. Não há migração nova.
+- **Quem vê e quem altera**: a anotação de canteiro é vista por todos os membros da horta, como o manejo; a de consulta, só por quem fez a consulta. Só quem escreveu edita ou apaga: outro membro recebe 403. Quem não enxerga o canteiro ou a consulta recebe 404 (ADR 0012), inclusive quem saiu da horta, mesmo para a própria anotação.
+- **Texto**: de 1 a 2000 caracteres, aparado; vazio ou só espaços é recusado com 422.
+- **Tela do canteiro**: seção "Anotações", aberta, com o campo de nova anotação e a lista com autora, data e a marca "editada em" quando alterada depois.
+- **Caderno**: cada registro já sincronizado ganha o botão "Anotações", fechado até a pessoa pedir. O registro que está só no aparelho não tem, porque a anotação se prende ao id que o servidor deu à consulta.
+- **Testes**: `test_anotacoes.py`, com 14 casos de acesso, autoria e texto, e `web/lib/anotacoes.test.ts`.
+
+### Papéis Scrum e artefatos do semestre (#72, #74)
+
+- **Papéis Scrum**: Product Owner e Scrum Master são exercidos em conjunto pelas duas integrantes. Artefato 2 §4.6 registra a decisão e como cada papel é exercido; `sprint-00-planejamento.md` e `requisitos.md` §8 deixam de marcar a pendência.
+- **Artefatos 5 a 9**: não são documentos à parte nem têm data própria; o conteúdo de cada um é o próprio projeto. As tabelas do `README.md`, de `entregas/README.md` e do Artefato 2 §3.1 apontam onde está cada conteúdo.
+- **Artefato 4**: não existe. Saem as notas que sugeriam a lacuna na numeração.
+
 ### Sair da conta (US42)
 
 - **Cabeçalho**: botão com o primeiro nome de quem está conectado, que leva à nova tela `/conta`; sem conta, "Entrar".

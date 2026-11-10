@@ -53,8 +53,9 @@ existe, corrigir as inconsistências herdadas e planejar o que falta.
 
 ## Papéis
 
-> ⚠️ **A distribuição nominal dos papéis está pendente de definição pela
-> equipe.** Os papéis abaixo estão descritos; falta atribuí-los.
+> **Os papéis de Product Owner e Scrum Master são exercidos em conjunto pelas
+> duas integrantes.** A decisão e a forma de exercê-los estão no
+> [Artefato 2, §4.6](../entregas/artefato-2-gestao-do-projeto.md#46-papéis-da-equipe).
 
 | Papel | Responsabilidade |
 | --- | --- |
@@ -114,7 +115,7 @@ semestre, com rastreabilidade entre requisito, história, sprint e verificação
 - [x] Riscos identificados com mitigação
 - [x] Repositório institucional estruturado, com ADRs das decisões já tomadas
 - [x] `Milestones` e `issues` criadas no GitHub *(8 milestones, 81 issues, backlog no [GitHub Project](https://github.com/orgs/CAMPUSCEUB/projects/223))*
-- [ ] Papéis Scrum atribuídos nominalmente *(pendente)*
+- [x] Papéis Scrum definidos *(exercidos em conjunto pela dupla, [#72](https://github.com/CampusCEUB/AgroScan/issues/72))*
 
 ## Riscos
 
