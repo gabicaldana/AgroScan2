@@ -2,7 +2,15 @@
 
 import Link from "next/link";
 import { useSearchParams } from "next/navigation";
-import { useEffect, useMemo, useState, useSyncExternalStore } from "react";
+import {
+  createContext,
+  useContext,
+  useEffect,
+  useMemo,
+  useState,
+  useSyncExternalStore,
+  type ReactNode,
+} from "react";
 import { EstadoVazio } from "@/components/EstadoVazio";
 import {
   MensagemDeErro,
@@ -27,11 +35,15 @@ import * as sessao from "@/lib/sessao.ts";
 export function PainelRelatorios() {
   const autenticado = useAutenticado();
   const id = Number(useSearchParams().get("horta"));
+  // Uma resposta por pergunta enquanto a tela está aberta: o painel do topo e
+  // as seções detalhadas pedem os mesmos relatórios.
+  const [respostas] = useState(() => new Map<string, Promise<unknown>>());
 
   if (!autenticado) return <PrecisaDeConta />;
   if (!id) return <MensagemDeErro>Horta não informada.</MensagemDeErro>;
 
   return (
+    <RespostasDaTela.Provider value={respostas}>
     <div className="flex flex-col gap-10">
       <header>
         <Link href={`/horta?id=${id}`} className="text-primaria text-sm font-bold underline">
@@ -43,21 +55,37 @@ export function PainelRelatorios() {
           pessoas dela. Consultas sem canteiro ficam só no caderno de quem as fez.
         </p>
       </header>
+      <PainelDaHorta hortaId={id} />
       <Incidencia hortaId={id} />
       <Confirmacao hortaId={id} />
       <Sintomas hortaId={id} />
       <Rotacao hortaId={id} />
     </div>
+    </RespostasDaTela.Provider>
   );
 }
 
-/** Busca ao montar e quando `chave` muda; descarta resposta que chegou tarde. */
+const RespostasDaTela = createContext<Map<string, Promise<unknown>> | null>(null);
+
+/**
+ * Busca ao montar e quando `chave` muda; descarta resposta que chegou tarde.
+ * A mesma chave na mesma tela reaproveita a resposta, e a chave precisa dizer
+ * qual relatório é, não só de qual horta.
+ */
 function useRelatorio<T>(buscar: () => Promise<T>, chave: string) {
+  const respostas = useContext(RespostasDaTela);
   const [estado, setEstado] = useState<{ chave: string; dado?: T; erro?: string } | null>(null);
 
   useEffect(() => {
     let vivo = true;
-    buscar()
+    let pedido = respostas?.get(chave) as Promise<T> | undefined;
+    if (!pedido) {
+      pedido = buscar();
+      respostas?.set(chave, pedido);
+      // Falha não fica guardada: voltar à seção tenta de novo.
+      pedido.catch(() => respostas?.delete(chave));
+    }
+    pedido
       .then((dado) => vivo && setEstado({ chave, dado }))
       .catch((falha) => vivo && setEstado({ chave, erro: descreverFalha(falha) }));
     return () => {
@@ -65,10 +93,236 @@ function useRelatorio<T>(buscar: () => Promise<T>, chave: string) {
     };
     // `buscar` muda a cada render; a chave é o que diz se a pergunta mudou.
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [chave]);
+  }, [chave, respostas]);
 
   const atual = estado?.chave === chave ? estado : null;
   return { dado: atual?.dado, erro: atual?.erro, carregando: atual === null };
+}
+
+function chaveDaIncidencia(hortaId: number, intervalo: { de: string; ate: string }) {
+  return `incidencia:${hortaId}:${intervalo.de}:${intervalo.ate}`;
+}
+
+// =============================================================================
+// US41 - painel da horta
+// =============================================================================
+
+/**
+ * Os quatro indicadores em quadros que se leem de relance no celular (RF37).
+ *
+ * Cada quadro diz o número por escrito e leva ao relatório detalhado logo
+ * abaixo. As colunas e barras só repetem o que está escrito: nada aqui depende
+ * de cor (RNF08). O período é o padrão da incidência, os últimos 6 meses, e a
+ * resposta é a mesma que a seção detalhada usa.
+ */
+function PainelDaHorta({ hortaId }: { hortaId: number }) {
+  const intervalo = useMemo(() => relatorios.periodo("6m", new Date()), []);
+  const incidencia = useRelatorio(
+    () => api.relatorioDeIncidencia(hortaId, intervalo),
+    chaveDaIncidencia(hortaId, intervalo),
+  );
+  const confirmacao = useRelatorio(
+    () => api.relatorioDeConfirmacao(hortaId),
+    `confirmacao:${hortaId}`,
+  );
+  const sintomas = useRelatorio(
+    () => api.relatorioDeSintomas(hortaId),
+    `sintomas:horta:${hortaId}`,
+  );
+  const rotacao = useRelatorio(
+    () => api.relatorioDeRotacao(hortaId),
+    `rotacao:${hortaId}`,
+  );
+
+  return (
+    <section aria-labelledby="titulo-painel" className="flex flex-col gap-4">
+      <div>
+        <h2 id="titulo-painel" className="text-xl font-bold">Painel da horta</h2>
+        <p className="text-texto-suave text-sm">
+          O resumo dos quatro relatórios. Cada quadro leva ao detalhe.
+        </p>
+      </div>
+      <div className="grid gap-3 sm:grid-cols-2">
+        <Quadro titulo="Diagnósticos por mês" destino="titulo-incidencia" estado={incidencia}>
+          {(dado) => <QuadroIncidencia dado={dado} intervalo={intervalo} />}
+        </Quadro>
+        <Quadro titulo="Confirmação no campo" destino="titulo-confirmacao" estado={confirmacao}>
+          {(dado) => <QuadroConfirmacao dado={dado} />}
+        </Quadro>
+        <Quadro titulo="Sintomas mais marcados" destino="titulo-sintomas" estado={sintomas}>
+          {(dado) => <QuadroSintomas dado={dado} />}
+        </Quadro>
+        <Quadro titulo="Rotação de culturas" destino="titulo-rotacao" estado={rotacao}>
+          {(dado) => <QuadroRotacao dado={dado} />}
+        </Quadro>
+      </div>
+    </section>
+  );
+}
+
+function Quadro<T>({
+  titulo,
+  destino,
+  estado,
+  children,
+}: {
+  titulo: string;
+  destino: string;
+  estado: { dado?: T; erro?: string; carregando: boolean };
+  children: (dado: T) => ReactNode;
+}) {
+  return (
+    <article className="border-borda flex flex-col gap-3 rounded-lg border-2 p-4">
+      <h3 className="font-bold">{titulo}</h3>
+      {estado.carregando && <p className="text-texto-suave text-sm">Contando…</p>}
+      {estado.erro && <p className="text-texto-suave text-sm">{estado.erro}</p>}
+      {estado.dado !== undefined && children(estado.dado)}
+      <a href={`#${destino}`} className="text-primaria mt-auto text-sm font-bold underline">
+        Ver detalhes
+      </a>
+    </article>
+  );
+}
+
+function QuadroIncidencia({
+  dado,
+  intervalo,
+}: {
+  dado: api.RelatorioDeIncidencia;
+  intervalo: { de: string; ate: string };
+}) {
+  const serie = relatorios.serieMensal(dado.linhas, intervalo);
+  const maior = Math.max(1, ...serie.map((p) => p.total));
+  const frequente = relatorios.doencaMaisFrequente(dado.linhas);
+  const largura = 40;
+  const altura = 72;
+  const descricao = serie.map((p) => `${p.rotulo}: ${p.total}`).join(", ");
+
+  return (
+    <>
+      <p>
+        <span className="text-2xl font-bold tabular-nums">{dado.consultas}</span>{" "}
+        {dado.consultas === 1 ? "diagnóstico" : "diagnósticos"} em 6 meses
+      </p>
+      <svg
+        role="img"
+        aria-label={`Diagnósticos com doença por mês. ${descricao}.`}
+        viewBox={`0 0 ${serie.length * largura} ${altura + 36}`}
+        className="w-full"
+      >
+        {serie.map((p, i) => {
+          const h = (p.total / maior) * altura;
+          const x = i * largura;
+          return (
+            <g key={p.mes}>
+              <rect x={x + 8} y={16 + altura - h} width={largura - 16} height={h}
+                className="fill-primaria" rx={2} />
+              <rect x={x + 4} y={16 + altura} width={largura - 8} height={2}
+                className="fill-borda-forte" />
+              <text x={x + largura / 2} y={12 + altura - h} textAnchor="middle"
+                className="fill-texto text-[11px] font-bold">
+                {p.total}
+              </text>
+              <text x={x + largura / 2} y={altura + 32} textAnchor="middle"
+                className="fill-texto-suave text-[11px]">
+                {p.rotulo}
+              </text>
+            </g>
+          );
+        })}
+      </svg>
+      {frequente ? (
+        <p className="text-sm">
+          Mais frequente: <strong>{frequente.nome}</strong>{" "}
+          <span className="text-texto-suave">
+            ({frequente.cultura}, {frequente.ocorrencias})
+          </span>
+        </p>
+      ) : (
+        <p className="text-texto-suave text-sm">Nenhum diagnóstico com doença no período.</p>
+      )}
+    </>
+  );
+}
+
+function QuadroConfirmacao({ dado }: { dado: api.RelatorioDeConfirmacao }) {
+  if (dado.avaliadas === 0) {
+    return (
+      <p className="text-texto-suave text-sm">
+        Nenhum diagnóstico avaliado ainda. A taxa aparece quando as pessoas
+        informarem se o diagnóstico se confirmou.
+      </p>
+    );
+  }
+  const geral = relatorios.confirmacaoGeral(dado.avaliadas, dado.confirmadas, dado.amostra_minima);
+  return (
+    <>
+      <p>
+        <span className="text-2xl font-bold tabular-nums">
+          {geral.taxa ?? `${dado.confirmadas} de ${dado.avaliadas}`}
+        </span>{" "}
+        confirmados
+      </p>
+      {/* A barra repete a fração, que já está escrita acima e abaixo. */}
+      <div aria-hidden="true" className="bg-superficie border-borda-forte h-4 rounded border">
+        <div className="bg-primaria h-full rounded-l" style={{ width: `${geral.fracao * 100}%` }} />
+      </div>
+      <p className="text-texto-suave text-sm">
+        {geral.contagem}.
+        {!geral.taxa && ` A taxa aparece a partir de ${dado.amostra_minima} avaliações.`}
+      </p>
+    </>
+  );
+}
+
+function QuadroSintomas({ dado }: { dado: api.RelatorioDeSintomas }) {
+  const destaque = relatorios.sintomasEmDestaque(dado.culturas);
+  if (destaque.length === 0) {
+    return <p className="text-texto-suave text-sm">Nenhum sintoma marcado ainda.</p>;
+  }
+  const maior = Math.max(1, ...destaque.map((s) => s.marcacoes));
+  return (
+    <ol className="flex flex-col gap-2">
+      {destaque.map((s, posicao) => (
+        <li key={s.id}>
+          <div className="flex items-baseline justify-between gap-2 text-sm">
+            <span>
+              <span className="font-bold">{posicao + 1}.</span> {s.nome}
+            </span>
+            <span className="font-bold tabular-nums">{s.marcacoes}</span>
+          </div>
+          {/* A barra repete o número, que já está escrito ao lado. */}
+          <div aria-hidden="true" className="bg-superficie mt-1 h-2 rounded">
+            <div className="bg-primaria h-2 rounded" style={{ width: `${(s.marcacoes / maior) * 100}%` }} />
+          </div>
+        </li>
+      ))}
+    </ol>
+  );
+}
+
+function QuadroRotacao({ dado }: { dado: api.RelatorioDeRotacao }) {
+  const resumo = relatorios.resumoDaRotacao(dado.alertas.length);
+  return (
+    <>
+      <p className="flex items-center gap-3">
+        <span aria-hidden="true" className="text-3xl">{resumo.simbolo}</span>
+        <span className="font-semibold">{resumo.texto}</span>
+      </p>
+      {dado.alertas.length > 0 && (
+        <ul className="list-disc pl-5 text-sm">
+          {dado.alertas.slice(0, 3).map((a) => (
+            <li key={a.canteiro_id}>
+              {a.identificacao}: {a.cultura_nome}
+            </li>
+          ))}
+        </ul>
+      )}
+      <p className="text-texto-suave text-sm">
+        Nos últimos {dado.ciclos_recentes} ciclos de cada canteiro em cultivo.
+      </p>
+    </>
+  );
 }
 
 // =============================================================================
@@ -80,7 +334,7 @@ function Incidencia({ hortaId }: { hortaId: number }) {
   const intervalo = useMemo(() => relatorios.periodo(periodoId, new Date()), [periodoId]);
   const { dado, erro, carregando } = useRelatorio(
     () => api.relatorioDeIncidencia(hortaId, intervalo),
-    `${hortaId}:${intervalo.de}:${intervalo.ate}`,
+    chaveDaIncidencia(hortaId, intervalo),
   );
   const meses = useMemo(() => relatorios.agruparPorMes(dado?.linhas ?? []), [dado]);
   const maior = Math.max(1, ...(dado?.linhas ?? []).map((l) => l.ocorrencias));
@@ -184,7 +438,7 @@ function Incidencia({ hortaId }: { hortaId: number }) {
 function Confirmacao({ hortaId }: { hortaId: number }) {
   const { dado, erro, carregando } = useRelatorio(
     () => api.relatorioDeConfirmacao(hortaId),
-    String(hortaId),
+    `confirmacao:${hortaId}`,
   );
 
   return (
@@ -271,7 +525,7 @@ function Sintomas({ hortaId }: { hortaId: number }) {
       recorte === "sistema"
         ? api.relatorioDeSintomasDoSistema()
         : api.relatorioDeSintomas(hortaId),
-    `${recorte}:${hortaId}`,
+    `sintomas:${recorte}:${hortaId}`,
   );
 
   return (
@@ -405,7 +659,7 @@ function SintomasDaCultura({ cultura }: { cultura: api.SintomasDaCultura }) {
 function Rotacao({ hortaId }: { hortaId: number }) {
   const { dado, erro, carregando } = useRelatorio(
     () => api.relatorioDeRotacao(hortaId),
-    String(hortaId),
+    `rotacao:${hortaId}`,
   );
 
   return (

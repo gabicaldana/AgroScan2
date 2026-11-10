@@ -154,3 +154,119 @@ export function resumoDaCultura(c: SintomasDaCultura): string {
   }`;
   return `${consultas} · ${doencas}`;
 }
+
+// =============================================================================
+// US41 - painel da horta
+// =============================================================================
+//
+// O painel resume os quatro relatórios em quadros que se leem de relance no
+// celular. Cada número está escrito; a barra e a coluna só o repetem, para que
+// nada dependa de cor (RNF08).
+
+const MESES_CURTOS = [
+  "jan", "fev", "mar", "abr", "mai", "jun",
+  "jul", "ago", "set", "out", "nov", "dez",
+];
+
+export type PontoMensal = { mes: string; rotulo: string; total: number };
+
+/**
+ * Diagnósticos por mês, do mais antigo ao mais recente, com os meses sem
+ * nenhum diagnóstico como zero - um buraco no gráfico também é informação.
+ */
+export function serieMensal(
+  linhas: readonly LinhaDeIncidencia[],
+  intervalo: { de: string; ate: string },
+): PontoMensal[] {
+  const totais = new Map<string, number>();
+  for (const l of linhas) totais.set(l.mes, (totais.get(l.mes) ?? 0) + l.ocorrencias);
+
+  const [anoDe, mesDe] = intervalo.de.split("-").map(Number);
+  const [anoAte, mesAte] = intervalo.ate.split("-").map(Number);
+  const serie: PontoMensal[] = [];
+  let ano = anoDe;
+  let mes = mesDe;
+  while (ano < anoAte || (ano === anoAte && mes <= mesAte)) {
+    const chave = `${ano}-${String(mes).padStart(2, "0")}`;
+    serie.push({ mes: chave, rotulo: MESES_CURTOS[mes - 1], total: totais.get(chave) ?? 0 });
+    mes += 1;
+    if (mes > 12) {
+      mes = 1;
+      ano += 1;
+    }
+  }
+  return serie;
+}
+
+/** A doença que mais ocorreu no período, somando os meses. */
+export function doencaMaisFrequente(
+  linhas: readonly LinhaDeIncidencia[],
+): { nome: string; cultura: string; ocorrencias: number } | null {
+  const somas = new Map<string, { nome: string; cultura: string; ocorrencias: number }>();
+  for (const l of linhas) {
+    const atual = somas.get(l.doenca_id) ?? { nome: l.doenca_nome, cultura: l.cultura_nome, ocorrencias: 0 };
+    atual.ocorrencias += l.ocorrencias;
+    somas.set(l.doenca_id, atual);
+  }
+  let melhor: { nome: string; cultura: string; ocorrencias: number } | null = null;
+  for (const d of somas.values()) {
+    if (!melhor || d.ocorrencias > melhor.ocorrencias ||
+        (d.ocorrencias === melhor.ocorrencias && d.nome.localeCompare(melhor.nome, "pt-BR") < 0)) {
+      melhor = d;
+    }
+  }
+  return melhor;
+}
+
+/**
+ * A confirmação da horta inteira: a contagem sempre, a taxa só a partir da
+ * mesma amostra mínima que a API usa por doença.
+ */
+export function confirmacaoGeral(
+  avaliadas: number,
+  confirmadas: number,
+  minimo: number,
+): { contagem: string; taxa: string | null; fracao: number } {
+  const palavra = confirmadas === 1 ? "confirmado" : "confirmados";
+  const contagem = `${confirmadas} de ${avaliadas} ${avaliadas === 1 ? "diagnóstico avaliado" : "diagnósticos avaliados"} ${palavra}`;
+  const fracao = avaliadas === 0 ? 0 : confirmadas / avaliadas;
+  const taxa =
+    avaliadas < minimo
+      ? null
+      : `${(fracao * 100).toLocaleString("pt-BR", { maximumFractionDigits: 0 })}%`;
+  return { contagem, taxa, fracao };
+}
+
+export type SintomaEmDestaque = { id: string; nome: string; marcacoes: number };
+
+/**
+ * Os sintomas mais marcados na horta, somando todas as culturas. O relatório
+ * detalhado separa por cultura; o painel quer a resposta curta.
+ */
+export function sintomasEmDestaque(
+  culturas: readonly SintomasDaCultura[],
+  quantos = 3,
+): SintomaEmDestaque[] {
+  const somas = new Map<string, SintomaEmDestaque>();
+  for (const c of culturas) {
+    for (const s of c.sintomas) {
+      const atual = somas.get(s.sintoma_id) ?? { id: s.sintoma_id, nome: s.sintoma_nome, marcacoes: 0 };
+      atual.marcacoes += s.marcacoes;
+      somas.set(s.sintoma_id, atual);
+    }
+  }
+  return [...somas.values()]
+    .sort((a, b) => b.marcacoes - a.marcacoes || a.nome.localeCompare(b.nome, "pt-BR"))
+    .slice(0, quantos);
+}
+
+/** "2 canteiros repetem a família", com símbolo, e não só cor. */
+export function resumoDaRotacao(alertas: number): { simbolo: string; texto: string } {
+  if (alertas === 0) {
+    return { simbolo: "✓", texto: "Nenhum canteiro repete a família botânica" };
+  }
+  return {
+    simbolo: "⚠",
+    texto: `${alertas} ${alertas === 1 ? "canteiro repete" : "canteiros repetem"} a família botânica`,
+  };
+}
