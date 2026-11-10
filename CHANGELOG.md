@@ -14,6 +14,14 @@ Registre aqui as mudanças relevantes por sprint ou marco avaliativo.
 
 ## Sprint 5 - Base completa, feedback e dashboards · 27/10 a 09/11/2026
 
+### Auditoria do acervo Digipathos (US38)
+
+- **Relatório** em [`docs/auditoria-digipathos.md`](docs/auditoria-digipathos.md), sobre o registro oficial do acervo (Redape, DOI 10.48432/XA1OVL) e os próprios arquivos baixados: 2.326 fotos de 171 desordens em 21 espécies, quase todas de lavoura ou frutíferas.
+- **Cobertura**: das 24 culturas da base, só a couve aparece. Das 88 doenças, uma tem imagens (alternariose da couve, com 4 fotos de laboratório).
+- **Licença**: CC BY-NC 4.0, compatível com o projeto. O impedimento é a cobertura.
+- **Decisão** no [ADR 0015](docs/decisoes/adr-0015-identificacao-por-imagem.md), proposto: a identificação por imagem (US39) não é viável no semestre. O ADR registra o piso para retomá-la: pelo menos 100 fotos independentes por classe, parte delas de campo, e licença que permita distribuir o modelo.
+- **Risco R04** passa a materializado no Artefato 2, e as referências ao Digipathos em `aplicacao.md`, `arquitetura.md` e `requisitos.md` trazem o resultado.
+
 ### Base completa: 24 culturas e 88 doenças (US05, US01)
 
 - **Base `2026.11.09`**: onze culturas e 35 doenças novas, de 13 para 24 culturas e de 53 para 88 doenças, a meta do épico E1.
