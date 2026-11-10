@@ -35,11 +35,15 @@ O AgroScan é uma aplicação PWA (Progressive Web App) projetada para funcionar
 | **1** | Gestão do Negócio/Domínio - análise de usuário | 14/09/2026 | [entregas/artefato-1-analise-de-usuario.md](entregas/artefato-1-analise-de-usuario.md) |
 | **2** | Gestão do Projeto - EAP, backlog do produto, planejamento das sprints, projeto no repositório institucional | 14/09/2026 | [entregas/artefato-2-gestao-do-projeto.md](entregas/artefato-2-gestao-do-projeto.md) |
 | **3** | Gestão do Produto - arquitetura da informação, design arquitetural, testes de integração, protótipo de baixo nível, storyboard | 14/09/2026 | [entregas/artefato-3-gestao-do-produto.md](entregas/artefato-3-gestao-do-produto.md) |
-| **5** | Gestão dos Ativos - website com dados e documentação | a definir | a produzir |
-| **6** | Gestão do Negócio/Domínio - análise do usuário *(2º bim.)* | a definir | a produzir |
-| **7** | Gestão do Projeto - execução e revisão das sprints; vitrine de ativos *(2º bim.)* | a definir | a produzir |
-| **8** | Gestão do Produto - arquitetura de software; testes de sistema *(2º bim.)* | a definir | a produzir |
-| **9** | Gestão dos Ativos - dashboards incorporados *(2º bim.)* | a definir | a produzir |
+| **5** | Gestão dos Ativos - website com dados e documentação | sem data própria | o próprio projeto: [aplicação publicada](https://agroscan-blond.vercel.app), [API](https://agroscan-api.vercel.app/api/v1/docs) e [docs/](docs/) |
+| **6** | Gestão do Negócio/Domínio - análise do usuário *(2º bim.)* | sem data própria | depende da validação com a comunidade parceira ([#73](https://github.com/CampusCEUB/AgroScan/issues/73)) |
+| **7** | Gestão do Projeto - execução e revisão das sprints; vitrine de ativos *(2º bim.)* | sem data própria | o próprio projeto: [sprints/](sprints/), [atas](docs/reunioes/) e [milestones](https://github.com/CampusCEUB/AgroScan/milestones?state=all) |
+| **8** | Gestão do Produto - arquitetura de software; testes de sistema *(2º bim.)* | sem data própria | o próprio projeto: [arquitetura](docs/arquitetura.md), [ADRs](docs/decisoes/) e [testes](src/tests/) |
+| **9** | Gestão dos Ativos - dashboards incorporados *(2º bim.)* | sem data própria | o próprio projeto: painéis da horta (US41) |
+
+Só os Artefatos 1, 2 e 3 são documentos com data própria. O conteúdo dos
+Artefatos 5 a 9 é o próprio projeto, construído ao longo das sprints, e o
+Artefato 4 não existe.
 
 Os registros de cada entrega, com critérios atendidos, validação, limitações e
 pendências, estão em [entregas/](entregas/README.md).
@@ -97,7 +101,7 @@ das Sprints 1 a 3.
 | Plataforma - API REST, PostgreSQL, PWA, integração contínua | ✅ concluído, com atualização do catálogo sem reinstalar e instruções de instalação no iPhone |
 | Identidade e conta | 🟡 API concluída; tela de exclusão pendente |
 | Caderno de campo | 🟡 histórico, filtros e sincronização concluídos; confirmação e anotações pendentes |
-| Base de conhecimento | 🔄 9 de 24 culturas · 34 de 88 fichas de doença · solanáceas e brássicas fechadas e conferidas |
+| Base de conhecimento | ✅ 24 culturas · 88 fichas de doença · base `2026.11.09` |
 | Horta, canteiros e manejo | 🟡 hortas, membros, canteiros e manejo concluídos; falta o filtro por canteiro na tela do caderno |
 | Relatórios agregados | ⬜ em desenvolvimento na Sprint 4 |
 | Identificação por imagem | 🟡 escopo condicionado - captura, pré-processamento e recusa prontos; sem modelo |

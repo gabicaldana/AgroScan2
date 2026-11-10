@@ -7,7 +7,7 @@
 import { test, describe } from "node:test";
 import assert from "node:assert/strict";
 
-import { sair } from "./conta.ts";
+import { excluir, sair } from "./conta.ts";
 import * as fila from "./fila.ts";
 
 function consulta(offlineId: string): fila.ConsultaPendente {
@@ -97,5 +97,53 @@ describe("sair da conta", () => {
     assert.equal(c.encerrou(), 1);
     // Apagar não tenta enviar: a pessoa já decidiu.
     assert.equal(c.envios(), 0);
+  });
+});
+
+describe("excluir a conta (US15)", () => {
+  function exclusao(naFila: string[], api: "aceita" | "recusa") {
+    const armazenamento = fila.armazenamentoEmMemoria(naFila.map(consulta));
+    let encerrou = 0;
+    let chamadas = 0;
+    const recusa = new Error("transfira a responsabilidade antes");
+    return {
+      armazenamento,
+      recusa,
+      encerrou: () => encerrou,
+      chamadas: () => chamadas,
+      deps: {
+        armazenamento,
+        excluirNaApi: async () => {
+          chamadas += 1;
+          if (api === "recusa") throw recusa;
+        },
+        encerrar: () => {
+          encerrou += 1;
+        },
+      },
+    };
+  }
+
+  test("com o servidor aceitando, apaga a fila do aparelho e encerra a sessão", async () => {
+    const c = exclusao(["a", "b"], "aceita");
+    assert.deepEqual(await excluir(c.deps), { excluida: true, apagados: 2 });
+    assert.equal(c.chamadas(), 1);
+    assert.equal(await fila.quantasPendentes(c.armazenamento), 0);
+    assert.equal(c.encerrou(), 1);
+  });
+
+  test("com a fila vazia, também exclui", async () => {
+    const c = exclusao([], "aceita");
+    assert.deepEqual(await excluir(c.deps), { excluida: true, apagados: 0 });
+    assert.equal(c.encerrou(), 1);
+  });
+
+  test("se o servidor recusa, nada é apagado e a sessão continua", async () => {
+    const c = exclusao(["a"], "recusa");
+    const r = await excluir(c.deps);
+    assert.equal(r.excluida, false);
+    assert.equal(r.excluida === false && r.falha, c.recusa);
+    assert.equal(await fila.quantasPendentes(c.armazenamento), 1);
+    assert.equal(c.encerrou(), 0);
   });
 });

@@ -1,6 +1,7 @@
 "use client";
 
 import { useCallback, useEffect, useMemo, useState } from "react";
+import { Anotacoes } from "@/components/Anotacoes";
 import { BotaoLink } from "@/components/Botao";
 import { EstadoVazio } from "@/components/EstadoVazio";
 import { FeedbackDaConsulta } from "@/components/FeedbackDaConsulta";
@@ -417,6 +418,9 @@ function Registro({
         temConta={temConta}
         aoResponder={aoResponder}
       />
+      {temConta && typeof registro.id === "number" && (
+        <Anotacoes alvo={{ tipo: "consulta", id: registro.id }} recolhida />
+      )}
     </div>
   );
 }

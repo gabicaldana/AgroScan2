@@ -65,7 +65,7 @@ export type Cultura = {
   doencas: Doenca[];
 };
 
-export const VERSAO_DA_BASE: string = "2026.10.24";
+export const VERSAO_DA_BASE: string = "2026.11.09";
 
 export const ORGAOS: readonly Orgao[] = [
   {
@@ -285,6 +285,96 @@ export const SINTOMAS: readonly Sintoma[] = [
     "id": "frutos_deformados",
     "nome": "Frutos deformados, manchados ou rachados",
     "orgao": "fruto"
+  },
+  {
+    "id": "manchas_pardas_irregulares",
+    "nome": "Manchas pardas de borda difusa, que crescem e se juntam",
+    "orgao": "folha"
+  },
+  {
+    "id": "manchas_necroticas_folhas_novas",
+    "nome": "Muitas manchinhas escuras e secas nas folhas novas do centro ou do ponteiro",
+    "orgao": "folha"
+  },
+  {
+    "id": "mofo_branco_com_esclerodios",
+    "nome": "Mofo branco, como algodão, com grãos duros e escuros (escleródios)",
+    "orgao": "planta"
+  },
+  {
+    "id": "podridao_mole_na_base",
+    "nome": "Podridão mole e úmida na base da planta, junto ao solo",
+    "orgao": "planta"
+  },
+  {
+    "id": "tombamento_de_mudas",
+    "nome": "Mudas tombam, com o colo escuro e afinado rente ao solo",
+    "orgao": "planta"
+  },
+  {
+    "id": "raiz_escurecida_podre",
+    "nome": "Raízes escurecidas e apodrecidas",
+    "orgao": "raiz"
+  },
+  {
+    "id": "manchas_purpura",
+    "nome": "Manchas de centro arroxeado (cor púrpura) na folha",
+    "orgao": "folha"
+  },
+  {
+    "id": "seca_das_pontas",
+    "nome": "Folhas secando a partir da ponta",
+    "orgao": "folha"
+  },
+  {
+    "id": "mofo_acinzentado_sobre_lesao",
+    "nome": "Mofo acinzentado a violáceo cobrindo as manchas, nas horas úmidas",
+    "orgao": "folha"
+  },
+  {
+    "id": "pustulas_ferrugem",
+    "nome": "Pústulas alaranjadas que soltam um pó amarelo cor de ferrugem",
+    "orgao": "folha"
+  },
+  {
+    "id": "estrias_amarelas_folha",
+    "nome": "Estrias amarelas compridas ao longo da folha",
+    "orgao": "folha"
+  },
+  {
+    "id": "raizes_rosadas",
+    "nome": "Raízes rosadas, arroxeadas ou escuras, enrugadas e se desfazendo",
+    "orgao": "raiz"
+  },
+  {
+    "id": "planta_arranca_facil",
+    "nome": "Planta sai do chão sem esforço, com poucas raízes",
+    "orgao": "raiz"
+  },
+  {
+    "id": "bulbo_alongado_charuto",
+    "nome": "Pescoço comprido e bulbo fino, em forma de charuto",
+    "orgao": "raiz"
+  },
+  {
+    "id": "folhas_velhas_amarelas_secando",
+    "nome": "Folhas mais velhas amarelando e secando",
+    "orgao": "planta"
+  },
+  {
+    "id": "manchas_escuras_halo_amarelo",
+    "nome": "Manchas pardo-escuras a pretas, com halo amarelo ao redor",
+    "orgao": "folha"
+  },
+  {
+    "id": "penugem_cinza_na_lesao",
+    "nome": "Penugem cinza fina no centro das manchas, em tempo úmido",
+    "orgao": "folha"
+  },
+  {
+    "id": "raiz_bifurcada",
+    "nome": "Raiz principal bifurcada, com várias pontas ou rachada",
+    "orgao": "raiz"
   }
 ];
 
@@ -965,6 +1055,836 @@ export const CULTURAS: readonly Cultura[] = [
     ]
   },
   {
+    "id": "aipo",
+    "nome": "Aipo (salsão)",
+    "nomeCientifico": "Apium graveolens var. dulce",
+    "grupo": "haste",
+    "familia": "Apiaceae",
+    "emoji": "🥬",
+    "cicloDias": null,
+    "doencas": [
+      {
+        "id": "aipo_cercosporiose",
+        "nome": "Mancha-de-cercóspora do aipo",
+        "agente": "Cercospora apii",
+        "tipoAgente": "fungo",
+        "gravidade": 3,
+        "descricao": "Começa com pequenas manchas amarelas, visíveis nas duas faces da folha, que crescem em lesões acinzentadas e arredondadas de 6 a 19 mm. A lesão seca, fica com textura de papel e costuma rachar. Com umidade, aparece uma penugem cinza fina no centro das manchas, mas sem os pontinhos pretos da septoriose. Em clima favorável as manchas se juntam e queimam as folhas.",
+        "sintomas": [
+          {
+            "id": "manchas_amareladas",
+            "peso": 1
+          },
+          {
+            "id": "penugem_cinza_na_lesao",
+            "peso": 0.7
+          },
+          {
+            "id": "furos_na_folha",
+            "peso": 0.4
+          }
+        ],
+        "condicoesFavoraveis": {
+          "temperatura": "16 a 30 °C",
+          "umidade": "Alta, com chuva ou irrigação por aspersão",
+          "observacao": "O fungo vem na semente e sobrevive nos restos de aipo no campo. Os esporos se espalham pelo vento e pelos respingos de água."
+        },
+        "tratamentos": [
+          {
+            "tipo": "cultural",
+            "descricao": "Semente sadia e mudas sem a doença."
+          },
+          {
+            "tipo": "cultural",
+            "descricao": "Retirar e destruir os restos culturais depois da colheita e fazer rotação com hortaliças de outras famílias."
+          },
+          {
+            "tipo": "quimico",
+            "descricao": "Fungicida cúprico registrado para o alvo no aipo, em aplicação preventiva."
+          }
+        ],
+        "ingredientesAtivos": [
+          {
+            "nome": "Óxido cuproso",
+            "grupo": "Cúprico",
+            "acao": "protetor"
+          }
+        ]
+      },
+      {
+        "id": "aipo_septoriose",
+        "nome": "Septoriose do aipo",
+        "agente": "Septoria apiicola",
+        "tipoAgente": "fungo",
+        "gravidade": 3,
+        "descricao": "Pequenas manchas amarelas nas folhas e nos pecíolos, redondas ou angulosas quando limitadas pelas nervuras. As manchas crescem, se juntam, ficam cor de palha e secam como papel. O sinal que separa esta doença é a presença de pontinhos escuros e redondos dentro da lesão, as frutificações do fungo. Em clima favorável, folhas e pecíolos inteiros são tomados e a planta queima.",
+        "sintomas": [
+          {
+            "id": "pontuacoes_pretas_na_lesao",
+            "peso": 1
+          },
+          {
+            "id": "lesoes_no_caule",
+            "peso": 0.6
+          },
+          {
+            "id": "manchas_amareladas",
+            "peso": 0.5
+          }
+        ],
+        "condicoesFavoraveis": {
+          "temperatura": "Acima de 21 °C favorece; abaixo de 13 °C a doença para",
+          "umidade": "Chuva, orvalho pesado, neblina ou irrigação por aspersão",
+          "observacao": "A semente contaminada é a principal fonte do fungo. Os respingos de água espalham os esporos, e o fungo sobrevive nos restos de planta não decompostos."
+        },
+        "tratamentos": [
+          {
+            "tipo": "cultural",
+            "descricao": "Semente sadia e mudas sem a doença; eliminar as mudas doentes ainda no viveiro."
+          },
+          {
+            "tipo": "cultural",
+            "descricao": "Evitar a irrigação por aspersão depois do plantio e não passar com equipamento pela lavoura com as folhas molhadas."
+          },
+          {
+            "tipo": "cultural",
+            "descricao": "Incorporar os restos culturais depois da colheita e ficar ao menos um ano sem aipo na área. Não há fungicida registrado para esta doença no aipo."
+          }
+        ],
+        "ingredientesAtivos": []
+      },
+      {
+        "id": "aipo_mofo_branco",
+        "nome": "Mofo-branco do aipo",
+        "agente": "Sclerotinia sclerotiorum",
+        "tipoAgente": "fungo",
+        "gravidade": 3,
+        "descricao": "Podridão do pé e da haste. Nos pecíolos, junto ao solo ou dentro da touceira, surgem lesões aquosas que ficam bege a marrom e se espalham rápido em podridão mole e encharcada. Sobre a lesão cresce um mofo branco abundante, com corpos pretos, duros e irregulares. Em condição favorável, os pecíolos e a base da planta desabam e a planta morre.",
+        "sintomas": [
+          {
+            "id": "mofo_branco_com_esclerodios",
+            "peso": 1
+          },
+          {
+            "id": "lesoes_no_caule",
+            "peso": 0.7
+          },
+          {
+            "id": "murcha",
+            "peso": 0.5
+          }
+        ],
+        "condicoesFavoraveis": {
+          "temperatura": "15 a 21 °C",
+          "umidade": "Alta umidade do solo e do ar, com água livre nas plantas",
+          "observacao": "Os escleródios sobrevivem no solo por anos sem hospedeiro e atacam centenas de espécies, muitas delas hortaliças. Folhagem fechada, molhamento prolongado e neblina favorecem a doença."
+        },
+        "tratamentos": [
+          {
+            "tipo": "cultural",
+            "descricao": "Rotação com gramíneas ou outras não hospedeiras para reduzir o inóculo do solo; retirar e destruir os restos culturais das áreas atacadas."
+          },
+          {
+            "tipo": "cultural",
+            "descricao": "Espaçamento que deixe o ar circular entre as plantas e irrigação por gotejo em vez de aspersão, principalmente no fim do ciclo."
+          },
+          {
+            "tipo": "cultural",
+            "descricao": "Reduzir o volume de irrigação e equilibrar a adubação nitrogenada. Não há fungicida registrado para o mofo-branco no aipo."
+          },
+          {
+            "tipo": "biologico",
+            "descricao": "Produtos à base de Trichoderma (T. harzianum, T. asperellum) e de Bacillus têm registro para Sclerotinia sclerotiorum, aplicados ao solo para reduzir os escleródios."
+          }
+        ],
+        "ingredientesAtivos": []
+      }
+    ]
+  },
+  {
+    "id": "alface",
+    "nome": "Alface",
+    "nomeCientifico": "Lactuca sativa",
+    "grupo": "folha",
+    "familia": "Asteraceae",
+    "emoji": "🥬",
+    "cicloDias": null,
+    "doencas": [
+      {
+        "id": "alface_mildio",
+        "nome": "Míldio da alface",
+        "agente": "Bremia lactucae",
+        "tipoAgente": "oomiceto",
+        "gravidade": 4,
+        "descricao": "Uma das principais doenças da alface, no campo, no cultivo protegido e na hidroponia. Manchas verde-claras a amareladas, de tamanhos variados, geralmente limitadas pelas nervuras. Na face de baixo da folha, com umidade alta, aparece um mofo esbranquiçado e pulverulento, que é o que confirma a doença. Em ataque severo, o interior do caule pode escurecer. Chega a ser limitante onde a temperatura é baixa e a folha fica molhada por muito tempo.",
+        "sintomas": [
+          {
+            "id": "mofo_branco_face_inferior",
+            "peso": 1
+          },
+          {
+            "id": "manchas_angulares_entre_nervuras",
+            "peso": 0.8
+          },
+          {
+            "id": "manchas_amareladas",
+            "peso": 0.7
+          }
+        ],
+        "condicoesFavoraveis": {
+          "temperatura": "Baixa a amena",
+          "umidade": "Folha molhada por muito tempo, por chuva, orvalho ou irrigação por aspersão",
+          "observacao": "O patógeno chega pela semente, pelos oósporos que ficam no solo e nos restos de cultura mal decompostos, ou pelo vento, a partir de lavouras vizinhas doentes. Tem várias raças fisiológicas, o que dificulta obter cultivares resistentes."
+        },
+        "tratamentos": [
+          {
+            "tipo": "cultural",
+            "descricao": "Sementes e mudas sadias, de firma idônea, e cultivar adaptada, resistente ao míldio quando houver."
+          },
+          {
+            "tipo": "cultural",
+            "descricao": "Espaçamento que areje as plantas; irrigar de preferência por gotejamento ou, na aspersão, sem excesso e em horário que deixe a folha secar antes do anoitecer. Na hidroponia, manter o ambiente bem ventilado."
+          },
+          {
+            "tipo": "cultural",
+            "descricao": "Retirar da área os restos culturais e as folhas doentes tiradas na toalete; rotação de pelo menos dois anos, de preferência com gramíneas."
+          },
+          {
+            "tipo": "quimico",
+            "descricao": "Fungicida registrado para o míldio da alface, em aplicação preventiva, respeitando a carência: a folha é consumida crua."
+          }
+        ],
+        "ingredientesAtivos": [
+          {
+            "nome": "Mandipropamida",
+            "grupo": "Mandelamida",
+            "acao": "sistêmico"
+          },
+          {
+            "nome": "Dimetomorfe",
+            "grupo": "Amida do ácido cinâmico",
+            "acao": "sistêmico"
+          },
+          {
+            "nome": "Ciazofamida",
+            "grupo": "Cianoimidazol",
+            "acao": "protetor"
+          },
+          {
+            "nome": "Oxatiapiprolim",
+            "grupo": "Piperidinil-tiazol-isoxazolina",
+            "acao": "sistêmico"
+          }
+        ]
+      },
+      {
+        "id": "alface_septoriose",
+        "nome": "Septoriose da alface",
+        "agente": "Septoria lactucae",
+        "tipoAgente": "fungo",
+        "gravidade": 3,
+        "descricao": "Começa nas folhas mais velhas, com manchas marrom-claras de borda pouco definida, que crescem, se juntam e secam a \"saia\" da planta. No centro das manchas aparecem pontinhos pretos (picnídios), onde se formam os esporos: é o sinal que separa a septoriose das outras manchas da alface. É comum no Sul, no Sudeste e no Centro-Oeste, em época de chuva ou com irrigação por aspersão.",
+        "sintomas": [
+          {
+            "id": "pontuacoes_pretas_na_lesao",
+            "peso": 1
+          },
+          {
+            "id": "manchas_pardas_irregulares",
+            "peso": 0.9
+          }
+        ],
+        "condicoesFavoraveis": {
+          "temperatura": "Amena a quente; o calor forte do Norte e do Nordeste desfavorece o fungo",
+          "umidade": "Alta, em época chuvosa ou com irrigação por aspersão",
+          "observacao": "Começa pela semente infectada ou por esporos vindos de restos de cultura e de lavouras mais velhas. Os esporos se espalham pelo vento e pelos respingos de água, e os picnídios sobrevivem no solo sem a planta."
+        },
+        "tratamentos": [
+          {
+            "tipo": "cultural",
+            "descricao": "Sementes e mudas sadias, de firma idônea, e cultivar adaptada à época."
+          },
+          {
+            "tipo": "cultural",
+            "descricao": "Plantar em terreno bem drenado e com espaçamento que areje as plantas, principalmente no verão chuvoso; irrigar só o necessário, de preferência por gotejamento, e não exagerar no nitrogênio."
+          },
+          {
+            "tipo": "cultural",
+            "descricao": "Eliminar os restos culturais e as folhas baixeiras doentes; rotação de pelo menos um ano com plantas de outra família que não a da alface (Asteraceae)."
+          },
+          {
+            "tipo": "quimico",
+            "descricao": "Fungicida registrado para a septoriose da alface, em aplicação preventiva, respeitando a carência."
+          }
+        ],
+        "ingredientesAtivos": [
+          {
+            "nome": "Difenoconazol",
+            "grupo": "Triazol",
+            "acao": "sistêmico"
+          },
+          {
+            "nome": "Azoxistrobina",
+            "grupo": "Estrobilurina",
+            "acao": "sistêmico"
+          },
+          {
+            "nome": "Fluxapiroxade",
+            "grupo": "Carboxamida",
+            "acao": "sistêmico"
+          }
+        ]
+      },
+      {
+        "id": "alface_podridao_de_esclerotinia",
+        "nome": "Podridão-de-esclerotínia (mofo-branco)",
+        "agente": "Sclerotinia sclerotiorum e S. minor",
+        "tipoAgente": "fungo",
+        "gravidade": 4,
+        "descricao": "Aparece sobretudo em plantas adultas, perto da colheita, quando a \"saia\" mantém o ar úmido junto ao solo. As folhas mais velhas, encostadas na terra, murcham e têm podridão mole; a doença sobe para as folhas internas e a planta inteira murcha, às vezes amarela, e apodrece. Sobre as folhas velhas e o solo úmido forma-se um mofo branco, como algodão, com escleródios pretos, duros e de forma irregular. Dá grandes perdas em terrenos cultivados sem rotação.",
+        "sintomas": [
+          {
+            "id": "mofo_branco_com_esclerodios",
+            "peso": 1
+          },
+          {
+            "id": "podridao_mole_na_base",
+            "peso": 0.8
+          },
+          {
+            "id": "murcha",
+            "peso": 0.8
+          }
+        ],
+        "condicoesFavoraveis": {
+          "temperatura": "Fria",
+          "umidade": "Alta, com solo úmido e a folhagem fechada junto ao chão",
+          "observacao": "Os escleródios continuam infectivos no solo por até dez anos. O fungo ataca também feijão, soja, tomate, pimentão, repolho e berinjela, o que precisa ser levado em conta na rotação."
+        },
+        "tratamentos": [
+          {
+            "tipo": "cultural",
+            "descricao": "Plantar em solo bem drenado, que não acumule água, e não plantar onde a doença já ocorreu; controlar a irrigação para não encharcar."
+          },
+          {
+            "tipo": "cultural",
+            "descricao": "Em períodos frios e chuvosos, aumentar o espaçamento para ventilar as plantas."
+          },
+          {
+            "tipo": "cultural",
+            "descricao": "Rotação de pelo menos três anos, de preferência com gramíneas, evitando outras hospedeiras do fungo; em cultivo protegido, tratar o solo infestado por solarização ou vapor."
+          },
+          {
+            "tipo": "biologico",
+            "descricao": "Trichoderma harzianum, registrado para Sclerotinia sclerotiorum em todas as culturas, em uso preventivo conforme a bula."
+          },
+          {
+            "tipo": "quimico",
+            "descricao": "Fungicida registrado para o alvo na alface, preventivo, em plantas jovens, poucos dias depois do transplante."
+          }
+        ],
+        "ingredientesAtivos": [
+          {
+            "nome": "Procimidona",
+            "grupo": "Dicarboximida",
+            "acao": "sistêmico"
+          },
+          {
+            "nome": "Iprodiona",
+            "grupo": "Dicarboximida",
+            "acao": "protetor"
+          },
+          {
+            "nome": "Boscalida",
+            "grupo": "Carboxamida",
+            "acao": "sistêmico"
+          },
+          {
+            "nome": "Fluazinam",
+            "grupo": "Fenilpiridinilamina",
+            "acao": "protetor"
+          }
+        ]
+      },
+      {
+        "id": "alface_vira_cabeca",
+        "nome": "Vira-cabeça da alface",
+        "agente": "Tospovírus (GRSV, TCSV e TSWV), transmitidos por tripes, principalmente Frankliniella schultzei",
+        "tipoAgente": "vírus",
+        "gravidade": 5,
+        "descricao": "Começa nas folhas internas, mais novas, e no pecíolo, com muitas lesões pequenas, de borda definida, que escurecem até marrom-escuro e dão à folha um aspecto rendilhado e bronzeado. Os sintomas muitas vezes ficam de um lado só da planta, e a cabeça se forma torta. As lesões amarelam e se juntam até necrosar a folha; a planta cresce pouco e, se infectada cedo, entra em colapso. Ocorre em todo o Brasil, sobretudo nos meses quentes, com perdas de 30% a 100% em surtos. Não há controle curativo nem cultivar resistente.",
+        "sintomas": [
+          {
+            "id": "manchas_necroticas_folhas_novas",
+            "peso": 1
+          },
+          {
+            "id": "folhas_deformadas",
+            "peso": 0.7
+          },
+          {
+            "id": "bronzeamento_folha",
+            "peso": 0.6
+          },
+          {
+            "id": "crescimento_reduzido",
+            "peso": 0.6
+          },
+          {
+            "id": "manchas_amareladas",
+            "peso": 0.3
+          }
+        ],
+        "condicoesFavoraveis": {
+          "temperatura": "Quente: os picos de tripes vêm na primavera e no verão",
+          "umidade": "Baixa: tempo seco e veranicos favorecem o tripes, e a chuva forte reduz a infestação",
+          "observacao": "O tripes adquire o vírus quando larva e o transmite pelo resto da vida; o vírus não passa pela semente. Tomate, pimentão, batata, jiló e daninhas como joá-de-capote, maria-pretinha, caruru, picão, beldroega e serralha mantêm o vírus perto da lavoura."
+        },
+        "tratamentos": [
+          {
+            "tipo": "cultural",
+            "descricao": "Mudas sadias, produzidas em telado de malha fina, isolado das lavouras."
+          },
+          {
+            "tipo": "cultural",
+            "descricao": "Não plantar ao lado de lavouras velhas de alface nem de solanáceas, cucurbitáceas, quiabeiro, soja, feijão e algodão, que abrigam o tripes; evitar plantios escalonados vizinhos."
+          },
+          {
+            "tipo": "cultural",
+            "descricao": "Arrancar cedo as plantas doentes, ensacando-as no local, e controlar as daninhas hospedeiras dentro e em volta da área."
+          },
+          {
+            "tipo": "cultural",
+            "descricao": "Destruir os restos logo depois da colheita e deixar a área sem alface e sem hospedeiras por pelo menos 40 dias."
+          },
+          {
+            "tipo": "biologico",
+            "descricao": "Fungos entomopatogênicos registrados para o tripes Frankliniella schultzei, como Beauveria bassiana e Isaria fumosorosea, para reduzir o vetor."
+          },
+          {
+            "tipo": "quimico",
+            "descricao": "Inseticida registrado para tripes na alface, nas mudas e logo após o transplante, só onde a virose já é histórica. Sozinho não controla a doença: os inseticidas têm baixa eficiência contra o tripes."
+          }
+        ],
+        "ingredientesAtivos": [
+          {
+            "nome": "Imidacloprido",
+            "grupo": "Neonicotinoide",
+            "acao": "inseticida sistêmico (vetor)"
+          },
+          {
+            "nome": "Espinetoram",
+            "grupo": "Espinosina",
+            "acao": "inseticida (vetor)"
+          },
+          {
+            "nome": "Formetanato",
+            "grupo": "Metilcarbamato de fenila",
+            "acao": "inseticida (vetor)"
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "alho",
+    "nome": "Alho",
+    "nomeCientifico": "Allium sativum",
+    "grupo": "raiz",
+    "familia": "Amaryllidaceae",
+    "emoji": "🧄",
+    "cicloDias": 130,
+    "doencas": [
+      {
+        "id": "alho_mancha_purpura",
+        "nome": "Mancha-púrpura do alho",
+        "agente": "Alternaria porri (eventualmente Stemphylium vesicarium)",
+        "tipoAgente": "fungo",
+        "gravidade": 4,
+        "descricao": "Principal doença de parte aérea do alho em clima tropical e subtropical, e a principal doença foliar do alho nobre vernalizado irrigado por pivô no Cerrado. Começa com manchas pequenas, brancas e irregulares, que podem ser confundidas com dano de tripes, passam a amarelas e depois a púrpura, às vezes com halo amarelo e, em tempo úmido, anéis concêntricos marrons a cinza-escuros. As folhas murcham e enrugam do ápice para baixo. Em cultivar suscetível e clima favorável, as perdas vão de 50% a 100%. O ataque ao bulbo é bem menos comum que na cebola.",
+        "sintomas": [
+          {
+            "id": "manchas_purpura",
+            "peso": 1
+          },
+          {
+            "id": "manchas_escuras_aneis",
+            "peso": 0.7
+          },
+          {
+            "id": "seca_das_pontas",
+            "peso": 0.5
+          },
+          {
+            "id": "manchas_amareladas",
+            "peso": 0.4
+          }
+        ],
+        "condicoesFavoraveis": {
+          "temperatura": "21 a 30 °C",
+          "umidade": "Acima de 90%; o fungo depende de água na folha para germinar e esporular",
+          "observacao": "O ciclo é curto, de cerca de quatro dias, e uma lavoura pode ser tomada rapidamente. O fungo sobrevive nos restos culturais por até um ano. Ferimentos de tripes, geada, fitotoxidez e falta de nitrogênio favorecem a entrada. A aspersão frequente em região úmida favorece a doença."
+        },
+        "tratamentos": [
+          {
+            "tipo": "cultural",
+            "descricao": "Entre as cultivares plantadas no Brasil, Chonan e Roxo-Pérola de Caçador são as mais resistentes, mas nenhuma tem resistência alta."
+          },
+          {
+            "tipo": "cultural",
+            "descricao": "Rotação com culturas não aliáceas; eliminar os restos culturais, também perto dos galpões, e as plantas voluntárias; aração profunda; não plantar perto de cebolinha e alho-poró."
+          },
+          {
+            "tipo": "cultural",
+            "descricao": "Reduzir o tempo de folha molhada: aspersão no horário certo e com intervalos maiores, solo bem drenado e menor densidade de plantas."
+          },
+          {
+            "tipo": "biologico",
+            "descricao": "Há produtos à base de Bacillus subtilis, B. amyloliquefaciens e B. pumilus registrados para Alternaria porri, como complemento preventivo."
+          },
+          {
+            "tipo": "quimico",
+            "descricao": "O controle depende muito de fungicida: no bulbilho antes do plantio e de forma preventiva no ciclo. Usar espalhante adesivo, porque a folha é cerosa, e não depender de um só princípio ativo, para não selecionar fungo resistente."
+          }
+        ],
+        "ingredientesAtivos": [
+          {
+            "nome": "Mancozebe",
+            "grupo": "Ditiocarbamato",
+            "acao": "protetor"
+          },
+          {
+            "nome": "Iprodiona",
+            "grupo": "Dicarboximida",
+            "acao": "protetor"
+          },
+          {
+            "nome": "Tebuconazol",
+            "grupo": "Triazol",
+            "acao": "sistêmico"
+          },
+          {
+            "nome": "Azoxistrobina",
+            "grupo": "Estrobilurina",
+            "acao": "sistêmico"
+          },
+          {
+            "nome": "Boscalida",
+            "grupo": "Carboxamida",
+            "acao": "sistêmico"
+          }
+        ]
+      },
+      {
+        "id": "alho_ferrugem",
+        "nome": "Ferrugem do alho",
+        "agente": "Puccinia allii (sin. P. porri)",
+        "tipoAgente": "fungo",
+        "gravidade": 4,
+        "descricao": "Uma das doenças foliares mais importantes do alho, em qualquer fase da cultura. Começa com pontuações esbranquiçadas na folha, que viram pústulas pequenas, alaranjadas, cobertas pela película da folha. Quando ela se rompe, sai um pó amarelo de esporos, que depois escurece para castanho ou preto. Com muita doença a folha amarelece e seca, e o bulbo fica menor.",
+        "sintomas": [
+          {
+            "id": "pustulas_ferrugem",
+            "peso": 1
+          },
+          {
+            "id": "pontuacoes_finas_cloroticas",
+            "peso": 0.4
+          },
+          {
+            "id": "manchas_amareladas",
+            "peso": 0.4
+          },
+          {
+            "id": "crescimento_reduzido",
+            "peso": 0.3
+          }
+        ],
+        "condicoesFavoraveis": {
+          "temperatura": "Amena, 10 a 24 °C, ótimo entre 16 e 21 °C",
+          "umidade": "Ar úmido com pouca chuva; precisa de folha molhada por mais de quatro horas",
+          "observacao": "Mais intensa no Sul e no Sudeste. Os esporos viajam pelo vento. Solo compactado ou de baixada, excesso de nitrogênio e restos culturais favorecem a doença. A aspersão frequente em região úmida também."
+        },
+        "tratamentos": [
+          {
+            "tipo": "cultural",
+            "descricao": "Evitar solos compactados e de baixada; drenar ou elevar os canteiros para controlar a umidade do solo."
+          },
+          {
+            "tipo": "cultural",
+            "descricao": "Adubação equilibrada, sem excesso de nitrogênio, seguindo a análise de solo."
+          },
+          {
+            "tipo": "cultural",
+            "descricao": "Eliminar plantas e bulbilhos remanescentes (alho guaxo) na lavoura e perto dos galpões, e fazer rotação de culturas."
+          },
+          {
+            "tipo": "quimico",
+            "descricao": "Principal medida de controle, sobretudo no Sul. Trifloxistrobina tem registro só em mistura pronta com tebuconazol."
+          }
+        ],
+        "ingredientesAtivos": [
+          {
+            "nome": "Mancozebe",
+            "grupo": "Ditiocarbamato",
+            "acao": "protetor"
+          },
+          {
+            "nome": "Oxicloreto de cobre",
+            "grupo": "Cúprico",
+            "acao": "protetor"
+          },
+          {
+            "nome": "Tebuconazol",
+            "grupo": "Triazol",
+            "acao": "sistêmico"
+          },
+          {
+            "nome": "Trifloxistrobina",
+            "grupo": "Estrobilurina",
+            "acao": "sistêmico"
+          }
+        ]
+      },
+      {
+        "id": "alho_podridao_branca",
+        "nome": "Podridão-branca do alho",
+        "agente": "Sclerotium cepivorum",
+        "tipoAgente": "fungo",
+        "gravidade": 5,
+        "descricao": "Uma das doenças mais destrutivas das aliáceas. Em reboleiras, as plantas crescem menos e as folhas mais velhas amarelam e morrem de cima para baixo; depois a planta morre e o bulbo apodrece. As raízes apodrecem e a planta sai do solo sem esforço. Em tempo úmido, a base da planta e o bulbo se cobrem de um mofo branco como algodão, que dá lugar a grãozinhos pretos (escleródios), parecidos com chumbinho. São esses escleródios que confirmam o diagnóstico. As perdas podem chegar a 100%, e a área fica imprópria para alho e cebola.",
+        "sintomas": [
+          {
+            "id": "mofo_branco_com_esclerodios",
+            "peso": 1
+          },
+          {
+            "id": "folhas_velhas_amarelas_secando",
+            "peso": 0.8
+          },
+          {
+            "id": "planta_arranca_facil",
+            "peso": 0.7
+          },
+          {
+            "id": "crescimento_reduzido",
+            "peso": 0.6
+          },
+          {
+            "id": "seca_das_pontas",
+            "peso": 0.3
+          }
+        ],
+        "condicoesFavoraveis": {
+          "temperatura": "Fria, 10 a 20 °C; acima de 20 °C a doença perde força",
+          "umidade": "Solo úmido; excesso de irrigação favorece",
+          "observacao": "Os escleródios ficam viáveis no solo por muitos anos (de 8 a 20, conforme a fonte) e germinam com as raízes de aliáceas. Chega pelo alho-semente contaminado e se espalha pela água de irrigação, máquinas, ferramentas, pessoas e embalagens. Mais comum no Sul e nas serras do Sudeste, mas já aparece em áreas novas de alho."
+        },
+        "tratamentos": [
+          {
+            "tipo": "cultural",
+            "descricao": "Plantar alho-semente sadio, de região sem a doença, em área livre do fungo. É a principal medida: não há cultivar resistente."
+          },
+          {
+            "tipo": "cultural",
+            "descricao": "Lavar máquinas e ferramentas com jato de água e hipoclorito de sódio a 1,5-2% antes de trocar de área; controlar o trânsito de pessoas e veículos; evitar baixadas e água de irrigação que passa por lavouras contaminadas."
+          },
+          {
+            "tipo": "cultural",
+            "descricao": "Solarização das reboleiras, com lona transparente por pelo menos dois meses, quando a infestação ainda é baixa; rotação longa. Ao detectar a doença em região onde ela não ocorria, comunicar a defesa sanitária vegetal do estado."
+          },
+          {
+            "tipo": "quimico",
+            "descricao": "Tratamento do alho-semente com fungicida registrado. O controle químico é pouco eficiente e pode não compensar; não substitui a prevenção. Ciprodinil tem registro só em mistura pronta com fludioxonil."
+          }
+        ],
+        "ingredientesAtivos": [
+          {
+            "nome": "Procimidona",
+            "grupo": "Dicarboximida",
+            "acao": "sistêmico"
+          },
+          {
+            "nome": "Iprodiona",
+            "grupo": "Dicarboximida",
+            "acao": "protetor"
+          },
+          {
+            "nome": "Tiofanato-metílico",
+            "grupo": "Benzimidazol",
+            "acao": "sistêmico"
+          },
+          {
+            "nome": "Fludioxonil",
+            "grupo": "Fenilpirrol",
+            "acao": "protetor"
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "alho_poro",
+    "nome": "Alho-poró",
+    "nomeCientifico": "Allium ampeloprasum (sin. A. porrum)",
+    "grupo": "haste",
+    "familia": "Amaryllidaceae",
+    "emoji": "🌱",
+    "cicloDias": null,
+    "doencas": [
+      {
+        "id": "alho_poro_mancha_purpura",
+        "nome": "Mancha-púrpura do alho-poró",
+        "agente": "Alternaria porri",
+        "tipoAgente": "fungo",
+        "gravidade": 4,
+        "descricao": "A doença mais comum do alho-poró. Começa logo após o transplante, com manchas pequenas, irregulares a elípticas e de centro esbranquiçado, que podem ser confundidas com fitotoxidez. Com a umidade alta, a mancha cresce e forma halos concêntricos de tom púrpura, com esporos escuros no centro. O tecido necrosa ao longo das nervuras, e a doença segue até o fim do ciclo.",
+        "sintomas": [
+          {
+            "id": "manchas_purpura",
+            "peso": 1
+          },
+          {
+            "id": "manchas_escuras_aneis",
+            "peso": 0.8
+          },
+          {
+            "id": "seca_das_pontas",
+            "peso": 0.3
+          }
+        ],
+        "condicoesFavoraveis": {
+          "temperatura": "21 a 30 °C",
+          "umidade": "Alta, acima de 90%, com água livre na folha",
+          "observacao": "O mesmo fungo ataca cebola, alho e cebolinha, que servem de fonte de inóculo. Sobrevive nos restos culturais e se espalha pelo vento e pelos respingos de chuva e irrigação."
+        },
+        "tratamentos": [
+          {
+            "tipo": "cultural",
+            "descricao": "Não plantar perto de lavouras de cebola, alho e cebolinha, sobretudo das que estão no fim do ciclo."
+          },
+          {
+            "tipo": "cultural",
+            "descricao": "Rotação com culturas que não sejam aliáceas, eliminação dos restos culturais e das plantas voluntárias, espaçamento que areje as plantas e solo bem drenado."
+          },
+          {
+            "tipo": "cultural",
+            "descricao": "Irrigar por aspersão de manhã, para a folha secar antes da noite."
+          },
+          {
+            "tipo": "biologico",
+            "descricao": "Há produtos à base de Bacillus subtilis, B. amyloliquefaciens e B. pumilus registrados para Alternaria porri, como complemento preventivo."
+          },
+          {
+            "tipo": "quimico",
+            "descricao": "No alho-poró só há fungicidas registrados em mistura pronta: azoxistrobina + difenoconazol e pidiflumetofem + difenoconazol. Os protetores usados em cebola e alho não têm registro nesta cultura."
+          }
+        ],
+        "ingredientesAtivos": [
+          {
+            "nome": "Azoxistrobina",
+            "grupo": "Estrobilurina",
+            "acao": "sistêmico"
+          },
+          {
+            "nome": "Difenoconazol",
+            "grupo": "Triazol",
+            "acao": "sistêmico"
+          },
+          {
+            "nome": "Pidiflumetofem",
+            "grupo": "Carboxamida",
+            "acao": "sistêmico"
+          }
+        ]
+      },
+      {
+        "id": "alho_poro_queima_bacteriana",
+        "nome": "Queima-bacteriana do alho-poró",
+        "agente": "Pseudomonas marginalis pv. marginalis",
+        "tipoAgente": "bactéria",
+        "gravidade": 3,
+        "descricao": "A folha perde a cor, em parte ou toda, e formam-se estrias amareladas e compridas. Depois aparece um encharcamento marrom e a nervura central amolece, enquanto o resto da folha pode continuar verde e firme. No fim a folha toda fica marrom e ressecada, como se a planta tivesse amadurecido. Apareceu perto dos 100 dias, com o mesmo quadro que a bactéria causa no alho.",
+        "sintomas": [
+          {
+            "id": "estrias_amarelas_folha",
+            "peso": 1
+          },
+          {
+            "id": "manchas_encharcadas",
+            "peso": 0.8
+          },
+          {
+            "id": "manchas_amareladas",
+            "peso": 0.4
+          }
+        ],
+        "condicoesFavoraveis": {
+          "temperatura": "Ótimo de 26 a 30 °C, mas ocorre entre 6 e 37 °C",
+          "umidade": "Alta, acima de 85%",
+          "observacao": "Faixas descritas para a mesma bactéria no alho. Ferimentos e estresse, como os de herbicida de pós-emergência, abrem caminho. A bactéria vive na superfície das folhas e se espalha com a chuva, o vento e a irrigação."
+        },
+        "tratamentos": [
+          {
+            "tipo": "cultural",
+            "descricao": "Evitar áreas mal drenadas e o encharcamento do solo; controlar a irrigação."
+          },
+          {
+            "tipo": "cultural",
+            "descricao": "Adubação equilibrada, com nitrogênio só quando necessário; evitar ferimentos e o estresse por herbicida."
+          },
+          {
+            "tipo": "cultural",
+            "descricao": "Eliminar as plantas doentes, fazer rotação de culturas e queimar os restos culturais depois da colheita."
+          },
+          {
+            "tipo": "quimico",
+            "descricao": "Não há bactericida registrado para o alho-poró. No alho, os cúpricos não têm dado resultado e podem queimar a planta, e a bactéria é pouco sensível a antibióticos."
+          }
+        ],
+        "ingredientesAtivos": []
+      },
+      {
+        "id": "alho_poro_podridao_mole",
+        "nome": "Podridão-mole do alho-poró",
+        "agente": "Pectobacterium carotovorum subsp. carotovorum",
+        "tipoAgente": "bactéria",
+        "gravidade": 3,
+        "descricao": "Podridão mole e aquosa, de cor amarronzada, nas escamas externas do pseudocaule, a parte branca que se colhe. Mais adiantada, apodrece a base do pseudocaule. A bactéria vive no solo e entra por ferimentos e pelas rachaduras que o pseudocaule abre quando a planta fica mais velha. Foi observada na colheita.",
+        "sintomas": [
+          {
+            "id": "apodrecimento_mole_malcheiroso",
+            "peso": 1
+          },
+          {
+            "id": "lesoes_no_caule",
+            "peso": 0.6
+          }
+        ],
+        "condicoesFavoraveis": {
+          "temperatura": "Não definida na fonte",
+          "umidade": "Solo úmido; a bactéria tem o solo como habitat",
+          "observacao": "A entrada é por ferimentos e rachaduras no pseudocaule, que aumentam com a idade da planta. A amontoa feita sem cuidado fere a base da planta."
+        },
+        "tratamentos": [
+          {
+            "tipo": "cultural",
+            "descricao": "Fazer a amontoa com cuidado, sem ferir a base das plantas."
+          },
+          {
+            "tipo": "cultural",
+            "descricao": "Colher no ponto: o pseudocaule das plantas mais velhas racha e abre entrada para a bactéria."
+          },
+          {
+            "tipo": "cultural",
+            "descricao": "Não há bactericida registrado para a podridão-mole no alho-poró: o controle é preventivo."
+          }
+        ],
+        "ingredientesAtivos": []
+      }
+    ]
+  },
+  {
     "id": "batata",
     "nome": "Batata",
     "nomeCientifico": "Solanum tuberosum",
@@ -1175,6 +2095,423 @@ export const CULTURAS: readonly Cultura[] = [
     ]
   },
   {
+    "id": "berinjela",
+    "nome": "Berinjela",
+    "nomeCientifico": "Solanum melongena",
+    "grupo": "fruto",
+    "familia": "Solanaceae",
+    "emoji": "🍆",
+    "cicloDias": null,
+    "doencas": [
+      {
+        "id": "berinjela_podridao_de_fomopsis",
+        "nome": "Podridão-de-fomopsis",
+        "agente": "Phomopsis vexans (fase sexuada: Diaporthe vexans)",
+        "tipoAgente": "fungo",
+        "gravidade": 4,
+        "descricao": "Ataca toda a parte aérea, mas o maior dano está nos frutos e nos ramos. O fruto apodrece, primeiro de forma dura, com manchas pálidas e deprimidas que podem tomar o fruto inteiro, e depois amolece e se desfaz; o fruto que não se desfaz seca e fica mumificado na planta, guardando o fungo. No caule e nos ramos aparecem lesões escuras com pontinhos pretos (as estruturas do fungo), que podem fazer o ramo murchar e morrer acima da lesão. Nas folhas, manchas marrom-escuras, circulares e com anéis concêntricos, parecidas com as da pinta-preta, que podem se juntar e secar a folha.",
+        "sintomas": [
+          {
+            "id": "lesoes_no_fruto",
+            "peso": 1
+          },
+          {
+            "id": "lesoes_no_caule",
+            "peso": 0.7
+          },
+          {
+            "id": "manchas_escuras_aneis",
+            "peso": 0.6
+          },
+          {
+            "id": "pontuacoes_pretas_na_lesao",
+            "peso": 0.6
+          }
+        ],
+        "condicoesFavoraveis": {
+          "temperatura": "Altas; o fungo cresce melhor perto de 28 °C",
+          "umidade": "Alta umidade do ar, com chuva",
+          "observacao": "O fungo vem na semente e sobrevive nos restos culturais e nos frutos mumificados. Na lavoura, os esporos se espalham pelos respingos de chuva e de irrigação. A berinjela é praticamente a única hospedeira de importância."
+        },
+        "tratamentos": [
+          {
+            "tipo": "cultural",
+            "descricao": "Sementes e mudas sadias, de empresa idônea."
+          },
+          {
+            "tipo": "cultural",
+            "descricao": "Cultivar resistente, quando houver; o híbrido Ciça foi lançado como resistente, mas tem se mostrado suscetível em campo."
+          },
+          {
+            "tipo": "cultural",
+            "descricao": "Retirar e destruir frutos doentes e mumificados e os restos culturais; preferir irrigação por gotejo e espaçamento que areje as plantas."
+          },
+          {
+            "tipo": "quimico",
+            "descricao": "Fungicidas cúpricos registrados para a podridão-de-fomopsis na berinjela, em aplicação preventiva na época chuvosa."
+          }
+        ],
+        "ingredientesAtivos": [
+          {
+            "nome": "Oxicloreto de cobre",
+            "grupo": "Cúprico",
+            "acao": "protetor"
+          },
+          {
+            "nome": "Hidróxido de cobre",
+            "grupo": "Cúprico",
+            "acao": "protetor"
+          },
+          {
+            "nome": "Óxido cuproso",
+            "grupo": "Cúprico",
+            "acao": "protetor"
+          },
+          {
+            "nome": "Sulfato de cobre",
+            "grupo": "Cúprico",
+            "acao": "protetor"
+          }
+        ]
+      },
+      {
+        "id": "berinjela_antracnose",
+        "nome": "Antracnose da berinjela",
+        "agente": "Colletotrichum gloeosporioides e outras espécies de Colletotrichum",
+        "tipoAgente": "fungo",
+        "gravidade": 4,
+        "descricao": "Ataca sobretudo os frutos, jovens e maduros. Começa como pequenas lesões deprimidas que crescem depressa e passam de 2 cm; em tempo úmido, ficam cobertas por uma camada rosada de esporos. Pode aparecer ainda na lavoura ou só depois da colheita, no transporte e na venda. Folhas e ramos quase não são atingidos. Em cultivar suscetível, de 35% a 100% dos frutos podem ter sintoma.",
+        "sintomas": [
+          {
+            "id": "lesoes_no_fruto",
+            "peso": 1
+          },
+          {
+            "id": "massa_rosada_na_lesao",
+            "peso": 0.8
+          }
+        ],
+        "condicoesFavoraveis": {
+          "temperatura": "Altas",
+          "umidade": "Alta, com chuva ou irrigação por aspersão",
+          "observacao": "Mais grave na estação chuvosa, quando também o fungicida funciona menos. O fungo vem na semente e se espalha na lavoura pelos respingos de água."
+        },
+        "tratamentos": [
+          {
+            "tipo": "cultural",
+            "descricao": "Sementes e mudas sadias e cultivar resistente, como o híbrido Ciça."
+          },
+          {
+            "tipo": "cultural",
+            "descricao": "Destruir os restos culturais e retirar os frutos doentes da lavoura."
+          },
+          {
+            "tipo": "cultural",
+            "descricao": "Evitar a irrigação por aspersão; preferir gotejo e espaçamento que areje as plantas."
+          },
+          {
+            "tipo": "quimico",
+            "descricao": "Fungicidas cúpricos registrados para a antracnose da berinjela, como a Embrapa recomenda, em aplicação preventiva; outros grupos registrados para o alvo entram em rodízio."
+          },
+          {
+            "tipo": "biologico",
+            "descricao": "Produtos à base de Bacillus registrados para Colletotrichum gloeosporioides em todas as culturas, como complemento preventivo."
+          }
+        ],
+        "ingredientesAtivos": [
+          {
+            "nome": "Oxicloreto de cobre",
+            "grupo": "Cúprico",
+            "acao": "protetor"
+          },
+          {
+            "nome": "Hidróxido de cobre",
+            "grupo": "Cúprico",
+            "acao": "protetor"
+          },
+          {
+            "nome": "Mancozebe",
+            "grupo": "Ditiocarbamato",
+            "acao": "protetor"
+          },
+          {
+            "nome": "Tiofanato-metílico",
+            "grupo": "Benzimidazol",
+            "acao": "sistêmico"
+          },
+          {
+            "nome": "Azoxistrobina",
+            "grupo": "Estrobilurina",
+            "acao": "sistêmico"
+          }
+        ]
+      },
+      {
+        "id": "berinjela_murcha_de_verticilio",
+        "nome": "Murcha-de-verticílio",
+        "agente": "Verticillium dahliae",
+        "tipoAgente": "fungo",
+        "gravidade": 4,
+        "descricao": "Uma das principais doenças da berinjela. Começa nas folhas de baixo, que amarelam e murcham nas horas quentes do dia e se recuperam à noite. A borda da folha pode mostrar manchas amarelas ou secas em forma de V. Ao cortar o caule, principalmente no colo, os vasos estão marrons. A planta cresce menos; se a cultivar é muito suscetível ou a infecção é cedo, murcha de vez e morre.",
+        "sintomas": [
+          {
+            "id": "murcha",
+            "peso": 1
+          },
+          {
+            "id": "vasos_escurecidos",
+            "peso": 0.8
+          },
+          {
+            "id": "manchas_amareladas",
+            "peso": 0.6
+          },
+          {
+            "id": "lesao_em_v_na_borda",
+            "peso": 0.6
+          },
+          {
+            "id": "crescimento_reduzido",
+            "peso": 0.5
+          }
+        ],
+        "condicoesFavoraveis": {
+          "temperatura": "Amenas, 18 a 24 °C",
+          "umidade": "Alta umidade do solo",
+          "observacao": "Fungo de solo, com muitas hospedeiras, que também vem na semente. Pior em solos cultivados por vários anos com solanáceas."
+        },
+        "tratamentos": [
+          {
+            "tipo": "cultural",
+            "descricao": "Sementes e mudas sadias; não plantar em solo infestado nem em área cultivada por anos com outras solanáceas."
+          },
+          {
+            "tipo": "cultural",
+            "descricao": "Rotação de culturas com gramíneas."
+          },
+          {
+            "tipo": "cultural",
+            "descricao": "Não há cultivar resistente nem fungicida registrado para esta doença na berinjela: o controle é só preventivo."
+          }
+        ],
+        "ingredientesAtivos": []
+      }
+    ]
+  },
+  {
+    "id": "beterraba",
+    "nome": "Beterraba",
+    "nomeCientifico": "Beta vulgaris",
+    "grupo": "raiz",
+    "familia": "Amaranthaceae",
+    "emoji": "🌱",
+    "cicloDias": 90,
+    "doencas": [
+      {
+        "id": "beterraba_cercosporiose",
+        "nome": "Cercosporiose da beterraba",
+        "agente": "Cercospora beticola",
+        "tipoAgente": "fungo",
+        "gravidade": 4,
+        "descricao": "A principal doença fúngica da beterraba no Brasil. Começa nas folhas mais velhas, com manchas arredondadas de 4 a 5 mm, centro claro e borda arroxeada. Com o ataque intenso, as manchas se juntam, a folha seca por inteiro e a planta pode morrer. Quando generalizada, reduz a produção de 15% a 45%.",
+        "sintomas": [
+          {
+            "id": "manchas_pequenas_centro_claro",
+            "peso": 1
+          },
+          {
+            "id": "desfolha_baixo_para_cima",
+            "peso": 0.4
+          }
+        ],
+        "condicoesFavoraveis": {
+          "temperatura": "22 a 26 °C",
+          "umidade": "Alta, com umidade relativa acima de 90%",
+          "observacao": "O fungo passa de uma safra para a outra nos restos culturais, na semente e em outras plantas da família deixadas no campo. Espalha-se pelo vento e pelos respingos de chuva ou de irrigação."
+        },
+        "tratamentos": [
+          {
+            "tipo": "cultural",
+            "descricao": "Sementes sadias e cultivar tolerante ou resistente à cercosporiose; há várias no mercado."
+          },
+          {
+            "tipo": "cultural",
+            "descricao": "Rotação de culturas, eliminação dos restos da lavoura anterior e adubação equilibrada, com base na análise de solo."
+          },
+          {
+            "tipo": "quimico",
+            "descricao": "Fungicidas registrados para a cercosporiose da beterraba, em intervalos de 7 a 14 dias, alternando protetores e sistêmicos de grupos diferentes."
+          }
+        ],
+        "ingredientesAtivos": [
+          {
+            "nome": "Mancozebe",
+            "grupo": "Ditiocarbamato",
+            "acao": "protetor"
+          },
+          {
+            "nome": "Clorotalonil",
+            "grupo": "Isoftalonitrila",
+            "acao": "protetor"
+          },
+          {
+            "nome": "Difenoconazol",
+            "grupo": "Triazol",
+            "acao": "sistêmico"
+          },
+          {
+            "nome": "Tebuconazol",
+            "grupo": "Triazol",
+            "acao": "sistêmico"
+          },
+          {
+            "nome": "Azoxistrobina",
+            "grupo": "Estrobilurina",
+            "acao": "sistêmico"
+          }
+        ]
+      },
+      {
+        "id": "beterraba_nematoide_das_galhas",
+        "nome": "Nematoide-das-galhas",
+        "agente": "Meloidogyne incognita e M. javanica (também M. arenaria e M. hapla)",
+        "tipoAgente": "nematoide",
+        "gravidade": 4,
+        "descricao": "As raízes finas ficam cheias de galhas e, com população alta, a própria beterraba fica coberta de caroços, a chamada pipoca, e perde o valor comercial. Com a raiz comprometida, a planta cresce menos, amarela e murcha nas horas mais quentes. No campo, aparece em reboleiras. As galhas podem apodrecer pela entrada de outros fungos e bactérias.",
+        "sintomas": [
+          {
+            "id": "galhas_na_raiz",
+            "peso": 1
+          },
+          {
+            "id": "crescimento_reduzido",
+            "peso": 0.6
+          },
+          {
+            "id": "murcha",
+            "peso": 0.5
+          },
+          {
+            "id": "manchas_amareladas",
+            "peso": 0.4
+          }
+        ],
+        "condicoesFavoraveis": {
+          "temperatura": "23 a 30 °C; as espécies principais se reproduzem de 18 a 32 °C no solo",
+          "umidade": "Solo úmido; o dano é maior em solos arenosos",
+          "observacao": "O problema cresce com o plantio sucessivo na mesma área, principalmente sob pivô central. O nematoide ataca muitas hortaliças e plantas daninhas, como beldroega, corda-de-viola, maria-pretinha e melão-de-são-caetano, o que torna a rotação difícil."
+        },
+        "tratamentos": [
+          {
+            "tipo": "cultural",
+            "descricao": "Antes de plantar, mandar amostra de solo para análise e evitar áreas já cultivadas com hortaliças e infestadas."
+          },
+          {
+            "tipo": "cultural",
+            "descricao": "Rotação com plantas antagonistas ou não hospedeiras, como crotalária (Crotalaria spectabilis e C. juncea), cravo-de-defunto, milheto e braquiária, e eliminação das plantas daninhas hospedeiras."
+          },
+          {
+            "tipo": "cultural",
+            "descricao": "Revolver o solo várias vezes no período seco para expor os nematoides ao sol, adubar com matéria orgânica curtida e não levar máquinas e terra de áreas infestadas para áreas limpas."
+          },
+          {
+            "tipo": "biologico",
+            "descricao": "Produtos à base de Bacillus, Pochonia chlamydosporia ou Paecilomyces lilacinus registrados para o nematoide-das-galhas em todas as culturas."
+          },
+          {
+            "tipo": "quimico",
+            "descricao": "Nematicidas registrados para a beterraba, só como complemento ao manejo cultural."
+          }
+        ],
+        "ingredientesAtivos": [
+          {
+            "nome": "Fluopiram",
+            "grupo": "Carboxamida",
+            "acao": "nematicida"
+          },
+          {
+            "nome": "Ciclobutrifluram",
+            "grupo": "Carboxamida",
+            "acao": "nematicida"
+          },
+          {
+            "nome": "Fluensulfona",
+            "grupo": "Fluoroalquenil",
+            "acao": "nematicida"
+          },
+          {
+            "nome": "Fluazaindolizina",
+            "grupo": "Sulfonamida",
+            "acao": "nematicida"
+          }
+        ]
+      },
+      {
+        "id": "beterraba_tombamento",
+        "nome": "Tombamento da beterraba",
+        "agente": "Complexo de fungos e oomicetos de solo: Rhizoctonia solani, Pythium spp., Fusarium spp. e Phytophthora spp.",
+        "tipoAgente": "fungo",
+        "gravidade": 3,
+        "descricao": "Ocorre no começo da cultura. As plântulas são atacadas na base, no colo, rente ao solo, e tombam. No campo, começa em reboleiras. O prejuízo vem da falha de estande: com menos plantas, a produção por área cai. Em alguns lugares é causa frequente de baixo rendimento.",
+        "sintomas": [
+          {
+            "id": "tombamento_de_mudas",
+            "peso": 1
+          }
+        ],
+        "condicoesFavoraveis": {
+          "temperatura": "15 a 25 °C",
+          "umidade": "Alta umidade do solo",
+          "observacao": "Favorecido por plantio adensado, cultivos sucessivos, solo compactado ou mal drenado e histórico da doença na área. Os patógenos sobrevivem no solo por anos e se espalham por implementos, água de irrigação, sementes e mudas contaminadas."
+        },
+        "tratamentos": [
+          {
+            "tipo": "cultural",
+            "descricao": "Sementes sadias e plantio fora de solos contaminados, compactados ou mal drenados."
+          },
+          {
+            "tipo": "cultural",
+            "descricao": "Irrigar com cuidado na fase inicial, sem encharcar, e evitar plantio muito adensado."
+          },
+          {
+            "tipo": "cultural",
+            "descricao": "Rotação de culturas e matéria orgânica no plantio."
+          },
+          {
+            "tipo": "biologico",
+            "descricao": "Trichoderma ou Bacillus registrados para Rhizoctonia solani (tombamento) em todas as culturas, aplicados no solo ou na semente."
+          },
+          {
+            "tipo": "quimico",
+            "descricao": "Há registro na beterraba para Pythium (metalaxil-M com mancozebe) e para Fusarium no tratamento de sementes (carboxina com tiram). Não há fungicida químico registrado para Rhizoctonia na beterraba."
+          }
+        ],
+        "ingredientesAtivos": [
+          {
+            "nome": "Metalaxil-M",
+            "grupo": "Acilalaninato",
+            "acao": "sistêmico"
+          },
+          {
+            "nome": "Mancozebe",
+            "grupo": "Ditiocarbamato",
+            "acao": "protetor"
+          },
+          {
+            "nome": "Carboxina",
+            "grupo": "Carboxamida",
+            "acao": "sistêmico"
+          },
+          {
+            "nome": "Tiram",
+            "grupo": "Ditiocarbamato",
+            "acao": "protetor"
+          }
+        ]
+      }
+    ]
+  },
+  {
     "id": "brocolis",
     "nome": "Brócolis",
     "nomeCientifico": "Brassica oleracea var. italica",
@@ -1344,6 +2681,513 @@ export const CULTURAS: readonly Cultura[] = [
           }
         ],
         "ingredientesAtivos": []
+      }
+    ]
+  },
+  {
+    "id": "cebola",
+    "nome": "Cebola",
+    "nomeCientifico": "Allium cepa",
+    "grupo": "raiz",
+    "familia": "Amaryllidaceae",
+    "emoji": "🧅",
+    "cicloDias": null,
+    "doencas": [
+      {
+        "id": "cebola_mancha_purpura",
+        "nome": "Mancha-púrpura da cebola",
+        "agente": "Alternaria porri (eventualmente Stemphylium vesicarium)",
+        "tipoAgente": "fungo",
+        "gravidade": 4,
+        "descricao": "Uma das doenças mais frequentes da cebola em clima quente e úmido, presente em todo o país. Começa como lesões pequenas e aquosas, às vezes com borda amarelada, que crescem, ficam cor de palha, alongadas e com o centro púrpura. Em tempo úmido a lesão se cobre de anéis concêntricos marrons a cinza-escuros, com esporulação acinzentada no centro. As lesões se juntam e a folha murcha e enruga a partir da ponta. Ataque nas folhas novas resulta em bulbos pequenos, com perdas que podem chegar a 50%; no bulbo, causa podridão semiaquosa das escamas.",
+        "sintomas": [
+          {
+            "id": "manchas_purpura",
+            "peso": 1
+          },
+          {
+            "id": "manchas_escuras_aneis",
+            "peso": 0.8
+          },
+          {
+            "id": "seca_das_pontas",
+            "peso": 0.5
+          },
+          {
+            "id": "manchas_amareladas",
+            "peso": 0.3
+          }
+        ],
+        "condicoesFavoraveis": {
+          "temperatura": "21 a 30 °C, ótimo de 25 °C",
+          "umidade": "Alta, em torno de 90%; o esporo só germina com água livre na folha",
+          "observacao": "O fungo sobrevive nos restos culturais e chega pela semente. Os esporos se espalham pelo vento e pelos respingos de chuva e irrigação. Folhas velhas, excesso de nitrogênio e ferimentos de tripes favorecem a infecção. Ataca também alho, alho-poró e cebolinha."
+        },
+        "tratamentos": [
+          {
+            "tipo": "cultural",
+            "descricao": "Cultivares mais resistentes, de folha mais cerosa, como Crioula Mercosul, Bola Precoce, Alfa Tropical, BRS Alfa São Francisco e Roxa do Barreiro; sementes sadias."
+          },
+          {
+            "tipo": "cultural",
+            "descricao": "Rotação com gramíneas, incorporação dos restos culturais, menor densidade de plantio e solo bem drenado; não plantar perto de lavouras velhas nem de outras aliáceas e eliminar as tigueras."
+          },
+          {
+            "tipo": "cultural",
+            "descricao": "Irrigar por aspersão de manhã, com regas mais espaçadas, para a folha secar antes da noite; evitar excesso de nitrogênio na bulbificação e controlar o tripes, que abre porta para o fungo."
+          },
+          {
+            "tipo": "biologico",
+            "descricao": "Há produtos à base de Bacillus subtilis, B. amyloliquefaciens e B. pumilus registrados para Alternaria porri, como complemento preventivo."
+          },
+          {
+            "tipo": "quimico",
+            "descricao": "Começar com as condições favoráveis ou os primeiros sintomas: protetores em aplicação preventiva e sistêmicos quando há risco de epidemia, sempre alternando o modo de ação."
+          }
+        ],
+        "ingredientesAtivos": [
+          {
+            "nome": "Mancozebe",
+            "grupo": "Ditiocarbamato",
+            "acao": "protetor"
+          },
+          {
+            "nome": "Clorotalonil",
+            "grupo": "Isoftalonitrila",
+            "acao": "protetor"
+          },
+          {
+            "nome": "Tebuconazol",
+            "grupo": "Triazol",
+            "acao": "sistêmico"
+          },
+          {
+            "nome": "Azoxistrobina",
+            "grupo": "Estrobilurina",
+            "acao": "sistêmico"
+          },
+          {
+            "nome": "Boscalida",
+            "grupo": "Carboxamida",
+            "acao": "sistêmico"
+          }
+        ]
+      },
+      {
+        "id": "cebola_mildio",
+        "nome": "Míldio da cebola",
+        "agente": "Peronospora destructor",
+        "tipoAgente": "oomiceto",
+        "gravidade": 4,
+        "descricao": "Também chamado de lã-preta. Começa nas folhas mais velhas, com lesões alongadas no sentido da folha, verde-claras, cobertas por um mofo acinzentado-escuro nas horas úmidas. As lesões crescem e quase tomam a folha, que amarelece, dobra e morre. Raramente mata a planta, mas reduz o bulbo, e as perdas podem chegar a 75%. É a doença mais destrutiva dos campos de semente. Alternaria pode crescer sobre as lesões e mascarar o míldio.",
+        "sintomas": [
+          {
+            "id": "mofo_acinzentado_sobre_lesao",
+            "peso": 1
+          },
+          {
+            "id": "manchas_amareladas",
+            "peso": 0.7
+          },
+          {
+            "id": "crescimento_reduzido",
+            "peso": 0.3
+          }
+        ],
+        "condicoesFavoraveis": {
+          "temperatura": "Amena: esporula em noites abaixo de 22 °C; acima de 24 °C a doença para",
+          "umidade": "Muito alta, acima de 95% à noite, e água livre na folha para a infecção",
+          "observacao": "Mais comum no Sul e nas épocas frias do Sudeste e Centro-Oeste. Sobrevive em plantas voluntárias, bulbos e outras aliáceas, e o plantio de bulbo infectado inicia a epidemia. Algumas horas de tempo seco e ensolarado já interrompem a doença."
+        },
+        "tratamentos": [
+          {
+            "tipo": "cultural",
+            "descricao": "Mudas sadias, de viveiro em local sem neblina, longe das lavouras e com solo bem drenado; descartar mudas suspeitas."
+          },
+          {
+            "tipo": "cultural",
+            "descricao": "Plantar nos períodos mais secos, evitar baixadas, alta densidade e lavouras velhas de aliáceas por perto; irrigar por aspersão só de manhã e sem excesso de nitrogênio."
+          },
+          {
+            "tipo": "cultural",
+            "descricao": "Destruir os restos culturais e fazer rotação de pelo menos três anos com gramíneas. Não há cultivar resistente."
+          },
+          {
+            "tipo": "quimico",
+            "descricao": "Preventivo, quando o clima favorece, em intervalos de 7 a 10 dias e com rotação de ingredientes ativos. Metalaxil-M tem registro só em mistura pronta com mancozebe ou clorotalonil. A cera da folha e as folhas novas reduzem a eficiência."
+          }
+        ],
+        "ingredientesAtivos": [
+          {
+            "nome": "Mancozebe",
+            "grupo": "Ditiocarbamato",
+            "acao": "protetor"
+          },
+          {
+            "nome": "Ciazofamida",
+            "grupo": "Cianoimidazol",
+            "acao": "protetor"
+          },
+          {
+            "nome": "Mandipropamid",
+            "grupo": "Amida do ácido mandélico",
+            "acao": "sistêmico"
+          },
+          {
+            "nome": "Metalaxil-M",
+            "grupo": "Acilalaninato",
+            "acao": "sistêmico"
+          },
+          {
+            "nome": "Cloridrato de propamocarbe",
+            "grupo": "Carbamato",
+            "acao": "sistêmico"
+          }
+        ]
+      },
+      {
+        "id": "cebola_mal_de_sete_voltas",
+        "nome": "Mal-de-sete-voltas (antracnose foliar)",
+        "agente": "Colletotrichum gloeosporioides f. sp. cepae",
+        "tipoAgente": "fungo",
+        "gravidade": 4,
+        "descricao": "Conhecida também como cachorro-quente, rola ou charuto. Na folha começa com pequenas lesões brancas e deprimidas, que crescem, ficam ovaladas e rosadas e depois mostram pontos pretos sobre fundo claro. Logo após o transplante, as folhas se retorcem e o pescoço endurece e alonga, e o bulbo fica em forma de charuto. Nas mudas causa tombamento e apodrecimento. Aparece em reboleiras, de forma esporádica, mas pode causar perda total em cultivar suscetível e clima favorável.",
+        "sintomas": [
+          {
+            "id": "folhas_deformadas",
+            "peso": 1
+          },
+          {
+            "id": "bulbo_alongado_charuto",
+            "peso": 0.8
+          },
+          {
+            "id": "pontuacoes_pretas_na_lesao",
+            "peso": 0.6
+          },
+          {
+            "id": "manchas_amareladas",
+            "peso": 0.3
+          }
+        ],
+        "condicoesFavoraveis": {
+          "temperatura": "24 a 30 °C",
+          "umidade": "Épocas chuvosas; respingos de chuva e de aspersão espalham os esporos",
+          "observacao": "Sobrevive em sementes, bulbos e restos culturais. A semente, o bulbinho e a muda contaminados o levam para longe. No Sudeste é frequente no plantio de verão (janeiro e fevereiro), sobretudo de bulbinhos, e rara no outono-inverno."
+        },
+        "tratamentos": [
+          {
+            "tipo": "cultural",
+            "descricao": "Sementes e mudas sadias; viveiro longe de lavouras de cebola, em solo bem drenado; não repetir o plantio em área com histórico da doença."
+          },
+          {
+            "tipo": "cultural",
+            "descricao": "Plantar nos períodos mais secos, evitar alta densidade e irrigar de manhã, sem excesso; destruir os restos culturais e fazer rotação com gramíneas por um ano ou mais."
+          },
+          {
+            "tipo": "cultural",
+            "descricao": "Preferir cultivares menos suscetíveis, como Alfa Tropical, BRS Alfa São Francisco, Roxa do Barreiro e Vale Ouro IPA-11. As dos grupos Grano e Granex são muito suscetíveis."
+          },
+          {
+            "tipo": "biologico",
+            "descricao": "Há produtos à base de Bacillus registrados para Colletotrichum gloeosporioides em todas as culturas; o registro não cita a forma especial da cebola, e não há ensaio de eficácia na cultura."
+          },
+          {
+            "tipo": "quimico",
+            "descricao": "Começar com as condições favoráveis ou os primeiros sintomas, alternando protetores e sistêmicos. Em clima muito favorável o controle nem sempre é satisfatório."
+          }
+        ],
+        "ingredientesAtivos": [
+          {
+            "nome": "Oxicloreto de cobre",
+            "grupo": "Cúprico",
+            "acao": "protetor"
+          },
+          {
+            "nome": "Folpete",
+            "grupo": "Dicarboximida",
+            "acao": "protetor"
+          },
+          {
+            "nome": "Tiofanato-metílico",
+            "grupo": "Benzimidazol",
+            "acao": "sistêmico"
+          },
+          {
+            "nome": "Flutriafol",
+            "grupo": "Triazol",
+            "acao": "sistêmico"
+          }
+        ]
+      },
+      {
+        "id": "cebola_raiz_rosada",
+        "nome": "Raiz-rosada",
+        "agente": "Setophoma terrestris (sin. Pyrenochaeta terrestris)",
+        "tipoAgente": "fungo",
+        "gravidade": 3,
+        "descricao": "Fungo de solo que ataca só as raízes. Elas ficam rosadas e depois amareladas, púrpuras, pardas ou marrom-escuras, enrugam e se desfazem, a começar pelas mais velhas, no centro do disco. A planta tem menos folhas, menores e secas nas pontas, e o bulbo sai pequeno e se solta do solo com facilidade. Aparece em reboleiras, mais perto da maturação. Em casos extremos todas as raízes apodrecem e a planta morre. Pode ser confundida com as podridões por Fusarium.",
+        "sintomas": [
+          {
+            "id": "raizes_rosadas",
+            "peso": 1
+          },
+          {
+            "id": "planta_arranca_facil",
+            "peso": 0.7
+          },
+          {
+            "id": "crescimento_reduzido",
+            "peso": 0.6
+          },
+          {
+            "id": "seca_das_pontas",
+            "peso": 0.5
+          }
+        ],
+        "condicoesFavoraveis": {
+          "temperatura": "Solo quente, 24 a 28 °C",
+          "umidade": "Umidade do solo alta e prolongada favorece, mas não é decisiva",
+          "observacao": "Presente em todas as regiões produtoras, com mais dano no clima quente. O fungo vive no solo até 45 cm de profundidade, sem hospedeiro, e cresce com o plantio seguido de cebola ou alho. Chega pela muda, bulbo e bulbinho doentes e pela movimentação de solo. A semente não transmite."
+        },
+        "tratamentos": [
+          {
+            "tipo": "cultural",
+            "descricao": "Rotação de pelo menos três anos, de preferência com dicotiledôneas, já que o fungo ataca sobretudo monocotiledôneas. Uma vez no solo, não se erradica."
+          },
+          {
+            "tipo": "cultural",
+            "descricao": "Mudas sadias e cultivares com resistência, como Roxa do Barreiro, Baia Periforme, Red Creole e as da série Granex."
+          },
+          {
+            "tipo": "cultural",
+            "descricao": "Corrigir o pH do solo para 5,5 a 6,0 e fazer solarização nas reboleiras ou na área toda, por pelo menos um mês na época mais quente, antes do plantio."
+          },
+          {
+            "tipo": "biologico",
+            "descricao": "Trichoderma asperelloides (isolado ESALQ 1306) tem registro para Setophoma terrestris em todas as culturas. Não há fungicida químico registrado para a raiz-rosada na cebola."
+          }
+        ],
+        "ingredientesAtivos": []
+      }
+    ]
+  },
+  {
+    "id": "cenoura",
+    "nome": "Cenoura",
+    "nomeCientifico": "Daucus carota",
+    "grupo": "raiz",
+    "familia": "Apiaceae",
+    "emoji": "🥕",
+    "cicloDias": null,
+    "doencas": [
+      {
+        "id": "cenoura_queima_de_alternaria",
+        "nome": "Queima-de-alternária da cenoura",
+        "agente": "Alternaria dauci",
+        "tipoAgente": "fungo",
+        "gravidade": 4,
+        "descricao": "A principal doença da cenoura no Brasil, sobretudo no verão, e a mais frequente do complexo da queima-das-folhas. Nas folhas e nos pecíolos aparecem pequenas lesões de aspecto encharcado, quase sempre com halo amarelo, que crescem, ficam marrom-escuras a pretas e se juntam. As folhas velhas são as mais atacadas: quando cerca de 40% da folha está lesionada, ela amarela e morre. Com a folhagem destruída, as folhas que restam quebram com facilidade e a colheita fica difícil.",
+        "sintomas": [
+          {
+            "id": "manchas_escuras_halo_amarelo",
+            "peso": 1
+          },
+          {
+            "id": "manchas_encharcadas",
+            "peso": 0.5
+          },
+          {
+            "id": "desfolha_baixo_para_cima",
+            "peso": 0.4
+          },
+          {
+            "id": "lesoes_no_caule",
+            "peso": 0.3
+          }
+        ],
+        "condicoesFavoraveis": {
+          "temperatura": "16 a 25 °C",
+          "umidade": "Molhamento prolongado das folhas; a infecção acontece em 8 a 12 horas de folha molhada",
+          "observacao": "O fungo vem na semente, que é a principal forma de chegar a áreas novas, e sobrevive até um ano nos restos culturais. Plantas voluntárias de cenoura, salsa e coentro também mantêm o inóculo. Os esporos se espalham pelo vento."
+        },
+        "tratamentos": [
+          {
+            "tipo": "cultural",
+            "descricao": "Usar semente sadia, de procedência conhecida, e cultivar adaptada à época e resistente, como Brasília, Kuroda, Alvorada, Esplanada e Planalto; as do grupo Nantes são muito suscetíveis no verão."
+          },
+          {
+            "tipo": "cultural",
+            "descricao": "Rotação de culturas com espécies de outras famílias e eliminação dos restos culturais e das plantas voluntárias de cenoura, salsa e coentro."
+          },
+          {
+            "tipo": "biologico",
+            "descricao": "Produtos à base de Bacillus subtilis e de Bacillus amyloliquefaciens têm registro para Alternaria dauci, como complemento preventivo."
+          },
+          {
+            "tipo": "quimico",
+            "descricao": "Alternar fungicidas protetores, de ação múltipla, com sistêmicos de grupos diferentes. O uso seguido de um mesmo produto de ação específica, como a iprodiona, já selecionou fungo resistente."
+          }
+        ],
+        "ingredientesAtivos": [
+          {
+            "nome": "Mancozebe",
+            "grupo": "Ditiocarbamato",
+            "acao": "protetor"
+          },
+          {
+            "nome": "Clorotalonil",
+            "grupo": "Isoftalonitrila",
+            "acao": "protetor"
+          },
+          {
+            "nome": "Azoxistrobina",
+            "grupo": "Estrobilurina",
+            "acao": "sistêmico"
+          },
+          {
+            "nome": "Difenoconazol",
+            "grupo": "Triazol",
+            "acao": "sistêmico"
+          },
+          {
+            "nome": "Tebuconazol",
+            "grupo": "Triazol",
+            "acao": "sistêmico"
+          }
+        ]
+      },
+      {
+        "id": "cenoura_queima_de_cercospora",
+        "nome": "Queima-de-cercóspora da cenoura",
+        "agente": "Cercospora carotae",
+        "tipoAgente": "fungo",
+        "gravidade": 3,
+        "descricao": "Começa com pequenos pontos mortos no limbo, que crescem e ficam castanhos, geralmente com o centro claro e acinzentado, às vezes com halo amarelo. Ataca mais as folhas novas e costuma vir antes da queima-de-alternária, que aparece no fim do ciclo. Com umidade alta, a lesão fica acinzentada pela grande produção de esporos. Em ataque forte, as manchas chegam à borda, se juntam e as folhas caem; no pecíolo, as lesões são alongadas e escuras. É menos frequente que a alternária, mas pode causar dano alto em cultivar suscetível.",
+        "sintomas": [
+          {
+            "id": "manchas_pequenas_centro_claro",
+            "peso": 1
+          },
+          {
+            "id": "manchas_amareladas",
+            "peso": 0.5
+          },
+          {
+            "id": "penugem_cinza_na_lesao",
+            "peso": 0.4
+          },
+          {
+            "id": "queda_precoce_folhas",
+            "peso": 0.4
+          },
+          {
+            "id": "lesoes_no_caule",
+            "peso": 0.3
+          }
+        ],
+        "condicoesFavoraveis": {
+          "temperatura": "20 a 30 °C, ótimo de 28 °C",
+          "umidade": "Pelo menos 12 horas de molhamento das folhas",
+          "observacao": "O fungo vem na semente e sobrevive nos restos culturais e em plantas espontâneas do gênero Daucus. Os esporos se espalham pelo vento, pelos respingos de chuva e de irrigação e pelas máquinas."
+        },
+        "tratamentos": [
+          {
+            "tipo": "cultural",
+            "descricao": "Não há cultivar totalmente resistente; Brasília, Alvorada, Esplanada, Juliana e Planalto são tolerantes."
+          },
+          {
+            "tipo": "cultural",
+            "descricao": "Semente sadia e tratada, rotação de culturas e retirada e destruição dos restos culturais infectados."
+          },
+          {
+            "tipo": "quimico",
+            "descricao": "Começar cedo, quando o clima favorece a doença, porque o fungo ataca as folhas novas. Só produtos registrados para este alvo na cenoura, com rodízio de grupo químico."
+          }
+        ],
+        "ingredientesAtivos": [
+          {
+            "nome": "Mancozebe",
+            "grupo": "Ditiocarbamato",
+            "acao": "protetor"
+          },
+          {
+            "nome": "Clorotalonil",
+            "grupo": "Isoftalonitrila",
+            "acao": "protetor"
+          },
+          {
+            "nome": "Oxicloreto de cobre",
+            "grupo": "Cúprico",
+            "acao": "protetor"
+          },
+          {
+            "nome": "Azoxistrobina",
+            "grupo": "Estrobilurina",
+            "acao": "sistêmico"
+          }
+        ]
+      },
+      {
+        "id": "cenoura_nematoide_das_galhas",
+        "nome": "Nematoide-das-galhas da cenoura",
+        "agente": "Meloidogyne incognita e M. javanica",
+        "tipoAgente": "nematoide",
+        "gravidade": 5,
+        "descricao": "Entre os patógenos mais importantes da cenoura no Brasil. As raízes ficam com galhas, as \"pipocas\", na raiz principal e nas laterais, e com a superfície áspera. Se o ataque é nas quatro primeiras semanas depois da semeadura, a raiz racha, estrangula, ramifica e bifurca; mais tarde, só as raízes secundárias têm galhas. A parte aérea cresce pouco, em reboleiras. Como a raiz é o produto, o dano é direto: em solo muito infestado e cultivar suscetível, a perda de raízes comerciais pode chegar a 100%.",
+        "sintomas": [
+          {
+            "id": "galhas_na_raiz",
+            "peso": 1
+          },
+          {
+            "id": "raiz_bifurcada",
+            "peso": 0.8
+          },
+          {
+            "id": "crescimento_reduzido",
+            "peso": 0.5
+          }
+        ],
+        "condicoesFavoraveis": {
+          "temperatura": "Clima quente; épocas e regiões mais quentes favorecem a multiplicação",
+          "umidade": "Umidade do solo suficiente para a eclosão dos ovos",
+          "observacao": "Cultivo contínuo de hospedeiras na mesma área faz a população chegar a níveis críticos. O nematoide se espalha com o solo aderido a máquinas e implementos, pela água de irrigação e de enxurrada e pelos animais. Falsa-serralha, juá-bravo e arrebenta-cavalo mantêm o nematoide na área."
+        },
+        "tratamentos": [
+          {
+            "tipo": "cultural",
+            "descricao": "Cultivares tolerantes ao nematoide-das-galhas, como Brasília e BRS Planalto."
+          },
+          {
+            "tipo": "cultural",
+            "descricao": "Arrancar e destruir as raízes da cultura anterior e eliminar as plantas daninhas hospedeiras; alqueive com duas ou três gradagens reduz a população em até 90% em 3 a 4 meses."
+          },
+          {
+            "tipo": "cultural",
+            "descricao": "Rotação com não hospedeiras e plantas antagonistas, como Crotalaria spectabilis, cravo-de-defunto, mucuna-preta, amendoim, braquiárias e milho resistente; incorporar matéria orgânica."
+          },
+          {
+            "tipo": "biologico",
+            "descricao": "Há produtos registrados à base de Pochonia chlamydosporia, Purpureocillium lilacinum e Bacillus para Meloidogyne, como complemento ao manejo cultural."
+          },
+          {
+            "tipo": "quimico",
+            "descricao": "Nematicida registrado para a cenoura, só como complemento: o custo é alto e não substitui a rotação."
+          }
+        ],
+        "ingredientesAtivos": [
+          {
+            "nome": "Fluazaindolizina",
+            "grupo": "Sulfonamida",
+            "acao": "nematicida"
+          },
+          {
+            "nome": "Ciclobutrifluram",
+            "grupo": "Carboxamida",
+            "acao": "nematicida"
+          }
+        ]
       }
     ]
   },
@@ -1682,6 +3526,176 @@ export const CULTURAS: readonly Cultura[] = [
             "nome": "Ciazofamida",
             "grupo": "Cianoimidazol",
             "acao": "protetor"
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "espinafre",
+    "nome": "Espinafre",
+    "nomeCientifico": "Spinacia oleracea",
+    "grupo": "folha",
+    "familia": "Amaranthaceae",
+    "emoji": "🥬",
+    "cicloDias": null,
+    "doencas": [
+      {
+        "id": "espinafre_mildio",
+        "nome": "Míldio do espinafre",
+        "agente": "Peronospora effusa (sin. P. farinosa f. sp. spinaciae)",
+        "tipoAgente": "oomiceto",
+        "gravidade": 4,
+        "descricao": "A doença mais importante do espinafre no mundo. Aparecem manchas amarelas, de amarelo-pálido a vivo, nos cotilédones e nas folhas de qualquer idade, que depois crescem, ficam cor de palha e secam. Na face de baixo, sob as manchas, forma-se um mofo acinzentado a arroxeado. Com muitas infecções, as folhas se enrolam e deformam. As folhas doentes apodrecem depois de embaladas.",
+        "sintomas": [
+          {
+            "id": "manchas_amareladas",
+            "peso": 1
+          },
+          {
+            "id": "mofo_arroxeado_face_inferior",
+            "peso": 0.9
+          },
+          {
+            "id": "folhas_deformadas",
+            "peso": 0.4
+          }
+        ],
+        "condicoesFavoraveis": {
+          "temperatura": "Clima fresco",
+          "umidade": "Alta, com folha molhada",
+          "observacao": "Lavoura muito densa segura a umidade entre as folhas. Os esporos se espalham pelo vento e pelos respingos de água, de planta para planta e de lavoura para lavoura. Surgem raças novas do patógeno que quebram a resistência das cultivares."
+        },
+        "tratamentos": [
+          {
+            "tipo": "cultural",
+            "descricao": "Cultivar resistente às raças presentes na região: é a medida mais eficaz."
+          },
+          {
+            "tipo": "cultural",
+            "descricao": "Evitar plantio muito adensado e irrigação que molhe as folhas; plantar na época mais seca quando possível."
+          },
+          {
+            "tipo": "quimico",
+            "descricao": "Fungicida registrado para o míldio do espinafre, sempre preventivo: ele protege a folha, não cura a lesão já formada. Respeitar o intervalo de segurança, porque a folha é consumida."
+          }
+        ],
+        "ingredientesAtivos": [
+          {
+            "nome": "Cimoxanil",
+            "grupo": "Cianoacetamida-oxima",
+            "acao": "sistêmico"
+          },
+          {
+            "nome": "Zoxamida",
+            "grupo": "Benzamida",
+            "acao": "protetor"
+          }
+        ]
+      },
+      {
+        "id": "espinafre_mosaico",
+        "nome": "Mosaico-do-pepino (CMV) no espinafre",
+        "agente": "Cucumber mosaic virus (CMV)",
+        "tipoAgente": "vírus",
+        "gravidade": 3,
+        "descricao": "As folhas novas amarelam de leve, ficam estreitas e enrugadas e enrolam as bordas para dentro. Com a doença avançada, a planta para de crescer e as folhas do centro secam, matando o ponto de crescimento. No Brasil, o vírus foi identificado em espinafre que murchava, em São Paulo. É transmitido por pulgões.",
+        "sintomas": [
+          {
+            "id": "folhas_deformadas",
+            "peso": 1
+          },
+          {
+            "id": "crescimento_reduzido",
+            "peso": 0.7
+          },
+          {
+            "id": "murcha",
+            "peso": 0.5
+          },
+          {
+            "id": "manchas_amareladas",
+            "peso": 0.4
+          }
+        ],
+        "condicoesFavoraveis": {
+          "temperatura": "Período quente, quando a população de pulgões aumenta",
+          "umidade": "Não é o fator principal; o risco acompanha o pulgão",
+          "observacao": "O CMV ataca muitas culturas e plantas daninhas, que servem de reservatório. O pulgão transmite o vírus em picadas rápidas, de forma não persistente, e o plantio feito quando a população de pulgões está alta e as lavouras vizinhas estão infectadas corre o maior risco."
+        },
+        "tratamentos": [
+          {
+            "tipo": "cultural",
+            "descricao": "Não há controle curativo. Arrancar e destruir as plantas com sintomas."
+          },
+          {
+            "tipo": "cultural",
+            "descricao": "Eliminar as plantas daninhas dentro e em volta da área e não plantar perto de lavouras velhas de outras plantas atacadas pelo vírus."
+          },
+          {
+            "tipo": "cultural",
+            "descricao": "Não há cultivar de espinafre resistente. Inseticida contra o pulgão não impede a transmissão do vírus, que acontece em segundos, e não substitui as medidas culturais."
+          }
+        ],
+        "ingredientesAtivos": []
+      },
+      {
+        "id": "espinafre_tombamento",
+        "nome": "Tombamento e podridão de raiz do espinafre",
+        "agente": "Complexo de fungos e oomicetos de solo: Pythium spp., Rhizoctonia solani e Fusarium oxysporum",
+        "tipoAgente": "fungo",
+        "gravidade": 3,
+        "descricao": "As sementes falham e as plântulas morrem antes ou logo depois de emergir, tombando. Nas plantas mais velhas, a raiz fica encharcada ou escura, de marrom a preta, com a ponta da raiz principal necrosada ou estrangulada por uma lesão. A planta cresce pouco, as folhas de baixo amarelam, ela murcha e pode morrer.",
+        "sintomas": [
+          {
+            "id": "tombamento_de_mudas",
+            "peso": 1
+          },
+          {
+            "id": "raiz_escurecida_podre",
+            "peso": 0.8
+          },
+          {
+            "id": "crescimento_reduzido",
+            "peso": 0.5
+          },
+          {
+            "id": "murcha",
+            "peso": 0.5
+          }
+        ],
+        "condicoesFavoraveis": {
+          "temperatura": "Não é o fator principal",
+          "umidade": "Solo encharcado",
+          "observacao": "Favorecido por solo argiloso ou mal drenado, baixadas onde a água demora a escoar, excesso de irrigação e plantios seguidos de espinafre na mesma área. Os patógenos ficam no solo de forma permanente."
+        },
+        "tratamentos": [
+          {
+            "tipo": "cultural",
+            "descricao": "Plantar em solo bem drenado e preparar o canteiro para uma germinação rápida e uniforme."
+          },
+          {
+            "tipo": "cultural",
+            "descricao": "Irrigar com cuidado, sem encharcar o solo."
+          },
+          {
+            "tipo": "cultural",
+            "descricao": "Não repetir espinafre na mesma área; fazer rotação de culturas."
+          },
+          {
+            "tipo": "biologico",
+            "descricao": "Trichoderma ou Bacillus registrados para Rhizoctonia solani (tombamento) e Trichoderma para Pythium (podridão da raiz) em todas as culturas."
+          },
+          {
+            "tipo": "quimico",
+            "descricao": "Há fungicida registrado para Pythium no espinafre, como complemento ao manejo cultural."
+          }
+        ],
+        "ingredientesAtivos": [
+          {
+            "nome": "Dimetomorfe",
+            "grupo": "Amida do ácido cinâmico",
+            "acao": "sistêmico"
           }
         ]
       }
@@ -2554,6 +4568,211 @@ export const CULTURAS: readonly Cultura[] = [
     ]
   },
   {
+    "id": "quiabo",
+    "nome": "Quiabo",
+    "nomeCientifico": "Abelmoschus esculentus",
+    "grupo": "fruto",
+    "familia": "Malvaceae",
+    "emoji": "🌱",
+    "cicloDias": null,
+    "doencas": [
+      {
+        "id": "quiabo_oidio",
+        "nome": "Oídio (cinza) do quiabeiro",
+        "agente": "Oidium sp. (espécie ainda não identificada no quiabeiro)",
+        "tipoAgente": "fungo",
+        "gravidade": 3,
+        "descricao": "A doença mais comum do quiabeiro. Começa nas folhas mais velhas, com pontos brancos, como pó de giz, que o vento espalha depressa pela planta. Em ataque forte, as folhas amarelam e caem; mais raramente, os frutos também ficam cobertos de pó branco. Ataque pequeno não dá perda considerável; o risco é o ataque intenso no começo da produção.",
+        "sintomas": [
+          {
+            "id": "po_branco_superficie",
+            "peso": 1
+          },
+          {
+            "id": "manchas_amareladas",
+            "peso": 0.5
+          },
+          {
+            "id": "desfolha_baixo_para_cima",
+            "peso": 0.5
+          }
+        ],
+        "condicoesFavoraveis": {
+          "temperatura": "Sem faixa definida na fonte; mais severo nos períodos secos",
+          "umidade": "Baixa: a chuva e a irrigação por aspersão lavam os esporos das folhas e desfavorecem a doença",
+          "observacao": "Plantios sombreados, mal ventilados e muito densos favorecem o fungo."
+        },
+        "tratamentos": [
+          {
+            "tipo": "cultural",
+            "descricao": "Escolher área bem ventilada e sem sombra, longe de quiabeiros mais velhos."
+          },
+          {
+            "tipo": "cultural",
+            "descricao": "Evitar plantio muito adensado, que abafa a lavoura."
+          },
+          {
+            "tipo": "cultural",
+            "descricao": "Ataque pequeno pode ser tolerado, porque não causa perda considerável."
+          },
+          {
+            "tipo": "quimico",
+            "descricao": "Fungicida registrado para o oídio do quiabeiro, só sob ataque intenso no início da produção."
+          }
+        ],
+        "ingredientesAtivos": [
+          {
+            "nome": "Flutriafol",
+            "grupo": "Triazol",
+            "acao": "sistêmico"
+          },
+          {
+            "nome": "Imibenconazol",
+            "grupo": "Triazol",
+            "acao": "sistêmico"
+          },
+          {
+            "nome": "Bicarbonato de potássio",
+            "grupo": "Inorgânico",
+            "acao": "protetor"
+          },
+          {
+            "nome": "Enxofre",
+            "grupo": "Inorgânico",
+            "acao": "protetor"
+          }
+        ]
+      },
+      {
+        "id": "quiabo_cercosporiose",
+        "nome": "Cercosporiose do quiabeiro",
+        "agente": "Pseudocercospora abelmoschi e outras espécies de Cercospora e Pseudocercospora",
+        "tipoAgente": "fungo",
+        "gravidade": 3,
+        "descricao": "Muito frequente na época quente e chuvosa. Na face de baixo das folhas, começando pelas mais velhas, formam-se manchas do tipo fuligem, verde-oliva a marrom-escuras. As manchas se juntam e a folha seca, caindo ou não. A desfolha reduz a produção e a qualidade dos frutos, que não mostram sintomas.",
+        "sintomas": [
+          {
+            "id": "mofo_oliva_face_inferior",
+            "peso": 1
+          },
+          {
+            "id": "desfolha_baixo_para_cima",
+            "peso": 0.6
+          }
+        ],
+        "condicoesFavoraveis": {
+          "temperatura": "Quente",
+          "umidade": "Alta, na estação chuvosa",
+          "observacao": "Pelo menos quatro espécies de Cercospora ou Pseudocercospora já foram associadas à doença no Brasil, algumas delas sinônimas; a mais encontrada parece ser P. abelmoschi."
+        },
+        "tratamentos": [
+          {
+            "tipo": "cultural",
+            "descricao": "Evitar plantio adensado e áreas sombreadas, mal ventiladas ou sujeitas a encharcamento, principalmente no período de chuvas."
+          },
+          {
+            "tipo": "cultural",
+            "descricao": "Sementes de boa qualidade, de firma idônea, e adubação balanceada com base em análise de solo."
+          },
+          {
+            "tipo": "cultural",
+            "descricao": "Rotação de culturas, de preferência com gramíneas."
+          },
+          {
+            "tipo": "quimico",
+            "descricao": "Fungicida registrado para a cercosporiose do quiabeiro, quando necessário."
+          }
+        ],
+        "ingredientesAtivos": [
+          {
+            "nome": "Hidróxido de cobre",
+            "grupo": "Cúprico",
+            "acao": "protetor"
+          },
+          {
+            "nome": "Óxido cuproso",
+            "grupo": "Cúprico",
+            "acao": "protetor"
+          },
+          {
+            "nome": "Boscalida",
+            "grupo": "Carboxamida",
+            "acao": "sistêmico"
+          },
+          {
+            "nome": "Azoxistrobina",
+            "grupo": "Estrobilurina",
+            "acao": "sistêmico"
+          }
+        ]
+      },
+      {
+        "id": "quiabo_nematoide_das_galhas",
+        "nome": "Nematoide-das-galhas",
+        "agente": "Meloidogyne incognita, M. javanica, M. arenaria e M. enterolobii",
+        "tipoAgente": "nematoide",
+        "gravidade": 4,
+        "descricao": "O quiabeiro é uma das plantas mais suscetíveis ao nematoide-das-galhas, e nenhuma cultivar comercial tem resistência. As raízes ficam com galhas, de pequenas e discretas a grandes e irregulares, que podem apodrecer pela entrada de outros patógenos de solo. A planta cresce pouco, murcha nas horas quentes, perde folhas e mostra sinais de deficiência mineral. No campo, aparece em reboleiras de plantas raquíticas e amareladas. Sem rotação, pode inviabilizar o quiabo na área.",
+        "sintomas": [
+          {
+            "id": "galhas_na_raiz",
+            "peso": 1
+          },
+          {
+            "id": "crescimento_reduzido",
+            "peso": 0.6
+          },
+          {
+            "id": "murcha",
+            "peso": 0.5
+          },
+          {
+            "id": "manchas_amareladas",
+            "peso": 0.4
+          },
+          {
+            "id": "queda_precoce_folhas",
+            "peso": 0.3
+          }
+        ],
+        "condicoesFavoraveis": {
+          "temperatura": "Alta",
+          "umidade": "Solo úmido; solos arenosos e pobres em matéria orgânica agravam o dano",
+          "observacao": "O ciclo do nematoide leva de 21 a 45 dias, e ele completa vários ciclos durante uma safra. Espalha-se com o solo levado por máquinas, implementos, água, pessoas e animais. Daninhas como falsa-serralha, juá-bravo, caruru, arrebenta-cavalo e melão-de-são-caetano mantêm o nematoide na área."
+        },
+        "tratamentos": [
+          {
+            "tipo": "cultural",
+            "descricao": "Plantar em área sem histórico do nematoide, longe e acima de lavouras infestadas; cuidar da origem da água de irrigação e lavar máquinas e implementos antes de entrar na área."
+          },
+          {
+            "tipo": "cultural",
+            "descricao": "Rotação de 1 a 3 anos com amendoim, braquiárias, milheto, milho ou sorgo resistentes; plantas antagonistas, como Crotalaria spectabilis, C. breviflora, C. juncea, cravo-de-defunto e mucunas."
+          },
+          {
+            "tipo": "cultural",
+            "descricao": "Alqueive de pelo menos três meses, solarização e incorporação de matéria orgânica; retirar e destruir as raízes infectadas depois da colheita."
+          },
+          {
+            "tipo": "biologico",
+            "descricao": "Agentes biológicos registrados para Meloidogyne em todas as culturas, como Purpureocillium lilacinum, Pochonia chlamydosporia e Bacillus spp., como complemento ao manejo."
+          },
+          {
+            "tipo": "quimico",
+            "descricao": "Nematicida registrado para o quiabeiro, só como complemento ao manejo cultural."
+          }
+        ],
+        "ingredientesAtivos": [
+          {
+            "nome": "Ciclobutrifluram",
+            "grupo": "Carboxamida",
+            "acao": "nematicida"
+          }
+        ]
+      }
+    ]
+  },
+  {
     "id": "repolho",
     "nome": "Repolho",
     "nomeCientifico": "Brassica oleracea var. capitata",
@@ -2897,6 +5116,162 @@ export const CULTURAS: readonly Cultura[] = [
             "acao": "sistêmico"
           }
         ]
+      }
+    ]
+  },
+  {
+    "id": "salsa",
+    "nome": "Salsa",
+    "nomeCientifico": "Petroselinum crispum",
+    "grupo": "folha",
+    "familia": "Apiaceae",
+    "emoji": "🌿",
+    "cicloDias": null,
+    "doencas": [
+      {
+        "id": "salsa_septoriose",
+        "nome": "Septoriose da salsa",
+        "agente": "Septoria petroselini",
+        "tipoAgente": "fungo",
+        "gravidade": 4,
+        "descricao": "A principal doença da salsa na época das chuvas no Centro-Oeste, no Sudeste e no Sul. Manchas pequenas e irregulares, cor de palha, geralmente com um halo amarronzado, e com pontinhos escuros dentro, que são as frutificações do fungo. As manchas se multiplicam, se juntam e queimam as folhas; nos pecíolos aparecem manchas pequenas e ovais. A folha manchada perde o valor no mercado.",
+        "sintomas": [
+          {
+            "id": "pontuacoes_pretas_na_lesao",
+            "peso": 1
+          },
+          {
+            "id": "manchas_pequenas_centro_claro",
+            "peso": 0.8
+          },
+          {
+            "id": "lesoes_no_caule",
+            "peso": 0.3
+          }
+        ],
+        "condicoesFavoraveis": {
+          "temperatura": "20 a 25 °C",
+          "umidade": "Alta, com água livre sobre a folha para o esporo germinar",
+          "observacao": "A semente é o principal veículo do fungo, que parece atacar só a salsa. Na lavoura, os respingos de chuva e de irrigação levam os esporos de folha em folha; trabalhadores, insetos e equipamentos também. Sobrevive em restos de cultura e em lavouras velhas ou abandonadas."
+        },
+        "tratamentos": [
+          {
+            "tipo": "cultural",
+            "descricao": "Semente de boa qualidade, livre do fungo, de firma idônea."
+          },
+          {
+            "tipo": "cultural",
+            "descricao": "Preferir irrigação por gotejo à aspersão, para manter as folhas secas."
+          },
+          {
+            "tipo": "cultural",
+            "descricao": "Rotação de culturas e não plantar lavoura nova perto de lavoura velha de salsa. Não há cultivar resistente nem fungicida registrado para esta doença na salsa."
+          }
+        ],
+        "ingredientesAtivos": []
+      },
+      {
+        "id": "salsa_queima_de_alternaria",
+        "nome": "Queima-de-alternária da salsa",
+        "agente": "Alternaria dauci",
+        "tipoAgente": "fungo",
+        "gravidade": 4,
+        "descricao": "Uma das doenças mais importantes da salsa no Brasil. Começa nas folhas mais velhas, como pequenas manchas castanho-escuras ou pretas cercadas de tecido amarelado, principalmente ao longo da borda. Com o avanço, a folha inteira necrosa e se retorce; nos pecíolos, manchas marrons alongadas podem matar a folha. Em clima favorável a queima é muito rápida e pode levar à perda total da produção.",
+        "sintomas": [
+          {
+            "id": "manchas_escuras_halo_amarelo",
+            "peso": 1
+          },
+          {
+            "id": "lesoes_no_caule",
+            "peso": 0.4
+          }
+        ],
+        "condicoesFavoraveis": {
+          "temperatura": "Temperaturas altas favorecem, mas a doença aparece também em clima ameno",
+          "umidade": "Alta umidade ou água livre na planta, o fator mais importante",
+          "observacao": "O fungo vem na semente, por dentro e por fora, e pode tombar a plântula logo após a germinação. Sobrevive nos restos culturais deixados no campo, e o plantio escalonado de apiáceas o mantém o ano todo. Ataca também a cenoura, o aipo e o coentro."
+        },
+        "tratamentos": [
+          {
+            "tipo": "cultural",
+            "descricao": "Semente sadia, sem contaminação, é a medida mais eficaz."
+          },
+          {
+            "tipo": "cultural",
+            "descricao": "Reduzir a frequência de irrigação e fazer rotação com culturas de outras famílias; não deixar folhas doentes no campo depois da colheita."
+          },
+          {
+            "tipo": "biologico",
+            "descricao": "Produtos à base de Bacillus subtilis e de Bacillus amyloliquefaciens têm registro para Alternaria dauci, como complemento preventivo."
+          },
+          {
+            "tipo": "quimico",
+            "descricao": "Só a mistura registrada para a salsa, em aplicação preventiva. Por ser folha consumida crua, respeitar à risca a dose e o período de carência."
+          }
+        ],
+        "ingredientesAtivos": [
+          {
+            "nome": "Azoxistrobina",
+            "grupo": "Estrobilurina",
+            "acao": "sistêmico"
+          },
+          {
+            "nome": "Difenoconazol",
+            "grupo": "Triazol",
+            "acao": "sistêmico"
+          }
+        ]
+      },
+      {
+        "id": "salsa_mofo_branco",
+        "nome": "Mofo-branco da salsa",
+        "agente": "Sclerotinia sclerotiorum",
+        "tipoAgente": "fungo",
+        "gravidade": 3,
+        "descricao": "Doença comum da salsa e de outras apiáceas. A coroa da touceira apodrece: as folhas amarelam e murcham, a planta cresce pouco e pode tombar e morrer. As raízes ficam com podridão aquosa, de fora para dentro. Com umidade alta, forma-se na base um mofo branco abundante, com corpos pretos e duros de tamanho irregular, parecidos com fezes de rato. No campo, aparece em reboleiras.",
+        "sintomas": [
+          {
+            "id": "mofo_branco_com_esclerodios",
+            "peso": 1
+          },
+          {
+            "id": "murcha",
+            "peso": 0.7
+          },
+          {
+            "id": "manchas_amareladas",
+            "peso": 0.4
+          },
+          {
+            "id": "crescimento_reduzido",
+            "peso": 0.4
+          }
+        ],
+        "condicoesFavoraveis": {
+          "temperatura": "15 a 21 °C",
+          "umidade": "Alta umidade relativa e do solo",
+          "observacao": "Os escleródios ficam viáveis no solo por cinco a dez anos e atacam cerca de 400 espécies de plantas, muitas delas hortaliças. Nitrogênio em excesso adensa a folhagem e deixa úmido o ambiente junto ao solo."
+        },
+        "tratamentos": [
+          {
+            "tipo": "cultural",
+            "descricao": "Rotação com gramíneas ou outras não hospedeiras por 3 a 4 anos; retirar e destruir os restos culturais das áreas mais atacadas."
+          },
+          {
+            "tipo": "cultural",
+            "descricao": "Não enterrar fundo os restos culturais da área doente: na superfície os escleródios se desintegram mais rápido. A solarização pode ajudar em áreas pequenas."
+          },
+          {
+            "tipo": "cultural",
+            "descricao": "Reduzir o volume de irrigação e equilibrar a adubação nitrogenada. Não se conhece variedade resistente, e não há fungicida registrado para o mofo-branco na salsa."
+          },
+          {
+            "tipo": "biologico",
+            "descricao": "Produtos à base de Trichoderma (T. harzianum, T. asperellum) e de Bacillus têm registro para Sclerotinia sclerotiorum, aplicados ao solo para reduzir os escleródios."
+          }
+        ],
+        "ingredientesAtivos": []
       }
     ]
   },

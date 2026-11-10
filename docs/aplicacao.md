@@ -359,11 +359,14 @@ lista plana de dezenas de culturas num celular sob sol vira rolagem às cegas.
 
 | Grupo | Alvo | Curadas |
 |---|---|---|
-| **Fruto** | tomate, pimentão, pepino, berinjela, jiló, abobrinha, abóbora, quiabo | tomate, pimentão |
-| **Folha** | alface, couve, repolho, rúcula, espinafre, agrião, salsa | - |
-| **Flor** | brócolis, couve-flor | - |
-| **Haste** | alho-poró, aipo | - |
-| **Raiz, tubérculo e bulbo** | batata, cenoura, cebola, beterraba, alho | batata |
+| **Fruto** | tomate, pimentão, pepino, berinjela, jiló, abobrinha, abóbora, quiabo | todas |
+| **Folha** | alface, couve, repolho, rúcula, espinafre, agrião, salsa | todas |
+| **Flor** | brócolis, couve-flor | todas |
+| **Haste** | alho-poró, aipo | todas |
+| **Raiz, tubérculo e bulbo** | batata, cenoura, cebola, beterraba, alho | todas |
+
+A base fechou em 24 culturas e 88 doenças na versão `2026.11.09`. As fontes
+de cada ficha estão em [`docs/curadoria/`](curadoria/).
 
 ### Pares confundíveis, de propósito
 
@@ -511,7 +514,7 @@ textual, para continuar legível por quem não distingue as cores.
 | API + PostgreSQL: conta, histórico, sincronização offline | ✅ |
 | Caderno filtrável por período e cultura, legível sem rede | ✅ |
 | Instruções de instalação para iPhone | ✅ |
-| Curadoria por família: brássicas, solanáceas, cucurbitáceas… | 🔄 9 de 24 culturas |
+| Curadoria por família: brássicas, solanáceas, cucurbitáceas… | ✅ 24 culturas, 88 doenças |
 | Horta, membros, canteiros e manejo (US22-US26) | ✅ |
 | Relatórios agregados e alerta de rotação | ⬜ Sprint 4 |
 | Identificação por imagem - condicionada à auditoria do acervo | ⬜ falta o modelo |

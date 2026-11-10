@@ -100,7 +100,7 @@ trabalho. O estado é verificável neste repositório.
   - 1.3 Repositório institucional: requisitos, arquitetura, sprints, entregas, ADRs - 🔄
 - **2. Base de conhecimento**
   - 2.1 Modelagem do catálogo: órgãos, sintomas, culturas, doenças, tratamentos, ingredientes ativos - ✅
-  - 2.2 Curadoria por família botânica - 🔄 *(9 de 24 culturas, 34 de 88 doenças; solanáceas e brássicas fechadas, brássicas conferidas em 18/10/2026)*
+  - 2.2 Curadoria por família botânica - ✅ *(24 culturas e 88 doenças, base `2026.11.09`)*
   - 2.3 Validação automática da base - ✅
   - 2.4 Fontes e referências técnicas - 🔄
 - **3. Motor de diagnóstico**
@@ -116,7 +116,7 @@ trabalho. O estado é verificável neste repositório.
 - **5. Back-end e banco de dados**
   - 5.1 Modelo relacional, DDL numerado e reversível - ✅
   - 5.2 API REST: saúde, catálogo, diagnóstico, caderno - ✅
-  - 5.3 Autenticação com scrypt e JWT; exclusão de conta - 🟡 *(API pronta; tela de exclusão pendente)*
+  - 5.3 Autenticação com scrypt e JWT; exclusão de conta - ✅
   - 5.4 Carga idempotente do catálogo - ✅
   - 5.5 Relatórios agregados - ⬜
   - 5.6 Hortas, membros, canteiros e manejo - 🔄 *(rotas e telas prontas desde a Sprint 3; falta o filtro por canteiro na tela do caderno)*
@@ -139,7 +139,7 @@ trabalho. O estado é verificável neste repositório.
 
 | ID | Épico | Descrição | Estado |
 | --- | --- | --- | --- |
-| **E1** | Base de conhecimento de hortaliças | Curadoria agronômica das 24 culturas e 88 fichas de doença | 🔄 39% - 34 de 88 fichas |
+| **E1** | Base de conhecimento de hortaliças | Curadoria agronômica das 24 culturas e 88 fichas de doença | ✅ 88 de 88 fichas |
 | **E2** | Diagnóstico por sintomas offline | Motor de diagnóstico e telas de consulta | ✅ |
 | **E3** | Identidade e conta | Cadastro, autenticação e privacidade | 🟡 |
 | **E4** | Caderno de campo | Histórico, sincronização offline e feedback | 🟡 |
@@ -317,11 +317,11 @@ Estimativa em pontos de história na escala de Fibonacci: 1 trivial, 2 pequena,
 
 | ID | História | Critérios de aceite | Pts | Sprint | Estado |
 | --- | --- | --- | --- | --- | --- |
-| US01 | Como produtor, quero encontrar a hortaliça que cultivo em uma lista organizada, para não procurar num rol extenso | Culturas agrupadas por grupo; nome popular e científico visíveis; 24 culturas presentes | 3 | 5 *(realocada da 2)* | 🔄 9/24 |
+| US01 | Como produtor, quero encontrar a hortaliça que cultivo em uma lista organizada, para não procurar num rol extenso | Culturas agrupadas por grupo; nome popular e científico visíveis; 24 culturas presentes | 3 | 5 *(realocada da 2)* | ✅ |
 | US02 | Como curadora, quero que a base recuse fichas incompletas, para que nenhum erro de digitação chegue ao produtor | Validação recusa referência quebrada, peso inválido, doença sem sintoma clássico e doença viral com ingrediente ativo; cultura com menos de 3 doenças gera aviso | 5 | 1 | ✅ |
 | US03 | Como curadora, quero cadastrar as doenças das brássicas, para cobrir couve, repolho, brócolis, couve-flor, rúcula e agrião | 6 culturas com no mínimo 3 doenças cada; fontes citadas; validação aprovada | 8 | 2 | ✅ |
 | US04 | Como curadora, quero cadastrar as doenças das cucurbitáceas e fechar as solanáceas | Pepino, abobrinha, abóbora e jiló cobertos; batata e pimentão elevados a 3 ou mais doenças | 8 | 4 *(realocada da 3)* | ✅ |
-| US05 | Como curadora, quero cadastrar as doenças das demais famílias | Apiáceas, amarilidáceas, amarantáceas, asteráceas e malváceas cobertas; base fecha 24 culturas e 88 doenças | 8 | 4-5 | ⬜ |
+| US05 | Como curadora, quero cadastrar as doenças das demais famílias | Apiáceas, amarilidáceas, amarantáceas, asteráceas e malváceas cobertas; base fecha 24 culturas e 88 doenças | 8 | 4-5 | ✅ |
 
 **Subtotal E1: 32 pts**
 
@@ -345,7 +345,7 @@ Estimativa em pontos de história na escala de Fibonacci: 1 trivial, 2 pequena,
 | US12 | Como produtor, quero criar uma conta, para que meu histórico não se perca | Cadastro com nome, e-mail e senha; e-mail único; senha com hash scrypt | 5 | 1 | ✅ |
 | US13 | Como produtor, quero entrar na minha conta e permanecer conectado | Autenticação por token com expiração; sessão persistida no dispositivo | 3 | 1 | ✅ |
 | US14 | Como visitante, quero usar o diagnóstico sem criar conta, para experimentar antes de me cadastrar | Diagnóstico acessível sem autenticação; salvar histórico solicita cadastro | 2 | 1 | ✅ |
-| US15 | Como usuário, quero excluir minha conta e meus dados | Exclusão efetiva e confirmada; dados associados removidos; acessível pela interface | 3 | 6 | 🟡 API pronta, tela pendente |
+| US15 | Como usuário, quero excluir minha conta e meus dados | Exclusão efetiva e confirmada; dados associados removidos; acessível pela interface | 3 | 6 | ✅ |
 | US42 | Como produtor que divide o celular, quero sair da minha conta, para que a próxima pessoa não veja meu caderno nem registre consultas em meu nome | Saída acessível pela interface, mostrando quem está conectado; apaga a sessão e as cópias guardadas; com registros na fila, tenta enviar e, se não conseguir, só sai com a escolha explícita de apagá-los ([ADR 0014](../docs/decisoes/adr-0014-sair-da-conta-com-a-fila-sem-dono.md)) | 2 | 5 | ✅ |
 
 **Subtotal E3: 15 pts**
@@ -359,7 +359,7 @@ Estimativa em pontos de história na escala de Fibonacci: 1 trivial, 2 pequena,
 | US18 | Como produtor, quero que uma consulta reenviada não apareça duplicada | Identificador próprio por consulta; reenvio da fila não cria registro novo; verificado por teste | 3 | 1 | ✅ |
 | US19 | Como produtor, quero ver meu histórico filtrado por período e cultura | Listagem paginada com filtros; funciona a partir do armazenamento local quando sem rede | 5 | 1 | ✅ |
 | US20 | Como produtor, quero informar se o diagnóstico se confirmou, para melhorar o sistema | Registro de confirmação e da doença real; um feedback por consulta | 3 | 5 | ✅ |
-| US21 | Como produtor, quero escrever anotações sobre um canteiro | Anotação livre associada a canteiro ou consulta; edição e exclusão | 3 | 5 | ⬜ |
+| US21 | Como produtor, quero escrever anotações sobre um canteiro | Anotação livre associada a canteiro ou consulta; edição e exclusão | 3 | 5 | ✅ |
 
 **Subtotal E4: 27 pts**
 
@@ -383,7 +383,7 @@ Estimativa em pontos de história na escala de Fibonacci: 1 trivial, 2 pequena,
 | US28 | Como extensionista, quero saber a taxa de confirmação dos diagnósticos | Percentual de confirmação por doença, a partir dos feedbacks | 3 | 4 | ✅ |
 | US29 | Como curadora, quero saber quais sintomas são mais marcados em cada cultura, para orientar a próxima curadoria | Ranking de sintomas por cultura | 3 | 5 *(realocada da 4)* | ✅ |
 | US30 | Como gestor, quero ser alertado se plantar a mesma família botânica no mesmo canteiro | Alerta quando o histórico do canteiro repete a família nos ciclos recentes | 5 | 4 | ✅ |
-| US41 | Como gestor, quero ver os indicadores da horta em painéis visuais, para entender a situação sem ler tabela | Painéis incorporados à interface, com os quatro indicadores agregados; legíveis em tela de celular; nenhuma informação transmitida só por cor | 5 | 5 | ⬜ |
+| US41 | Como gestor, quero ver os indicadores da horta em painéis visuais, para entender a situação sem ler tabela | Painéis incorporados à interface, com os quatro indicadores agregados; legíveis em tela de celular; nenhuma informação transmitida só por cor | 5 | 5 | ✅ |
 
 **Subtotal E6: 21 pts**
 
@@ -517,22 +517,21 @@ Gestão dos Ativos.
 | 1º | **1** | Negócio/Domínio | Análise de usuário | **14/09/2026** |
 | 1º | **2** | Projeto | EAP, backlog do produto, planejamento das sprints, projeto no repositório institucional | **14/09/2026** |
 | 1º | **3** | Produto | Arquitetura da informação, design arquitetural, testes de integração, protótipo de baixo nível, storyboard | **14/09/2026** |
-| 1º | **5** | Ativos | Website com dados e documentação | a definir |
-| 2º | **6** | Negócio/Domínio | Análise do usuário | a definir |
-| 2º | **7** | Projeto | Execução e revisão das sprints; publicação na vitrine de ativos | a definir |
-| 2º | **8** | Produto | Arquitetura de software; testes de sistema | a definir |
-| 2º | **9** | Ativos | Dashboards incorporados | a definir |
+| 1º | **5** | Ativos | Website com dados e documentação | sem data própria |
+| 2º | **6** | Negócio/Domínio | Análise do usuário | sem data própria |
+| 2º | **7** | Projeto | Execução e revisão das sprints; publicação na vitrine de ativos | sem data própria |
+| 2º | **8** | Produto | Arquitetura de software; testes de sistema | sem data própria |
+| 2º | **9** | Ativos | Dashboards incorporados | sem data própria |
 
-> **Uma única data está fixada:** a dos Artefatos 1, 2 e 3, em **14/09/2026**.
-> Todas as demais estão a definir pela professora. O calendário de 3.2 é
-> proposta da equipe, derivada da cadência de duas semanas, e a alocação dos
-> Artefatos 5 a 9 será reajustada assim que os marcos forem divulgados.
+> **Só os Artefatos 1, 2 e 3 têm data e documento próprios**, entregues em
+> **14/09/2026**. Os Artefatos 5 a 9 não são documentos à parte: o conteúdo de
+> cada um é o próprio projeto - o sistema publicado, a documentação técnica, as
+> atas e as `milestones` -, construído ao longo das sprints. Por isso não têm
+> data de entrega própria, e o calendário de 3.2 indica a sprint em que cada
+> conteúdo fica pronto.
 
-> **Sobre a numeração.** O conjunto informado pela disciplina não contém um
-> Artefato 4. Como o 2º bimestre tem exatamente quatro artefatos (6 a 9), um por
-> eixo, a lacuna no 1º bimestre sugere que um Artefato 4 de Gestão dos Ativos
-> possa existir. A numeração foi preservada como recebida e a confirmação consta
-> das pendências, na seção 5.
+> **Sobre a numeração.** O Artefato 4 não existe. A numeração salta do 3 para o
+> 5 como foi definida pela disciplina.
 
 ### O que o 2º bimestre acrescenta
 
@@ -783,10 +782,24 @@ validação automática aprovada; revisão por outra integrante da equipe.
 
 | Integrante | Matrícula | Papel |
 | --- | --- | --- |
-| Gabriela Pedersoli Caldana | 22404253 | ⚠️ a definir - Product Owner ou Scrum Master |
-| Thaís Regina Dias da Mota | 22403754 | ⚠️ a definir - Product Owner ou Scrum Master |
+| Gabriela Pedersoli Caldana | 22404253 | Product Owner e Scrum Master, em conjunto |
+| Thaís Regina Dias da Mota | 22403754 | Product Owner e Scrum Master, em conjunto |
 
 Ambas as integrantes atuam em desenvolvimento e em curadoria agronômica.
+
+**Os papéis de Product Owner e Scrum Master são exercidos em conjunto pela
+dupla.** Numa equipe de duas pessoas, separar os papéis deixaria cada decisão
+de escopo ou de processo nas mãos de uma só integrante, sem ninguém para
+contrapor. As responsabilidades continuam as descritas no
+[planejamento da Sprint 0](../sprints/sprint-00-planejamento.md#papéis), e a
+forma de exercê-las em conjunto é esta:
+
+- **Product Owner:** a priorização do backlog e os cortes de escopo são
+  decididos pelas duas, na reunião de planejamento de cada sprint, e ficam
+  registrados na ata.
+- **Scrum Master:** a condução dos eventos e a manutenção das `milestones` e
+  das `issues` são feitas por quem abre ou fecha o item, e a outra integrante
+  revisa no *pull request*.
 
 ---
 
@@ -794,16 +807,14 @@ Ambas as integrantes atuam em desenvolvimento e em curadoria agronômica.
 
 | Item | Natureza | Responsável | Situação |
 | --- | --- | --- | --- |
-| Distribuição dos papéis Scrum entre as integrantes | Dado da equipe | Equipe | Aberta - [#72](https://github.com/CampusCEUB/AgroScan/issues/72) |
+| Distribuição dos papéis Scrum entre as integrantes | Dado da equipe | Equipe | **Resolvida** - papéis exercidos em conjunto (§4.6), [#72](https://github.com/CampusCEUB/AgroScan/issues/72) |
 | Identificação da comunidade parceira (R03) | Definição externa | Coordenação da disciplina | Aberta - [#73](https://github.com/CampusCEUB/AgroScan/issues/73) |
-| Data do Artefato 5 e da apresentação à comunidade | Definição externa | Professora | Aberta - [#74](https://github.com/CampusCEUB/AgroScan/issues/74) |
+| Datas dos Artefatos 5 a 9 e existência do Artefato 4 | Definição externa | Professora | **Resolvida** - os Artefatos 5 a 9 não têm data própria, e o Artefato 4 não existe (§3.1), [#74](https://github.com/CampusCEUB/AgroScan/issues/74). A data da apresentação à comunidade segue em [#73](https://github.com/CampusCEUB/AgroScan/issues/73) |
 | Criação do GitHub Project, milestones e issues | Execução | Equipe | **Resolvida** - 8 milestones, 81 issues |
 | Link do Project no `README.md` | Execução | Equipe | **Resolvida** |
 
-As três pendências que permanecem abertas dependem de definição externa ou de
-acordo entre as integrantes, e cada uma tem `issue` própria na `milestone` da
-Sprint 2, com a etiqueta `bloqueado` quando o desfecho não está sob controle da
-equipe.
+A única pendência que permanece aberta é a comunidade parceira, que depende de
+definição externa e tem a etiqueta `bloqueado` na sua `issue`.
 
 Uma inconsistência da matriz de rastreabilidade foi identificada durante a
 criação das `issues` e está registrada em

@@ -9,6 +9,7 @@ from fastapi import FastAPI
 from fastapi.middleware.cors import CORSMiddleware
 
 from app.api import configuracao
+from app.api.rotas import anotacoes as rotas_anotacoes
 from app.api.rotas import autenticacao as rotas_autenticacao
 from app.api.rotas import catalogo as rotas_catalogo
 from app.api.rotas import consultas as rotas_consultas
@@ -45,7 +46,7 @@ if configuracao.ORIGENS_PERMITIDAS:
 
 for modulo in (rotas_saude, rotas_catalogo, rotas_diagnostico,
                rotas_autenticacao, rotas_consultas, rotas_hortas,
-               rotas_relatorios):
+               rotas_relatorios, rotas_anotacoes):
     app.include_router(modulo.rotas, prefix=configuracao.PREFIXO)
 
 

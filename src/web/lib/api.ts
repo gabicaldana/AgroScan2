@@ -370,6 +370,53 @@ export type Manejo = {
 
 export type CanteiroDetalhado = Canteiro & { manejos: Manejo[] };
 
+// =============================================================================
+// Anotações livres (US21)
+// =============================================================================
+
+export type Anotacao = {
+  id: number;
+  canteiro_id: number | null;
+  consulta_id: number | null;
+  texto: string;
+  criada_em: string;
+  atualizada_em: string;
+  autor_id: number;
+  autor_nome: string;
+};
+
+/** Onde a anotação fica presa: um canteiro ou uma consulta do caderno. */
+export type AlvoDaAnotacao = { tipo: "canteiro" | "consulta"; id: number };
+
+function caminhoDoAlvo(alvo: AlvoDaAnotacao): string {
+  const recurso = alvo.tipo === "canteiro" ? "canteiros" : "consultas";
+  return `/${recurso}/${alvo.id}/anotacoes`;
+}
+
+export function listarAnotacoes(alvo: AlvoDaAnotacao): Promise<Anotacao[]> {
+  return chamar<Anotacao[]>(caminhoDoAlvo(alvo), { autenticado: true });
+}
+
+export function criarAnotacao(alvo: AlvoDaAnotacao, texto: string): Promise<Anotacao> {
+  return chamar<Anotacao>(caminhoDoAlvo(alvo), {
+    metodo: "POST",
+    corpo: { texto },
+    autenticado: true,
+  });
+}
+
+export function alterarAnotacao(id: number, texto: string): Promise<Anotacao> {
+  return chamar<Anotacao>(`/anotacoes/${id}`, {
+    metodo: "PATCH",
+    corpo: { texto },
+    autenticado: true,
+  });
+}
+
+export function apagarAnotacao(id: number): Promise<void> {
+  return chamar<void>(`/anotacoes/${id}`, { metodo: "DELETE", autenticado: true });
+}
+
 export function listarHortas(): Promise<Horta[]> {
   return chamar<Horta[]>("/hortas", { autenticado: true });
 }
