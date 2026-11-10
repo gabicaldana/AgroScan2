@@ -218,12 +218,12 @@ Definition of Done:
 | --- | --- | --- | --- |
 | Fontes técnicas de curadoria - Embrapa Hortaliças, IAC, AGROFIT/MAPA | Dados | Sem elas não há base de conhecimento; é o insumo do épico E1 | Disponíveis publicamente |
 | Definição da comunidade parceira da Atividade de Extensão | Aprovação institucional | Condiciona a priorização das famílias botânicas e a data da apresentação | ⚠️ pendente (risco R03) |
-| Data do Artefato 5 e da apresentação à comunidade | Agenda | Impede fechar o calendário das Sprints 6 e 7 | ⚠️ pendente |
+| Data do Artefato 5 e da apresentação à comunidade | Agenda | Impede fechar o calendário das Sprints 6 e 7 | Resolvida para o Artefato 5: os Artefatos 5 a 9 não têm data própria, porque o conteúdo deles é o próprio projeto. A data da apresentação depende da comunidade parceira |
 | PostgreSQL gerenciado em camada gratuita | Infraestrutura | Sem banco não há caderno, hortas nem relatórios | Ativo |
 | Plataforma de publicação (Vercel) em camada gratuita | Infraestrutura | Sem publicação, RNF23 não é atendido | Ativa, com PWA e API em dia desde 08/10/2026; ligada ao espelho `gabicaldana/AgroScan2`, porque a organização não autoriza a integração (ADR 0011) |
 | Acervo de imagens de hortaliças brasileiras (Digipathos) | Dados | Sem ele, a identificação por imagem não sai do escopo condicionado | ⚠️ não auditado (risco R04) |
 | Dependência de teste do cliente HTTP | Técnica | 22 testes de integração da API não executavam de forma confiável | Resolvida na Sprint 2: `requirements-dev.txt` declara a dependência e o CI falha se a suíte se pular (risco R07) |
-| Distribuição dos papéis Scrum entre as integrantes | Dado da equipe | Papéis descritos, mas sem atribuição nominal nos artefatos | ⚠️ pendente |
+| Distribuição dos papéis Scrum entre as integrantes | Dado da equipe | Papéis descritos, mas sem atribuição nominal nos artefatos | Resolvida: Product Owner e Scrum Master exercidos em conjunto pela dupla (Artefato 2, §4.6) |
 
 ## 9. Matriz de rastreabilidade
 
