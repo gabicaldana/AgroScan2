@@ -13,6 +13,12 @@ Registre aqui as mudanças relevantes por sprint ou marco avaliativo.
 - **Caderno**: cada registro já sincronizado ganha o botão "Anotações", fechado até a pessoa pedir. O registro que está só no aparelho não tem, porque a anotação se prende ao id que o servidor deu à consulta.
 - **Testes**: `test_anotacoes.py`, com 14 casos de acesso, autoria e texto, e `web/lib/anotacoes.test.ts`.
 
+### Papéis Scrum e artefatos do semestre (#72, #74)
+
+- **Papéis Scrum**: Product Owner e Scrum Master são exercidos em conjunto pelas duas integrantes. Artefato 2 §4.6 registra a decisão e como cada papel é exercido; `sprint-00-planejamento.md` e `requisitos.md` §8 deixam de marcar a pendência.
+- **Artefatos 5 a 9**: não são documentos à parte nem têm data própria; o conteúdo de cada um é o próprio projeto. As tabelas do `README.md`, de `entregas/README.md` e do Artefato 2 §3.1 apontam onde está cada conteúdo.
+- **Artefato 4**: não existe. Saem as notas que sugeriam a lacuna na numeração.
+
 ### Sair da conta (US42)
 
 - **Cabeçalho**: botão com o primeiro nome de quem está conectado, que leva à nova tela `/conta`; sem conta, "Entrar".
