@@ -101,7 +101,7 @@ das Sprints 1 a 3.
 | Plataforma - API REST, PostgreSQL, PWA, integração contínua | ✅ concluído, com atualização do catálogo sem reinstalar e instruções de instalação no iPhone |
 | Identidade e conta | 🟡 API concluída; tela de exclusão pendente |
 | Caderno de campo | 🟡 histórico, filtros e sincronização concluídos; confirmação e anotações pendentes |
-| Base de conhecimento | 🔄 9 de 24 culturas · 34 de 88 fichas de doença · solanáceas e brássicas fechadas e conferidas |
+| Base de conhecimento | ✅ 24 culturas · 88 fichas de doença · base `2026.11.09` |
 | Horta, canteiros e manejo | 🟡 hortas, membros, canteiros e manejo concluídos; falta o filtro por canteiro na tela do caderno |
 | Relatórios agregados | ⬜ em desenvolvimento na Sprint 4 |
 | Identificação por imagem | 🟡 escopo condicionado - captura, pré-processamento e recusa prontos; sem modelo |
