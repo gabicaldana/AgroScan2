@@ -114,7 +114,7 @@ Estado verificado em 12/09/2026 sobre o commit `068b6d9`.
 | RF12 | Cadastro de usuário com nome, e-mail e senha | Obrigatório | ✅ |
 | RF13 | Autenticar o usuário e manter a sessão | Obrigatório | ✅ (saída pela interface na Sprint 5, US42) |
 | RF14 | Permitir o uso do diagnóstico sem cadastro, exigindo conta apenas para salvar histórico | Importante | ✅ |
-| RF15 | Permitir a exclusão da conta e dos dados associados | Obrigatório | 🟡 API pronta, tela ⬜ |
+| RF15 | Permitir a exclusão da conta e dos dados associados | Obrigatório | ✅ |
 
 ### 5.3 Caderno de campo
 
@@ -178,7 +178,7 @@ Estado verificado em 12/09/2026 sobre o commit `068b6d9`.
 | RNF14 | Toda comunicação sobre HTTPS | Segurança | Garantido pela plataforma de publicação |
 | RNF15 | Coletar apenas os dados pessoais necessários à finalidade, conforme a LGPD | Privacidade | ✅ isolamento entre usuários testado; revisão formal na Sprint 6 |
 | RNF16 | Geolocalização sempre opcional, com consentimento explícito | Privacidade | 🟡 opcional no modelo; consentimento na interface ⬜ |
-| RNF17 | Usuário pode excluir sua conta e seus dados de forma efetiva | Privacidade | 🟡 `DELETE /autenticacao/eu` ✅; tela ⬜ |
+| RNF17 | Usuário pode excluir sua conta e seus dados de forma efetiva | Privacidade | ✅ `DELETE /autenticacao/eu` e tela "Sua conta" |
 | RNF18 | Base de conhecimento validada automaticamente antes de qualquer carga | Confiabilidade | ✅ `python -m app.validacao` |
 | RNF19 | As implementações do motor devem produzir resultados idênticos, verificados por testes sobre casos compartilhados | Confiabilidade | ✅ três implementações, igualdade exata |
 | RNF20 | A integração contínua deve bloquear código cujos artefatos gerados estejam desatualizados | Manutenibilidade | ✅ verificação de árvore limpa no CI |
@@ -244,7 +244,7 @@ título e vinculadas à `milestone` da sprint.
 | RF12, RF13 | US12, US13 | 1 | TI26-TI32 - segurança | [#15](https://github.com/CampusCEUB/AgroScan/issues/15), [#16](https://github.com/CampusCEUB/AgroScan/issues/16) |
 | RF13 | US42 | 5 | Sair da conta com aviso sobre a fila ([ADR 0014](decisoes/adr-0014-sair-da-conta-com-a-fila-sem-dono.md)) | [#97](https://github.com/CampusCEUB/AgroScan/issues/97) |
 | RF14 | US14 | 1 | TI13 - diagnóstico não exige autenticação | [#17](https://github.com/CampusCEUB/AgroScan/issues/17) |
-| RF15, RNF17 | US15 | 6 | `DELETE /autenticacao/eu`; tela pendente | [#18](https://github.com/CampusCEUB/AgroScan/issues/18) |
+| RF15, RNF17 | US15 | 6 | `DELETE /autenticacao/eu`; `conta.test.ts` - exclusão com e sem recusa do servidor | [#18](https://github.com/CampusCEUB/AgroScan/issues/18) |
 | RF16 | US16 | 1 | TI07 | [#19](https://github.com/CampusCEUB/AgroScan/issues/19) |
 | RF17 | US17 | 1 | TI09, TI10, `lib/fila.test.ts` | [#20](https://github.com/CampusCEUB/AgroScan/issues/20) |
 | RF18 | US18 | 1 | TI08 - reenvio não duplica | [#21](https://github.com/CampusCEUB/AgroScan/issues/21) |

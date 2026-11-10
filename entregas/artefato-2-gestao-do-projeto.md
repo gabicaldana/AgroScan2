@@ -116,7 +116,7 @@ trabalho. O estado é verificável neste repositório.
 - **5. Back-end e banco de dados**
   - 5.1 Modelo relacional, DDL numerado e reversível - ✅
   - 5.2 API REST: saúde, catálogo, diagnóstico, caderno - ✅
-  - 5.3 Autenticação com scrypt e JWT; exclusão de conta - 🟡 *(API pronta; tela de exclusão pendente)*
+  - 5.3 Autenticação com scrypt e JWT; exclusão de conta - ✅
   - 5.4 Carga idempotente do catálogo - ✅
   - 5.5 Relatórios agregados - ⬜
   - 5.6 Hortas, membros, canteiros e manejo - 🔄 *(rotas e telas prontas desde a Sprint 3; falta o filtro por canteiro na tela do caderno)*
@@ -345,7 +345,7 @@ Estimativa em pontos de história na escala de Fibonacci: 1 trivial, 2 pequena,
 | US12 | Como produtor, quero criar uma conta, para que meu histórico não se perca | Cadastro com nome, e-mail e senha; e-mail único; senha com hash scrypt | 5 | 1 | ✅ |
 | US13 | Como produtor, quero entrar na minha conta e permanecer conectado | Autenticação por token com expiração; sessão persistida no dispositivo | 3 | 1 | ✅ |
 | US14 | Como visitante, quero usar o diagnóstico sem criar conta, para experimentar antes de me cadastrar | Diagnóstico acessível sem autenticação; salvar histórico solicita cadastro | 2 | 1 | ✅ |
-| US15 | Como usuário, quero excluir minha conta e meus dados | Exclusão efetiva e confirmada; dados associados removidos; acessível pela interface | 3 | 6 | 🟡 API pronta, tela pendente |
+| US15 | Como usuário, quero excluir minha conta e meus dados | Exclusão efetiva e confirmada; dados associados removidos; acessível pela interface | 3 | 6 | ✅ |
 | US42 | Como produtor que divide o celular, quero sair da minha conta, para que a próxima pessoa não veja meu caderno nem registre consultas em meu nome | Saída acessível pela interface, mostrando quem está conectado; apaga a sessão e as cópias guardadas; com registros na fila, tenta enviar e, se não conseguir, só sai com a escolha explícita de apagá-los ([ADR 0014](../docs/decisoes/adr-0014-sair-da-conta-com-a-fila-sem-dono.md)) | 2 | 5 | ✅ |
 
 **Subtotal E3: 15 pts**
