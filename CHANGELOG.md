@@ -14,6 +14,12 @@ Registre aqui as mudanças relevantes por sprint ou marco avaliativo.
 
 ## Sprint 5 - Base completa, feedback e dashboards · 27/10 a 09/11/2026
 
+### Ajustes de navegação
+
+- **Voltar**: seta no cabeçalho de todas as telas, menos a inicial. Volta para a tela anterior do app. Quando a tela foi aberta direto (link, ícone instalado, recarregamento), leva à tela de onde ela costuma ser aberta: Hortas para horta, canteiro e relatórios, o início para as demais.
+- **Barra inferior em destaque**: fundo verde-escuro com texto branco (7,13:1, AAA), altura do alvo de toque grande (72 px), ícones e rótulos maiores. A aba ativa vira uma pílula branca com rótulo em negrito, o que muda a forma e não só a cor (RNF08). O anel de foco fica branco sobre a barra.
+- **README**: o link da aplicação publicada abre o documento.
+
 ### Auditoria do acervo Digipathos (US38)
 
 - **Relatório** em [`docs/auditoria-digipathos.md`](docs/auditoria-digipathos.md), sobre o registro oficial do acervo (Redape, DOI 10.48432/XA1OVL) e os próprios arquivos baixados: 2.326 fotos de 171 desordens em 21 espécies, quase todas de lavoura ou frutíferas.

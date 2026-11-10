@@ -72,6 +72,12 @@ body {
   outline-offset: 2px;
 }
 
+/* Sobre fundo verde (a barra inferior), o anel verde sumiria. */
+.foco-claro:focus-visible {
+  outline-color: var(--color-fundo);
+  outline-offset: -4px;
+}
+
 /* Respeita quem pediu menos movimento. */
 @media (prefers-reduced-motion: reduce) {
   *,

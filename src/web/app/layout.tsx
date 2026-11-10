@@ -45,7 +45,7 @@ export default function RootLayout({
         <RegistroServiceWorker />
         <SincronizacaoDoCatalogo />
         <CabecalhoApp />
-        <main className="flex-1 pb-[calc(var(--spacing-toque)+env(safe-area-inset-bottom))]">
+        <main className="flex-1 pb-[calc(var(--spacing-toque-grande)+1rem+env(safe-area-inset-bottom))]">
           <InstrucaoIOS />
           {children}
         </main>

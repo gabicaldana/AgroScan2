@@ -14,6 +14,11 @@ import { usePathname } from "next/navigation";
  *
  * `prefixos` marca a aba ativa tambem nas telas que estao dentro dela: a
  * horta e o canteiro pertencem a aba Hortas.
+ *
+ * A barra e verde-escura com texto branco (7,13:1, AAA) para se destacar do
+ * conteudo, que e branco. A aba ativa vira uma pilula branca com o rotulo em
+ * negrito: muda a forma, e nao so a cor (RNF08). A altura e a do alvo de
+ * toque grande, 72 px, por causa de luva.
  */
 const ABAS = [
   { href: "/", rotulo: "Diagnosticar", icone: IconeLista, prefixos: [] },
@@ -32,9 +37,9 @@ export function BarraInferior() {
   return (
     <nav
       aria-label="Navegação principal"
-      className="border-borda bg-fundo fixed inset-x-0 bottom-0 z-10 border-t-2 pb-[env(safe-area-inset-bottom)]"
+      className="bg-primaria-escura fixed inset-x-0 bottom-0 z-10 pb-[env(safe-area-inset-bottom)]"
     >
-      <ul className="mx-auto flex max-w-2xl">
+      <ul className="mx-auto flex max-w-2xl gap-1 px-2">
         {ABAS.map(({ href, rotulo, icone: Icone, prefixos }) => {
           const ativa =
             caminho === href ||
@@ -44,12 +49,18 @@ export function BarraInferior() {
               <Link
                 href={href}
                 aria-current={ativa ? "page" : undefined}
-                className={`flex h-toque flex-col items-center justify-center gap-0.5 text-xs font-semibold ${
-                  ativa ? "text-primaria" : "text-texto-suave"
-                }`}
+                className="foco-claro h-toque-grande flex items-center justify-center py-1.5 text-white"
               >
-                <Icone />
-                {rotulo}
+                <span
+                  className={`flex h-full w-full max-w-36 flex-col items-center justify-center gap-0.5 rounded-xl text-sm ${
+                    ativa
+                      ? "bg-fundo text-primaria-escura font-bold"
+                      : "font-semibold"
+                  }`}
+                >
+                  <Icone />
+                  {rotulo}
+                </span>
               </Link>
             </li>
           );
@@ -66,7 +77,7 @@ function IconeLista() {
   return (
     <svg
       viewBox="0 0 24 24"
-      className="size-6"
+      className="size-7"
       fill="none"
       stroke="currentColor"
       strokeWidth="2"
@@ -84,7 +95,7 @@ function IconeHorta() {
   return (
     <svg
       viewBox="0 0 24 24"
-      className="size-6"
+      className="size-7"
       fill="none"
       stroke="currentColor"
       strokeWidth="2"
@@ -103,7 +114,7 @@ function IconeCaderno() {
   return (
     <svg
       viewBox="0 0 24 24"
-      className="size-6"
+      className="size-7"
       fill="none"
       stroke="currentColor"
       strokeWidth="2"
