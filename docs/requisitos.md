@@ -166,10 +166,10 @@ Estado verificado em 12/09/2026 sobre o commit `068b6d9`.
 | RNF02 | Cálculo do diagnóstico em menos de 100 ms no dispositivo | Desempenho | ⬜ não medido automaticamente |
 | RNF03 | API responde em até 3 s no percentil 95, considerando inicialização a frio | Desempenho | ⬜ não medido automaticamente |
 | RNF04 | Aplicativo carrega em até 3 s em conexão 3G | Desempenho | ⬜ não medido |
-| RNF05 | Nível AAA de contraste da WCAG 2.1 | Acessibilidade | Inspeção - contraste de texto 17,9:1 |
-| RNF06 | Alvos de toque de no mínimo 56 px, para uso com luvas | Acessibilidade | Inspeção do sistema de design |
-| RNF07 | Corpo de texto de no mínimo 18 px | Acessibilidade | Inspeção do sistema de design |
-| RNF08 | Nenhuma informação transmitida exclusivamente por cor | Acessibilidade | Inspeção - gravidade usa barra, escala e rótulo textual |
+| RNF05 | Nível AAA de contraste da WCAG 2.1 | Acessibilidade | ✅ axe-core, regras AAA, 0 apontamentos nas 12 telas ([auditoria](acessibilidade.md)) |
+| RNF06 | Alvos de toque de no mínimo 56 px, para uso com luvas | Acessibilidade | ✅ medição de todos os alvos nas 12 telas ([auditoria](acessibilidade.md)) |
+| RNF07 | Corpo de texto de no mínimo 18 px | Acessibilidade | ✅ nenhum texto abaixo de 18 px nas 12 telas ([auditoria](acessibilidade.md)) |
+| RNF08 | Nenhuma informação transmitida exclusivamente por cor | Acessibilidade | ✅ inspeção das 12 telas ([auditoria](acessibilidade.md), seção 5) |
 | RNF09 | Interface integralmente em português brasileiro | Usabilidade | Inspeção |
 | RNF10 | Interface responsiva, com prioridade para telas de celular | Usabilidade | Inspeção |
 | RNF11 | Tema claro fixo, sem herdar o modo escuro do sistema | Usabilidade | Inspeção |

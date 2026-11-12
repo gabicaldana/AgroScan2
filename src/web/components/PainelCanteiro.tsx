@@ -88,7 +88,7 @@ export function PainelCanteiro() {
     <div className="flex flex-col gap-8">
       <header>
         <Link href={`/horta?id=${canteiro.horta_id}`}
-          className="text-primaria text-sm font-bold underline">
+          className="text-primaria min-h-toque inline-flex items-center text-sm font-bold underline">
           ← {canteiro.horta_nome ?? "Horta"}
         </Link>
         <h1 className="mt-2 text-2xl font-bold tracking-tight">

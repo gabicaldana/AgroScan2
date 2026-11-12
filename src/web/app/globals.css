@@ -18,11 +18,11 @@
   --color-borda: #d6d3d1;
   --color-borda-forte: #a8a29e;
   --color-texto: #1c1917; /* 17.9:1 sobre o fundo */
-  --color-texto-suave: #57534e; /* 7.5:1 - ainda AAA */
+  --color-texto-suave: #4f4b46; /* 8.6:1 no fundo, 7.9:1 na superficie */
 
   /* --- identidade --- */
-  --color-primaria: #15803d; /* branco em cima da 5.1:1 */
-  --color-primaria-escura: #166534; /* estado pressionado */
+  --color-primaria: #166534; /* 7.13:1 com branco, nos dois sentidos (AAA) */
+  --color-primaria-escura: #14532d; /* estado pressionado, 9.1:1 */
   --color-primaria-clara: #dcfce7; /* preenchimento sutil */
 
   /* --- escala de gravidade ---
@@ -35,15 +35,22 @@
   --color-grav-5: #991b1b;
 
   /* --- estados --- */
-  --color-alerta: #b45309;
+  --color-alerta: #78350f; /* 8.75:1 sobre o alerta-fundo */
   --color-alerta-fundo: #fffbeb;
-  --color-offline: #57534e;
+  --color-offline: #4f4b46;
 
   /* --- tipografia ---
      18px de corpo, acima do padrao web de 16px. */
   --font-sans: var(--font-plex), ui-sans-serif, system-ui, sans-serif;
   --text-base: 1.125rem;
   --text-base--line-height: 1.6;
+  /* RNF07: nada abaixo do corpo. A escala pequena do Tailwind (14 px e 12 px)
+     sobe para 18 px; a hierarquia vem do peso e da cor `texto-suave`, e nao
+     do tamanho. Auditoria WCAG (#76). */
+  --text-sm: 1.125rem;
+  --text-sm--line-height: 1.5;
+  --text-xs: 1.125rem;
+  --text-xs--line-height: 1.4;
 
   /* --- alvo de toque ---
      56px, acima dos 44px do guideline, por causa de luva. */
@@ -62,6 +69,9 @@ body {
   background-color: var(--color-fundo);
   color: var(--color-texto);
   font-family: var(--font-sans);
+  /* Sem isto, texto sem classe saia com os 16 px do navegador (#76). */
+  font-size: var(--text-base);
+  line-height: var(--text-base--line-height);
   /* Evita o zoom por duplo toque atrapalhar quem usa luva. */
   touch-action: manipulation;
 }

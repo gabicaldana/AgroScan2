@@ -146,7 +146,7 @@ export function PainelSintomas() {
             <button
               type="button"
               onClick={() => setMarcados(new Set())}
-              className="text-texto-suave shrink-0 py-2 text-sm font-semibold underline"
+              className="text-texto-suave min-h-toque min-w-toque shrink-0 px-2 text-sm font-semibold underline"
             >
               Limpar {marcados.size}
             </button>

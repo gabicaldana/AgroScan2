@@ -46,7 +46,7 @@ export function PainelRelatorios() {
     <RespostasDaTela.Provider value={respostas}>
     <div className="flex flex-col gap-10">
       <header>
-        <Link href={`/horta?id=${id}`} className="text-primaria text-sm font-bold underline">
+        <Link href={`/horta?id=${id}`} className="text-primaria min-h-toque inline-flex items-center text-sm font-bold underline">
           ← Horta
         </Link>
         <h1 className="mt-2 text-2xl font-bold tracking-tight">Relatórios da horta</h1>
@@ -177,7 +177,7 @@ function Quadro<T>({
       {estado.carregando && <p className="text-texto-suave text-sm">Contando…</p>}
       {estado.erro && <p className="text-texto-suave text-sm">{estado.erro}</p>}
       {estado.dado !== undefined && children(estado.dado)}
-      <a href={`#${destino}`} className="text-primaria mt-auto text-sm font-bold underline">
+      <a href={`#${destino}`} className="text-primaria min-h-toque mt-auto inline-flex items-center text-sm font-bold underline">
         Ver detalhes
       </a>
     </article>
@@ -194,6 +194,8 @@ function QuadroIncidencia({
   const serie = relatorios.serieMensal(dado.linhas, intervalo);
   const maior = Math.max(1, ...serie.map((p) => p.total));
   const frequente = relatorios.doencaMaisFrequente(dado.linhas);
+  // Os rotulos ficam em 17,5 unidades do viewBox: o grafico escala com a
+  // largura, e assim nao descem de 18 px nem no celular de 320 px (RNF07).
   const largura = 40;
   const altura = 72;
   const descricao = serie.map((p) => `${p.rotulo}: ${p.total}`).join(", ");
@@ -207,7 +209,7 @@ function QuadroIncidencia({
       <svg
         role="img"
         aria-label={`Diagnósticos com doença por mês. ${descricao}.`}
-        viewBox={`0 0 ${serie.length * largura} ${altura + 36}`}
+        viewBox={`0 0 ${serie.length * largura} ${altura + 46}`}
         className="w-full"
       >
         {serie.map((p, i) => {
@@ -219,12 +221,12 @@ function QuadroIncidencia({
                 className="fill-primaria" rx={2} />
               <rect x={x + 4} y={16 + altura} width={largura - 8} height={2}
                 className="fill-borda-forte" />
-              <text x={x + largura / 2} y={12 + altura - h} textAnchor="middle"
-                className="fill-texto text-[11px] font-bold">
+              <text x={x + largura / 2} y={11 + altura - h} textAnchor="middle"
+                className="fill-texto text-[17.5px] font-bold">
                 {p.total}
               </text>
-              <text x={x + largura / 2} y={altura + 32} textAnchor="middle"
-                className="fill-texto-suave text-[11px]">
+              <text x={x + largura / 2} y={altura + 40} textAnchor="middle"
+                className="fill-texto-suave text-[17.5px]">
                 {p.rotulo}
               </text>
             </g>

@@ -18,7 +18,7 @@ export function BotaoConta() {
     <Link
       href={usuario ? "/conta" : "/entrar"}
       aria-label={usuario ? `Sua conta: ${usuario.nome || usuario.email}` : "Entrar na conta"}
-      className="border-borda-forte flex min-h-11 max-w-36 items-center gap-2 rounded-lg border-2 px-3 text-sm font-bold"
+      className="border-borda-forte flex min-h-toque max-w-36 items-center gap-2 rounded-lg border-2 px-3 text-sm font-bold"
     >
       <IconePessoa />
       <span className="truncate">{usuario ? primeiroNome : "Entrar"}</span>

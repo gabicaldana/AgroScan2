@@ -29,7 +29,7 @@ export const metadata: Metadata = {
 };
 
 export const viewport: Viewport = {
-  themeColor: "#15803d",
+  themeColor: "#166534",
   width: "device-width",
   initialScale: 1,
   // Deixa o conteúdo ir até as bordas em celulares com notch.

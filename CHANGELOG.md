@@ -4,6 +4,14 @@ Registre aqui as mudanças relevantes por sprint ou marco avaliativo.
 
 ## Sprint 6 - Comunidade e validação · 10/11 a 23/11/2026
 
+### Auditoria de acessibilidade WCAG 2.1 AAA (#76)
+
+- **Relatório** em [`docs/acessibilidade.md`](docs/acessibilidade.md): axe-core com as regras WCAG 2.1 A, AA e AAA nas 12 telas, mais medição própria de alvos de toque e de tamanho de texto. A primeira medição falhou em todas as telas por três causas do sistema de design; a segunda deu zero apontamentos.
+- **Contraste AAA (RNF05)**: `primaria` #15803d → #166534 (de 5,01:1 para 7,13:1), `primaria-escura` → #14532d, `alerta` #b45309 → #78350f (de 4,84:1 para 8,75:1), `texto-suave` #57534e → #4f4b46.
+- **Texto de 18 px (RNF07)**: o `body` passa a ter o tamanho do corpo (texto sem classe saía com 16 px), e `text-sm` e `text-xs` sobem para 18 px; a hierarquia fica no peso e na cor. Os rótulos do gráfico de relatórios saem com pelo menos 18 px a partir de 320 px de tela.
+- **Alvos de 56 px (RNF06)**: botão da conta no cabeçalho, links de voltar, "Ver detalhes", "Limpar", "Anotações", "Editar" e "Apagar".
+- **Página 404** em português (`app/not-found.tsx`), no lugar da padrão do Next em inglês.
+
 ### Excluir a conta (US15)
 
 - **Tela "Sua conta"**: seção "Excluir a conta", no fim, fechada até a pessoa pedir. Aberta, diz o que é apagado e o que fica, e só exclui depois de a pessoa digitar EXCLUIR.
