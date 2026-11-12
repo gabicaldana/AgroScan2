@@ -5,6 +5,7 @@ import { useEffect, useMemo, useState } from "react";
 import type { Canteiro } from "@/lib/api.ts";
 import * as caderno from "@/lib/caderno.ts";
 import * as canteiros from "@/lib/canteiros.ts";
+import * as localizacao from "@/lib/localizacao.ts";
 import { BarraCompatibilidade } from "@/components/BarraCompatibilidade";
 import { BarraGravidade } from "@/components/BarraGravidade";
 import { SeletorCultura } from "@/components/SeletorCultura";
@@ -53,7 +54,14 @@ export function PainelSintomas() {
   const pergunta = useMemo(() => melhorPergunta(hipoteses), [hipoteses]);
 
   const [salvando, setSalvando] = useState(false);
-  const [salvo, setSalvo] = useState<null | { enviada: boolean }>(null);
+  const [salvo, setSalvo] = useState<null | {
+    enviada: boolean;
+    /** Preenchido quando o local foi pedido e não veio. */
+    semLocal: localizacao.MotivoSemLocalizacao | null;
+  }>(null);
+  // Desmarcada em toda consulta (RNF16): o consentimento é dado a cada
+  // registro, e por isso o estado volta a `false` depois de salvar.
+  const [registrarLocal, setRegistrarLocal] = useState(false);
 
   // Os canteiros vêm da cópia no aparelho quando falta rede (US25): o produtor
   // escolhe o canteiro no campo, e a consulta sobe depois com o vínculo.
@@ -74,6 +82,9 @@ export function PainelSintomas() {
   async function salvarNoCaderno() {
     setSalvando(true);
     try {
+      // A posição só é pedida aqui, no toque, e só com a opção marcada. O
+      // GPS funciona sem rede; se ele falhar, a consulta é salva sem o local.
+      const local = registrarLocal ? await localizacao.localizar() : null;
       // Grava no aparelho e SO ENTAO tenta enviar. A tela confirma na hora:
       // esperar o servidor para dizer "salvo" faria o app parar de funcionar
       // exatamente onde ele precisa funcionar.
@@ -81,10 +92,11 @@ export function PainelSintomas() {
         culturaId,
         marcados,
         hipoteses,
-        null,
+        local?.coordenada ?? null,
         canteiroId ? Number(canteiroId) : null,
       );
-      setSalvo({ enviada: r.enviada });
+      setSalvo({ enviada: r.enviada, semLocal: local?.motivo ?? null });
+      setRegistrarLocal(false);
     } finally {
       setSalvando(false);
     }
@@ -214,6 +226,11 @@ export function PainelSintomas() {
                   {salvo.enviada
                     ? "Já está na sua conta."
                     : "Guardado neste aparelho - sobe quando houver rede."}
+                  {salvo.semLocal && (
+                    <span className="mt-2 block font-normal">
+                      Salvo sem o local. {localizacao.explicar(salvo.semLocal)}
+                    </span>
+                  )}
                 </p>
               ) : (
                 <>
@@ -235,13 +252,18 @@ export function PainelSintomas() {
                     </select>
                   </label>
                 )}
+                <OpcaoDeLocal marcada={registrarLocal} aoMudar={setRegistrarLocal} />
                 <button
                   type="button"
                   onClick={salvarNoCaderno}
                   disabled={salvando}
                   className="border-borda-forte h-toque w-full rounded-lg border-2 text-base font-bold"
                 >
-                  {salvando ? "Salvando…" : "Salvar no caderno"}
+                  {salvando
+                    ? registrarLocal
+                      ? "Buscando o local…"
+                      : "Salvando…"
+                    : "Salvar no caderno"}
                 </button>
                 </>
               )}
@@ -255,6 +277,45 @@ export function PainelSintomas() {
           </>
         )}
       </section>
+    </div>
+  );
+}
+
+/**
+ * O consentimento para a localização (RNF16, revisão LGPD #75).
+ *
+ * O texto diz, antes do toque, o que é guardado, com que precisão, para quê e
+ * como apagar: consentimento só é explícito se a pessoa sabe com o que está
+ * concordando.
+ */
+function OpcaoDeLocal({
+  marcada,
+  aoMudar,
+}: {
+  marcada: boolean;
+  aoMudar: (marcada: boolean) => void;
+}) {
+  return (
+    <div className="border-borda mb-3 rounded-lg border-2 p-3">
+      <label className="min-h-toque flex cursor-pointer items-center gap-4">
+        <input
+          type="checkbox"
+          checked={marcada}
+          onChange={(e) => aoMudar(e.target.checked)}
+          aria-describedby="explica-local"
+          className="accent-primaria size-7 shrink-0"
+        />
+        <span className="text-base font-bold">Registrar onde fiz esta consulta</span>
+      </label>
+      <p id="explica-local" className="text-texto-suave mt-1 text-sm">
+        Opcional. O AgroScan pede a localização ao aparelho só ao salvar, e
+        guarda o local aproximado (uns 100 metros), não o ponto exato. Serve
+        para saber em que horta ou região a doença apareceu. Você pode apagar o
+        local depois, no caderno.{" "}
+        <Link href="/privacidade" className="font-semibold underline">
+          Privacidade
+        </Link>
+      </p>
     </div>
   );
 }

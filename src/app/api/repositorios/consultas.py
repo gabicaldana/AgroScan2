@@ -125,7 +125,8 @@ def listar(
                    (f.consulta_id IS NOT NULL) AS tem_feedback,
                    f.confirmado, f.doenca_confirmada_id,
                    dc.nome AS doenca_confirmada_nome,
-                   f.comentario AS feedback_comentario
+                   f.comentario AS feedback_comentario,
+                   (c.latitude IS NOT NULL) AS tem_localizacao
               FROM consulta c
               JOIN cultura cu ON cu.id = c.cultura_id
               LEFT JOIN canteiro ca ON ca.id = c.canteiro_id
@@ -202,6 +203,20 @@ def registrar_feedback(
                      comentario, registrado_em""",
         (consulta_id, usuario_id, confirmado, doenca_confirmada_id, comentario),
     )
+
+
+def apagar_localizacao(usuario_id: int, consulta_id: int) -> bool:
+    """Tira a coordenada da consulta e mantém o resto (revisão LGPD, RF22).
+
+    O filtro por `usuario_id` faz o UPDATE não achar nada quando a consulta
+    é de outra pessoa, e a rota responde 404 nos dois casos.
+    """
+    return banco.consultar_um(
+        """UPDATE consulta SET latitude = NULL, longitude = NULL
+            WHERE id = %s AND usuario_id = %s
+        RETURNING id""",
+        (consulta_id, usuario_id),
+    ) is not None
 
 
 def pertence_ao_usuario(consulta_id: int, usuario_id: int) -> bool:

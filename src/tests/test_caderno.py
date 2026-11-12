@@ -77,6 +77,7 @@ class TestProtecao(unittest.TestCase):
             ("get", "/consultas", None),
             ("get", "/consultas/1", None),
             ("post", "/consultas/1/feedback", {"confirmado": True}),
+            ("delete", "/consultas/1/localizacao", None),
             ("get", "/autenticacao/eu", None),
         ]
         for metodo, caminho, corpo in casos:
@@ -314,6 +315,37 @@ class TestCadernoAutenticado(unittest.TestCase):
         self.assertEqual(corpo["doenca_confirmada_id"], "tomate_requeima")
         self.assertEqual(corpo["doenca_confirmada_nome"], "Requeima")
         self.assertEqual(corpo["feedback_comentario"], "o técnico confirmou")
+
+    # --- localização (revisão LGPD, RF22, RNF16) ---
+
+    def test_apagar_localizacao_responde_204_e_filtra_pelo_usuario(self):
+        with patch("app.api.rotas.consultas.repo") as repo:
+            repo.apagar_localizacao.return_value = True
+            r = CLIENTE.delete(f"{PREFIXO}/consultas/7/localizacao")
+        self.assertEqual(r.status_code, 204)
+        repo.apagar_localizacao.assert_called_once_with(USUARIO["id"], 7)
+
+    def test_apagar_localizacao_de_outra_pessoa_da_404(self):
+        with patch("app.api.rotas.consultas.repo") as repo:
+            repo.apagar_localizacao.return_value = False
+            r = CLIENTE.delete(f"{PREFIXO}/consultas/999/localizacao")
+        self.assertEqual(r.status_code, 404)
+
+    def test_listagem_diz_se_ha_local_sem_trazer_a_coordenada(self):
+        linha = {
+            "id": 1, "offline_id": str(uuid4()), "cultura_id": "tomate",
+            "cultura_nome": "Tomate", "origem": "sintomas",
+            "registrada_em": datetime.now(timezone.utc),
+            "versao_catalogo": "2026.11.09", "tem_localizacao": True,
+            "latitude": -15.794, "longitude": -47.883,
+        }
+        with patch("app.api.rotas.consultas.repo") as repo:
+            repo.listar.return_value = [linha]
+            r = CLIENTE.get(f"{PREFIXO}/consultas")
+        corpo = r.json()[0]
+        self.assertIs(corpo["tem_localizacao"], True)
+        self.assertNotIn("latitude", corpo)
+        self.assertNotIn("longitude", corpo)
 
     def test_consulta_de_outra_pessoa_nao_e_visivel(self):
         with patch("app.api.rotas.consultas.repo") as repo:

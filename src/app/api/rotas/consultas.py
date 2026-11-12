@@ -148,6 +148,22 @@ def detalhar_consulta(
     return consulta
 
 
+@rotas.delete("/consultas/{consulta_id}/localizacao",
+               status_code=status.HTTP_204_NO_CONTENT)
+def apagar_localizacao(
+    consulta_id: int,
+    usuario: dict = Depends(seguranca.usuario_atual),
+) -> None:
+    """Apaga o local registrado numa consulta, e só ele (revisão LGPD, RF22).
+
+    A localização é dada com consentimento a cada consulta (RNF16), e o
+    consentimento pode ser retirado sem apagar o diagnóstico. Repetir a
+    chamada também responde 204: o estado pedido, sem local, já vale.
+    """
+    if not repo.apagar_localizacao(usuario["id"], consulta_id):
+        raise HTTPException(404, "consulta não encontrada")
+
+
 @rotas.post("/consultas/{consulta_id}/feedback",
             status_code=status.HTTP_201_CREATED)
 def registrar_feedback(

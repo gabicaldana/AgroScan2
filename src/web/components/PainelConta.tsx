@@ -1,5 +1,6 @@
 "use client";
 
+import Link from "next/link";
 import { useRouter } from "next/navigation";
 import { useState } from "react";
 import { Botao, BotaoLink } from "@/components/Botao";
@@ -114,6 +115,11 @@ export function PainelConta() {
           </Botao>
         </div>
       )}
+
+      <p className="text-texto-suave text-sm">
+        O que o AgroScan guarda e quem vê está em{" "}
+        <Link href="/privacidade" className="font-semibold underline">Privacidade</Link>.
+      </p>
 
       <ExcluirConta aoExcluir={() => setExcluida(true)} />
     </div>

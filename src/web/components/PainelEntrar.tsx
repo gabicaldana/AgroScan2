@@ -1,5 +1,6 @@
 "use client";
 
+import Link from "next/link";
 import { useRouter } from "next/navigation";
 import { useState } from "react";
 import { Botao } from "@/components/Botao";
@@ -123,6 +124,11 @@ export function PainelEntrar() {
         Você não precisa de conta para diagnosticar: o app funciona sem
         cadastro e sem internet. A conta serve para o histórico não se perder e
         para compartilhar a horta com outras pessoas.
+        Veja o que é guardado em{" "}
+        <Link href="/privacidade" className="font-semibold underline">
+          Privacidade
+        </Link>
+        .
       </p>
     </div>
   );

@@ -4,6 +4,14 @@ Registre aqui as mudanças relevantes por sprint ou marco avaliativo.
 
 ## Sprint 6 - Comunidade e validação · 10/11 a 23/11/2026
 
+### Revisão de conformidade com a LGPD (#75)
+
+- **Revisão** em [`docs/lgpd.md`](docs/lgpd.md): inventário dos dados pessoais, finalidade e base legal, minimização, operadores, direitos do titular, retenção e os testes de isolamento entre usuários (C9). Três pendências registradas, nenhuma de código: canal de contato, encarregado e retenção nos operadores.
+- **Local da consulta com consentimento (RF22, RNF16)**: na tela de sintomas, "Registrar onde fiz esta consulta" vem desmarcada em toda consulta e explica o que é guardado. A posição só é pedida ao salvar, sem precisão alta, e sai do aparelho arredondada a 3 casas (uns 110 m). Permissão negada, GPS desligado ou demora: a consulta é salva sem o local, com o motivo na tela.
+- **Apagar o local**: no caderno, cada consulta com local mostra "Apagar o local", que mantém a consulta. Na fila funciona sem rede; já sincronizada, usa a rota nova `DELETE /consultas/{id}/localizacao`. A listagem traz só `tem_localizacao`, sem a coordenada.
+- **Aviso de privacidade** em `/privacidade`, que abre sem rede (casca do service worker v8), com link no cadastro, na conta e na opção de local.
+- **Testes**: `localizacao.test.ts` (8), `caderno.test.ts` (2) e 3 casos em `tests/test_caderno.py`.
+
 ### Excluir a conta (US15)
 
 - **Tela "Sua conta"**: seção "Excluir a conta", no fim, fechada até a pessoa pedir. Aberta, diz o que é apagado e o que fica, e só exclui depois de a pessoa digitar EXCLUIR.
