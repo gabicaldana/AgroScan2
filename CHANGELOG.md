@@ -4,6 +4,13 @@ Registre aqui as mudanças relevantes por sprint ou marco avaliativo.
 
 ## Sprint 6 - Comunidade e validação · 10/11 a 23/11/2026
 
+### Testes ponta a ponta do fluxo offline (#77)
+
+- **Playwright** (`@playwright/test` 1.64.1) no Chromium, sobre o build de produção, porque o service worker só existe nele. Testes em `web/e2e/offline.spec.ts`, com `npm run build && npm run e2e`.
+- **Primeira consulta depois da instalação, sem rede (RNF01)**: o app é visitado uma vez com rede, a rede cai, e o teste recarrega, diagnostica, abre o laudo, salva e acha o registro no caderno.
+- **Fila de sincronização**: o que foi salvo sem rede sobe sozinho quando a conexão volta com o caderno aberto, com cultura e sintomas, e a fila fica vazia.
+- **CI**: instala o Chromium, roda os testes depois do build e guarda o relatório quando falham. A API é interceptada; o contrato do servidor segue nos testes de `src/tests`.
+
 ### Excluir a conta (US15)
 
 - **Tela "Sua conta"**: seção "Excluir a conta", no fim, fechada até a pessoa pedir. Aberta, diz o que é apagado e o que fica, e só exclui depois de a pessoa digitar EXCLUIR.

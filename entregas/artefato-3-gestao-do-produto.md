@@ -545,9 +545,10 @@ O workflow em `.github/workflows/ci.yml` executa, em ordem:
 5. `npm ci` e `npm run base`
 6. `npm test`
 7. `npm run lint` e `npm run build`
-8. **Verificação final:** `git status --porcelain` tem que estar vazio
+8. `npm run e2e` - testes ponta a ponta do fluxo offline no Chromium, sobre o build ([#77](https://github.com/CampusCEUB/AgroScan/issues/77))
+9. **Verificação final:** `git status --porcelain` tem que estar vazio
 
-O passo 8 é o que dá força à promessa: depois de regerar tudo, se um arquivo
+O passo 9 é o que dá força à promessa: depois de regerar tudo, se um arquivo
 gerado mudou, alguém editou uma fonte e esqueceu de regerar - e o commit teria
 entrado com base e artefato divergentes.
 

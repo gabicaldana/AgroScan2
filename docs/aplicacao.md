@@ -116,12 +116,20 @@ npm install
 npm run dev        # http://localhost:3000
 npm run build      # build de produção
 npm test           # motor TS contra as fixtures do Python
+npm run e2e        # ponta a ponta do fluxo offline, sobre o build (#77)
 npm run base       # regera lib/base-conhecimento.ts e lib/contrato-visao.ts
 npm run icones     # regenera os ícones do PWA a partir do código
 ```
 
 `npm test` usa o runner nativo do Node (`node --test`), que roda TypeScript
 direto: nenhuma dependência de teste, nenhum passo de build.
+
+`npm run e2e` usa o Playwright e roda sobre o build de produção, porque o
+service worker só existe nele: rode `npm run build` antes. Na primeira vez,
+`npx playwright install chromium` baixa o navegador. Os testes ficam em
+`e2e/` e cobrem a primeira consulta depois da instalação sem rede (diagnóstico,
+laudo, salvar, caderno) e a fila subindo quando a conexão volta. A API é
+interceptada; o contrato do servidor tem os testes dele em `src/tests`.
 
 ### Motor de diagnóstico (Python)
 

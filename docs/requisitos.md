@@ -162,7 +162,7 @@ Estado verificado em 12/09/2026 sobre o commit `068b6d9`.
 
 | ID | Requisito | Categoria | Verificação |
 | --- | --- | --- | --- |
-| RNF01 | Diagnóstico por sintomas integralmente sem conexão, incluindo a primeira consulta após a instalação | Disponibilidade | Manual em dispositivo real; ponta a ponta previsto na Sprint 6 |
+| RNF01 | Diagnóstico por sintomas integralmente sem conexão, incluindo a primeira consulta após a instalação | Disponibilidade | ✅ `e2e/offline.spec.ts` no CI: primeira consulta depois da instalação sem rede, e a fila subindo quando a conexão volta |
 | RNF02 | Cálculo do diagnóstico em menos de 100 ms no dispositivo | Desempenho | ⬜ não medido automaticamente |
 | RNF03 | API responde em até 3 s no percentil 95, considerando inicialização a frio | Desempenho | ⬜ não medido automaticamente |
 | RNF04 | Aplicativo carrega em até 3 s em conexão 3G | Desempenho | ⬜ não medido |

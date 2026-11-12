@@ -126,6 +126,26 @@ jobs:
           npm run lint
           npm run build
 
+      # Os testes ponta a ponta (#77) rodam sobre o build de producao do passo
+      # anterior: o service worker so existe em producao, e e ele que faz o app
+      # abrir sem rede. So o Chromium e instalado - e o navegador em que o
+      # modo offline e o service worker do Playwright sao estaveis.
+      - name: Navegador dos testes ponta a ponta
+        working-directory: src/web
+        run: npx playwright install --with-deps chromium
+
+      - name: Testes ponta a ponta do fluxo offline
+        working-directory: src/web
+        run: npm run e2e
+
+      - name: Relatorio dos testes ponta a ponta
+        if: failure()
+        uses: actions/upload-artifact@v4
+        with:
+          name: playwright-report
+          path: src/web/playwright-report/
+          retention-days: 7
+
       - name: Nenhum artefato gerado ficou para tras
         run: |
           if [ -n "$(git status --porcelain)" ]; then
