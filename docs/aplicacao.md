@@ -517,7 +517,7 @@ textual, para continuar legível por quem não distingue as cores.
 | Curadoria por família: brássicas, solanáceas, cucurbitáceas… | ✅ 24 culturas, 88 doenças |
 | Horta, membros, canteiros e manejo (US22-US26) | ✅ |
 | Relatórios agregados e alerta de rotação | ⬜ Sprint 4 |
-| Identificação por imagem - condicionada à auditoria do acervo | ⬜ falta o modelo |
+| Identificação por imagem | ⏭️ trabalho futuro ([ADR 0015](decisoes/adr-0015-identificacao-por-imagem.md)) |
 
 A identificação por foto é **escopo condicionado**: depende de um acervo de
 imagens de hortaliças brasileiras com volume suficiente por classe. A

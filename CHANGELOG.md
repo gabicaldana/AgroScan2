@@ -12,6 +12,11 @@ Registre aqui as mudanças relevantes por sprint ou marco avaliativo.
 - **Aviso de privacidade** em `/privacidade`, que abre sem rede (casca do service worker v8), com link no cadastro, na conta e na opção de local.
 - **Testes**: `localizacao.test.ts` (8), `caderno.test.ts` (2) e 3 casos em `tests/test_caderno.py`.
 
+### Identificação por imagem fora do semestre (ADR 0015, US39)
+
+- **ADR 0015 aprovado** com o merge do PR #104. A US39 (#44) foi fechada como trabalho posterior ao semestre, reescrita para o tomate e com o critério de entrada do ADR: pelo menos 100 fotos independentes por classe, parte delas de campo, e licença que permita distribuir o modelo.
+- **Planejamento**: a Sprint 7 fica sem história de produto, e a capacidade vai para os Artefatos 5 e 8. O Artefato 2 (backlog, cronograma e milestones), a `sprint-07.md` e o roteiro em `aplicacao.md` registram a decisão.
+
 ### Excluir a conta (US15)
 
 - **Tela "Sua conta"**: seção "Excluir a conta", no fim, fechada até a pessoa pedir. Aberta, diz o que é apagado e o que fica, e só exclui depois de a pessoa digitar EXCLUIR.

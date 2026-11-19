@@ -3,7 +3,8 @@
 ## Status
 
 Proposto em 2026-11-09, como resultado da auditoria do acervo Digipathos (US38).
-Aguarda aprovação da equipe.
+Aprovado pela equipe em 2026-11-12, com o merge do PR #104. A US39 (#44) foi
+fechada como trabalho posterior ao semestre.
 
 ## Data
 
