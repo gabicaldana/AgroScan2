@@ -9,6 +9,7 @@ import assert from "node:assert/strict";
 
 import { excluir, sair } from "./conta.ts";
 import * as fila from "./fila.ts";
+import * as fotos from "./fotos.ts";
 
 function consulta(offlineId: string): fila.ConsultaPendente {
   return {
@@ -145,5 +146,55 @@ describe("excluir a conta (US15)", () => {
     assert.equal(r.excluida === false && r.falha, c.recusa);
     assert.equal(await fila.quantasPendentes(c.armazenamento), 1);
     assert.equal(c.encerrou(), 0);
+  });
+});
+
+describe("fotos das consultas (ADR 0016)", () => {
+  function comFotos() {
+    const deposito = fotos.depositoEmMemoria();
+    const foto = (offlineId: string) =>
+      deposito.gravar({ offlineId, imagem: new Blob(["x"]), largura: 1, altura: 1, tiradaEm: "" });
+    return { deposito, foto, apagarFotos: () => deposito.apagarTodas() };
+  }
+
+  test("sair apaga as fotos do aparelho", async () => {
+    const f = comFotos();
+    await f.foto("a");
+    const c = cenario([]);
+    assert.deepEqual(await sair({ ...c.deps, apagarFotos: f.apagarFotos }), { saiu: true, apagados: 0 });
+    assert.deepEqual(await f.deposito.ids(), []);
+  });
+
+  test("sair bloqueado pela fila não apaga as fotos", async () => {
+    const f = comFotos();
+    await f.foto("a");
+    const c = cenario(["a"], "sem_rede");
+    const r = await sair({ ...c.deps, apagarFotos: f.apagarFotos });
+    assert.equal(r.saiu, false);
+    assert.deepEqual(await f.deposito.ids(), ["a"]);
+  });
+
+  test("excluir a conta apaga as fotos; a recusa do servidor não", async () => {
+    const recusada = comFotos();
+    await recusada.foto("a");
+    await excluir({
+      armazenamento: fila.armazenamentoEmMemoria(),
+      excluirNaApi: async () => {
+        throw new Error("sem rede");
+      },
+      encerrar: () => {},
+      apagarFotos: recusada.apagarFotos,
+    });
+    assert.deepEqual(await recusada.deposito.ids(), ["a"]);
+
+    const aceita = comFotos();
+    await aceita.foto("a");
+    await excluir({
+      armazenamento: fila.armazenamentoEmMemoria(),
+      excluirNaApi: async () => {},
+      encerrar: () => {},
+      apagarFotos: aceita.apagarFotos,
+    });
+    assert.deepEqual(await aceita.deposito.ids(), []);
   });
 });

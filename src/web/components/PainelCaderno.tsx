@@ -5,6 +5,8 @@ import { Anotacoes } from "@/components/Anotacoes";
 import { BotaoLink } from "@/components/Botao";
 import { EstadoVazio } from "@/components/EstadoVazio";
 import { FeedbackDaConsulta } from "@/components/FeedbackDaConsulta";
+import { FotoNoCaderno } from "@/components/FotoDaConsulta";
+import * as fotos from "@/lib/fotos.ts";
 import { MensagemDeErro, descreverFalha } from "@/components/Formulario";
 import * as api from "@/lib/api.ts";
 import type { Feedback } from "@/lib/feedback.ts";
@@ -59,6 +61,10 @@ export function PainelCaderno() {
   const [filtroAtual, setFiltroAtual] = useState<filtro.Filtro>(filtro.SEM_FILTRO);
   const [visiveis, setVisiveis] = useState(POR_PAGINA);
 
+  // Quais registros têm foto no aparelho (US37, ADR 0016). A foto em si só é
+  // lida quando o registro aparece.
+  const [comFoto, setComFoto] = useState<ReadonlySet<string>>(new Set());
+
   const recarregar = useCallback(async () => {
     // `sessao` le do localStorage, que nao existe durante a renderizacao no
     // servidor. A leitura acontece depois do primeiro await, ja no cliente -
@@ -67,6 +73,7 @@ export function PainelCaderno() {
     setTemConta(sessao.autenticado());
     setCopiaLocal(sessao.autenticado() && !servidorRespondeu);
     setRegistros(registros);
+    setComFoto(new Set(await fotos.depositoDoApp().ids().catch(() => [])));
     setCarregando(false);
   }, []);
 
@@ -247,6 +254,7 @@ export function PainelCaderno() {
                   temConta={temConta}
                   aoResponder={aoResponder}
                   aoMudarLocal={recarregar}
+                  temFoto={comFoto.has(r.offlineId)}
                 />
               </li>
             ))}
@@ -408,11 +416,13 @@ function Registro({
   temConta,
   aoResponder,
   aoMudarLocal,
+  temFoto,
 }: {
   registro: caderno.RegistroDoCaderno;
   temConta: boolean;
   aoResponder: (offlineId: string, resposta: Feedback) => void;
   aoMudarLocal: () => Promise<void>;
+  temFoto: boolean;
 }) {
   const quando = new Date(registro.registradaEm);
   const data = quando.toLocaleDateString("pt-BR", {
@@ -470,6 +480,9 @@ function Registro({
         </a>
       ) : (
         conteudo
+      )}
+      {temFoto && (
+        <FotoNoCaderno offlineId={registro.offlineId} aoApagar={() => void aoMudarLocal()} />
       )}
       {registro.temLocalizacao && (
         <LocalDaConsulta registro={registro} aoMudar={aoMudarLocal} />

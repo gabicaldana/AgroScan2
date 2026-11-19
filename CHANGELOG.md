@@ -4,6 +4,15 @@ Registre aqui as mudanças relevantes por sprint ou marco avaliativo.
 
 ## Sprint 6 - Comunidade e validação · 10/11 a 23/11/2026
 
+### Foto da planta anexada à consulta (US37)
+
+- **Na tela de sintomas**, "Fotografar a planta" abre a câmera traseira do aparelho, em resolução nativa (campo de arquivo com `capture="environment"`). A foto aparece antes de salvar, com "Trocar a foto" e "Tirar a foto da consulta".
+- **Só no aparelho** ([ADR 0016](docs/decisoes/adr-0016-foto-da-consulta-so-no-aparelho.md)): a foto fica no IndexedDB (`agroscan-fotos`), presa ao `offlineId` da consulta, e não vai para o servidor. Antes de guardar, é recodificada em JPEG com até 2048 px no maior lado, o que descarta o EXIF, incluindo a coordenada GPS que a câmera grava.
+- **No caderno**, a foto aparece no registro, com "Apagar a foto", que mantém a consulta.
+- **Sair e excluir a conta** apagam as fotos do aparelho, como a fila e as cópias do caderno; as telas avisam.
+- **Privacidade e revisão LGPD** atualizadas; a decisão pendente sobre o armazenamento das fotos sai do índice de ADRs.
+- **Testes**: `fotos.test.ts` (6) e 3 casos novos em `conta.test.ts`.
+
 ### Revisão de conformidade com a LGPD (#75)
 
 - **Revisão** em [`docs/lgpd.md`](docs/lgpd.md): inventário dos dados pessoais, finalidade e base legal, minimização, operadores, direitos do titular, retenção e os testes de isolamento entre usuários (C9). Três pendências registradas, nenhuma de código: canal de contato, encarregado e retenção nos operadores.

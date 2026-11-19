@@ -6,6 +6,8 @@ import type { Canteiro } from "@/lib/api.ts";
 import * as caderno from "@/lib/caderno.ts";
 import * as canteiros from "@/lib/canteiros.ts";
 import * as localizacao from "@/lib/localizacao.ts";
+import * as fotos from "@/lib/fotos.ts";
+import { AnexarFoto, type FotoPreparada } from "@/components/FotoDaConsulta";
 import { BarraCompatibilidade } from "@/components/BarraCompatibilidade";
 import { BarraGravidade } from "@/components/BarraGravidade";
 import { SeletorCultura } from "@/components/SeletorCultura";
@@ -62,6 +64,9 @@ export function PainelSintomas() {
   // Desmarcada em toda consulta (RNF16): o consentimento é dado a cada
   // registro, e por isso o estado volta a `false` depois de salvar.
   const [registrarLocal, setRegistrarLocal] = useState(false);
+  // A foto da planta (US37), já reduzida e sem EXIF; vai para o aparelho ao
+  // salvar, presa ao offlineId da consulta (ADR 0016).
+  const [foto, setFoto] = useState<FotoPreparada | null>(null);
 
   // Os canteiros vêm da cópia no aparelho quando falta rede (US25): o produtor
   // escolhe o canteiro no campo, e a consulta sobe depois com o vínculo.
@@ -95,8 +100,10 @@ export function PainelSintomas() {
         local?.coordenada ?? null,
         canteiroId ? Number(canteiroId) : null,
       );
+      if (foto) await fotos.anexar(r.offlineId, foto);
       setSalvo({ enviada: r.enviada, semLocal: local?.motivo ?? null });
       setRegistrarLocal(false);
+      setFoto(null);
     } finally {
       setSalvando(false);
     }
@@ -252,6 +259,7 @@ export function PainelSintomas() {
                     </select>
                   </label>
                 )}
+                <AnexarFoto foto={foto} aoMudar={setFoto} />
                 <OpcaoDeLocal marcada={registrarLocal} aoMudar={setRegistrarLocal} />
                 <button
                   type="button"
