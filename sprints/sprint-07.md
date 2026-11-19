@@ -2,7 +2,7 @@
 
 ## Período
 
-**24/11/2026 a 07/12/2026** (14 dias)
+**21/11/2026 a 25/11/2026** (5 dias)
 
 ## Objetivo
 
@@ -34,8 +34,8 @@ e **Artefato 8 - Gestão do Produto** ([#48](https://github.com/CampusCEUB/AgroS
 
 | Evento | Data | Issue | Ata |
 | --- | --- | --- | --- |
-| Planejamento | 24/11/2026 | [#62](https://github.com/CampusCEUB/AgroScan/issues/62) | [`sprint-07-planejamento.md`](../docs/reunioes/sprint-07-planejamento.md) |
-| Revisão | 07/12/2026 | [#63](https://github.com/CampusCEUB/AgroScan/issues/63) | [`sprint-07-revisao.md`](../docs/reunioes/sprint-07-revisao.md) |
+| Planejamento | 21/11/2026 | [#62](https://github.com/CampusCEUB/AgroScan/issues/62) | [`sprint-07-planejamento.md`](../docs/reunioes/sprint-07-planejamento.md) |
+| Revisão | 25/11/2026 | [#63](https://github.com/CampusCEUB/AgroScan/issues/63) | [`sprint-07-revisao.md`](../docs/reunioes/sprint-07-revisao.md) |
 
 ## Itens planejados
 

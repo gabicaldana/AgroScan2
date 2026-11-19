@@ -1,43 +1,51 @@
 # Reunião - Sprint 8 · Revisão
 
-Reunião de encerramento da **Sprint 8 - Fechamento do semestre** (08/12/2026 a 19/12/2026), para demonstrar o incremento, aceitar as histórias contra os critérios e conduzir a retrospectiva.
+Reunião de encerramento da **Sprint 8 - Fechamento do semestre** (26/11/2026 a 27/11/2026) e do semestre, para aceitar as entregas finais e conduzir a retrospectiva do projeto.
 
 ## Data
 
-19/12/2026
+27/11/2026
 
-> Data prevista pela cadência de duas semanas. Reunião ainda não realizada.
+> Data antecipada de 19/12 para 27/11, com o calendário das Sprints 6 a 8
+> comprimido para terminar até essa data.
 
 ## Participantes
 
 | Nome | Matrícula | Papel |
 | --- | --- | --- |
-| Gabriela Pedersoli Caldana | 22404253 | ⚠️ a definir |
-| Thaís Regina Dias da Mota | 22403754 | ⚠️ a definir |
-
-> A distribuição nominal dos papéis Scrum está pendente, conforme
-> [`sprints/sprint-00-planejamento.md`](../../sprints/sprint-00-planejamento.md).
+| Gabriela Pedersoli Caldana | 22404253 | Product Owner e Scrum Master, em conjunto |
+| Thaís Regina Dias da Mota | 22403754 | Product Owner e Scrum Master, em conjunto |
 
 ## Pauta
 
-1. Demonstração do incremento construído no ciclo
-2. Aceite história a história contra os critérios de aceite e o Definition of Done
+1. Demonstração do estado final do produto
+2. Aceite item a item contra os critérios
 3. Conferência de que o ambiente publicado reflete a versão entregue (critério C11)
-4. Retrospectiva: o que funcionou, o que não funcionou, ajustes de processo
-5. Atualização do relatório da sprint e do CHANGELOG
-6. Encaminhamentos para o planejamento do ciclo seguinte
+4. Retrospectiva do ciclo e do semestre
+5. Atualização do relatório da sprint, do CHANGELOG e da totalização do backlog
+6. O que fica aberto depois do semestre
+
+## Itens para aceite
+
+| Issue | Item | Decisão |
+| --- | --- | --- |
+| [#49](https://github.com/CampusCEUB/AgroScan/issues/49) | Artefato 7 - execução e revisão das sprints | |
+| [#80](https://github.com/CampusCEUB/AgroScan/issues/80) | Publicação na vitrine de ativos | |
+| [#81](https://github.com/CampusCEUB/AgroScan/issues/81) | Roteiro e ensaio da apresentação final | |
 
 ## Decisões
 
-> ⚠️ **A preencher pela equipe.**
+> ⚠️ **A preencher na reunião.**
 
-## Encaminhamentos
+## O que fica aberto depois do semestre
 
-> ⚠️ **A preencher pela equipe.** Ações, responsáveis e prazos combinados.
+> ⚠️ **A preencher na reunião.** Itens já conhecidos: a US39, como trabalho
+> futuro ([ADR 0015](../decisoes/adr-0015-identificacao-por-imagem.md)), e o
+> que depende da comunidade parceira ([#73](https://github.com/CampusCEUB/AgroScan/issues/73)).
 
-## Impedimentos
+## Retrospectiva
 
-> ⚠️ **A preencher pela equipe.** Bloqueios, riscos materializados e dependências.
+> ⚠️ **A preencher na reunião.**
 
 ## Links
 

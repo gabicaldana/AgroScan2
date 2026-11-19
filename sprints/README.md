@@ -23,9 +23,9 @@ entrega dos Artefatos 1, 2 e 3.
 | 3 | 29/09 - 12/10 | Horta, canteiros e manejo | Sprint Review | [sprint-03.md](sprint-03.md) |
 | **4** | 13/10 - 26/10 | Relatórios agregados | Sprint Review | [sprint-04.md](sprint-04.md) |
 | 5 | 27/10 - 09/11 | Base completa, feedback e dashboards | **Artefato 9** *(data a definir)* | [sprint-05.md](sprint-05.md) |
-| 6 | 10/11 - 23/11 | Comunidade e validação | Apresentação à Comunidade · **Artefato 6** *(datas a definir)* | [sprint-06.md](sprint-06.md) |
-| 7 | 24/11 - 07/12 | Ativos e documentação técnica | **Artefatos 5 e 8** *(datas a definir)* | [sprint-07.md](sprint-07.md) |
-| 8 | 08/12 - 19/12 | Fechamento do semestre | **Artefato 7** *(data a definir)* | [sprint-08.md](sprint-08.md) |
+| 6 | 10/11 - 20/11 | Comunidade e validação | Apresentação à Comunidade · **Artefato 6** *(datas a definir)* | [sprint-06.md](sprint-06.md) |
+| 7 | 21/11 - 25/11 | Ativos e documentação técnica | **Artefatos 5 e 8** *(datas a definir)* | [sprint-07.md](sprint-07.md) |
+| 8 | 26/11 - 27/11 | Fechamento do semestre | **Artefato 7** *(data a definir)* | [sprint-08.md](sprint-08.md) |
 
 A Sprint 4 está em negrito por ser a corrente. As Sprints 1 a 3 estão
 encerradas, com as `milestones` fechadas e os relatórios completos. Os
@@ -48,9 +48,9 @@ com a etiqueta `reuniao`, vinculada à `milestone` da sprint.
 | 3 | Sprint 3 - Horta, canteiros e manejo | [29/09](../docs/reunioes/sprint-03-planejamento.md) | [12/10](../docs/reunioes/sprint-03-revisao.md) |
 | **4** | Sprint 4 - Relatórios agregados | [13/10](../docs/reunioes/sprint-04-planejamento.md) | [26/10](../docs/reunioes/sprint-04-revisao.md) |
 | 5 | Sprint 5 - Base completa, feedback e dashboards | [27/10](../docs/reunioes/sprint-05-planejamento.md) | [09/11](../docs/reunioes/sprint-05-revisao.md) |
-| 6 | Sprint 6 - Comunidade e validação | [10/11](../docs/reunioes/sprint-06-planejamento.md) | [23/11](../docs/reunioes/sprint-06-revisao.md) |
-| 7 | Sprint 7 - Ativos e documentação técnica | [24/11](../docs/reunioes/sprint-07-planejamento.md) | [07/12](../docs/reunioes/sprint-07-revisao.md) |
-| 8 | Sprint 8 - Fechamento do semestre | [08/12](../docs/reunioes/sprint-08-planejamento.md) | [19/12](../docs/reunioes/sprint-08-revisao.md) |
+| 6 | Sprint 6 - Comunidade e validação | [10/11](../docs/reunioes/sprint-06-planejamento.md) | [20/11](../docs/reunioes/sprint-06-revisao.md) |
+| 7 | Sprint 7 - Ativos e documentação técnica | [21/11](../docs/reunioes/sprint-07-planejamento.md) | [25/11](../docs/reunioes/sprint-07-revisao.md) |
+| 8 | Sprint 8 - Fechamento do semestre | [26/11](../docs/reunioes/sprint-08-planejamento.md) | [27/11](../docs/reunioes/sprint-08-revisao.md) |
 
 O alinhamento de meio de sprint é assíncrono e não gera ata própria: impedimento
 que bloqueie por mais de 48 horas vira comentário na `issue` correspondente.

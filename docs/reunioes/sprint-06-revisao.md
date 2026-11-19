@@ -1,22 +1,21 @@
 # Reunião - Sprint 6 · Revisão
 
-Reunião de encerramento da **Sprint 6 - Comunidade e validação** (10/11/2026 a 23/11/2026), para demonstrar o incremento, aceitar as histórias contra os critérios e conduzir a retrospectiva.
+Reunião de encerramento da **Sprint 6 - Comunidade e validação** (10/11/2026 a 20/11/2026), para demonstrar o incremento, aceitar as histórias contra os critérios e conduzir a retrospectiva.
 
 ## Data
 
-23/11/2026
+20/11/2026
 
-> Data prevista pela cadência de duas semanas. Reunião ainda não realizada.
+> Data antecipada de 23/11 para 20/11, com o calendário das Sprints 6 a 8
+> comprimido para terminar até 27/11/2026
+> ([planejamento da Sprint 6](sprint-06-planejamento.md)).
 
 ## Participantes
 
 | Nome | Matrícula | Papel |
 | --- | --- | --- |
-| Gabriela Pedersoli Caldana | 22404253 | ⚠️ a definir |
-| Thaís Regina Dias da Mota | 22403754 | ⚠️ a definir |
-
-> A distribuição nominal dos papéis Scrum está pendente, conforme
-> [`sprints/sprint-00-planejamento.md`](../../sprints/sprint-00-planejamento.md).
+| Gabriela Pedersoli Caldana | 22404253 | Product Owner e Scrum Master, em conjunto |
+| Thaís Regina Dias da Mota | 22403754 | Product Owner e Scrum Master, em conjunto |
 
 ## Pauta
 
@@ -27,17 +26,40 @@ Reunião de encerramento da **Sprint 6 - Comunidade e validação** (10/11/2026 
 5. Atualização do relatório da sprint e do CHANGELOG
 6. Encaminhamentos para o planejamento do ciclo seguinte
 
+## Itens para aceite
+
+Preparado antes da reunião, a partir dos pull requests do ciclo. A coluna
+"Decisão" é preenchida na reunião.
+
+| Issue | Item | Pull request | Decisão |
+| --- | --- | --- | --- |
+| [#18](https://github.com/CampusCEUB/AgroScan/issues/18) | US15 - Excluir a conta e os dados | [#102](https://github.com/CampusCEUB/AgroScan/pull/102), aceito em 10/11 | ✅ Aceita em 10/11 |
+| [#44](https://github.com/CampusCEUB/AgroScan/issues/44) | US39 - fechada como trabalho futuro (ADR 0015) | [#106](https://github.com/CampusCEUB/AgroScan/pull/106) | |
+| [#75](https://github.com/CampusCEUB/AgroScan/issues/75) | Revisão de conformidade com a LGPD | [#107](https://github.com/CampusCEUB/AgroScan/pull/107) | |
+| [#76](https://github.com/CampusCEUB/AgroScan/issues/76) | Auditoria de acessibilidade WCAG 2.1 AAA | [#108](https://github.com/CampusCEUB/AgroScan/pull/108) | |
+| [#77](https://github.com/CampusCEUB/AgroScan/issues/77) | Testes ponta a ponta do fluxo offline | [#109](https://github.com/CampusCEUB/AgroScan/pull/109) | |
+| [#42](https://github.com/CampusCEUB/AgroScan/issues/42) | US37 - Foto anexada à consulta (ADR 0016) | [#110](https://github.com/CampusCEUB/AgroScan/pull/110) | |
+| [#78](https://github.com/CampusCEUB/AgroScan/issues/78) | Apresentação à comunidade parceira | - | Fica aberta: comunidade não definida ([#73](https://github.com/CampusCEUB/AgroScan/issues/73)) |
+| [#46](https://github.com/CampusCEUB/AgroScan/issues/46) | Artefato 6 - análise do usuário | - | A decidir: a validação com produtores depende da #73 |
+
 ## Decisões
 
-> ⚠️ **A preencher pela equipe.**
+> ⚠️ **A preencher na reunião**: aceite dos itens acima, aprovação dos ADRs
+> 0015 e 0016 e conferência do C11.
 
 ## Encaminhamentos
 
-> ⚠️ **A preencher pela equipe.** Ações, responsáveis e prazos combinados.
+> ⚠️ **A preencher na reunião.**
 
 ## Impedimentos
 
-> ⚠️ **A preencher pela equipe.** Bloqueios, riscos materializados e dependências.
+| # | Impedimento | Efeito | Situação |
+| --- | --- | --- | --- |
+| 1 | Comunidade parceira não definida (R03) | Sem apresentação (#78), sem relatórios da extensão (#79) e sem validação com produtores (#46) | Aberto - [#73](https://github.com/CampusCEUB/AgroScan/issues/73) |
+
+## Retrospectiva
+
+> ⚠️ **A preencher na reunião.**
 
 ## Links
 
