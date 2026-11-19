@@ -217,6 +217,8 @@ export type ConsultaResumida = {
   doenca_confirmada_id?: string | null;
   doenca_confirmada_nome?: string | null;
   feedback_comentario?: string | null;
+  /** Se a consulta tem local registrado (RF22). A coordenada não vem na listagem. */
+  tem_localizacao?: boolean;
 };
 
 export type FeedbackRegistrado = {
@@ -282,6 +284,14 @@ export async function listarConsultas(
     `/consultas${consulta ? `?${consulta}` : ""}`,
     { autenticado: true },
   );
+}
+
+/** Apaga o local registrado numa consulta (RF22, revisão LGPD). O resto fica. */
+export async function apagarLocalizacao(consultaId: number): Promise<void> {
+  await chamar<void>(`/consultas/${consultaId}/localizacao`, {
+    metodo: "DELETE",
+    autenticado: true,
+  });
 }
 
 /** Um por consulta: reenviar substitui a resposta anterior. */

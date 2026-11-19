@@ -24,7 +24,8 @@
 // de nome do cache continuaria abrindo a tela de camera offline por tempo
 // indeterminado.
 // v7: entra /relatorios na casca.
-const VERSAO = "v7";
+// v8: entra /privacidade, que o consentimento da localizacao cita no campo.
+const VERSAO = "v8";
 const CACHE_APP = `agroscan-app-${VERSAO}`;
 const CACHE_ESTATICO = `agroscan-estatico-${VERSAO}`;
 
@@ -34,6 +35,7 @@ const CACHE_ESTATICO = `agroscan-estatico-${VERSAO}`;
 // so gastaria espaco.
 const CASCA = [
   "/", "/resultado", "/caderno", "/hortas", "/horta", "/canteiro", "/relatorios",
+  "/privacidade",
 ];
 
 /**

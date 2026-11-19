@@ -53,6 +53,8 @@ export type RegistroDoCaderno = {
   temFeedback?: boolean;
   /** O que foi respondido sobre o diagnóstico (US20), quando se sabe. */
   feedback?: feedback.Feedback | null;
+  /** Se a consulta tem local registrado (RF22), para a tela oferecer apagar. */
+  temLocalizacao: boolean;
 };
 
 /**
@@ -166,6 +168,7 @@ export async function historico(
       doencaNome: ficha?.doencaNome ?? null,
       compatibilidade: principal?.compatibilidade ?? null,
       pendente: true,
+      temLocalizacao: c.latitude != null,
     };
   });
 
@@ -207,6 +210,7 @@ export async function historico(
       pendente: false,
       temFeedback: c.tem_feedback,
       feedback: feedback.daListagem(c),
+      temLocalizacao: c.tem_localizacao === true,
     });
   }
   return { registros: ordenar(registros), servidorRespondeu };
@@ -236,6 +240,37 @@ export async function responder(
     doencaConfirmadaNome: null,
     comentario: salvo.comentario,
   };
+}
+
+/**
+ * Apaga o local de uma consulta, mantendo o resto do registro (revisão LGPD).
+ *
+ * Se a consulta ainda está na fila, a coordenada sai do aparelho e nunca chega
+ * ao servidor; nesse caso funciona sem rede. Se já subiu, precisa de rede.
+ *
+ * Entre a tela abrir e o toque, a fila pode ter subido. Aí o registro não
+ * está mais na fila e a tela ainda não conhece o id do servidor: a função
+ * avisa com `false`, para a tela recarregar o caderno e a pessoa tocar de
+ * novo, em vez de dizer que apagou o que continua guardado.
+ */
+export async function apagarLocalizacao(
+  registro: Pick<RegistroDoCaderno, "offlineId" | "pendente" | "id">,
+): Promise<boolean> {
+  if (registro.pendente) {
+    const naFila = await deposito().ler();
+    if (!naFila.some((c) => c.offlineId === registro.offlineId)) return false;
+    await deposito().gravar(
+      naFila.map((c) =>
+        c.offlineId === registro.offlineId
+          ? { ...c, latitude: null, longitude: null }
+          : c,
+      ),
+    );
+    return true;
+  }
+  if (typeof registro.id !== "number") return false;
+  await api.apagarLocalizacao(registro.id);
+  return true;
 }
 
 function ordenar(registros: RegistroDoCaderno[]): RegistroDoCaderno[] {

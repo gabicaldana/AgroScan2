@@ -262,6 +262,9 @@ class ConsultaResumida(BaseModel):
     doenca_confirmada_id: str | None = None
     doenca_confirmada_nome: str | None = None
     feedback_comentario: str | None = None
+    # Só se há local registrado (RF22); a coordenada fica no detalhe da
+    # consulta, para a listagem não espalhar dado pessoal sem necessidade.
+    tem_localizacao: bool = False
 
 
 class PedidoDeFeedback(BaseModel):
