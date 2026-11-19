@@ -12,6 +12,19 @@ Registre aqui as mudanças relevantes por sprint ou marco avaliativo.
 - **Alvos de 56 px (RNF06)**: botão da conta no cabeçalho, links de voltar, "Ver detalhes", "Limpar", "Anotações", "Editar" e "Apagar".
 - **Página 404** em português (`app/not-found.tsx`), no lugar da padrão do Next em inglês.
 
+### Revisão de conformidade com a LGPD (#75)
+
+- **Revisão** em [`docs/lgpd.md`](docs/lgpd.md): inventário dos dados pessoais, finalidade e base legal, minimização, operadores, direitos do titular, retenção e os testes de isolamento entre usuários (C9). Três pendências registradas, nenhuma de código: canal de contato, encarregado e retenção nos operadores.
+- **Local da consulta com consentimento (RF22, RNF16)**: na tela de sintomas, "Registrar onde fiz esta consulta" vem desmarcada em toda consulta e explica o que é guardado. A posição só é pedida ao salvar, sem precisão alta, e sai do aparelho arredondada a 3 casas (uns 110 m). Permissão negada, GPS desligado ou demora: a consulta é salva sem o local, com o motivo na tela.
+- **Apagar o local**: no caderno, cada consulta com local mostra "Apagar o local", que mantém a consulta. Na fila funciona sem rede; já sincronizada, usa a rota nova `DELETE /consultas/{id}/localizacao`. A listagem traz só `tem_localizacao`, sem a coordenada.
+- **Aviso de privacidade** em `/privacidade`, que abre sem rede (casca do service worker v8), com link no cadastro, na conta e na opção de local.
+- **Testes**: `localizacao.test.ts` (8), `caderno.test.ts` (2) e 3 casos em `tests/test_caderno.py`.
+
+### Identificação por imagem fora do semestre (ADR 0015, US39)
+
+- **ADR 0015 aprovado** com o merge do PR #104. A US39 (#44) foi fechada como trabalho posterior ao semestre, reescrita para o tomate e com o critério de entrada do ADR: pelo menos 100 fotos independentes por classe, parte delas de campo, e licença que permita distribuir o modelo.
+- **Planejamento**: a Sprint 7 fica sem história de produto, e a capacidade vai para os Artefatos 5 e 8. O Artefato 2 (backlog, cronograma e milestones), a `sprint-07.md` e o roteiro em `aplicacao.md` registram a decisão.
+
 ### Excluir a conta (US15)
 
 - **Tela "Sua conta"**: seção "Excluir a conta", no fim, fechada até a pessoa pedir. Aberta, diz o que é apagado e o que fica, e só exclui depois de a pessoa digitar EXCLUIR.
