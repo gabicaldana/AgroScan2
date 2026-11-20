@@ -63,7 +63,7 @@ export function PainelHorta() {
   return (
     <div className="flex flex-col gap-8">
       <header>
-        <Link href="/hortas" className="text-primaria text-sm font-bold underline">
+        <Link href="/hortas" className="text-primaria min-h-toque inline-flex items-center text-sm font-bold underline">
           ← Hortas
         </Link>
         <h1 className="mt-2 text-2xl font-bold tracking-tight">{horta.nome}</h1>

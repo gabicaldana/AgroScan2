@@ -5,6 +5,8 @@ import { Anotacoes } from "@/components/Anotacoes";
 import { BotaoLink } from "@/components/Botao";
 import { EstadoVazio } from "@/components/EstadoVazio";
 import { FeedbackDaConsulta } from "@/components/FeedbackDaConsulta";
+import { MensagemDeErro, descreverFalha } from "@/components/Formulario";
+import * as api from "@/lib/api.ts";
 import type { Feedback } from "@/lib/feedback.ts";
 import * as caderno from "@/lib/caderno.ts";
 import * as filtro from "@/lib/filtro-caderno.ts";
@@ -244,6 +246,7 @@ export function PainelCaderno() {
                   registro={r}
                   temConta={temConta}
                   aoResponder={aoResponder}
+                  aoMudarLocal={recarregar}
                 />
               </li>
             ))}
@@ -347,14 +350,69 @@ function Filtros({
   );
 }
 
+/**
+ * O local registrado, com o caminho para apagá-lo (revisão LGPD #75).
+ *
+ * A coordenada não aparece: a tela diz só que há um local guardado. Mostrar o
+ * número não ajuda a decidir nada, e cada lugar em que ele aparece é mais um
+ * em que ele pode ser fotografado na tela de um celular emprestado.
+ */
+function LocalDaConsulta({
+  registro,
+  aoMudar,
+}: {
+  registro: caderno.RegistroDoCaderno;
+  aoMudar: () => Promise<void>;
+}) {
+  const [apagando, setApagando] = useState(false);
+  const [erro, setErro] = useState<string | null>(null);
+
+  async function apagar() {
+    setErro(null);
+    setApagando(true);
+    try {
+      const apagou = await caderno.apagarLocalizacao(registro);
+      if (!apagou) {
+        setErro("Este registro acabou de subir para a sua conta. Toque de novo para apagar o local.");
+      }
+      await aoMudar();
+    } catch (e) {
+      setErro(
+        e instanceof api.SemResposta
+          ? "Sem conexão agora. O local de um registro que já está na sua conta só é apagado com rede."
+          : descreverFalha(e),
+      );
+    } finally {
+      setApagando(false);
+    }
+  }
+
+  return (
+    <div className="mt-3 flex flex-col gap-2">
+      <p className="text-sm">📍 Local aproximado registrado</p>
+      <button
+        type="button"
+        onClick={apagar}
+        disabled={apagando}
+        className="border-borda-forte h-toque rounded-lg border-2 px-4 text-base font-semibold"
+      >
+        {apagando ? "Apagando…" : "Apagar o local"}
+      </button>
+      {erro && <MensagemDeErro>{erro}</MensagemDeErro>}
+    </div>
+  );
+}
+
 function Registro({
   registro,
   temConta,
   aoResponder,
+  aoMudarLocal,
 }: {
   registro: caderno.RegistroDoCaderno;
   temConta: boolean;
   aoResponder: (offlineId: string, resposta: Feedback) => void;
+  aoMudarLocal: () => Promise<void>;
 }) {
   const quando = new Date(registro.registradaEm);
   const data = quando.toLocaleDateString("pt-BR", {
@@ -412,6 +470,9 @@ function Registro({
         </a>
       ) : (
         conteudo
+      )}
+      {registro.temLocalizacao && (
+        <LocalDaConsulta registro={registro} aoMudar={aoMudarLocal} />
       )}
       <FeedbackDaConsulta
         registro={registro}

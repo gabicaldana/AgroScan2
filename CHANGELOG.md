@@ -11,6 +11,27 @@ Registre aqui as mudanças relevantes por sprint ou marco avaliativo.
 - **Fila de sincronização**: o que foi salvo sem rede sobe sozinho quando a conexão volta com o caderno aberto, com cultura e sintomas, e a fila fica vazia.
 - **CI**: instala o Chromium, roda os testes depois do build e guarda o relatório quando falham. A API é interceptada; o contrato do servidor segue nos testes de `src/tests`.
 
+### Auditoria de acessibilidade WCAG 2.1 AAA (#76)
+
+- **Relatório** em [`docs/acessibilidade.md`](docs/acessibilidade.md): axe-core com as regras WCAG 2.1 A, AA e AAA nas 12 telas, mais medição própria de alvos de toque e de tamanho de texto. A primeira medição falhou em todas as telas por três causas do sistema de design; a segunda deu zero apontamentos.
+- **Contraste AAA (RNF05)**: `primaria` #15803d → #166534 (de 5,01:1 para 7,13:1), `primaria-escura` → #14532d, `alerta` #b45309 → #78350f (de 4,84:1 para 8,75:1), `texto-suave` #57534e → #4f4b46.
+- **Texto de 18 px (RNF07)**: o `body` passa a ter o tamanho do corpo (texto sem classe saía com 16 px), e `text-sm` e `text-xs` sobem para 18 px; a hierarquia fica no peso e na cor. Os rótulos do gráfico de relatórios saem com pelo menos 18 px a partir de 320 px de tela.
+- **Alvos de 56 px (RNF06)**: botão da conta no cabeçalho, links de voltar, "Ver detalhes", "Limpar", "Anotações", "Editar" e "Apagar".
+- **Página 404** em português (`app/not-found.tsx`), no lugar da padrão do Next em inglês.
+
+### Revisão de conformidade com a LGPD (#75)
+
+- **Revisão** em [`docs/lgpd.md`](docs/lgpd.md): inventário dos dados pessoais, finalidade e base legal, minimização, operadores, direitos do titular, retenção e os testes de isolamento entre usuários (C9). Três pendências registradas, nenhuma de código: canal de contato, encarregado e retenção nos operadores.
+- **Local da consulta com consentimento (RF22, RNF16)**: na tela de sintomas, "Registrar onde fiz esta consulta" vem desmarcada em toda consulta e explica o que é guardado. A posição só é pedida ao salvar, sem precisão alta, e sai do aparelho arredondada a 3 casas (uns 110 m). Permissão negada, GPS desligado ou demora: a consulta é salva sem o local, com o motivo na tela.
+- **Apagar o local**: no caderno, cada consulta com local mostra "Apagar o local", que mantém a consulta. Na fila funciona sem rede; já sincronizada, usa a rota nova `DELETE /consultas/{id}/localizacao`. A listagem traz só `tem_localizacao`, sem a coordenada.
+- **Aviso de privacidade** em `/privacidade`, que abre sem rede (casca do service worker v8), com link no cadastro, na conta e na opção de local.
+- **Testes**: `localizacao.test.ts` (8), `caderno.test.ts` (2) e 3 casos em `tests/test_caderno.py`.
+
+### Identificação por imagem fora do semestre (ADR 0015, US39)
+
+- **ADR 0015 aprovado** com o merge do PR #104. A US39 (#44) foi fechada como trabalho posterior ao semestre, reescrita para o tomate e com o critério de entrada do ADR: pelo menos 100 fotos independentes por classe, parte delas de campo, e licença que permita distribuir o modelo.
+- **Planejamento**: a Sprint 7 fica sem história de produto, e a capacidade vai para os Artefatos 5 e 8. O Artefato 2 (backlog, cronograma e milestones), a `sprint-07.md` e o roteiro em `aplicacao.md` registram a decisão.
+
 ### Excluir a conta (US15)
 
 - **Tela "Sua conta"**: seção "Excluir a conta", no fim, fechada até a pessoa pedir. Aberta, diz o que é apagado e o que fica, e só exclui depois de a pessoa digitar EXCLUIR.
