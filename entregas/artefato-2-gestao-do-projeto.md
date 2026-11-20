@@ -405,7 +405,7 @@ Estimativa em pontos de história na escala de Fibonacci: 1 trivial, 2 pequena,
 
 | ID | História | Critérios de aceite | Pts | Sprint | Estado |
 | --- | --- | --- | --- | --- | --- |
-| US37 | Como produtor, quero fotografar a planta para anexar ao registro | Captura pela câmera traseira; foto vinculada à consulta | 5 | 6 | 🟡 captura pronta, fora da navegação |
+| US37 | Como produtor, quero fotografar a planta para anexar ao registro | Captura pela câmera traseira; foto vinculada à consulta | 5 | 6 | ✅ foto só no aparelho, sem EXIF (ADR 0016) |
 | US38 | Como equipe, queremos auditar o acervo Digipathos, para decidir com dados se a identificação por imagem é viável neste semestre | Inventário de espécies, classes e contagem de imagens; licença verificada; decisão registrada em ADR | 5 | 5 | ✅ |
 | US39 | Como produtor, quero que o sistema identifique a doença do tomate pela foto | Só entra numa sprint com acervo que cumpra o piso do ADR 0015: ≥ 100 fotos independentes por classe, parte delas de campo, e licença que permita distribuir o modelo | 13 | - | ⏭️ trabalho futuro (ADR 0015) |
 

@@ -21,6 +21,11 @@ export type Dependencias = {
   sincronizar: () => Promise<fila.ResultadoDoDespacho>;
   /** Apaga a sessão e as cópias guardadas; é `sessao.encerrar` no app. */
   encerrar: () => void;
+  /**
+   * Apaga as fotos das consultas (ADR 0016). Elas ficam só no aparelho e não
+   * têm dono gravado: deixadas para trás, apareceriam para a próxima pessoa.
+   */
+  apagarFotos?: () => Promise<void>;
 };
 
 export type ResultadoDaSaida =
@@ -43,6 +48,7 @@ export async function sair(
       deps.armazenamento,
       restantes.map((c) => c.offlineId),
     );
+    await deps.apagarFotos?.();
     deps.encerrar();
     return { saiu: true, apagados: restantes.length };
   }
@@ -53,6 +59,7 @@ export async function sair(
     if (pendentes > 0) return { saiu: false, pendentes, semRede: envio.adiado };
   }
 
+  await deps.apagarFotos?.();
   deps.encerrar();
   return { saiu: true, apagados: 0 };
 }
@@ -67,6 +74,8 @@ export type DependenciasDaExclusao = {
   excluirNaApi: () => Promise<void>;
   /** Apaga a sessão e as cópias guardadas; é `sessao.encerrar` no app. */
   encerrar: () => void;
+  /** Apaga as fotos das consultas, que só existem no aparelho (ADR 0016). */
+  apagarFotos?: () => Promise<void>;
 };
 
 export type ResultadoDaExclusao =
@@ -95,6 +104,7 @@ export async function excluir(deps: DependenciasDaExclusao): Promise<ResultadoDa
     deps.armazenamento,
     restantes.map((c) => c.offlineId),
   );
+  await deps.apagarFotos?.();
   deps.encerrar();
   return { excluida: true, apagados: restantes.length };
 }

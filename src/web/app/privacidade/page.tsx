@@ -45,10 +45,17 @@ export default function PaginaPrivacidade() {
             Marcada, o AgroScan guarda o local aproximado (uns 100 metros), e
             não o ponto exato.
           </li>
+          <li>
+            <strong>A foto da planta, só no seu aparelho.</strong> Se você
+            fotografar a planta ao salvar, a foto fica neste celular, junto do
+            registro no caderno, e não vai para a internet. Antes de guardar, o
+            AgroScan apaga os dados escondidos que a câmera grava na foto, como
+            o lugar exato onde ela foi tirada.
+          </li>
         </ul>
         <p>
-          O AgroScan não guarda fotos, não usa propaganda nem rastreadores e não
-          vende nem repassa dados a ninguém.
+          O AgroScan não usa propaganda nem rastreadores e não vende nem repassa
+          dados a ninguém.
         </p>
       </Secao>
 
@@ -75,7 +82,8 @@ export default function PaginaPrivacidade() {
           O que você salva sem rede fica no aparelho até subir para a sua conta.
           Ao sair da conta, o AgroScan pede para enviar ou apagar o que ainda não
           subiu, para a próxima pessoa que usar o celular não ver nem enviar
-          registros seus.
+          registros seus. As fotos das consultas são apagadas do
+          aparelho ao sair.
         </p>
       </Secao>
 
@@ -89,6 +97,9 @@ export default function PaginaPrivacidade() {
           <li>
             <strong>Apagar o local</strong> de uma consulta, no caderno, sem
             apagar a consulta.
+          </li>
+          <li>
+            <strong>Apagar a foto</strong> de uma consulta, no caderno.
           </li>
           <li>
             <strong>Excluir a conta e os dados</strong>, em{" "}

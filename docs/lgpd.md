@@ -37,12 +37,12 @@ identificado.
 | Anotações | `anotacao` | Quando a pessoa escreve | Membros da horta do canteiro ou a própria pessoa (consulta) |
 | Participação em horta | `membro_horta` | Quando alguém a adiciona pelo e-mail | Membros da mesma horta |
 | Manejos (aplicação de defensivo) | `manejo.responsavel_id` | Quando a pessoa registra | Membros da horta, com o nome de quem registrou |
-| Fotos | `consulta_foto` | **Nunca.** A tabela existe no esquema e não é usada | - |
+| Fotos | **Só no aparelho** (IndexedDB `agroscan-fotos`); a tabela `consulta_foto` do banco não é usada | Quando a pessoa anexa, ao salvar; recodificada sem EXIF ([ADR 0016](decisoes/adr-0016-foto-da-consulta-so-no-aparelho.md)) | Só quem usa o aparelho; apagadas ao sair e ao excluir a conta |
 
 **No aparelho** (`localStorage` e IndexedDB): o token da sessão, o nome e o
 e-mail de quem entrou, a última cópia do caderno e dos canteiros, e a fila de
-consultas que ainda não subiram. Sair da conta apaga tudo isso
-(`sessao.encerrar`), e a saída exige enviar ou apagar a fila antes
+consultas que ainda não subiram e as fotos das consultas. Sair da conta apaga
+tudo isso (`sessao.encerrar` e `fotos.apagarTodas`), e a saída exige enviar ou apagar a fila antes
 ([ADR 0014](decisoes/adr-0014-sair-da-conta-com-a-fila-sem-dono.md)). Sem
 conta, só a fila existe, e ela fica no aparelho.
 

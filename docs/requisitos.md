@@ -104,7 +104,7 @@ Estado verificado em 12/09/2026 sobre o commit `068b6d9`.
 | RF07 | Exibir, por hipótese, laudo com nome, agente causal, descrição, gravidade e condições favoráveis | Obrigatório | ✅ |
 | RF08 | Apresentar as medidas de manejo na ordem cultural → biológica → química | Obrigatório | ✅ |
 | RF09 | Exibir o aviso legal e a exigência de receituário agronômico em todo laudo | Obrigatório | ✅ |
-| RF10 | Capturar foto da planta pela câmera do dispositivo | Desejável | 🟡 captura e pré-processamento prontos e testados, **fora da navegação** enquanto não houver modelo (ADR 0008); vínculo à consulta ⬜ |
+| RF10 | Capturar foto da planta pela câmera do dispositivo | Desejável | ✅ foto anexada à consulta pela câmera traseira, guardada só no aparelho e sem EXIF ([ADR 0016](decisoes/adr-0016-foto-da-consulta-so-no-aparelho.md)); o visor do modelo segue fora da navegação (ADR 0008) |
 | RF11 | Informar explicitamente quando a identificação automática por imagem não estiver disponível | Obrigatório | ✅ |
 
 ### 5.2 Conta e identidade
@@ -240,7 +240,7 @@ título e vinculadas à `milestone` da sprint.
 | RF06 | US09 | 1 | TI02 - desempate por HTTP e no cliente | [#12](https://github.com/CampusCEUB/AgroScan/issues/12) |
 | RF07 | US10 | 1 | TI05 - ficha completa bate com a fixture | [#13](https://github.com/CampusCEUB/AgroScan/issues/13) |
 | RF08, RF09 | US10 | 1 | Inspeção C1; ordem garantida na base | [#13](https://github.com/CampusCEUB/AgroScan/issues/13) |
-| RF10, RF11 | US37 | 6 | Inspeção; `lib/recusa.test.ts` | [#42](https://github.com/CampusCEUB/AgroScan/issues/42) |
+| RF10, RF11 | US37 | 6 | `fotos.test.ts`; `conta.test.ts` - fotos apagadas ao sair e ao excluir; `lib/recusa.test.ts` | [#42](https://github.com/CampusCEUB/AgroScan/issues/42) |
 | RF12, RF13 | US12, US13 | 1 | TI26-TI32 - segurança | [#15](https://github.com/CampusCEUB/AgroScan/issues/15), [#16](https://github.com/CampusCEUB/AgroScan/issues/16) |
 | RF13 | US42 | 5 | Sair da conta com aviso sobre a fila ([ADR 0014](decisoes/adr-0014-sair-da-conta-com-a-fila-sem-dono.md)) | [#97](https://github.com/CampusCEUB/AgroScan/issues/97) |
 | RF14 | US14 | 1 | TI13 - diagnóstico não exige autenticação | [#17](https://github.com/CampusCEUB/AgroScan/issues/17) |

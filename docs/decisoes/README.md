@@ -25,9 +25,8 @@ Use [`template-adr.md`](template-adr.md) como ponto de partida, nomeando o arqui
 | [0013](adr-0013-sucessao-de-canteiros-e-alerta-de-rotacao.md) | Sucessão de canteiros pelo nome, e o alerta de rotação nos dois últimos ciclos | Proposto | RF31, US30 |
 | [0014](adr-0014-sair-da-conta-com-a-fila-sem-dono.md) | Sair da conta com aviso sobre a fila, sem dono gravado nos registros | Aprovado | RF13, RF14, US42 |
 | [0015](adr-0015-identificacao-por-imagem.md) | Identificação por imagem fora do semestre, por falta de acervo de hortaliças | Aprovado | RF10, RF11, US38, US39, R04 |
+| [0016](adr-0016-foto-da-consulta-so-no-aparelho.md) | Foto da consulta guardada só no aparelho, sem metadados | Proposto | RF10, US37, LGPD |
 
 ## Decisões pendentes de registro
 
-| Assunto | Motivo da pendência |
-| --- | --- |
-| Armazenamento das fotos anexadas à consulta | Depende da escolha do serviço de armazenamento de objetos em camada gratuita |
+Nenhuma no momento.
