@@ -48,20 +48,12 @@ e **Artefato 8 - Gestão do Produto** ([#48](https://github.com/CampusCEUB/AgroS
 
 ### Histórias de usuário
 
-| Issue | História | Épico | Pts | Prioridade |
-| --- | --- | --- | --- | --- |
-| [#44](https://github.com/CampusCEUB/AgroScan/issues/44) | US39 - Identificação da doença pela foto | E8 | 13 | Desejável *(condicionado)* |
-
-**1 história, 13 pontos - inteiramente condicionados.**
-
-> ⚠️ **A US39 só entra se a auditoria do acervo Digipathos (US38, Sprint 5)
-> demonstrar viabilidade.** Caso contrário, é registrada como trabalho futuro
-> com a justificativa medida, e o sistema segue declarando ao usuário que a
-> funcionalidade não está disponível - em vez de arriscar um palpite. A decisão
-> fica registrada em ADR ao fim da Sprint 5.
->
-> Se a US39 não entrar, esta sprint fica sem desenvolvimento de produto e a
-> capacidade é absorvida pelos Artefatos 5 e 8.
+**Nenhuma história de produto.** A US39 ([#44](https://github.com/CampusCEUB/AgroScan/issues/44)),
+que era o escopo condicionado deste ciclo, saiu do semestre pelo
+[ADR 0015](../docs/decisoes/adr-0015-identificacao-por-imagem.md): a auditoria
+do acervo Digipathos (US38) encontrou imagens para 1 das 88 doenças da base, com
+4 fotos. A issue foi fechada como trabalho futuro, com o piso para retomá-la. A
+capacidade do ciclo vai para os Artefatos 5 e 8.
 
 ### Tarefas de sprint
 
@@ -81,7 +73,6 @@ RF11, conforme a
 | Artefato 5 - website com dados e documentação (#47) | Ambas as integrantes, com revisão cruzada |
 | Artefato 8 - arquitetura de software e testes de sistema (#48) | Ambas as integrantes, com revisão cruzada |
 | Relatórios da Atividade de Extensão (#79) | Ambas as integrantes |
-| US39, se confirmada | Ambas as integrantes |
 
 > ⚠️ A atribuição nominal por item depende da definição dos papéis Scrum,
 > pendente na `issue` [#72](https://github.com/CampusCEUB/AgroScan/issues/72).
@@ -116,13 +107,13 @@ Entregas esperadas do ciclo:
 | # | Impedimento | Efeito | Situação |
 | --- | --- | --- | --- |
 | 1 | **Datas dos Artefatos 5 e 8 não divulgadas** | A alocação a esta sprint é provisória; o Artefato 5 é do 1º bimestre e pode ter prazo anterior | Herdado - [#74](https://github.com/CampusCEUB/AgroScan/issues/74) |
-| 2 | **Escopo da US39 indefinido até o fim da Sprint 5** | A capacidade do ciclo varia em 13 pontos conforme a decisão | A resolver na Sprint 5, com a auditoria US38 |
+| 2 | **Escopo da US39 indefinido até o fim da Sprint 5** | A capacidade do ciclo varia em 13 pontos conforme a decisão | Resolvido: ADR 0015, US39 fora do semestre |
 
 ## Riscos ativos no ciclo
 
 | Risco | Por que pesa nesta sprint | Mitigação |
 | --- | --- | --- |
-| **R04 - indisponibilidade do acervo de imagens** | Determina se a US39 é executável | Escopo condicionado, fora do núcleo; decisão registrada em ADR na Sprint 5 |
+| **R04 - indisponibilidade do acervo de imagens** | Materializado na Sprint 5 | A US39 saiu do ciclo (ADR 0015); o núcleo do produto não depende do acervo |
 
 ## Retrospectiva
 

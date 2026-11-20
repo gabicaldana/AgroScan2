@@ -405,9 +405,9 @@ Estimativa em pontos de história na escala de Fibonacci: 1 trivial, 2 pequena,
 
 | ID | História | Critérios de aceite | Pts | Sprint | Estado |
 | --- | --- | --- | --- | --- | --- |
-| US37 | Como produtor, quero fotografar a planta para anexar ao registro | Captura pela câmera traseira; foto vinculada à consulta | 5 | 6 | 🟡 captura pronta, fora da navegação |
+| US37 | Como produtor, quero fotografar a planta para anexar ao registro | Captura pela câmera traseira; foto vinculada à consulta | 5 | 6 | ✅ foto só no aparelho, sem EXIF (ADR 0016) |
 | US38 | Como equipe, queremos auditar o acervo Digipathos, para decidir com dados se a identificação por imagem é viável neste semestre | Inventário de espécies, classes e contagem de imagens; licença verificada; decisão registrada em ADR | 5 | 5 | ✅ |
-| US39 | Como produtor, quero que o sistema identifique a doença pela foto | Condicionado ao resultado de US38 | 13 | 7 | ⬜ |
+| US39 | Como produtor, quero que o sistema identifique a doença do tomate pela foto | Só entra numa sprint com acervo que cumpra o piso do ADR 0015: ≥ 100 fotos independentes por classe, parte delas de campo, e licença que permita distribuir o modelo | 13 | - | ⏭️ trabalho futuro (ADR 0015) |
 
 **Subtotal E8: 23 pts - condicionado**
 
@@ -558,7 +558,7 @@ de software e os testes de sistema.
 | **4** | 13/10 - 26/10 | Relatórios agregados | Quatro relatórios: incidência por período, taxa de confirmação, sintomas por cultura e alerta de rotação. Curadoria das apiáceas e amarilidáceas. *US05 (parcial), US27-US30* | Sprint Review |
 | **5** | 27/10 - 09/11 | Base completa, feedback e dashboards | Confirmação de diagnóstico na interface; anotações livres; **fechamento da base: 24 culturas e 88 doenças**; dashboards incorporados sobre os indicadores agregados; auditoria do acervo Digipathos. *US05, US20, US21, US38, US41* | **Artefato 9** *(data a definir)* |
 | **6** | 10/11 - 23/11 | Comunidade e validação | Apresentação à comunidade parceira; validação da análise de usuário com produtores; tela de exclusão de conta; instruções de instalação para iOS; conformidade com a LGPD; auditoria de acessibilidade; testes ponta a ponta do fluxo offline. *US15, US37, US40* | Apresentação à Comunidade · **Artefato 6** *(datas a definir)* |
-| **7** | 24/11 - 07/12 | Ativos e documentação técnica | Website com dados e documentação; arquitetura de software consolidada; testes de sistema; relatórios da Atividade de Extensão. *US39 (condicionado)* | **Artefatos 5 e 8** *(datas a definir)* |
+| **7** | 24/11 - 07/12 | Ativos e documentação técnica | Website com dados e documentação; arquitetura de software consolidada; testes de sistema; relatórios da Atividade de Extensão. *US39 fora do semestre (ADR 0015)* | **Artefatos 5 e 8** *(datas a definir)* |
 | **8** | 08/12 - 19/12 | Fechamento do semestre | Execução e revisão consolidada das oito sprints; publicação na vitrine de ativos; roteiro e ensaio da apresentação final | **Artefato 7** *(data a definir)* |
 
 ## 3.3 Rastreabilidade entre sprints e requisitos
@@ -593,7 +593,9 @@ agregados e a documentação completa.
 se a auditoria do acervo (US38) demonstrar viabilidade. Caso contrário, é
 registrada como trabalho futuro com a justificativa medida - e o sistema
 continua declarando ao usuário que a funcionalidade não está disponível, em vez
-de arriscar um palpite.
+de arriscar um palpite. A auditoria mostrou que não é viável, e o
+[ADR 0015](../docs/decisoes/adr-0015-identificacao-por-imagem.md) levou a US39
+para depois do semestre.
 
 ## 3.5 Riscos
 
@@ -727,7 +729,7 @@ O repositório tem **81 issues** distribuídas em **8 milestones**:
 | Sprint 4 - Relatórios agregados | 4 | US27-US30 | 6 |
 | Sprint 5 - Base completa, feedback e dashboards | 5 | US05, US20, US21, US29, US38, US41, US42 | 8 |
 | Sprint 6 - Comunidade e validação | 6 | US15, US37, US40 | 10 |
-| Sprint 7 - Ativos e documentação técnica | 7 | US39 *(condicionado)* | 6 |
+| Sprint 7 - Ativos e documentação técnica | 7 | US39 *(trabalho futuro, ADR 0015)* | 6 |
 | Sprint 8 - Fechamento do semestre | 8 | - | 5 |
 
 Além das 41 histórias, as `issues` cobrem as 8 entregas avaliativas, as 16

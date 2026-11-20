@@ -1,5 +1,6 @@
 "use client";
 
+import Link from "next/link";
 import { useRouter } from "next/navigation";
 import { useState } from "react";
 import { Botao, BotaoLink } from "@/components/Botao";
@@ -13,6 +14,7 @@ import {
 import * as api from "@/lib/api.ts";
 import * as caderno from "@/lib/caderno.ts";
 import * as conta from "@/lib/conta.ts";
+import * as fotos from "@/lib/fotos.ts";
 import * as sessao from "@/lib/sessao.ts";
 
 /**
@@ -60,6 +62,7 @@ export function PainelConta() {
         armazenamento: caderno.deposito(),
         sincronizar: caderno.sincronizar,
         encerrar: sessao.encerrar,
+        apagarFotos: () => fotos.depositoDoApp().apagarTodas(),
       };
       const r = await conta.sair(dependencias, { apagarPendentes });
       if (r.saiu) {
@@ -90,7 +93,8 @@ export function PainelConta() {
           </Botao>
           <p className="text-texto-suave text-sm">
             Antes de sair, o AgroScan envia para a sua conta os diagnósticos que
-            ainda estão só neste aparelho.
+            ainda estão só neste aparelho. As fotos das consultas, que ficam só
+            no aparelho, são apagadas ao sair.
           </p>
         </div>
       ) : (
@@ -114,6 +118,11 @@ export function PainelConta() {
           </Botao>
         </div>
       )}
+
+      <p className="text-texto-suave text-sm">
+        O que o AgroScan guarda e quem vê está em{" "}
+        <Link href="/privacidade" className="font-semibold underline">Privacidade</Link>.
+      </p>
 
       <ExcluirConta aoExcluir={() => setExcluida(true)} />
     </div>
@@ -139,6 +148,7 @@ function ExcluirConta({ aoExcluir }: { aoExcluir: () => void }) {
         armazenamento: caderno.deposito(),
         excluirNaApi: api.excluirConta,
         encerrar: sessao.encerrar,
+        apagarFotos: () => fotos.depositoDoApp().apagarTodas(),
       });
       if (r.excluida) {
         aoExcluir();
@@ -175,7 +185,7 @@ function ExcluirConta({ aoExcluir }: { aoExcluir: () => void }) {
           <li>o caderno: diagnósticos, confirmações e anotações;</li>
           <li>a sua participação nas hortas;</li>
           <li>as hortas de que você é responsável e em que só você participa, com os canteiros delas;</li>
-          <li>neste aparelho, a sessão e os diagnósticos que ainda não tinham subido.</li>
+          <li>neste aparelho, a sessão, as fotos das consultas e os diagnósticos que ainda não tinham subido.</li>
         </ul>
         <p>
           Se você é responsável por uma horta com outras pessoas, a exclusão é

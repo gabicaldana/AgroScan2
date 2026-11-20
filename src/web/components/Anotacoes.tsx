@@ -38,7 +38,7 @@ export function Anotacoes({
       <button
         type="button"
         onClick={() => setAberta(true)}
-        className="text-primaria mt-3 text-sm font-bold underline"
+        className="text-primaria min-h-toque mt-1 inline-flex items-center text-sm font-bold underline"
       >
         Anotações
       </button>
@@ -266,11 +266,11 @@ function ItemDeAnotacao({
       {editavel && (
         <div className="mt-2 flex gap-4">
           <button type="button" onClick={() => setEditando(true)} disabled={ocupado}
-            className="text-primaria min-h-toque text-sm font-bold underline">
+            className="text-primaria min-h-toque min-w-toque px-2 text-sm font-bold underline">
             Editar
           </button>
           <button type="button" onClick={apagar} disabled={ocupado}
-            className="text-primaria min-h-toque text-sm font-bold underline">
+            className="text-primaria min-h-toque min-w-toque px-2 text-sm font-bold underline">
             {ocupado ? "Apagando…" : "Apagar"}
           </button>
         </div>

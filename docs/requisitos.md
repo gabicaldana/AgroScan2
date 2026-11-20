@@ -104,7 +104,7 @@ Estado verificado em 12/09/2026 sobre o commit `068b6d9`.
 | RF07 | Exibir, por hipótese, laudo com nome, agente causal, descrição, gravidade e condições favoráveis | Obrigatório | ✅ |
 | RF08 | Apresentar as medidas de manejo na ordem cultural → biológica → química | Obrigatório | ✅ |
 | RF09 | Exibir o aviso legal e a exigência de receituário agronômico em todo laudo | Obrigatório | ✅ |
-| RF10 | Capturar foto da planta pela câmera do dispositivo | Desejável | 🟡 captura e pré-processamento prontos e testados, **fora da navegação** enquanto não houver modelo (ADR 0008); vínculo à consulta ⬜ |
+| RF10 | Capturar foto da planta pela câmera do dispositivo | Desejável | ✅ foto anexada à consulta pela câmera traseira, guardada só no aparelho e sem EXIF ([ADR 0016](decisoes/adr-0016-foto-da-consulta-so-no-aparelho.md)); o visor do modelo segue fora da navegação (ADR 0008) |
 | RF11 | Informar explicitamente quando a identificação automática por imagem não estiver disponível | Obrigatório | ✅ |
 
 ### 5.2 Conta e identidade
@@ -126,7 +126,7 @@ Estado verificado em 12/09/2026 sobre o commit `068b6d9`.
 | RF19 | Listar o histórico com filtro por período, cultura e canteiro | Obrigatório | 🟡 período e cultura ✅; canteiro ⬜ |
 | RF20 | Registrar se o diagnóstico se confirmou e qual foi a doença real | Importante | ✅ |
 | RF21 | Permitir anotações livres associadas a canteiro ou consulta | Desejável | ✅ |
-| RF22 | Registrar a geolocalização da consulta, mediante consentimento explícito | Desejável | 🟡 aceita e valida coordenada; consentimento na interface ⬜ |
+| RF22 | Registrar a geolocalização da consulta, mediante consentimento explícito | Desejável | ✅ opção desmarcada a cada consulta, local arredondado a ~110 m e "Apagar o local" no caderno ([revisão LGPD](lgpd.md)) |
 
 ### 5.4 Horta e canteiros
 
@@ -162,22 +162,22 @@ Estado verificado em 12/09/2026 sobre o commit `068b6d9`.
 
 | ID | Requisito | Categoria | Verificação |
 | --- | --- | --- | --- |
-| RNF01 | Diagnóstico por sintomas integralmente sem conexão, incluindo a primeira consulta após a instalação | Disponibilidade | Manual em dispositivo real; ponta a ponta previsto na Sprint 6 |
+| RNF01 | Diagnóstico por sintomas integralmente sem conexão, incluindo a primeira consulta após a instalação | Disponibilidade | ✅ `e2e/offline.spec.ts` no CI: primeira consulta depois da instalação sem rede, e a fila subindo quando a conexão volta |
 | RNF02 | Cálculo do diagnóstico em menos de 100 ms no dispositivo | Desempenho | ⬜ não medido automaticamente |
 | RNF03 | API responde em até 3 s no percentil 95, considerando inicialização a frio | Desempenho | ⬜ não medido automaticamente |
 | RNF04 | Aplicativo carrega em até 3 s em conexão 3G | Desempenho | ⬜ não medido |
-| RNF05 | Nível AAA de contraste da WCAG 2.1 | Acessibilidade | Inspeção - contraste de texto 17,9:1 |
-| RNF06 | Alvos de toque de no mínimo 56 px, para uso com luvas | Acessibilidade | Inspeção do sistema de design |
-| RNF07 | Corpo de texto de no mínimo 18 px | Acessibilidade | Inspeção do sistema de design |
-| RNF08 | Nenhuma informação transmitida exclusivamente por cor | Acessibilidade | Inspeção - gravidade usa barra, escala e rótulo textual |
+| RNF05 | Nível AAA de contraste da WCAG 2.1 | Acessibilidade | ✅ axe-core, regras AAA, 0 apontamentos nas 12 telas ([auditoria](acessibilidade.md)) |
+| RNF06 | Alvos de toque de no mínimo 56 px, para uso com luvas | Acessibilidade | ✅ medição de todos os alvos nas 12 telas ([auditoria](acessibilidade.md)) |
+| RNF07 | Corpo de texto de no mínimo 18 px | Acessibilidade | ✅ nenhum texto abaixo de 18 px nas 12 telas ([auditoria](acessibilidade.md)) |
+| RNF08 | Nenhuma informação transmitida exclusivamente por cor | Acessibilidade | ✅ inspeção das 12 telas ([auditoria](acessibilidade.md), seção 5) |
 | RNF09 | Interface integralmente em português brasileiro | Usabilidade | Inspeção |
 | RNF10 | Interface responsiva, com prioridade para telas de celular | Usabilidade | Inspeção |
 | RNF11 | Tema claro fixo, sem herdar o modo escuro do sistema | Usabilidade | Inspeção |
 | RNF12 | Senhas armazenadas com função de derivação de chave (scrypt), nunca em texto claro | Segurança | ✅ 7 testes automatizados |
 | RNF13 | Autenticação com token de prazo de expiração | Segurança | ✅ 4 testes automatizados |
 | RNF14 | Toda comunicação sobre HTTPS | Segurança | Garantido pela plataforma de publicação |
-| RNF15 | Coletar apenas os dados pessoais necessários à finalidade, conforme a LGPD | Privacidade | ✅ isolamento entre usuários testado; revisão formal na Sprint 6 |
-| RNF16 | Geolocalização sempre opcional, com consentimento explícito | Privacidade | 🟡 opcional no modelo; consentimento na interface ⬜ |
+| RNF15 | Coletar apenas os dados pessoais necessários à finalidade, conforme a LGPD | Privacidade | ✅ [revisão LGPD](lgpd.md) (12/11/2026); isolamento entre usuários testado |
+| RNF16 | Geolocalização sempre opcional, com consentimento explícito | Privacidade | ✅ consentimento a cada consulta, pedido só ao salvar ([revisão LGPD](lgpd.md), seção 5) |
 | RNF17 | Usuário pode excluir sua conta e seus dados de forma efetiva | Privacidade | ✅ `DELETE /autenticacao/eu` e tela "Sua conta" |
 | RNF18 | Base de conhecimento validada automaticamente antes de qualquer carga | Confiabilidade | ✅ `python -m app.validacao` |
 | RNF19 | As implementações do motor devem produzir resultados idênticos, verificados por testes sobre casos compartilhados | Confiabilidade | ✅ três implementações, igualdade exata |
@@ -240,7 +240,7 @@ título e vinculadas à `milestone` da sprint.
 | RF06 | US09 | 1 | TI02 - desempate por HTTP e no cliente | [#12](https://github.com/CampusCEUB/AgroScan/issues/12) |
 | RF07 | US10 | 1 | TI05 - ficha completa bate com a fixture | [#13](https://github.com/CampusCEUB/AgroScan/issues/13) |
 | RF08, RF09 | US10 | 1 | Inspeção C1; ordem garantida na base | [#13](https://github.com/CampusCEUB/AgroScan/issues/13) |
-| RF10, RF11 | US37 | 6 | Inspeção; `lib/recusa.test.ts` | [#42](https://github.com/CampusCEUB/AgroScan/issues/42) |
+| RF10, RF11 | US37 | 6 | `fotos.test.ts`; `conta.test.ts` - fotos apagadas ao sair e ao excluir; `lib/recusa.test.ts` | [#42](https://github.com/CampusCEUB/AgroScan/issues/42) |
 | RF12, RF13 | US12, US13 | 1 | TI26-TI32 - segurança | [#15](https://github.com/CampusCEUB/AgroScan/issues/15), [#16](https://github.com/CampusCEUB/AgroScan/issues/16) |
 | RF13 | US42 | 5 | Sair da conta com aviso sobre a fila ([ADR 0014](decisoes/adr-0014-sair-da-conta-com-a-fila-sem-dono.md)) | [#97](https://github.com/CampusCEUB/AgroScan/issues/97) |
 | RF14 | US14 | 1 | TI13 - diagnóstico não exige autenticação | [#17](https://github.com/CampusCEUB/AgroScan/issues/17) |
@@ -251,7 +251,7 @@ título e vinculadas à `milestone` da sprint.
 | RF19 | US19 | 1 | Listagem com filtros; filtro por canteiro na Sprint 3 | [#22](https://github.com/CampusCEUB/AgroScan/issues/22) |
 | RF20 | US20 | 5 | TI21, TI22 - coerência do feedback | [#23](https://github.com/CampusCEUB/AgroScan/issues/23) |
 | RF21 | US21 | 5 | `test_anotacoes.py` - acesso, autoria e texto; `anotacoes.test.ts` | [#24](https://github.com/CampusCEUB/AgroScan/issues/24) |
-| RF22, RNF16 | US22 | 6 | TI19 - coordenada pela metade recusada | ⚠️ ver nota |
+| RF22, RNF16 | - *(tarefa de sprint)* | 6 | TI19 - coordenada pela metade recusada; `localizacao.test.ts`; `caderno.test.ts`; `test_apagar_localizacao_*` | [#75](https://github.com/CampusCEUB/AgroScan/issues/75) |
 | RF23-RF26 | US22-US25 | 3 | ✅ | [#25](https://github.com/CampusCEUB/AgroScan/issues/25), [#26](https://github.com/CampusCEUB/AgroScan/issues/26), [#27](https://github.com/CampusCEUB/AgroScan/issues/27), [#28](https://github.com/CampusCEUB/AgroScan/issues/28) |
 | RF27 | US26 | 3 | ✅ | [#29](https://github.com/CampusCEUB/AgroScan/issues/29) |
 | RF28 | US27 | 4 | Consulta especificada em `modelo-de-dados.md` §6.1 | [#30](https://github.com/CampusCEUB/AgroScan/issues/30) |
@@ -269,15 +269,11 @@ título e vinculadas à `milestone` da sprint.
 | RNF20 | US35 | 1 | Árvore limpa no CI | [#39](https://github.com/CampusCEUB/AgroScan/issues/39) |
 | RNF27 | US40 | 6 | ⬜ | [#41](https://github.com/CampusCEUB/AgroScan/issues/41) |
 
-> ⚠️ **A linha RF22 / RNF16 precisa de correção.** Ela aponta para `US22`, que
-> no backlog é *"Como gestor de horta, quero cadastrar minha horta"* (épico E5).
-> A geolocalização da consulta mediante consentimento explícito **não tem
-> história própria** no backlog: o requisito existe, o modelo de dados já aceita
-> e valida a coordenada, mas o consentimento na interface nunca foi convertido
-> em item de trabalho. São duas saídas possíveis - criar uma história nova no
-> épico E4, ou acrescentar o consentimento aos critérios de aceite de uma
-> história existente. Enquanto a escolha não é feita, a célula fica sem `issue`,
-> para não registrar um vínculo falso.
+> **RF22 / RNF16.** A geolocalização da consulta não tem história própria no
+> backlog. O consentimento na interface foi feito na revisão de conformidade
+> com a LGPD ([#75](https://github.com/CampusCEUB/AgroScan/issues/75),
+> [`lgpd.md`](lgpd.md)), que é tarefa de sprint, e por isso a linha aponta para
+> ela.
 
 ## 10. Riscos ligados a requisitos
 
