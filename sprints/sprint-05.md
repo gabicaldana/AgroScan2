@@ -83,9 +83,16 @@ RF13, RF20, RF21, RF29 e RF37, conforme a
 
 ## Entregas
 
-> ⚠️ **A preencher no encerramento da sprint.**
+**7 de 7 histórias aceitas, 29 de 29 pontos.** O núcleo chega a 171 de 174
+pontos. Aceite história a história na [ata da revisão](../docs/reunioes/sprint-05-revisao.md).
 
-Entregas esperadas do ciclo:
+| Entrega | Resultado |
+| --- | --- |
+| Base de conhecimento completa | ✅ Base `2026.11.09`: 24 culturas e 88 doenças, nenhuma com menos de 3, validação sem aviso (PR #103) |
+| Painéis da horta (base do Artefato 9) | ✅ Quatro indicadores no painel, legíveis no celular, nada só por cor (PR #101) |
+| Decisão sobre identificação por imagem | ✅ Auditoria e [ADR 0015](../docs/decisoes/adr-0015-identificacao-por-imagem.md), proposto: a US39 sai do semestre (PR #104) |
+
+Entregas esperadas do ciclo, como planejado:
 
 | Entrega | Critério de aceite |
 | --- | --- |
@@ -95,16 +102,30 @@ Entregas esperadas do ciclo:
 
 ## Issues concluídas
 
-> ⚠️ **A preencher no encerramento da sprint.**
+[#4](https://github.com/CampusCEUB/AgroScan/issues/4) (US01),
+[#8](https://github.com/CampusCEUB/AgroScan/issues/8) (US05),
+[#23](https://github.com/CampusCEUB/AgroScan/issues/23) (US20),
+[#24](https://github.com/CampusCEUB/AgroScan/issues/24) (US21),
+[#32](https://github.com/CampusCEUB/AgroScan/issues/32) (US29),
+[#34](https://github.com/CampusCEUB/AgroScan/issues/34) (US41),
+[#43](https://github.com/CampusCEUB/AgroScan/issues/43) (US38),
+[#97](https://github.com/CampusCEUB/AgroScan/issues/97) (US42),
+[#72](https://github.com/CampusCEUB/AgroScan/issues/72) (papéis Scrum) e
+[#74](https://github.com/CampusCEUB/AgroScan/issues/74) (datas dos artefatos).
 
 ## Pull requests aceitos
 
-> ⚠️ **A preencher ao longo da sprint.**
+#94, #95, #96, #98, #99, #100, #101, #103, #104 e #105. Lista com o que cada
+um entregou na [ata da revisão](../docs/reunioes/sprint-05-revisao.md).
 
 ## Evidências
 
-> ⚠️ **A preencher no encerramento da sprint.** A saída da validação da base
-> declarando 24 culturas e 88 doenças é a evidência central deste ciclo.
+- **Base**: `python -m app.validacao` aprova a base `2026.11.09` com 24 culturas e
+  88 doenças; as fixtures de paridade passam de 122 para 192 casos, com os 122
+  anteriores idênticos (PR #103).
+- **CI verde no `main`** depois de cada PR do ciclo, até o
+  [#105](https://github.com/CampusCEUB/AgroScan/actions/runs/42867908905).
+- **Auditoria do acervo**: [`docs/auditoria-digipathos.md`](../docs/auditoria-digipathos.md).
 
 ## Impedimentos
 
@@ -122,7 +143,7 @@ Entregas esperadas do ciclo:
 
 ## Retrospectiva
 
-> ⚠️ **A preencher na reunião de revisão de 09/11/2026.**
+Na [ata da revisão](../docs/reunioes/sprint-05-revisao.md).
 
 ## Próximas ações
 

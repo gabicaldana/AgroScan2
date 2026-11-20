@@ -2,7 +2,7 @@
 
 ## Período
 
-**10/11/2026 a 23/11/2026** (14 dias)
+**10/11/2026 a 20/11/2026** (11 dias)
 
 ## Objetivo
 
@@ -37,7 +37,7 @@ comunidade parceira** ([#78](https://github.com/CampusCEUB/AgroScan/issues/78)).
 | Evento | Data | Issue | Ata |
 | --- | --- | --- | --- |
 | Planejamento | 10/11/2026 | [#60](https://github.com/CampusCEUB/AgroScan/issues/60) | [`sprint-06-planejamento.md`](../docs/reunioes/sprint-06-planejamento.md) |
-| Revisão | 23/11/2026 | [#61](https://github.com/CampusCEUB/AgroScan/issues/61) | [`sprint-06-revisao.md`](../docs/reunioes/sprint-06-revisao.md) |
+| Revisão | 20/11/2026 | [#61](https://github.com/CampusCEUB/AgroScan/issues/61) | [`sprint-06-revisao.md`](../docs/reunioes/sprint-06-revisao.md) |
 
 ## Itens planejados
 

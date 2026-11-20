@@ -2,7 +2,7 @@
 
 ## Período
 
-**08/12/2026 a 19/12/2026** (12 dias)
+**26/11/2026 a 27/11/2026** (2 dias)
 
 Sprint de encerramento, mais curta que a cadência padrão por coincidir com o fim
 do semestre letivo.
@@ -34,8 +34,8 @@ vitrine de ativos** ([#49](https://github.com/CampusCEUB/AgroScan/issues/49)).
 
 | Evento | Data | Issue | Ata |
 | --- | --- | --- | --- |
-| Planejamento | 08/12/2026 | [#64](https://github.com/CampusCEUB/AgroScan/issues/64) | [`sprint-08-planejamento.md`](../docs/reunioes/sprint-08-planejamento.md) |
-| Revisão | 19/12/2026 | [#65](https://github.com/CampusCEUB/AgroScan/issues/65) | [`sprint-08-revisao.md`](../docs/reunioes/sprint-08-revisao.md) |
+| Planejamento | 26/11/2026 | [#64](https://github.com/CampusCEUB/AgroScan/issues/64) | [`sprint-08-planejamento.md`](../docs/reunioes/sprint-08-planejamento.md) |
+| Revisão | 27/11/2026 | [#65](https://github.com/CampusCEUB/AgroScan/issues/65) | [`sprint-08-revisao.md`](../docs/reunioes/sprint-08-revisao.md) |
 
 A revisão da Sprint 8 é também a retrospectiva do semestre e alimenta o
 Artefato 7.

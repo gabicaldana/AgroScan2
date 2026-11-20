@@ -1,43 +1,66 @@
 # Reunião - Sprint 8 · Planejamento
 
-Reunião de abertura da **Sprint 8 - Fechamento do semestre** (08/12/2026 a 19/12/2026), para definir a meta do ciclo e selecionar as histórias da `milestone`.
+Reunião de abertura da **Sprint 8 - Fechamento do semestre** (26/11/2026 a 27/11/2026), para definir a meta do ciclo e selecionar os itens da `milestone`.
 
 ## Data
 
-08/12/2026
+26/11/2026
 
-> Data prevista pela cadência de duas semanas. Reunião ainda não realizada.
+> Data antecipada de 08/12 para 26/11, com o calendário das Sprints 6 a 8
+> comprimido para terminar até 27/11/2026.
 
 ## Participantes
 
 | Nome | Matrícula | Papel |
 | --- | --- | --- |
-| Gabriela Pedersoli Caldana | 22404253 | ⚠️ a definir |
-| Thaís Regina Dias da Mota | 22403754 | ⚠️ a definir |
-
-> A distribuição nominal dos papéis Scrum está pendente, conforme
-> [`sprints/sprint-00-planejamento.md`](../../sprints/sprint-00-planejamento.md).
+| Gabriela Pedersoli Caldana | 22404253 | Product Owner e Scrum Master, em conjunto |
+| Thaís Regina Dias da Mota | 22403754 | Product Owner e Scrum Master, em conjunto |
 
 ## Pauta
 
 1. Revisão do resultado da sprint anterior e dos impedimentos herdados
 2. Definição da meta da sprint
-3. Seleção das histórias da milestone e conferência dos critérios de aceite
+3. Seleção dos itens da milestone e conferência dos critérios
 4. Conferência da capacidade da dupla para o período
-5. Divisão de responsabilidades entre desenvolvimento e curadoria agronômica
+5. Divisão de responsabilidades
 6. Riscos ativos e mitigações do ciclo
+
+## Proposta para a reunião
+
+Preparada antes da reunião, a partir do backlog. A equipe confirma ou ajusta
+na reunião.
+
+### Meta proposta
+
+Fechar o semestre: o Artefato 7, com a execução e a revisão das sprints, a
+publicação na vitrine de ativos e a apresentação final.
+
+### Itens propostos
+
+| Issue | Item | Critérios da issue |
+| --- | --- | --- |
+| [#49](https://github.com/CampusCEUB/AgroScan/issues/49) | Artefato 7 - execução e revisão das sprints | O conteúdo são os relatórios `sprints/sprint-0X.md` e as atas desta pasta |
+| [#80](https://github.com/CampusCEUB/AgroScan/issues/80) | Publicação na vitrine de ativos | Projeto publicado na vitrine, documentação de uso e reaproveitamento, link no README |
+| [#81](https://github.com/CampusCEUB/AgroScan/issues/81) | Roteiro e ensaio da apresentação final | Roteiro redigido, ensaio cronometrado, evidências das oito sprints consolidadas |
+
+### Dependências a confirmar na reunião
+
+- **Vitrine de ativos (#80):** o endereço da vitrine e o formato de publicação
+  vêm da disciplina.
+- **Apresentação final (#81):** a data e o tempo da apresentação vêm da
+  disciplina.
 
 ## Decisões
 
-> ⚠️ **A preencher pela equipe.**
+> ⚠️ **A preencher na reunião.**
 
 ## Encaminhamentos
 
-> ⚠️ **A preencher pela equipe.** Ações, responsáveis e prazos combinados.
+> ⚠️ **A preencher na reunião.**
 
 ## Impedimentos
 
-> ⚠️ **A preencher pela equipe.** Bloqueios, riscos materializados e dependências.
+> ⚠️ **A preencher na reunião.**
 
 ## Links
 

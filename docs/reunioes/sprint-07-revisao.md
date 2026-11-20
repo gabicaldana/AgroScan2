@@ -1,43 +1,54 @@
 # Reunião - Sprint 7 · Revisão
 
-Reunião de encerramento da **Sprint 7 - Ativos e documentação técnica** (24/11/2026 a 07/12/2026), para demonstrar o incremento, aceitar as histórias contra os critérios e conduzir a retrospectiva.
+Reunião de encerramento da **Sprint 7 - Ativos e documentação técnica** (21/11/2026 a 25/11/2026), para aceitar as entregas contra os critérios e conduzir a retrospectiva.
 
 ## Data
 
-07/12/2026
+25/11/2026
 
-> Data prevista pela cadência de duas semanas. Reunião ainda não realizada.
+> Data antecipada de 07/12 para 25/11, com o calendário das Sprints 6 a 8
+> comprimido para terminar até 27/11/2026.
 
 ## Participantes
 
 | Nome | Matrícula | Papel |
 | --- | --- | --- |
-| Gabriela Pedersoli Caldana | 22404253 | ⚠️ a definir |
-| Thaís Regina Dias da Mota | 22403754 | ⚠️ a definir |
-
-> A distribuição nominal dos papéis Scrum está pendente, conforme
-> [`sprints/sprint-00-planejamento.md`](../../sprints/sprint-00-planejamento.md).
+| Gabriela Pedersoli Caldana | 22404253 | Product Owner e Scrum Master, em conjunto |
+| Thaís Regina Dias da Mota | 22403754 | Product Owner e Scrum Master, em conjunto |
 
 ## Pauta
 
-1. Demonstração do incremento construído no ciclo
-2. Aceite história a história contra os critérios de aceite e o Definition of Done
+1. Demonstração do que foi consolidado no ciclo
+2. Aceite item a item contra os critérios
 3. Conferência de que o ambiente publicado reflete a versão entregue (critério C11)
 4. Retrospectiva: o que funcionou, o que não funcionou, ajustes de processo
 5. Atualização do relatório da sprint e do CHANGELOG
 6. Encaminhamentos para o planejamento do ciclo seguinte
 
+## Itens para aceite
+
+| Issue | Item | Decisão |
+| --- | --- | --- |
+| [#47](https://github.com/CampusCEUB/AgroScan/issues/47) | Artefato 5 - website com dados e documentação | |
+| [#48](https://github.com/CampusCEUB/AgroScan/issues/48) | Artefato 8 - arquitetura de software e testes de sistema | |
+| [#45](https://github.com/CampusCEUB/AgroScan/issues/45) | Artefato 9 - dashboards incorporados | |
+| [#79](https://github.com/CampusCEUB/AgroScan/issues/79) | Relatórios da Atividade de Extensão | Fica aberta: depende da [#73](https://github.com/CampusCEUB/AgroScan/issues/73) |
+
 ## Decisões
 
-> ⚠️ **A preencher pela equipe.**
+> ⚠️ **A preencher na reunião.**
 
 ## Encaminhamentos
 
-> ⚠️ **A preencher pela equipe.** Ações, responsáveis e prazos combinados.
+> ⚠️ **A preencher na reunião.**
 
 ## Impedimentos
 
-> ⚠️ **A preencher pela equipe.** Bloqueios, riscos materializados e dependências.
+> ⚠️ **A preencher na reunião.**
+
+## Retrospectiva
+
+> ⚠️ **A preencher na reunião.**
 
 ## Links
 
