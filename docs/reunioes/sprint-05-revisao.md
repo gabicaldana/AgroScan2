@@ -50,9 +50,10 @@ de 174 pontos**; falta só a US15 (3 pontos), que é da Sprint 6.
 **CI verde no `main`** depois de cada PR, até o último
 ([execução #42867908905](https://github.com/CampusCEUB/AgroScan/actions/runs/42867908905), PR #105).
 
-**Critério C11:** ⚠️ **a confirmar pela equipe.** A base `2026.11.09` precisa da
-carga no Neon (`app.seed --gerar-sql`), e o `/api/v1/saude` publicado deve
-responder `versao_catalogo: 2026.11.09` com `catalogo_no_banco: true`.
+**Critério C11:** ✅ a base `2026.11.09` foi carregada no Neon
+(`app.seed --gerar-sql`). Conferido em 20/11: o
+[`/api/v1/saude`](https://agroscan-blond.vercel.app/api/v1/saude) publicado
+responde `versao_catalogo: 2026.11.09` com `catalogo_no_banco: true`.
 
 **Pull requests aceitos no ciclo:**
 [#94](https://github.com/CampusCEUB/AgroScan/pull/94) (encerramento da Sprint 4),
@@ -79,8 +80,6 @@ responder `versao_catalogo: 2026.11.09` com `catalogo_no_banco: true`.
 
 ### Retrospectiva - o que funcionou
 
-> ⚠️ **Rascunho a partir do repositório; confirmar com a equipe.**
-
 - **A meta de cobertura saiu inteira.** A base fechou em 24 culturas e 88
   doenças, sem acionar a ordem de corte, com cada ingrediente ativo conferido
   no AGROFIT.
@@ -91,8 +90,6 @@ responder `versao_catalogo: 2026.11.09` com `catalogo_no_banco: true`.
 - **O CI ficou verde em todos os PRs do ciclo.**
 
 ### Retrospectiva - o que não funcionou
-
-> ⚠️ **Rascunho a partir do repositório; confirmar com a equipe.**
 
 - **Sete PRs entraram no mesmo dia (10/11)**, entre eles a base completa e a
   auditoria. O ajuste "um PR por semana" da Sprint 4 valeu para a primeira
