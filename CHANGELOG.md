@@ -4,6 +4,13 @@ Registre aqui as mudanças relevantes por sprint ou marco avaliativo.
 
 ## Sprint 6 - Comunidade e validação · 10/11 a 23/11/2026
 
+### Testes ponta a ponta do fluxo offline (#77)
+
+- **Playwright** (`@playwright/test` 1.64.1) no Chromium, sobre o build de produção, porque o service worker só existe nele. Testes em `web/e2e/offline.spec.ts`, com `npm run build && npm run e2e`.
+- **Primeira consulta depois da instalação, sem rede (RNF01)**: o app é visitado uma vez com rede, a rede cai, e o teste recarrega, diagnostica, abre o laudo, salva e acha o registro no caderno.
+- **Fila de sincronização**: o que foi salvo sem rede sobe sozinho quando a conexão volta com o caderno aberto, com cultura e sintomas, e a fila fica vazia.
+- **CI**: instala o Chromium, roda os testes depois do build e guarda o relatório quando falham. A API é interceptada; o contrato do servidor segue nos testes de `src/tests`.
+
 ### Auditoria de acessibilidade WCAG 2.1 AAA (#76)
 
 - **Relatório** em [`docs/acessibilidade.md`](docs/acessibilidade.md): axe-core com as regras WCAG 2.1 A, AA e AAA nas 12 telas, mais medição própria de alvos de toque e de tamanho de texto. A primeira medição falhou em todas as telas por três causas do sistema de design; a segunda deu zero apontamentos.
