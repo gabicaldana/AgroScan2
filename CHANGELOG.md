@@ -4,6 +4,13 @@ Registre aqui as mudanças relevantes por sprint ou marco avaliativo.
 
 ## Sprint 6 - Comunidade e validação · 10/11 a 23/11/2026
 
+### Atas das Sprints 5 e 6 e calendário até 27/11 (#58, #59, #60)
+
+- **Atas preenchidas** do planejamento e da revisão da Sprint 5 e do planejamento da Sprint 6, a partir dos commits, PRs e issues. Na revisão da Sprint 5, as 7 histórias aceitas (29 de 29 pontos), a retrospectiva e o critério C11, conferido no `/api/v1/saude` publicado (`versao_catalogo: 2026.11.09`, `catalogo_no_banco: true`).
+- **Pautas** da revisão da Sprint 6 e das reuniões das Sprints 7 e 8, com a proposta preparada e as decisões a preencher em cada reunião.
+- **Calendário comprimido**: Sprint 6 até 20/11, Sprint 7 de 21 a 25/11 e Sprint 8 de 26 a 27/11, em `sprints/README.md`, nos relatórios das Sprints 6 a 8 e nas datas das milestones.
+- **Relatório da Sprint 5** em `sprints/sprint-05.md`, com entregas, issues, PRs e evidências.
+
 ### Foto da planta anexada à consulta (US37)
 
 - **Na tela de sintomas**, "Fotografar a planta" abre a câmera traseira do aparelho, em resolução nativa (campo de arquivo com `capture="environment"`). A foto aparece antes de salvar, com "Trocar a foto" e "Tirar a foto da consulta".
